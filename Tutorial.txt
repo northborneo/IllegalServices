@@ -1,39 +1,44 @@
 	Here is a list of the different things that Illegal Services can do :
 
-- Direct Download : Download files to crack any applications / films / series / animes or anything that is simply downloadable.
+- Direct Download Link : This menu allows you to download files to crack any applications, films, series, animes, or anything that is simply downloadable.
 
-- Streaming VF : Watch in a video stream flux any films / series / animes through Internet for free.
+- Streaming : This menu allows you to watch in a video stream flux any films, series, animes through Internet for free.
 
-- Torrenting : Download .torrent files to crack any applications / films / series / animes or anything that is simply downloadable.
-You need an cross-platform BitTorrent client in order to use .torrent files. Exemple : qBittorent, Deluge, etc . . .
+- Torrenting : This menu allows you to download .torrent files to crack any applications, films, series, animes, or anything that is simply downloadable. You need an cross-platform BitTorrent client in order to use .torrent files. Exemple : Deluge, qBittorent, etc...
 
-- Windows Cracks : Download files to crack any Windows executable applications.
+- Cracked Windows apps : This menu allows you to download files to crack any Windows executable applications.
 
-- Android Cracks : Download files to crack any any Android APK's.
+- Cracked Android APK's : This menu allows you to download files to crack any Android APK's.
 
-- Doxing : Allow you to retrieve information about your victim as well as advanced image or web searches.
+- Useful Websites : This menu display a list of useful websites.
 
-- YouTube DL : Download music or video from internet and convert them to any format on your computer.
+- Doxing : This menu allows you to retrieve information about your victim, as well as advanced image or web searches.
 
-- IP Denial of Services (DDoS) : Display a list of free websites that allows you to take your target's router offline using their IP address and Port.
+- YouTube DL : This menu allows you to download music or video from internet and convert them to any format on your computer.
 
-- IP Port Scanning : Scan your victim's open ports using their IP address.
+- IP Denial of Services : This menu display a list of free websites that allows you to take your target's router offline using their IP address and Port.
 
-- IP Adress Lookup : Allows you to geolocate and trace your target using his IP address.
+- IP Port Scanning : This menu allows you to scan your target's open ports using their IP address.
 
-- IP Pinger : Allows you to ping your victim's IP address, so you can check if they are receiving the packets or not.
+- IP Address Lookup : This menu allows you to geolocate and trace your target using his IP address.
 
-- IP Pinger TCP : Allows you to ping your victim's IP address, so you can check whether or not they are receiving packets on the defined port.
+- IP Pinger : This menu allows you to ping your victim's IP address, so you can check if they are receiving the packets or not.
 
-- IP Loggers : Allows you to retrieve the IP address of your victim, using a hided web address.
+- IP Port Pinger : This option allows you to ping your victim's IP address, so you can check whether or not they are receiving packets on the defined port.
 
-- Portable Apps : Download useful little portable applications.
+- IP Loggers : This menu allows you to retrieve the IP address of your victim, using a hided web address.
 
-- More Features : Other features not enough important to be displayed in the Main Menu.
+- Portable Apps : This menu allows you to download useful little portable applications.
 
-- Credits : Displays all the people who have contributed to the creation of Illegal Services.
+- More Features : This menu allows you other features not enough important to be displayed in the Main Menu.
 
-- Settings : Allows yous you to change the appearance and behavior of Illegal Services.
+- Credits : This menu displays all the people who have contributed to the creation of Illegal Services.
+
+- Settings : This menu allows you to change the appearance and behavior of Illegal Services.
+
+- Help : Illegal Service is an application created to facilitate access to the site of illegal downloads: streaming, torrent, direct download, cracks, DDoS... Indeed, illegal sites must constantly change their domain names to counter government attacks. It's very annoying to have to find them every time. This is why Illegal Services will be your best friend. Especially since he only chooses a list of the best sites, and no scam site is included. But that's not all, Illegal Services is also a powerful multi tool allowing other functionalities such as DDoS attacks, Port Scanning and IP Lookup. All this to say that if you like watching movies, crack applications or doing DDoS attacks this is the perfect application created to serve you.
+
+- FAQ : This menu allows you to answer a list of frequently asked questions about Illegal Services.
 
 
 	Illegale Services description EN :
