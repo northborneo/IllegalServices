@@ -4,6 +4,39 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
+v4.1.0.0 - 09/12/2020
+- REDUCED Code.
++ ADDED Direct Download Link (DDL) [FR] : https://www.zone-mania.com/
++ ADDED Direct Download Link (DDL) [FR] : https://www.mamega.com/
++ ADDED Direct Download Link (DDL) [FR] : https://zone-ebook.com/
++ ADDED Direct Download Link (DDL) [FR] : http://bookddl.com/
++ ADDED Streaming [EN] : https://4anime.io/
++ ADDED Torrenting : Check if installed bittorrent client.
++ ADDED Torrenting : ADD. (This option allow you to create a magnet link using an hash) (a thank to sintrode and https://www.dostips.com/DtTipsStringOperations.php#Function.strLen for the help)
++ ADDED Torrenting [FR] : https://www.sharewood.tv/
++ ADDED Torrenting TORRENT SEARCHING : https://torrends.to/
++ ADDED Torrenting TORRENT PROXY'S : https://torrends.to/
++ ADDED Cracked Windows apps : https://www.gamestorrents.nu/
++ ADDED Useful Websites : https://wannabe1337.xyz/
++ ADDED Useful Websites : https://mostwantedhf.info/
++ ADDED Doxing Metaseach Engine : https://www.infospace.com/
++ ADDED IP Denial of Services : https://webstress.io/
++ ADDED Settings : Developer Options. (Only available for Illegal Services developers) (thank you so much anic17 for the suggestion and the big help)
++ ADDED Settings : Developer Options : Extract IS source code. (a thank to anic17 for the suggestion)
++ UPDATED IS Source : cURL : v7.74.0
++ UPDATED IS Source : YouTube DL v2020.12.09
++ UPDATED IS Source : Tutorial.txt
++ UPDATED Portable Apps : Everything v1.4.1.1000
++ UPDATED Portable Apps : Process Hacker v3.0.3672
++ UPDATED Settings : Scan down websites.
++ UPDATED HELP.
+- REMOVED IS Source : Settings.ini : Advertisements
+- REMOVED Torrenting : https://torrentz2.is/ (down)
+- REMOVED Doxing Metaseach Engine : https://www.dogpile.com/ (clone of https:/ww.infospace.com/)
+- REMOVED Doxing Metaseach Engine : https://www.metacrawler.com/ (clone of https:/ww.infospace.com/)
+- REMOVED IP Denial of Services : https://instant-stresser.com/ (closed)
+- REMOVED IP Denial of Services : https://stresslab.io/ (down)
+
 v4.0.0.0 - 30/11/2020
 - REDUCED Code. (~17 ko ; thanks to anic17)
 - IMPROVED Setup Installer.
