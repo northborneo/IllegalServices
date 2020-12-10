@@ -4,8 +4,10 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.1.0.3 - 09/12/2020
+v4.1.0.4 - 10/12/2020
++ ADDED Settings : Check for updates.
 + UPDATED Portable Apps : Windows Repair AIO v4.10.2
++ UPDATED Portable Apps : Process Hacker v3.0.3676
 
 v4.1.0.0 - 09/12/2020
 - REDUCED Code.
