@@ -34,6 +34,10 @@ telecharge-magazines.com
 zone-ebook.com
 bookddl.com
 ;;DDLEN
+www.scnsrc.me
+www.ddlvalley.me
+releasehive.com
+snahp.it
 jpddl.com
 anidl.org
 tb.rg-adguard.net
