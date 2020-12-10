@@ -4,10 +4,11 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.1.0.4 - 10/12/2020
+v4.1.0.5 - 10/12/2020
 + ADDED Settings : Check for updates.
++ UPDATED Portable Apps : CCleaner v5.75.8238
 + UPDATED Portable Apps : Windows Repair AIO v4.10.2
-+ UPDATED Portable Apps : Process Hacker v3.0.3676
++ UPDATED Portable Apps : Process Hacker v3.0.3679
 
 v4.1.0.0 - 09/12/2020
 - REDUCED Code.
@@ -105,15 +106,15 @@ v3.8.0.0 - 12/11/2020
 + ADDED Cracked Windows apps : https://getgamez.net/ (Thanks LeSaintFisti)
 + ADDED IP Denial of Services : https://databooter.to/
 + UPDATED IP Address Lookup : Type and Proxy informations.
-+ UPDATED : Portable Apps : CCleaner v5.74.8184
-+ UPDATED : Portable Apps : Blacbird v1.0.80.2:
-+ UPDATED : Portable Apps : Display Driver Uninstaller v18.0.3.4
-+ UPDATED : Portable Apps : Windows ISO Downloader
-+ UPDATED : Windows and Office Cracks. (links been removed for Illegal reasons)
-+ UPDATED : Windows and Office Cracks : KMSoffline v2.1.8
-+ UPDATED : Windows and Office Cracks : Office 2013-2019 C2R Install v7.0.8
-+ UPDATED : Windows and Office Cracks : W10 Digital License C# v3.7 Multilingual v3.7.0
-+ UPDATED : Windows and Office Cracks : AAct v4.2
++ UPDATED Portable Apps : CCleaner v5.74.8184
++ UPDATED Portable Apps : Blacbird v1.0.80.2:
++ UPDATED Portable Apps : Display Driver Uninstaller v18.0.3.4
++ UPDATED Portable Apps : Windows ISO Downloader
++ UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
++ UPDATED Windows and Office Cracks : KMSoffline v2.1.8
++ UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.0.8
++ UPDATED Windows and Office Cracks : W10 Digital License C# v3.7 Multilingual v3.7.0
++ UPDATED Windows and Office Cracks : AAct v4.2
 - REMOVED Launcher : Alpha Tester Code. (Not usefull anymore since the build updates system)
 - REMOVED Streaming [FR] : https://streamings-vf.net/ (scam)
 
@@ -603,7 +604,7 @@ v1.7.0.0 - 14/07/2020
 - FIXED : Windows Smart Screen "Unknown Publisher" message at opening.
 - FIXED : Windows Defender false positive virus detection for "IS Setup.exe" .
 + UPDATED all link Addresses.
-+ ADDED : Signed all my files.
++ ADDED IS Source : Signed all my files.
 + ADDED an Setup to install or uninstall Illegal Services.
 + ADDED Direct Download Link (DDL) in Main Menu.
 + ADDED Portable in WINDOWS.
