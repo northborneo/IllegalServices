@@ -105,15 +105,16 @@ hentaihaven.org
 ;;TORRENTING
 1337x.to
 thepiratebay.org
-kickass.onl
 rarbg.to
 www.torrentfunk2.com
 torrentgalaxy.to
 www.limetorrents.info
 extratorrents.it
-yts.mx
 eztv.re
+www.ettvcentral.com
 nyaa.si
+anidex.info
+yts.mx
 yggtorrent.si
 www.sharewood.tv
 www.oxtorrent.cc
@@ -156,6 +157,7 @@ crackzsoft.me
 starcrack.net
 fileriver.net
 crackshash.com
+ftuapps.dev
 diakov.net
 lrepacks.ru
 repack.me
@@ -232,6 +234,7 @@ patorjk.com
 photomosh.com
 www.remove.bg
 www.torproject.org
+onehack.us
 ;;FORUMWEBSITES
 www.forumzt.com
 pirates-forum.org
