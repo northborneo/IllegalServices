@@ -78,10 +78,8 @@ www.anime-ultime.net
 v5.anime-ultime.net
 ;;STREAMINGEN
 www.primewire.li
-primewire.pw
 losmovies.to
 gomovie.co
-123movies.co
 gomovies-online.me
 watch-serieshd.cc
 gomovies.re
@@ -91,6 +89,7 @@ fmovies.to
 solarmovie.to
 123movieshub.tc
 www.uwatchfree.mx
+www1.movie4u.live
 www.watchepisodeseries1.com
 gogoanime.video
 9anime.to
