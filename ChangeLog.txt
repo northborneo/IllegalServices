@@ -4,11 +4,32 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.1.0.5 - 10/12/2020
+v4.2.0.0 - 12/12/2020
+- FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
+- IMPROVED IS Source : Portable Apps downloads now moved to : https://github.com/Illegal-Services/Illegal_Services/tree/downloads
++ ADDED Streaming [EN] : https://movie4u.live/
++ ADDED Direct Download Link [EN] : https://www.scnsrc.me/
++ ADDED Direct Download Link [EN] : https://www.ddlvalley.me/
++ ADDED Direct Download Link [EN] : https://releasehive.com/
++ ADDED Direct Download Link [EN] : https://snahp.it/
++ ADDED Torrenting : https://anidex.info/
++ ADDED Torrenting : https://www.gtdb.to/
++ ADDED Torrenting : https://anidex.info/
++ ADDED Torrenting : https://angietorrents.cc/
++ ADDED Torrenting : https://pirateiro.com/
++ ADDED Torrenting : https://www.ettvcentral.com/
++ ADDED Cracked Windows apps : https://ftuapps.dev/
++ ADDED Cracked Windows apps : https://www.skidrowcodex.net/
++ ADDED Useful Websites : https://onehack.us/
 + ADDED Settings : Check for updates.
 + UPDATED Portable Apps : CCleaner v5.75.8238
 + UPDATED Portable Apps : Windows Repair AIO v4.10.2
-+ UPDATED Portable Apps : Process Hacker v3.0.3679
++ UPDATED Portable Apps : Process Hacker v3.0.3680
+- REMOVED Streaming [EN] : https://primewire.pw/ (down)
+- REMOVED Streaming [EN] : https://123movies.co/ (down)
+- REMOVED Torrenting : https://kickass.onl/ (I don't want to index unofficial websites)
+- REMOVED Cracked Windows apps : https://skidrowcodex.co/ (fake)
+- REMOVED Cracked Windows apps : https://skidrowcodexgames.com/ (fake)
 
 v4.1.0.0 - 09/12/2020
 - REDUCED Code.
@@ -19,7 +40,7 @@ v4.1.0.0 - 09/12/2020
 + ADDED Streaming [EN] : https://4anime.io/
 + ADDED Torrenting : Check if installed bittorrent client.
 + ADDED Torrenting : ADD. (This option allow you to create a magnet link using an hash) (a thank to sintrode and https://www.dostips.com/DtTipsStringOperations.php#Function.strLen for the help)
-+ ADDED Torrenting [FR] : https://www.sharewood.tv/
++ ADDED Torrenting : https://www.sharewood.tv/
 + ADDED Torrenting TORRENT SEARCHING : https://torrends.to/
 + ADDED Torrenting TORRENT PROXY'S : https://torrends.to/
 + ADDED Cracked Windows apps : https://www.gamestorrents.nu/
