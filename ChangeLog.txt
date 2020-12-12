@@ -22,6 +22,7 @@ v4.2.0.0 - 12/12/2020
 + ADDED Cracked Windows apps : https://www.skidrowcodex.net/
 + ADDED Useful Websites : https://onehack.us/
 + ADDED Settings : Check for updates.
++ UPDATED IS Source : YouTube DL v2020.12.12
 + UPDATED Portable Apps : CCleaner v5.75.8238
 + UPDATED Portable Apps : Windows Repair AIO v4.10.2
 + UPDATED Portable Apps : Process Hacker v3.0.3680
@@ -100,7 +101,7 @@ v3.9.0.0 - 18/11/2020
 + ADDED IP Denial of Services : https://powerstress.xyz/
 + ADDED IP Denial of Services : https://ddosforhire.net/
 + ADDED Main Menu : Useful Websites.
-+ UPDATED IS Source : Youtube DL v2020.11.18
++ UPDATED IS Source : YouTube DL v2020.11.18
 + UPDATED IS Source : YouTube DLC v2020.11.11-4
 + UPDATED Direct Download Link (DDL) [FR] : https://www.tirexo.cc/
 + UPDATED Streaming [FR] : https://vostanimes.com/
@@ -274,7 +275,7 @@ v2.7.0.0 - 09/10/2020
 + ADDED Portable Apps Drivers : AMD Slimmer
 + ADDED Portable Apps Anti Viruses and Malwares : Batch Antivirus
 + UPDATED Compiler Version.
-+ UPDATED IS Source : youtube-dl 2020.09.20
++ UPDATED IS Source : YouTube DL v2020.09.20
 + UPDATED Main Menu : Credits
 + UPDATED Streaming [FR] : https://libertyvf.bz/
 + UPDATED Streaming [FR] : https://wwv.streamfilm.cc/
@@ -295,7 +296,7 @@ v2.7.0.0 - 09/10/2020
 v2.6.0.0 - 18/09/2020
 - IMPROVED Code. (All file deletion are now folder sensitive)
 - IMPROVED Code. (All .txt logs behave more smart now)
-+ UPDATED IS Source : youtube-dl 2020.09.14
++ UPDATED IS Source : YouTub DL v2020.09.14
 + UPDATED Direct Download Link : https://www.annuaire--telechargement.com/
 + UPDATED Streaming [FR] : https://gum-gum-streaming.com/
 + UPDATED Streaming [EN] : https://www.uwatchfree.mx/
@@ -335,7 +336,7 @@ v2.5.0.0 - 13/09/2020
 + UPDATED Torrenting : https://torrentz2.is/
 + UPDATED IP Denial of Services : https://anonboot.net/
 + UPDATED Portable Apps : Windows Spy Blocker v4.33.1
-+ UPDATED IS Source : youtube-dl 2020.09.06
++ UPDATED IS Source : YouTube DL v2020.09.06
 + ADDED curl folder for IS Source. (thank you so much sintrode for the big help)
 + ADDED New installation prompt window syle.
 + ADDED YouTube DL : BEST
