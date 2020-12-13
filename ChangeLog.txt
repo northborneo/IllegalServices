@@ -4,10 +4,10 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-Need to Setup remove reg values after uninstall.
-
-v4.2.0.1 - 12/12/2020
+v4.2.0.2 - 13/12/2020
 + ADDED Streaming [EN] : https://soap2day.to/
++ ADDED Torrenting TORRENT PROXY'S : https://yifystatus.com/
++ UPDATED Direct Download [FR] : https://www3.tirexo.lol/
 
 v4.2.0.0 - 12/12/2020
 - FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
