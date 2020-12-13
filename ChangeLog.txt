@@ -4,9 +4,13 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.2.0.2 - 13/12/2020
+v4.2.0.3 - 13/12/2020
 + ADDED Streaming [EN] : https://soap2day.to/
 + ADDED Torrenting TORRENT PROXY'S : https://yifystatus.com/
++ ADDED Usefum Forum Websites : https://forum.ddlvalley.me/
++ ADDED Usefum Forum Websites : https://forum.snahp.it/
++ ADDED Usefum Forum Websites : https://forums.anidex.moe/
++ ADDED Usefum Forum Websites : https://angietorrents.cc/
 + UPDATED Direct Download [FR] : https://www3.tirexo.lol/
 
 v4.2.0.0 - 12/12/2020
