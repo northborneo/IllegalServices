@@ -4,7 +4,8 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.2.0.3 - 13/12/2020
+v4.2.0.4 - 15/12/2020
++ ADDED Direct Download Link [EN] : https://the-eye.eu/ (thanks @RaaFii1 from IS Telegram group)
 + ADDED Streaming [EN] : https://soap2day.to/
 + ADDED Torrenting TORRENT PROXY'S : https://yifystatus.com/
 + ADDED Usefum Forum Websites : https://forum.ddlvalley.me/
@@ -12,6 +13,9 @@ v4.2.0.3 - 13/12/2020
 + ADDED Usefum Forum Websites : https://forums.anidex.moe/
 + ADDED Usefum Forum Websites : https://angietorrents.cc/
 + UPDATED Direct Download [FR] : https://www3.tirexo.lol/
++ UPDATED IS Source : YouTube DL v2020.12.14
++ UPDATED Torrenting : https://unblockit.dev/ (thanks @RaaFii1 from IS Telegram group)
+- REMOVED Streaming [FR] : https://vostfree.com/ (down) (thanks @RaaFii1 from IS Telegram group)
 
 v4.2.0.0 - 12/12/2020
 - FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
