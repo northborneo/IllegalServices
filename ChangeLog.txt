@@ -4,17 +4,33 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.2.0.4 - 15/12/2020
+v4.2.0.5 - 16/12/2020
 + ADDED Direct Download Link [EN] : https://the-eye.eu/ (thanks @RaaFii1 from IS Telegram group)
 + ADDED Streaming [EN] : https://soap2day.to/
-+ ADDED Torrenting TORRENT PROXY'S : https://yifystatus.com/
++ ADDED Torrenting : https://yifystatus.com/
 + ADDED Usefum Forum Websites : https://forum.ddlvalley.me/
 + ADDED Usefum Forum Websites : https://forum.snahp.it/
 + ADDED Usefum Forum Websites : https://forums.anidex.moe/
 + ADDED Usefum Forum Websites : https://angietorrents.cc/
-+ UPDATED Direct Download [FR] : https://www3.tirexo.lol/
 + UPDATED IS Source : YouTube DL v2020.12.14
++ UPDATED Credits : https://curl.se/
++ UPDATED Direct Download [FR] : https://www3.tirexo.lol/
++ UPDATED Direct Download Link [EN] : https://www.ddl-island.cc
++ UPDATED Streaming [EN] : https://www.stream-island.cc/
++ UPDATED Streaming [EN] : https://www6.filmstreaming.to/
++ UPDATED Streaming [EN] : https://www3.animesvostfr.net/
++ UPDATED Streaming [EN] : https://animecomplet.co/
++ UPDATED Streaming [EN] : https://watchseriess.co/
++ UPDATED Streaming [EN] : https://www3.f2movies.to/
++ UPDATED Streaming [EN] : https://www2.solarmovie.to/
++ UPDATED Streaming [EN] : https://www.uwatchfree.bz/
++ UPDATED Streaming [EN] : https://gogoanime.vc/
++ UPDATED Streaming [EN] : https://www12.9anime.to/
++ UPDATED Torrenting : https://proxybay.buzz/
 + UPDATED Torrenting : https://unblockit.dev/ (thanks @RaaFii1 from IS Telegram group)
++ UPDATED Torrenting : https://unblockproject.rest/
++ UPDATED Cracked Windows Apps : https://v1.xatab-repack.net/
++ UPDATED Cracked Android Apps : https://vancedapp.com/
 - REMOVED Streaming [FR] : https://vostfree.com/ (down) (thanks @RaaFii1 from IS Telegram group)
 
 v4.2.0.0 - 12/12/2020
@@ -55,8 +71,8 @@ v4.1.0.0 - 09/12/2020
 + ADDED Torrenting : Check if installed bittorrent client.
 + ADDED Torrenting : ADD. (This option allow you to create a magnet link using an hash) (a thank to sintrode and https://www.dostips.com/DtTipsStringOperations.php#Function.strLen for the help)
 + ADDED Torrenting : https://www.sharewood.tv/
-+ ADDED Torrenting TORRENT SEARCHING : https://torrends.to/
-+ ADDED Torrenting TORRENT PROXY'S : https://torrends.to/
++ ADDED Torrenting : https://torrends.to/
++ ADDED Torrenting : https://torrends.to/
 + ADDED Cracked Windows apps : https://www.gamestorrents.nu/
 + ADDED Useful Websites : https://wannabe1337.xyz/
 + ADDED Useful Websites : https://mostwantedhf.info/
@@ -182,7 +198,7 @@ v3.6.0.0 - 07/11/2020
 - REMOVED Streaming : https://time2watch.io/ (closed)
 - REMOVED Torrenting : https://torrents.io/ (closed)
 - REMOVED Torenting : Torrent Searching. (Still present in Torrenting)
-- REMOVED Torenting : Torrent Proxy's. (Still present in Torrenting)
+- REMOVED Torenting : . (Still present in Torrenting)
 
 v3.5.0.0 - 01/11/2020
 - FIXED Code.
@@ -219,7 +235,7 @@ v3.1.0.0 - 23/10/2020
 - REDUCED Code. (~75 ko) (a thank to sintrode for the help)
 + UPDATED Torrenting : https://rarbg.to/
 + ADDED Rose voice assistant. (thank you so much <Tim> and also a thank to sintrode for the help)
-+ ADDED Torrent Proxy's : https://unblocktorrent.com/
++ ADDED  : https://unblocktorrent.com/
 + ADDED IS Source : Speak
 + ADDED Settings : Scan down websites.
 - REMOVED Launcher : Scan down websites.
@@ -321,9 +337,9 @@ v2.6.0.0 - 18/09/2020
 + ADDED Streaming [FR] : https://www6.filmstreaming.to/
 + ADDED Streaming [FR] : https://vostanime.org/
 + ADDED Streaming [FR] : https://dbanimes.com/
-+ ADDED Torrent Searching : https://torrentz2k.xyz/
-+ ADDED Torrent Searching : https://idope.se/
-+ ADDED Torrent Proxy's : https://torrents.io/
++ ADDED : https://torrentz2k.xyz/
++ ADDED : https://idope.se/
++ ADDED  : https://torrents.io/
 + ADDED Cracked Windows apps : https://igg-games.com/
 + ADDED Cracked Windows apps : https://pcgamestorrents.com/
 + ADDED Cracked Windows apps : https://www.mrpcgamer.com/
@@ -333,7 +349,7 @@ v2.6.0.0 - 18/09/2020
 - REMOVED Streaming [FR] : https://www.full-anime.fr/ (Clone of https://www.gum-gum-streaming.co/)
 - REMOVED Streaming [FR] : https://www.wakanim.tv/ (Paid website)
 - REMOVED Streaming [EN] : https://popcornflix.io/ (There's not a lot of films available)
-- REMOVED Torrent Searching : https://1337x.to/ (Now only show in Torrenting)
+- REMOVED : https://1337x.to/ (Now only show in Torrenting)
 - REMOVED Cracked Android APK's : https://bitapk.com/
 
 v2.5.0.0 - 13/09/2020
@@ -371,7 +387,7 @@ v2.5.0.0 - 13/09/2020
 - REMOVED IP Denial of Services : https://client.undisclosed.to/
 - REMOVED IP Denial of Services : https://quickboot.ru
 - REMOVED Torrenting : https://newkatcr.co/ (dead)
-- REMOVED Torrent Searching : https://www.xtorx.com/ (still work but dead)
+- REMOVED : https://www.xtorx.com/ (still work but dead)
 - REMOVED wget.exe from IS Source.
 
 v2.4.0.0 - 25/08/2020
@@ -382,9 +398,9 @@ v2.4.0.0 - 25/08/2020
 - FIXED HELP (Main Menu) : English language was missing some line return's.
 + UPDATED Setup Eula.
 + UPDATED Streaming [FR] : https://animecomplet.co
-+ UPDATED Torrent Proxy's : https://proxybay.gdn/
-+ UPDATED Torrent Proxy's : https://unblockit.top/
-+ ADDED Torrent Proxy's : https://unblockproject.uno/
++ UPDATED  : https://proxybay.gdn/
++ UPDATED  : https://unblockit.top/
++ ADDED  : https://unblockproject.uno/
 + ADDED Streaming [FR] : https://wvw.streamfilm.cc/
 + ADDED Streaming [FR] : https://voir.lesseriestreaming.com/
 + ADDED Streaming [FR] : https://voirseries.tv/
@@ -436,14 +452,14 @@ v2.3.0.0 - 19/08/2020
 + UPDATED IS Source : ffmpeg.exe
 + UPDATED Torrenting : https://www.oxtorrent.cc/
 + UPDATED Torrenting : https://www.torrent9.gg/
-+ UPDATED Torrent Proxy's  : https://torrentmirror.fun/
++ UPDATED   : https://torrentmirror.fun/
 + ADDED Streaming [EN] : https://hentaihaven.org/
 + ADDED Launcher : Checking new updates . . .
 + ADDED more error messages.
 + ADDED more translation.
 - REMOVED launcher : Detecting Windows version . . .
-- REMOVED Torrent Searching : https://veoble.com/ (still work but dead since 2015)
-- REMOVED Torrent Searching : http://www.toorgle.net (scam)
+- REMOVED : https://veoble.com/ (still work but dead since 2015)
+- REMOVED : http://www.toorgle.net (scam)
 
 v2.2.0.0 - 16/08/2020
 - FIXED IP Port Scanning not working. (sorry, it was my fault)
@@ -546,7 +562,7 @@ v2.0.0.0 - 04/08/2020
 + ADDED "cmdbkg.exe" for IS Source.
 + ADDED "Our telegram group" in Main Menu.
 + ADDED Direct Download Link : https://libertyvf.tv/
-+ ADDED Torrent Proxy's : https://proxygalaxy.pw/
++ ADDED  : https://proxygalaxy.pw/
 + ADDED Windows : https://fileriver.net/
 + ADDED IP Denial of Services : https://anonboot.com/
 + ADDED Short URL's : https://tiny.cc/
@@ -558,7 +574,7 @@ v2.0.0.0 - 04/08/2020
 + ADDED Multiple choices.
 - REMOVED Torrenting :  https://www.zetorrents.io (old clone of OXTORRENT)
 - REMOVED "EXIT". (Not usefull since you already can exit with Windows)
-- REMOVED Torrent Searching : https://bitcq.com/ (Dead)
+- REMOVED : https://bitcq.com/ (Dead)
 - REMOVED IP Denial of Services : https://minesearch.rip/ (dead)
 - REMOVED IP Denial of Services : https://instress.me/ (dead)
 - REMOVED "Tutorial" Sub Menu in Torrenting. (replaced by "HELP")
@@ -645,8 +661,8 @@ v1.7.0.0 - 14/07/2020
 + ADDED Portable in WINDOWS.
 + ADDED Streaming : http://www.anime-ultime.net/ (v4)
 + ADDED Streaming : https://v5.anime-ultime.net/ (v5)
-+ ADDED Torrent Searching : https://torrentproject2.com/
-+ ADDED Torrent Searching : https://isohunt.app/
++ ADDED : https://torrentproject2.com/
++ ADDED : https://isohunt.app/
 + ADDED Direct Download Link : https://www.tirexo.com/
 + ADDED Direct Download Link : https://www.zt-za.com/
 + ADDED Direct Download Link : https://www.ddl1.best/
@@ -675,14 +691,14 @@ v1.6.0.0 - 08/07/2020
 + ADDED Streaming : https://papystreaming.net/
 + ADDED Streaming : https://www.papystreaming.cc/
 + ADDED Torrenting : https://www.tirexo.com/ (Zone Téchargement v3)
-+ ADDED Torrent Searching : https://torrent-paradise.ml/
++ ADDED : https://torrent-paradise.ml/
 + ADDED Windows : https://www.mazterize.com/
 + ADDED Port Scanning : https://portforward.com/ports.htm
 - REMOVED Streaming : https://wvv.voirfilms.club/ (Scam)
 - REMOVED Streaming : https://wvw.papstream.cc/ (Scam)
 - REMOVED Streaming : https://www.papystreaming.so/ (Scam)
 - REMOVED Streaming : https://wwv.stream-island.org/ (Scam)
-- REMOVED Torrent Proxy's : https://thekickasstorrents.com/ (Scam)
+- REMOVED  : https://thekickasstorrents.com/ (Scam)
 - REMOVED Windows : https://novelsghar.com/ (Outdated)
 - REMOVED Windows : https://install.lctutors.com.br (Outdated)
 - REMOVED IP Denial of Services : https://fasthub.pw/ (Dead)
