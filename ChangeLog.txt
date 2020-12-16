@@ -15,7 +15,7 @@ v4.2.0.6 - 16/12/2020
 + ADDED Settings : Scan changed domains. (thanks to anic17 and sintrode)
 + UPDATED IS Source : YouTube DL v2020.12.14
 + UPDATED Credits : https://curl.se/
-+ UPDATED Direct Download [FR] : https://www3.tirexo.lol/
++ UPDATED Direct Download Link [FR] : https://www3.tirexo.lol/
 + UPDATED Direct Download Link [EN] : https://www.ddl-island.cc
 + UPDATED Streaming [EN] : https://www.stream-island.cc/
 + UPDATED Streaming [EN] : https://www6.filmstreaming.to/
@@ -33,7 +33,6 @@ v4.2.0.6 - 16/12/2020
 + UPDATED Cracked Windows Apps : https://v1.xatab-repack.net/
 + UPDATED Cracked Android Apps : https://vancedapp.com/
 + UPDATED Useful Websites : https://www.fakeimess.com/
-- REMOVED Streaming [FR] : https://vostfree.com/ (down) (thanks @RaaFii1 from IS Telegram group)
 
 v4.2.0.0 - 12/12/2020
 - FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
