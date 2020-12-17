@@ -4,19 +4,30 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.2.0.6 - 16/12/2020
+v4.2.0.9 - 17/12/2020
++ ADDED Direct Download Link [EN] : https://2ddl.ms/
++ ADDED Direct Download Link [EN] : https://megaddl.co/
++ ADDED Direct Download Link [EN] : https://gdrivedl.com/
 + ADDED Direct Download Link [EN] : https://the-eye.eu/ (thanks @RaaFii1 from IS Telegram group)
 + ADDED Streaming [EN] : https://soap2day.to/
 + ADDED Torrenting : https://yifystatus.com/
-+ ADDED Usefum Forum Websites : https://forum.ddlvalley.me/
-+ ADDED Usefum Forum Websites : https://forum.snahp.it/
-+ ADDED Usefum Forum Websites : https://forums.anidex.moe/
-+ ADDED Usefum Forum Websites : https://angietorrents.cc/
-+ ADDED Settings : Scan changed domains. (thanks to anic17 and sintrode)
++ ADDED Cracked Android Apps : https://getintopc.com/
++ ADDED Cracked Android Apps : https://izofile.com/
++ ADDED Cracked Android Apps : https://cracksurl.com/
++ ADDED Cracked Windows Apps : https://steamunlocked.net/ (thanks @Bastien from IS Telegram group)
++ ADDED Cracked Android Apps : https://dodi-repacks.site/
++ ADDED Cracked Android Apps : https://www.fcportables.com/
++ ADDED Useful Websites : https://weboas.is/
++ ADDED Useful Forum Websites : https://forum.ddlvalley.me/
++ ADDED Useful Forum Websites : https://forum.snahp.it/
++ ADDED Useful Forum Websites : https://forums.anidex.moe/
++ ADDED Useful Forum Websites : https://angietorrents.cc/
++ ADDED Settings : Scan changed domains. (thanks to anic17, sintrode and Grub4K)
 + UPDATED IS Source : YouTube DL v2020.12.14
++ UPDATED Credits : https://f2ko.de/
 + UPDATED Credits : https://curl.se/
-+ UPDATED Direct Download Link [FR] : https://www3.tirexo.lol/
-+ UPDATED Direct Download Link [EN] : https://www.ddl-island.cc
++ UPDATED Direct Download Link [FR] : https://www2.tirexo.io/
++ UPDATED Direct Download Link [FR] : https://www.ddl-island.cc/
 + UPDATED Streaming [EN] : https://www.stream-island.cc/
 + UPDATED Streaming [EN] : https://www6.filmstreaming.to/
 + UPDATED Streaming [EN] : https://www3.animesvostfr.net/
@@ -33,7 +44,7 @@ v4.2.0.6 - 16/12/2020
 + UPDATED Cracked Windows Apps : https://v1.xatab-repack.net/
 + UPDATED Cracked Android Apps : https://vancedapp.com/
 + UPDATED Useful Websites : https://www.fakeimess.com/
-- REMOVED Denial of Services : https://powerstress.xyz/ (down)
+- REMOVED Direct Download Link [FR] : https://www.mamega.com/ (down)
 
 v4.2.0.0 - 12/12/2020
 - FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
