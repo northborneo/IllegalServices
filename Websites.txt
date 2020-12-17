@@ -9,7 +9,7 @@ t.me
 ;;FAQ
 www.abyssmedia.com
 ;;CREDITS
-www.f2ko.de
+f2ko.de
 www.advancedinstaller.com
 www.dostips.com
 www.7-zip.org
@@ -28,7 +28,6 @@ www.site-de-telechargement.com
 libertyvf.bz
 www.ddl-island.cc
 www.zone-mania.com
-www.mamega.com
 starwarez-sharing.org
 telecharge-magazines.com
 zone-ebook.com
@@ -302,6 +301,7 @@ thunderstresser.me
 downed.io
 freestresser.to
 stressing.ninja
+powerstress.xyz
 databooter.to
 freeipstresser.net
 www.ipstresser.com
