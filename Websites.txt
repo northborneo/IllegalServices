@@ -246,8 +246,9 @@ www.journaldupirate.net
 patorjk.com
 photomosh.com
 www.remove.bg
-www.torproject.org
 onehack.us
+weboas.is
+www.torproject.org
 ;;FORUMWEBSITES
 forum.ddlvalley.me
 forum.snahp.it
