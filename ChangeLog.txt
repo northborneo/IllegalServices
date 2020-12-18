@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.2.0.9 - 17/12/2020
+v4.2.1.0 - 18/12/2020
 + ADDED Direct Download Link [EN] : https://2ddl.ms/
 + ADDED Direct Download Link [EN] : https://megaddl.co/
 + ADDED Direct Download Link [EN] : https://gdrivedl.com/
@@ -17,11 +17,11 @@ v4.2.0.9 - 17/12/2020
 + ADDED Cracked Windows Apps : https://steamunlocked.net/ (thanks @Bastien from IS Telegram group)
 + ADDED Cracked Android Apps : https://dodi-repacks.site/
 + ADDED Cracked Android Apps : https://www.fcportables.com/
-+ ADDED Useful Websites : https://weboas.is/
-+ ADDED Useful Forum Websites : https://forum.ddlvalley.me/
-+ ADDED Useful Forum Websites : https://forum.snahp.it/
-+ ADDED Useful Forum Websites : https://forums.anidex.moe/
-+ ADDED Useful Forum Websites : https://angietorrents.cc/
++ ADDED Useful Websites Others : https://weboas.is/
++ ADDED Usefum Forum Websites : https://forum.ddlvalley.me/
++ ADDED Usefum Forum Websites : https://forum.snahp.it/
++ ADDED Usefum Forum Websites : https://forums.anidex.moe/
++ ADDED Usefum Forum Websites : https://angietorrents.cc/
 + ADDED Settings : Scan changed domains. (thanks to anic17, sintrode and Grub4K)
 + UPDATED IS Source : YouTube DL v2020.12.14
 + UPDATED Credits : https://f2ko.de/
