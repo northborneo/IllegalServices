@@ -30,7 +30,7 @@ v4.2.1.2 - 21/12/2020
 + UPDATED IS Source : YouTube DL v2020.12.14
 + UPDATED Credits : https://f2ko.de/
 + UPDATED Credits : https://curl.se/
-+ UPDATED Direct Download Link [FR] : https://www2.tirexo.io/
++ UPDATED Direct Download Link [FR] : https://www3.tirexo.io/
 + UPDATED Direct Download Link [FR] : https://www.ddl-island.cc/
 + UPDATED Streaming [EN] : https://www.stream-island.cc/
 + UPDATED Streaming [EN] : https://www6.filmstreaming.to/
