@@ -4,37 +4,41 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v4.2.1.3 - 22/12/2020
+v5.0.0.0 - 02/01/2021
+- IMPROVED Setup.
 - FIXED a bug in the settings. (Borders transparency not working)
 - FIXED a bug with wrong choices. (thanks @Vincent & @anic17 from IS Telegram group)
++ ADDED Setup : Regedit cleanup Illegal Services folders at uninstallation.
 + ADDED Direct Download Link [EN] : https://2ddl.ms/
 + ADDED Direct Download Link [EN] : https://megaddl.co/
 + ADDED Direct Download Link [EN] : https://gdrivedl.com/
 + ADDED Direct Download Link [EN] : https://the-eye.eu/ (thanks @RaaFii1 from IS Telegram group)
 + ADDED Streaming [EN] : https://soap2day.to/
 + ADDED Torrenting : https://yifystatus.com/
-+ ADDED Cracked Android Apps : https://getintopc.com/
-+ ADDED Cracked Android Apps : https://izofile.com/
-+ ADDED Cracked Android Apps : https://cracksurl.com/
++ ADDED Cracked Windows Apps : https://getintopc.com/
++ ADDED Cracked Windows Apps : https://izofile.com/
++ ADDED Cracked Windows Apps : https://cracksurl.com/
 + ADDED Cracked Windows Apps : https://steamunlocked.net/ (thanks @Bastien from IS Telegram group)
-+ ADDED Cracked Android Apps : https://dodi-repacks.site/
-+ ADDED Cracked Android Apps : https://www.fcportables.com/
++ ADDED Cracked Windows Apps : https://dodi-repacks.site/
++ ADDED Cracked Windows Apps : https://www.fcportables.com/
 + ADDED Useful Websites Others : https://weboas.is/
-+ ADDED Usefum Forum Websites : https://forum.ddlvalley.me/
-+ ADDED Usefum Forum Websites : https://forum.snahp.it/
-+ ADDED Usefum Forum Websites : https://forums.anidex.moe/
-+ ADDED Usefum Forum Websites : https://angietorrents.cc/
++ ADDED Useful Forum Websites : https://forum.ddlvalley.me/
++ ADDED Useful Forum Websites : https://forum.snahp.it/
++ ADDED Useful Forum Websites : https://forums.anidex.moe/
++ ADDED Useful Forum Websites : https://angietorrents.cc/
 + ADDED IP Address Lookup : Anycast detection. (Lookup an other IP)
 + ADDED Portable Apps : Mem Reduct
 + ADDED Portable Apps : GiveMePower
 + ADDED Portable Apps : RegScanner
 + ADDED Portable Apps : ISLC
 + ADDED Settings : Scan changed domains. (thanks to anic17, sintrode and Grub4K)
++ UPDATED Setup : Now install Illegal Services to %AppData%. (No more administrator for installation requiered. Other's user wont see Illegal Services as installed in the computer.)
 + UPDATED IS Source : YouTube DL v2020.12.22
 + UPDATED Credits : https://f2ko.de/
 + UPDATED Credits : https://curl.se/
-+ UPDATED Direct Download Link [FR] : https://www3.tirexo.io/
++ UPDATED Direct Download Link [FR] : https://www2.tirexo.io/
 + UPDATED Direct Download Link [FR] : https://www.ddl-island.cc/
++ UPDATED Streaming [FR] : https://voiranime.com/
 + UPDATED Streaming [EN] : https://www.stream-island.cc/
 + UPDATED Streaming [EN] : https://www6.filmstreaming.to/
 + UPDATED Streaming [EN] : https://www3.animesvostfr.net/
@@ -42,7 +46,7 @@ v4.2.1.3 - 22/12/2020
 + UPDATED Streaming [EN] : https://watchseriess.co/
 + UPDATED Streaming [EN] : https://www3.f2movies.to/
 + UPDATED Streaming [EN] : https://www2.solarmovie.to/
-+ UPDATED Streaming [EN] : https://www.uwatchfree.bz/
++ UPDATED Streaming [EN] : https://www.uwatchfree.vg/
 + UPDATED Streaming [EN] : https://gogoanime.vc/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Torrenting : https://proxybay.buzz/
@@ -51,7 +55,9 @@ v4.2.1.3 - 22/12/2020
 + UPDATED Cracked Windows Apps : https://v1.xatab-repack.net/
 + UPDATED Cracked Android Apps : https://vancedapp.com/
 + UPDATED Useful Websites : https://www.fakeimess.com/
++ UPDATED Portable Apps : Windows Spy Blocker v4.34.1
 + UPDATED Portable Apps : Display Driver Uninstaller v18.0.3.5
++ UPDATED Portable Apps : Process Hacker v3.0.3694
 - REMOVED Direct Download Link [FR] : https://www.mamega.com/ (down)
 
 v4.2.0.0 - 12/12/2020
@@ -110,8 +116,8 @@ v4.1.0.0 - 09/12/2020
 + UPDATED HELP.
 - REMOVED IS Source : Settings.ini : Advertisements
 - REMOVED Torrenting : https://torrentz2.is/ (down)
-- REMOVED Doxing Metaseach Engine : https://www.dogpile.com/ (clone of https:/ww.infospace.com/)
-- REMOVED Doxing Metaseach Engine : https://www.metacrawler.com/ (clone of https:/ww.infospace.com/)
+- REMOVED Doxing Metaseach Engine : https://www.dogpile.com/ (clone of https:/www.infospace.com/)
+- REMOVED Doxing Metaseach Engine : https://www.metacrawler.com/ (clone of https:/www.infospace.com/)
 - REMOVED IP Denial of Services : https://instant-stresser.com/ (closed)
 - REMOVED IP Denial of Services : https://stresslab.io/ (down)
 
