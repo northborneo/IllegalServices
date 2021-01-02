@@ -4,8 +4,9 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.0.1 - 03/01/2021
+v5.0.0.2 - 03/01/2021
 - FIXED some display bugs.
++ UPDATED Portable Apps : Windows Spy Blocker v4.34.2
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
