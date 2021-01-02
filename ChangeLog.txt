@@ -4,8 +4,8 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.0.1 - 02/01/2021
-- FIXED a little display bug in the main menu.
+v5.0.0.1 - 03/01/2021
+- FIXED some display bugs.
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
