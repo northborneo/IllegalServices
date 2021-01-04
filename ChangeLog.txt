@@ -4,8 +4,10 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.0.2 - 03/01/2021
+v5.0.0.3 - 03/01/2021
 - FIXED some display bugs.
++ UPDATED IS Source : YouTube DL v2021.01.03
++ UPDATED Streaming [EN] : https://ffmovies.co/
 + UPDATED Portable Apps : Windows Spy Blocker v4.34.2
 
 v5.0.0.0 - 02/01/2021
