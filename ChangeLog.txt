@@ -4,11 +4,17 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.0.3 - 03/01/2021
+v5.0.0.4 - 04/01/2020
 - FIXED some display bugs.
 + UPDATED IS Source : YouTube DL v2021.01.03
 + UPDATED Streaming [EN] : https://ffmovies.co/
-+ UPDATED Portable Apps : Windows Spy Blocker v4.34.2
++ UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
++ UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
++ UPDATED Windows and Office Cracks : AAct v4.2.1
++ UPDATED Windows and Office Cracks : ConsoleAct v3.0
++ UPDATED Windows and Office Cracks : KMSoffline v2.1.9
++ UPDATED Windows and Office Cracks : MSAct++ v2.07.4
++ UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
