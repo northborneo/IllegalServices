@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.0.4 - 04/01/2020
+v5.0.0.5 - 06/01/2020
 - FIXED some display bugs.
 + UPDATED IS Source : YouTube DL v2021.01.03
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
