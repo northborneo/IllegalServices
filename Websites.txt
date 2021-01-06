@@ -142,7 +142,7 @@ ettvproxies.com
 torrends.to
 unblockit.dev
 unblockproject.rest
-torrentmirror.fun
+torrentmirror.xyz
 unblocktorrent.com
 ;;TORRENTTUTORIAL
 netcologne.dl.sourceforge.net
