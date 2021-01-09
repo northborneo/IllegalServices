@@ -4,8 +4,9 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.0.8 - 08/01/2020
+v5.0.0.9 - 09/01/2021
 - FIXED some display bugs.
++ ADDED IP Denial of Services : https://exiled.vip/
 + UPDATED IS Source : YouTube DL v2021.01.03
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
 + UPDATED Streaming [EN] : https://ffmovies.co/
@@ -13,7 +14,7 @@ v5.0.0.8 - 08/01/2020
 + UPDATED Torrenting : https://unblockit.ltd/
 + UPDATED Torrenting : https://torrentmirror.xyz/
 + UPDATED Portable Apps : Everything v1.4.1.1002
-+ UPDATED Portable Apps : Process Hacker v3.0.3702
++ UPDATED Portable Apps : Process Hacker v3.0.3703
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
 + UPDATED Windows and Office Cracks : AAct v4.2.1
@@ -21,6 +22,8 @@ v5.0.0.8 - 08/01/2020
 + UPDATED Windows and Office Cracks : KMSoffline v2.1.9
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
+- REMOVED IP Denial of Services : https://freeboot.to/
+- REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
