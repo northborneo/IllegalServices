@@ -373,3 +373,8 @@ dotsrc.dl.osdn.net
 crystalidea.com
 www.sordum.org
 www.heidoc.net
+;;SUBTITLES
+subs.dog
+www.opensubtitles.org
+yifysubtitles.org
+xsubs.org
