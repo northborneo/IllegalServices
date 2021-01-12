@@ -81,7 +81,7 @@ www.anime-ultime.net
 v5.anime-ultime.net
 ;;STREAMINGEN
 www.primewire.li
-losmovies.to
+losmovies.live
 gomovie.co
 gomovies-online.me
 watch-serieshd.cc
