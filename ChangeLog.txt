@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.1 - 11/01/2021
+v5.0.1.2 - 12/01/2021
 - FIXED some display bugs.
 + ADDED IP Denial of Services : https://exiled.vip/
 + ADDED More Features : Download subtitles.
