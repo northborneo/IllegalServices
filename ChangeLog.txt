@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.3 - 13/01/2021
+v5.0.1.4 - 14/01/2021
 - FIXED some display bugs.
 + ADDED Streaming [FR] : https://10flix.com/
 + ADDED Streaming [EN] : https://123movies.jp/
@@ -20,11 +20,14 @@ v5.0.1.3 - 13/01/2021
 + ADDED IP Denial of Services : https://exiled.vip/
 + ADDED More Features : Download subtitles.
 + UPDATED IS Source : YouTube DL v2021.01.03
++ UPDATED Direct Download Link [FR] : https://www.zt-za.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
++ UPDATED Direct Download Link [FR] : https://www.wawacity.video/
++ UPDATED Streaming [FR] : http://zotriv.com/
 + UPDATED Streaming [EN] : https://losmovies.live/
 + UPDATED Streaming [EN] : https://fmovies.to/
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
-+ UPDATED Streaming [EN] : https://9anime.to/
++ UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Torrenting : https://unblockit.ltd/
 + UPDATED Torrenting : https://torrentmirror.xyz/
 + UPDATED IP Denial of Services : https://eor-n.to/
