@@ -4,9 +4,11 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.4 - 14/01/2021
+v5.0.1.5 - 16/01/2021
 - FIXED some display bugs.
++ ADDED Streaming [FR] : https://vfstreamingfr.com/
 + ADDED Streaming [FR] : https://10flix.com/
++ ADDED Streaming [FR] : https://streamfilms.pw/
 + ADDED Streaming [EN] : https://123movies.jp/
 + ADDED Streaming [EN] : https://ww2.1movies.is/
 + ADDED Streaming [EN] : https://www1.123movies.co/
@@ -17,9 +19,13 @@ v5.0.1.4 - 14/01/2021
 + ADDED Streaming [EN] : https://yesmovies.ag/
 + ADDED Streaming [EN] : https://watchtvepisodes.me/
 + ADDED Streaming [EN] : https://hulu.sc/
++ ADDED Streaming [EN] : https://www1.watch-series.la/
++ ADDED Streaming [EN] : https://www.watchepisodes4.com/
++ ADDED Cracked Windows Apps : https://getintopc.com/
++ ADDED Cracked Android Apps : htttps://www.apps2app.com/
 + ADDED IP Denial of Services : https://exiled.vip/
 + ADDED More Features : Download subtitles.
-+ UPDATED IS Source : YouTube DL v2021.01.03
++ UPDATED IS Source : YouTube DL v2021.01.16
 + UPDATED Direct Download Link [FR] : https://www.zt-za.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
 + UPDATED Direct Download Link [FR] : https://www.wawacity.video/
@@ -41,6 +47,9 @@ v5.0.1.4 - 14/01/2021
 + UPDATED Windows and Office Cracks : KMSoffline v2.1.9
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
+- REMOVED Streaming [FR] : https://cinemey.com/ (scam)
+- REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
+- REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED IP Denial of Services : https://freeboot.to/
 - REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
 
