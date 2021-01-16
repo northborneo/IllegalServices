@@ -77,6 +77,7 @@ dbanimes.com
 animecomplet.fr
 www3.animesvostfr.net
 animecomplet.co
+fan-dmanga.fr
 www.anime-ultime.net
 v5.anime-ultime.net
 ;;STREAMINGEN
