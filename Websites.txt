@@ -46,7 +46,6 @@ anidl.org
 tb.rg-adguard.net
 ;;STREAMINGFR
 www.stream-island.cc
-cinemey.com
 www6.filmstreaming.to
 wvv.hds-streaming.la
 papystreaming.net
@@ -152,7 +151,7 @@ snowfl.com
 isohunt.app
 idope.se
 torrentseeker.com
-proxybay.buzz
+proxybay.ink
 proxygalaxy.pw
 yifystatus.com
 eztvstatus.com
