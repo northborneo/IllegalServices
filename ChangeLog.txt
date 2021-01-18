@@ -4,11 +4,12 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.5 - 16/01/2021
+v5.0.1.6 - 18/01/2021
 - FIXED some display bugs.
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
 + ADDED Streaming [FR] : https://10flix.com/
 + ADDED Streaming [FR] : https://streamfilms.pw/
++ ADDED Streaming [FR] : https://fan-dmanga.fr/
 + ADDED Streaming [EN] : https://123movies.jp/
 + ADDED Streaming [EN] : https://ww2.1movies.is/
 + ADDED Streaming [EN] : https://www1.123movies.co/
@@ -35,11 +36,12 @@ v5.0.1.5 - 16/01/2021
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Torrenting : https://unblockit.ltd/
++ UPDATED Torrenting : https://unblockproject.cyou/
 + UPDATED Torrenting : https://torrentmirror.xyz/
 + UPDATED IP Denial of Services : https://eor-n.to/
 + UPDATED Portable Apps : BleachBit v4.2.0
 + UPDATED Portable Apps : Everything v1.4.1.1003
-+ UPDATED Portable Apps : Process Hacker v3.0.3703
++ UPDATED Portable Apps : Process Hacker v3.0.3725
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
 + UPDATED Windows and Office Cracks : AAct v4.2.1
