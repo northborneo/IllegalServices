@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.6 - 18/01/2021
+v5.0.1.7 - 20/01/2021
 - FIXED some display bugs.
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
 + ADDED Streaming [FR] : https://10flix.com/
@@ -33,6 +33,7 @@ v5.0.1.6 - 18/01/2021
 + UPDATED Streaming [FR] : http://zotriv.com/
 + UPDATED Streaming [EN] : https://losmovies.live/
 + UPDATED Streaming [EN] : https://fmovies.to/
++ UPDATED Streaming [EN] : https://www.uwatchfree.si/
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Torrenting : https://unblockit.ltd/
@@ -52,6 +53,7 @@ v5.0.1.6 - 18/01/2021
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
+- REMOVED Torrenting : https://extratorrents.it/ (Down)
 - REMOVED IP Denial of Services : https://freeboot.to/
 - REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
 
