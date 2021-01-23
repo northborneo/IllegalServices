@@ -19,7 +19,7 @@ discord.com
 swhconsole.org
 tim-greller.de
 ;;DDLFR
-www2.tirexo.io
+www1.tirexo.ai
 www.zt-za.net
 www.extreme-down.tv
 www.ddl-best.com
@@ -173,7 +173,6 @@ karanpc.com
 filecr.com
 www.mazterize.com
 s0ft4pc.com
-babupc.com
 www.trucnet.com
 appnee.com
 free4pc.org
