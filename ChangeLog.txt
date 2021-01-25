@@ -4,8 +4,10 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.8 - 23/01/2021
+v5.0.1.9 - 25/01/2021
 - FIXED some display bugs.
++ ADDED Direct Download Link [EN] : https://scnlog.me/
++ ADDED Direct Download Link [EN] : https://rlsbb.ru/ 
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
 + ADDED Streaming [FR] : https://10flix.com/
 + ADDED Streaming [FR] : https://streamfilms.pw/
@@ -23,10 +25,16 @@ v5.0.1.8 - 23/01/2021
 + ADDED Streaming [EN] : https://www1.watch-series.la/
 + ADDED Streaming [EN] : https://www.watchepisodes4.com/
 + ADDED Cracked Windows Apps : https://getintopc.com/
-+ ADDED Cracked Android Apps : htttps://www.apps2app.com/
++ ADDED Cracked Android Apps : https://www.apps2app.com/
++ ADDED Cracked Windows Apps : https://w14.monkrus.ws/
++ ADDED Cracked Windows Apps : https://gog-games.com/
++ ADDED Cracked Windows Apps : https://www.elamigos-games.com/
++ ADDED Cracked Windows Apps : https://masquerade.site/
++ ADDED Cracked Windows Apps : https://cpgrepacks.site/
 + ADDED IP Denial of Services : https://exiled.vip/
 + ADDED More Features : Download subtitles.
-+ UPDATED IS Source : YouTube DL v2021.01.16
++ UPDATED IS Source : YouTube DL v2021.01.24.1
++ UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www.zt-za.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
 + UPDATED Direct Download Link [FR] : https://www.wawacity.video/
