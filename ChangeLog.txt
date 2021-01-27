@@ -4,10 +4,10 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.1.9 - 25/01/2021
+v5.0.2.0 - 27/01/2021
 - FIXED some display bugs.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
-+ ADDED Direct Download Link [EN] : https://rlsbb.ru/ 
++ ADDED Direct Download Link [EN] : https://rlsbb.ru/
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
 + ADDED Streaming [FR] : https://10flix.com/
 + ADDED Streaming [FR] : https://streamfilms.pw/
@@ -31,6 +31,7 @@ v5.0.1.9 - 25/01/2021
 + ADDED Cracked Windows Apps : https://www.elamigos-games.com/
 + ADDED Cracked Windows Apps : https://masquerade.site/
 + ADDED Cracked Windows Apps : https://cpgrepacks.site/
++ ADDED Cracked Windows Apps : https://www.myabandonware.com/
 + ADDED IP Denial of Services : https://exiled.vip/
 + ADDED More Features : Download subtitles.
 + UPDATED IS Source : YouTube DL v2021.01.24.1
@@ -47,12 +48,13 @@ v5.0.1.9 - 25/01/2021
 + UPDATED Torrenting : https://unblockit.ltd/
 + UPDATED Torrenting : https://unblockproject.cyou/
 + UPDATED Torrenting : https://torrentmirror.xyz/
++ UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
 + UPDATED Portable Apps : BleachBit v4.2.0
 + UPDATED Portable Apps : CPU-Z v1.95
 + UPDATED Portable Apps : Everything v1.4.1.1003
-+ UPDATED Portable Apps : Process Hacker v3.0.3725
++ UPDATED Portable Apps : Process Hacker v3.0.3760
 + UPDATED Portable Apps : CrystalDiskInfo v8.10.0
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
@@ -68,6 +70,7 @@ v5.0.1.9 - 25/01/2021
 - REMOVED Windows and Office Cracks : https://babupc.com/ (Dead)
 - REMOVED IP Denial of Services : https://freeboot.to/
 - REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
+- REMOVED IP Denial of Services : https://exiled.vip/ (Down)
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
@@ -562,8 +565,8 @@ v2.2.0.0 - 16/08/2020
 + UPDATED Main Menu HELP
 + UPDATED Tutorial.txt
 + UPDATED Setup Eula.
-+ UPDATED Settings : Background n°5
-+ UPDATED Settings : Background n°6
++ UPDATED Settings : Background nÂ°5
++ UPDATED Settings : Background nÂ°6
 + ADDED IS Source : Administrator manifest. (to fix Port Scanner "Access is denied.")
 + ADDED Portable Apps in Main Menu. (for more Portable Applications)
 - REMOVED Ansicon for Windows 10. (for old Windows it will download it)
@@ -574,8 +577,8 @@ v2.1.0.0 - 14/08/2020
 - FIXED No error message displayed when nothing has been selected and the enter key on the keypad is pressed.
 - FIXED a bug when apps where creating they're files into Illegal Services folder.
 - FIXED Windows Privacy/Telemetry : "blackbird.exe"
-- FIXED Settings : Background n°5 not working.
-- FIXED Settings : Background n°4 missing.
+- FIXED Settings : Background nÂ°5 not working.
+- FIXED Settings : Background nÂ°4 missing.
 + UPDATED IP Port Scanning : Most Used Port Scan here (also now support x32 bits)
 + UPDATED Main Menu : View My Computer compenments
 + UPDATED Anti Viruses and Malwares : Rogue Killer
@@ -678,7 +681,7 @@ v2.0.0.0 - 04/08/2020
 - REMOVED all "menu_.py" files from IS Source. (Not needed anymore since the new improved code)
 - REMOVED Doxing Image Research : http://metapicz.com/ (too much of telemetry)
 ## EN : I know that everyone will hate it but I removed all websites with included scam pubs inside of theire sources :
-## FR : Tout le monde va détester, mais j'ai supprimé tous les sites web qui comportaient des pubs d'escroquerie dans leurs sources :
+## FR : Tout le monde va dÃ©tester, mais j'ai supprimÃ© tous les sites web qui comportaient des pubs d'escroquerie dans leurs sources :
 - REMOVED Streaming : https://www.serie-streaming.la (scam)
 - REMOVED Streaming : https://wwv.papystreaming.is/ (scam)
 - REMOVED Streaming : https://illimitestreaming.tv (scam)
@@ -782,7 +785,7 @@ v1.6.0.0 - 08/07/2020
 + ADDED Streaming : https://wwv.papystreaming.is/
 + ADDED Streaming : https://papystreaming.net/
 + ADDED Streaming : https://www.papystreaming.cc/
-+ ADDED Torrenting : https://www.tirexo.com/ (Zone Téchargement v3)
++ ADDED Torrenting : https://www.tirexo.com/ (Zone TÃ©chargement v3)
 + ADDED : https://torrent-paradise.ml/
 + ADDED Windows : https://www.mazterize.com/
 + ADDED Port Scanning : https://portforward.com/ports.htm
