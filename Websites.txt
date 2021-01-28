@@ -145,7 +145,7 @@ eztv.re
 nyaa.si
 yggtorrent.si
 www.sharewood.tv
-www.oxtorrent.cc
+www.oxtorrent.bz
 www.torrent9.gg
 search.torrends.to
 torrentz2k.xyz
@@ -156,7 +156,6 @@ snowfl.com
 isohunt.app
 idope.se
 torrentseeker.com
-proxybay.ink
 proxygalaxy.pw
 yifystatus.com
 eztvstatus.com
