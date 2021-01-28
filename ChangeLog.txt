@@ -4,9 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-proxybay.earth
-
-v5.0.2.1 - 28/01/2021
+v5.0.2.2 - 28/01/2021
 - FIXED some display bugs.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
@@ -42,15 +40,17 @@ v5.0.2.1 - 28/01/2021
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
 + UPDATED Direct Download Link [FR] : https://www.wawacity.video/
 + UPDATED Streaming [FR] : http://zotriv.com/
++ UPDATED Streaming [FR] : https://vostfrserie.ws/
 + UPDATED Streaming [EN] : https://losmovies.live/
 + UPDATED Streaming [EN] : https://fmovies.to/
 + UPDATED Streaming [EN] : https://www.uwatchfree.si/
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
++ UPDATED Torrenting : https://www.oxtorrent.bz/
++ UPDATED Torrenting : https://proxybay.earth/
 + UPDATED Torrenting : https://unblockit.ltd/
 + UPDATED Torrenting : https://unblockproject.cyou/
 + UPDATED Torrenting : https://torrentmirror.xyz/
-+ UPDATED Torrenting : https://www.oxtorrent.bz/
 + UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
@@ -69,7 +69,6 @@ v5.0.2.1 - 28/01/2021
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
-- REMOVED Torrenting : https://proxybay.ink/
 - REMOVED Windows and Office Cracks : https://babupc.com/ (Scam)
 - REMOVED IP Denial of Services : https://freeboot.to/
 - REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
