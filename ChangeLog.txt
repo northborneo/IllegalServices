@@ -4,7 +4,9 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.0 - 27/01/2021
+proxybay.earth
+
+v5.0.2.1 - 28/01/2021
 - FIXED some display bugs.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
@@ -48,6 +50,7 @@ v5.0.2.0 - 27/01/2021
 + UPDATED Torrenting : https://unblockit.ltd/
 + UPDATED Torrenting : https://unblockproject.cyou/
 + UPDATED Torrenting : https://torrentmirror.xyz/
++ UPDATED Torrenting : https://www.oxtorrent.bz/
 + UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
@@ -64,10 +67,10 @@ v5.0.2.0 - 27/01/2021
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
-- REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
-- REMOVED Torrenting : https://extratorrents.it/ (Down)
-- REMOVED Windows and Office Cracks : https://babupc.com/ (Dead)
+- REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
+- REMOVED Torrenting : https://proxybay.ink/
+- REMOVED Windows and Office Cracks : https://babupc.com/ (Scam)
 - REMOVED IP Denial of Services : https://freeboot.to/
 - REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
 - REMOVED IP Denial of Services : https://exiled.vip/ (Down)
