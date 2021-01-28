@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.2 - 28/01/2021
+v5.0.2.3 - 28/01/2021
 - FIXED some display bugs.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
@@ -43,7 +43,7 @@ v5.0.2.2 - 28/01/2021
 + UPDATED Streaming [FR] : https://vostfrserie.ws/
 + UPDATED Streaming [EN] : https://losmovies.live/
 + UPDATED Streaming [EN] : https://fmovies.to/
-+ UPDATED Streaming [EN] : https://www.uwatchfree.si/
++ UPDATED Streaming [EN] : https://www.uwatchfree.mn/
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Torrenting : https://www.oxtorrent.bz/
