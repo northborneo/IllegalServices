@@ -45,7 +45,6 @@ gdrivedl.com
 the-eye.eu
 jpddl.com
 anidl.org
-tb.rg-adguard.net
 ;;STREAMINGFR
 www.stream-island.cc
 www6.filmstreaming.to
@@ -402,6 +401,8 @@ dotsrc.dl.osdn.net
 crystalidea.com
 www.sordum.org
 www.heidoc.net
+the-eye.eu
+rg-adguard.net
 ;;SUBTITLES
 subscene.com
 www.opensubtitles.org
