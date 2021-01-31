@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.3 - 28/01/2021
+v5.0.2.4 - 31/01/2021
 - FIXED some display bugs.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
@@ -33,6 +33,8 @@ v5.0.2.3 - 28/01/2021
 + ADDED Cracked Windows Apps : https://cpgrepacks.site/
 + ADDED Cracked Windows Apps : https://www.myabandonware.com/
 + ADDED IP Denial of Services : https://exiled.vip/
++ ADDED Windows and Office Cracks : https://rg-adguard.net/
++ ADDED Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
 + ADDED More Features : Download subtitles.
 + UPDATED IS Source : YouTube DL v2021.01.24.1
 + UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
@@ -56,8 +58,8 @@ v5.0.2.3 - 28/01/2021
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
 + UPDATED Portable Apps : BleachBit v4.2.0
 + UPDATED Portable Apps : CPU-Z v1.95
-+ UPDATED Portable Apps : Everything v1.4.1.1003
-+ UPDATED Portable Apps : Process Hacker v3.0.3760
++ UPDATED Portable Apps : Everything v1.4.1.1005
++ UPDATED Portable Apps : Process Hacker v3.0.3771
 + UPDATED Portable Apps : CrystalDiskInfo v8.10.0
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
@@ -66,6 +68,7 @@ v5.0.2.3 - 28/01/2021
 + UPDATED Windows and Office Cracks : KMSoffline v2.1.9
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
+- REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
@@ -160,10 +163,10 @@ v4.2.0.0 - 12/12/2020
 
 v4.1.0.0 - 09/12/2020
 - REDUCED Code.
-+ ADDED Direct Download Link (DDL) [FR] : https://www.zone-mania.com/
-+ ADDED Direct Download Link (DDL) [FR] : https://www.mamega.com/
-+ ADDED Direct Download Link (DDL) [FR] : https://zone-ebook.com/
-+ ADDED Direct Download Link (DDL) [FR] : http://bookddl.com/
++ ADDED Direct Download Link [FR] : https://www.zone-mania.com/
++ ADDED Direct Download Link [FR] : https://www.mamega.com/
++ ADDED Direct Download Link [FR] : https://zone-ebook.com/
++ ADDED Direct Download Link [FR] : http://bookddl.com/
 + ADDED Streaming [EN] : https://4anime.io/
 + ADDED Torrenting : Check if installed bittorrent client.
 + ADDED Torrenting : ADD. (This option allow you to create a magnet link using an hash) (a thank to sintrode and https://www.dostips.com/DtTipsStringOperations.php#Function.strLen for the help)
@@ -200,7 +203,7 @@ v4.0.0.0 - 30/11/2020
 + ADDED Useful Websites : https://webresolver.nl/tools/leaked_database
 + UPDATED IS Icon. (Copyright from owner of the old logo)
 + UPDATED IS Source : YouTube DL v2020.11.29
-+ UPDATED Direct Download Link (DDL) [FR] : https://www.tirexo.lol/
++ UPDATED Direct Download Link [FR] : https://www.tirexo.lol/
 + UPDATED Portable Apps : Winaero Tweaker v0.18
 + UPDATED Portable Apps : Revo Uninstaller v2.2.0
 + UPDATED Portable Apps : Process Hacker v3.0.3593
@@ -212,9 +215,9 @@ v3.9.0.0 - 18/11/2020
 - FIXED Launcher : Bug that where not displaying latest release date.
 - FIXED IP Address Lookup : Rose voice assistant where not saying the sentence again.
 + ADDED Frequently Asked Questions : Why Illegal Services is detected by many antiviruses ?
-+ ADDED Direct Download Link (DDL) [FR] : https://telecharge-magazines.com/
-+ ADDED Direct Download Link (DDL) [FR] : https://starwarez-sharing.org/
-+ ADDED Direct Download Link (DDL) [EN] : https://jpddl.com/
++ ADDED Direct Download Link [FR] : https://telecharge-magazines.com/
++ ADDED Direct Download Link [FR] : https://starwarez-sharing.org/
++ ADDED Direct Download Link [EN] : https://jpddl.com/
 + ADDED Streaming [FR] : https://streaming-films.net/
 + ADDED Streaming [FR] : https://www.streamoi.com/
 + ADDED Streaming [FR] : https://voiranime.to/
@@ -229,7 +232,7 @@ v3.9.0.0 - 18/11/2020
 + ADDED Main Menu : Useful Websites.
 + UPDATED IS Source : YouTube DL v2020.11.18
 + UPDATED IS Source : YouTube DLC v2020.11.11-4
-+ UPDATED Direct Download Link (DDL) [FR] : https://www.tirexo.cc/
++ UPDATED Direct Download Link [FR] : https://www.tirexo.cc/
 + UPDATED Streaming [FR] : https://vostanimes.com/
 + UPDATED Streaming [FR] : https://www.animecomplet.org/
 + UPDATED Torrenting : https://unblockit.app/
@@ -354,7 +357,7 @@ v2.9.0.0 - 17/10/2020
 - FIXED IP Address Lookup : " / characters glitch removed.
 - FIXED IP Address Lookup : https://www.iplocation.net/ not working.
 + UPDATED IS Source : cURL v7.73.0
-+ UPDATED Direct Download Link (DDL) : www.zt-za.com
++ UPDATED Direct Download Link : www.zt-za.com
 + UPDATED IP Denial of Services : stresser.net
 + UPDATED IP Denial of Services : anonboot.com
 + UPDATED YouTube DL : Now will always download in your personal music folder.
@@ -682,8 +685,6 @@ v2.0.0.0 - 04/08/2020
 - REMOVED "sfk.exe" from IS Source. (Not needed anymore since the new improved code)
 - REMOVED all "menu_.py" files from IS Source. (Not needed anymore since the new improved code)
 - REMOVED Doxing Image Research : http://metapicz.com/ (too much of telemetry)
-## EN : I know that everyone will hate it but I removed all websites with included scam pubs inside of theire sources :
-## FR : Tout le monde va détester, mais j'ai supprimé tous les sites web qui comportaient des pubs d'escroquerie dans leurs sources :
 - REMOVED Streaming : https://www.serie-streaming.la (scam)
 - REMOVED Streaming : https://wwv.papystreaming.is/ (scam)
 - REMOVED Streaming : https://illimitestreaming.tv (scam)
@@ -754,7 +755,7 @@ v1.7.0.0 - 14/07/2020
 + UPDATED all link Addresses.
 + ADDED IS Source : Signed all my files.
 + ADDED an Setup to install or uninstall Illegal Services.
-+ ADDED Direct Download Link (DDL) in Main Menu.
++ ADDED Direct Download Link in Main Menu.
 + ADDED Portable in WINDOWS.
 + ADDED Streaming : http://www.anime-ultime.net/ (v4)
 + ADDED Streaming : https://v5.anime-ultime.net/ (v5)
