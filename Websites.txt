@@ -401,7 +401,6 @@ dotsrc.dl.osdn.net
 crystalidea.com
 www.sordum.org
 www.heidoc.net
-the-eye.eu
 rg-adguard.net
 ;;SUBTITLES
 subscene.com
