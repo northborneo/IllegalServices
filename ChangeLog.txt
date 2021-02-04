@@ -74,13 +74,13 @@ v5.0.2.5 - 05/03/2021
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
 - REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/
+- REMOVED Streaming [EN] : http://www.5movies.to/ (dead)
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
 - REMOVED Windows and Office Cracks : https://babupc.com/ (scam)
 - REMOVED IP Denial of Services : https://freeboot.to/
 - REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
-- REMOVED IP Denial of Services : https://exiled.vip/ (down)
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
