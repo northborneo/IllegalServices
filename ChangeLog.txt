@@ -4,8 +4,10 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.4 - 31/01/2021
+v5.0.2.5 - 05/03/2021
+- REDUCED Code.
 - FIXED some display bugs.
+- FIXED Settings : Developer Mode empty choice making IS unuseable.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
@@ -16,7 +18,6 @@ v5.0.2.4 - 31/01/2021
 + ADDED Streaming [EN] : https://ww2.1movies.is/
 + ADDED Streaming [EN] : https://www1.123movies.co/
 + ADDED Streaming [EN] : https://ww1.putlocker.vip/
-+ ADDED Streaming [EN] : https://5movies.to/
 + ADDED Streaming [EN] : https://lookmovie.io/
 + ADDED Streaming [EN] : https://123movies.sc/
 + ADDED Streaming [EN] : https://yesmovies.ag/
@@ -32,10 +33,13 @@ v5.0.2.4 - 31/01/2021
 + ADDED Cracked Windows Apps : https://masquerade.site/
 + ADDED Cracked Windows Apps : https://cpgrepacks.site/
 + ADDED Cracked Windows Apps : https://www.myabandonware.com/
-+ ADDED IP Denial of Services : https://exiled.vip/
++ ADDED YouTube DL : Process priority setting.
++ ADDED IP Port Scanning : Process priority setting.
 + ADDED Windows and Office Cracks : https://rg-adguard.net/
 + ADDED Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
 + ADDED More Features : Download subtitles.
++ ADDED Settings : Uninstall Illegal Services.
++ UPDATED IS Source : cURL : v7.75.0
 + UPDATED IS Source : YouTube DL v2021.01.24.1
 + UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www.zt-za.net/
@@ -55,6 +59,7 @@ v5.0.2.4 - 31/01/2021
 + UPDATED Torrenting : https://torrentmirror.xyz/
 + UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
++ UPDATED IP Port Scanning : Python Port Scanner. (thanks @cocorisss from IS Telegram group)
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
 + UPDATED Portable Apps : BleachBit v4.2.0
 + UPDATED Portable Apps : CPU-Z v1.95
@@ -72,10 +77,10 @@ v5.0.2.4 - 31/01/2021
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
-- REMOVED Windows and Office Cracks : https://babupc.com/ (Scam)
+- REMOVED Windows and Office Cracks : https://babupc.com/ (scam)
 - REMOVED IP Denial of Services : https://freeboot.to/
-- REMOVED IP Denial of Services : https://str3ssed.co/ (Not free anymore)
-- REMOVED IP Denial of Services : https://exiled.vip/ (Down)
+- REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
+- REMOVED IP Denial of Services : https://exiled.vip/ (down)
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
@@ -771,7 +776,7 @@ v1.7.0.0 - 14/07/2020
 + ADDED WINDOWS : https://crackzsoft.me/
 + ADDED WINDOWS : https://lostvayne.com/
 + ADDED WINDOWS : https://portableappz.blogspot.com/
-- REMOVED Streaming : https://wwv.cpasbien.to/ (Scam)
+- REMOVED Streaming : https://wwv.cpasbien.to/ (scam)
 - REMOVED WINDOWS : https://taiphanmempc.net/ (Reuploading)
 - REMOVED WINDOWS : https://rlsbb.ru/ (Dead)
 
@@ -792,11 +797,11 @@ v1.6.0.0 - 08/07/2020
 + ADDED : https://torrent-paradise.ml/
 + ADDED Windows : https://www.mazterize.com/
 + ADDED Port Scanning : https://portforward.com/ports.htm
-- REMOVED Streaming : https://wvv.voirfilms.club/ (Scam)
-- REMOVED Streaming : https://wvw.papstream.cc/ (Scam)
-- REMOVED Streaming : https://www.papystreaming.so/ (Scam)
-- REMOVED Streaming : https://wwv.stream-island.org/ (Scam)
-- REMOVED  : https://thekickasstorrents.com/ (Scam)
+- REMOVED Streaming : https://wvv.voirfilms.club/ (scam)
+- REMOVED Streaming : https://wvw.papstream.cc/ (scam)
+- REMOVED Streaming : https://www.papystreaming.so/ (scam)
+- REMOVED Streaming : https://wwv.stream-island.org/ (scam)
+- REMOVED  : https://thekickasstorrents.com/ (scam)
 - REMOVED Windows : https://novelsghar.com/ (Outdated)
 - REMOVED Windows : https://install.lctutors.com.br (Outdated)
 - REMOVED IP Denial of Services : https://fasthub.pw/ (Dead)
