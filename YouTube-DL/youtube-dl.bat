@@ -16,31 +16,31 @@ if "%language%"=="EN" echo         [40;36mPlease wait while the downloading . 
 echo:
 echo ==========================================================================================================
 echo [40;31m
-call "Portable_Apps\YouTube-DL\%youtube_dl%.exe" --config-location "Portable_Apps\YouTube-DL" --ffmpeg-location "Portable_Apps\YouTube-DL" --add-metadata %argument0%%argument1%%argument2%%argument3%%argument4% "%choice%"
+start /b /w "" %YouTubeDLPriority% "Portable_Apps\YouTube-DL\%youtube_dl%.exe" --config-location "Portable_Apps\YouTube-DL" --ffmpeg-location "Portable_Apps\YouTube-DL" --add-metadata %argument0%%argument1%%argument2%%argument3%%argument4% "%choice%"
 echo [40;90m
 echo ==========================================================================================================
 echo [40;36m
-if %errorlevel% EQU 0 (
-    if "%language%"=="FR" (
-        echo         T‚chargement terminer.
-        echo         Appuyez sur une touche pour ouvrir l'emplacement de t‚chargement.
-    )
-    if "%language%"=="EN" (
-        echo         Download finished.
-        echo         Press any key to open download location.
-    )
+if %errorlevel% equ 0 (
+if "%language%"=="FR" (
+echo         T‚chargement terminer.
+echo         Appuyez sur une touche pour ouvrir l'emplacement de t‚chargement.
 )
-if %errorlevel% NEQ 0 (
-    if "%language%"=="FR" (
-        echo         Une erreur s'est produite et n'a pas pu t‚charger le fichier.
-        echo         Appuyez sur une touche pour fermer.
-    )
-    if "%language%"=="EN" (
-        echo         Something went wrong and couldn't download the file.
-        echo         Press any key to exit.
-    )
+if "%language%"=="EN" (
+echo         Download finished.
+echo         Press any key to open download location.
+)
+)
+if %errorlevel% neq 0 (
+if "%language%"=="FR" (
+echo         Une erreur s'est produite et n'a pas pu t‚charger le fichier.
+echo         Appuyez sur une touche pour fermer.
+)
+if "%language%"=="EN" (
+echo         Something went wrong and couldn't download the file.
+echo         Press any key to exit.
+)
 )
 pause >nul 2>&1
-if %errorlevel% NEQ 0 exit
+if %errorlevel% neq 0 exit
 if defined output if exist "%output%" start /max "" "explorer.exe" "%output%"
 exit
