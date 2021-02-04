@@ -97,7 +97,6 @@ watch-serieshd.cc
 www2.watchseriess.co
 flixtor.to
 www3.f2movies.to
-5movies.to
 flixtor.video
 fmovies.to
 lookmovie.io
