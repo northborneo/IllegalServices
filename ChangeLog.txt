@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.5 - 05/03/2021
+v5.0.2.6 - 06/03/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -25,6 +25,9 @@ v5.0.2.5 - 05/03/2021
 + ADDED Streaming [EN] : https://hulu.sc/
 + ADDED Streaming [EN] : https://www1.watch-series.la/
 + ADDED Streaming [EN] : https://www.watchepisodes4.com/
++ ADDED Streaming [EN] : https://animepahe.com/
++ ADDED Streaming [EN] : https://twist.moe/
++ ADDED Streaming [EN] : https://animeflix.io/
 + ADDED Cracked Windows Apps : https://getintopc.com/
 + ADDED Cracked Android Apps : https://www.apps2app.com/
 + ADDED Cracked Windows Apps : https://w14.monkrus.ws/
@@ -40,7 +43,7 @@ v5.0.2.5 - 05/03/2021
 + ADDED More Features : Download subtitles.
 + ADDED Settings : Uninstall Illegal Services.
 + UPDATED IS Source : cURL : v7.75.0
-+ UPDATED IS Source : YouTube DL v2021.01.24.1
++ UPDATED IS Source : YouTube DL v2021.02.04.1
 + UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www.zt-za.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
@@ -63,8 +66,9 @@ v5.0.2.5 - 05/03/2021
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
 + UPDATED Portable Apps : BleachBit v4.2.0
 + UPDATED Portable Apps : CPU-Z v1.95
++ UPDATED Portable Apps : Windows Repair AIO v4.11.0
 + UPDATED Portable Apps : Everything v1.4.1.1005
-+ UPDATED Portable Apps : Process Hacker v3.0.3771
++ UPDATED Portable Apps : Process Hacker v3.0.3799
 + UPDATED Portable Apps : CrystalDiskInfo v8.10.0
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
