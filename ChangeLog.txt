@@ -4,12 +4,17 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.6 - 06/02/2021
+v5.0.2.7 - 07/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
++ ADDED Direct Download Link [EN] : https://animeshare.cf/
++ ADDED Direct Download Link [EN] : https://javshare.ml/
++ ADDED Streaming [FR] : https://french-stream.lol/
++ ADDED Streaming [FR] : https://www.filmstreaminglol.com/
++ ADDED Streaming [FR] : https://vf.streamfr.film/
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
 + ADDED Streaming [FR] : https://10flix.com/
 + ADDED Streaming [FR] : https://streamfilms.pw/
