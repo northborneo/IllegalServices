@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.7 - 07/02/2021
+v5.0.2.8 - 11/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -48,23 +48,27 @@ v5.0.2.7 - 07/02/2021
 + ADDED More Features : Download subtitles.
 + ADDED Settings : Uninstall Illegal Services.
 + UPDATED IS Source : cURL : v7.75.0
-+ UPDATED IS Source : YouTube DL v2021.02.04.1
++ UPDATED IS Source : YouTube DL v2021.02.10
 + UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www.zt-za.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
 + UPDATED Direct Download Link [FR] : https://www.wawacity.video/
 + UPDATED Streaming [FR] : http://zotriv.com/
 + UPDATED Streaming [FR] : https://vostfrserie.ws/
++ UPDATED Streaming [FR] : https://hd.vostanimes.com/
 + UPDATED Streaming [EN] : https://losmovies.live/
 + UPDATED Streaming [EN] : https://fmovies.to/
-+ UPDATED Streaming [EN] : https://www.uwatchfree.mn/
++ UPDATED Streaming [EN] : https://ww1.gomovies.re/
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
++ UPDATED Streaming [EN] : https://www.uwatchfree.mn/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
-+ UPDATED Torrenting : https://www.oxtorrent.bz/
++ UPDATED Streaming [EN] : https://kissanimefree.to/
++ UPDATED Torrenting : https://www.oxtorrent.ws/
 + UPDATED Torrenting : https://proxybay.earth/
-+ UPDATED Torrenting : https://unblockit.ltd/
++ UPDATED Torrenting : https://unblockit.link/
 + UPDATED Torrenting : https://unblockproject.cyou/
 + UPDATED Torrenting : https://torrentmirror.xyz/
++ UPDATED Cracked Windows Apps : https://www.filewomen.com/
 + UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
 + UPDATED IP Port Scanning : Python Port Scanner. (thanks @cocorisss from IS Telegram group)
