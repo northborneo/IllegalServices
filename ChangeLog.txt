@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.8 - 11/02/2021
+v5.0.2.9 - 11/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -74,11 +74,12 @@ v5.0.2.8 - 11/02/2021
 + UPDATED IP Port Scanning : Python Port Scanner. (thanks @cocorisss from IS Telegram group)
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
 + UPDATED Portable Apps : BleachBit v4.2.0
++ UPDATED Portable Apps : Radeon Software Slimmer v1.0.0
 + UPDATED Portable Apps : CPU-Z v1.95
 + UPDATED Portable Apps : Windows Repair AIO v4.11.0
 + UPDATED Portable Apps : Everything v1.4.1.1005
-+ UPDATED Portable Apps : Process Hacker v3.0.3799
-+ UPDATED Portable Apps : CrystalDiskInfo v8.10.0
++ UPDATED Portable Apps : Process Hacker v3.0.3813
++ UPDATED Portable Apps : CrystalDiskInfo v8.11.0
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
 + UPDATED Windows and Office Cracks : AAct v4.2.1
