@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.2.9 - 11/02/2021
+v5.0.3.0 - 12/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -33,6 +33,8 @@ v5.0.2.9 - 11/02/2021
 + ADDED Streaming [EN] : https://animepahe.com/
 + ADDED Streaming [EN] : https://twist.moe/
 + ADDED Streaming [EN] : https://animeflix.io/
++ ADDED Torrenting : https://www.anirena.com/
++ ADDED Torrenting : https://subsplease.org/
 + ADDED Cracked Windows Apps : https://getintopc.com/
 + ADDED Cracked Android Apps : https://www.apps2app.com/
 + ADDED Cracked Windows Apps : https://w14.monkrus.ws/
@@ -56,7 +58,7 @@ v5.0.2.9 - 11/02/2021
 + UPDATED Streaming [FR] : http://zotriv.com/
 + UPDATED Streaming [FR] : https://vostfrserie.ws/
 + UPDATED Streaming [FR] : https://hd.vostanimes.com/
-+ UPDATED Streaming [EN] : https://losmovies.live/
++ UPDATED Streaming [EN] : https://losmovies.site/
 + UPDATED Streaming [EN] : https://fmovies.to/
 + UPDATED Streaming [EN] : https://ww1.gomovies.re/
 + UPDATED Streaming [EN] : https://ww.123movies.sc/
@@ -68,7 +70,7 @@ v5.0.2.9 - 11/02/2021
 + UPDATED Torrenting : https://unblockit.link/
 + UPDATED Torrenting : https://unblockproject.cyou/
 + UPDATED Torrenting : https://torrentmirror.xyz/
-+ UPDATED Cracked Windows Apps : https://www.filewomen.com/
++ UPDATED Cracked Windows Apps : https://filewomen.com/
 + UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
 + UPDATED IP Port Scanning : Python Port Scanner. (thanks @cocorisss from IS Telegram group)
