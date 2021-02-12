@@ -88,7 +88,7 @@ www.anime-ultime.net
 v5.anime-ultime.net
 ;;STREAMINGEN
 www.primewire.li
-losmovies.live
+losmovies.site
 gomovie.co
 123movies.jp
 ww2.1movies.is
@@ -149,6 +149,8 @@ www.torrentfunk2.com
 yts.mx
 eztv.re
 nyaa.si
+subsplease.org
+www.anirena.com
 yggtorrent.si
 www.sharewood.tv
 www.oxtorrent.ws
@@ -189,7 +191,7 @@ www.sadeempc.com
 shareappscrack.com
 haxnode.com
 lostvayne.com
-www.filewomen.com
+filewomen.com
 izofile.com
 crackshash.com
 ftuapps.dev
