@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.3.0 - 12/02/2021
+v5.0.3.1 - 13/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -65,6 +65,7 @@ v5.0.3.0 - 12/02/2021
 + UPDATED Streaming [EN] : https://www.uwatchfree.mn/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Streaming [EN] : https://kissanimefree.to/
++ UPDATED Torrenting : https://www4.yggtorrent.li/
 + UPDATED Torrenting : https://www.oxtorrent.ws/
 + UPDATED Torrenting : https://proxybay.earth/
 + UPDATED Torrenting : https://unblockit.link/
@@ -89,13 +90,14 @@ v5.0.3.0 - 12/02/2021
 + UPDATED Windows and Office Cracks : KMSoffline v2.1.9
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
-- REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/
+- REMOVED Direct Download Link [FR] : http://www.site-de-telechargement.com/ (down)
+- REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ (moved to Portable Apps > Windows and Office Cracks)
 - REMOVED Streaming [EN] : http://www.5movies.to/ (dead)
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
 - REMOVED Windows and Office Cracks : https://babupc.com/ (scam)
-- REMOVED IP Denial of Services : https://freeboot.to/
+- REMOVED IP Denial of Services : https://freeboot.to/ (closed)
 - REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
 
 v5.0.0.0 - 02/01/2021
