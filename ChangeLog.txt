@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.3.2 - 16/02/2021
+v5.0.3.3 - 16/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -47,6 +47,7 @@ v5.0.3.2 - 16/02/2021
 + ADDED Cracked Windows Apps : https://www.myabandonware.com/
 + ADDED YouTube DL : Process priority setting.
 + ADDED IP Port Scanning : Process priority setting.
++ ADDED IP Denial of Services : https://asylumstresser.to/
 + ADDED Windows and Office Cracks : https://rg-adguard.net/
 + ADDED Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
 + ADDED More Features : Download subtitles.
@@ -100,7 +101,9 @@ v5.0.3.2 - 16/02/2021
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
 - REMOVED Windows and Office Cracks : https://babupc.com/ (scam)
 - REMOVED IP Denial of Services : https://freeboot.to/ (closed)
+- REMOVED IP Denial of Services : https://litestress.com/ (down)
 - REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
+- REMOVED IP Denial of Services : https://powerstress.xyz/ (closed)
 - REMOVED Subtitles : https://www.opensubtitles.com/ (closed)
 
 v5.0.0.0 - 02/01/2021
