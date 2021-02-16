@@ -4,7 +4,7 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.3.1 - 13/02/2021
+v5.0.3.2 - 16/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
@@ -13,9 +13,11 @@ v5.0.3.1 - 13/02/2021
 + ADDED Direct Download Link [EN] : https://animeshare.cf/
 + ADDED Direct Download Link [EN] : https://javshare.ml/
 + ADDED Streaming [FR] : https://french-stream.lol/
++ ADDED Streaming [FR] : https://fcine.tv/
 + ADDED Streaming [FR] : https://www.filmstreaminglol.com/
 + ADDED Streaming [FR] : https://vf.streamfr.film/
 + ADDED Streaming [FR] : https://vfstreamingfr.com/
++ ADDED Streaming [FR] : https://www.streaminz.xyz/
 + ADDED Streaming [FR] : https://10flix.com/
 + ADDED Streaming [FR] : https://streamfilms.pw/
 + ADDED Streaming [FR] : https://fan-dmanga.fr/
@@ -57,7 +59,7 @@ v5.0.3.1 - 13/02/2021
 + UPDATED Direct Download Link [FR] : https://www.wawacity.video/
 + UPDATED Streaming [FR] : http://zotriv.com/
 + UPDATED Streaming [FR] : https://vostfrserie.ws/
-+ UPDATED Streaming [FR] : https://hd.vostanimes.com/
++ UPDATED Streaming [FR] : https://vostanimes.co/
 + UPDATED Streaming [EN] : https://losmovies.site/
 + UPDATED Streaming [EN] : https://fmovies.to/
 + UPDATED Streaming [EN] : https://ww1.gomovies.re/
@@ -82,7 +84,7 @@ v5.0.3.1 - 13/02/2021
 + UPDATED Portable Apps : Windows Repair AIO v4.11.0
 + UPDATED Portable Apps : Everything v1.4.1.1005
 + UPDATED Portable Apps : Process Hacker v3.0.3813
-+ UPDATED Portable Apps : CrystalDiskInfo v8.11.0
++ UPDATED Portable Apps : CrystalDiskInfo v8.11.1
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
 + UPDATED Windows and Office Cracks : AAct v4.2.1
@@ -99,6 +101,7 @@ v5.0.3.1 - 13/02/2021
 - REMOVED Windows and Office Cracks : https://babupc.com/ (scam)
 - REMOVED IP Denial of Services : https://freeboot.to/ (closed)
 - REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
+- REMOVED Subtitles : https://www.opensubtitles.com/ (closed)
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
