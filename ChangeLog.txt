@@ -4,10 +4,13 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
-v5.0.3.3 - 16/02/2021
+v5.1.0.0 - 18/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
+- MOVED Download Subtitles in Main Menu.
++ ADDED IS Source : Tutorial.html
++ ADDED Internet Protocol Television (IPTV) in Main Menu. (thanks @Chonkus from IS Telegram Forum)
 + ADDED Direct Download Link [EN] : https://scnlog.me/
 + ADDED Direct Download Link [EN] : https://rlsbb.ru/
 + ADDED Direct Download Link [EN] : https://animeshare.cf/
@@ -46,12 +49,21 @@ v5.0.3.3 - 16/02/2021
 + ADDED Cracked Windows Apps : https://cpgrepacks.site/
 + ADDED Cracked Windows Apps : https://www.myabandonware.com/
 + ADDED YouTube DL : Process priority setting.
-+ ADDED IP Port Scanning : Process priority setting.
++ ADDED Useful Websites : https://cybernews.com/personal-data-leak-check/
++ ADDED Forum Websites : https://www.nulled.to/ (thanks @Trident Security from IS Discord Forum)
++ ADDED Forum Websites : https://cracked.to/ (thanks @Trident Security from IS Discord Forum)
 + ADDED IP Denial of Services : https://asylumstresser.to/
++ ADDED IP Port Scanning : Process priority setting.
++ ADDED Doxing Image Search : https://iqdb.org/
++ ADDED Doxing Image Search : https://saucenao.com/
++ ADDED Doxing Image Search : https://trace.moe/
++ ADDED Doxing Image Search : https://ascii2d.net/
 + ADDED Windows and Office Cracks : https://rg-adguard.net/
 + ADDED Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
 + ADDED More Features : Download subtitles.
++ ADDED Credits : All other people who helped me
 + ADDED Settings : Uninstall Illegal Services.
++ UPDATED Setup Eula.
 + UPDATED IS Source : cURL : v7.75.0
 + UPDATED IS Source : YouTube DL v2021.02.10
 + UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
@@ -77,14 +89,15 @@ v5.0.3.3 - 16/02/2021
 + UPDATED Cracked Windows Apps : https://filewomen.com/
 + UPDATED Cracked Windows Apps : https://lrepacks.net/
 + UPDATED IP Denial of Services : https://eor-n.to/
-+ UPDATED IP Port Scanning : Python Port Scanner. (thanks @cocorisss from IS Telegram group)
++ UPDATED IP Port Scanning : Python Port Scanner. (thanks @cocorisss from IS Telegram Forum)
 + UPDATED Portable Apps : Winaero Tweaker v0.19.1
 + UPDATED Portable Apps : BleachBit v4.2.0
++ UPDATED Portable Apps : Display Driver Uninstaller v18.0.3.6
 + UPDATED Portable Apps : Radeon Software Slimmer v1.0.0
 + UPDATED Portable Apps : CPU-Z v1.95
 + UPDATED Portable Apps : Windows Repair AIO v4.11.0
 + UPDATED Portable Apps : Everything v1.4.1.1005
-+ UPDATED Portable Apps : Process Hacker v3.0.3813
++ UPDATED Portable Apps : Process Hacker v3.0.3835
 + UPDATED Portable Apps : CrystalDiskInfo v8.11.1
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Windows and Office Cracks : Windows Spy Blocker v4.34.2
@@ -93,6 +106,8 @@ v5.0.3.3 - 16/02/2021
 + UPDATED Windows and Office Cracks : KMSoffline v2.1.9
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
+- REMOVED IS Source : Get the latest version here.url
+- REMOVED IS Source : Tutorial.txt 
 - REMOVED Direct Download Link [FR] : http://www.site-de-telechargement.com/ (down)
 - REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ (moved to Portable Apps > Windows and Office Cracks)
 - REMOVED Streaming [EN] : http://www.5movies.to/ (dead)
@@ -105,22 +120,23 @@ v5.0.3.3 - 16/02/2021
 - REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
 - REMOVED IP Denial of Services : https://powerstress.xyz/ (closed)
 - REMOVED Subtitles : https://www.opensubtitles.com/ (closed)
+- REMOVED Doxing : Illegal Services Search Engine - [Doxing] (trash)
 
 v5.0.0.0 - 02/01/2021
 - IMPROVED Setup.
 - FIXED a bug in the settings. (Borders transparency not working)
-- FIXED a bug with wrong choices. (thanks @Vincent & @anic17 from IS Telegram group)
+- FIXED a bug with wrong choices. (thanks @Vincent & @anic17 from IS Telegram Forum)
 + ADDED Setup : Regedit cleanup Illegal Services folders at uninstallation.
 + ADDED Direct Download Link [EN] : https://2ddl.ms/
 + ADDED Direct Download Link [EN] : https://megaddl.co/
 + ADDED Direct Download Link [EN] : https://gdrivedl.com/
-+ ADDED Direct Download Link [EN] : https://the-eye.eu/ (thanks @RaaFii1 from IS Telegram group)
++ ADDED Direct Download Link [EN] : https://the-eye.eu/ (thanks @RaaFii1 from IS Telegram Forum)
 + ADDED Streaming [EN] : https://soap2day.to/
 + ADDED Torrenting : https://yifystatus.com/
 + ADDED Cracked Windows Apps : https://getintopc.com/
 + ADDED Cracked Windows Apps : https://izofile.com/
 + ADDED Cracked Windows Apps : https://cracksurl.com/
-+ ADDED Cracked Windows Apps : https://steamunlocked.net/ (thanks @Bastien from IS Telegram group)
++ ADDED Cracked Windows Apps : https://steamunlocked.net/ (thanks @Bastien from IS Telegram Forum)
 + ADDED Cracked Windows Apps : https://dodi-repacks.site/
 + ADDED Cracked Windows Apps : https://www.fcportables.com/
 + ADDED Useful Websites Others : https://weboas.is/
@@ -152,7 +168,7 @@ v5.0.0.0 - 02/01/2021
 + UPDATED Streaming [EN] : https://gogoanime.vc/
 + UPDATED Streaming [EN] : https://www12.9anime.to/
 + UPDATED Torrenting : https://proxybay.buzz/
-+ UPDATED Torrenting : https://unblockit.dev/ (thanks @RaaFii1 from IS Telegram group)
++ UPDATED Torrenting : https://unblockit.dev/ (thanks @RaaFii1 from IS Telegram Forum)
 + UPDATED Torrenting : https://unblockproject.rest/
 + UPDATED Cracked Windows Apps : https://v1.xatab-repack.net/
 + UPDATED Cracked Android Apps : https://vancedapp.com/
