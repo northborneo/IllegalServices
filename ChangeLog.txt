@@ -4,6 +4,16 @@ KNOWN BUGS :
 SUGGESTIONS AND UPDATES :
 Telegram : https://t.me/illegal_services_forum
 
+v5.1.0.1 - 19/02/2021
++ UPDATED Direct Download Link [FR] : https://www2.tirexo.ai/
++ UPDATED Streaming [FR] : https://streamfr.watch/
++ UPDATED Streaming [EN] : https://www4.yesmovies.so/
++ UPDATED Streaming [EN] : https://www3.watchseriess.co/
++ UPDATED Cracked Windows Apps : https://haxnode.net/
+- REMOVED Internet Protocol Television : https://github.com/aniceto097tamo415/Aniceto-IPTV-Lists (dead)
+- REMOVED Internet Protocol Television : https://github.com/diony462/IPTV (dead)
+- REMOVED Streaming [FR] : https://animecomplet.fr/ (down)
+
 v5.1.0.0 - 18/02/2021
 - REDUCED Code.
 - FIXED some display bugs.
@@ -107,7 +117,7 @@ v5.1.0.0 - 18/02/2021
 + UPDATED Windows and Office Cracks : MSAct++ v2.07.4
 + UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
 - REMOVED IS Source : Get the latest version here.url
-- REMOVED IS Source : Tutorial.txt 
+- REMOVED IS Source : Tutorial.txt
 - REMOVED Direct Download Link [FR] : http://www.site-de-telechargement.com/ (down)
 - REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ (moved to Portable Apps > Windows and Office Cracks)
 - REMOVED Streaming [EN] : http://www.5movies.to/ (dead)
