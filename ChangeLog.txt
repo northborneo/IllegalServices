@@ -6,18 +6,23 @@ https://t.me/illegal_services
 https://discord.gg/eCMBHUB
 https://twitter.com/illegalservices
 
-v5.1.0.3 - 24/02/2021
+v5.1.0.4 - 26/02/2021
+- IMPROVED Code.
 - REDUCED code (~135ko ; thanks to anic17)
++ ADDED YouTube Downloader : Auto Updates.
 + UPDATED IS Source : YouTube DL v2021.02.22
++ UPDATED IS Source : FFmpeg v2021-02-23-git-78d5e1c653-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www2.tirexo.ai/
++ UPDATED Direct Download Link [FR] : https://www.wawacity.tv/
 + UPDATED Streaming [FR] : https://fcine.me/
 + UPDATED Streaming [FR] : https://streamfr.watch/
 + UPDATED Streaming [EN] : https://www4.yesmovies.so/
-+ UPDATED Streaming [EN] : https://www.myflixerhd.ru/
++ UPDATED Streaming [EN] : https://myflixerhd.ru/
 + UPDATED Streaming [EN] : https://www3.watchseriess.co/
 + UPDATED Streaming [EN] : https://www13.9anime.to/
 + UPDATED Cracked Windows Apps : https://haxnode.net/
 + UPDATED Cracked Windows Apps : https://v2.xatab-repack.net/
++ UPDATED YouTube DLC v2020.11.11-3 to YouTube DLP v2021.02.24
 + UPDATED Portable Apps : Process Hacker v3.0.3842
 + UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
 + UPDATED Torrenting : https://wvw.oxtorrent.ws/
@@ -27,6 +32,7 @@ v5.1.0.3 - 24/02/2021
 - REMOVED Streaming [FR] : https://animecomplet.fr/ (down)
 - REMOVED Streaming [EN] : https://flixtor.video/ (clone of fmovies.to)
 - REMOVED Streaming [EN] : https://www3.f2movies.to/ (clone of myflixerhd.ru)
+- REMOVED Streaming [EN] : https://www.uwatchfree.mn/ (scam)
 - REMOVED Streaming [EN] : https://www1.watch-series.la/ (down)
 - REMOVED Streaming [EN] : https://haho.moe/
 - REMOVED Streaming [EN] : https://hentaihaven.org/
@@ -93,7 +99,7 @@ v5.1.0.0 - 18/02/2021
 + UPDATED Setup Eula.
 + UPDATED IS Source : cURL : v7.75.0
 + UPDATED IS Source : YouTube DL v2021.02.10
-+ UPDATED IS Source : ffmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
++ UPDATED IS Source : FFmpeg v4.3.1-2021-01-01-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www.zt-za.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.tv/
 + UPDATED Direct Download Link [FR] : https://www.wawacity.video/
