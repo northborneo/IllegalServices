@@ -6,11 +6,13 @@ https://t.me/illegal_services
 https://discord.gg/eCMBHUB
 https://twitter.com/illegalservices
 
-v5.1.0.6 - 27/02/2021
+v5.1.0.7 - 27/02/2021
 - IMPROVED Code.
 - REDUCED code (~135ko ; thanks to anic17)
 + ADDED IS Source: Archive Error Message.
 + ADDED YouTube Downloader : Auto Updates.
++ ADDED IP Denial of Services : https://stresser.ovh/
++ ADDED IP Denial of Services : https://booter.is/
 + UPDATED IS Source : YouTube DL v2021.02.22
 + UPDATED IS Source : FFmpeg v2021-02-23-git-78d5e1c653-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www2.tirexo.ai/
@@ -40,6 +42,10 @@ v5.1.0.6 - 27/02/2021
 - REMOVED Streaming [EN] : https://www1.watch-series.la/ (down)
 - REMOVED Streaming [EN] : https://haho.moe/
 - REMOVED Streaming [EN] : https://hentaihaven.org/
+- REMOVED IP Denial of Services : https://downed.io/ (down)
+- REMOVED IP Denial of Services : https://freestresser.to/ (down)
+- REMOVED IP Denial of Services : https://databooter.to/ (down)
+- REMOVED IP Denial of Services : https://asylumstresser.to/ (down)
 
 v5.1.0.0 - 18/02/2021
 - REDUCED Code.
