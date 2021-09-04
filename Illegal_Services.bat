@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 2
-REM  Fileversion:  5. 8. 3. 2
+REM  Productversion:  5. 8. 3. 3
+REM  Fileversion:  5. 8. 3. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -22,7 +22,8 @@ cls
 set "hidecursor=<nul set /p=[?25l"
 set "showcursor=<nul set /p=[?25h"
 %hidecursor%
-if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%*"=="%%a" (
+for %%a in (%*) do if "%%~a"=="--debug" set debug=1
+if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%a" (
 call :APPLY_SETTINGS
 for /f "tokens=6" %%a in ('cmdwiz.exe getconsoledim') do if %%a lss 120 call :SCALE 120 30
 goto :PROCESS_%%a
@@ -46,23 +47,8 @@ if "!Language!"=="FR" set t="Illegal Services ne peut pas dmarrer car vous l'ex
 call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
 exit
 )
-if defined lastversion (
-rem if "%~nx0"=="Illegal Services.exe" if "!version!" leq "!lastversion!" start Illegal_Services.exe UPDATE_FAILED
-echo  ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
-if "!Language!"=="EN" echo  ณ Debugging: This is a developer-only message for future improvement of the Illegal Services updater.
-if "!Language!"=="FR" echo  ณ Dbogage: Ceci est un message rserv au dveloppeur pour une future amlioration de l'updater d'Illegal Services.
-echo  รฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
-echo  ณ Current Version: !version!
-echo  ณ Last Version: !lastversion!
-echo  ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
-echo.
-if "!Language!"=="EN" echo Press {ENTER} to continue...
-if "!Language!"=="FR" echo Appuyez sur {ENTRER} pour continuer...
->nul pause
-cls
-)
 if /i "%~x0"==".exe" (set "IS_Process=%~nx0") else set "IS_Process=cmd.exe" & goto :LAUNCHER
-if "%~nx0"=="Illegal Services.exe" >nul move /y "%~nx0" "Illegal_Services.exe" && start Illegal_Services.exe && exit
+if "%~nx0"=="Illegal Services.exe" >nul move /y "%~nx0" "Illegal_Services.exe" && start Illegal_Services.exe "!version!" "!lastversion!" !debug! && exit
 for /f %%a in ('tasklist /fo csv /fi "imagename eq %~nx0" ^| findstr /c:"%~nx0"') do set /a cn+=1
 pushd "!TMPF!"
 set batused=
@@ -78,7 +64,19 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 
 :LAUNCHER
 popd
-set version=v5.8.3.2 - 03/09/2021
+if defined debug if defined lastversion (
+echo  ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+echo  ณ Debug: This is a developer-only message for future improvement of the Illegal Services updater.
+echo  รฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+echo  ณ Current Version: !version!
+echo  ณ Last Version: !lastversion!
+echo  ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
+echo.
+echo Press {ENTER} to continue...
+>nul pause
+cls
+)
+set version=v5.8.3.3 - 04/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -117,6 +115,10 @@ if "!Language!"=="EN" <nul set /p=!sp!Searching for a new update ^>
 if "!Language!"=="FR" <nul set /p=!sp!Recherche d'une nouvelle mise … jour ^>
 call :CHECK_VOICEASSISTANT
 call :GET_VERSION
+if "%~1"=="!version!" if "%~2"=="!lastversion!" (
+echo  !red![FAILED: Wait till next build update.] . . .
+goto :CHECKERINTEGRITY
+)
 if defined lastversion (echo  !green![!lastversion!] . . .) else echo  !red![FAILED] . . .
 if "!errorlevel!"=="1" call :CHECKER_SETUP_FOUND
 if "!errorlevel!"=="2" call :CHECKER_BUILD_FOUND
@@ -1725,16 +1727,16 @@ call :ERRORMESSAGE
 goto :CONTINUEUSEFULWEBSITES
 
 :DDOS
-call :SCALE 82 31
+call :SCALE 82 30
 title Denial Of Services (DDoS)
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
-call :CLEAR 1 18
-set db=instant-stresser.com/ freestresser.to/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ anonboot.com/ stresser.zone/ xtremebooter.xyz/ stresser.be/ eor-n.to/ str3ssed.co/ wannabe1337.xyz/stresser vtoxicity.net/ str3sser.io/ databooter.to/ asylumstresser.to/ deltastress.com/ ddosforhire.net/
+call :CLEAR 1 17
+set db=instant-stresser.com/ freestresser.to/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ anonboot.com/ stresser.zone/ xtremebooter.xyz/ eor-n.to/ str3ssed.co/ wannabe1337.xyz/stresser vtoxicity.net/ str3sser.io/ databooter.to/ asylumstresser.to/ deltastress.com/ ddosforhire.net/
 
 :CONTINUEDDOS
-call :SCALE 82 31
+call :SCALE 82 30
 echo !cyan!
 echo [23Cออออออออออออออออออออออออออออออออออออออ
 echo [22C// !red!Û!bgyellow!!black! DENIAL OF SERVICES (100%% Free) !red!Û!bgblack!!cyan! \\
@@ -1747,23 +1749,22 @@ echo [8Cบ   !5!royalstresser.com!cyan!      บ           [  ?/Gbps] [200/s]  บ
 echo [8Cบ   !6!anonboot.com!cyan!           บ           [  ?/Gbps] [120/s]  บ
 echo [8Cบ   !7!stresser.zone!cyan!          บ           [  ?/Gbps] [120/s]  บ
 echo [8Cบ   !8!xtremebooter.xyz!cyan!       บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ   !9!stresser.be!cyan!            บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ  !10!eor-n.to!cyan!               บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ  !11!str3ssed.co!cyan!            บ           [  1/Gbps] [120/s]  บ
-echo [8Cบ  !12!wannabe1337.xyz!cyan!        บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ  !13!vtoxicity.net!cyan!          บ           [100/Mbps] [120/s]  บ
-echo [8Cบ  !14!str3sser.io!cyan!            บ           [  1/Gbps] [ 60/s]  บ
-echo [8Cบ  !15!databooter.to!cyan!          บ           [  1/Gbps] [ 60/s]  บ
-echo [8Cบ  !16!asylumstresser.to!cyan!      บ           [  1/Gbps] [ 60/s]  บ
-echo [8Cบ  !17!deltastress.com!cyan!        บ           [  ?/Gbps] [ 30/s]  บ
+echo [8Cบ   !9!eor-n.to!cyan!               บ           [  ?/Gbps] [120/s]  บ
+echo [8Cบ  !10!str3ssed.co!cyan!            บ           [  1/Gbps] [120/s]  บ
+echo [8Cบ  !11!wannabe1337.xyz!cyan!        บ           [  ?/Gbps] [120/s]  บ
+echo [8Cบ  !12!vtoxicity.net!cyan!          บ           [100/Mbps] [120/s]  บ
+echo [8Cบ  !13!str3sser.io!cyan!            บ           [  1/Gbps] [ 60/s]  บ
+echo [8Cบ  !14!databooter.to!cyan!          บ           [  1/Gbps] [ 60/s]  บ
+echo [8Cบ  !15!asylumstresser.to!cyan!      บ           [  1/Gbps] [ 60/s]  บ
+echo [8Cบ  !16!deltastress.com!cyan!        บ           [  ?/Gbps] [ 30/s]  บ
 echo [8Cฬออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออน
 if "!Language!"=="EN" (
-echo [29C!brightmagenta!Last Updated: !white!23/08/2021
-echo [15C!brightmagenta!Alternatively you can visit: !18!ddosforhire.net
+echo [29C!brightmagenta!Last Updated: !white!04/09/2021
+echo [15C!brightmagenta!Alternatively you can visit: !17!ddosforhire.net
 )
 if "!Language!"=="FR" (
-echo [28C!brightmagenta!Mise … jour le: !white!23/08/2021
-echo [11C!brightmagenta!Alternativement vous pouvez visiter: !18!ddosforhire.net
+echo [28C!brightmagenta!Mise … jour le: !white!04/09/2021
+echo [11C!brightmagenta!Alternativement vous pouvez visiter: !17!ddosforhire.net
 )
 echo [8C!cyan!ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -2030,7 +2031,7 @@ goto :CLEARPORT
 :NMAPINSTALL
 call :CURL "!TMPF!\vcredist_x86.exe" "https://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x86.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
 call :START_DOWNLOADED_FILE vcredist_x86.exe
-call :CURL "!TMPF!\npcap-1.31.exe" "https://nmap.org/npcap/dist/npcap-1.50.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
+call :CURL "!TMPF!\npcap-1.31.exe" "https://nmap.org/npcap/dist/npcap-1.55.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
 call :START_DOWNLOADED_FILE npcap-1.31.exe
 goto :CONTINUEPORT
 
@@ -2513,16 +2514,16 @@ if "!9!"=="!yellow!9 !checked!" start "" "https://obsproject.com/"
 goto :CLEARWAREZCONTENTCREATOR
 
 :WAREZWIKIS
-call :SCALE 76 32
+call :SCALE 76 33
 title Warez Wikis
 call :ROSE "Warez Wikis"
 
 :CLEARWAREZWIKIS
-call :CLEAR 1 19
-set db=weboas.is/ dirtywarez.org/ link-base.org/warez p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/Pirated-Games/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/
+call :CLEAR 1 20
+set db=weboas.is/ dirtywarez.org/ link-base.org/warez lamule.eu/ p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/Pirated-Games/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/
 
 :CONTINUEWAREZWIKIS
-call :SCALE 76 32
+call :SCALE 76 33
 echo !cyan!
 echo [28Cอออออออออออออออออออ
 echo [27C// !red!Û!bgyellow!!black! WAREZ WIKIS !red!Û!bgblack!!cyan! \\
@@ -2531,22 +2532,23 @@ echo [6Cบ                                                              บ
 echo [6Cบ    !1!weboas.is!cyan!                                           บ
 echo [6Cบ    !2!dirtywarez.org!cyan!                                      บ
 echo [6Cบ    !3!link-base.org!cyan!                                       บ
-echo [6Cบ    !4!p2pfr.com !green!(FR)!cyan!                                      บ
-echo [6Cบ    !5!www.mega-p2p.net !green!(FR)!cyan!                               บ
-echo [6Cบ    !6!lewebde.com !green!(FR)!cyan!                                    บ
-echo [6Cบ    !7!machicoulis.over-blog.com !green!(FR)!cyan!                      บ
-echo [6Cบ    !8!r/Piracy!cyan!                                            บ
-echo [6Cบ    !9!r/FREEMEDIAHECKYEAH!cyan!                                 บ
-echo [6Cบ   !10!r/pgames-mega-thread!cyan!                                บ
-echo [6Cบ   !11!Igglybuff/awesome-piracy!cyan!                            บ
-echo [6Cบ   !12!nbats/FMHY!cyan!                                          บ
-echo [6Cบ   !13!Rekulous/FMHY!cyan!                                       บ
-echo [6Cบ   !14!taskylizard/piratedgames-megathread !green!(videogames)!cyan!    บ
-echo [6Cบ   !15!Rekulous/Pirated-Games !green!(videogames)!cyan!                 บ
-echo [6Cบ   !16!Rekulous/The-Piratez-list !green!(softwares)!cyan!               บ
-echo [6Cบ   !17!darknetlive.com !green!(darknet)!cyan!                           บ
-echo [6Cบ   !18!dark.fail !green!(darknet)!cyan!                                 บ
-echo [6Cบ   !19!ddosforhire.net !green!(DDoS)!cyan!                              บ
+echo [6Cบ    !4!lamule.eu!cyan!                                           บ
+echo [6Cบ    !5!p2pfr.com !green!(FR)!cyan!                                      บ
+echo [6Cบ    !6!www.mega-p2p.net !green!(FR)!cyan!                               บ
+echo [6Cบ    !7!lewebde.com !green!(FR)!cyan!                                    บ
+echo [6Cบ    !8!machicoulis.over-blog.com !green!(FR)!cyan!                      บ
+echo [6Cบ    !9!r/Piracy!cyan!                                            บ
+echo [6Cบ   !10!r/FREEMEDIAHECKYEAH!cyan!                                 บ
+echo [6Cบ   !11!r/pgames-mega-thread!cyan!                                บ
+echo [6Cบ   !12!Igglybuff/awesome-piracy!cyan!                            บ
+echo [6Cบ   !13!nbats/FMHY!cyan!                                          บ
+echo [6Cบ   !14!Rekulous/FMHY!cyan!                                       บ
+echo [6Cบ   !15!taskylizard/piratedgames-megathread !green!(videogames)!cyan!    บ
+echo [6Cบ   !16!Rekulous/Pirated-Games !green!(videogames)!cyan!                 บ
+echo [6Cบ   !17!Rekulous/The-Piratez-list !green!(softwares)!cyan!               บ
+echo [6Cบ   !18!darknetlive.com !green!(darknet)!cyan!                           บ
+echo [6Cบ   !19!dark.fail !green!(darknet)!cyan!                                 บ
+echo [6Cบ   !20!ddosforhire.net !green!(DDoS)!cyan!                              บ
 echo [6Cบ                                                              บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
