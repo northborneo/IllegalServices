@@ -7,12 +7,13 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.3.2 - 03/09/2021
+v5.8.3.3 - 04/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
+- FIXED a bug with an infinite build update loop when "Illegal_Services.exe" does not have the correct build number assigned. (not tested)
 - FIXED a bug when HTTPS was always chosen to start websites.
-- FIXED a bug with YouTube DL 'change output location' not changing 'download location' strings.
+- FIXED a bug with YouTube DL "change output location" not changing "download location" strings.
 - FIXED a bug when the "&" character was entered in the URL checker.
 - FIXED minor bugs.
 - MOVED Useful Websites : https://freezer.life/ in More Features Musics.
@@ -69,7 +70,6 @@ v5.8.3.2 - 03/09/2021
 + ADDED IP Denial of Services : https://royalstresser.com/
 + ADDED IP Denial of Services : https://stresser.zone/
 + ADDED IP Denial of Services : https://xtremebooter.xyz/
-+ ADDED IP Denial of Services : https://stresser.be/
 + ADDED IP Denial of Services : https://wannabe1337.xyz/stresser
 + ADDED IP Denial of Services : https://deltastress.com/
 + ADDED More Features Release Logs.
@@ -122,6 +122,7 @@ v5.8.3.2 - 03/09/2021
 + UPDATED Cracked Windows Apps : https://www.gamestorrents.fm/
 + UPDATED Cracked Windows Apps : https://e13.xatab-repack.com/
 + UPDATED Cracked Android APK's : https://moddroid.co/
++ UPDATED IP Port Scanning : Npcap v1.55
 + UPDATED Portable Apps : CCleaner v584
 + UPDATED Portable Apps : Dism++ v10.1.1002.1
 + UPDATED Portable Apps : Windows Repair AIO v4.11.7
@@ -141,12 +142,11 @@ v5.8.3.2 - 03/09/2021
 - REMOVED IP Denial of Services : https://udp.so/ (down)
 - REMOVED IP Denial of Services : https://booter.sx/ (not free anymore)
 - REMOVED Doxing Image Search : https://pic.sogou.com/ (down)
-- REMOVED More Features Warez Wikis : https://lamule.eu/ (down)
 - REMOVED More Features Forum Websites : https://batch.xoo.it/index.php (Has nothing to do near or far with warez content or Illegal Services.)
 
 v5.8.0.0 - 21/07/2021
 - IMPROVED code.
-- FIXED 'ControlSet001' to 'CurrentControlSet' (thanks @AMIT#7692)
+- FIXED "ControlSet001" to "CurrentControlSet" (thanks @AMIT#7692)
 - FIXED minor bugs.
 + ADDED Internet Protocol Television : http://iptv.allkaicerteam.com/ (thanks @PistachePoilue#9999)
 + ADDED Internet Protocol Television : https://www.iptvm3ulist.com/
