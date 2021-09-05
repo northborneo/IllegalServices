@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 3
-REM  Fileversion:  5. 8. 3. 3
+REM  Productversion:  5. 8. 3. 4
+REM  Fileversion:  5. 8. 3. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -22,7 +22,10 @@ cls
 set "hidecursor=<nul set /p=[?25l"
 set "showcursor=<nul set /p=[?25h"
 %hidecursor%
-for %%a in (%*) do if "%%~a"=="--debug" set debug=1
+for %%a in (%*) do if "%%~a"=="--debug" (
+set debug=1
+set debug_info=Debug mode activated.
+)
 if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%a" (
 call :APPLY_SETTINGS
 for /f "tokens=6" %%a in ('cmdwiz.exe getconsoledim') do if %%a lss 120 call :SCALE 120 30
@@ -76,7 +79,7 @@ echo Press {ENTER} to continue...
 >nul pause
 cls
 )
-set version=v5.8.3.3 - 04/09/2021
+set version=v5.8.3.4 - 05/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -174,7 +177,7 @@ set is_title=Illegal Services v
 for /l %%a in (1,1,18) do title !is_title:~,%%a! & cmdwiz.exe delay 20
 
 :MAINMENU
-title Illegal Services !version:~,4!  ^|Git !git_backup!proxy: !git!^|
+title Illegal Services !version:~,4!  ^|Git !git_backup!proxy: !git!^|  !debug_info!
 if defined MAINMENU (call :ROSE) else (call :ROSE "Main Menu" & set MAINMENU=1)
 call :SCALE 125 29
 echo !grey!
@@ -944,7 +947,7 @@ title Streaming [EN]
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 58
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ ww0.0gomovies.fm/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ gogoanime.vc/ anime8.ru/ animeowl.net/ animefrenzy.org/ www1.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ ww0.0gomovies.fm/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ gogoanime.vc/ anime8.ru/ animeowl.net/ animefrenzy.org/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 51
@@ -980,7 +983,7 @@ echo [8Cบ   !35!gogoanime.vc!cyan!                   ณ   !45!zoro.to!cyan!     
 echo [8Cบ   !36!anime8.ru!cyan!                      ณ   !46!www1.animeultima.to!cyan!            บ
 echo [8Cบ   !37!animeowl.net!cyan!                   ณ   !47!animedao.to!cyan!                    บ
 echo [8Cบ   !38!animefrenzy.org!cyan!                ณ   !48!kissanimefree.to!cyan!               บ
-echo [8Cบ   !39!www1.kiss-anime.asia!cyan!           ณ   !49!www1.7anime.io!cyan!                 บ
+echo [8Cบ   !39!www2.kiss-anime.asia!cyan!           ณ   !49!www1.7anime.io!cyan!                 บ
 echo [8Cบ   !40!animevibe.wtf!cyan!                  ณ   !50!twist.moe!cyan!                      บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
@@ -1133,7 +1136,7 @@ call :ROSE Torrenting
 
 :CLEARTORRENTING
 call :CLEAR 1 78
-set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.montorrent.com/ www.oxtorrent.cx/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ch/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.montorrent.com/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ch/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
 call :SCALE 133 53
@@ -1156,7 +1159,7 @@ echo [8Cบ                                                                      
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û French Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
 echo [8Cบ   !28!www3.yggtorrent.nz!cyan!         ณ   !30!www.montorrent.com!cyan!       ณ   !32!torrent9.to!cyan!                    บ
-echo [8Cบ   !29!www.sharewood.tv!cyan!           ณ   !31!www.oxtorrent.cx!cyan!         ณ                                         บ
+echo [8Cบ   !29!www.sharewood.tv!cyan!           ณ   !31!www.oxtorrent.nz!cyan!         ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Searching Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
@@ -2292,10 +2295,10 @@ if "!arch!"=="86" call :CURL "Portable_Apps\UCheck_portable32.exe" "https://down
 if "!17!"=="!yellow!17 !checked!" call :CURL "Portable_Apps\Windows Update MiniTool\wumt_x64.exe" "`git_raw_downloads`/Windows_Update_MiniTool.7z"
 if "!18!"=="!yellow!18 !checked!" call :CURL "Portable_Apps\WSUS Offline Update.zip" "https://download.wsusoffline.net/wsusoffline120.zip"
 if "!19!"=="!yellow!19 !checked!" (
-if "!arch!"=="64" call :CURL "Portable_Apps\DriversCloud.zip" "https://www.driverscloud.com/plugins/DriversCloudx64_10_0_11_0.zip"
-if "!arch!"=="86" call :CURL "Portable_Apps\DriversCloud.zip" "https://www.driverscloud.com/plugins/DriversCloud_10_0_11_0.zip"
+if "!arch!"=="64" call :CURL "Portable_Apps\DriversCloud.zip" "https://www.driverscloud.com/plugins/DriversCloudx64_11_0_2_0.zip"
+if "!arch!"=="86" call :CURL "Portable_Apps\DriversCloud.zip" "https://www.driverscloud.com/plugins/DriversCloud_11_0_2_0.zip"
 )
-if "!20!"=="!yellow!20 !checked!" call :CURL "Portable_Apps\Snappy Driver Installer.zip" "https://sdi-tool.org/releases/SDI_R2000.zip"
+if "!20!"=="!yellow!20 !checked!" call :CURL "Portable_Apps\Snappy Driver Installer.zip" "https://sdi-tool.org/releases/SDI_R2102.zip"
 if "!21!"=="!yellow!21 !checked!" call :CURL "Portable_Apps\Driver Store Explorer.zip" "https://github.com/lostindark/DriverStoreExplorer/releases/download/v0.11.72/DriverStoreExplorer.v0.11.72.zip"
 if "!22!"=="!yellow!22 !checked!" call :CURL "Portable_Apps\DeviceCleanup.zip" "https://www.uwe-sieber.de/files/DeviceCleanup.zip"
 if "!23!"=="!yellow!23 !checked!" call :CURL "Portable_Apps\DDU.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/ddu/%%%%5BGuru3D.com%%%%5D-DDU.zip"
@@ -2306,12 +2309,12 @@ call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_netcoreapp31.zip" "https:/
 )
 if "!25!"=="!yellow!25 !checked!" call :CURL "Portable_Apps\NVSlimmer.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/nvslimmer/%%%%5BGuru3D.com%%%%5D-NVSlimmer.zip"
 if "!26!"=="!yellow!26 !checked!" call :CURL "Portable_Apps\MSI_util_v3.exe" "`git_raw_downloads`/MSI_util_v3.exe"
-if "!27!"=="!yellow!27 !checked!" call :CURL "Portable_Apps\CPU-Z.zip" "https://download.cpuid.com/cpu-z/cpu-z_1.95-en.zip"
+if "!27!"=="!yellow!27 !checked!" call :CURL "Portable_Apps\CPU-Z.zip" "https://download.cpuid.com/cpu-z/cpu-z_1.97-en.zip"
 if "!28!"=="!yellow!28 !checked!" call :CURL "Portable_Apps\OOSU10\OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 if "!29!"=="!yellow!29 !checked!" call :CURL "Portable_Apps\Ashampoo_AntiSpy\Ashampoo_AntiSpy.exe" "https://cdn1.ashampoo.net/public/ashf/1004/Ashampoo_AntiSpy.exe"
 if "!30!"=="!yellow!30 !checked!" call :CURL "Portable_Apps\DoNotSpy10.7z" "`git_raw_downloads`/DoNotSpy10.7z"
 if "!31!"=="!yellow!31 !checked!" call :CURL "Portable_Apps\Windows Privacy Dashboard.zip" "https://wpd.app/get/latest.zip"
-if "!32!"=="!yellow!32 !checked!" call :CURL "Portable_Apps\W10Privacy.zip" "https://www.w10privacy.de/app/download/12302828636/W10Privacy.zip?t=1603644531"
+if "!32!"=="!yellow!32 !checked!" call :CURL "Portable_Apps\W10Privacy.zip" "https://www.w10privacy.de/app/download/12302828636/W10Privacy.zip"
 if "!33!"=="!yellow!33 !checked!" call :CURL "Portable_Apps\WindowsSpyBlocker\WindowsSpyBlocker.exe" "https://github.com/crazy-max/WindowsSpyBlocker/releases/latest/download/WindowsSpyBlocker.exe"
 if "!34!"=="!yellow!34 !checked!" (
 call :CURL "Portable_Apps\Destroy Windows 10 Spying.zip" "https://github.com/Wohlstand/Destroy-Windows-10-Spying/releases/download/2.2.2.2.27/DWS-build-Win7881-2.2.2.2.27.zip"
@@ -2337,10 +2340,10 @@ if "!arch!"=="86" call :CURL "Portable_Apps\MSERT.exe" "https://go.microsoft.com
 if "!43!"=="!yellow!43 !checked!" call :CURL "Portable_Apps\SpybotPortable_2.7.64-2020-02.paf.exe" "https://download3.portableapps.com/portableapps/SpybotPortable/SpybotPortable_2.8.68.paf.exe"
 if "!44!"=="!yellow!44 !checked!" call :CURL "Portable_Apps\Batch Antivirus.zip" "https://github.com/anic17/Batch-Antivirus/archive/master.zip"
 if "!45!"=="!yellow!45 !checked!" (
-if "!arch!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1005.x64.zip"
-if "!arch!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1005.x86.zip"
+if "!arch!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
+if "!arch!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/rq7c4oi8svf0la0y/artifacts/processhacker-3.0.4330-bin.zip"
+if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/0y3xcdlcf5opsmmt/artifacts/processhacker-3.0.4346-bin.zip"
 if "!47!"=="!yellow!47 !checked!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!48!"=="!yellow!48 !checked!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!49!"=="!yellow!49 !checked!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
@@ -2350,7 +2353,7 @@ if "!52!"=="!yellow!52 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\regscanner-x64.zip" "https://www.nirsoft.net/utils/regscanner-x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\regscanner.zip" "https://www.nirsoft.net/utils/regscanner.zip"
 )
-if "!53!"=="!yellow!53 !checked!" call :CURL "Portable_Apps\ISLC v1.0.2.4.exe" "https://www.wagnardsoft.com/ISLC/ISLC%%%%20v1.0.2.4.exe"
+if "!53!"=="!yellow!53 !checked!" call :CURL "Portable_Apps\ISLC v1.0.2.5.exe" "https://www.wagnardsoft.com/ISLC/ISLC%%%%20v1.0.2.5.exe"
 set IS_Log=
 if exist "!TMPF!\IS_Log.txt" (
 echo !red!
