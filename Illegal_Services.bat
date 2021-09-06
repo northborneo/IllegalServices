@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 4
-REM  Fileversion:  5. 8. 3. 4
+REM  Productversion:  5. 8. 3. 5
+REM  Fileversion:  5. 8. 3. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -22,10 +22,7 @@ cls
 set "hidecursor=<nul set /p=[?25l"
 set "showcursor=<nul set /p=[?25h"
 %hidecursor%
-for %%a in (%*) do if "%%~a"=="--debug" (
-set debug=1
-set debug_info=Debug mode activated.
-)
+for %%a in (%*) do if "%%~a"=="--debug" set "debug=[Debug] - "
 if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%a" (
 call :APPLY_SETTINGS
 for /f "tokens=6" %%a in ('cmdwiz.exe getconsoledim') do if %%a lss 120 call :SCALE 120 30
@@ -36,7 +33,7 @@ if exist "cmdwiz.exe" cmdwiz.exe setquickedit 0
 set IS_Reg=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
 call :CHECK_USERNAME
-title Welcome [!IS_USERNAME!] to Illegal Services . . .
+title !debug!Welcome [!IS_USERNAME!] to Illegal Services . . .
 if defined TEMP (set "TMPF=!TEMP!") else if defined TMP (set "TMPF=!TMP!") else (
 if "!Language!"=="EN" set t="Your 'TEMP' and 'TMP' environment variables do not exist." "Please fix one of them and try again."
 if "!Language!"=="FR" set t="Vos variables d'environnement 'TEMP' et 'TMP' n'existent pas." "Veuillez r‚parer l'une d'entre elles et r‚essayer."
@@ -67,7 +64,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 
 :LAUNCHER
 popd
-if defined debug if defined lastversion (
+if defined debug if defined version if defined lastversion (
 echo  ÚÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
 echo  ³ Debug: This is a developer-only message for future improvement of the Illegal Services updater.
 echo  ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
@@ -79,7 +76,7 @@ echo Press {ENTER} to continue...
 >nul pause
 cls
 )
-set version=v5.8.3.4 - 05/09/2021
+set version=v5.8.3.5 - 06/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -174,10 +171,10 @@ for %%a in (extd speak-x!arch!) do tasklist /fo csv /fi "imagename eq %%a.exe" |
 if "!VoiceAssistant!"=="0" >nul timeout /t 1 /nobreak
 call :SCALE 125 29
 set is_title=Illegal Services v
-for /l %%a in (1,1,18) do title !is_title:~,%%a! & cmdwiz.exe delay 20
+for /l %%a in (1,1,18) do title !debug!!is_title:~,%%a! & cmdwiz.exe delay 20
 
 :MAINMENU
-title Illegal Services !version:~,4!  ^|Git !git_backup!proxy: !git!^|  !debug_info!
+title !debug!Illegal Services !version:~,4!  ^|Git !git_backup!proxy: !git!^|
 if defined MAINMENU (call :ROSE) else (call :ROSE "Main Menu" & set MAINMENU=1)
 call :SCALE 125 29
 echo !grey!
@@ -247,8 +244,8 @@ goto :MAINMENU
 
 :CREDITS
 call :SCALE 99 34
-if "!Language!"=="EN" title Credits / Thanks / Helpers
-if "!Language!"=="FR" title Cr‚dits / Remerciement / Aideurs
+if "!Language!"=="EN" title !debug!Credits / Thanks / Helpers
+if "!Language!"=="FR" title !debug!Cr‚dits / Remerciement / Aideurs
 call :ROSE Credits
 
 :CONTINUECREDITS
@@ -363,7 +360,7 @@ goto :CONTINUECREDITS
 
 :SETTINGS
 call :SCALE 113 26
-title Settings
+title !debug!Settings
 call :ROSE Settings
 
 :CLEARSETTINGS
@@ -408,7 +405,7 @@ set "ScanWebsitesInfo=Scan les sites internet index‚s.!cyan!         º"
 
 :CONTINUESETTINGS
 call :SCALE 113 26
-title Settings
+title !debug!Settings
 echo !cyan!
 if "!Language!"=="EN" (
 echo [47CÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
@@ -649,7 +646,7 @@ goto :CLEARSETTINGS
 
 :SETTING_UNINSTALL
 cls
-title Illegal Services uninstaller
+title !debug!Illegal Services uninstaller
 echo:
 echo:
 echo:
@@ -702,7 +699,7 @@ goto :CONTINUESETTINGS
 
 :IPTV
 call :SCALE 91 32
-title Internet Protocol Television (IPTV)
+title !debug!Internet Protocol Television (IPTV)
 call :ROSE "Internet Protocol Television"
 
 :CLEARIPTV
@@ -759,7 +756,7 @@ goto :CONTINUEIPTV
 
 :IPTVTUTORIAL
 call :SCALE 151 37
-title IPTV Tutorial
+title !debug!IPTV Tutorial
 call :ROSE "Internet Protocol Television Tutorial"
 
 :CONTINUEIPTVTUTORIAL
@@ -832,7 +829,7 @@ for %%a in (EN FR) do if "!Language!"=="%%a" goto :DDL%%a
 
 :DDLEN
 call :SCALE 128 37
-title Direct Download Link (DDL) [EN]
+title !debug!Direct Download Link (DDL) [EN]
 
 :CLEARDDLEN
 call :CLEAR 1 71
@@ -887,7 +884,7 @@ goto :CONTINUEDDLEN
 
 :DDLFR
 call :SCALE 71 24
-title Direct Download Link (DDL) [FR]
+title !debug!Direct Download Link (DDL) [FR]
 
 :CLEARDDLFR
 call :CLEAR 1 11
@@ -928,7 +925,7 @@ call :ERRORMESSAGE
 goto :CONTINUEDDLFR
 
 :STREAMING
-title Streaming [!Language!]
+title !debug!Streaming [!Language!]
 if "!Language!"=="EN" (
 call :SCALE 101 51
 set t="No payment / installation / registration is required to view the videos on the sites offered by Illegal Service. All sites are free so watch out for scam advertising." "If the player is not visible, disable your ad blocker and click on the button to close the ad in the middle of the video then on the player's Play button to launch the video."
@@ -943,7 +940,7 @@ for %%a in (EN FR) do if "!Language!"=="%%a" goto :STREAMING%%a
 
 :STREAMINGEN
 call :SCALE 101 51
-title Streaming [EN]
+title !debug!Streaming [EN]
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 58
@@ -1013,7 +1010,7 @@ goto :CONTINUESTREAMINGEN
 
 :STREAMINGFR
 call :SCALE 101 46
-title Streaming [FR]
+title !debug!Streaming [FR]
 
 :CLEARSTREAMINGFR
 call :CLEAR 1 46
@@ -1078,7 +1075,7 @@ goto :CONTINUESTREAMINGFR
 
 :STREAMINGAPPS
 call :SCALE 109 36
-title Streaming Applications
+title !debug!Streaming Applications
 call :ROSE "Streaming Applications"
 
 :CLEARSTREAMINGAPPS
@@ -1131,12 +1128,12 @@ goto :CONTINUESTREAMINGAPPS
 
 :TORRENTING
 call :SCALE 133 53
-title Torrenting
+title !debug!Torrenting
 call :ROSE Torrenting
 
 :CLEARTORRENTING
 call :CLEAR 1 78
-set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.montorrent.com/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ch/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.montorrent.com/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ws/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
 call :SCALE 133 53
@@ -1177,7 +1174,7 @@ echo [8Cº                                                                      
 echo [8Cº   !56!proxy-bay.net!cyan!              ³   !61!siteunblocked.info!cyan!       ³   !66!proxyninja.org!cyan!                 º
 echo [8Cº   !57!proxygalaxy.pw!cyan!             ³   !62!unblockproject.monster!cyan!   ³   !67!knaben.info!cyan!                    º
 echo [8Cº   !58!yifystatus.com!cyan!             ³   !63!unblocksource.net!cyan!        ³   !68!unblocktorrent.com!cyan!             º
-echo [8Cº   !59!eztvstatus.com!cyan!             ³   !64!unblockit.ch!cyan!             ³   !69!torrends.to!cyan!                    º
+echo [8Cº   !59!eztvstatus.com!cyan!             ³   !64!unblockit.ws!cyan!             ³   !69!torrends.to!cyan!                    º
 echo [8Cº   !60!ettvproxies.com!cyan!            ³   !65!torrentbay.to!cyan!            ³                                         º
 echo [8Cº                                                                                                                   º
 echo [8CÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍþÛ!bgyellow!!red!Û Torrent Applications Û!bgblack!!cyan!ÛþÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
@@ -1214,7 +1211,7 @@ call :ROSE "Torrent Tutorial"
 
 :CONTINUETORRENTTUTORIAL
 call :SCALE 150 23
-title Torrent Tutorial
+title !debug!Torrent Tutorial
 echo !cyan!
 echo [42CÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 if "!Language!"=="EN" set t=TUTORIAL
@@ -1293,7 +1290,7 @@ goto :CONTINUETORRENTING
 
 :SUBTITLES
 call :SCALE 72 35
-title Subtitles
+title !debug!Subtitles
 call :ROSE Subtitles
 
 :CLEARSUBTITLES
@@ -1346,7 +1343,7 @@ goto :CONTINUESUBTITLES
 
 :WINDOWS
 call :SCALE 136 52
-title Cracked Windows apps
+title !debug!Cracked Windows apps
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
@@ -1416,7 +1413,7 @@ goto :CONTINUEWINDOWS
 
 :ANDROID
 call :SCALE 85 33
-title Cracked Android APK's
+title !debug!Cracked Android APK's
 call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
@@ -1467,7 +1464,7 @@ goto :CONTINUEANDROID
 
 :YOUTUBEDL
 call :SCALE 104 32
-title YouTube Downloader
+title !debug!YouTube Downloader
 call :ROSE "YouTube Downloader"
 
 :CLEARYOUTUBEDL
@@ -1670,7 +1667,7 @@ goto :CONTINUEYOUTUBEDL
 
 :USEFULWEBSITES
 call :SCALE 139 44
-title Useful Websites
+title !debug!Useful Websites
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
@@ -1731,7 +1728,7 @@ goto :CONTINUEUSEFULWEBSITES
 
 :DDOS
 call :SCALE 82 30
-title Denial Of Services (DDoS)
+title !debug!Denial Of Services (DDoS)
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
@@ -1784,7 +1781,7 @@ goto :CONTINUEDDOS
 
 :IPLOOKUP
 call :SCALE 73 27
-title IP Address Lookup
+title !debug!IP Address Lookup
 call :ROSE "IP Address Lookup"
 
 :CLEARIPLOOKUP
@@ -1794,7 +1791,7 @@ if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEIPLOOKUP
 call :SCALE 73 27
-title IP Address Lookup
+title !debug!IP Address Lookup
 echo !cyan!
 echo [28CÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo [27C// !red!Û!bgyellow!!black! IP LOOKUP !red!Û!bgblack!!cyan! \\
@@ -1841,10 +1838,10 @@ goto :CONTINUEIPLOOKUP
 
 :IPLOOKUP_RESPONSE
 cls
-if "!x!"=="1" title Looking up ^> ... & for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "https://api.ipify.org"') do set x=%%a
+if "!x!"=="1" title !debug!Looking up ^> ... & for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "https://api.ipify.org"') do set x=%%a
 >nul chcp 65001
 for %%a in (1 2) do if "!_el!"=="%%a" (
-title Looking up ^> !x!
+title !debug!Looking up ^> !x!
 call :IP_DETECTOR
 )
 if "!_el!"=="3" call :URL_DETECTOR
@@ -1894,7 +1891,7 @@ goto :CLEARIPLOOKUP
 
 :PORT
 call :SCALE 101 33
-title IP Port Scanning
+title !debug!IP Port Scanning
 call :ROSE "IP Port Scanning"
 
 :CLEARPORT
@@ -2048,7 +2045,7 @@ call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 goto :CONTINUEPORT
 
 :PINGERPORT
-title IP Port Pinger
+title !debug!IP Port Pinger
 call :ROSE "IP Port Pinger"
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
@@ -2071,7 +2068,7 @@ popd
 goto :MAINMENU
 
 :IPPINGER
-title IP Pinger
+title !debug!IP Pinger
 call :ROSE "IP Pinger"
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
@@ -2084,8 +2081,8 @@ start "" "%~f0" PINGER
 goto :MAINMENU
 
 :IPLOGGERS
-call :SCALE 65 24
-title IP Loggers
+call :SCALE 65 25
+title !debug!IP Loggers
 if "!Language!"=="EN" set t="INFORMATION: Url Shortners are useful for hiding the original links of your suspect IPLogger." "This solution does not work with some services that will redirect your shortened links directly to the last linked url. Example FaceBook, Instagram, Twitter..."
 if "!Language!"=="FR" set t="INFORMATION: Les URL Shortners sont utiles pour cacher les liens originaux de votre IPLogger suspect." "Cette solution ne fonctionne pas avec certains services qui redirigeront directement votre lien raccourci a la derniere URL liee. Exemple Facebook, Instagram, Twitter..."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -2093,11 +2090,11 @@ call :ROSE "IP Loggers"
 goto :CLEARIPLOGGERS
 
 :CLEARIPLOGGERS
-call :CLEAR 1 9
-set db=iplogger.org/ grabify.link/ webresolver.nl/tools/iplogger lstu.fr/ kutt.it/ www.shorturl.at/ shorturl.com/ tiny.cc/ bitly.com/
+call :CLEAR 1 10
+set db=iplogger.org/ grabify.link/ blasze.com/ webresolver.nl/tools/iplogger lstu.fr/ kutt.it/ www.shorturl.at/ shorturl.com/ tiny.cc/ bitly.com/
 
 :CONTINUEIPLOGGERS
-call :SCALE 65 24
+call :SCALE 65 25
 echo !cyan!
 echo [22CÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo [21C// !red!Û!bgyellow!!black! IP LOGGERS !red!Û!bgblack!!cyan! \\
@@ -2105,16 +2102,17 @@ echo [16CÉÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ»
 echo [16Cº                             º
 echo [16Cº    !1!iplogger.org!cyan!       º
 echo [16Cº    !2!grabify.link!cyan!       º
-echo [16Cº    !3!webresolver.nl!cyan!     º
+echo [16Cº    !3!blasze.com!cyan!         º
+echo [16Cº    !4!webresolver.nl!cyan!     º
 echo [16CÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
 echo [16CÌÍÍÍÍþÛ!bgyellow!!red!Û  Url Shortners Û!bgblack!!cyan!ÛþÍÍÍ¹
 echo [16Cº                             º
-echo [16Cº    !4!lstu.fr!cyan!            º
-echo [16Cº    !5!kutt.it!cyan!            º
-echo [16Cº    !6!www.shorturl.at!cyan!    º
-echo [16Cº    !7!shorturl.com!cyan!       º
-echo [16Cº    !8!tiny.cc!cyan!            º
-echo [16Cº    !9!bitly.com!cyan!          º
+echo [16Cº    !5!lstu.fr!cyan!            º
+echo [16Cº    !6!kutt.it!cyan!            º
+echo [16Cº    !7!www.shorturl.at!cyan!    º
+echo [16Cº    !8!shorturl.com!cyan!       º
+echo [16Cº    !9!tiny.cc!cyan!            º
+echo [16Cº   !10!bitly.com!cyan!          º
 echo [16CÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -2130,7 +2128,7 @@ goto :CONTINUEIPLOGGERS
 
 :DOXING
 call :SCALE 104 42
-title Doxing
+title !debug!Doxing
 call :ROSE Doxing
 
 :CLEARDOXING
@@ -2189,7 +2187,7 @@ goto :CONTINUEDOXING
 
 :PORTABLEAPPS
 call :SCALE 138 43
-title Portable Apps
+title !debug!Portable Apps
 call :ROSE "Portable Apps"
 
 :CLEARPORTABLEAPPS
@@ -2367,7 +2365,7 @@ goto :CLEARPORTABLEAPPS
 
 :WINDOWSANDOFFICE
 call :SCALE 90 31
-title Windows and Office Cracks
+title !debug!Windows and Office Cracks
 call :ROSE "Windows and Office Cracks"
 
 :CLEARWINDOWSANDOFFICE
@@ -2416,7 +2414,7 @@ goto :CONTINUEWINDOWSANDOFFICE
 
 :MOREFEATURES
 call :SCALE 62 20
-title More Features
+title !debug!More Features
 call :ROSE "More Features"
 
 :CONTINUEMOREFEATURES
@@ -2467,12 +2465,12 @@ goto :CONTINUEMOREFEATURES
 
 :WAREZCONTENTCREATOR
 call :SCALE 69 22
-title Warez Content Creator
+title !debug!Warez Content Creator
 call :ROSE "Warez Content Creator"
 
 :CLEARWAREZCONTENTCREATOR
 call :CLEAR 1 9
-set db="Mkv Tool Nix" FFmpeg LosslessCut HandBrake "Subtitle Editor" CCExtractor "VLC Media Player" MediaInfo "Open Broadcaster Software"
+set db="Mkv Tool Nix" FFmpeg LosslessCut HandBrake "Subtitle !debug!Editor" CCExtractor "VLC Media Player" MediaInfo "Open Broadcaster Software"
 
 :CONTINUEWAREZCONTENTCREATOR
 call :SCALE 69 22
@@ -2485,8 +2483,8 @@ echo [5Cº    !1!Mkv Tool Nix !green!(.mkv Video Editing)!cyan!              º
 echo [5Cº    !2!FFmpeg !green!(Video/Audio Editing)!cyan!                   º
 echo [5Cº    !3!LosslessCut !green!(Video/Audio Editing)!cyan!              º
 echo [5Cº    !4!HandBrake !green!(Video Transcoder)!cyan!                   º
-echo [5Cº    !5!Subtitle Editor !green!(Subtitle Editor)!cyan!              º
-echo [5Cº    !6!CCExtractor !green!(Subtitle Extractor)!cyan!               º
+echo [5Cº    !5!Subtitle !debug!Editor !green!(Subtitle !debug!Editor)!cyan!              º
+echo [5Cº    !6!CCExtractor !green!(Subtitle !debug!Extractor)!cyan!               º
 echo [5Cº    !7!VLC Media Player !green!(Multimedia Player)!cyan!           º
 echo [5Cº    !8!MediaInfo !green!(Digital Media Analysis)!cyan!             º
 echo [5Cº    !9!Open Broadcaster Software !green!(Screen Recorder)!cyan!    º
@@ -2518,7 +2516,7 @@ goto :CLEARWAREZCONTENTCREATOR
 
 :WAREZWIKIS
 call :SCALE 76 33
-title Warez Wikis
+title !debug!Warez Wikis
 call :ROSE "Warez Wikis"
 
 :CLEARWAREZWIKIS
@@ -2568,7 +2566,7 @@ goto :CONTINUEWAREZWIKIS
 
 :RELEASELOGS
 call :SCALE 71 20
-title Release Logs
+title !debug!Release Logs
 call :ROSE "Release Logs"
 
 :CLEARRELEASELOGS
@@ -2606,7 +2604,7 @@ goto :CONTINUERELEASELOGS
 
 :EBOOKS
 call :SCALE 100 60
-title Ebooks
+title !debug!Ebooks
 call :ROSE Ebooks
 
 :CLEAREBOOKS
@@ -2685,7 +2683,7 @@ goto :CONTINUEEBOOKS
 
 :MUSICS
 call :SCALE 68 25
-title Musics
+title !debug!Musics
 call :ROSE Musics
 
 :CLEARMUSICS
@@ -2728,7 +2726,7 @@ goto :CONTINUEMUSICS
 
 :FORUMWEBSITES
 call :SCALE 126 37
-title Forum Websites
+title !debug!Forum Websites
 call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
@@ -2782,12 +2780,12 @@ goto :CONTINUEFORUMWEBSITES
 
 :WINDOWSREPAIR
 call :SCALE 70 26
-title Windows Repair
+title !debug!Windows Repair
 call :ROSE "Windows Repair"
 
 :CONTINUEWINDOWSREPAIR
 call :SCALE 70 26
-title Windows Repair
+title !debug!Windows Repair
 echo !cyan!
 echo [26CÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo [25C// !red!Û!bgyellow!!black! WINDOWS REPAIR !red!Û!bgblack!!cyan! \\
@@ -2831,7 +2829,7 @@ goto :CONTINUEWINDOWSREPAIR
 
 :REPAIR_WINDOWS_STORE
 call :SCALE 81 20
-title Repair Windows Store
+title !debug!Repair Windows Store
 echo !cyan!
 echo [7C#################################################################
 echo [7C#            . . . I'm repairing Windows Store . . .            #
@@ -2851,7 +2849,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_XBOX_GAME
 call :SCALE 81 20
-title Repair Xbox Game
+title !debug!Repair Xbox Game
 echo !cyan!
 echo [7C#################################################################
 echo [7C#              . . . I'm repairing Xbox Game . . .              #
@@ -2872,7 +2870,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_PUSH_NOTIFICATIONS
 call :SCALE 81 20
-title Repair Push Notifications
+title !debug!Repair Push Notifications
 echo !cyan!
 echo [7C#################################################################
 echo [7C#         . . . I'm repairing Push Notifications . . .          #
@@ -2893,7 +2891,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_WIFI_HOTSPOT
 call :SCALE 81 20
-title Repair WiFi Hotspot
+title !debug!Repair WiFi Hotspot
 echo !cyan!
 echo [7C#################################################################
 echo [7C#            . . . I'm repairing WiFi Hotspot . . .             #
@@ -2909,7 +2907,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_CLIPBOARD_HISTORY
 call :SCALE 81 20
-title Repair Clipboard History
+title !debug!Repair Clipboard History
 echo !cyan!
 echo [7C#################################################################
 echo [7C#          . . . I'm repairing Clipboard History . . .          #
@@ -2926,7 +2924,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_BACKGROUND_APPS
 call :SCALE 81 20
-title Repair Backgrounds Apps
+title !debug!Repair Backgrounds Apps
 echo !cyan!
 echo [7C#################################################################
 echo [7C#          . . . I'm repairing Backgrounds Apps . . .           #
@@ -2944,7 +2942,7 @@ goto :WINDOWSREPAIR
 
 :GAME_BOOSTER
 call :SCALE 80 29
-title %1 Game Boost ^| %1_%2_%3_%4
+title !debug!%1 Game Boost ^| %1_%2_%3_%4
 echo !cyan!
 echo [7C#################################################################
 echo [7C#              . . . I'm %1 Game Boost . . .             #
@@ -2965,12 +2963,12 @@ exit /b
 
 :WINDOWSTWEAKS
 call :SCALE 74 23
-title Windows Tweaks
+title !debug!Windows Tweaks
 call :ROSE "Windows Tweaks"
 
 :CONTINUEWINDOWSTWEAKS
 call :SCALE 74 23
-title Windows Tweaks
+title !debug!Windows Tweaks
 echo !cyan!
 echo [26CÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ
 echo [25C// !red!Û!bgyellow!!black! WINDOWS TWEAKS !red!Û!bgblack!!cyan! \\
@@ -3141,7 +3139,7 @@ exit
 :PROCESS_FAQ
 if "!Language!"=="EN" call :SCALE 105 33
 if "!Language!"=="FR" call :SCALE 110 33
-title Frequently Asked Questions
+title !debug!Frequently Asked Questions
 call :ROSE FAQ
 echo !cyan!
 if "!Language!"=="EN" set "t=Here is a list of frequently asked questions about "
@@ -3222,7 +3220,7 @@ exit
 if "!Language!"=="EN" set t=Establishing connection to websites database
 if "!Language!"=="FR" set t=Etablissement de la connexion … la base de donn‚e des sites internet
 set url=!git_raw_downloads!/Websites.txt
-title !t!: '!url!'.
+title !debug!!t!: '!url!'.
 >nul Curl\x!arch!\curl.exe -fIkLs "!url!" || (call :ERROR_INTERNET & exit)
 for %%a in (index cn result el) do set %%a=0
 set s=
@@ -3236,7 +3234,7 @@ set o2=Site Internet Chang‚ de Domaine
 )
 for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
 set /a index+=1
-title [0 result found from !index! websites indexed]  ^|  [0/100%%]  ^|
+title !debug![0 result found from !index! websites indexed]  ^|  [0/100%%]  ^|
 )
 echo !cyan!
 if "!Language!"=="EN" echo Scan of the !index! indexed websites has started. You will be notified if any of them are down or have changed domain.
@@ -3246,7 +3244,7 @@ for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t1=(((1%%a*60)+1%
 for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
 set /a "cn+=1, el=cn*100/index"
 if defined result set s=s
-title [!result! result!s! found from !index! websites indexed]  ^|  [!el!/100%%]  ^|  %%a
+title !debug![!result! result!s! found from !index! websites indexed]  ^|  [!el!/100%%]  ^|  %%a
 >nul ping -w 1000 -n 1 "%%a" || >nul Curl\x!arch!\curl.exe -IkLs "https://%%a/" || >nul Curl\x!arch!\curl.exe -IkLs "http://%%a/" || (
 set /a result+=1
 echo !red!!o1!: !yellow!%%a !red!seems to be down for you ^^!
@@ -3262,7 +3260,7 @@ for /f "delims=//" %%e in ("%%c") do echo !red!!o2!: !yellow!https://%%a/ !green
 )
 echo !cyan!
 for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t2=(((1%%a*60)+1%%b)*60+1%%c)*100+1%%d-36610100, tDiff=t2-t1, tDiff+=((~(tDiff&(1<<31))>>31)+1)*8640000, seconds=tDiff/100"
-title [!result! result!s! found from !index! websites indexed]  ^|  Scan finished in !seconds! seconds.
+title !debug![!result! result!s! found from !index! websites indexed]  ^|  Scan finished in !seconds! seconds.
 if "!Language!"=="EN" echo Scan ended with !result! result!s! found from !index! websites indexed in !seconds! seconds.
 if "!Language!"=="FR" echo L'analyse s'est termin‚e avec !result! r‚sultats trouv‚s … partir de !index! sites web index‚s en !seconds! secondes.
 echo:
@@ -3271,7 +3269,7 @@ exit
 
 :PROCESS_YOUTUBEDL
 call :CHECK_YOUTUBEDLPRIORITY
-title YouTube DL    ^|!youtube_dl!.exe !a!^|    ^|!o1!^|    ^|Priority: !YouTubeDLPriority:~1!^|
+title !debug!YouTube DL    ^|!youtube_dl!.exe !a!^|    ^|!o1!^|    ^|Priority: !YouTubeDLPriority:~1!^|
 echo !grey!
 echo [7C##############################################
 if "!Language!"=="EN" echo [7C#       !brightred!   !cyan!Welcome in YouTube DL   !brightred!!grey!        #
@@ -3319,7 +3317,7 @@ exit
 
 :PROCESS_NMAP
 call :CHECK_PORTPRIORITY
-title NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !PortPriority:~1!^|
+title !debug!NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !PortPriority:~1!^|
 >nul 2>&1 net start npcap
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d 64534 /f
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d 30 /f
@@ -3370,7 +3368,7 @@ echo [7C Une erreur s'est produite et n'a pas pu scanner.
 exit
 
 :PROCESS_PINGER
-title IP Pinger  ^|Pinging !x!^|
+title !debug!IP Pinger  ^|Pinging !x!^|
 :_PING
 cls
 echo !cyan!
@@ -3637,7 +3635,7 @@ exit /b
 
 :URL_DETECTOR
 for /f "delims=/" %%a in ("!x:*://=!") do set "x=%%a"
-title Looking up ^> !x!
+title !debug!Looking up ^> !x!
 set height=4
 for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192" ^| findstr /vc:"<?xml version="') do (
 set /a height+=1
