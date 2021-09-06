@@ -7,8 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-
-v5.8.3.4 - 05/09/2021
+v5.8.3.5 - 06/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
@@ -73,6 +72,7 @@ v5.8.3.4 - 05/09/2021
 + ADDED IP Denial of Services : https://xtremebooter.xyz/
 + ADDED IP Denial of Services : https://wannabe1337.xyz/stresser
 + ADDED IP Denial of Services : https://deltastress.com/
++ ADDED IP Loggers : https://blasze.com/
 + ADDED More Features Release Logs.
 + ADDED More Features Musics.
 + ADDED More Features Warez Wikis : http://machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html
@@ -116,7 +116,7 @@ v5.8.3.4 - 05/09/2021
 + UPDATED Torrenting : https://proxy-bay.net/
 + UPDATED Torrenting : https://unblockproject.monster/
 + UPDATED Torrenting : https://unblocksource.net/
-+ UPDATED Torrenting : https://unblockit.ch/
++ UPDATED Torrenting : https://unblockit.ws/
 + UPDATED Torrenting : qBittorrent v4.3.8
 + UPDATED Cracked Windows Apps : https://www.mrpcgamer.co/
 + UPDATED Cracked Windows Apps : https://agfy.co/
