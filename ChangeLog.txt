@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.3.5 - 06/09/2021
+v5.8.3.6 - 07/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
@@ -136,6 +136,8 @@ v5.8.3.5 - 06/09/2021
 + UPDATED Portable Apps : Process Hacker v3.0.4346
 + UPDATED Portable Apps : ISLC v1.0.2.5
 + UPDATED More Features Ebooks : https://ww2.bookys-ebooks.com/
++ UPDATED More Features Ebooks : https://www.readlightnovel.me/
+- REMOVED Direct Download Link [EN] : https://apps-pack.com/ (down)
 - REMOVED Direct Download Link [EN] : https://gdrivedl.com/ (down)
 - REMOVED Direct Download Link [FR] : https://www.ddl-best.net/ (down)
 - REMOVED Streaming [FR] : https://10flix.com/ (down)
