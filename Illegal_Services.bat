@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 5
-REM  Fileversion:  5. 8. 3. 5
+REM  Productversion:  5. 8. 3. 6
+REM  Fileversion:  5. 8. 3. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -48,7 +48,7 @@ call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
 exit
 )
 if /i "%~x0"==".exe" (set "IS_Process=%~nx0") else set "IS_Process=cmd.exe" & goto :LAUNCHER
-if "%~nx0"=="Illegal Services.exe" >nul move /y "%~nx0" "Illegal_Services.exe" && start Illegal_Services.exe "!version!" "!lastversion!" !debug! && exit
+if "%~nx0"=="Illegal Services.exe" >nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !debug!) && exit
 for /f %%a in ('tasklist /fo csv /fi "imagename eq %~nx0" ^| findstr /c:"%~nx0"') do set /a cn+=1
 pushd "!TMPF!"
 set batused=
@@ -64,19 +64,8 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 
 :LAUNCHER
 popd
-if defined debug if defined version if defined lastversion (
-echo  ฺฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
-echo  ณ Debug: This is a developer-only message for future improvement of the Illegal Services updater.
-echo  รฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
-echo  ณ Current Version: !version!
-echo  ณ Last Version: !lastversion!
-echo  ภฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤฤ
-echo.
-echo Press {ENTER} to continue...
->nul pause
-cls
-)
-set version=v5.8.3.5 - 06/09/2021
+for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
+set version=v5.8.3.6 - 07/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -115,7 +104,7 @@ if "!Language!"=="EN" <nul set /p=!sp!Searching for a new update ^>
 if "!Language!"=="FR" <nul set /p=!sp!Recherche d'une nouvelle mise … jour ^>
 call :CHECK_VOICEASSISTANT
 call :GET_VERSION
-if "%~1"=="!version!" if "%~2"=="!lastversion!" (
+if defined old_version if defined old_lastversion if "!old_version!"=="!version!" if "!old_lastversion!"=="!lastversion!" (
 echo  !red![FAILED: Wait till next build update.] . . .
 goto :CHECKERINTEGRITY
 )
@@ -832,8 +821,8 @@ call :SCALE 128 37
 title !debug!Direct Download Link (DDL) [EN]
 
 :CLEARDDLEN
-call :CLEAR 1 71
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.name/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1 70
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.name/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
 call :SCALE 128 37
@@ -842,30 +831,30 @@ echo [44Cอออออออออออออออออออออออออออออออออออออออ
 echo [43C// !red!Û!bgyellow!!black! DIRECT DOWNLOAD LINK (DDL) [EN] !red!Û!bgblack!!cyan! \\
 echo [6Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [6Cบ                                                                                                                  บ
-echo [6Cบ    !1!avxhm.is!cyan!                     ณ   !25!dl4all.org!cyan!           ณ   !49!x265.club!cyan!                       บ
-echo [6Cบ    !2!www.heroturko.net!cyan!            ณ   !26!warezomen.com!cyan!        ณ   !50!hevcbay.com!cyan!                     บ
-echo [6Cบ    !3!rmz.cr!cyan!                       ณ   !27!www.scnsrc.me!cyan!        ณ   !51!rarefilmm.com!cyan!                   บ
-echo [6Cบ    !4!softarchive.is!cyan!               ณ   !28!win7dl.org!cyan!           ณ   !52!1worldfree4u.trade!cyan!              บ
-echo [6Cบ    !5!www.downduck.com!cyan!             ณ   !29!www.ddlvalley.me!cyan!     ณ   !53!the-eye.eu!cyan!                      บ
-echo [6Cบ    !6!scnlog.me!cyan!                    ณ   !30!downtr.cc!cyan!            ณ   !54!jpddl.com !green!(animes)!cyan!              บ
-echo [6Cบ    !7!www.creaxy.com!cyan!               ณ   !31!releasehive.co!cyan!       ณ   !55!animeshare.cf !green!(animes)!cyan!          บ
-echo [6Cบ    !8!downturk.net!cyan!                 ณ   !32!www.kokodown.com!cyan!     ณ   !56!anidl.org !green!(animes)!cyan!              บ
-echo [6Cบ    !9!downarchive.org!cyan!              ณ   !33!rlstop.net!cyan!           ณ   !57!hi10anime.com !green!(animes)!cyan!          บ
-echo [6Cบ   !10!0dayhome.net!cyan!                 ณ   !34!uhdmv.org!cyan!            ณ   !58!animekayo.com !green!(animes)!cyan!          บ
-echo [6Cบ   !11!scene-rls.net!cyan!                ณ   !35!tfpdl.to!cyan!             ณ   !59!animekaizoku.com !green!(animes)!cyan!       บ
-echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!softddl.org!cyan!          ณ   !60!ssanime.ga !green!(animes)!cyan!             บ
-echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!2ddl.it!cyan!              ณ   !61!animetosho.org !green!(animes)!cyan!         บ
-echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!katzddl.net!cyan!          ณ   !62!cdromance.com !green!(roms)!cyan!            บ
-echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!warezbb.net!cyan!          ณ   !63!www.romnation.net !green!(roms)!cyan!        บ
-echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!www.300mbfilms.ws!cyan!    ณ   !64!vimm.net !green!(roms)!cyan!                 บ
-echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!snahp.it!cyan!             ณ   !65!nxmac.com !green!(MAC)!cyan!                 บ
-echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!downloadhub.name!cyan!     ณ   !66!macdrop.net !green!(MAC)!cyan!               บ
-echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!filmsofts.com!cyan!        ณ   !67!sheet-music.xyz !green!(audio)!cyan!         บ
-echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!cgpersia.com!cyan!         ณ   !68!audioz.download !green!(audio)!cyan!         บ
-echo [6Cบ   !21!apps-pack.com!cyan!                ณ   !45!rsload.net!cyan!           ณ   !69!audiobookbay.nl !green!(audiobooks)!cyan!    บ
-echo [6Cบ   !22!oneddl.org!cyan!                   ณ   !46!megaddl.co!cyan!           ณ   !70!www.gfxtra31.com !green!(GFX)!cyan!          บ
-echo [6Cบ   !23!www.rlslog.net!cyan!               ณ   !47!heroturko2.net!cyan!       ณ   !71!gfx-hub.cc !green!(GFX)!cyan!                บ
-echo [6Cบ   !24!freshwap.cc!cyan!                  ณ   !48!crazy4tv.com!cyan!         ณ                                          บ
+echo [6Cบ    !1!avxhm.is!cyan!                     ณ   !25!warezomen.com!cyan!        ณ   !49!hevcbay.com!cyan!                     บ
+echo [6Cบ    !2!www.heroturko.net!cyan!            ณ   !26!www.scnsrc.me!cyan!        ณ   !50!rarefilmm.com!cyan!                   บ
+echo [6Cบ    !3!rmz.cr!cyan!                       ณ   !27!win7dl.org!cyan!           ณ   !51!1worldfree4u.trade!cyan!              บ
+echo [6Cบ    !4!softarchive.is!cyan!               ณ   !28!www.ddlvalley.me!cyan!     ณ   !52!the-eye.eu!cyan!                      บ
+echo [6Cบ    !5!www.downduck.com!cyan!             ณ   !29!downtr.cc!cyan!            ณ   !53!jpddl.com !green!(animes)!cyan!              บ
+echo [6Cบ    !6!scnlog.me!cyan!                    ณ   !30!releasehive.co!cyan!       ณ   !54!animeshare.cf !green!(animes)!cyan!          บ
+echo [6Cบ    !7!www.creaxy.com!cyan!               ณ   !31!www.kokodown.com!cyan!     ณ   !55!anidl.org !green!(animes)!cyan!              บ
+echo [6Cบ    !8!downturk.net!cyan!                 ณ   !32!rlstop.net!cyan!           ณ   !56!hi10anime.com !green!(animes)!cyan!          บ
+echo [6Cบ    !9!downarchive.org!cyan!              ณ   !33!uhdmv.org!cyan!            ณ   !57!animekayo.com !green!(animes)!cyan!          บ
+echo [6Cบ   !10!0dayhome.net!cyan!                 ณ   !34!tfpdl.to!cyan!             ณ   !58!animekaizoku.com !green!(animes)!cyan!       บ
+echo [6Cบ   !11!scene-rls.net!cyan!                ณ   !35!softddl.org!cyan!          ณ   !59!ssanime.ga !green!(animes)!cyan!             บ
+echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!2ddl.it!cyan!              ณ   !60!animetosho.org !green!(animes)!cyan!         บ
+echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!katzddl.net!cyan!          ณ   !61!cdromance.com !green!(roms)!cyan!            บ
+echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!warezbb.net!cyan!          ณ   !62!www.romnation.net !green!(roms)!cyan!        บ
+echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!www.300mbfilms.ws!cyan!    ณ   !63!vimm.net !green!(roms)!cyan!                 บ
+echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!snahp.it!cyan!             ณ   !64!nxmac.com !green!(MAC)!cyan!                 บ
+echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!downloadhub.name!cyan!     ณ   !65!macdrop.net !green!(MAC)!cyan!               บ
+echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!filmsofts.com!cyan!        ณ   !66!sheet-music.xyz !green!(audio)!cyan!         บ
+echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!cgpersia.com!cyan!         ณ   !67!audioz.download !green!(audio)!cyan!         บ
+echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!rsload.net!cyan!           ณ   !68!audiobookbay.nl !green!(audiobooks)!cyan!    บ
+echo [6Cบ   !21!oneddl.org!cyan!                   ณ   !45!megaddl.co!cyan!           ณ   !69!www.gfxtra31.com !green!(GFX)!cyan!          บ
+echo [6Cบ   !22!www.rlslog.net!cyan!               ณ   !46!heroturko2.net!cyan!       ณ   !70!gfx-hub.cc !green!(GFX)!cyan!                บ
+echo [6Cบ   !23!freshwap.cc!cyan!                  ณ   !47!crazy4tv.com!cyan!         ณ                                          บ
+echo [6Cบ   !24!dl4all.org!cyan!                   ณ   !48!x265.club!cyan!            ณ                                          บ
 echo [6Cบ                                                                                                                  บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -2609,7 +2598,7 @@ call :ROSE Ebooks
 
 :CLEAREBOOKS
 call :CLEAR 1 77
-set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/levi/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.org/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
+set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/levi/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
 
 :CONTINUEEBOOKS
 call :SCALE 100 60
@@ -2652,7 +2641,7 @@ echo [7Cบ   !32!methodscans.com!cyan!                ณ   !63!www.mangatown.com!
 echo [7Cบ   !33!the-nonames.com!cyan!                ณ   !64!www.mangahome.com!cyan!               บ
 echo [7Cบ   !34!lynxscans.com!cyan!                  ณ   !65!manga47.net!cyan!                     บ
 echo [7Cบ   !35!skscans.com!cyan!                    ณ   !66!comix.top!cyan!                       บ
-echo [7Cบ   !36!zeroscans.com!cyan!                  ณ   !67!www.readlightnovel.org!cyan!          บ
+echo [7Cบ   !36!zeroscans.com!cyan!                  ณ   !67!www.readlightnovel.me!cyan!           บ
 echo [7Cบ   !37!reader.deathtollscans.net!cyan!      ณ   !68!reaperscans.com!cyan!                 บ
 echo [7Cบ   !38!reader.kireicake.com!cyan!           ณ   !69!reaperscans.fr !green!(FR)!cyan!             บ
 echo [7Cบ   !39!sensescans.com!cyan!                 ณ   !70!scantrad.net !green!(FR)!cyan!               บ
