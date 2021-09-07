@@ -61,7 +61,6 @@ release.movieparadise.org
 hdencode.org
 katzdownload.com
 rlsbb.ru
-apps-pack.com
 oneddl.org
 www.rlslog.net
 freshwap.cc
@@ -713,7 +712,7 @@ www.mangatown.com
 www.mangahome.com
 manga47.net
 comix.top
-www.readlightnovel.org
+www.readlightnovel.me
 reaperscans.com
 reaperscans.fr
 scantrad.net
