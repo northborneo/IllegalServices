@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.3.6 - 07/09/2021
+v5.8.3.7 - 08/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
@@ -96,16 +96,19 @@ v5.8.3.6 - 07/09/2021
 + UPDATED Direct Download Link [EN] : https://downloadhub.name/
 + UPDATED Direct Download Link [FR] : https://www.tirexo.work/
 + UPDATED Direct Download Link [FR] : https://free-telecharger.net/
++ UPDATED Direct Download Link [FR] : https://www.extreme-down.plus/home.html
 + UPDATED Direct Download Link [FR] : https://zone-telechargement.cam/
 + UPDATED Direct Download Link [FR] : https://www.wawacity.one/
 + UPDATED Streaming [EN] : https://losmovies.app/
 + UPDATED Streaming [EN] : https://watchseriess.net/
 + UPDATED Streaming [EN] : https://ww2.123movieshub.tc/
-+ UPDATED Streaming [EN] : https://ww0.0gomovies.fm/
++ UPDATED Streaming [EN] : https://0gomovies.so/
 + UPDATED Streaming [EN] : https://www2.kiss-anime.asia/
 + UPDATED Streaming [EN] : https://iptv.stream2watch.sx/
 + UPDATED Streaming [FR] : https://french-stream.re/
 + UPDATED Streaming [FR] : https://www.streaminz.me/
++ UPDATED Streaming [FR] : https://vostanimez.com/
++ UPDATED Streaming [FR] : https://wvvw.toonanime.tv/
 + UPDATED Streaming [FR] : https://animevostfr.tv/
 + UPDATED Streaming [FR] : https://animecomplet.me/
 + UPDATED Torrenting : https://www.torrentfunk.com/
@@ -137,11 +140,11 @@ v5.8.3.6 - 07/09/2021
 + UPDATED Portable Apps : ISLC v1.0.2.5
 + UPDATED More Features Ebooks : https://ww2.bookys-ebooks.com/
 + UPDATED More Features Ebooks : https://www.readlightnovel.me/
-- REMOVED Direct Download Link [EN] : https://apps-pack.com/ (down)
 - REMOVED Direct Download Link [EN] : https://gdrivedl.com/ (down)
 - REMOVED Direct Download Link [FR] : https://www.ddl-best.net/ (down)
 - REMOVED Streaming [FR] : https://10flix.com/ (down)
 - REMOVED Streaming [FR] : https://vostfrserie.ws/ (down)
+- REMOVED Streaming Applications : https://animeglare.xyz/ (down)
 - REMOVED Torrenting : https://freetorrent.tk/ (down)
 - REMOVED Torrenting : https://magnet4you.me/library.php (down)
 - REMOVED Torrenting : https://torrent4you.me/ (down)
