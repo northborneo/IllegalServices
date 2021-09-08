@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 6
-REM  Fileversion:  5. 8. 3. 6
+REM  Productversion:  5. 8. 3. 7
+REM  Fileversion:  5. 8. 3. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -65,7 +65,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.3.6 - 07/09/2021
+set version=v5.8.3.7 - 08/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -821,8 +821,8 @@ call :SCALE 128 37
 title !debug!Direct Download Link (DDL) [EN]
 
 :CLEARDDLEN
-call :CLEAR 1 70
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.name/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1 71
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.name/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
 call :SCALE 128 37
@@ -831,30 +831,30 @@ echo [44Cอออออออออออออออออออออออออออออออออออออออ
 echo [43C// !red!Û!bgyellow!!black! DIRECT DOWNLOAD LINK (DDL) [EN] !red!Û!bgblack!!cyan! \\
 echo [6Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [6Cบ                                                                                                                  บ
-echo [6Cบ    !1!avxhm.is!cyan!                     ณ   !25!warezomen.com!cyan!        ณ   !49!hevcbay.com!cyan!                     บ
-echo [6Cบ    !2!www.heroturko.net!cyan!            ณ   !26!www.scnsrc.me!cyan!        ณ   !50!rarefilmm.com!cyan!                   บ
-echo [6Cบ    !3!rmz.cr!cyan!                       ณ   !27!win7dl.org!cyan!           ณ   !51!1worldfree4u.trade!cyan!              บ
-echo [6Cบ    !4!softarchive.is!cyan!               ณ   !28!www.ddlvalley.me!cyan!     ณ   !52!the-eye.eu!cyan!                      บ
-echo [6Cบ    !5!www.downduck.com!cyan!             ณ   !29!downtr.cc!cyan!            ณ   !53!jpddl.com !green!(animes)!cyan!              บ
-echo [6Cบ    !6!scnlog.me!cyan!                    ณ   !30!releasehive.co!cyan!       ณ   !54!animeshare.cf !green!(animes)!cyan!          บ
-echo [6Cบ    !7!www.creaxy.com!cyan!               ณ   !31!www.kokodown.com!cyan!     ณ   !55!anidl.org !green!(animes)!cyan!              บ
-echo [6Cบ    !8!downturk.net!cyan!                 ณ   !32!rlstop.net!cyan!           ณ   !56!hi10anime.com !green!(animes)!cyan!          บ
-echo [6Cบ    !9!downarchive.org!cyan!              ณ   !33!uhdmv.org!cyan!            ณ   !57!animekayo.com !green!(animes)!cyan!          บ
-echo [6Cบ   !10!0dayhome.net!cyan!                 ณ   !34!tfpdl.to!cyan!             ณ   !58!animekaizoku.com !green!(animes)!cyan!       บ
-echo [6Cบ   !11!scene-rls.net!cyan!                ณ   !35!softddl.org!cyan!          ณ   !59!ssanime.ga !green!(animes)!cyan!             บ
-echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!2ddl.it!cyan!              ณ   !60!animetosho.org !green!(animes)!cyan!         บ
-echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!katzddl.net!cyan!          ณ   !61!cdromance.com !green!(roms)!cyan!            บ
-echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!warezbb.net!cyan!          ณ   !62!www.romnation.net !green!(roms)!cyan!        บ
-echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!www.300mbfilms.ws!cyan!    ณ   !63!vimm.net !green!(roms)!cyan!                 บ
-echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!snahp.it!cyan!             ณ   !64!nxmac.com !green!(MAC)!cyan!                 บ
-echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!downloadhub.name!cyan!     ณ   !65!macdrop.net !green!(MAC)!cyan!               บ
-echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!filmsofts.com!cyan!        ณ   !66!sheet-music.xyz !green!(audio)!cyan!         บ
-echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!cgpersia.com!cyan!         ณ   !67!audioz.download !green!(audio)!cyan!         บ
-echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!rsload.net!cyan!           ณ   !68!audiobookbay.nl !green!(audiobooks)!cyan!    บ
-echo [6Cบ   !21!oneddl.org!cyan!                   ณ   !45!megaddl.co!cyan!           ณ   !69!www.gfxtra31.com !green!(GFX)!cyan!          บ
-echo [6Cบ   !22!www.rlslog.net!cyan!               ณ   !46!heroturko2.net!cyan!       ณ   !70!gfx-hub.cc !green!(GFX)!cyan!                บ
-echo [6Cบ   !23!freshwap.cc!cyan!                  ณ   !47!crazy4tv.com!cyan!         ณ                                          บ
-echo [6Cบ   !24!dl4all.org!cyan!                   ณ   !48!x265.club!cyan!            ณ                                          บ
+echo [6Cบ    !1!avxhm.is!cyan!                     ณ   !25!dl4all.org!cyan!           ณ   !49!x265.club!cyan!                       บ
+echo [6Cบ    !2!www.heroturko.net!cyan!            ณ   !26!warezomen.com!cyan!        ณ   !50!hevcbay.com!cyan!                     บ
+echo [6Cบ    !3!rmz.cr!cyan!                       ณ   !27!www.scnsrc.me!cyan!        ณ   !51!rarefilmm.com!cyan!                   บ
+echo [6Cบ    !4!softarchive.is!cyan!               ณ   !28!win7dl.org!cyan!           ณ   !52!1worldfree4u.trade!cyan!              บ
+echo [6Cบ    !5!www.downduck.com!cyan!             ณ   !29!www.ddlvalley.me!cyan!     ณ   !53!the-eye.eu!cyan!                      บ
+echo [6Cบ    !6!scnlog.me!cyan!                    ณ   !30!downtr.cc!cyan!            ณ   !54!jpddl.com !green!(animes)!cyan!              บ
+echo [6Cบ    !7!www.creaxy.com!cyan!               ณ   !31!releasehive.co!cyan!       ณ   !55!animeshare.cf !green!(animes)!cyan!          บ
+echo [6Cบ    !8!downturk.net!cyan!                 ณ   !32!www.kokodown.com!cyan!     ณ   !56!anidl.org !green!(animes)!cyan!              บ
+echo [6Cบ    !9!downarchive.org!cyan!              ณ   !33!rlstop.net!cyan!           ณ   !57!hi10anime.com !green!(animes)!cyan!          บ
+echo [6Cบ   !10!0dayhome.net!cyan!                 ณ   !34!uhdmv.org!cyan!            ณ   !58!animekayo.com !green!(animes)!cyan!          บ
+echo [6Cบ   !11!scene-rls.net!cyan!                ณ   !35!tfpdl.to!cyan!             ณ   !59!animekaizoku.com !green!(animes)!cyan!       บ
+echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!softddl.org!cyan!          ณ   !60!ssanime.ga !green!(animes)!cyan!             บ
+echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!2ddl.it!cyan!              ณ   !61!animetosho.org !green!(animes)!cyan!         บ
+echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!katzddl.net!cyan!          ณ   !62!cdromance.com !green!(roms)!cyan!            บ
+echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!warezbb.net!cyan!          ณ   !63!www.romnation.net !green!(roms)!cyan!        บ
+echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!www.300mbfilms.ws!cyan!    ณ   !64!vimm.net !green!(roms)!cyan!                 บ
+echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!snahp.it!cyan!             ณ   !65!nxmac.com !green!(MAC)!cyan!                 บ
+echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!downloadhub.name!cyan!     ณ   !66!macdrop.net !green!(MAC)!cyan!               บ
+echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!filmsofts.com!cyan!        ณ   !67!sheet-music.xyz !green!(audio)!cyan!         บ
+echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!cgpersia.com!cyan!         ณ   !68!audioz.download !green!(audio)!cyan!         บ
+echo [6Cบ   !21!oneddl.org!cyan!                   ณ   !45!rsload.net!cyan!           ณ   !69!audiobookbay.nl !green!(audiobooks)!cyan!    บ
+echo [6Cบ   !22!apps-pack.com!cyan!                ณ   !46!megaddl.co!cyan!           ณ   !70!www.gfxtra31.com !green!(GFX)!cyan!          บ
+echo [6Cบ   !23!www.rlslog.net!cyan!               ณ   !47!heroturko2.net!cyan!       ณ   !71!gfx-hub.cc !green!(GFX)!cyan!                บ
+echo [6Cบ   !24!freshwap.cc!cyan!                  ณ   !48!crazy4tv.com!cyan!         ณ                                          บ
 echo [6Cบ                                                                                                                  บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -877,7 +877,7 @@ title !debug!Direct Download Link (DDL) [FR]
 
 :CLEARDDLFR
 call :CLEAR 1 11
-set db=www.tirexo.work/ free-telecharger.net/ libertyvf.bz/ www.extreme-down.live/home.html zone-telechargement.cam/ www.wawacity.one/ ww1.jeddl.com/ www.zone-mania.com/ www.zone-down.com/ nandesuka.moe/ 9docu.org/
+set db=www.tirexo.work/ free-telecharger.net/ libertyvf.bz/ www.extreme-down.plus/home.html zone-telechargement.cam/ www.wawacity.one/ ww1.jeddl.com/ www.zone-mania.com/ www.zone-down.com/ nandesuka.moe/ 9docu.org/
 
 :CONTINUEDDLFR
 call :SCALE 71 24
@@ -889,7 +889,7 @@ echo [9Cบ                                                  บ
 echo [9Cบ    !1!www.tirexo.work!cyan!                         บ
 echo [9Cบ    !2!free-telecharger.net!cyan!                    บ
 echo [9Cบ    !3!libertyvf.bz!cyan!                            บ
-echo [9Cบ    !4!www.extreme-down.live!cyan!                   บ
+echo [9Cบ    !4!www.extreme-down.plus!cyan!                   บ
 echo [9Cบ    !5!zone-telechargement.cam!cyan!                 บ
 echo [9Cบ    !6!www.wawacity.one!cyan!                        บ
 echo [9Cบ    !7!ww1.jeddl.com!cyan!                           บ
@@ -933,7 +933,7 @@ title !debug!Streaming [EN]
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 58
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ ww0.0gomovies.fm/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ gogoanime.vc/ anime8.ru/ animeowl.net/ animefrenzy.org/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ gogoanime.vc/ anime8.ru/ animeowl.net/ animefrenzy.org/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 51
@@ -952,7 +952,7 @@ echo [8Cบ    !6!www4.yesmovies.so!cyan!              ณ   !21!vumoo.to!cyan!    
 echo [8Cบ    !7!5movies.pw!cyan!                     ณ   !22!hulu.sc!cyan!                        บ
 echo [8Cบ    !8!gomovies-online.cam!cyan!            ณ   !23!watchtvepisodes.me!cyan!             บ
 echo [8Cบ    !9!myflixertv.to!cyan!                  ณ   !24!ww2.123movieshub.tc!cyan!            บ
-echo [8Cบ   !10!yesmovies.ag!cyan!                   ณ   !25!ww0.0gomovies.fm!cyan!               บ
+echo [8Cบ   !10!yesmovies.ag!cyan!                   ณ   !25!0gomovies.so!cyan!                   บ
 echo [8Cบ   !11!www11.123movieshub.one!cyan!         ณ   !26!soap2day.to!cyan!                    บ
 echo [8Cบ   !12!watch-serieshd.cc!cyan!              ณ   !27!www1.movie4u.live!cyan!              บ
 echo [8Cบ   !13!watchseriess.net!cyan!               ณ   !28!cinehub.wtf!cyan!                    บ
@@ -1002,8 +1002,8 @@ call :SCALE 101 46
 title !debug!Streaming [FR]
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 46
-set db=www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ www.illimitestreaming.co/ www.streaminz.me/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimes.tv/ toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ antennesport.tv/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+call :CLEAR 1 45
+set db=www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ www.illimitestreaming.co/ www.streaminz.me/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ antennesport.tv/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
 call :SCALE 101 46
@@ -1013,7 +1013,7 @@ echo [39C// !red!Û!bgyellow!!black! STREAMING [FR] !red!Û!bgblack!!cyan! \\
 echo [8Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û FILMS Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ    !1!www6.filmstreaming.to!cyan!          ณ   !10!wwv.streamfilm.cc!cyan!
+echo [8Cบ    !1!www6.filmstreaming.to!cyan!          ณ   !10!wwv.streamfilm.cc!cyan!              บ
 echo [8Cบ    !2!french-stream.re!cyan!               ณ   !11!www.illimitestreaming.co!cyan!       บ
 echo [8Cบ    !3!wvw.hds.lc!cyan!                     ณ   !12!www.streaminz.me!cyan!               บ
 echo [8Cบ    !4!hdss.papystreaming.net!cyan!         ณ   !13!www.cinezzz.org!cyan!                บ
@@ -1025,7 +1025,7 @@ echo [8Cบ    !9!vfstreamiz.com!cyan!                 ณ                         
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ANIMES Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !18!voiranime.com!cyan!                  ณ   !29!toonanime.tv!cyan!                   บ
+echo [8Cบ   !18!voiranime.com!cyan!                  ณ   !29!wvvw.toonanime.tv!cyan!              บ
 echo [8Cบ   !19!neko-sama.fr!cyan!                   ณ   !30!wvw.jetanimes.com!cyan!              บ
 echo [8Cบ   !20!french-manga.net!cyan!               ณ   !31!vostfree.tv!cyan!                    บ
 echo [8Cบ   !21!www.adkami.com!cyan!                 ณ   !32!www.universanime.co!cyan!            บ
@@ -1035,7 +1035,7 @@ echo [8Cบ   !24!streaming-integrale.com!cyan!        ณ   !35!animevostfr.tv!cya
 echo [8Cบ   !25!gum-gum-streaming.com!cyan!          ณ   !36!animecomplet.me!cyan!                บ
 echo [8Cบ   !26!otakufr.co!cyan!                     ณ   !37!www.anime-ultime.net!cyan!           บ
 echo [8Cบ   !27!www.mavanimes.co!cyan!               ณ   !38!v5.anime-ultime.net!cyan!            บ
-echo [8Cบ   !28!vostanimes.tv!cyan!                  ณ                                         บ
+echo [8Cบ   !28!vostanimez.com!cyan!                 ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
@@ -1063,16 +1063,16 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGFR
 
 :STREAMINGAPPS
-call :SCALE 109 36
+call :SCALE 109 35
 title !debug!Streaming Applications
 call :ROSE "Streaming Applications"
 
 :CLEARSTREAMINGAPPS
-call :CLEAR 1 16
-set db=popcorn-time.tw/ www.stremio.com/ cinemaapk.com/ www.cinehub.app/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ www.beetvapk.me/ filmplus.app/ www.novatvapk.com/ kisscartoon.info/kisscartoon-official-android-app/ animixplay.to/android/app animeglare.xyz/ tvmob.net/ www.livenettv.bz/
+call :CLEAR 1 15
+set db=popcorn-time.tw/ www.stremio.com/ cinemaapk.com/ www.cinehub.app/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ www.beetvapk.me/ filmplus.app/ www.novatvapk.com/ kisscartoon.info/kisscartoon-official-android-app/ animixplay.to/android/app tvmob.net/ www.livenettv.bz/
 
 :CONTINUESTREAMINGAPPS
-call :SCALE 109 36
+call :SCALE 109 35
 echo !cyan!
 echo [40Cออออออออออออออออออออออออออออออ
 echo [39C// !red!Û!bgyellow!!black! STREAMING APPLICATIONS !red!Û!bgblack!!cyan! \\
@@ -1088,7 +1088,7 @@ echo [6Cบ                                               บ                      
 echo [6Cบ        !1!popcorn-time.tw!cyan!                  บ          !1!popcorn-time.tw!cyan!                บ
 echo [6Cบ        !2!www.stremio.com!cyan!                  บ          !2!www.stremio.com!cyan!                บ
 echo [6Cบ        !3!cinemaapk.com!cyan!                    บ          !7!mediaboxhd.net!cyan!                 บ
-echo [6Cบ        !4!www.cinehub.app!cyan!                  บ         !11!animeglare.xyz !green!(animes)!cyan!        บ
+echo [6Cบ        !4!www.cinehub.app!cyan!                  บ                                               บ
 echo [6Cบ        !5!teatv.net!cyan!                        บ                                               บ
 echo [6Cบ        !6!www.morpheustvbox.com!cyan!            บ                                               บ
 echo [6Cบ        !7!mediaboxhd.net!cyan!                   บ                                               บ
@@ -1098,9 +1098,8 @@ echo [6Cบ       !10!filmplus.app!cyan!                     บ                   
 echo [6Cบ       !11!www.novatvapk.com!cyan!                บ                                               บ
 echo [6Cบ       !12!kisscartoon.info !green!(animes)!cyan!        บ                                               บ
 echo [6Cบ       !13!animixplay.to !green!(animes)!cyan!           บ                                               บ
-echo [6Cบ       !14!animeglare.xyz !green!(animes)!cyan!          บ                                               บ
-echo [6Cบ       !15!tvmob.net !green!(television)!cyan!           บ                                               บ
-echo [6Cบ       !16!www.livenettv.bz !green!(television)!cyan!    บ                                               บ
+echo [6Cบ       !14!tvmob.net !green!(television)!cyan!           บ                                               บ
+echo [6Cบ       !15!www.livenettv.bz !green!(television)!cyan!    บ                                               บ
 echo [6Cบ                                               บ                                               บ
 echo [6Cศอออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
