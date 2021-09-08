@@ -61,6 +61,7 @@ release.movieparadise.org
 hdencode.org
 katzdownload.com
 rlsbb.ru
+apps-pack.com
 oneddl.org
 www.rlslog.net
 freshwap.cc
@@ -115,7 +116,7 @@ gfx-hub.cc
 www.tirexo.work
 free-telecharger.net
 libertyvf.bz
-www.extreme-down.live
+www.extreme-down.plus
 zone-telechargement.cam
 www.wawacity.one
 ww1.jeddl.com
@@ -148,7 +149,7 @@ vumoo.to
 hulu.sc
 watchtvepisodes.me
 ww2.123movieshub.tc
-ww0.0gomovies.fm
+0gomovies.so
 soap2day.to
 www1.movie4u.live
 cinehub.wtf
@@ -208,8 +209,8 @@ streaming-integrale.com
 gum-gum-streaming.com
 otakufr.co
 www.mavanimes.co
-vostanimes.tv
-toonanime.tv
+vostanimez.com
+wvvw.toonanime.tv
 wvw.jetanimes.com
 vostfree.tv
 www.universanime.co
@@ -238,7 +239,6 @@ www.vivatv.io
 www.beetvapk.me
 filmplus.app
 www.novatvapk.com
-animeglare.xyz
 tvmob.net
 www.livenettv.bz
 ;;TORRENTING
