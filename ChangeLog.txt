@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.3.7 - 08/09/2021
+v5.8.3.8 - 09/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
@@ -45,6 +45,8 @@ v5.8.3.7 - 08/09/2021
 + ADDED Direct Download Link [EN] : https://sheet-music.xyz/
 + ADDED Direct Download Link [EN] : https://www.gfxtra31.com/
 + ADDED Direct Download Link [FR] : https://www.zone-down.com/
++ ADDED Streaming [EN] : https://animeow.me/
++ ADDED Streaming [EN] : https://arrayanime.com/
 + ADDED Streaming [FR] : https://www.cinezzz.org/
 + ADDED Streaming [FR] : https://daijoubu.si/
 + ADDED Torrenting : https://concen.org/
@@ -67,12 +69,19 @@ v5.8.3.7 - 08/09/2021
 + ADDED Cracked Windows apps : https://keygenninja.net/
 + ADDED Cracked Windows apps : https://fileash.com/
 + ADDED Useful Websites : https://xresolver.com/
++ ADDED Useful Websites : https://www.skypeipresolver.net/ (thanks @blacktario#9999)
 + ADDED IP Denial of Services : https://royalstresser.com/
 + ADDED IP Denial of Services : https://stresser.zone/
 + ADDED IP Denial of Services : https://xtremebooter.xyz/
 + ADDED IP Denial of Services : https://wannabe1337.xyz/stresser
 + ADDED IP Denial of Services : https://deltastress.com/
 + ADDED IP Loggers : https://blasze.com/
++ ADDED Doxing : https://instantusername.com/#/
++ ADDED Doxing : https://analyzeid.com/username/
++ ADDED Doxing : https://namechk.com/ (thanks @blacktario#9999)
++ ADDED Doxing : https://checkuser.org/
++ ADDED Doxing : https://www.namecheckr.com/ (thanks @blacktario#9999)
++ ADDED Doxing : https://usersearch.org/index.php (thanks @blacktario#9999)
 + ADDED More Features Release Logs.
 + ADDED More Features Musics.
 + ADDED More Features Warez Wikis : http://machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html
@@ -153,7 +162,6 @@ v5.8.3.7 - 08/09/2021
 - REMOVED Useful Websites : https://onlynudes.net/ (No NSFW in IS.)
 - REMOVED IP Denial of Services : https://udp.so/ (down)
 - REMOVED IP Denial of Services : https://booter.sx/ (not free anymore)
-- REMOVED Doxing Image Search : https://pic.sogou.com/ (down)
 - REMOVED More Features Forum Websites : https://batch.xoo.it/index.php (Has nothing to do near or far with warez content or Illegal Services.)
 
 v5.8.0.0 - 21/07/2021
@@ -692,10 +700,10 @@ v5.1.0.0 - 18/02/2021
 + ADDED More Features Forum Websites : https://cracked.to/ (thanks @Trident Security)
 + ADDED IP Denial of Services : https://asylumstresser.to/
 + ADDED IP Port Scanning : Process priority setting.
-+ ADDED Doxing Image Search : https://iqdb.org/
-+ ADDED Doxing Image Search : https://saucenao.com/
-+ ADDED Doxing Image Search : https://trace.moe/
-+ ADDED Doxing Image Search : https://ascii2d.net/
++ ADDED Doxing : https://iqdb.org/
++ ADDED Doxing : https://saucenao.com/
++ ADDED Doxing : https://trace.moe/
++ ADDED Doxing : https://ascii2d.net/
 + ADDED Windows and Office Cracks : https://rg-adguard.net/
 + ADDED Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
 + ADDED More Features : Download subtitles.
@@ -859,7 +867,7 @@ v4.1.0.0 - 09/12/2020
 + ADDED Cracked Windows apps : https://www.gamestorrents.nu/
 + ADDED Useful Websites : https://wannabe1337.xyz/
 + ADDED Useful Websites : https://mostwantedhf.info/
-+ ADDED Doxing Metaseach Engine : https://www.infospace.com/
++ ADDED Doxing : https://www.infospace.com/
 + ADDED IP Denial of Services : https://webstress.io/
 + ADDED Settings : Developer Options. (Only available for Illegal Services developers) (thank you so much @anic17#1337 for the suggestion and the big help)
 + ADDED Settings : Developer Options : Extract IS source code. (a thank to @anic17#1337 for the suggestion)
@@ -872,8 +880,8 @@ v4.1.0.0 - 09/12/2020
 + UPDATED HELP.
 - REMOVED IS Source : Settings.ini Advertisements.
 - REMOVED Torrenting : https://torrentz2.is/ (down)
-- REMOVED Doxing Metaseach Engine : https://www.dogpile.com/ (clone of https://www.infospace.com/)
-- REMOVED Doxing Metaseach Engine : https://www.metacrawler.com/ (clone of https://www.infospace.com/)
+- REMOVED Doxing : https://www.dogpile.com/ (clone of https://www.infospace.com/)
+- REMOVED Doxing : https://www.metacrawler.com/ (clone of https://www.infospace.com/)
 - REMOVED IP Denial of Services : https://instant-stresser.com/ (down)
 - REMOVED IP Denial of Services : https://stresslab.io/ (down)
 
@@ -1048,7 +1056,7 @@ v2.9.0.0 - 17/10/2020
 + ADDED Direct Download Link [EN] : https://anidl.org/
 + ADDED Direct Download Link [EN] : https://tb.rg-adguard.net/
 + ADDED Direct Download Link [FR] : https://www.wawacity.vip/
-+ ADDED Doxing Image Search : https://pimeyes.com/
++ ADDED Doxing : https://pimeyes.com/
 + ADDED IP Denial of Services : https://litestress.com/
 + ADDED IP Denial of Services : https://str3ssed.co/
 + ADDED IP Denial of Services : https://thunderstresser.me/
@@ -1351,9 +1359,9 @@ v2.0.0.0 - 04/08/2020
 + ADDED Windows : https://fileriver.net/
 + ADDED IP Denial of Services : https://anonboot.com/
 + ADDED Short URL's : https://tiny.cc/
-+ ADDED Doxing Image Research : https://www.pic2map.com/
-+ ADDED Doxing Image Research : https://onlineexifviewer.com/
-+ ADDED Doxing Image Research : https://www.metadata2go.com/
++ ADDED Doxing : https://www.pic2map.com/
++ ADDED Doxing : https://onlineexifviewer.com/
++ ADDED Doxing : https://www.metadata2go.com/
 + ADDED Doxing : https://www.startpage.com/do/advanced-search
 - REMOVED Torrenting :  https://www.zetorrents.io/ (old clone of OXTORRENT)
 - REMOVED "EXIT". (Not useful since you already can exit with Windows)
@@ -1367,7 +1375,7 @@ v2.0.0.0 - 04/08/2020
 - REMOVED "cecho.exe" from IS Source. (Not needed anymore since the new improved code)
 - REMOVED "sfk.exe" from IS Source. (Not needed anymore since the new improved code)
 - REMOVED all "menu_.py" files from IS Source. (Not needed anymore since the new improved code)
-- REMOVED Doxing Image Research : http://metapicz.com/ (too much of telemetry)
+- REMOVED Doxing : http://metapicz.com/ (too much of telemetry)
 - REMOVED Streaming : https://www.serie-streaming.la/ (scam)
 - REMOVED Streaming : https://wwv.papystreaming.is/ (scam)
 - REMOVED Streaming : https://illimitestreaming.tv/ (scam)
@@ -1392,16 +1400,16 @@ v1.9.0.0 - 22/07/2020
 + ADDED Short URL's : https://www.shorturl.at/
 + ADDED Short URL's : https://kutt.it/
 + ADDED Doxing in Main Menu.
-+ ADDED Doxing Image Search : https://images.google.com/
-+ ADDED Doxing Image Search : https://www.bing.com/?scope=images
-+ ADDED Doxing Image Search : https://yandex.com/images/
-+ ADDED Doxing Image Search : https://image.baidu.com/
-+ ADDED Doxing Image Search : https://pic.sogou.com/
-+ ADDED Doxing Image Research : https://metapicz.com/
-+ ADDED Doxing Advanced Seach Engine : https://www.google.com/advanced_search
-+ ADDED Doxing Usernames : Dox Tool V2.exe
-+ ADDED Doxing Usernames : https://checkusernames.com/
-+ ADDED Doxing Usernames : https://knowem.com/
++ ADDED Doxing : https://images.google.com/
++ ADDED Doxing : https://www.bing.com/?scope=images
++ ADDED Doxing : https://yandex.com/images/
++ ADDED Doxing : https://image.baidu.com/
++ ADDED Doxing : https://pic.sogou.com/
++ ADDED Doxing : https://metapicz.com/
++ ADDED Doxing : https://www.google.com/advanced_search
++ ADDED Doxing : Dox Tool V2.exe
++ ADDED Doxing : https://checkusernames.com/
++ ADDED Doxing : https://knowem.com/
 
 v1.8.0.0 - 21/07/2020
 - IMPROVED How websites and applications opens.
