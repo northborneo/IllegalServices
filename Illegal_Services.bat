@@ -327,14 +327,14 @@ call :MSGBOX 1 "!t! v4.0" 69696 "Ms.CatFire"
 if "!x!"=="18" (
 if "!Language!"=="EN" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
+echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@blacktario - Added 4 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
 echo Style=69696
 echo Title="All other contributors:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 if "!Language!"=="FR" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
+echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@blacktario - A ajout้ 4 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
 echo Style=69696
 echo Title="Toutes les autres personnes qui m'ont aid้"
 echo Response=MsgBox^(Msg,Style,Title^)
@@ -928,15 +928,15 @@ call :ROSE Streaming
 for %%a in (EN FR) do if "!Language!"=="%%a" goto :STREAMING%%a
 
 :STREAMINGEN
-call :SCALE 101 51
+call :SCALE 101 52
 title !debug!Streaming [EN]
 
 :CLEARSTREAMINGEN
-call :CLEAR 1 58
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ gogoanime.vc/ anime8.ru/ animeowl.net/ animefrenzy.org/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+call :CLEAR 1 60
+set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
-call :SCALE 101 51
+call :SCALE 101 52
 echo !cyan!
 echo [40Cออออออออออออออออออออออ
 echo [39C// !red!Û!bgyellow!!black! STREAMING [EN] !red!Û!bgblack!!cyan! \\
@@ -961,26 +961,27 @@ echo [8Cบ   !15!fmovies.to!cyan!                     ณ   !30!allmoviesforyou.co
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ANIMES Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !31!kisscartoon.info!cyan!               ณ   !41!animixplay.to!cyan!                  บ
-echo [8Cบ   !32!9anime.to!cyan!                      ณ   !42!www2.kickassanime.ro!cyan!           บ
-echo [8Cบ   !33!animesuge.io!cyan!                   ณ   !43!animepahe.com!cyan!                  บ
-echo [8Cบ   !34!animeheaven.pro!cyan!                ณ   !44!ww1.animesimple.com!cyan!            บ
-echo [8Cบ   !35!gogoanime.vc!cyan!                   ณ   !45!zoro.to!cyan!                        บ
-echo [8Cบ   !36!anime8.ru!cyan!                      ณ   !46!www1.animeultima.to!cyan!            บ
-echo [8Cบ   !37!animeowl.net!cyan!                   ณ   !47!animedao.to!cyan!                    บ
-echo [8Cบ   !38!animefrenzy.org!cyan!                ณ   !48!kissanimefree.to!cyan!               บ
-echo [8Cบ   !39!www2.kiss-anime.asia!cyan!           ณ   !49!www1.7anime.io!cyan!                 บ
-echo [8Cบ   !40!animevibe.wtf!cyan!                  ณ   !50!twist.moe!cyan!                      บ
+echo [8Cบ   !31!kisscartoon.info!cyan!               ณ   !42!animevibe.wtf!cyan!                  บ
+echo [8Cบ   !32!9anime.to!cyan!                      ณ   !43!animixplay.to!cyan!                  บ
+echo [8Cบ   !33!animesuge.io!cyan!                   ณ   !44!www2.kickassanime.ro!cyan!           บ
+echo [8Cบ   !34!animeheaven.pro!cyan!                ณ   !45!animepahe.com!cyan!                  บ
+echo [8Cบ   !35!animeowl.net!cyan!                   ณ   !46!ww1.animesimple.com!cyan!            บ
+echo [8Cบ   !36!animeow.me!cyan!                     ณ   !47!zoro.to!cyan!                        บ
+echo [8Cบ   !37!arrayanime.com!cyan!                 ณ   !48!www1.animeultima.to!cyan!            บ
+echo [8Cบ   !38!gogoanime.vc!cyan!                   ณ   !49!animedao.to!cyan!                    บ
+echo [8Cบ   !39!animefrenzy.org!cyan!                ณ   !50!kissanimefree.to!cyan!               บ
+echo [8Cบ   !40!anime8.ru!cyan!                      ณ   !51!www1.7anime.io!cyan!                 บ
+echo [8Cบ   !41!www2.kiss-anime.asia!cyan!           ณ   !52!twist.moe!cyan!                      บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !51!runnel.ir!cyan!                      ณ   !55!iptv.stream2watch.sx !green!(sport)!cyan!   บ
-echo [8Cบ   !52!time4tv.stream!cyan!                 ณ   !56!sportplus.live !green!(sport)!cyan!         บ
-echo [8Cบ   !53!123tv.live!cyan!                     ณ   !57!sportsbay.org !green!(sport)!cyan!          บ
-echo [8Cบ   !54!livetv.sx !green!(sport)!cyan!              ณ   !58!thehomesport.com !green!(sport)!cyan!       บ
+echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!iptv.stream2watch.sx !green!(sport)!cyan!   บ
+echo [8Cบ   !54!time4tv.stream!cyan!                 ณ   !58!sportplus.live !green!(sport)!cyan!         บ
+echo [8Cบ   !55!123tv.live!cyan!                     ณ   !59!sportsbay.org !green!(sport)!cyan!          บ
+echo [8Cบ   !56!livetv.sx !green!(sport)!cyan!              ณ   !60!thehomesport.com !green!(sport)!cyan!       บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-call :DRAW_CENTER "!yellow!59!cyan!  >  !white!Streaming Applications!cyan!" 20
+call :DRAW_CENTER "!yellow!61!cyan!  >  !white!Streaming Applications!cyan!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -989,7 +990,7 @@ call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGEN
-if "!x!"=="59" (set la=EN) & goto :STREAMINGAPPS
+if "!x!"=="61" (set la=EN) & goto :STREAMINGAPPS
 call :CHOOSE fr && goto :STREAMINGFR
 call :CHOOSE search && (call :IS_SEARCH ef3978005ffa01b49 & goto :CONTINUESTREAMINGEN)
 call :CHOOSE back && goto :MAINMENU
@@ -1659,8 +1660,8 @@ title !debug!Useful Websites
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-call :CLEAR 1 52
-set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ doxbin.org/ leak.sx/ dehashed.com/ leak-lookup.com/search/ webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ courvix.com/ sshdropbear.net/ freevpn.me/ www.vpnbook.com/ cloudssh.net/ www.freeopenvpn.org/ free-proxy-list.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ www.journaldupirate.net/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ onehack.us/ www.torproject.org/
+call :CLEAR 1 53
+set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ doxbin.org/ leak.sx/ dehashed.com/ leak-lookup.com/search/ webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ courvix.com/ sshdropbear.net/ freevpn.me/ www.vpnbook.com/ cloudssh.net/ www.freeopenvpn.org/ free-proxy-list.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ www.journaldupirate.net/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ onehack.us/ www.torproject.org/
 
 :CONTINUEUSEFULWEBSITES
 call :SCALE 139 44
@@ -1680,26 +1681,26 @@ echo [8Cบ                                      บ                               
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8CฬออออþÛ!bgyellow!!red!Û Free VPN's or Proxy's Û!bgblack!!cyan!ÛþอออออฮออออออออออออþÛ!bgyellow!!red!Û Mails/SMS Û!bgblack!!cyan!ÛþอออออออออออออฮออออออออþÛ!bgyellow!!red!Û Web Resolvers Û!bgblack!!cyan!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8Cบ   !19!protonvpn.com!cyan!               บ   !27!protonmail.com!cyan!                  บ    !35!webresolver.nl!cyan!              บ
+echo [8Cบ   !19!protonvpn.com!cyan!               บ   !27!protonmail.com!cyan!                  บ    !35!webresolver.nl!cyan!            บ
 echo [8Cบ   !20!courvix.com!cyan!                 บ   !28!www.startmail.com!cyan!               บ    !36!www.vedbex.com!cyan!            บ
-echo [8Cบ   !21!sshdropbear.net!cyan!             บ   !29!temp-mail.org!cyan!                   บ    !37!wannabe1337.xyz!cyan!            บ
-echo [8Cบ   !22!freevpn.me!cyan!                  บ   !30!dropmail.me!cyan!                     บ    !38!mostwantedhf.info!cyan!
+echo [8Cบ   !21!sshdropbear.net!cyan!             บ   !29!temp-mail.org!cyan!                   บ    !37!wannabe1337.xyz!cyan!           บ
+echo [8Cบ   !22!freevpn.me!cyan!                  บ   !30!dropmail.me!cyan!                     บ    !38!mostwantedhf.info!cyan!         บ
 echo [8Cบ   !23!www.vpnbook.com!cyan!             บ   !31!yopmail.com!cyan!                     บ    !39!shadowcrypt.net!cyan!           บ
 echo [8Cบ   !24!cloudssh.net!cyan!                บ   !32!generator.email!cyan!                 บ    !40!xresolver.com!cyan!             บ
-echo [8Cบ   !25!www.freeopenvpn.org!cyan!         บ   !33!temp-sms.org!cyan!                    บ                                     บ
+echo [8Cบ   !25!www.freeopenvpn.org!cyan!         บ   !33!temp-sms.org!cyan!                    บ    !41!www.skypeipresolver.net!cyan!   บ
 echo [8Cบ   !26!free-proxy-list.net!cyan!         บ   !34!cyber-hub.pw!cyan!                    บ                                     บ
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8CฬอออออออออþÛ!bgyellow!!red!Û Fake Persons Û!bgblack!!cyan!ÛþอออออออออฮออออออออออออþÛ!bgyellow!!red!Û Warez News Û!bgblack!!cyan!ÛþออออออออออออฮอออออออþÛ!bgyellow!!red!Û File Searching Û!bgblack!!cyan!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8Cบ   !41!fakepersongenerator.com!cyan!     บ   !45!torrentfreak.com!cyan!                บ    !49!www.aiosearch.com!cyan!         บ
-echo [8Cบ   !42!www.fakeimess.com!cyan!           บ   !46!nextwarez.com !green!(FR)!cyan!              บ    !50!www.filechef.com!cyan!          บ
-echo [8Cบ   !43!fakeproof.xenot.pro!cyan!         บ   !47!www.journaldupirate.net !green!(FR)!cyan!    บ                                     บ
-echo [8Cบ   !44!www.vedbex.com/fakeproof!cyan!    บ   !48!filepursuit.com!cyan!                 บ                                     บ
+echo [8Cบ   !42!fakepersongenerator.com!cyan!     บ   !46!torrentfreak.com!cyan!                บ    !50!www.aiosearch.com!cyan!         บ
+echo [8Cบ   !43!www.fakeimess.com!cyan!           บ   !47!nextwarez.com !green!(FR)!cyan!              บ    !51!www.filechef.com!cyan!          บ
+echo [8Cบ   !44!fakeproof.xenot.pro!cyan!         บ   !48!www.journaldupirate.net !green!(FR)!cyan!    บ                                     บ
+echo [8Cบ   !45!www.vedbex.com/fakeproof!cyan!    บ   !49!filepursuit.com!cyan!                 บ                                     บ
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออสออออออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออออสอออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                       บ
-echo [8Cบ                                          !51!onehack.us!cyan!                                                            บ
-echo [8Cบ                                          !52!www.torproject.org!cyan!                                                    บ
+echo [8Cบ                                          !52!onehack.us!cyan!                                                            บ
+echo [8Cบ                                          !53!www.torproject.org!cyan!                                                    บ
 echo [8Cบ                                                                                                                       บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -2115,50 +2116,57 @@ call :ERRORMESSAGE
 goto :CONTINUEIPLOGGERS
 
 :DOXING
-call :SCALE 104 42
+call :SCALE 104 49
 title !debug!Doxing
 call :ROSE Doxing
 
 :CLEARDOXING
-call :CLEAR 1 31
-set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" checkusernames.com/ knowem.com/ www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/
+call :CLEAR 1 38
+set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ pic.sogou.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" knowem.com/ checkusernames.com/ instantusername.com/#/ analyzeid.com/ namechk.com/ checkuser.org/ www.namecheckr.com/ usersearch.org/index.php www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/
 
 :CONTINUEDOXING
-call :SCALE 104 42
+call :SCALE 104 49
 echo !cyan!
 echo [45Cออออออออออออออ
 echo [44C// !red!Û!bgyellow!!black! DOXING !red!Û!bgblack!!cyan! \\
 echo [8Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออþÛ!bgyellow!!red!Û Image Search Û!bgblack!!cyan!ÛþอออออออออออออออออหออออออออออþÛ!bgyellow!!red!Û Image Research Û!bgblack!!cyan!Ûþออออออออออน
 echo [8Cบ                                          บ                                          บ
-echo [8Cบ     !1!pimeyes.com!cyan!                    บ    !11!www.pic2map.com!cyan!                บ
-echo [8Cบ     !2!tineye.com!cyan!                     บ    !12!onlineexifviewer.com!cyan!           บ
-echo [8Cบ     !3!yandex.com!cyan!                     บ    !13!www.metadata2go.com!cyan!            บ
+echo [8Cบ     !1!pimeyes.com!cyan!                    บ    !12!www.pic2map.com!cyan!                บ
+echo [8Cบ     !2!tineye.com!cyan!                     บ    !13!onlineexifviewer.com!cyan!           บ
+echo [8Cบ     !3!yandex.com!cyan!                     บ    !14!www.metadata2go.com!cyan!            บ
 echo [8Cบ     !4!images.google.com!cyan!              บ                                          บ
 echo [8Cบ     !5!www.bing.com!cyan!                   บ                                          บ
 echo [8Cบ     !6!image.baidu.com!cyan!                บ                                          บ
-echo [8Cบ     !7!ascii2d.net!cyan!                    บ                                          บ
-echo [8Cบ     !8!trace.moe!cyan!                      บ                                          บ
-echo [8Cบ     !9!saucenao.com!cyan!                   บ                                          บ
-echo [8Cบ    !10!iqdb.org!cyan!                       บ                                          บ
+echo [8Cบ     !7!pic.sogou.com!cyan!                  บ                                          บ
+echo [8Cบ     !8!ascii2d.net!cyan!                    บ                                          บ
+echo [8Cบ     !9!trace.moe!cyan!                      บ                                          บ
+echo [8Cบ    !10!saucenao.com!cyan!                   บ                                          บ
+echo [8Cบ    !11!iqdb.org!cyan!                       บ                                          บ
 echo [8Cบ                                          บ                                          บ
 echo [8CฬอออออออออþÛ!bgyellow!!red!Û Metaseach Engine Û!bgblack!!cyan!ÛออออออออออฮอออออออþÛ!bgyellow!!red!Û Advanced Seach Engine Û!bgblack!!cyan!Ûþออออออน
 echo [8Cบ                                          บ                                          บ
-echo [8Cบ    !14!searx.neocities.org!cyan!            บ    !23!www.startpage.com!cyan!              บ
-echo [8Cบ    !15!www.etools.ch!cyan!                  บ    !24!www.google.com/web!cyan!             บ
-echo [8Cบ    !16!search.carrot2.org!cyan!             บ    !25!www.google.com/image!cyan!           บ
-echo [8Cบ    !17!www.excite.co.jp!cyan!               บ                                          บ
-echo [8Cบ    !18!www.infospace.com!cyan!              บ                                          บ
-echo [8Cบ    !19!biznar.com!cyan!                     บ                                          บ
-echo [8Cบ    !20!metager.org!cyan!                    บ                                          บ
-echo [8Cบ    !21!www.entireweb.com!cyan!              บ                                          บ
-echo [8Cบ    !22!www.delta-search.com!cyan!           บ                                          บ
+echo [8Cบ    !15!searx.neocities.org!cyan!            บ    !24!www.startpage.com!cyan!              บ
+echo [8Cบ    !16!www.etools.ch!cyan!                  บ    !25!www.google.com/web!cyan!             บ
+echo [8Cบ    !17!search.carrot2.org!cyan!             บ    !26!www.google.com/image!cyan!           บ
+echo [8Cบ    !18!www.excite.co.jp!cyan!               บ                                          บ
+echo [8Cบ    !19!www.infospace.com!cyan!              บ                                          บ
+echo [8Cบ    !20!biznar.com!cyan!                     บ                                          บ
+echo [8Cบ    !21!metager.org!cyan!                    บ                                          บ
+echo [8Cบ    !22!www.entireweb.com!cyan!              บ                                          บ
+echo [8Cบ    !23!www.delta-search.com!cyan!           บ                                          บ
 echo [8Cบ                                          บ                                          บ
-echo [8CฬออออออþÛ!bgyellow!!red!Û Usernames Doxing Û!bgblack!!cyan!ÛอออออออออออออฮอออออþÛ!bgyellow!!red!Û YouTube TAGS Extractors Û!bgblack!!cyan!Ûþออออออน
+echo [8CฬออออออออออþÛ!bgyellow!!red!Û Username Search Û!bgblack!!cyan!ÛออออออออออฮอออออþÛ!bgyellow!!red!Û YouTube TAGS Extractors Û!bgblack!!cyan!Ûþออออออน
 echo [8Cบ                                          บ                                          บ
-echo [8Cบ    !26!Dox Tool v2!cyan!                    บ    !29!www.toolsbug.com!cyan!               บ
-echo [8Cบ    !27!checkusernames.com!cyan!             บ    !30!online-free-tools.com!cyan!          บ
-echo [8Cบ    !28!knowem.com!cyan!                     บ    !31!ytubetool.com!cyan!                  บ
+echo [8Cบ    !27!Dox Tool v2!cyan!                    บ    !36!www.toolsbug.com!cyan!               บ
+echo [8Cบ    !28!knowem.com!cyan!                     บ    !37!online-free-tools.com!cyan!          บ
+echo [8Cบ    !29!checkusernames.com!cyan!             บ    !38!ytubetool.com!cyan!                  บ
+echo [8Cบ    !30!instantusername.com!cyan!            บ                                          บ
+echo [8Cบ    !31!analyzeid.com!cyan!                  บ                                          บ
+echo [8Cบ    !32!namechk.com!cyan!                    บ                                          บ
+echo [8Cบ    !33!checkuser.org!cyan!                  บ                                          บ
+echo [8Cบ    !34!www.namecheckr.com!cyan!             บ                                          บ
+echo [8Cบ    !35!usersearch.org!cyan!                 บ                                          บ
 echo [8Cบ                                          บ                                          บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
