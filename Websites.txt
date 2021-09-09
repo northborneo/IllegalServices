@@ -5,6 +5,7 @@ github.com
 gitee.com
 pastebin.com
 cse.google.com
+www.google.com
 ;;MAINMENU
 t.me
 twitter.com
@@ -159,10 +160,12 @@ kisscartoon.info
 9anime.to
 animesuge.io
 animeheaven.pro
-gogoanime.vc
-anime8.ru
 animeowl.net
+animeow.me
+arrayanime.com
+gogoanime.vc
 animefrenzy.org
+anime8.ru
 www2.kiss-anime.asia
 animevibe.wtf
 animixplay.to
@@ -178,9 +181,10 @@ twist.moe
 runnel.ir
 time4tv.stream
 123tv.live
+livetv.sx
 iptv.stream2watch.sx
 sportplus.live
-sportsbay.org
+sportsbay.orglive-streams
 thehomesport.com
 ;;STREAMINGFR
 www6.filmstreaming.to
@@ -222,7 +226,6 @@ www.anime-ultime.net
 v5.anime-ultime.net
 channelstream.watch
 www.myfree-tivi.com
-livetv.sx
 antennesport.tv
 fr4.sportplus.live
 sport-stream.live
@@ -490,6 +493,7 @@ wannabe1337.xyz
 mostwantedhf.info
 shadowcrypt.net
 xresolver.com
+www.skypeipresolver.net
 fakepersongenerator.com
 www.fakeimess.com
 fakeproof.xenot.pro
@@ -551,6 +555,7 @@ yandex.com
 images.google.com
 www.bing.com
 image.baidu.com
+pic.sogou.com
 ascii2d.net
 trace.moe
 saucenao.com
@@ -568,9 +573,14 @@ metager.org
 www.entireweb.com
 www.delta-search.com
 www.startpage.com
-www.google.com
-checkusernames.com
 knowem.com
+checkusernames.com
+instantusername.com
+analyzeid.com
+namechk.com
+checkuser.org
+www.namecheckr.com
+usersearch.org
 www.toolsbug.com
 online-free-tools.com
 ytubetool.com
