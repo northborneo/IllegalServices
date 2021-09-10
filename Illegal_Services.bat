@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 9
-REM  Fileversion:  5. 8. 3. 9
+REM  Productversion:  5. 8. 4. 0
+REM  Fileversion:  5. 8. 4. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -65,7 +65,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.3.9 - 10/09/2021
+set version=v5.8.4.0 - 10/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -1343,8 +1343,8 @@ title !debug!Cracked Windows apps
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
-call :CLEAR 1 76
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ haxnode.net/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
+call :CLEAR 1 75
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
 call :SCALE 136 52
@@ -1354,44 +1354,44 @@ echo [55C// !red!Û!bgyellow!!black! CRACKED WINDOWS APPS !red!Û!bgblack!!cyan! 
 echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Applications Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ    !1!getintopc.com!cyan!           ณ   !11!free4pc.org!cyan!                ณ   !21!fileriver.net!cyan!                      บ
-echo [8Cบ    !2!crackingpatching.com!cyan!    ณ   !12!appload.club!cyan!               ณ   !22!piratepc.me!cyan!                        บ
-echo [8Cบ    !3!karanpc.com!cyan!             ณ   !13!izofile.com!cyan!                ณ   !23!ftuapps.dev!cyan!                        บ
-echo [8Cบ    !4!filecr.com!cyan!              ณ   !14!www.novahax.com!cyan!            ณ   !24!starcrack.net!cyan!                      บ
-echo [8Cบ    !5!s0ft4pc.com!cyan!             ณ   !15!haxnode.net!cyan!                ณ   !25!startcrack.net!cyan!                     บ
-echo [8Cบ    !6!www.mazterize.com!cyan!       ณ   !16!lostvayne.com!cyan!              ณ   !26!keygenninja.net!cyan!                    บ
-echo [8Cบ    !7!gigapurbalingga.net!cyan!     ณ   !17!filewomen.com!cyan!              ณ   !27!fileash.com!cyan!                        บ
-echo [8Cบ    !8!appnee.com!cyan!              ณ   !18!crackshash.com!cyan!             ณ   !28!www.trucnet.com !green!(FR)!cyan!               บ
-echo [8Cบ    !9!www.sadeempc.com!cyan!        ณ   !19!www.cybermania.ws!cyan!          ณ   !29!w14.monkrus.ws !green!(RU)!cyan!                บ
-echo [8Cบ   !10!shareappscrack.com!cyan!      ณ   !20!cracksurl.com!cyan!              ณ   !30!www.intercambiosvirtuales.org !green!(ES)!cyan! บ
+echo [8Cบ    !1!getintopc.com!cyan!           ณ   !11!free4pc.org!cyan!                ณ   !21!piratepc.me!cyan!                        บ
+echo [8Cบ    !2!crackingpatching.com!cyan!    ณ   !12!appload.club!cyan!               ณ   !22!ftuapps.dev!cyan!                        บ
+echo [8Cบ    !3!karanpc.com!cyan!             ณ   !13!izofile.com!cyan!                ณ   !23!starcrack.net!cyan!                      บ
+echo [8Cบ    !4!filecr.com!cyan!              ณ   !14!www.novahax.com!cyan!            ณ   !24!startcrack.net!cyan!                     บ
+echo [8Cบ    !5!s0ft4pc.com!cyan!             ณ   !15!lostvayne.com!cyan!              ณ   !25!keygenninja.net!cyan!                    บ
+echo [8Cบ    !6!www.mazterize.com!cyan!       ณ   !16!filewomen.com!cyan!              ณ   !26!fileash.com!cyan!                        บ
+echo [8Cบ    !7!gigapurbalingga.net!cyan!     ณ   !17!crackshash.com!cyan!             ณ   !27!www.trucnet.com !green!(FR)!cyan!               บ
+echo [8Cบ    !8!appnee.com!cyan!              ณ   !18!www.cybermania.ws!cyan!          ณ   !28!w14.monkrus.ws !green!(RU)!cyan!                บ
+echo [8Cบ    !9!www.sadeempc.com!cyan!        ณ   !19!cracksurl.com!cyan!              ณ   !29!www.intercambiosvirtuales.org !green!(ES)!cyan! บ
+echo [8Cบ   !10!shareappscrack.com!cyan!      ณ   !20!fileriver.net!cyan!              ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Application Repacks Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !31!diakov.net !green!(RU)!cyan!         ณ   !32!lrepacks.net !green!(RU)!cyan!          ณ   !33!repack.me !green!(RU)!cyan!                     บ
+echo [8Cบ   !30!diakov.net !green!(RU)!cyan!         ณ   !31!lrepacks.net !green!(RU)!cyan!          ณ   !32!repack.me !green!(RU)!cyan!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Portable Apps Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !34!portable4pc.com!cyan!         ณ   !35!www.fcportables.com!cyan!        ณ   !36!portableappz.blogspot.com!cyan!          บ
+echo [8Cบ   !33!portable4pc.com!cyan!         ณ   !34!www.fcportables.com!cyan!        ณ   !35!portableappz.blogspot.com!cyan!          บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogames Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !37!igg-games.com !red!(unsafe)!cyan!  ณ   !45!steamunlocked.net!cyan!          ณ   !53!alltorrents.co!cyan!                     บ
-echo [8Cบ   !38!pcgamestorrents.com!cyan!     ณ   !46!gog-games.com!cyan!              ณ   !54!www.myabandonware.com !green!(retro)!cyan!      บ
-echo [8Cบ   !39!www.skidrowcodex.net!cyan!    ณ   !47!codex-games.com!cyan!            ณ   !55!gamesnostalgia.com !green!(retro)!cyan!         บ
-echo [8Cบ   !40!www.mrpcgamer.co!cyan!        ณ   !48!getgamez.net!cyan!               ณ   !56!cygames.fr !green!(FR)!cyan!                    บ
-echo [8Cบ   !41!www.game3rb.com!cyan!         ณ   !49!www.elamigos-games.com!cyan!     ณ   !57!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
-echo [8Cบ   !42!agfy.co!cyan!                 ณ   !50!crackhub.site!cyan!              ณ   !58!www.gamestorrents.fm !green!(ES)!cyan!          บ
-echo [8Cบ   !43!cracked-games.org!cyan!       ณ   !51!freegameshub.co!cyan!            ณ                                             บ
-echo [8Cบ   !44!www.ovagames.com!cyan!        ณ   !52!gogunlocked.com!cyan!            ณ                                             บ
+echo [8Cบ   !36!igg-games.com !red!(unsafe)!cyan!  ณ   !44!steamunlocked.net!cyan!          ณ   !52!alltorrents.co!cyan!                     บ
+echo [8Cบ   !37!pcgamestorrents.com!cyan!     ณ   !45!gog-games.com!cyan!              ณ   !53!www.myabandonware.com !green!(retro)!cyan!      บ
+echo [8Cบ   !38!www.skidrowcodex.net!cyan!    ณ   !46!codex-games.com!cyan!            ณ   !54!gamesnostalgia.com !green!(retro)!cyan!         บ
+echo [8Cบ   !39!www.mrpcgamer.co!cyan!        ณ   !47!getgamez.net!cyan!               ณ   !55!cygames.fr !green!(FR)!cyan!                    บ
+echo [8Cบ   !40!www.game3rb.com!cyan!         ณ   !48!www.elamigos-games.com!cyan!     ณ   !56!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
+echo [8Cบ   !41!agfy.co!cyan!                 ณ   !49!crackhub.site!cyan!              ณ   !57!www.gamestorrents.fm !green!(ES)!cyan!          บ
+echo [8Cบ   !42!cracked-games.org!cyan!       ณ   !50!freegameshub.co!cyan!            ณ                                             บ
+echo [8Cบ   !43!www.ovagames.com!cyan!        ณ   !51!gogunlocked.com!cyan!            ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogame Repacks Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !59!repack-games.com!cyan!        ณ   !65!darckrepacks.com!cyan!           ณ   !71!cpgrepacks.site!cyan!                    บ
-echo [8Cบ   !60!www.game-repack.site!cyan!    ณ   !66!dodi-repacks.site!cyan!          ณ   !72!www.tiny-repacks.win!cyan!               บ
-echo [8Cบ   !61!elamigos.site!cyan!           ณ   !67!www.blackboxrepack.com!cyan!     ณ   !73!repack.info!cyan!                        บ
-echo [8Cบ   !62!fitgirl-repacks.site!cyan!    ณ   !68!masquerade.site!cyan!            ณ   !74!m4ckd0ge-repacks.me!cyan!                บ
-echo [8Cบ   !63!repack-mechanics.com!cyan!    ณ   !69!scooter-repacks.site!cyan!       ณ   !75!e13.xatab-repack.com !green!(RU)!cyan!          บ
-echo [8Cบ   !64!gamesdrive.net!cyan!          ณ   !70!www.gnarly-repacks.site!cyan!    ณ   !76!qoob.name !green!(RU)!cyan!                     บ
+echo [8Cบ   !58!repack-games.com!cyan!        ณ   !64!darckrepacks.com!cyan!           ณ   !70!cpgrepacks.site!cyan!                    บ
+echo [8Cบ   !59!www.game-repack.site!cyan!    ณ   !65!dodi-repacks.site!cyan!          ณ   !71!www.tiny-repacks.win!cyan!               บ
+echo [8Cบ   !60!elamigos.site!cyan!           ณ   !66!www.blackboxrepack.com!cyan!     ณ   !72!repack.info!cyan!                        บ
+echo [8Cบ   !61!fitgirl-repacks.site!cyan!    ณ   !67!masquerade.site!cyan!            ณ   !73!m4ckd0ge-repacks.me!cyan!                บ
+echo [8Cบ   !62!repack-mechanics.com!cyan!    ณ   !68!scooter-repacks.site!cyan!       ณ   !74!e13.xatab-repack.com !green!(RU)!cyan!          บ
+echo [8Cบ   !63!gamesdrive.net!cyan!          ณ   !69!www.gnarly-repacks.site!cyan!    ณ   !75!qoob.name !green!(RU)!cyan!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
