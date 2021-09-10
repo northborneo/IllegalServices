@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.3.9 - 10/09/2021
+v5.8.4.0 - 10/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
@@ -52,7 +52,6 @@ v5.8.3.9 - 10/09/2021
 + ADDED Torrenting : https://concen.org/
 + ADDED Torrenting : https://mac-torrent-download.net/
 + ADDED Torrenting : https://mac-torrents.io/
-+ ADDED Torrenting : https://www.montorrent.com/
 + ADDED Torrenting : https://filelisting.com/
 + ADDED Torrenting : https://bt4g.org/
 + ADDED Torrenting : https://ibit.to/
@@ -155,10 +154,10 @@ v5.8.3.9 - 10/09/2021
 - REMOVED Streaming [FR] : https://vostfrserie.ws/ (down)
 - REMOVED Streaming Applications : https://animeglare.xyz/ (down)
 - REMOVED Torrenting : https://freetorrent.tk/ (down)
-- REMOVED Torrenting : https://www.montorrent.com/ (down)
 - REMOVED Torrenting : https://magnet4you.me/library.php (down)
 - REMOVED Torrenting : https://torrent4you.me/ (down)
 - REMOVED Subtitles : https://www.subtitles.hr/ (down)
+- REMOVED Cracked Windows Apps : https://haxnode.net/ (down)
 - REMOVED Cracked Windows apps : https://v8.xatab-repack.net/ (down)
 - REMOVED Useful Websites : https://onlynudes.net/ (No NSFW in IS.)
 - REMOVED IP Denial of Services : https://udp.so/ (down)
