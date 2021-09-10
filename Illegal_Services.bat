@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 3. 7
-REM  Fileversion:  5. 8. 3. 7
+REM  Productversion:  5. 8. 3. 9
+REM  Fileversion:  5. 8. 3. 9
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -65,7 +65,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.3.7 - 08/09/2021
+set version=v5.8.3.9 - 10/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -99,16 +99,23 @@ set git_list=bitbucket.org/IllegalServices/illegal_services git.teknik.io/Illega
 call :PROXY
 
 :LAUNCHER_VERSION
-if defined git for /f "delims=/" %%a in ("!git:*://=!") do if defined git_backup (echo  !green![!red!Git backup server: !green!%%a] . . .) else if "!git!"=="404 Git proxy not found" (echo  !red![FAILED] . . .) else echo  !green![%%a] . . .
+if defined git for /f "delims=/" %%a in ("!git:*://=!") do if defined git_backup (echo  !green![!red!Git backup server: !green!%%a] . . .) else if "!git!"=="404 Git proxy not found" (
+if "!Language!"=="EN" echo  !red![FAILED] . . .
+if "!Language!"=="FR" echo  !red![ECHEC] . . .
+) else echo  !green![%%a] . . .
 if "!Language!"=="EN" <nul set /p=!sp!Searching for a new update ^>
 if "!Language!"=="FR" <nul set /p=!sp!Recherche d'une nouvelle mise … jour ^>
 call :CHECK_VOICEASSISTANT
 call :GET_VERSION
 if defined old_version if defined old_lastversion if "!old_version!"=="!version!" if "!old_lastversion!"=="!lastversion!" (
-echo  !red![FAILED: Wait till next build update.] . . .
+if "!Language!"=="EN" echo  !red![FAILED: Wait for the next build update.] . . .
+if "!Language!"=="FR" echo  !red![ECHEC: Attendez la prochaine mise … jour de la build.] . . .
 goto :CHECKERINTEGRITY
 )
-if defined lastversion (echo  !green![!lastversion!] . . .) else echo  !red![FAILED] . . .
+if defined lastversion (echo  !green![!lastversion!] . . .) else (
+if "!Language!"=="EN" echo  !red![FAILED] . . .
+if "!Language!"=="FR" echo  !red![ECHEC] . . .
+)
 if "!errorlevel!"=="1" call :CHECKER_SETUP_FOUND
 if "!errorlevel!"=="2" call :CHECKER_BUILD_FOUND
 
@@ -1121,8 +1128,8 @@ title !debug!Torrenting
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 78
-set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.montorrent.com/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ws/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+call :CLEAR 1 76
+set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ws/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
 call :SCALE 133 53
@@ -1144,33 +1151,33 @@ echo [8Cบ    !9!www.ettvcentral.com!cyan!        ณ   !18!badasstorrents.com!cya
 echo [8Cบ                                                                                                                   บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û French Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !28!www3.yggtorrent.nz!cyan!         ณ   !30!www.montorrent.com!cyan!       ณ   !32!torrent9.to!cyan!                    บ
-echo [8Cบ   !29!www.sharewood.tv!cyan!           ณ   !31!www.oxtorrent.nz!cyan!         ณ                                         บ
+echo [8Cบ   !28!www3.yggtorrent.nz!cyan!         ณ   !30!www.oxtorrent.nz!cyan!         ณ                                         บ
+echo [8Cบ   !29!www.sharewood.tv!cyan!           ณ   !31!torrent9.to!cyan!              ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Searching Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !33!filelisting.com!cyan!            ณ   !41!ext.to!cyan!                   ณ   !49!extratorrents.it!cyan!               บ
-echo [8Cบ   !34!bt4g.org!cyan!                   ณ   !42!www.torlock.com!cyan!          ณ   !50!pirateiro.com!cyan!                  บ
-echo [8Cบ   !35!www.7torrents.cc!cyan!           ณ   !43!ibit.to!cyan!                  ณ   !51!torrentseeker.com!cyan!              บ
-echo [8Cบ   !36!bitcq.com!cyan!                  ณ   !44!zooqle.com!cyan!               ณ   !52!otorrents.com!cyan!                  บ
-echo [8Cบ   !37!knaben.eu!cyan!                  ณ   !45!torrentparadise.pm!cyan!       ณ   !53!vstorrent.org!cyan!                  บ
-echo [8Cบ   !38!torrentproject2.com!cyan!        ณ   !46!snowfl.com!cyan!               ณ   !54!torrents-csv.ml!cyan!                บ
-echo [8Cบ   !39!torrent-paradise.ml!cyan!        ณ   !47!idope.se!cyan!                 ณ   !55!search.torrends.to!cyan!             บ
-echo [8Cบ   !40!btdig.com!cyan!                  ณ   !48!isohunt.app!cyan!              ณ                                         บ
+echo [8Cบ   !32!filelisting.com!cyan!            ณ   !40!ext.to!cyan!                   ณ   !48!extratorrents.it!cyan!               บ
+echo [8Cบ   !33!bt4g.org!cyan!                   ณ   !41!www.torlock.com!cyan!          ณ   !49!pirateiro.com!cyan!                  บ
+echo [8Cบ   !34!www.7torrents.cc!cyan!           ณ   !42!ibit.to!cyan!                  ณ   !50!torrentseeker.com!cyan!              บ
+echo [8Cบ   !35!bitcq.com!cyan!                  ณ   !43!zooqle.com!cyan!               ณ   !51!otorrents.com!cyan!                  บ
+echo [8Cบ   !36!knaben.eu!cyan!                  ณ   !44!torrentparadise.pm!cyan!       ณ   !52!vstorrent.org!cyan!                  บ
+echo [8Cบ   !37!torrentproject2.com!cyan!        ณ   !45!snowfl.com!cyan!               ณ   !53!torrents-csv.ml!cyan!                บ
+echo [8Cบ   !38!torrent-paradise.ml!cyan!        ณ   !46!idope.se!cyan!                 ณ   !54!search.torrends.to!cyan!             บ
+echo [8Cบ   !39!btdig.com!cyan!                  ณ   !47!isohunt.app!cyan!              ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Proxys Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !56!proxy-bay.net!cyan!              ณ   !61!siteunblocked.info!cyan!       ณ   !66!proxyninja.org!cyan!                 บ
-echo [8Cบ   !57!proxygalaxy.pw!cyan!             ณ   !62!unblockproject.monster!cyan!   ณ   !67!knaben.info!cyan!                    บ
-echo [8Cบ   !58!yifystatus.com!cyan!             ณ   !63!unblocksource.net!cyan!        ณ   !68!unblocktorrent.com!cyan!             บ
-echo [8Cบ   !59!eztvstatus.com!cyan!             ณ   !64!unblockit.ws!cyan!             ณ   !69!torrends.to!cyan!                    บ
-echo [8Cบ   !60!ettvproxies.com!cyan!            ณ   !65!torrentbay.to!cyan!            ณ                                         บ
+echo [8Cบ   !55!proxy-bay.net!cyan!              ณ   !60!siteunblocked.info!cyan!       ณ   !65!proxyninja.org!cyan!                 บ
+echo [8Cบ   !56!proxygalaxy.pw!cyan!             ณ   !61!unblockproject.monster!cyan!   ณ   !66!knaben.info!cyan!                    บ
+echo [8Cบ   !57!yifystatus.com!cyan!             ณ   !62!unblocksource.net!cyan!        ณ   !67!unblocktorrent.com!cyan!             บ
+echo [8Cบ   !58!eztvstatus.com!cyan!             ณ   !63!unblockit.ws!cyan!             ณ   !68!torrends.to!cyan!                    บ
+echo [8Cบ   !59!ettvproxies.com!cyan!            ณ   !64!torrentbay.to!cyan!            ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Applications Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !70!Jacket!cyan!                     ณ   !73!sonarr.tv!cyan!                ณ   !76!DuckieTV!cyan!                       บ
-echo [8Cบ   !71!www.qbittorrent.org!cyan!        ณ   !74!radarr.video!cyan!             ณ   !77!couchpota.to!cyan!                   บ
-echo [8Cบ   !72!www.torrentrover.com!cyan!       ณ   !75!lidarr.audio!cyan!             ณ                                         บ
+echo [8Cบ   !69!Jacket!cyan!                     ณ   !72!sonarr.tv!cyan!                ณ   !75!DuckieTV!cyan!                       บ
+echo [8Cบ   !70!www.qbittorrent.org!cyan!        ณ   !73!radarr.video!cyan!             ณ   !76!couchpota.to!cyan!                   บ
+echo [8Cบ   !71!www.torrentrover.com!cyan!       ณ   !74!lidarr.audio!cyan!             ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -2122,7 +2129,7 @@ call :ROSE Doxing
 
 :CLEARDOXING
 call :CLEAR 1 38
-set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ pic.sogou.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" knowem.com/ checkusernames.com/ instantusername.com/#/ analyzeid.com/ namechk.com/ checkuser.org/ www.namecheckr.com/ usersearch.org/index.php www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/
+set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ pic.sogou.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" knowem.com/ checkusernames.com/ instantusername.com/#/ analyzeid.com/username/ namechk.com/ checkuser.org/ www.namecheckr.com/ usersearch.org/index.php www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/
 
 :CONTINUEDOXING
 call :SCALE 104 49
@@ -2337,7 +2344,7 @@ if "!45!"=="!yellow!45 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/0y3xcdlcf5opsmmt/artifacts/processhacker-3.0.4346-bin.zip"
+if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/ffikia7rkd7c0ghk/artifacts/processhacker-3.0.4351-bin.zip"
 if "!47!"=="!yellow!47 !checked!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!48!"=="!yellow!48 !checked!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!49!"=="!yellow!49 !checked!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
