@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 4. 0
-REM  Fileversion:  5. 8. 4. 0
+REM  Productversion:  5. 8. 4. 1
+REM  Fileversion:  5. 8. 4. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -22,7 +22,7 @@ cls
 set "hidecursor=<nul set /p=[?25l"
 set "showcursor=<nul set /p=[?25h"
 %hidecursor%
-for %%a in (%*) do if "%%~a"=="--debug" set "debug=[Debug] - "
+for %%a in (%*) do if "%%~a"=="--debug" set "debug=[Debug] "
 if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%a" (
 call :APPLY_SETTINGS
 for /f "tokens=6" %%a in ('cmdwiz.exe getconsoledim') do if %%a lss 120 call :SCALE 120 30
@@ -33,7 +33,8 @@ if exist "cmdwiz.exe" cmdwiz.exe setquickedit 0
 set IS_Reg=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
 call :CHECK_USERNAME
-title !debug!Welcome [!IS_USERNAME!] to Illegal Services . . .
+set title=!debug!` - Illegal Services
+title !title:`=Launcher!
 if defined TEMP (set "TMPF=!TEMP!") else if defined TMP (set "TMPF=!TMP!") else (
 if "!Language!"=="EN" set t="Your 'TEMP' and 'TMP' environment variables do not exist." "Please fix one of them and try again."
 if "!Language!"=="FR" set t="Vos variables d'environnement 'TEMP' et 'TMP' n'existent pas." "Veuillez rparer l'une d'entre elles et ressayer."
@@ -48,7 +49,10 @@ call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
 exit
 )
 if /i "%~x0"==".exe" (set "IS_Process=%~nx0") else set "IS_Process=cmd.exe" & goto :LAUNCHER
-if "%~nx0"=="Illegal Services.exe" >nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !debug!) && exit
+if "%~nx0"=="Illegal Services.exe" (
+>nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
+>nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !debug!) && exit
+)
 for /f %%a in ('tasklist /fo csv /fi "imagename eq %~nx0" ^| findstr /c:"%~nx0"') do set /a cn+=1
 pushd "!TMPF!"
 set batused=
@@ -65,20 +69,20 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.4.0 - 10/09/2021
+set version=v5.8.4.1 - 11/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
 call :DRAW_LOGO
 echo:
 echo [29C!cyan!{!red!+!cyan!}---------------------------------------------------------------{!red!+!cyan!}!red!
-if "!Language!"=="EN" call :DRAW_CENTER "   !yellow!Welcome [!red!!IS_USERNAME!!yellow!] to Illegal Services !version:~,8!   !red!" 20
-if "!Language!"=="FR" call :DRAW_CENTER "   !yellow!Bienvenue [!red!!IS_USERNAME!!yellow!] dans Illegal Services !version:~,8!   !red!" 20
+if "!Language!"=="EN" call :DRAW_CENTER "   !yellow!Welcome [!red!!IS_Username!!yellow!] to Illegal Services !version:~,8!   !red!" 20
+if "!Language!"=="FR" call :DRAW_CENTER "   !yellow!Bienvenue [!red!!IS_Username!!yellow!] dans Illegal Services !version:~,8!   !red!" 20
 echo [29C!cyan!{!red!+!cyan!}---------------------------------------------------------------{!red!+!cyan!}
 for /f %%a in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%a"
 for %%a in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~a" del /f /q "%%~a"
 for %%a in ("!cd:~,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~a" 2>nul rd /s /q "%%~a"
-set "sp=!grey![30C$ [!red!!IS_USERNAME!!grey!] "
+set "sp=!grey![30C$ [!red!!IS_Username!!grey!] "
 echo !grey!
 if defined ProgramFiles(x86) (set arch=64) else set arch=86
 set "IS_Dir=%~dp0Illegal Services\"
@@ -166,11 +170,14 @@ if "!VoiceAssistantChoice!"=="1" call :ROSE_SETUP
 for %%a in (extd speak-x!arch!) do tasklist /fo csv /fi "imagename eq %%a.exe" | >nul findstr /c:"%%a.exe" && goto :L1
 if "!VoiceAssistant!"=="0" >nul timeout /t 1 /nobreak
 call :SCALE 125 29
-set is_title=Illegal Services v
-for /l %%a in (1,1,18) do title !debug!!is_title:~,%%a! & cmdwiz.exe delay 20
+set el=!debug!Main Menu ^|Git !git_backup!proxy: !git!^| - Illegal Services
+for /l %%a in (1,1,18) do (
+title !debug!!el:~,%%a!
+cmdwiz.exe delay 5
+)
 
 :MAINMENU
-title !debug!Illegal Services !version:~,4!  ^|Git !git_backup!proxy: !git!^|
+title !title:`=Main Menu ^|Git %git_backup%proxy: %git%^|!
 if defined MAINMENU (call :ROSE) else (call :ROSE "Main Menu" & set MAINMENU=1)
 call :SCALE 125 29
 echo !grey!
@@ -179,7 +186,7 @@ echo !cyan!
 echo [19Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 <nul set /p=!brightred!                                  !underline!!version:~,8!!underlineoff!             !red!Û!bgyellow! MAIN MENU !bgblack!!red!Û!bgblack!!brightred!
 if "!Language!"=="EN" (set t=Welcome) else set t=Bienvenue
-call :DRAW_CUSTOM_CENTER 37 "!underline!!t! !IS_USERNAME!!underlineoff!!cyan!" 14
+call :DRAW_CUSTOM_CENTER 37 "!underline!!t! !IS_Username!!underlineoff!!cyan!" 14
 echo [19Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [19Cบ    !yellow!1!cyan!  ^>  !white!Internet Protocol TV (IPTV)!cyan!    Û    !yellow!10!cyan!  ^>  !white!IP Denial of Services (DDoS)!cyan!    บ
 echo [19Cบ    !yellow!2!cyan!  ^>  !white!Direct Download Link (DDL)!cyan!     Û    !yellow!11!cyan!  ^>  !white!IP Address Lookup!cyan!               บ
@@ -240,8 +247,7 @@ goto :MAINMENU
 
 :CREDITS
 call :SCALE 99 34
-if "!Language!"=="EN" title !debug!Credits / Thanks / Helpers
-if "!Language!"=="FR" title !debug!Crdits / Remerciement / Aideurs
+title !title:`=Credits!
 call :ROSE Credits
 
 :CONTINUECREDITS
@@ -295,6 +301,9 @@ if "!x!"=="12" (
 if "!Language!"=="EN" set t="Helped improving and reducing code." "Helped fixing a bug that where creating temporary files without deleting them." "Helped improving IP Lookup API's." "Helped adding launcher updater."
 if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "A aid … la correction d'un bug qui entranait la cration de fichiers temporaires sans les supprimer." "A aid … amliorer l'API de l'IP Lookup." "A aid … l'ajout des mises … jour du launcher."
 call :MSGBOX 4 !t! 69696 "anic17 'Task failed successfully'"
+if "!Language!"=="EN" set t="Helping to find existing bugs."
+if "!Language!"=="FR" set t="A aid … trouver les bugs existants."
+call :MSGBOX 1 !t! 69696 "anic17 'Task failed successfully'"
 start https://github.com/anic17
 )
 if "!x!"=="13" (
@@ -327,9 +336,9 @@ if "!Language!"=="FR" set t="A aid … tester les versions alpha." "A aid … trou
 call :MSGBOX 4 !t! 69696 "Rosalyn 'Shine brightest'"
 )
 if "!x!"=="17" (
-if "!Language!"=="EN" set t=Logo designer for
-if "!Language!"=="FR" set t=Conceptrice du logo de la
-call :MSGBOX 1 "!t! v4.0" 69696 "Ms.CatFire"
+if "!Language!"=="EN" set t="Logo designer for v4.0"
+if "!Language!"=="FR" set t="Conceptrice du logo de la v4.0"
+call :MSGBOX 1 !t! 69696 "Ms.CatFire"
 )
 if "!x!"=="18" (
 if "!Language!"=="EN" (
@@ -356,7 +365,7 @@ goto :CONTINUECREDITS
 
 :SETTINGS
 call :SCALE 113 26
-title !debug!Settings
+title !title:`=Settings!
 call :ROSE Settings
 
 :CLEARSETTINGS
@@ -401,7 +410,7 @@ set "ScanWebsitesInfo=Scan les sites internet indexs.!cyan!         บ"
 
 :CONTINUESETTINGS
 call :SCALE 113 26
-title !debug!Settings
+title !title:`=Settings!
 echo !cyan!
 if "!Language!"=="EN" (
 echo [47Cออออออออออออออออ
@@ -427,8 +436,8 @@ if "!Language!"=="EN" echo [7Cบ    !yellow!8!cyan!  ^> !white! Dark Guy!cyan!  
 if "!Language!"=="FR" echo [7Cบ    !yellow!8!cyan!  ^> !white! Homme sombre!cyan!                       บ   !yellow!20!cyan!  ^> !white! Changer le nom d'utilisateur.!cyan!            บ
 if "!Language!"=="EN" echo [7Cบ    !yellow!9!cyan!  ^> !white! Girl eyes!cyan!                          บ   !yellow!21!cyan!  ^> !white! Change language to French.!cyan!               บ
 if "!Language!"=="FR" echo [7Cบ    !yellow!9!cyan!  ^> !white! Yeux fille!cyan!                         บ   !yellow!21!cyan!  ^> !white! Changer la langue en Anglais.!cyan!            บ
-if "!Language!"=="EN" echo [7Cบ   !yellow!10!cyan!  ^> !white! World map (bytes)!cyan!                  บ   !yellow!22!cyan!  ^> !white! Export\Import settings.!cyan!                  บ
-if "!Language!"=="FR" echo [7Cบ   !yellow!10!cyan!  ^> !white! Carte du monde (bytes)!cyan!             บ   !yellow!22!cyan!  ^> !white! Exporter\Importer les paramtres.!cyan!        บ
+if "!Language!"=="EN" echo [7Cบ   !yellow!10!cyan!  ^> !white! World map (bytes)!cyan!                  บ   !yellow!22!cyan!  ^> !white! Export/Import settings.!cyan!                  บ
+if "!Language!"=="FR" echo [7Cบ   !yellow!10!cyan!  ^> !white! Carte du monde (bytes)!cyan!             บ   !yellow!22!cyan!  ^> !white! Exporter/Importer les paramtres.!cyan!        บ
 if "!Language!"=="EN" echo [7Cบ   !yellow!11!cyan!  ^> !white! World map (Corona Virus)!cyan!           บ   !yellow!23!cyan!  ^> !white! Uninstall Illegal Services.!cyan!              บ
 if "!Language!"=="FR" echo [7Cบ   !yellow!11!cyan!  ^> !white! Carte du monde (Corona Virus)!cyan!      บ   !yellow!23!cyan!  ^> !white! Dsinstaller Illegal Services.!cyan!           บ
 if "!Language!"=="EN" echo [7Cบ   !yellow!12!cyan!  ^> !white! World map (cool)!cyan!                   บ   !ExtractSourceInfo!
@@ -522,9 +531,9 @@ echo:
 if defined DeveloperKey >nul 2>&1 reg add "!IS_Reg!" /v "DeveloperMode" /t REG_DWORD /d !DeveloperKey! /f
 call :CHECK_DEVELOPERMODE
 if "!DeveloperMode!"=="1" (
-if "!Language!"=="EN" set t=Developer mode has been activated successfully. You can now extract the source code.
-if "!Language!"=="FR" set t=Le mode dveloppeur a t activ avec succs. Vous pouvez maintenant extraire le code source.
-call :MSGBOX 1 "!t!." 69696 "Illegal Services Checker"
+if "!Language!"=="EN" set t="Developer mode has been activated successfully. You can now extract the source code."
+if "!Language!"=="FR" set t="Le mode dveloppeur a t activ avec succs. Vous pouvez maintenant extraire le code source."
+call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 goto :CLEARSETTINGS
 )
 if "!DeveloperMode!"=="0" call :ERRORMESSAGE DeveloperKey "une cl de license" "licence key"
@@ -553,7 +562,7 @@ echo NOTE: 1. Laisser vide remplacera le nom d'utilisateur d'origine.
 echo       2. Le nom d'utilisateur ne peut pas dpasser 20 caractres.
 echo       3. N'utiliser les caractres suivants: "^! %% ^^".
 )
-:L2
+:L4
 if "!Language!"=="EN" set t=Enter your new username
 if "!Language!"=="FR" set t=Entrez votre nouveau nom d'utilisateur
 setlocal disabledelayedexpansion
@@ -564,18 +573,18 @@ set "ID=!ID:%%=%%%%!"
 if defined %ID:~1,-1% goto :ERROR_USERNAME
 if not "!ID:~20!"=="" goto :ERROR_USERNAME
 >nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!ID:~,20!" /f
-) else >nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!username:~,20!" /f
+) else >nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!Username:~,20!" /f
 call :CHECK_USERNAME
-if "!Language!"=="EN" set t=Your new username has been changed to
-if "!Language!"=="FR" set t=Votre nouveau nom d'utilisateur a t remplac par
-call :MSGBOX 1 "!t!: '!IS_USERNAME!'" 69696 "Illegal Services Checker"
+if "!Language!"=="EN" set t="Your new username has been changed to: '!IS_Username!'"
+if "!Language!"=="FR" set t="Votre nouveau nom d'utilisateur a t remplac par: '!IS_Username!'"
+call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 )
 goto :CONTINUESETTINGS
 
 :ERROR_USERNAME
 echo:
 call :ERRORMESSAGE ID "un nom d'utilisateur" username
-goto :L2
+goto :L4
 
 :SETTING_LANGUAGE
 if "!Language!"=="EN" set t=FR
@@ -642,7 +651,7 @@ goto :CLEARSETTINGS
 
 :SETTING_UNINSTALL
 cls
-title !debug!Illegal Services uninstaller
+title !title:`=Illegal Services uninstaller!
 echo:
 echo:
 echo:
@@ -670,9 +679,9 @@ call :DRAW_CENTER "Etes vous sur de vouloir continuer ? Appuyez sur !yellow![O]!
 >nul choice /n /c ON
 )
 if not "!errorlevel!"=="1" goto :CONTINUESETTINGS
-if "!Language!"=="EN" set t=ERROR: This feature is still in development and will be released soon
-if "!Language!"=="FR" set t=ERREUR: Cette fonctionnalit est toujours en cours de dveloppement et sera publie prochainement
-call :MSGBOX 1 "!t!." 69696 "Illegal Services Checker"
+if "!Language!"=="EN" set t="ERROR: This feature is still in development and will be released soon."
+if "!Language!"=="FR" set t="ERREUR: Cette fonctionnalit est toujours en cours de dveloppement et sera publie prochainement."
+call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 goto :CONTINUESETTINGS
 start IS.Uninstaller.bat
 exit
@@ -695,7 +704,7 @@ goto :CONTINUESETTINGS
 
 :IPTV
 call :SCALE 91 32
-title !debug!Internet Protocol Television (IPTV)
+title !title:`=Internet Protocol Television (IPTV)!
 call :ROSE "Internet Protocol Television"
 
 :CLEARIPTV
@@ -752,7 +761,7 @@ goto :CONTINUEIPTV
 
 :IPTVTUTORIAL
 call :SCALE 151 37
-title !debug!IPTV Tutorial
+title !title:`=Internet Protocol Television Tutorial!
 call :ROSE "Internet Protocol Television Tutorial"
 
 :CONTINUEIPTVTUTORIAL
@@ -825,7 +834,7 @@ for %%a in (EN FR) do if "!Language!"=="%%a" goto :DDL%%a
 
 :DDLEN
 call :SCALE 128 37
-title !debug!Direct Download Link (DDL) [EN]
+title !title:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
 call :CLEAR 1 71
@@ -880,7 +889,7 @@ goto :CONTINUEDDLEN
 
 :DDLFR
 call :SCALE 71 24
-title !debug!Direct Download Link (DDL) [FR]
+title !title:`=Direct Download Link (DDL) [FR]!
 
 :CLEARDDLFR
 call :CLEAR 1 11
@@ -921,7 +930,7 @@ call :ERRORMESSAGE
 goto :CONTINUEDDLFR
 
 :STREAMING
-title !debug!Streaming [!Language!]
+title !title:`=Streaming [%Language%]!
 if "!Language!"=="EN" (
 call :SCALE 101 51
 set t="No payment / installation / registration is required to view the videos on the sites offered by Illegal Service. All sites are free so watch out for scam advertising." "If the player is not visible, disable your ad blocker and click on the button to close the ad in the middle of the video then on the player's Play button to launch the video."
@@ -936,11 +945,11 @@ for %%a in (EN FR) do if "!Language!"=="%%a" goto :STREAMING%%a
 
 :STREAMINGEN
 call :SCALE 101 52
-title !debug!Streaming [EN]
+title !title:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 60
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ iptv.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ playing.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 52
@@ -982,7 +991,7 @@ echo [8Cบ   !41!www2.kiss-anime.asia!cyan!           ณ   !52!twist.moe!cyan!   
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!iptv.stream2watch.sx !green!(sport)!cyan!   บ
+echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!playing.stream2watch.sx !green!(sport)!cyan!บ
 echo [8Cบ   !54!time4tv.stream!cyan!                 ณ   !58!sportplus.live !green!(sport)!cyan!         บ
 echo [8Cบ   !55!123tv.live!cyan!                     ณ   !59!sportsbay.org !green!(sport)!cyan!          บ
 echo [8Cบ   !56!livetv.sx !green!(sport)!cyan!              ณ   !60!thehomesport.com !green!(sport)!cyan!       บ
@@ -1007,7 +1016,7 @@ goto :CONTINUESTREAMINGEN
 
 :STREAMINGFR
 call :SCALE 101 46
-title !debug!Streaming [FR]
+title !title:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
 call :CLEAR 1 45
@@ -1072,7 +1081,7 @@ goto :CONTINUESTREAMINGFR
 
 :STREAMINGAPPS
 call :SCALE 109 35
-title !debug!Streaming Applications
+title !title:`=Streaming Applications!
 call :ROSE "Streaming Applications"
 
 :CLEARSTREAMINGAPPS
@@ -1124,12 +1133,12 @@ goto :CONTINUESTREAMINGAPPS
 
 :TORRENTING
 call :SCALE 133 53
-title !debug!Torrenting
+title !title:`=Torrenting!
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 76
-set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ search.torrends.to/ proxy-bay.net/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ws/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+call :CLEAR 1 77
+set db=bitsearch.to/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ torrentparadise.pm/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ search.torrends.to/ proxy-bay.dev/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ws/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
 call :SCALE 133 53
@@ -1162,22 +1171,22 @@ echo [8Cบ   !34!www.7torrents.cc!cyan!           ณ   !42!ibit.to!cyan!         
 echo [8Cบ   !35!bitcq.com!cyan!                  ณ   !43!zooqle.com!cyan!               ณ   !51!otorrents.com!cyan!                  บ
 echo [8Cบ   !36!knaben.eu!cyan!                  ณ   !44!torrentparadise.pm!cyan!       ณ   !52!vstorrent.org!cyan!                  บ
 echo [8Cบ   !37!torrentproject2.com!cyan!        ณ   !45!snowfl.com!cyan!               ณ   !53!torrents-csv.ml!cyan!                บ
-echo [8Cบ   !38!torrent-paradise.ml!cyan!        ณ   !46!idope.se!cyan!                 ณ   !54!search.torrends.to!cyan!             บ
-echo [8Cบ   !39!btdig.com!cyan!                  ณ   !47!isohunt.app!cyan!              ณ                                         บ
+echo [8Cบ   !38!torrent-paradise.ml!cyan!        ณ   !46!idope.se!cyan!                 ณ   !54!torrentz2eu.me!cyan!                 บ
+echo [8Cบ   !39!btdig.com!cyan!                  ณ   !47!isohunt.app!cyan!              ณ   !55!search.torrends.to!cyan!             บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Proxys Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !55!proxy-bay.net!cyan!              ณ   !60!siteunblocked.info!cyan!       ณ   !65!proxyninja.org!cyan!                 บ
-echo [8Cบ   !56!proxygalaxy.pw!cyan!             ณ   !61!unblockproject.monster!cyan!   ณ   !66!knaben.info!cyan!                    บ
-echo [8Cบ   !57!yifystatus.com!cyan!             ณ   !62!unblocksource.net!cyan!        ณ   !67!unblocktorrent.com!cyan!             บ
-echo [8Cบ   !58!eztvstatus.com!cyan!             ณ   !63!unblockit.ws!cyan!             ณ   !68!torrends.to!cyan!                    บ
-echo [8Cบ   !59!ettvproxies.com!cyan!            ณ   !64!torrentbay.to!cyan!            ณ                                         บ
+echo [8Cบ   !56!proxy-bay.dev!cyan!              ณ   !61!siteunblocked.info!cyan!       ณ   !66!proxyninja.org!cyan!                 บ
+echo [8Cบ   !57!proxygalaxy.pw!cyan!             ณ   !62!unblockproject.monster!cyan!   ณ   !67!knaben.info!cyan!                    บ
+echo [8Cบ   !58!yifystatus.com!cyan!             ณ   !63!unblocksource.net!cyan!        ณ   !68!unblocktorrent.com!cyan!             บ
+echo [8Cบ   !59!eztvstatus.com!cyan!             ณ   !64!unblockit.ws!cyan!             ณ   !69!torrends.to!cyan!                    บ
+echo [8Cบ   !60!ettvproxies.com!cyan!            ณ   !65!torrentbay.to!cyan!            ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Applications Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !69!Jacket!cyan!                     ณ   !72!sonarr.tv!cyan!                ณ   !75!DuckieTV!cyan!                       บ
-echo [8Cบ   !70!www.qbittorrent.org!cyan!        ณ   !73!radarr.video!cyan!             ณ   !76!couchpota.to!cyan!                   บ
-echo [8Cบ   !71!www.torrentrover.com!cyan!       ณ   !74!lidarr.audio!cyan!             ณ                                         บ
+echo [8Cบ   !70!Jacket!cyan!                     ณ   !73!sonarr.tv!cyan!                ณ   !76!DuckieTV!cyan!                       บ
+echo [8Cบ   !71!www.qbittorrent.org!cyan!        ณ   !74!radarr.video!cyan!             ณ   !77!couchpota.to!cyan!                   บ
+echo [8Cบ   !72!www.torrentrover.com!cyan!       ณ   !75!lidarr.audio!cyan!             ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -1207,7 +1216,7 @@ call :ROSE "Torrent Tutorial"
 
 :CONTINUETORRENTTUTORIAL
 call :SCALE 150 23
-title !debug!Torrent Tutorial
+title !title:`=Torrent Tutorial!
 echo !cyan!
 echo [42Cออออออออออออออออออออออออ
 if "!Language!"=="EN" set t=TUTORIAL
@@ -1286,7 +1295,7 @@ goto :CONTINUETORRENTING
 
 :SUBTITLES
 call :SCALE 72 35
-title !debug!Subtitles
+title !title:`=Subtitles!
 call :ROSE Subtitles
 
 :CLEARSUBTITLES
@@ -1339,12 +1348,12 @@ goto :CONTINUESUBTITLES
 
 :WINDOWS
 call :SCALE 136 52
-title !debug!Cracked Windows apps
+title !title:`=Cracked Windows apps!
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
-call :CLEAR 1 75
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
+call :CLEAR 1 76
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ haxnode.net/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
 call :SCALE 136 52
@@ -1354,44 +1363,44 @@ echo [55C// !red!Û!bgyellow!!black! CRACKED WINDOWS APPS !red!Û!bgblack!!cyan! 
 echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Applications Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ    !1!getintopc.com!cyan!           ณ   !11!free4pc.org!cyan!                ณ   !21!piratepc.me!cyan!                        บ
-echo [8Cบ    !2!crackingpatching.com!cyan!    ณ   !12!appload.club!cyan!               ณ   !22!ftuapps.dev!cyan!                        บ
-echo [8Cบ    !3!karanpc.com!cyan!             ณ   !13!izofile.com!cyan!                ณ   !23!starcrack.net!cyan!                      บ
-echo [8Cบ    !4!filecr.com!cyan!              ณ   !14!www.novahax.com!cyan!            ณ   !24!startcrack.net!cyan!                     บ
-echo [8Cบ    !5!s0ft4pc.com!cyan!             ณ   !15!lostvayne.com!cyan!              ณ   !25!keygenninja.net!cyan!                    บ
-echo [8Cบ    !6!www.mazterize.com!cyan!       ณ   !16!filewomen.com!cyan!              ณ   !26!fileash.com!cyan!                        บ
-echo [8Cบ    !7!gigapurbalingga.net!cyan!     ณ   !17!crackshash.com!cyan!             ณ   !27!www.trucnet.com !green!(FR)!cyan!               บ
-echo [8Cบ    !8!appnee.com!cyan!              ณ   !18!www.cybermania.ws!cyan!          ณ   !28!w14.monkrus.ws !green!(RU)!cyan!                บ
-echo [8Cบ    !9!www.sadeempc.com!cyan!        ณ   !19!cracksurl.com!cyan!              ณ   !29!www.intercambiosvirtuales.org !green!(ES)!cyan! บ
-echo [8Cบ   !10!shareappscrack.com!cyan!      ณ   !20!fileriver.net!cyan!              ณ                                             บ
+echo [8Cบ    !1!getintopc.com!cyan!           ณ   !11!free4pc.org!cyan!                ณ   !21!fileriver.net!cyan!
+echo [8Cบ    !2!crackingpatching.com!cyan!    ณ   !12!appload.club!cyan!               ณ   !22!piratepc.me!cyan!                        บ
+echo [8Cบ    !3!karanpc.com!cyan!             ณ   !13!izofile.com!cyan!                ณ   !23!ftuapps.dev!cyan!                        บ
+echo [8Cบ    !4!filecr.com!cyan!              ณ   !14!www.novahax.com!cyan!            ณ   !24!starcrack.net!cyan!                      บ
+echo [8Cบ    !5!s0ft4pc.com!cyan!             ณ   !15!haxnode.net!cyan!                ณ   !25!startcrack.net!cyan!                     บ
+echo [8Cบ    !6!www.mazterize.com!cyan!       ณ   !16!lostvayne.com!cyan!              ณ   !26!keygenninja.net!cyan!                    บ
+echo [8Cบ    !7!gigapurbalingga.net!cyan!     ณ   !17!filewomen.com!cyan!              ณ   !27!fileash.com!cyan!                        บ
+echo [8Cบ    !8!appnee.com!cyan!              ณ   !18!crackshash.com!cyan!             ณ   !28!www.trucnet.com !green!(FR)!cyan!               บ
+echo [8Cบ    !9!www.sadeempc.com!cyan!        ณ   !19!www.cybermania.ws!cyan!          ณ   !29!w14.monkrus.ws !green!(RU)!cyan!                บ
+echo [8Cบ   !10!shareappscrack.com!cyan!      ณ   !20!cracksurl.com!cyan!              ณ   !30!www.intercambiosvirtuales.org !green!(ES)!cyan! บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Application Repacks Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !30!diakov.net !green!(RU)!cyan!         ณ   !31!lrepacks.net !green!(RU)!cyan!          ณ   !32!repack.me !green!(RU)!cyan!                     บ
+echo [8Cบ   !31!diakov.net !green!(RU)!cyan!         ณ   !32!lrepacks.net !green!(RU)!cyan!          ณ   !33!repack.me !green!(RU)!cyan!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Portable Apps Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !33!portable4pc.com!cyan!         ณ   !34!www.fcportables.com!cyan!        ณ   !35!portableappz.blogspot.com!cyan!          บ
+echo [8Cบ   !34!portable4pc.com!cyan!         ณ   !35!www.fcportables.com!cyan!        ณ   !36!portableappz.blogspot.com!cyan!          บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogames Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !36!igg-games.com !red!(unsafe)!cyan!  ณ   !44!steamunlocked.net!cyan!          ณ   !52!alltorrents.co!cyan!                     บ
-echo [8Cบ   !37!pcgamestorrents.com!cyan!     ณ   !45!gog-games.com!cyan!              ณ   !53!www.myabandonware.com !green!(retro)!cyan!      บ
-echo [8Cบ   !38!www.skidrowcodex.net!cyan!    ณ   !46!codex-games.com!cyan!            ณ   !54!gamesnostalgia.com !green!(retro)!cyan!         บ
-echo [8Cบ   !39!www.mrpcgamer.co!cyan!        ณ   !47!getgamez.net!cyan!               ณ   !55!cygames.fr !green!(FR)!cyan!                    บ
-echo [8Cบ   !40!www.game3rb.com!cyan!         ณ   !48!www.elamigos-games.com!cyan!     ณ   !56!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
-echo [8Cบ   !41!agfy.co!cyan!                 ณ   !49!crackhub.site!cyan!              ณ   !57!www.gamestorrents.fm !green!(ES)!cyan!          บ
-echo [8Cบ   !42!cracked-games.org!cyan!       ณ   !50!freegameshub.co!cyan!            ณ                                             บ
-echo [8Cบ   !43!www.ovagames.com!cyan!        ณ   !51!gogunlocked.com!cyan!            ณ                                             บ
+echo [8Cบ   !37!igg-games.com !red!(unsafe)!cyan!  ณ   !45!steamunlocked.net!cyan!          ณ   !535!alltorrents.co!cyan!                     บ
+echo [8Cบ   !38!pcgamestorrents.com!cyan!     ณ   !46!gog-games.com!cyan!              ณ   !54!www.myabandonware.com !green!(retro)!cyan!      บ
+echo [8Cบ   !39!www.skidrowcodex.net!cyan!    ณ   !47!codex-games.com!cyan!            ณ   !55!gamesnostalgia.com !green!(retro)!cyan!         บ
+echo [8Cบ   !40!www.mrpcgamer.co!cyan!        ณ   !48!getgamez.net!cyan!               ณ   !56!cygames.fr !green!(FR)!cyan!                    บ
+echo [8Cบ   !41!www.game3rb.com!cyan!         ณ   !49!www.elamigos-games.com!cyan!     ณ   !57!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
+echo [8Cบ   !42!agfy.co!cyan!                 ณ   !50!crackhub.site!cyan!              ณ   !58!www.gamestorrents.fm !green!(ES)!cyan!          บ
+echo [8Cบ   !43!cracked-games.org!cyan!       ณ   !51!freegameshub.co!cyan!            ณ                                             บ
+echo [8Cบ   !44!www.ovagames.com!cyan!        ณ   !52!gogunlocked.com!cyan!            ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogame Repacks Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !58!repack-games.com!cyan!        ณ   !64!darckrepacks.com!cyan!           ณ   !70!cpgrepacks.site!cyan!                    บ
-echo [8Cบ   !59!www.game-repack.site!cyan!    ณ   !65!dodi-repacks.site!cyan!          ณ   !71!www.tiny-repacks.win!cyan!               บ
-echo [8Cบ   !60!elamigos.site!cyan!           ณ   !66!www.blackboxrepack.com!cyan!     ณ   !72!repack.info!cyan!                        บ
-echo [8Cบ   !61!fitgirl-repacks.site!cyan!    ณ   !67!masquerade.site!cyan!            ณ   !73!m4ckd0ge-repacks.me!cyan!                บ
-echo [8Cบ   !62!repack-mechanics.com!cyan!    ณ   !68!scooter-repacks.site!cyan!       ณ   !74!e13.xatab-repack.com !green!(RU)!cyan!          บ
-echo [8Cบ   !63!gamesdrive.net!cyan!          ณ   !69!www.gnarly-repacks.site!cyan!    ณ   !75!qoob.name !green!(RU)!cyan!                     บ
+echo [8Cบ   !59!repack-games.com!cyan!        ณ   !65!darckrepacks.com!cyan!           ณ   !71!cpgrepacks.site!cyan!                    บ
+echo [8Cบ   !60!www.game-repack.site!cyan!    ณ   !66!dodi-repacks.site!cyan!          ณ   !72!www.tiny-repacks.win!cyan!               บ
+echo [8Cบ   !61!elamigos.site!cyan!           ณ   !67!www.blackboxrepack.com!cyan!     ณ   !73!repack.info!cyan!                        บ
+echo [8Cบ   !62!fitgirl-repacks.site!cyan!    ณ   !68!masquerade.site!cyan!            ณ   !74!m4ckd0ge-repacks.me!cyan!                บ
+echo [8Cบ   !63!repack-mechanics.com!cyan!    ณ   !69!scooter-repacks.site!cyan!       ณ   !75!e13.xatab-repack.com !green!(RU)!cyan!          บ
+echo [8Cบ   !64!gamesdrive.net!cyan!          ณ   !70!www.gnarly-repacks.site!cyan!    ณ   !76!qoob.name !green!(RU)!cyan!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -1409,7 +1418,7 @@ goto :CONTINUEWINDOWS
 
 :ANDROID
 call :SCALE 85 33
-title !debug!Cracked Android APK's
+title !title:`=Cracked Android APK's!
 call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
@@ -1460,7 +1469,7 @@ goto :CONTINUEANDROID
 
 :YOUTUBEDL
 call :SCALE 104 32
-title !debug!YouTube Downloader
+title !title:`=YouTube Downloader!
 call :ROSE "YouTube Downloader"
 
 :CLEARYOUTUBEDL
@@ -1663,7 +1672,7 @@ goto :CONTINUEYOUTUBEDL
 
 :USEFULWEBSITES
 call :SCALE 139 44
-title !debug!Useful Websites
+title !title:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
@@ -1724,7 +1733,7 @@ goto :CONTINUEUSEFULWEBSITES
 
 :DDOS
 call :SCALE 82 30
-title !debug!Denial Of Services (DDoS)
+title !title:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
@@ -1777,7 +1786,7 @@ goto :CONTINUEDDOS
 
 :IPLOOKUP
 call :SCALE 73 27
-title !debug!IP Address Lookup
+title !title:`=IP Address Lookup!
 call :ROSE "IP Address Lookup"
 
 :CLEARIPLOOKUP
@@ -1787,7 +1796,7 @@ if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEIPLOOKUP
 call :SCALE 73 27
-title !debug!IP Address Lookup
+title !title:`=IP Address Lookup!
 echo !cyan!
 echo [28Cอออออออออออออออออ
 echo [27C// !red!Û!bgyellow!!black! IP LOOKUP !red!Û!bgblack!!cyan! \\
@@ -1834,10 +1843,13 @@ goto :CONTINUEIPLOOKUP
 
 :IPLOOKUP_RESPONSE
 cls
-if "!x!"=="1" title !debug!Looking up ^> ... & for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "https://api.ipify.org"') do set x=%%a
+if "!x!"=="1" (
+title !title:`=Looking up ^> ...!
+for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "https://api.ipify.org"') do set x=%%a
+)
 >nul chcp 65001
 for %%a in (1 2) do if "!_el!"=="%%a" (
-title !debug!Looking up ^> !x!
+title !title:`=Looking up ^> %x%!
 call :IP_DETECTOR
 )
 if "!_el!"=="3" call :URL_DETECTOR
@@ -1879,15 +1891,15 @@ if "!Language!"=="FR" set t="IP Lookup enregistr้s avec succ่s เ: " "'!ISOutputD
 call :MSGBOXLEVEL 3 !t! 69668 "Illegal Services Checker"
 if "!el!"=="6" start /max explorer.exe "!ISOutputDirectory!\IP Lookup Saved.txt"
 ) else (
-if "!Language!"=="EN" set t=An unexpected error has occurred
-if "!Language!"=="FR" set t=Une erreur inattendue est survenue
-call :MSGBOX 1 "!t!." 69648 "Illegal Services Checker"
+if "!Language!"=="EN" set t="An unexpected error has occurred."
+if "!Language!"=="FR" set t="Une erreur inattendue est survenue."
+call :MSGBOX 1 !t! 69648 "Illegal Services Checker"
 )
 goto :CLEARIPLOOKUP
 
 :PORT
 call :SCALE 101 33
-title !debug!IP Port Scanning
+title !title:`=IP Port Scanning!
 call :ROSE "IP Port Scanning"
 
 :CLEARPORT
@@ -2041,7 +2053,7 @@ call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 goto :CONTINUEPORT
 
 :PINGERPORT
-title !debug!IP Port Pinger
+title !title:`=IP Port Pinger!
 call :ROSE "IP Port Pinger"
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
@@ -2064,7 +2076,7 @@ popd
 goto :MAINMENU
 
 :IPPINGER
-title !debug!IP Pinger
+title !title:`=IP Pinger!
 call :ROSE "IP Pinger"
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
@@ -2078,7 +2090,7 @@ goto :MAINMENU
 
 :IPLOGGERS
 call :SCALE 65 25
-title !debug!IP Loggers
+title !title:`=IP Loggers!
 if "!Language!"=="EN" set t="INFORMATION: Url Shortners are useful for hiding the original links of your suspect IPLogger." "This solution does not work with some services that will redirect your shortened links directly to the last linked url. Example FaceBook, Instagram, Twitter..."
 if "!Language!"=="FR" set t="INFORMATION: Les URL Shortners sont utiles pour cacher les liens originaux de votre IPLogger suspect." "Cette solution ne fonctionne pas avec certains services qui redirigeront directement votre lien raccourci a la derniere URL liee. Exemple Facebook, Instagram, Twitter..."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -2124,7 +2136,7 @@ goto :CONTINUEIPLOGGERS
 
 :DOXING
 call :SCALE 104 49
-title !debug!Doxing
+title !title:`=Doxing!
 call :ROSE Doxing
 
 :CLEARDOXING
@@ -2190,7 +2202,7 @@ goto :CONTINUEDOXING
 
 :PORTABLEAPPS
 call :SCALE 138 43
-title !debug!Portable Apps
+title !title:`=Portable Apps!
 call :ROSE "Portable Apps"
 
 :CLEARPORTABLEAPPS
@@ -2368,7 +2380,7 @@ goto :CLEARPORTABLEAPPS
 
 :WINDOWSANDOFFICE
 call :SCALE 90 31
-title !debug!Windows and Office Cracks
+title !title:`=Windows and Office Cracks!
 call :ROSE "Windows and Office Cracks"
 
 :CLEARWINDOWSANDOFFICE
@@ -2417,7 +2429,7 @@ goto :CONTINUEWINDOWSANDOFFICE
 
 :MOREFEATURES
 call :SCALE 62 20
-title !debug!More Features
+title !title:`=More Features!
 call :ROSE "More Features"
 
 :CONTINUEMOREFEATURES
@@ -2468,7 +2480,7 @@ goto :CONTINUEMOREFEATURES
 
 :WAREZCONTENTCREATOR
 call :SCALE 69 22
-title !debug!Warez Content Creator
+title !title:`=Warez Content Creator!
 call :ROSE "Warez Content Creator"
 
 :CLEARWAREZCONTENTCREATOR
@@ -2519,7 +2531,7 @@ goto :CLEARWAREZCONTENTCREATOR
 
 :WAREZWIKIS
 call :SCALE 76 33
-title !debug!Warez Wikis
+title !title:`=Warez Wikis!
 call :ROSE "Warez Wikis"
 
 :CLEARWAREZWIKIS
@@ -2569,7 +2581,7 @@ goto :CONTINUEWAREZWIKIS
 
 :RELEASELOGS
 call :SCALE 71 20
-title !debug!Release Logs
+title !title:`=Release Logs!
 call :ROSE "Release Logs"
 
 :CLEARRELEASELOGS
@@ -2607,7 +2619,7 @@ goto :CONTINUERELEASELOGS
 
 :EBOOKS
 call :SCALE 100 60
-title !debug!Ebooks
+title !title:`=Ebooks!
 call :ROSE Ebooks
 
 :CLEAREBOOKS
@@ -2686,7 +2698,7 @@ goto :CONTINUEEBOOKS
 
 :MUSICS
 call :SCALE 68 25
-title !debug!Musics
+title !title:`=Musics!
 call :ROSE Musics
 
 :CLEARMUSICS
@@ -2729,7 +2741,7 @@ goto :CONTINUEMUSICS
 
 :FORUMWEBSITES
 call :SCALE 126 37
-title !debug!Forum Websites
+title !title:`=Forum Websites!
 call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
@@ -2783,12 +2795,12 @@ goto :CONTINUEFORUMWEBSITES
 
 :WINDOWSREPAIR
 call :SCALE 70 26
-title !debug!Windows Repair
+title !title:`=Windows Repair!
 call :ROSE "Windows Repair"
 
 :CONTINUEWINDOWSREPAIR
 call :SCALE 70 26
-title !debug!Windows Repair
+title !title:`=Windows Repair!
 echo !cyan!
 echo [26Cออออออออออออออออออออออ
 echo [25C// !red!Û!bgyellow!!black! WINDOWS REPAIR !red!Û!bgblack!!cyan! \\
@@ -2832,7 +2844,7 @@ goto :CONTINUEWINDOWSREPAIR
 
 :REPAIR_WINDOWS_STORE
 call :SCALE 81 20
-title !debug!Repair Windows Store
+title !title:`=Repair Windows Store!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#            . . . I'm repairing Windows Store . . .            #
@@ -2852,7 +2864,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_XBOX_GAME
 call :SCALE 81 20
-title !debug!Repair Xbox Game
+title !title:`=Repair Xbox Game!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#              . . . I'm repairing Xbox Game . . .              #
@@ -2873,7 +2885,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_PUSH_NOTIFICATIONS
 call :SCALE 81 20
-title !debug!Repair Push Notifications
+title !title:`=Repair Push Notifications!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#         . . . I'm repairing Push Notifications . . .          #
@@ -2894,7 +2906,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_WIFI_HOTSPOT
 call :SCALE 81 20
-title !debug!Repair WiFi Hotspot
+title !title:`=Repair WiFi Hotspot!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#            . . . I'm repairing WiFi Hotspot . . .             #
@@ -2910,7 +2922,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_CLIPBOARD_HISTORY
 call :SCALE 81 20
-title !debug!Repair Clipboard History
+title !title:`=Repair Clipboard History!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#          . . . I'm repairing Clipboard History . . .          #
@@ -2927,7 +2939,7 @@ goto :WINDOWSREPAIR
 
 :REPAIR_BACKGROUND_APPS
 call :SCALE 81 20
-title !debug!Repair Backgrounds Apps
+title !title:`=Repair Backgrounds Apps!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#          . . . I'm repairing Backgrounds Apps . . .           #
@@ -2945,7 +2957,7 @@ goto :WINDOWSREPAIR
 
 :GAME_BOOSTER
 call :SCALE 80 29
-title !debug!%1 Game Boost ^| %1_%2_%3_%4
+title !title:`=%1 Game Boost!
 echo !cyan!
 echo [7C#################################################################
 echo [7C#              . . . I'm %1 Game Boost . . .             #
@@ -2966,12 +2978,12 @@ exit /b
 
 :WINDOWSTWEAKS
 call :SCALE 74 23
-title !debug!Windows Tweaks
+title !title:`=Windows Tweaks!
 call :ROSE "Windows Tweaks"
 
 :CONTINUEWINDOWSTWEAKS
 call :SCALE 74 23
-title !debug!Windows Tweaks
+title !title:`=Windows Tweaks!
 echo !cyan!
 echo [26Cออออออออออออออออออออออ
 echo [25C// !red!Û!bgyellow!!black! WINDOWS TWEAKS !red!Û!bgblack!!cyan! \\
@@ -3109,9 +3121,9 @@ for /f "tokens=2delims=:" %%a in ('powercfg -duplicatescheme e9a42b02-d5df-448d-
 for /f "delims=" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Power\User\PowerSchemes /f "Ultimate Performance" /s /c ^| findstr /c:"PowerSchemes"') do for /f "tokens=8delims=\" %%b in ("%%a") do if not "%%b"=="e9a42b02-d5df-448d-aa00-03f14749eb61" call :ENABLE_ULTIMATE_PERFORMANCES_POWER_SCHEME %%b
 )
 ) else (
-if "!Language!"=="EN" set t=ERROR: Power scheme 'Ultimate Performance' doesn't exist in your computer. You cannot use this script
-if "!Language!"=="FR" set t=ERREUR: Le schma d'alimentation 'Ultimate Performance' n'existe pas sur votre ordinateur. Vous ne pouvez pas utiliser ce script
-call :MSGBOX 1 "!t!." 69680 "Illegal Services Checker"
+if "!Language!"=="EN" set t="ERROR: Power scheme 'Ultimate Performance' doesn't exist in your computer. You cannot use this script."
+if "!Language!"=="FR" set t="ERREUR: Le schma d'alimentation 'Ultimate Performance' n'existe pas sur votre ordinateur. Vous ne pouvez pas utiliser ce script."
+call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
 )
 ) else call :ERROR_WINDOWS_VERSION
 goto :CONTINUEWINDOWSTWEAKS
@@ -3126,23 +3138,36 @@ goto :CONTINUEWINDOWSTWEAKS
 :CHECKER_SETUP_FOUND
 call :MSGBOXLEVEL UPDATER
 if "!el!"=="7" exit /b
+:L2
 call :CURL "!TMPF!\IS.Setup.exe" "`git_release`" UPDATER || (call :ERROR_INTERNET & exit /b)
 >nul reg add "!IS_Reg!" /v "FirstLaunch" /t REG_DWORD /d 1 /f
 pushd "!TMPF!"
-start /max IS.Setup.exe
+if exist IS.Setup.exe (start /max IS.Setup.exe) else (
+if "!Language!"=="EN" set t="ERROR: Disable your antivirus and try again..."
+if "!Language!"=="FR" set t="ERREUR: Dsactivez votre antivirus et ressayez..."
+call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
+popd
+goto :L2
+)
 popd
 exit
 
 :CHECKER_BUILD_FOUND
+:L3
 call :CURL "Illegal Services.exe" "`git_build`" UPDATER || (call :ERROR_INTERNET & exit /b)
 call :CURL "ChangeLog.txt" "`git_changelog`" UPDATER || (call :ERROR_INTERNET & exit /b)
-start "" "Illegal Services.exe"
+if exist "Illegal Services.exe" (start "" "Illegal Services.exe") else (
+if "!Language!"=="EN" set t="ERROR: Disable your antivirus and try again..."
+if "!Language!"=="FR" set t="ERREUR: Dsactivez votre antivirus et ressayez..."
+call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
+goto :L3
+)
 exit
 
 :PROCESS_FAQ
 if "!Language!"=="EN" call :SCALE 105 33
 if "!Language!"=="FR" call :SCALE 110 33
-title !debug!Frequently Asked Questions
+title !title:`=Frequently Asked Questions!
 call :ROSE FAQ
 echo !cyan!
 if "!Language!"=="EN" set "t=Here is a list of frequently asked questions about "
@@ -3223,7 +3248,7 @@ exit
 if "!Language!"=="EN" set t=Establishing connection to websites database
 if "!Language!"=="FR" set t=Etablissement de la connexion … la base de donne des sites internet
 set url=!git_raw_downloads!/Websites.txt
-title !debug!!t!: '!url!'.
+title !debug!!t!: '!url!'. - Illegal Services
 >nul Curl\x!arch!\curl.exe -fIkLs "!url!" || (call :ERROR_INTERNET & exit)
 for %%a in (index cn result el) do set %%a=0
 set s=
@@ -3237,7 +3262,7 @@ set o2=Site Internet Chang de Domaine
 )
 for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
 set /a index+=1
-title !debug![0 result found from !index! websites indexed]  ^|  [0/100%%]  ^|
+title !debug![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^| ... - Illegal Services
 )
 echo !cyan!
 if "!Language!"=="EN" echo Scan of the !index! indexed websites has started. You will be notified if any of them are down or have changed domain.
@@ -3246,8 +3271,8 @@ echo:
 for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t1=(((1%%a*60)+1%%b)*60+1%%c)*100+1%%d-36610100"
 for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
 set /a "cn+=1, el=cn*100/index"
-if defined result set s=s
-title !debug![!result! result!s! found from !index! websites indexed]  ^|  [!el!/100%%]  ^|  %%a
+if !result! gtr 1 set s=s
+title !debug![!result! result!s! found from !cn!/!index! websites indexed]  ^|  [!el!/100%%]  ^|  %%a - Illegal Services
 >nul ping -w 1000 -n 1 "%%a" || >nul Curl\x!arch!\curl.exe -IkLs "https://%%a/" || >nul Curl\x!arch!\curl.exe -IkLs "http://%%a/" || (
 set /a result+=1
 echo !red!!o1!: !yellow!%%a !red!seems to be down for you ^^!
@@ -3263,7 +3288,7 @@ for /f "delims=//" %%e in ("%%c") do echo !red!!o2!: !yellow!https://%%a/ !green
 )
 echo !cyan!
 for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t2=(((1%%a*60)+1%%b)*60+1%%c)*100+1%%d-36610100, tDiff=t2-t1, tDiff+=((~(tDiff&(1<<31))>>31)+1)*8640000, seconds=tDiff/100"
-title !debug![!result! result!s! found from !index! websites indexed]  ^|  Scan finished in !seconds! seconds.
+title !debug![!result! result!s! found from !index! websites indexed]  ^|  Scan finished in !seconds! seconds. - Illegal Services
 if "!Language!"=="EN" echo Scan ended with !result! result!s! found from !index! websites indexed in !seconds! seconds.
 if "!Language!"=="FR" echo L'analyse s'est termine avec !result! rsultats trouvs … partir de !index! sites web indexs en !seconds! secondes.
 echo:
@@ -3272,7 +3297,7 @@ exit
 
 :PROCESS_YOUTUBEDL
 call :CHECK_YOUTUBEDLPRIORITY
-title !debug!YouTube DL    ^|!youtube_dl!.exe !a!^|    ^|!o1!^|    ^|Priority: !YouTubeDLPriority:~1!^|
+title !debug!YouTube DL    ^|!youtube_dl!.exe !a!^|    ^|!o1!^|    ^|Priority: !YouTubeDLPriority:~1!^| - Illegal Services
 echo !grey!
 echo [7C##############################################
 if "!Language!"=="EN" echo [7C#       !brightred!   !cyan!Welcome in YouTube DL   !brightred!!grey!        #
@@ -3320,7 +3345,7 @@ exit
 
 :PROCESS_NMAP
 call :CHECK_PORTPRIORITY
-title !debug!NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !PortPriority:~1!^|
+title !debug!NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !PortPriority:~1!^| - Illegal Services
 >nul 2>&1 net start npcap
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d 64534 /f
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d 30 /f
@@ -3371,7 +3396,7 @@ echo [7C Une erreur s'est produite et n'a pas pu scanner.
 exit
 
 :PROCESS_PINGER
-title !debug!IP Pinger  ^|Pinging !x!^|
+title !title:`=IP Pinger  ^|  Pinging %x%!
 :_PING
 cls
 echo !cyan!
@@ -3399,27 +3424,27 @@ ping -t -l 0 !x!
 goto :_PING
 
 :DONE_REGVALUE
-if "!Language!"=="EN" set t=Reg value successfully added/removed
-if "!Language!"=="FR" set t=Valeur du registre ajoute/supprime avec succs
-call :MSGBOX 1 "!t!." 69696 "Illegal Services Checker"
+if "!Language!"=="EN" set t="Reg value successfully added/removed."
+if "!Language!"=="FR" set t="Valeur du registre ajoute/supprime avec succs."
+call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 exit /b
 
 :ENABLE_ULTIMATE_PERFORMANCES_POWER_SCHEME
 echo:
 for /f "tokens=2delims=:" %%a in ('powercfg /getactivescheme') do for /f "delims= " %%b in ("%%a") do if "%%b"=="%1" (
-if "!Language!"=="EN" set t=The 'Ultimate Performance' power scheme is already enabled
-if "!Language!"=="FR" set t=Le schma d'alimentation 'Ultimate Performance' est dj… activ
-call :MSGBOX 1 "!t!." 69696 "Illegal Services Checker"
+if "!Language!"=="EN" set t="The 'Ultimate Performance' power scheme is already enabled."
+if "!Language!"=="FR" set t="Le schma d'alimentation 'Ultimate Performance' est dj… activ."
+call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 exit /b
 )
 powercfg /setactive %1 && (
-if "!Language!"=="EN" set t=The 'Ultimate Performance' power scheme successfully enabled
-if "!Language!"=="FR" set t=Le schma d'alimentation 'Ultimate Performance' a t activ avec succs
-call :MSGBOX 1 "!t!." 69696 "Illegal Services Checker"
+if "!Language!"=="EN" set t="The 'Ultimate Performance' power scheme successfully enabled."
+if "!Language!"=="FR" set t="Le schma d'alimentation 'Ultimate Performance' a t activ avec succs."
+call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
 ) || (
-if "!Language!"=="EN" set t=ERROR: The 'Ultimate Performance' power scheme couldn't enable
-if "!Language!"=="FR" set t=ERREUR: Le schma d'alimentation 'Ultimate Performance' n'a pas pu ๊tre activ
-call :MSGBOX 1 "!t!." 69680 "Illegal Services Checker"
+if "!Language!"=="EN" set t="ERROR: The 'Ultimate Performance' power scheme couldn't enable."
+if "!Language!"=="FR" set t="ERREUR: Le schma d'alimentation 'Ultimate Performance' n'a pas pu ๊tre activ."
+call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
 )
 exit /b
 
@@ -3638,7 +3663,7 @@ exit /b
 
 :URL_DETECTOR
 for /f "delims=/" %%a in ("!x:*://=!") do set "x=%%a"
-title !debug!Looking up ^> !x!
+title !title:`=Looking up ^> %x%!
 set height=4
 for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192" ^| findstr /vc:"<?xml version="') do (
 set /a height+=1
@@ -3776,7 +3801,7 @@ exit /b
 set Language=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "Language"') do set "Language=%%~a"
 if not "!Language!"=="FR" if not "!Language!"=="EN" (
-call :ERROR_REGEDIT Language !Language!
+call :ERROR_REGEDIT Language Language
 for /f "tokens=3" %%a in ('reg query "HKLM\SYSTEM\CurrentControlSet\Control\Nls\Language" /v "InstallLanguage"') do if "%%a"=="040C" (>nul reg add "!IS_Reg!" /v "Language" /t REG_SZ /d FR /f) else >nul reg add "!IS_Reg!" /v "Language" /t REG_SZ /d EN /f
 goto :CHECK_LANGUAGE
 )
@@ -3787,11 +3812,11 @@ if "!Language!"=="FR" if exist "!windir!\Speech_OneCore\Engines\TTS\fr-FR" 2>nul
 exit /b
 
 :CHECK_USERNAME
-set IS_USERNAME=
-for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "Username"') do set "IS_USERNAME=%%~b"
-if "!IS_USERNAME:~20!"=="" exit /b
-call :ERROR_REGEDIT Username "!IS_USERNAME!"
->nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!USERNAME:~,20!" /f
+set IS_Username=
+for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "Username"') do set "IS_Username=%%~b"
+if "!IS_Username:~20!"=="" exit /b
+call :ERROR_REGEDIT Username IS_Username
+>nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!Username:~,20!" /f
 goto :CHECK_USERNAME
 
 :CHECK_PROXY
@@ -3799,8 +3824,9 @@ set Proxy=
 for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "Proxy"') do set "Proxy=%%~b"
 if defined Proxy (
 for %%a in (!git_list!) do if "!Proxy:*://=!"=="%%a" exit /b
-call :ERROR_REGEDIT Proxy !Proxy!
+call :ERROR_REGEDIT Proxy Proxy
 )
+set proxy=
 >nul 2>&1 reg delete "!IS_Reg!" /v "Proxy" /f
 exit /b
 
@@ -3808,7 +3834,7 @@ exit /b
 set YouTubeDLPriority=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLPriority"') do set "YouTubeDLPriority=%%~a"
 if not "!YouTubeDLPriority!"=="REALTIME" if not "!YouTubeDLPriority!"=="HIGH" if not "!YouTubeDLPriority!"=="ABOVENORMAL" if not "!YouTubeDLPriority!"=="NORMAL" if not "!YouTubeDLPriority!"=="BELOWNORMAL" if not "!YouTubeDLPriority!"=="LOW" (
-call :ERROR_REGEDIT YouTubeDLPriority !YouTubeDLPriority!
+call :ERROR_REGEDIT YouTubeDLPriority YouTubeDLPriority
 >nul reg add "!IS_Reg!" /v "YouTubeDLPriority" /t REG_SZ /d NORMAL /f
 goto :CHECK_YOUTUBEDLPRIORITY
 )
@@ -3819,7 +3845,7 @@ exit /b
 set PortPriority=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "PortPriority"') do set "PortPriority=%%~a"
 if not "!PortPriority!"=="REALTIME" if not "!PortPriority!"=="HIGH" if not "!PortPriority!"=="ABOVENORMAL" if not "!PortPriority!"=="NORMAL" if not "!PortPriority!"=="BELOWNORMAL" if not "!PortPriority!"=="LOW" (
-call :ERROR_REGEDIT PortPriority !PortPriority!
+call :ERROR_REGEDIT PortPriority PortPriority
 >nul reg add "!IS_Reg!" /v "PortPriority" /t REG_SZ /d NORMAL /f
 goto :CHECK_PORTPRIORITY
 )
@@ -3831,7 +3857,7 @@ set BackgroundBorderTransparencyValue=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundBorderTransparency"') do set /a BackgroundBorderTransparencyValue=%%a
 if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparency=" & exit /b
 if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparency= /b" & exit /b
-call :ERROR_REGEDIT BackgroundBorderTransparency !BackgroundBorderTransparencyValue!
+call :ERROR_REGEDIT BackgroundBorderTransparency BackgroundBorderTransparencyValue
 >nul reg add "!IS_Reg!" /v "BackgroundBorderTransparency" /t REG_DWORD /d 1 /f
 goto :CHECK_BACKGROUNDBORDERTRANSPARENCY
 
@@ -3839,7 +3865,7 @@ goto :CHECK_BACKGROUNDBORDERTRANSPARENCY
 set BackgroundDisabled=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundDisabled"') do set /a BackgroundDisabled=%%a
 for %%a in (0 1) do if "!BackgroundDisabled!"=="%%a" exit /b
-call :ERROR_REGEDIT BackgroundDisabled !BackgroundDisabled!
+call :ERROR_REGEDIT BackgroundDisabled BackgroundDisabled
 >nul reg add "!IS_Reg!" /v "BackgroundDisabled" /t REG_DWORD /d 0 /f
 goto :CHECK_BACKGROUNDDISABLED
 
@@ -3847,7 +3873,7 @@ goto :CHECK_BACKGROUNDDISABLED
 set BackgroundTransparency=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundTransparency"') do set /a BackgroundTransparency=%%a
 if !BackgroundTransparency! geq 1 if !BackgroundTransparency! leq 100 exit /b
-call :ERROR_REGEDIT BackgroundTransparency !BackgroundTransparency!
+call :ERROR_REGEDIT BackgroundTransparency BackgroundTransparency
 >nul reg add "!IS_Reg!" /v "BackgroundTransparency" /t REG_DWORD /d 10 /f
 goto :CHECK_BACKGROUNDTRANSPARENCY
 
@@ -3855,7 +3881,7 @@ goto :CHECK_BACKGROUNDTRANSPARENCY
 set BackgroundWallpaper=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundWallpaper"') do set /a BackgroundWallpaper=%%a
 if !BackgroundWallpaper! geq 1 if !BackgroundWallpaper! leq 12 exit /b
-call :ERROR_REGEDIT BackgroundWallpaper !BackgroundWallpaper!
+call :ERROR_REGEDIT BackgroundWallpaper BackgroundWallpaper
 >nul reg add "!IS_Reg!" /v "BackgroundWallpaper" /t REG_DWORD /d 6 /f
 goto :CHECK_BACKGROUNDWALLPAPER
 
@@ -3863,7 +3889,7 @@ goto :CHECK_BACKGROUNDWALLPAPER
 set FirstLaunch=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "FirstLaunch"') do set /a FirstLaunch=%%a
 for %%a in (0 1) do if "!FirstLaunch!"=="%%a" exit /b
-call :ERROR_REGEDIT FirstLaunch !FirstLaunch!
+call :ERROR_REGEDIT FirstLaunch FirstLaunch
 >nul reg add "!IS_Reg!" /v "FirstLaunch" /t REG_DWORD /d 1 /f
 goto :CHECK_FIRSTLAUNCH
 
@@ -3871,7 +3897,7 @@ goto :CHECK_FIRSTLAUNCH
 set VoiceAssistant=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "VoiceAssistant"') do set /a VoiceAssistant=%%a
 for %%a in (0 1) do if "!VoiceAssistant!"=="%%a" exit /b
-call :ERROR_REGEDIT VoiceAssistant !VoiceAssistant!
+call :ERROR_REGEDIT VoiceAssistant VoiceAssistant
 >nul reg add "!IS_Reg!" /v "VoiceAssistant" /t REG_DWORD /d 0 /f
 goto :CHECK_VOICEASSISTANT
 
@@ -3879,7 +3905,7 @@ goto :CHECK_VOICEASSISTANT
 set VoiceAssistantChoice=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "VoiceAssistantChoice"') do set /a VoiceAssistantChoice=%%a
 for %%a in (0 1) do if "!VoiceAssistantChoice!"=="%%a" exit /b
-call :ERROR_REGEDIT VoiceAssistantChoice !VoiceAssistantChoice!
+call :ERROR_REGEDIT VoiceAssistantChoice VoiceAssistantChoice
 >nul reg add "!IS_Reg!" /v "VoiceAssistantChoice" /t REG_DWORD /d 1 /f
 goto :CHECK_VOICEASSISTANTCHOICE
 
@@ -3887,7 +3913,7 @@ goto :CHECK_VOICEASSISTANTCHOICE
 set YouTubeDLP=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLP"') do set /a YouTubeDLP=%%a
 for %%a in (0 1) do if "!YouTubeDLP!"=="%%a" exit /b
-call :ERROR_REGEDIT YouTubeDLP !YouTubeDLP!
+call :ERROR_REGEDIT YouTubeDLP YouTubeDLP
 >nul reg add "!IS_Reg!" /v "YouTubeDLP" /t REG_DWORD /d 0 /f
 goto :CHECK_YOUTUBEDLP
 
@@ -3895,7 +3921,7 @@ goto :CHECK_YOUTUBEDLP
 set YouTubeDLOutputDirectory=
 for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLOutputDirectory"') do set "YouTubeDLOutputDirectory=%%~fb"
 if defined YouTubeDLOutputDirectory exit /b
-call :ERROR_REGEDIT YouTubeDLOutputDirectory "!YouTubeDLOutputDirectory!"
+call :ERROR_REGEDIT YouTubeDLOutputDirectory YouTubeDLOutputDirectory
 for /f "tokens=3*" %%a in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "My Music"') do >nul reg add "!IS_Reg!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%b\YouTube Downloader" /f
 goto :CHECK_YOUTUBEDLOUTPUTDIRECTORY
 
@@ -3903,7 +3929,7 @@ goto :CHECK_YOUTUBEDLOUTPUTDIRECTORY
 set YouTubeDLGeoBypass=
 for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLGeoBypass"') do set /a YouTubeDLGeoBypass=%%a
 for %%a in (0 1) do if "!YouTubeDLGeoBypass!"=="%%a" exit /b
-call :ERROR_REGEDIT YouTubeDLGeoBypass !YouTubeDLGeoBypass!
+call :ERROR_REGEDIT YouTubeDLGeoBypass YouTubeDLGeoBypass
 >nul reg add "!IS_Reg!" /v "YouTubeDLGeoBypass" /t REG_DWORD /d 0 /f
 goto :CHECK_YOUTUBEDLGEOBYPASS
 
@@ -3921,7 +3947,7 @@ set DeveloperMode=0
 )
 for %%a in (DeveloperKey c1 c2) do set %%a=
 if not "!DeveloperMode!"=="0" if not "!DeveloperMode!"=="1" (
-call :ERROR_REGEDIT DeveloperMode !DeveloperMode!
+call :ERROR_REGEDIT DeveloperMode DeveloperMode
 >nul reg add "!IS_Reg!" /v "DeveloperMode" /t REG_DWORD /d 0 /f
 goto :CHECK_DEVELOPERMODE
 )
@@ -3929,8 +3955,7 @@ exit /b
 
 :ERROR_REGEDIT
 >nul 2>&1 reg query "!IS_Reg!" /v "%1" && (
-if "!Language!"=="FR" set t="Une erreur inattendue est survenue." "Debug: '!IS_Reg!\%1=%~2'" "Rinitialisation du paramtre '%1' … la valeur par dfaut."
-if "!Language!"=="EN" set t="An unexpected error has occurred." "Debug: '!IS_Reg!\%1=%~2'" "Resetting '%1' setting to default value."
+if "!Language!"=="FR" (set t="Une erreur inattendue est survenue." "Debug: '!IS_Reg!\%1=!%2!'" "Rinitialisation du paramtre '%1' … la valeur par dfaut.") else set t="An unexpected error has occurred." "Debug: '!IS_Reg!\%1=!%2!'" "Resetting '%1' setting to default value."
 call :MSGBOX 3 !t! 69680 "Illegal Services Checker"
 )
 exit /b
@@ -4197,9 +4222,9 @@ git_source
 exit /b
 
 :ERROR_WINDOWS_VERSION
-if "!Language!"=="EN" set t=Your Windows version is not compatible with that feature
-if "!Language!"=="FR" set t=Votre version de Windows n'est pas compatible avec cette fonctionnalit
-call :MSGBOX 1 "!t!." 69648 "Illegal Services Checker"
+if "!Language!"=="EN" set t="Your Windows version is not compatible with that feature."
+if "!Language!"=="FR" set t="Votre version de Windows n'est pas compatible avec cette fonctionnalit."
+call :MSGBOX 1 !t! 69648 "Illegal Services Checker"
 exit /b
 
 :CURL_RAW
