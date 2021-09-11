@@ -182,9 +182,9 @@ runnel.ir
 time4tv.stream
 123tv.live
 livetv.sx
-iptv.stream2watch.sx
+playing.stream2watch.sx
 sportplus.live
-sportsbay.orglive-streams
+sportsbay.org
 thehomesport.com
 ;;STREAMINGFR
 www6.filmstreaming.to
@@ -298,6 +298,7 @@ torrentseeker.com
 otorrents.com
 vstorrent.org
 torrents-csv.ml
+torrentz2eu.me
 search.torrends.to
 proxy-bay.net
 proxygalaxy.pw
@@ -360,6 +361,7 @@ free4pc.org
 appload.club
 izofile.com
 www.novahax.com
+haxnode.net
 lostvayne.com
 filewomen.com
 crackshash.com
@@ -512,7 +514,6 @@ royalstresser.com
 anonboot.com
 stresser.zone
 xtremebooter.xyz
-stresser.be
 eor-n.to
 str3ssed.co
 vtoxicity.net
