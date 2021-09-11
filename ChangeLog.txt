@@ -7,11 +7,12 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.4.0 - 10/09/2021
+v5.8.4.1 - 11/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
-- FIXED a bug with an infinite build update loop when "Illegal_Services.exe" does not have the correct build number assigned. (not tested)
+- FIXED a bug with antivirus conflicting with the updater.
+- FIXED a bug with an infinite build update loop when "Illegal_Services.exe" does not have the correct build number assigned.
 - FIXED a bug when HTTPS was always chosen to start websites.
 - FIXED a bug with YouTube DL "change output location" not changing "download location" strings.
 - FIXED a bug when the "&" character was entered in the URL checker.
@@ -58,6 +59,7 @@ v5.8.4.0 - 10/09/2021
 + ADDED Torrenting : https://torrentparadise.pm/
 + ADDED Torrenting : https://otorrents.com/
 + ADDED Torrenting : https://vstorrent.org/
++ ADDED Torrenting : https://torrentz2eu.me/
 + ADDED Torrenting : https://proxyninja.org/
 + ADDED Torrenting Windows Clients.
 + ADDED Subtitles : https://ytsubtitles.com/
@@ -112,7 +114,7 @@ v5.8.4.0 - 10/09/2021
 + UPDATED Streaming [EN] : https://ww2.123movieshub.tc/
 + UPDATED Streaming [EN] : https://0gomovies.so/
 + UPDATED Streaming [EN] : https://www2.kiss-anime.asia/
-+ UPDATED Streaming [EN] : https://iptv.stream2watch.sx/
++ UPDATED Streaming [EN] : https://playing.stream2watch.sx/
 + UPDATED Streaming [FR] : https://french-stream.re/
 + UPDATED Streaming [FR] : https://www.streaminz.me/
 + UPDATED Streaming [FR] : https://vostanimez.com/
@@ -124,7 +126,7 @@ v5.8.4.0 - 10/09/2021
 + UPDATED Torrenting : https://www3.yggtorrent.nz/
 + UPDATED Torrenting : https://www.oxtorrent.nz/
 + UPDATED Torrenting : https://bitsearch.to/
-+ UPDATED Torrenting : https://proxy-bay.net/
++ UPDATED Torrenting : https://proxy-bay.dev/
 + UPDATED Torrenting : https://unblockproject.monster/
 + UPDATED Torrenting : https://unblocksource.net/
 + UPDATED Torrenting : https://unblockit.ws/
@@ -157,7 +159,6 @@ v5.8.4.0 - 10/09/2021
 - REMOVED Torrenting : https://magnet4you.me/library.php (down)
 - REMOVED Torrenting : https://torrent4you.me/ (down)
 - REMOVED Subtitles : https://www.subtitles.hr/ (down)
-- REMOVED Cracked Windows Apps : https://haxnode.net/ (down)
 - REMOVED Cracked Windows apps : https://v8.xatab-repack.net/ (down)
 - REMOVED Useful Websites : https://onlynudes.net/ (No NSFW in IS.)
 - REMOVED IP Denial of Services : https://udp.so/ (down)
