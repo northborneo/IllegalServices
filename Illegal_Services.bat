@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 4. 1
-REM  Fileversion:  5. 8. 4. 1
+REM  Productversion:  5. 8. 4. 2
+REM  Fileversion:  5. 8. 4. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.4.1 - 11/09/2021
+set version=v5.8.4.2 - 12/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -949,7 +949,7 @@ title !title:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 60
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `123tv.live/ `livetv.sx/ playing.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ playing.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 52
@@ -993,7 +993,7 @@ echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgbla
 echo [8Cบ                                                                                   บ
 echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!playing.stream2watch.sx !green!(sport)!cyan!บ
 echo [8Cบ   !54!time4tv.stream!cyan!                 ณ   !58!sportplus.live !green!(sport)!cyan!         บ
-echo [8Cบ   !55!123tv.live!cyan!                     ณ   !59!sportsbay.org !green!(sport)!cyan!          บ
+echo [8Cบ   !55!live94today.com!cyan!                ณ   !59!sportsbay.org !green!(sport)!cyan!          บ
 echo [8Cบ   !56!livetv.sx !green!(sport)!cyan!              ณ   !60!thehomesport.com !green!(sport)!cyan!       บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
@@ -2356,7 +2356,7 @@ if "!45!"=="!yellow!45 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/ffikia7rkd7c0ghk/artifacts/processhacker-3.0.4351-bin.zip"
+if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/iw9gu8xw71h111oo/artifacts/processhacker-3.0.4353-bin.zip"
 if "!47!"=="!yellow!47 !checked!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!48!"=="!yellow!48 !checked!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!49!"=="!yellow!49 !checked!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
