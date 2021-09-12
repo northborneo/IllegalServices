@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.4.1 - 11/09/2021
+v5.8.4.2 - 12/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - FIXED Minimum version of illegal services is now set to Windows 7.
@@ -114,6 +114,7 @@ v5.8.4.1 - 11/09/2021
 + UPDATED Streaming [EN] : https://ww2.123movieshub.tc/
 + UPDATED Streaming [EN] : https://0gomovies.so/
 + UPDATED Streaming [EN] : https://www2.kiss-anime.asia/
++ UPDATED Streaming [EN] : http://live94today.com/
 + UPDATED Streaming [EN] : https://playing.stream2watch.sx/
 + UPDATED Streaming [FR] : https://french-stream.re/
 + UPDATED Streaming [FR] : https://www.streaminz.me/
@@ -146,7 +147,7 @@ v5.8.4.1 - 11/09/2021
 + UPDATED Portable Apps : CPU-Z v1.97
 + UPDATED Portable Apps : DoNotSpy 10 v5.3.0.0
 + UPDATED Portable Apps : Everything v1.4.1.1009
-+ UPDATED Portable Apps : Process Hacker v3.0.4351
++ UPDATED Portable Apps : Process Hacker v3.0.4353
 + UPDATED Portable Apps : ISLC v1.0.2.5
 + UPDATED More Features Ebooks : https://ww2.bookys-ebooks.com/
 + UPDATED More Features Ebooks : https://www.readlightnovel.me/
