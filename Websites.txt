@@ -83,7 +83,7 @@ katzddl.net
 warezbb.net
 www.300mbfilms.ws
 snahp.it
-downloadhub.name
+downloadhub.wtf
 filmsofts.com
 cgpersia.com
 rsload.net
@@ -506,6 +506,7 @@ www.filechef.com
 onehack.us
 www.torproject.org
 ;;DDOS
+quez.in
 instant-stresser.com
 freestresser.to
 www.ipstresser.com
