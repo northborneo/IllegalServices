@@ -7,9 +7,10 @@ https://discord.gg/rU2w2E83KF
 https://bitbucket.org/IllegalServices/illegal_services
 https://twitter.com/illegalservices
 
-v5.8.4.2 - 12/09/2021
+v5.8.4.3 - 14/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
+- IMPROVED flagging of untrusted website.
 - FIXED Minimum version of illegal services is now set to Windows 7.
 - FIXED a bug with antivirus conflicting with the updater.
 - FIXED a bug with an infinite build update loop when "Illegal_Services.exe" does not have the correct build number assigned.
@@ -71,6 +72,7 @@ v5.8.4.2 - 12/09/2021
 + ADDED Cracked Windows apps : https://fileash.com/
 + ADDED Useful Websites : https://xresolver.com/
 + ADDED Useful Websites : https://www.skypeipresolver.net/ (thanks @blacktario#9999)
++ ADDED IP Denial of Services : https://quez.in/
 + ADDED IP Denial of Services : https://royalstresser.com/
 + ADDED IP Denial of Services : https://stresser.zone/
 + ADDED IP Denial of Services : https://xtremebooter.xyz/
@@ -103,7 +105,7 @@ v5.8.4.2 - 12/09/2021
 + UPDATED Internet Protocol Television : http://pro.allkaicerteam.com/
 + UPDATED Direct Download Link [EN] : https://downturk.net/
 + UPDATED Direct Download Link [EN] : https://2ddl.it/
-+ UPDATED Direct Download Link [EN] : https://downloadhub.name/
++ UPDATED Direct Download Link [EN] : https://downloadhub.wtf/
 + UPDATED Direct Download Link [FR] : https://www.tirexo.work/
 + UPDATED Direct Download Link [FR] : https://free-telecharger.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.plus/home.html
@@ -147,7 +149,7 @@ v5.8.4.2 - 12/09/2021
 + UPDATED Portable Apps : CPU-Z v1.97
 + UPDATED Portable Apps : DoNotSpy 10 v5.3.0.0
 + UPDATED Portable Apps : Everything v1.4.1.1009
-+ UPDATED Portable Apps : Process Hacker v3.0.4353
++ UPDATED Portable Apps : Process Hacker v3.0.4364
 + UPDATED Portable Apps : ISLC v1.0.2.5
 + UPDATED More Features Ebooks : https://ww2.bookys-ebooks.com/
 + UPDATED More Features Ebooks : https://www.readlightnovel.me/
