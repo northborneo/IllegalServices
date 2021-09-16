@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 4. 3
-REM  Fileversion:  5. 8. 4. 3
+REM  Productversion:  5. 8. 4. 4
+REM  Fileversion:  5. 8. 4. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.4.3 - 14/09/2021
+set version=v5.8.4.4 - 16/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -99,7 +99,7 @@ exit
 if "!Language!"=="EN" set t=Searching a
 if "!Language!"=="FR" set t=Recherche d'un
 <nul set /p=!sp!!t! proxy ^>
-set git_list=bitbucket.org/IllegalServices/illegal_services git.teknik.io/Illegal-Services/Illegal_Services github.com/Illegal-Services/Illegal_Services gitee.com/Illegal-Services/illegal_services
+set git_list=github.com/Illegal-Services/Illegal_Services bitbucket.org/IllegalServices/illegal_services git.teknik.io/Illegal-Services/Illegal_Services gitee.com/Illegal-Services/illegal_services
 call :PROXY
 
 :LAUNCHER_VERSION
@@ -228,7 +228,7 @@ call :CHOOSE credit && goto :CREDITS
 if "!Language!"=="EN" set t=networks
 if "!Language!"=="FR" set t=reseaux
 call :CHOOSE !t! && (
-start https://bitbucket.org/IllegalServices/illegal_services && cmdwiz.exe delay 1500
+start https://github.com/Illegal-Services/Illegal_Services && cmdwiz.exe delay 1500
 start https://t.me/illegal_services_forum && cmdwiz.exe delay 1500
 start https://t.me/illegal_services && cmdwiz.exe delay 1500
 start https://discord.gg/rU2w2E83KF && cmdwiz.exe delay 1500
@@ -301,9 +301,9 @@ if "!x!"=="12" (
 if "!Language!"=="EN" set t="Helped improving and reducing code." "Helped fixing a bug that where creating temporary files without deleting them." "Helped improving IP Lookup API's." "Helped adding launcher updater."
 if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "A aid … la correction d'un bug qui entranait la cration de fichiers temporaires sans les supprimer." "A aid … amliorer l'API de l'IP Lookup." "A aid … l'ajout des mises … jour du launcher."
 call :MSGBOX 4 !t! 69696 "anic17 'Task failed successfully'"
-if "!Language!"=="EN" set t="Helping to find existing bugs and vulnerabilities."
-if "!Language!"=="FR" set t="A aid … trouver les bugs et vulnrabilites existantes."
-call :MSGBOX 1 !t! 69696 "anic17 'Task failed successfully'"
+if "!Language!"=="EN" set t="Helping to find existing bugs and vulnerabilities." "Helped to fix bugs related to user input in Regedit."
+if "!Language!"=="FR" set t="A aid … trouver les bugs et vulnrabilites existantes." "A aid … la correction de bugs lis เ la saisie de l'utilisateur dans le Regedit."
+call :MSGBOX 2 !t! 69696 "anic17 'Task failed successfully'"
 start https://github.com/anic17
 )
 if "!x!"=="13" (
@@ -316,14 +316,14 @@ if "!x!"=="14" (
 if "!Language!"=="EN" set t="Helped improving and reducing code." "Helped using curl for IS source." "Helped adding Rose voice assistant." "Helped adding choice verification."
 if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "A aid … l'utilisation de curl pour la source d'IS." "A aid … l'ajout de l'assistante vocale Rose." "A aid … l'ajout de la vrification des choix."
 call :MSGBOX 4 !t! 69696 "sintrode"
-if "!Language!"=="EN" set t="Helped adding Automatic proxy switcher."
-if "!Language!"=="FR" set t="A aid … ajouter le proxy switcher automatique."
-call :MSGBOX 1 !t! 69696 "sintrode"
+if "!Language!"=="EN" set t="Helped adding Automatic proxy switcher." "Helped to fix bugs related to user input in Regedit."
+if "!Language!"=="FR" set t="A aid … ajouter le proxy switcher automatique." "A aid … la correction de bugs lis เ la saisie de l'utilisateur dans le Regedit."
+call :MSGBOX 2 !t! 69696 "sintrode"
 start https://github.com/sintrode
 )
 if "!x!"=="15" (
 if "!Language!"=="EN" set t="Helped improving and reducing code." "Created IS Bookmarks web extension." "Created the timer in seconds to scan indexed websites." "Fixed a bug with the stack memory overflow causing IS to crash. "
-if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "Cration de l'extension Web IS Bookmarks." "Cration de la minuterie en secondes du scan des sites internet indexs." "Correction d'un bug avec le dbordement de la mmoire de la pile provoquant le plantage d'IS."
+if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "Cration de l'extension web IS Bookmarks." "Cration de la minuterie en secondes du scan des sites internet indexs." "Correction d'un bug avec le dbordement de la mmoire de la pile provoquant le plantage d'IS."
 call :MSGBOX 4 !t! 69696 "Grub4K"
 if "!Language!"=="EN" set t="Created the code to center the text on the UI."
 if "!Language!"=="FR" set t="A cr le code pour centrer le texte sur l'UI."
@@ -343,14 +343,14 @@ call :MSGBOX 1 !t! 69696 "Ms.CatFire"
 if "!x!"=="18" (
 if "!Language!"=="EN" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@blacktario - Added 4 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
+echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
 echo Style=69696
 echo Title="All other contributors:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 if "!Language!"=="FR" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@blacktario - A ajout้ 4 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
+echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
 echo Style=69696
 echo Title="Toutes les autres personnes qui m'ont aid้"
 echo Response=MsgBox^(Msg,Style,Title^)
@@ -377,6 +377,9 @@ if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparencyI
 if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparencyInfo=Borders transparency !cyan!(!red!OFF!!cyan!)               บ"
 if "!BackgroundDisabled!"=="0" set "BackgroundDisabledInfo=Wallpaper background !cyan!(!green!ON!!cyan!)                บ"
 if "!BackgroundDisabled!"=="1" set "BackgroundDisabledInfo=Wallpaper background !cyan!(!red!OFF!!cyan!)               บ"
+set "ScanWebsitesInfo=Scan down or changed domain websites.!cyan!    บ"
+if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Untrusted Websites Warning !cyan!(!green!ON!!cyan!)               บ"
+if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Untrusted Websites Warning !cyan!(!red!OFF!!cyan!)              บ"
 if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Rose voice assistant !cyan!(!green!ON!!cyan!)                บ"
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Rose voice assistant !cyan!(!red!OFF!!cyan!)               บ"
 if "!DeveloperMode!"=="1" (
@@ -387,7 +390,6 @@ if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Developer mode !cyan!(!red!OFF!!cyan!)                     บ"
 set "ExtractSourceInfo=                                                บ"
 )
-set "ScanWebsitesInfo=Scan down or changed domain websites.!cyan!    บ"
 )
 if "!Language!"=="FR" (
 set "BackgroundTransparencyInfo=Changer background transparence. !cyan!(!yellow!!BackgroundTransparency!!cyan!)!cyan!    !el!บ"
@@ -395,6 +397,9 @@ if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparencyI
 if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparencyInfo=Transparence des bords !cyan!(!red!OFF!!cyan!)             บ"
 if "!BackgroundDisabled!"=="0" set "BackgroundDisabledInfo=Fond d'cran !cyan!(!green!ON!!cyan!)                        บ"
 if "!BackgroundDisabled!"=="1" set "BackgroundDisabledInfo=Fond d'cran !cyan!(!red!OFF!!cyan!)                       บ"
+set "ScanWebsitesInfo=Scan les sites internet indexs.!cyan!         บ"
+if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Avertissement des sites web non fiables !cyan!(!green!ON!!cyan!)               บ"
+if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Avertissement des sites web non fiables !cyan!(!red!OFF!!cyan!)              บ"
 if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Assistance vocal Rose !cyan!(!green!ON!!cyan!)               บ"
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Assistance vocal Rose !cyan!(!red!OFF!!cyan!)              บ"
 if "!DeveloperMode!"=="1" (
@@ -405,7 +410,6 @@ if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Mode dveloppeur !cyan!(!red!OFF!!cyan!)                   บ"
 set "ExtractSourceInfo=                                                บ"
 )
-set "ScanWebsitesInfo=Scan les sites internet indexs.!cyan!         บ"
 )
 
 :CONTINUESETTINGS
@@ -424,24 +428,24 @@ echo [7Cษอออออออออออออออออออออออออออออออออออออออออออออหออออออออออออออออออออออออ
 if "!Language!"=="EN" echo [7CฬอออออออออออออþÛ!bgyellow!!red!Û WALLPAPERS Û!bgblack!!cyan!ÛþออออออออออออออฮอออออออออออออออออþÛ!bgyellow!!red!Û SETTINGS Û!bgblack!!cyan!Ûþออออออออออออออออออน
 if "!Language!"=="FR" echo [7CฬออออออออออออþÛ!bgyellow!!red!Û FOND D'ECRANS Û!bgblack!!cyan!ÛþออออออออออออฮออออออออออออออออþÛ!bgyellow!!red!Û PARAMETRES Û!bgblack!!cyan!Ûþอออออออออออออออออน
 echo [7Cบ                                             บ                                                   บ
-echo [7Cบ    !yellow!1!cyan!  ^> !white! Kirito 1 (IS v1.4 icon)!cyan!            บ   !yellow!13!cyan!  ^> !white! !BackgroundTransparencyInfo!
-echo [7Cบ    !yellow!2!cyan!  ^> !white! Kirito 2!cyan!                           บ   !yellow!14!cyan!  ^> !white! !BackgroundBorderTransparencyInfo!
-echo [7Cบ    !yellow!3!cyan!  ^> !white! Kirito 3!cyan!                           บ   !yellow!15!cyan!  ^> !white! !BackgroundDisabledInfo!
-echo [7Cบ    !yellow!4!cyan!  ^> !white! Kirito 4!cyan!                           บ   !yellow!16!cyan!  ^> !white! !VoiceAssistantInfo!
-echo [7Cบ    !yellow!5!cyan!  ^> !white! 49206C6F766520796F75204C697361!cyan!     บ   !yellow!17!cyan!  ^> !white! !DeveloperModeInfo!
-echo [7Cบ    !yellow!6!cyan!  ^> !white! Even Roses are colorless !cyan!          บ   !yellow!18!cyan!  ^> !white! !ScanWebsitesInfo!
-if "!Language!"=="EN" echo [7Cบ    !yellow!7!cyan!  ^> !white! Tree!cyan!                               บ   !yellow!19!cyan!  ^> !white! Check for updates.!cyan!                       บ
-if "!Language!"=="FR" echo [7Cบ    !yellow!7!cyan!  ^> !white! Arbre!cyan!                              บ   !yellow!19!cyan!  ^> !white! Vrifiez les mises … jour.!cyan!               บ
-if "!Language!"=="EN" echo [7Cบ    !yellow!8!cyan!  ^> !white! Dark Guy!cyan!                           บ   !yellow!20!cyan!  ^> !white! Change username.!cyan!                         บ
-if "!Language!"=="FR" echo [7Cบ    !yellow!8!cyan!  ^> !white! Homme sombre!cyan!                       บ   !yellow!20!cyan!  ^> !white! Changer le nom d'utilisateur.!cyan!            บ
-if "!Language!"=="EN" echo [7Cบ    !yellow!9!cyan!  ^> !white! Girl eyes!cyan!                          บ   !yellow!21!cyan!  ^> !white! Change language to French.!cyan!               บ
-if "!Language!"=="FR" echo [7Cบ    !yellow!9!cyan!  ^> !white! Yeux fille!cyan!                         บ   !yellow!21!cyan!  ^> !white! Changer la langue en Anglais.!cyan!            บ
-if "!Language!"=="EN" echo [7Cบ   !yellow!10!cyan!  ^> !white! World map (bytes)!cyan!                  บ   !yellow!22!cyan!  ^> !white! Export/Import settings.!cyan!                  บ
-if "!Language!"=="FR" echo [7Cบ   !yellow!10!cyan!  ^> !white! Carte du monde (bytes)!cyan!             บ   !yellow!22!cyan!  ^> !white! Exporter/Importer les paramtres.!cyan!        บ
-if "!Language!"=="EN" echo [7Cบ   !yellow!11!cyan!  ^> !white! World map (Corona Virus)!cyan!           บ   !yellow!23!cyan!  ^> !white! Uninstall Illegal Services.!cyan!              บ
-if "!Language!"=="FR" echo [7Cบ   !yellow!11!cyan!  ^> !white! Carte du monde (Corona Virus)!cyan!      บ   !yellow!23!cyan!  ^> !white! Dsinstaller Illegal Services.!cyan!           บ
-if "!Language!"=="EN" echo [7Cบ   !yellow!12!cyan!  ^> !white! World map (cool)!cyan!                   บ   !ExtractSourceInfo!
-if "!Language!"=="FR" echo [7Cบ   !yellow!12!cyan!  ^> !white! Carte du monde (cool)!cyan!              บ   !ExtractSourceInfo!
+echo [7Cบ    !yellow!1!cyan!  ^>  !white!Kirito 1 (IS v1.4 icon)!cyan!            บ   !yellow!13!cyan!  ^>  !white!!BackgroundTransparencyInfo!
+echo [7Cบ    !yellow!2!cyan!  ^>  !white!Kirito 2!cyan!                           บ   !yellow!14!cyan!  ^>  !white!!BackgroundBorderTransparencyInfo!
+echo [7Cบ    !yellow!3!cyan!  ^>  !white!Kirito 3!cyan!                           บ   !yellow!15!cyan!  ^>  !white!!BackgroundDisabledInfo!
+echo [7Cบ    !yellow!4!cyan!  ^>  !white!Kirito 4!cyan!                           บ   !yellow!16!cyan!  ^>  !white!!ScanWebsitesInfo!
+echo [7Cบ    !yellow!5!cyan!  ^>  !white!49206C6F766520796F75204C697361!cyan!     บ   !yellow!17!cyan!  ^>  !white!!UntrustedWebsitesWarningInfo!
+echo [7Cบ    !yellow!6!cyan!  ^>  !white!Even Roses are colorless !cyan!          บ   !yellow!18!cyan!  ^>  !white!!VoiceAssistantInfo!
+if "!Language!"=="EN" echo [7Cบ    !yellow!7!cyan!  ^>  !white!Tree!cyan!                               บ   !yellow!19!cyan!  ^>  !white!!DeveloperModeInfo!
+if "!Language!"=="FR" echo [7Cบ    !yellow!7!cyan!  ^>  !white!Arbre!cyan!                              บ   !yellow!19!cyan!  ^>  !white!!DeveloperModeInfo!
+if "!Language!"=="EN" echo [7Cบ    !yellow!8!cyan!  ^>  !white!Dark Guy!cyan!                           บ   !yellow!20!cyan!  ^>  !white!Check for updates.!cyan!                       บ
+if "!Language!"=="FR" echo [7Cบ    !yellow!8!cyan!  ^>  !white!Homme sombre!cyan!                       บ   !yellow!20!cyan!  ^>  !white!Vrifiez les mises … jour.!cyan!               บ
+if "!Language!"=="EN" echo [7Cบ    !yellow!9!cyan!  ^>  !white!Girl eyes!cyan!                          บ   !yellow!21!cyan!  ^>  !white!Change username.!cyan!                         บ
+if "!Language!"=="FR" echo [7Cบ    !yellow!9!cyan!  ^>  !white!Yeux fille!cyan!                         บ   !yellow!21!cyan!  ^>  !white!Changer le nom d'utilisateur.!cyan!            บ
+if "!Language!"=="EN" echo [7Cบ   !yellow!10!cyan!  ^>  !white!World map (bytes)!cyan!                  บ   !yellow!22!cyan!  ^>  !white!Change language to French.!cyan!               บ
+if "!Language!"=="FR" echo [7Cบ   !yellow!10!cyan!  ^>  !white!Carte du monde (bytes)!cyan!             บ   !yellow!22!cyan!  ^>  !white!Changer la langue en Anglais.!cyan!            บ
+if "!Language!"=="EN" echo [7Cบ   !yellow!11!cyan!  ^>  !white!World map (Corona Virus)!cyan!           บ   !yellow!23!cyan!  ^>  !white!Export/Import settings.!cyan!                  บ
+if "!Language!"=="FR" echo [7Cบ   !yellow!11!cyan!  ^>  !white!Carte du monde (Corona Virus)!cyan!      บ   !yellow!23!cyan!  ^>  !white!Exporter/Importer les paramtres.!cyan!        บ
+if "!Language!"=="EN" echo [7Cบ   !yellow!12!cyan!  ^>  !white!World map (cool)!cyan!                   บ   !ExtractSourceInfo!
+if "!Language!"=="FR" echo [7Cบ   !yellow!12!cyan!  ^>  !white!Carte du monde (cool)!cyan!              บ   !ExtractSourceInfo!
 echo [7Cบ                                             บ                                                   บ
 echo [7Cศอออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -455,14 +459,14 @@ for /l %%a in (1,1,12) do if "!x!"=="%%a" goto :SETTING_BACKGROUND_WALLPAPER
 if "!x!"=="13" goto :SETTING_BACKGROUND_TRANSPARENCY
 if "!x!"=="14" goto :SETTING_BACKGROUND_BORDER_TRANSPARENCY
 if "!x!"=="15" goto :SETTING_BACKGROUND
-if "!x!"=="16" goto :SETTING_ROSE
-if "!x!"=="17" goto :SETTING_DEVELOPERMODE
-if "!x!"=="18" call :SHOW_WINDOW "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
-if "!x!"=="19" goto :SETTING_VERSION
-if "!x!"=="20" goto :SETTING_USERNAME
-if "!x!"=="21" goto :SETTING_LANGUAGE
-if "!x!"=="22" goto :SETTING_EXPORTIMPORT
-if "!x!"=="23" goto :SETTING_UNINSTALL
+if "!x!"=="16" call :SHOW_WINDOW "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
+if "!x!"=="17" goto :SETTING_UNTRUSTEDWEBSITES
+if "!x!"=="18" goto :SETTING_ROSE
+if "!x!"=="19" goto :SETTING_DEVELOPERMODE
+if "!x!"=="20" goto :SETTING_VERSION
+if "!x!"=="21" goto :SETTING_USERNAME
+if "!x!"=="22" goto :SETTING_LANGUAGE
+if "!x!"=="23" goto :SETTING_EXPORTIMPORT
 if "!x!"=="24" if "!DeveloperMode!"=="1" goto :SETTING_EXTRACT_SOURCE
 call :CHOOSE open && (call :OPEN_FOLDER "!ISOutputDirectory!" & goto :CONTINUESETTINGS)
 call :CHOOSE back && goto :MAINMENU
@@ -501,6 +505,11 @@ if "!BackgroundDisabled!"=="0" (
 )
 if "!BackgroundDisabled!"=="1" >nul reg add "!IS_Reg!" /v "BackgroundDisabled" /t REG_DWORD /d 0 /f
 call :APPLY_SETTINGS
+goto :CLEARSETTINGS
+
+:SETTING_UNTRUSTEDWEBSITES
+if "!UntrustedWebsitesWarning!"=="1" >nul reg add "!IS_Reg!" /v "UntrustedWebsitesWarning" /t REG_DWORD /d 0 /f
+if "!UntrustedWebsitesWarning!"=="0" >nul reg add "!IS_Reg!" /v "UntrustedWebsitesWarning" /t REG_DWORD /d 1 /f
 goto :CLEARSETTINGS
 
 :SETTING_ROSE
@@ -649,43 +658,6 @@ call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
 )
 goto :CLEARSETTINGS
 
-:SETTING_UNINSTALL
-cls
-title !title:`=Illegal Services uninstaller!
-echo:
-echo:
-echo:
-echo:
-echo !red!
-call :DRAW_CENTER "Are you sure you want to permanently delete Illegal Services from your system without leaving traces ?"
-call :DRAW_CENTER "You will lose all of the following settings and personal data:"
-echo:
-echo !cyan!
-echo =================================================================================================================
-echo [22C!red!Illegal Services    !cyan!^>  !magenta!%~dp0
-echo [22C!red!Settings            !cyan!^>  !magenta!!IS_Reg!
-echo [22C!red!YouTube Downloader  !cyan!^>  !magenta!!YouTubeDLOutputDirectory!
-echo [22C!red!IP Address Lookup   !cyan!^>  !magenta!!ISOutputDirectory!
-echo [22C!red!Temporary IS files  !cyan!^>  !magenta!!TMPF!!cyan!
-echo =================================================================================================================
-echo:
-echo:
-if "!Language!"=="EN" (
-call :DRAW_CENTER "Are you sure you want to continue ? Press !yellow![Y]!cyan! for Yes and !yellow![N]!cyan! for No.!yellow!" 25
->nul choice /n /c YN
-)
-if "!Language!"=="FR" (
-call :DRAW_CENTER "Etes vous sur de vouloir continuer ? Appuyez sur !yellow![O]!cyan! pour Oui ou !yellow![N]!cyan! pour Non.!yellow!" 25
->nul choice /n /c ON
-)
-if not "!errorlevel!"=="1" goto :CONTINUESETTINGS
-if "!Language!"=="EN" set t="ERROR: This feature is still in development and will be released soon."
-if "!Language!"=="FR" set t="ERREUR: Cette fonctionnalit est toujours en cours de dveloppement et sera publie prochainement."
-call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
-goto :CONTINUESETTINGS
-start IS.Uninstaller.bat
-exit
-
 :SETTING_EXTRACT_SOURCE
 if /i "!IS_Process!"=="cmd.exe" (
 echo:
@@ -709,7 +681,7 @@ call :ROSE "Internet Protocol Television"
 
 :CLEARIPTV
 call :CLEAR 1 38
-set db=iptvcat.com/home_11 `pro.allkaicerteam.com/ www.iptvm3ulist.com/ip-tv-free/ www.iptvm3ufree.com/ iptvmate.net/m3u_iptv/ www.links-iptv.com/ iptvforpcwindows.com/ www.techtoreview.com/top-picks/m3u-playlist-url.html www.iptv4free.com/ m3u.pktelcos.com/ freem3uhd.blogspot.com/ dailym3uiptv.com/home83/ www.iptv1.org/ telechargeriptv.com/ www.5kplayer.com/video-music-player/free-iptv-playlist-m3u-links.htm github.com/monetareq/iptv1 github.com/cbn88/cbn88.github.io github.com/Free-IPTV/Countries github.com/coodertv/IPTVM3U8 github.com/Sumon2021/Sumon-IPTV github.com/mancinibig55/45125623 github.com/firojshahriyarmasud/IPTV github.com/duyminh215/iptv-list github.com/riqueenz/iptv github.com/iptv-org/iptv github.com/imDazui/Tvlist-awesome-m3u-m3u8 github.com/tvheadend/tvheadend github.com/Cigaras/IPTV.bundle github.com/lucifersun/China-Telecom-ShangHai-IPTV-list github.com/notanewbie/LegalStream github.com/Fleker/CumulusTV github.com/lylehust/Chinese-IPTV github.com/AlexanderSofronov/iptv.example github.com/chwlibre/iptv github.com/myIPTVChannels/lists github.com/free-greek-iptv/greek-iptv github.com/iptv-ch/iptv-ch.github.io github.com/iptv-restream/iptv-channels
+set db=iptvcat.com/home_11 `pro.allkaicerteam.com/ www.iptvm3ulist.com/ip-tv-free/ www.iptvm3ufree.com/ iptvmate.net/m3u_iptv/ www.links-iptv.com/ iptvforpcwindows.com/ www.techtoreview.com/top-picks/m3u-playlist-url.html www.iptv4free.com/ m3u.pktelcos.com/ freem3uhd.blogspot.com/ dailym3uiptv.com/m3u-lists/ www.iptv1.org/ telechargeriptv.com/ www.5kplayer.com/video-music-player/free-iptv-playlist-m3u-links.htm github.com/monetareq/iptv1 github.com/cbn88/cbn88.github.io github.com/Free-IPTV/Countries github.com/coodertv/IPTVM3U8 github.com/Sumon2021/Sumon-IPTV github.com/mancinibig55/45125623 github.com/firojshahriyarmasud/IPTV github.com/duyminh215/iptv-list github.com/riqueenz/iptv github.com/iptv-org/iptv github.com/imDazui/Tvlist-awesome-m3u-m3u8 github.com/tvheadend/tvheadend github.com/Cigaras/IPTV.bundle github.com/lucifersun/China-Telecom-ShangHai-IPTV-list github.com/notanewbie/LegalStream github.com/Fleker/CumulusTV github.com/lylehust/Chinese-IPTV github.com/AlexanderSofronov/iptv.example github.com/chwlibre/iptv github.com/myIPTVChannels/lists github.com/free-greek-iptv/greek-iptv github.com/iptv-ch/iptv-ch.github.io github.com/iptv-restream/iptv-channels
 
 :CONTINUEIPTV
 call :SCALE 91 32
@@ -833,44 +805,44 @@ call :ROSE "Direct Download Link"
 for %%a in (EN FR) do if "!Language!"=="%%a" goto :DDL%%a
 
 :DDLEN
-call :SCALE 128 37
+call :SCALE 128 38
 title !title:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
-call :CLEAR 1 71
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1 72
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
-call :SCALE 128 37
+call :SCALE 128 38
 echo !cyan!
 echo [44Cอออออออออออออออออออออออออออออออออออออออ
 echo [43C// !red!Û!bgyellow!!black! DIRECT DOWNLOAD LINK (DDL) [EN] !red!Û!bgblack!!cyan! \\
 echo [6Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [6Cบ                                                                                                                  บ
-echo [6Cบ    !1!avxhm.is!cyan!                     ณ   !25!dl4all.org!cyan!           ณ   !49!x265.club!cyan!                       บ
-echo [6Cบ    !2!www.heroturko.net!cyan!            ณ   !26!warezomen.com!cyan!        ณ   !50!hevcbay.com!cyan!                     บ
-echo [6Cบ    !3!rmz.cr!cyan!                       ณ   !27!www.scnsrc.me!cyan!        ณ   !51!rarefilmm.com!cyan!                   บ
-echo [6Cบ    !4!softarchive.is!cyan!               ณ   !28!win7dl.org!cyan!           ณ   !52!1worldfree4u.trade!cyan!              บ
-echo [6Cบ    !5!www.downduck.com!cyan!             ณ   !29!www.ddlvalley.me!cyan!     ณ   !53!the-eye.eu!cyan!                      บ
-echo [6Cบ    !6!scnlog.me!cyan!                    ณ   !30!downtr.cc!cyan!            ณ   !54!jpddl.com !green!(animes)!cyan!              บ
-echo [6Cบ    !7!www.creaxy.com!cyan!               ณ   !31!releasehive.co!cyan!       ณ   !55!animeshare.cf !green!(animes)!cyan!          บ
-echo [6Cบ    !8!downturk.net!cyan!                 ณ   !32!www.kokodown.com!cyan!     ณ   !56!anidl.org !green!(animes)!cyan!              บ
-echo [6Cบ    !9!downarchive.org!cyan!              ณ   !33!rlstop.net!cyan!           ณ   !57!hi10anime.com !green!(animes)!cyan!          บ
-echo [6Cบ   !10!0dayhome.net!cyan!                 ณ   !34!uhdmv.org!cyan!            ณ   !58!animekayo.com !green!(animes)!cyan!          บ
-echo [6Cบ   !11!scene-rls.net!cyan!                ณ   !35!tfpdl.to!cyan!             ณ   !59!animekaizoku.com !green!(animes)!cyan!       บ
-echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!softddl.org!cyan!          ณ   !60!ssanime.ga !green!(animes)!cyan!             บ
-echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!2ddl.it!cyan!              ณ   !61!animetosho.org !green!(animes)!cyan!         บ
-echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!katzddl.net!cyan!          ณ   !62!cdromance.com !green!(roms)!cyan!            บ
-echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!warezbb.net!cyan!          ณ   !63!www.romnation.net !green!(roms)!cyan!        บ
-echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!www.300mbfilms.ws!cyan!    ณ   !64!vimm.net !green!(roms)!cyan!                 บ
-echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!snahp.it!cyan!             ณ   !65!nxmac.com !green!(MAC)!cyan!                 บ
-echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!downloadhub.wtf!cyan!      ณ   !66!macdrop.net !green!(MAC)!cyan!               บ
-echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!filmsofts.com!cyan!        ณ   !67!sheet-music.xyz !green!(audio)!cyan!         บ
-echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!cgpersia.com!cyan!         ณ   !68!audioz.download !green!(audio)!cyan!         บ
-echo [6Cบ   !21!oneddl.org!cyan!                   ณ   !45!rsload.net!cyan!           ณ   !69!audiobookbay.nl !green!(audiobooks)!cyan!    บ
-echo [6Cบ   !22!apps-pack.com!cyan!                ณ   !46!megaddl.co!cyan!           ณ   !70!www.gfxtra31.com !green!(GFX)!cyan!          บ
-echo [6Cบ   !23!www.rlslog.net!cyan!               ณ   !47!heroturko2.net!cyan!       ณ   !71!gfx-hub.cc !green!(GFX)!cyan!                บ
-echo [6Cบ   !24!freshwap.cc!cyan!                  ณ   !48!crazy4tv.com!cyan!         ณ                                          บ
+echo [6Cบ    !1!avxhm.is!cyan!                     ณ  !25!dl4all.org!cyan!            ณ   !49!x265.club!cyan!                       บ
+echo [6Cบ    !2!www.heroturko.net!cyan!            ณ  !26!warezomen.com!cyan!         ณ   !50!themoviesflix.co.com!cyan!            บ
+echo [6Cบ    !3!rmz.cr!cyan!                       ณ  !27!www.scnsrc.me!cyan!         ณ   !51!themovieflix.co.in!cyan!              บ
+echo [6Cบ    !4!softarchive.is!cyan!               ณ  !28!win7dl.org!cyan!            ณ   !52!hevcbay.com!cyan!                     บ
+echo [6Cบ    !5!www.downduck.com!cyan!             ณ  !29!www.ddlvalley.me!cyan!      ณ   !53!rarefilmm.com!cyan!                   บ
+echo [6Cบ    !6!scnlog.me!cyan!                    ณ  !30!downtr.cc!cyan!             ณ   !54!the-eye.eu!cyan!                      บ
+echo [6Cบ    !7!www.creaxy.com!cyan!               ณ  !31!releasehive.co!cyan!        ณ   !55!jpddl.com !green!(animes)!cyan!              บ
+echo [6Cบ    !8!downturk.net!cyan!                 ณ  !32!www.kokodown.com!cyan!      ณ   !56!animeshare.cf !green!(animes)!cyan!          บ
+echo [6Cบ    !9!downarchive.org!cyan!              ณ  !33!rlstop.net!cyan!            ณ   !57!anidl.org !green!(animes)!cyan!              บ
+echo [6Cบ   !10!0dayhome.net!cyan!                 ณ  !34!uhdmv.org!cyan!             ณ   !58!hi10anime.com !green!(animes)!cyan!          บ
+echo [6Cบ   !11!scene-rls.net!cyan!                ณ  !35!tfpdl.to!cyan!              ณ   !59!animekayo.com !green!(animes)!cyan!          บ
+echo [6Cบ   !12!www.freshwap.us!cyan!              ณ  !36!softddl.org!cyan!           ณ   !60!animekaizoku.com !green!(animes)!cyan!       บ
+echo [6Cบ   !13!www.apps4all.com!cyan!             ณ  !37!2ddl.it!cyan!               ณ   !61!ssanime.ga !green!(animes)!cyan!             บ
+echo [6Cบ   !14!dl4all.biz!cyan!                   ณ  !38!katzddl.net!cyan!           ณ   !62!animetosho.org !green!(animes)!cyan!         บ
+echo [6Cบ   !15!worldsrc.net!cyan!                 ณ  !39!warezbb.net!cyan!           ณ   !63!cdromance.com !green!(roms)!cyan!            บ
+echo [6Cบ   !16!movieparadise.org!cyan!            ณ  !40!www.300mbfilms.ws!cyan!     ณ   !64!www.romnation.net !green!(roms)!cyan!        บ
+echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ  !41!snahp.it!cyan!              ณ   !65!vimm.net !green!(roms)!cyan!                 บ
+echo [6Cบ   !18!hdencode.org!cyan!                 ณ  !42!downloadhub.wtf!cyan!       ณ   !66!nxmac.com !green!(MAC)!cyan!                 บ
+echo [6Cบ   !19!katzdownload.com!cyan!             ณ  !43!filmsofts.com!cyan!         ณ   !67!macdrop.net !green!(MAC)!cyan!               บ
+echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ  !44!cgpersia.com!cyan!          ณ   !68!sheet-music.xyz !green!(audio)!cyan!         บ
+echo [6Cบ   !21!oneddl.org!cyan!                   ณ  !45!rsload.net!cyan!            ณ   !69!audioz.download !green!(audio)!cyan!         บ
+echo [6Cบ   !22!apps-pack.com!cyan!                ณ  !46!megaddl.co!cyan!            ณ   !70!audiobookbay.nl !green!(audiobooks)!cyan!    บ
+echo [6Cบ   !23!www.rlslog.net!cyan!               ณ  !47!heroturko2.net!cyan!        ณ   !71!www.gfxtra31.com !green!(GFX)!cyan!          บ
+echo [6Cบ   !24!freshwap.cc!cyan!                  ณ  !48!crazy4tv.com!cyan!          ณ   !72!gfx-hub.cc !green!(GFX)!cyan!                บ
 echo [6Cบ                                                                                                                  บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -1200,7 +1172,7 @@ if "!Language!"=="FR" call :DRAW_CENTER "ERREUR: Pour pouvoir utiliser !yellow!T
 echo:
 )
 call :PROMPT
-for %%a in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
+if "!UntrustedWebsitesWarning!"=="1" for %%a in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
 if "!Language!"=="EN" set t="You have selected '%%c' which is flagged as an untrusted website." "Be careful using it."
 if "!Language!"=="FR" set t="Vous avez slectionn '%%c' qui est signal comme un site web non fiable." "Soyez prudent en l'utilisant."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -1352,60 +1324,61 @@ call :ERRORMESSAGE
 goto :CONTINUESUBTITLES
 
 :WINDOWS
-call :SCALE 136 52
+call :SCALE 136 53
 title !title:`=Cracked Windows apps!
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
-call :CLEAR 1 76
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ haxnode.net/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
+call :CLEAR 1 78
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ haxnode.net/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
-call :SCALE 136 52
+call :SCALE 136 53
 echo !cyan!
 echo [56Cออออออออออออออออออออออออออออ
 echo [55C// !red!Û!bgyellow!!black! CRACKED WINDOWS APPS !red!Û!bgblack!!cyan! \\
 echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Applications Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ    !1!getintopc.com!cyan!           ณ   !11!free4pc.org!cyan!                ณ   !21!fileriver.net!cyan!                      บ
-echo [8Cบ    !2!!red!crackingpatching.com!cyan!    ณ   !12!appload.club!cyan!               ณ   !22!piratepc.me!cyan!                        บ
-echo [8Cบ    !3!karanpc.com!cyan!             ณ   !13!izofile.com!cyan!                ณ   !23!ftuapps.dev!cyan!                        บ
-echo [8Cบ    !4!filecr.com!cyan!              ณ   !14!www.novahax.com!cyan!            ณ   !24!starcrack.net!cyan!                      บ
-echo [8Cบ    !5!s0ft4pc.com!cyan!             ณ   !15!haxnode.net!cyan!                ณ   !25!startcrack.net!cyan!                     บ
-echo [8Cบ    !6!www.mazterize.com!cyan!       ณ   !16!lostvayne.com!cyan!              ณ   !26!keygenninja.net!cyan!                    บ
-echo [8Cบ    !7!gigapurbalingga.net!cyan!     ณ   !17!filewomen.com!cyan!              ณ   !27!fileash.com!cyan!                        บ
-echo [8Cบ    !8!appnee.com!cyan!              ณ   !18!crackshash.com!cyan!             ณ   !28!www.trucnet.com !green!(FR)!cyan!               บ
-echo [8Cบ    !9!www.sadeempc.com!cyan!        ณ   !19!www.cybermania.ws!cyan!          ณ   !29!w14.monkrus.ws !green!(RU)!cyan!                บ
-echo [8Cบ   !10!shareappscrack.com!cyan!      ณ   !20!cracksurl.com!cyan!              ณ   !30!www.intercambiosvirtuales.org !green!(ES)!cyan! บ
+echo [8Cบ    !1!!red!getintopc.com!cyan!           ณ   !12!free4pc.org!cyan!                ณ   !23!fileriver.net!cyan!                      บ
+echo [8Cบ    !2!!red!crackingpatching.com!cyan!    ณ   !13!appload.club!cyan!               ณ   !24!piratepc.me!cyan!                        บ
+echo [8Cบ    !3!!red!karanpc.com!cyan!             ณ   !14!www.4download.net!cyan!          ณ   !25!ftuapps.dev!cyan!                        บ
+echo [8Cบ    !4!filecr.com!cyan!              ณ   !15!!red!haxnode.net!cyan!                ณ   !26!starcrack.net!cyan!                      บ
+echo [8Cบ    !5!!red!s0ft4pc.com!cyan!             ณ   !16!www.novahax.com!cyan!            ณ   !27!startcrack.net!cyan!                     บ
+echo [8Cบ    !6!!red!kolompc.com!cyan!             ณ   !17!lostvayne.com!cyan!              ณ   !28!keygenninja.net!cyan!                    บ
+echo [8Cบ    !7!www.mazterize.com!cyan!       ณ   !18!filewomen.com!cyan!              ณ   !29!fileash.com!cyan!                        บ
+echo [8Cบ    !8!gigapurbalingga.net!cyan!     ณ   !19!izofile.com!cyan!                ณ   !30!www.trucnet.com !green!(FR)!cyan!               บ
+echo [8Cบ    !9!appnee.com!cyan!              ณ   !20!!red!crackshash.com!cyan!             ณ   !31!w14.monkrus.ws !green!(RU)!cyan!                บ
+echo [8Cบ   !10!!red!www.sadeempc.com!cyan!        ณ   !21!!red!www.cybermania.ws!cyan!          ณ   !32!www.intercambiosvirtuales.org !green!(ES)!cyan! บ
+echo [8Cบ   !11!shareappscrack.com!cyan!      ณ   !22!cracksurl.com!cyan!              ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Application Repacks Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !31!diakov.net !green!(RU)!cyan!         ณ   !32!lrepacks.net !green!(RU)!cyan!          ณ   !33!repack.me !green!(RU)!cyan!                     บ
+echo [8Cบ   !33!diakov.net !green!(RU)!cyan!         ณ   !34!lrepacks.net !green!(RU)!cyan!          ณ   !35!repack.me !green!(RU)!cyan!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Portable Apps Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !34!portable4pc.com!cyan!         ณ   !35!www.fcportables.com!cyan!        ณ   !36!portableappz.blogspot.com!cyan!          บ
+echo [8Cบ   !36!!red!portable4pc.com!cyan!         ณ   !37!www.fcportables.com!cyan!        ณ   !38!portableappz.blogspot.com!cyan!          บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogames Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !37!!red!igg-games.com!cyan!           ณ   !45!steamunlocked.net!cyan!          ณ   !53!alltorrents.co!cyan!                     บ
-echo [8Cบ   !38!pcgamestorrents.com!cyan!     ณ   !46!gog-games.com!cyan!              ณ   !54!www.myabandonware.com !green!(retro)!cyan!      บ
-echo [8Cบ   !39!www.skidrowcodex.net!cyan!    ณ   !47!codex-games.com!cyan!            ณ   !55!gamesnostalgia.com !green!(retro)!cyan!         บ
-echo [8Cบ   !40!www.mrpcgamer.co!cyan!        ณ   !48!getgamez.net!cyan!               ณ   !56!cygames.fr !green!(FR)!cyan!                    บ
-echo [8Cบ   !41!www.game3rb.com!cyan!         ณ   !49!www.elamigos-games.com!cyan!     ณ   !57!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
-echo [8Cบ   !42!agfy.co!cyan!                 ณ   !50!crackhub.site!cyan!              ณ   !58!www.gamestorrents.fm !green!(ES)!cyan!          บ
-echo [8Cบ   !43!!red!cracked-games.org!cyan!       ณ   !51!freegameshub.co!cyan!            ณ                                             บ
-echo [8Cบ   !44!www.ovagames.com!cyan!        ณ   !52!gogunlocked.com!cyan!            ณ                                             บ
+echo [8Cบ   !39!!red!igg-games.com!cyan!           ณ   !47!steamunlocked.net!cyan!          ณ   !55!alltorrents.co!cyan!                     บ
+echo [8Cบ   !40!pcgamestorrents.com!cyan!     ณ   !48!gog-games.com!cyan!              ณ   !56!www.myabandonware.com !green!(retro)!cyan!      บ
+echo [8Cบ   !41!www.skidrowcodex.net!cyan!    ณ   !49!codex-games.com!cyan!            ณ   !57!gamesnostalgia.com !green!(retro)!cyan!         บ
+echo [8Cบ   !42!www.mrpcgamer.co!cyan!        ณ   !50!getgamez.net!cyan!               ณ   !58!cygames.fr !green!(FR)!cyan!                    บ
+echo [8Cบ   !43!www.game3rb.com!cyan!         ณ   !51!www.elamigos-games.com!cyan!     ณ   !59!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
+echo [8Cบ   !44!agfy.co!cyan!                 ณ   !52!crackhub.site!cyan!              ณ   !60!www.gamestorrents.fm !green!(ES)!cyan!          บ
+echo [8Cบ   !45!!red!cracked-games.org!cyan!       ณ   !53!freegameshub.co!cyan!            ณ                                             บ
+echo [8Cบ   !46!www.ovagames.com!cyan!        ณ   !54!gogunlocked.com!cyan!            ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogame Repacks Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !59!repack-games.com!cyan!        ณ   !65!darckrepacks.com!cyan!           ณ   !71!cpgrepacks.site!cyan!                    บ
-echo [8Cบ   !60!www.game-repack.site!cyan!    ณ   !66!dodi-repacks.site!cyan!          ณ   !72!www.tiny-repacks.win!cyan!               บ
-echo [8Cบ   !61!elamigos.site!cyan!           ณ   !67!www.blackboxrepack.com!cyan!     ณ   !73!repack.info!cyan!                        บ
-echo [8Cบ   !62!fitgirl-repacks.site!cyan!    ณ   !68!masquerade.site!cyan!            ณ   !74!m4ckd0ge-repacks.me!cyan!                บ
-echo [8Cบ   !63!repack-mechanics.com!cyan!    ณ   !69!scooter-repacks.site!cyan!       ณ   !75!e13.xatab-repack.com !green!(RU)!cyan!          บ
-echo [8Cบ   !64!gamesdrive.net!cyan!          ณ   !70!www.gnarly-repacks.site!cyan!    ณ   !76!qoob.name !green!(RU)!cyan!                     บ
+echo [8Cบ   !61!repack-games.com!cyan!        ณ   !67!darckrepacks.com!cyan!           ณ   !73!cpgrepacks.site!cyan!                    บ
+echo [8Cบ   !62!www.game-repack.site!cyan!    ณ   !68!dodi-repacks.site!cyan!          ณ   !74!www.tiny-repacks.win!cyan!               บ
+echo [8Cบ   !63!elamigos.site!cyan!           ณ   !69!www.blackboxrepack.com!cyan!     ณ   !75!repack.info!cyan!                        บ
+echo [8Cบ   !64!fitgirl-repacks.site!cyan!    ณ   !70!masquerade.site!cyan!            ณ   !76!m4ckd0ge-repacks.me!cyan!                บ
+echo [8Cบ   !65!repack-mechanics.com!cyan!    ณ   !71!scooter-repacks.site!cyan!       ณ   !77!e13.xatab-repack.com !green!(RU)!cyan!          บ
+echo [8Cบ   !66!gamesdrive.net!cyan!          ณ   !72!www.gnarly-repacks.site!cyan!    ณ   !78!qoob.name !green!(RU)!cyan!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -1414,9 +1387,9 @@ if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & s
 call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" !t2! !yellow!{!t3!}!grey!." 30
 echo:
 call :PROMPT
-for %%a in (2`crackingpatching.com 37`igg-games.com 43`cracked-games.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
-if "!Language!"=="EN" set t="You have selected '%%c' which is flagged as an untrusted website." "Be careful using it."
-if "!Language!"=="FR" set t="Vous avez slectionn '%%c' qui est signal comme un site web non fiable." "Soyez prudent en l'utilisant."
+if "!UntrustedWebsitesWarning!"=="1" for %%a in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 45`cracked-games.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
+if "!Language!"=="EN" set t="You have selected '%%c' which is flagged as an untrusted* website. Be careful using it." "*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
+if "!Language!"=="FR" set t="Vous avez slectionn '%%c' qui est signal comme un site web non fiable*. Soyez prudent en l'utilisant." "*Les sites web non fiables sont connus de la communaut warez pour indexer du contenu malveillant ou suspect ainsi que lgitime."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
 )
 call :WEBSITECHECK && goto :CONTINUEWINDOWS
@@ -1681,16 +1654,16 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :USEFULWEBSITES
-call :SCALE 139 44
+call :SCALE 139 47
 title !title:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-call :CLEAR 1 53
-set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ doxbin.org/ leak.sx/ dehashed.com/ leak-lookup.com/search/ webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ courvix.com/ sshdropbear.net/ freevpn.me/ www.vpnbook.com/ cloudssh.net/ www.freeopenvpn.org/ free-proxy-list.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ www.journaldupirate.net/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ onehack.us/ www.torproject.org/
+call :CLEAR 1 60
+set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ freevpn.me/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.io/ combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist onehack.us/ www.torproject.org/
 
 :CONTINUEUSEFULWEBSITES
-call :SCALE 139 44
+call :SCALE 139 47
 echo !cyan!
 echo [58Cอออออออออออออออออออออออ
 echo [57C// !red!Û!bgyellow!!black! USEFUL WEBSITES !red!Û!bgblack!!cyan! \\
@@ -1698,37 +1671,40 @@ echo [8Cษอออออออออออออออออออออออออออออออออออออออออออออออ//อออออออออออออออออออออ
 echo [8CฬออออออออþÛ!bgyellow!!red!Û Virus Scanners Û!bgblack!!cyan!ÛþออออออออหอออออออออออออþÛ!bgyellow!!red!Û Security Û!bgblack!!cyan!ÛþอออออออออออออหออออออออออออþÛ!bgyellow!!red!Û Leaks Û!bgblack!!cyan!Ûþออออออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8Cบ    !1!www.virustotal.com!cyan!          บ    !7!www.security.org!cyan!                บ   !12!leakedsource.ru!cyan!            บ
-echo [8Cบ    !2!www.hybrid-analysis.com!cyan!     บ    !8!breachalarm.com!cyan!                 บ   !13!doxbin.org!cyan!                 บ
-echo [8Cบ    !3!metadefender.opswat.com!cyan!     บ    !9!haveibeenpwned.com!cyan!              บ   !14!leak.sx!cyan!                    บ
-echo [8Cบ    !4!antiscan.me!cyan!                 บ   !10!monitor.firefox.com!cyan!             บ   !15!dehashed.com!cyan!               บ
-echo [8Cบ    !5!virusscan.jotti.org!cyan!         บ   !11!cybernews.com!cyan!                   บ   !16!leak-lookup.com!cyan!            บ
-echo [8Cบ    !6!urlscan.io!cyan!                  บ                                          บ   !17!webresolver.nl/leaked!cyan!      บ
-echo [8Cบ                                      บ                                          บ   !18!weleakinfo.to!cyan!              บ
+echo [8Cบ    !2!www.hybrid-analysis.com!cyan!     บ    !8!breachalarm.com!cyan!                 บ   !13!dehashed.com!cyan!               บ
+echo [8Cบ    !3!metadefender.opswat.com!cyan!     บ    !9!haveibeenpwned.com!cyan!              บ   !14!leak-lookup.com!cyan!            บ
+echo [8Cบ    !4!antiscan.me!cyan!                 บ   !10!monitor.firefox.com!cyan!             บ   !15!webresolver.nl!cyan!             บ
+echo [8Cบ    !5!virusscan.jotti.org!cyan!         บ   !11!cybernews.com!cyan!                   บ   !16!weleakinfo.to!cyan!              บ
+echo [8Cบ    !6!urlscan.io!cyan!                  บ                                          บ                                     บ
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8CฬออออþÛ!bgyellow!!red!Û Free VPN's or Proxy's Û!bgblack!!cyan!ÛþอออออฮออออออออออออþÛ!bgyellow!!red!Û Mails/SMS Û!bgblack!!cyan!ÛþอออออออออออออฮออออออออþÛ!bgyellow!!red!Û Web Resolvers Û!bgblack!!cyan!Ûþออออออออน
+echo [8CฬอออออþÛ!bgyellow!!red!Û Free VPNs and Proxys Û!bgblack!!cyan!ÛþอออออฮออออออออออþÛ!bgyellow!!red!Û Mails and SMS Û!bgblack!!cyan!ÛþอออออออออออฮออออออออþÛ!bgyellow!!red!Û Web Resolvers Û!bgblack!!cyan!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8Cบ   !19!protonvpn.com!cyan!               บ   !27!protonmail.com!cyan!                  บ    !35!webresolver.nl!cyan!            บ
-echo [8Cบ   !20!courvix.com!cyan!                 บ   !28!www.startmail.com!cyan!               บ    !36!www.vedbex.com!cyan!            บ
-echo [8Cบ   !21!sshdropbear.net!cyan!             บ   !29!temp-mail.org!cyan!                   บ    !37!wannabe1337.xyz!cyan!           บ
-echo [8Cบ   !22!freevpn.me!cyan!                  บ   !30!dropmail.me!cyan!                     บ    !38!mostwantedhf.info!cyan!         บ
-echo [8Cบ   !23!www.vpnbook.com!cyan!             บ   !31!yopmail.com!cyan!                     บ    !39!shadowcrypt.net!cyan!           บ
-echo [8Cบ   !24!cloudssh.net!cyan!                บ   !32!generator.email!cyan!                 บ    !40!xresolver.com!cyan!             บ
-echo [8Cบ   !25!www.freeopenvpn.org!cyan!         บ   !33!temp-sms.org!cyan!                    บ    !41!www.skypeipresolver.net!cyan!   บ
-echo [8Cบ   !26!free-proxy-list.net!cyan!         บ   !34!cyber-hub.pw!cyan!                    บ                                     บ
+echo [8Cบ   !17!protonvpn.com!cyan!               บ   !27!protonmail.com!cyan!                  บ    !35!webresolver.nl!cyan!            บ
+echo [8Cบ   !18!courvix.com!cyan!                 บ   !28!www.startmail.com!cyan!               บ    !36!www.vedbex.com!cyan!            บ
+echo [8Cบ   !19!www.freeopenvpn.org!cyan!         บ   !29!temp-mail.org!cyan!                   บ    !37!wannabe1337.xyz!cyan!           บ
+echo [8Cบ   !20!www.vpnbook.com!cyan!             บ   !30!dropmail.me!cyan!                     บ    !38!mostwantedhf.info!cyan!         บ
+echo [8Cบ   !21!freevpn.me!cyan!                  บ   !31!yopmail.com!cyan!                     บ    !39!shadowcrypt.net!cyan!           บ
+echo [8Cบ   !22!free-proxy-list.net!cyan!         บ   !32!generator.email!cyan!                 บ    !40!xresolver.com!cyan!             บ
+echo [8Cบ   !23!proxy-daily.com!cyan!             บ   !33!temp-sms.org!cyan!                    บ    !41!www.skypeipresolver.net!cyan!   บ
+echo [8Cบ   !24!smallseotools.com!cyan!           บ   !34!cyber-hub.pw!cyan!                    บ                                     บ
+echo [8Cบ   !25!cloudssh.net!cyan!                บ                                          บ                                     บ
+echo [8Cบ   !26!sshdropbear.net!cyan!             บ                                          บ                                     บ
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8CฬอออออออออþÛ!bgyellow!!red!Û Fake Persons Û!bgblack!!cyan!ÛþอออออออออฮออออออออออออþÛ!bgyellow!!red!Û Warez News Û!bgblack!!cyan!ÛþออออออออออออฮอออออออþÛ!bgyellow!!red!Û File Searching Û!bgblack!!cyan!Ûþออออออออน
+echo [8CฬอออออออþÛ!bgyellow!!red!Û Fake Generators Û!bgblack!!cyan!ÛþออออออออฮออออออออออออþÛ!bgyellow!!red!Û Warez News Û!bgblack!!cyan!ÛþออออออออออออฮอออออออþÛ!bgyellow!!red!Û File Searching Û!bgblack!!cyan!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8Cบ   !42!fakepersongenerator.com!cyan!     บ   !46!torrentfreak.com!cyan!                บ    !50!www.aiosearch.com!cyan!         บ
-echo [8Cบ   !43!www.fakeimess.com!cyan!           บ   !47!nextwarez.com !green!(FR)!cyan!              บ    !51!www.filechef.com!cyan!          บ
-echo [8Cบ   !44!fakeproof.xenot.pro!cyan!         บ   !48!www.journaldupirate.net !green!(FR)!cyan!    บ                                     บ
-echo [8Cบ   !45!www.vedbex.com/fakeproof!cyan!    บ   !49!filepursuit.com!cyan!                 บ                                     บ
-echo [8Cบ                                      บ                                          บ                                     บ
-echo [8CฬออออออออออออออออออออออออออออออออออออออสออออออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออออสอออออออออออออออออออออออออออออออออออออน
-echo [8Cบ                                                                                                                       บ
-echo [8Cบ                                          !52!onehack.us!cyan!                                                            บ
-echo [8Cบ                                          !53!www.torproject.org!cyan!                                                    บ
-echo [8Cบ                                                                                                                       บ
-echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+echo [8Cบ   !42!fakepersongenerator.com!cyan!     บ   !46!torrentfreak.com!cyan!                บ    !49!www.aiosearch.com!cyan!         บ
+echo [8Cบ   !43!www.fakeimess.com!cyan!           บ   !47!nextwarez.com !green!(FR)!cyan!              บ    !50!www.filechef.com!cyan!          บ
+echo [8Cบ   !44!fakeproof.xenot.pro!cyan!         บ   !48!filepursuit.com!cyan!                 บ                                     บ
+echo [8Cบ   !45!www.vedbex.com!cyan!              บ                                          บ                                     บ
+echo [8Cบ                                                                                 บ                                     บ
+echo [8CฬอออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Combo Lists Û!bgblack!!cyan!ÛþอออออออออออออออออออออออออออออออออฮอออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออน
+echo [8Cบ                                                                                 บ                                     บ
+echo [8Cบ   !51!leak.sx!cyan!                     ณ   !55!combolist.top!cyan!                   บ   !59!onehack.us!cyan!                 บ
+echo [8Cบ   !52!combo-list.com!cyan!              ณ   !56!sinister.ly!cyan!                     บ   !60!www.torproject.org!cyan!         บ
+echo [8Cบ   !53!www.frecombo.com!cyan!            ณ   !57!mailaccess.top!cyan!                  บ                                     บ
+echo [8Cบ   !54!combolist.io!cyan!                ณ   !58!dailycombolist!cyan!                  บ                                     บ
+echo [8Cบ                                                                                 บ                                     บ
+echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
@@ -2146,16 +2122,16 @@ call :ERRORMESSAGE
 goto :CONTINUEIPLOGGERS
 
 :DOXING
-call :SCALE 104 49
+call :SCALE 104 54
 title !title:`=Doxing!
 call :ROSE Doxing
 
 :CLEARDOXING
-call :CLEAR 1 38
-set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ pic.sogou.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" knowem.com/ checkusernames.com/ instantusername.com/#/ analyzeid.com/username/ namechk.com/ checkuser.org/ www.namecheckr.com/ usersearch.org/index.php www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/
+call :CLEAR 1 39
+set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ pic.sogou.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" knowem.com/ checkusernames.com/ instantusername.com/#/ analyzeid.com/username/ namechk.com/ checkuser.org/ www.namecheckr.com/ usersearch.org/index.php www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/ doxbin.org/
 
 :CONTINUEDOXING
-call :SCALE 104 49
+call :SCALE 104 54
 echo !cyan!
 echo [45Cออออออออออออออ
 echo [44C// !red!Û!bgyellow!!black! DOXING !red!Û!bgblack!!cyan! \\
@@ -2198,7 +2174,12 @@ echo [8Cบ    !33!checkuser.org!cyan!                  บ                        
 echo [8Cบ    !34!www.namecheckr.com!cyan!             บ                                          บ
 echo [8Cบ    !35!usersearch.org!cyan!                 บ                                          บ
 echo [8Cบ                                          บ                                          บ
-echo [8Cศออออออออออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออออออออออออออออผ
+echo [8Cบ                                                                                     บ
+echo [8CฬออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Dox Logs Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออน
+echo [8Cบ                                                                                     บ
+echo [8Cบ                                !39!doxbin.org!cyan!                                    บ
+echo [8Cบ                                                                                     บ
+echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
@@ -2290,7 +2271,7 @@ if "!4!"=="!yellow!4 !checked!" call :CURL "Portable_Apps\DnsJumper.7z" "`git_ra
 if "!5!"=="!yellow!5 !checked!" call :CURL "Portable_Apps\Autoruns.zip" "https://download.sysinternals.com/files/Autoruns.zip"
 if "!6!"=="!yellow!6 !checked!" call :CURL "Portable_Apps\Speedyfox.zip" "https://crystalidea.com/downloads/speedyfox.zip"
 if "!7!"=="!yellow!7 !checked!" (
-call :CURL "Portable_Apps\CCleaner.zip" "https://download.ccleaner.com/portable/ccsetup584.zip"
+call :CURL "Portable_Apps\CCleaner.zip" "https://download.ccleaner.com/portable/ccsetup585.zip"
 call :CURL "Portable_Apps\CCEnhancer Multilingual.zip" "https://singularlabs.com/download/10320/"
 )
 if "!8!"=="!yellow!8 !checked!" call :CURL "Portable_Apps\BleachBit.zip" "https://download.bleachbit.org/BleachBit-4.2.0-portable.zip"
@@ -2367,7 +2348,7 @@ if "!45!"=="!yellow!45 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/9ic9qpmyv0pgcgih/artifacts/processhacker-3.0.4364-bin.zip"
+if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/w5s14xlhhnl9yfqn/artifacts/processhacker-3.0.4365-bin.zip"
 if "!47!"=="!yellow!47 !checked!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!48!"=="!yellow!48 !checked!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!49!"=="!yellow!49 !checked!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
@@ -2541,16 +2522,16 @@ if "!9!"=="!yellow!9 !checked!" start "" "https://obsproject.com/"
 goto :CLEARWAREZCONTENTCREATOR
 
 :WAREZWIKIS
-call :SCALE 76 33
+call :SCALE 76 34
 title !title:`=Warez Wikis!
 call :ROSE "Warez Wikis"
 
 :CLEARWAREZWIKIS
-call :CLEAR 1 20
-set db=weboas.is/ dirtywarez.org/ link-base.org/warez lamule.eu/ p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/PiratedGames/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/
+call :CLEAR 1 21
+set db=weboas.is/ dirtywarez.org/ link-base.org/warez lamule.eu/ p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/SoftwarePirates-Megathread rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/PiratedGames/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/
 
 :CONTINUEWAREZWIKIS
-call :SCALE 76 33
+call :SCALE 76 34
 echo !cyan!
 echo [28Cอออออออออออออออออออ
 echo [27C// !red!Û!bgyellow!!black! WAREZ WIKIS !red!Û!bgblack!!cyan! \\
@@ -2566,16 +2547,17 @@ echo [6Cบ    !7!lewebde.com !green!(FR)!cyan!                                  
 echo [6Cบ    !8!machicoulis.over-blog.com !green!(FR)!cyan!                      บ
 echo [6Cบ    !9!r/Piracy!cyan!                                            บ
 echo [6Cบ   !10!r/FREEMEDIAHECKYEAH!cyan!                                 บ
-echo [6Cบ   !11!r/pgames-mega-thread!cyan!                                บ
-echo [6Cบ   !12!Igglybuff/awesome-piracy!cyan!                            บ
-echo [6Cบ   !13!nbats/FMHY!cyan!                                          บ
-echo [6Cบ   !14!Rekulous/FMHY!cyan!                                       บ
-echo [6Cบ   !15!taskylizard/piratedgames-megathread !green!(videogames)!cyan!    บ
-echo [6Cบ   !16!Rekulous/Pirated-Games !green!(videogames)!cyan!                 บ
-echo [6Cบ   !17!Rekulous/The-Piratez-list !green!(softwares)!cyan!               บ
-echo [6Cบ   !18!darknetlive.com !green!(darknet)!cyan!                           บ
-echo [6Cบ   !19!dark.fail !green!(darknet)!cyan!                                 บ
-echo [6Cบ   !20!ddosforhire.net !green!(DDoS)!cyan!                              บ
+echo [6Cบ   !11!r/SoftwarePirates!cyan!                                   บ
+echo [6Cบ   !12!r/pgames-mega-thread!cyan!                                บ
+echo [6Cบ   !13!Igglybuff/awesome-piracy!cyan!                            บ
+echo [6Cบ   !14!nbats/FMHY!cyan!                                          บ
+echo [6Cบ   !15!Rekulous/FMHY!cyan!                                       บ
+echo [6Cบ   !16!taskylizard/piratedgames-megathread !green!(videogames)!cyan!    บ
+echo [6Cบ   !17!Rekulous/Pirated-Games !green!(videogames)!cyan!                 บ
+echo [6Cบ   !18!Rekulous/The-Piratez-list !green!(softwares)!cyan!               บ
+echo [6Cบ   !19!darknetlive.com !green!(darknet)!cyan!                           บ
+echo [6Cบ   !20!dark.fail !green!(darknet)!cyan!                                 บ
+echo [6Cบ   !21!ddosforhire.net !green!(DDoS)!cyan!                              บ
 echo [6Cบ                                                              บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -2635,7 +2617,7 @@ call :ROSE Ebooks
 
 :CLEAREBOOKS
 call :CLEAR 1 77
-set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/levi/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
+set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/alli/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
 
 :CONTINUEEBOOKS
 call :SCALE 100 60
@@ -2751,16 +2733,16 @@ call :ERRORMESSAGE
 goto :CONTINUEMUSICS
 
 :FORUMWEBSITES
-call :SCALE 126 37
+call :SCALE 126 38
 title !title:`=Forum Websites!
 call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
-call :CLEAR 1 37
-set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php forum.snahp.it/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ www.wawa-rammstein.de/ starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ raidforums.com/ hackforums.net/ cracked.to/ payload.sh/ teamos-hkrg.com/ forum.ru-board.com/
+call :CLEAR 1 38
+set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php forum.snahp.it/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ www.wawa-rammstein.de/ starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ raidforums.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
 
 :CONTINUEFORUMWEBSITES
-call :SCALE 126 37
+call :SCALE 126 38
 echo !cyan!
 echo [51Cออออออออออออออออออออออ
 echo [50C// !red!Û!bgyellow!!black! FORUM WEBSITES !red!Û!bgblack!!cyan! \\
@@ -2785,11 +2767,12 @@ echo [7Cบ   !15!www.ettvcentral.com    !green!Torrenting [EN]!cyan!    ณ   !30!
 echo [7Cบ                                                                                                              บ
 echo [7CฬออออออออออออออออออþÛ!bgyellow!!red!Û Hacking Û!bgblack!!cyan!ÛþอออออออออออออออออออหอออออออออออออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออออออออออออน
 echo [7Cบ                                                    บ                                                         บ
-echo [7Cบ   !31!www.nulled.to  !green![EN]!cyan!                       บ   !36!teamos-hkrg.com    !green![EN]!cyan!                        บ
-echo [7Cบ   !32!raidforums.com !green![EN]!cyan!                       บ   !37!forum.ru-board.com !green![RU]!cyan!                        บ
+echo [7Cบ   !31!www.nulled.to  !green![EN]!cyan!                       บ   !37!teamos-hkrg.com    !green![EN]!cyan!                        บ
+echo [7Cบ   !32!raidforums.com !green![EN]!cyan!                       บ   !38!forum.ru-board.com !green![RU]!cyan!                        บ
 echo [7Cบ   !33!hackforums.net !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ   !34!cracked.to     !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ   !35!payload.sh     !green![EN]!cyan!                       บ                                                         บ
+echo [7Cบ   !36!mailaccess.top !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ                                                    บ                                                         บ
 echo [7Cศออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -3608,9 +3591,9 @@ set el=
 set cn=
 for %%a in (main downloads source) do if not "!url:/%%a/=!"=="!url!" set cn=/%%a/
 for %%b in (!git_list!) do if not "%%b"=="!git:*://=!" (
+if "%%b"=="github.com/Illegal-Services/Illegal_Services" set el=%%b/raw
 if "%%b"=="bitbucket.org/IllegalServices/illegal_services" set el=%%b/raw
 if "%%b"=="git.teknik.io/Illegal-Services/Illegal_Services" set el=%%b/raw/branch
-if "%%b"=="github.com/Illegal-Services/Illegal_Services" set el=%%b/raw
 if "%%b"=="gitee.com/Illegal-Services/illegal_services" set el=%%b/raw
 if "!Language!"=="EN" set t=Downloading
 if "!Language!"=="FR" set t=Tlchargement
@@ -3797,7 +3780,7 @@ if %~1 gtr 255 exit /b 1
 exit /b 0
 
 :CHECK_SETTINGS
-for %%a in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY BACKGROUNDBORDERTRANSPARENCY BACKGROUNDDISABLED BACKGROUNDTRANSPARENCY BACKGROUNDWALLPAPER FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS DEVELOPERMODE) do call :CHECK_%%a
+for %%a in (LANGUAGE USERNAME BACKGROUNDBORDERTRANSPARENCY BACKGROUNDDISABLED BACKGROUNDTRANSPARENCY BACKGROUNDWALLPAPER VOICEASSISTANT VOICEASSISTANTCHOICE FIRSTLAUNCH UNTRUSTEDWEBSITESWARNING YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS PORTPRIORITY YOUTUBEDLPRIORITY DEVELOPERMODE) do call :CHECK_%%a
 exit /b
 
 :APPLY_SETTINGS
@@ -3824,8 +3807,12 @@ exit /b
 
 :CHECK_USERNAME
 set IS_Username=
-for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "Username"') do set "IS_Username=%%~b"
+for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "Username"') do set "IS_Username=%%b"
+if defined IS_Username (
+set "IS_Username=!IS_Username:"=!"
+>nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!IS_Username:~,20!" /f
 if "!IS_Username:~20!"=="" exit /b
+)
 call :ERROR_REGEDIT Username IS_Username
 >nul reg add "!IS_Reg!" /v "Username" /t REG_SZ /d "!Username:~,20!" /f
 goto :CHECK_USERNAME
@@ -3840,6 +3827,166 @@ call :ERROR_REGEDIT Proxy Proxy
 set proxy=
 >nul 2>&1 reg delete "!IS_Reg!" /v "Proxy" /f
 exit /b
+
+:CHECK_BACKGROUNDBORDERTRANSPARENCY
+set BackgroundBorderTransparencyValue=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundBorderTransparency"') do set "el=%%a"
+if defined el (
+2>nul set /a "BackgroundBorderTransparencyValue=el"
+if defined BackgroundBorderTransparencyValue (
+if !el! neq !BackgroundBorderTransparencyValue! set "BackgroundBorderTransparencyValue=!el!"
+if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparency=" & exit /b
+if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparency= /b" & exit /b
+)
+)
+call :ERROR_REGEDIT BackgroundBorderTransparency BackgroundBorderTransparencyValue
+>nul reg add "!IS_Reg!" /v "BackgroundBorderTransparency" /t REG_DWORD /d 1 /f
+goto :CHECK_BACKGROUNDBORDERTRANSPARENCY
+
+:CHECK_BACKGROUNDDISABLED
+set BackgroundDisabled=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundDisabled"') do set "el=%%a"
+if defined el (
+2>nul set /a "BackgroundDisabled=el"
+if defined BackgroundDisabled (
+if !el! neq !BackgroundDisabled! set "BackgroundDisabled=!el!"
+for %%a in (0 1) do if "!BackgroundDisabled!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT BackgroundDisabled BackgroundDisabled
+>nul reg add "!IS_Reg!" /v "BackgroundDisabled" /t REG_DWORD /d 0 /f
+goto :CHECK_BACKGROUNDDISABLED
+
+:CHECK_BACKGROUNDTRANSPARENCY
+set BackgroundTransparency=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundTransparency"') do set "el=%%a"
+if defined el (
+2>nul set /a "BackgroundTransparency=el"
+if defined BackgroundTransparency (
+if !el! neq !BackgroundTransparency! set "BackgroundTransparency=!el!"
+if !BackgroundTransparency! geq 1 if !BackgroundTransparency! leq 100 exit /b
+)
+)
+call :ERROR_REGEDIT BackgroundTransparency BackgroundTransparency
+>nul reg add "!IS_Reg!" /v "BackgroundTransparency" /t REG_DWORD /d 10 /f
+goto :CHECK_BACKGROUNDTRANSPARENCY
+
+:CHECK_BACKGROUNDWALLPAPER
+set BackgroundWallpaper=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundWallpaper"') do set "el=%%a"
+if defined el (
+2>nul set /a "BackgroundWallpaper=el"
+if defined BackgroundWallpaper (
+if !el! neq !BackgroundWallpaper! set "BackgroundWallpaper=!el!"
+if !BackgroundWallpaper! geq 1 if !BackgroundWallpaper! leq 12 exit /b
+)
+)
+call :ERROR_REGEDIT BackgroundWallpaper BackgroundWallpaper
+>nul reg add "!IS_Reg!" /v "BackgroundWallpaper" /t REG_DWORD /d 6 /f
+goto :CHECK_BACKGROUNDWALLPAPER
+
+:CHECK_VOICEASSISTANT
+set VoiceAssistant=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "VoiceAssistant"') do set "el=%%a"
+if defined el (
+2>nul set /a "VoiceAssistant=el"
+if defined VoiceAssistant (
+if !el! neq !VoiceAssistant! set "VoiceAssistant=!el!"
+for %%a in (0 1) do if "!VoiceAssistant!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT VoiceAssistant VoiceAssistant
+>nul reg add "!IS_Reg!" /v "VoiceAssistant" /t REG_DWORD /d 0 /f
+goto :CHECK_VOICEASSISTANT
+
+:CHECK_VOICEASSISTANTCHOICE
+set VoiceAssistantChoice=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "VoiceAssistantChoice"') do set "el=%%a"
+if defined el (
+2>nul set /a "VoiceAssistantChoice=el"
+if defined VoiceAssistantChoice (
+if !el! neq !VoiceAssistantChoice! set "VoiceAssistantChoice=!el!"
+for %%a in (0 1) do if "!VoiceAssistantChoice!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT VoiceAssistantChoice VoiceAssistantChoice
+>nul reg add "!IS_Reg!" /v "VoiceAssistantChoice" /t REG_DWORD /d 1 /f
+goto :CHECK_VOICEASSISTANTCHOICE
+
+:CHECK_FIRSTLAUNCH
+set FirstLaunch=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "FirstLaunch"') do set "el=%%a"
+if defined el (
+2>nul set /a "FirstLaunch=el"
+if defined FirstLaunch (
+if !el! neq !FirstLaunch! set "FirstLaunch=!el!"
+for %%a in (0 1) do if "!FirstLaunch!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT FirstLaunch FirstLaunch
+>nul reg add "!IS_Reg!" /v "FirstLaunch" /t REG_DWORD /d 1 /f
+goto :CHECK_FIRSTLAUNCH
+
+:CHECK_UNTRUSTEDWEBSITESWARNING
+set UntrustedWebsitesWarning=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "UntrustedWebsitesWarning"') do set "el=%%a"
+if defined el (
+2>nul set /a "UntrustedWebsitesWarning=el"
+if defined UntrustedWebsitesWarning (
+if !el! neq !UntrustedWebsitesWarning! set "UntrustedWebsitesWarning=!el!"
+for %%a in (0 1) do if "!UntrustedWebsitesWarning!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT UntrustedWebsitesWarning UntrustedWebsitesWarning
+>nul reg add "!IS_Reg!" /v "UntrustedWebsitesWarning" /t REG_DWORD /d 0 /f
+goto :CHECK_UNTRUSTEDWEBSITESWARNING
+
+:CHECK_YOUTUBEDLP
+set YouTubeDLP=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLP"') do set "el=%%a"
+if defined el (
+2>nul set /a "YouTubeDLP=el"
+if defined YouTubeDLP (
+if !el! neq !YouTubeDLP! set "YouTubeDLP=!el!"
+for %%a in (0 1) do if "!YouTubeDLP!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT YouTubeDLP YouTubeDLP
+>nul reg add "!IS_Reg!" /v "YouTubeDLP" /t REG_DWORD /d 0 /f
+goto :CHECK_YOUTUBEDLP
+
+:CHECK_YOUTUBEDLOUTPUTDIRECTORY
+set YouTubeDLOutputDirectory=
+for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLOutputDirectory"') do set "YouTubeDLOutputDirectory=%%~fb"
+if defined YouTubeDLOutputDirectory exit /b
+call :ERROR_REGEDIT YouTubeDLOutputDirectory YouTubeDLOutputDirectory
+for /f "tokens=3*" %%a in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "My Music"') do >nul reg add "!IS_Reg!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%b\YouTube Downloader" /f
+goto :CHECK_YOUTUBEDLOUTPUTDIRECTORY
+
+:CHECK_YOUTUBEDLGEOBYPASS
+set YouTubeDLGeoBypass=
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLGeoBypass"') do set "el=%%a"
+if defined el (
+2>nul set /a "YouTubeDLGeoBypass=el"
+if defined YouTubeDLGeoBypass (
+if !el! neq !YouTubeDLGeoBypass! set "YouTubeDLGeoBypass=!el!"
+for %%a in (0 1) do if "!YouTubeDLGeoBypass!"=="%%a" exit /b
+)
+)
+call :ERROR_REGEDIT YouTubeDLGeoBypass YouTubeDLGeoBypass
+>nul reg add "!IS_Reg!" /v "YouTubeDLGeoBypass" /t REG_DWORD /d 0 /f
+goto :CHECK_YOUTUBEDLGEOBYPASS
+
 
 :CHECK_YOUTUBEDLPRIORITY
 set YouTubeDLPriority=
@@ -3863,90 +4010,14 @@ goto :CHECK_PORTPRIORITY
 set PortPriority=/!PortPriority!
 exit /b
 
-:CHECK_BACKGROUNDBORDERTRANSPARENCY
-set BackgroundBorderTransparencyValue=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundBorderTransparency"') do 2>nul set /a "BackgroundBorderTransparencyValue=%%a" || set "BackgroundBorderTransparencyValue=%%a"
-if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparency=" & exit /b
-if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparency= /b" & exit /b
-call :ERROR_REGEDIT BackgroundBorderTransparency BackgroundBorderTransparencyValue
->nul reg add "!IS_Reg!" /v "BackgroundBorderTransparency" /t REG_DWORD /d 1 /f
-goto :CHECK_BACKGROUNDBORDERTRANSPARENCY
-
-:CHECK_BACKGROUNDDISABLED
-set BackgroundDisabled=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundDisabled"') do 2>nul set /a "BackgroundDisabled=%%a" || set "BackgroundDisabled=%%a"
-for %%a in (0 1) do if "!BackgroundDisabled!"=="%%a" exit /b
-call :ERROR_REGEDIT BackgroundDisabled BackgroundDisabled
->nul reg add "!IS_Reg!" /v "BackgroundDisabled" /t REG_DWORD /d 0 /f
-goto :CHECK_BACKGROUNDDISABLED
-
-:CHECK_BACKGROUNDTRANSPARENCY
-set BackgroundTransparency=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundTransparency"') do 2>nul set /a "BackgroundTransparency=%%a" || set "BackgroundTransparency=%%a"
-if !BackgroundTransparency! geq 1 if !BackgroundTransparency! leq 100 exit /b
-call :ERROR_REGEDIT BackgroundTransparency BackgroundTransparency
->nul reg add "!IS_Reg!" /v "BackgroundTransparency" /t REG_DWORD /d 10 /f
-goto :CHECK_BACKGROUNDTRANSPARENCY
-
-:CHECK_BACKGROUNDWALLPAPER
-set BackgroundWallpaper=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "BackgroundWallpaper"') do 2>nul set /a "BackgroundWallpaper=%%a" || set "BackgroundWallpaper=%%a"
-if !BackgroundWallpaper! geq 1 if !BackgroundWallpaper! leq 12 exit /b
-call :ERROR_REGEDIT BackgroundWallpaper BackgroundWallpaper
->nul reg add "!IS_Reg!" /v "BackgroundWallpaper" /t REG_DWORD /d 6 /f
-goto :CHECK_BACKGROUNDWALLPAPER
-
-:CHECK_FIRSTLAUNCH
-set FirstLaunch=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "FirstLaunch"') do 2>nul set /a "FirstLaunch=%%a" || set "FirstLaunch=%%a"
-for %%a in (0 1) do if "!FirstLaunch!"=="%%a" exit /b
-call :ERROR_REGEDIT FirstLaunch FirstLaunch
->nul reg add "!IS_Reg!" /v "FirstLaunch" /t REG_DWORD /d 1 /f
-goto :CHECK_FIRSTLAUNCH
-
-:CHECK_VOICEASSISTANT
-set VoiceAssistant=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "VoiceAssistant"') do 2>nul set /a "VoiceAssistant=%%a" || set "VoiceAssistant=%%a"
-for %%a in (0 1) do if "!VoiceAssistant!"=="%%a" exit /b
-call :ERROR_REGEDIT VoiceAssistant VoiceAssistant
->nul reg add "!IS_Reg!" /v "VoiceAssistant" /t REG_DWORD /d 0 /f
-goto :CHECK_VOICEASSISTANT
-
-:CHECK_VOICEASSISTANTCHOICE
-set VoiceAssistantChoice=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "VoiceAssistantChoice"') do 2>nul set /a "VoiceAssistantChoice=%%a" || set "VoiceAssistantChoice=%%a"
-for %%a in (0 1) do if "!VoiceAssistantChoice!"=="%%a" exit /b
-call :ERROR_REGEDIT VoiceAssistantChoice VoiceAssistantChoice
->nul reg add "!IS_Reg!" /v "VoiceAssistantChoice" /t REG_DWORD /d 1 /f
-goto :CHECK_VOICEASSISTANTCHOICE
-
-:CHECK_YOUTUBEDLP
-set YouTubeDLP=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLP"') do 2>nul set /a "YouTubeDLP=%%a" || set "YouTubeDLP=%%a"
-for %%a in (0 1) do if "!YouTubeDLP!"=="%%a" exit /b
-call :ERROR_REGEDIT YouTubeDLP YouTubeDLP
->nul reg add "!IS_Reg!" /v "YouTubeDLP" /t REG_DWORD /d 0 /f
-goto :CHECK_YOUTUBEDLP
-
-:CHECK_YOUTUBEDLOUTPUTDIRECTORY
-set YouTubeDLOutputDirectory=
-for /f "tokens=2*" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLOutputDirectory"') do set "YouTubeDLOutputDirectory=%%~fb"
-if defined YouTubeDLOutputDirectory exit /b
-call :ERROR_REGEDIT YouTubeDLOutputDirectory YouTubeDLOutputDirectory
-for /f "tokens=3*" %%a in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "My Music"') do >nul reg add "!IS_Reg!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%b\YouTube Downloader" /f
-goto :CHECK_YOUTUBEDLOUTPUTDIRECTORY
-
-:CHECK_YOUTUBEDLGEOBYPASS
-set YouTubeDLGeoBypass=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "YouTubeDLGeoBypass"') do 2>nul set /a "YouTubeDLGeoBypass=%%a" || set "YouTubeDLGeoBypass=%%a"
-for %%a in (0 1) do if "!YouTubeDLGeoBypass!"=="%%a" exit /b
-call :ERROR_REGEDIT YouTubeDLGeoBypass YouTubeDLGeoBypass
->nul reg add "!IS_Reg!" /v "YouTubeDLGeoBypass" /t REG_DWORD /d 0 /f
-goto :CHECK_YOUTUBEDLGEOBYPASS
-
 :CHECK_DEVELOPERMODE
 set DeveloperKey=
-for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "DeveloperMode"') do 2>nul set /a "DeveloperKey=%%a" || set "DeveloperKey=%%a"
+set el=
+for /f "tokens=3" %%a in ('2^>nul reg query "!IS_Reg!" /v "DeveloperMode"') do set "el=%%a"
+if defined el (
+2>nul set /a "DeveloperKey=el"
+if defined DeveloperKey if !el! neq !DeveloperKey! set "DeveloperKey=!el!"
+)
 2>nul set /a c1=DeveloperKey%%12312
 if "!c1!"=="826" (
 2>nul set /a c2=DeveloperKey%%17
@@ -3965,8 +4036,10 @@ goto :CHECK_DEVELOPERMODE
 exit /b
 
 :ERROR_REGEDIT
+set "el=!%2!"
+if defined el if not "!el!"=="!el:~,150!" set "el=!el:~,150!..."
 >nul 2>&1 reg query "!IS_Reg!" /v "%1" && (
-if "!Language!"=="FR" (set t="Une erreur inattendue est survenue." "Debug: '!IS_Reg!\%1=!%2!'" "Rinitialisation du paramtre '%1' … la valeur par dfaut.") else set t="An unexpected error has occurred." "Debug: '!IS_Reg!\%1=!%2!'" "Resetting '%1' setting to default value."
+if "!Language!"=="FR" (set t="Une erreur inattendue est survenue." "Debug: '!IS_Reg!\%1=!el!'" "Rinitialisation du paramtre '%1' … la valeur par dfaut.") else set t="An unexpected error has occurred." "Debug: '!IS_Reg!\%1=!el!'" "Resetting '%1' setting to default value."
 call :MSGBOX 3 !t! 69680 "Illegal Services Checker"
 )
 exit /b
@@ -4206,9 +4279,9 @@ exit /b 2
 
 :_PROXY
 for /f %%a in ('Curl\x!arch!\curl.exe -fIksw "%%{response_code}" -o NUL "https://%1"') do if "%%a"=="200" (
+if "%1"=="github.com/Illegal-Services/Illegal_Services" call :__PROXY %1 raw tree/source & exit /b 0
 if "%1"=="bitbucket.org/IllegalServices/illegal_services" call :__PROXY %1 raw src/source/ & exit /b 0
 if "%1"=="git.teknik.io/Illegal-Services/Illegal_Services" call :__PROXY %1 raw/branch src/branch/source & exit /b 0
-if "%1"=="github.com/Illegal-Services/Illegal_Services" call :__PROXY %1 raw tree/source & exit /b 0
 if "%1"=="gitee.com/Illegal-Services/illegal_services" call :__PROXY %1 raw tree/source/ & exit /b 0
 )
 exit /b 1
