@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.8.4.4 - 16/09/2021
+v5.8.4.5 - 17/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - IMPROVED flagging of untrusted website.
@@ -44,6 +44,7 @@ v5.8.4.4 - 16/09/2021
 + ADDED Direct Download Link [EN] : https://filmsofts.com/
 + ADDED Direct Download Link [EN] : https://heroturko2.net/
 + ADDED Direct Download Link [EN] : https://themoviesflix.co.com/
++ ADDED Direct Download Link [EN] : https://themovieflix.co.in/
 + ADDED Direct Download Link [EN] : https://animetosho.org/
 + ADDED Direct Download Link [EN] : https://nxmac.com/
 + ADDED Direct Download Link [EN] : https://macdrop.net/
@@ -125,7 +126,6 @@ v5.8.4.4 - 16/09/2021
 + UPDATED Direct Download Link [EN] : https://downturk.net/
 + UPDATED Direct Download Link [EN] : https://2ddl.it/
 + UPDATED Direct Download Link [EN] : https://downloadhub.wtf/
-+ UPDATED Direct Download Link [EN] : https://themovieflix.co.in/
 + UPDATED Direct Download Link [FR] : https://www.tirexo.work/
 + UPDATED Direct Download Link [FR] : https://free-telecharger.net/
 + UPDATED Direct Download Link [FR] : https://www.extreme-down.plus/home.html
@@ -178,6 +178,7 @@ v5.8.4.4 - 16/09/2021
 - REMOVED Direct Download Link [FR] : https://www.ddl-best.net/ (down)
 - REMOVED Streaming [FR] : https://10flix.com/ (down)
 - REMOVED Streaming [FR] : https://vostfrserie.ws/ (down)
+- REMOVED Streaming [FR] : https://antennesport.tv/ (down)
 - REMOVED Streaming Applications : https://animeglare.xyz/ (down)
 - REMOVED Torrenting : https://freetorrent.tk/ (down)
 - REMOVED Torrenting : https://magnet4you.me/library.php (down)
