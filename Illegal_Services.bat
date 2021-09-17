@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 4. 4
-REM  Fileversion:  5. 8. 4. 4
+REM  Productversion:  5. 8. 4. 5
+REM  Fileversion:  5. 8. 4. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.4.4 - 16/09/2021
+set version=v5.8.4.5 - 17/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -156,6 +156,7 @@ if not "!windowsversion!"=="10.0" call :INSTALL_ANSICON "%~f0"
 if "!Language!"=="EN" echo !sp!Applying your settings . . .
 if "!Language!"=="FR" echo !sp!Applique vos paramtres . . .
 call :APPLY_SETTINGS
+call :CHECK_UNTRUSTEDWEBSITESWARNING
 
 :LAUNCHER_START
 call :ROSE "Welcome Back"
@@ -372,14 +373,13 @@ call :ROSE Settings
 call :CHECK_SETTINGS
 if !BackgroundTransparency! lss 10 (set "el= ") else set el=
 if "!Language!"=="EN" (
-set "BackgroundTransparencyInfo=Change background transparency. !cyan!(!yellow!!BackgroundTransparency!!cyan!)     !el!บ"
+set "BackgroundTransparencyInfo=Change background transparency !cyan!(!yellow!!BackgroundTransparency!!cyan!)      !el!บ"
 if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparencyInfo=Borders transparency !cyan!(!green!ON!!cyan!)                บ"
 if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparencyInfo=Borders transparency !cyan!(!red!OFF!!cyan!)               บ"
 if "!BackgroundDisabled!"=="0" set "BackgroundDisabledInfo=Wallpaper background !cyan!(!green!ON!!cyan!)                บ"
 if "!BackgroundDisabled!"=="1" set "BackgroundDisabledInfo=Wallpaper background !cyan!(!red!OFF!!cyan!)               บ"
-set "ScanWebsitesInfo=Scan down or changed domain websites.!cyan!    บ"
-if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Untrusted Websites Warning !cyan!(!green!ON!!cyan!)               บ"
-if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Untrusted Websites Warning !cyan!(!red!OFF!!cyan!)              บ"
+if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Untrusted Websites Warning !cyan!(!green!ON!!cyan!)          บ"
+if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Untrusted Websites Warning !cyan!(!red!OFF!!cyan!)         บ"
 if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Rose voice assistant !cyan!(!green!ON!!cyan!)                บ"
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Rose voice assistant !cyan!(!red!OFF!!cyan!)               บ"
 if "!DeveloperMode!"=="1" (
@@ -390,16 +390,16 @@ if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Developer mode !cyan!(!red!OFF!!cyan!)                     บ"
 set "ExtractSourceInfo=                                                บ"
 )
+set "ScanWebsitesInfo=Scan down or changed domain websites.!cyan!    บ"
 )
 if "!Language!"=="FR" (
-set "BackgroundTransparencyInfo=Changer background transparence. !cyan!(!yellow!!BackgroundTransparency!!cyan!)!cyan!    !el!บ"
+set "BackgroundTransparencyInfo=Changer background transparence !cyan!(!yellow!!BackgroundTransparency!!cyan!)!cyan!     !el!บ"
 if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparencyInfo=Transparence des bords !cyan!(!green!ON!!cyan!)              บ"
 if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparencyInfo=Transparence des bords !cyan!(!red!OFF!!cyan!)             บ"
 if "!BackgroundDisabled!"=="0" set "BackgroundDisabledInfo=Fond d'cran !cyan!(!green!ON!!cyan!)                        บ"
 if "!BackgroundDisabled!"=="1" set "BackgroundDisabledInfo=Fond d'cran !cyan!(!red!OFF!!cyan!)                       บ"
-set "ScanWebsitesInfo=Scan les sites internet indexs.!cyan!         บ"
-if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Avertissement des sites web non fiables !cyan!(!green!ON!!cyan!)               บ"
-if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Avertissement des sites web non fiables !cyan!(!red!OFF!!cyan!)              บ"
+if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Pop-up des sites web non fiables !cyan!(!green!ON!!cyan!)   บ"
+if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Pop-up des sites web non fiables !cyan!(!red!OFF!!cyan!)   บ"
 if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Assistance vocal Rose !cyan!(!green!ON!!cyan!)               บ"
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Assistance vocal Rose !cyan!(!red!OFF!!cyan!)              บ"
 if "!DeveloperMode!"=="1" (
@@ -410,6 +410,7 @@ if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Mode dveloppeur !cyan!(!red!OFF!!cyan!)                   บ"
 set "ExtractSourceInfo=                                                บ"
 )
+set "ScanWebsitesInfo=Scan les sites internet indexs.!cyan!         บ"
 )
 
 :CONTINUESETTINGS
@@ -431,11 +432,11 @@ echo [7Cบ                                             บ                        
 echo [7Cบ    !yellow!1!cyan!  ^>  !white!Kirito 1 (IS v1.4 icon)!cyan!            บ   !yellow!13!cyan!  ^>  !white!!BackgroundTransparencyInfo!
 echo [7Cบ    !yellow!2!cyan!  ^>  !white!Kirito 2!cyan!                           บ   !yellow!14!cyan!  ^>  !white!!BackgroundBorderTransparencyInfo!
 echo [7Cบ    !yellow!3!cyan!  ^>  !white!Kirito 3!cyan!                           บ   !yellow!15!cyan!  ^>  !white!!BackgroundDisabledInfo!
-echo [7Cบ    !yellow!4!cyan!  ^>  !white!Kirito 4!cyan!                           บ   !yellow!16!cyan!  ^>  !white!!ScanWebsitesInfo!
-echo [7Cบ    !yellow!5!cyan!  ^>  !white!49206C6F766520796F75204C697361!cyan!     บ   !yellow!17!cyan!  ^>  !white!!UntrustedWebsitesWarningInfo!
-echo [7Cบ    !yellow!6!cyan!  ^>  !white!Even Roses are colorless !cyan!          บ   !yellow!18!cyan!  ^>  !white!!VoiceAssistantInfo!
-if "!Language!"=="EN" echo [7Cบ    !yellow!7!cyan!  ^>  !white!Tree!cyan!                               บ   !yellow!19!cyan!  ^>  !white!!DeveloperModeInfo!
-if "!Language!"=="FR" echo [7Cบ    !yellow!7!cyan!  ^>  !white!Arbre!cyan!                              บ   !yellow!19!cyan!  ^>  !white!!DeveloperModeInfo!
+echo [7Cบ    !yellow!4!cyan!  ^>  !white!Kirito 4!cyan!                           บ   !yellow!16!cyan!  ^>  !white!!UntrustedWebsitesWarningInfo!
+echo [7Cบ    !yellow!5!cyan!  ^>  !white!49206C6F766520796F75204C697361!cyan!     บ   !yellow!17!cyan!  ^>  !white!!VoiceAssistantInfo!
+echo [7Cบ    !yellow!6!cyan!  ^>  !white!Even Roses are colorless !cyan!          บ   !yellow!18!cyan!  ^>  !white!!DeveloperModeInfo!
+if "!Language!"=="EN" echo [7Cบ    !yellow!7!cyan!  ^>  !white!Tree!cyan!                               บ   !yellow!19!cyan!  ^>  !white!!ScanWebsitesInfo!
+if "!Language!"=="FR" echo [7Cบ    !yellow!7!cyan!  ^>  !white!Arbre!cyan!                              บ   !yellow!19!cyan!  ^>  !white!!ScanWebsitesInfo!
 if "!Language!"=="EN" echo [7Cบ    !yellow!8!cyan!  ^>  !white!Dark Guy!cyan!                           บ   !yellow!20!cyan!  ^>  !white!Check for updates.!cyan!                       บ
 if "!Language!"=="FR" echo [7Cบ    !yellow!8!cyan!  ^>  !white!Homme sombre!cyan!                       บ   !yellow!20!cyan!  ^>  !white!Vrifiez les mises … jour.!cyan!               บ
 if "!Language!"=="EN" echo [7Cบ    !yellow!9!cyan!  ^>  !white!Girl eyes!cyan!                          บ   !yellow!21!cyan!  ^>  !white!Change username.!cyan!                         บ
@@ -459,10 +460,10 @@ for /l %%a in (1,1,12) do if "!x!"=="%%a" goto :SETTING_BACKGROUND_WALLPAPER
 if "!x!"=="13" goto :SETTING_BACKGROUND_TRANSPARENCY
 if "!x!"=="14" goto :SETTING_BACKGROUND_BORDER_TRANSPARENCY
 if "!x!"=="15" goto :SETTING_BACKGROUND
-if "!x!"=="16" call :SHOW_WINDOW "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
-if "!x!"=="17" goto :SETTING_UNTRUSTEDWEBSITES
-if "!x!"=="18" goto :SETTING_ROSE
-if "!x!"=="19" goto :SETTING_DEVELOPERMODE
+if "!x!"=="16" goto :SETTING_UNTRUSTEDWEBSITES
+if "!x!"=="17" goto :SETTING_ROSE
+if "!x!"=="18" goto :SETTING_DEVELOPERMODE
+if "!x!"=="19" call :SHOW_WINDOW "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
 if "!x!"=="20" goto :SETTING_VERSION
 if "!x!"=="21" goto :SETTING_USERNAME
 if "!x!"=="22" goto :SETTING_LANGUAGE
@@ -809,8 +810,8 @@ call :SCALE 128 38
 title !title:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
-call :CLEAR 1 72
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1 73
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
 call :SCALE 128 38
@@ -819,30 +820,31 @@ echo [44Cอออออออออออออออออออออออออออออออออออออออ
 echo [43C// !red!Û!bgyellow!!black! DIRECT DOWNLOAD LINK (DDL) [EN] !red!Û!bgblack!!cyan! \\
 echo [6Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [6Cบ                                                                                                                  บ
-echo [6Cบ    !1!avxhm.is!cyan!                     ณ  !25!dl4all.org!cyan!            ณ   !49!x265.club!cyan!                       บ
-echo [6Cบ    !2!www.heroturko.net!cyan!            ณ  !26!warezomen.com!cyan!         ณ   !50!themoviesflix.co.com!cyan!            บ
-echo [6Cบ    !3!rmz.cr!cyan!                       ณ  !27!www.scnsrc.me!cyan!         ณ   !51!themovieflix.co.in!cyan!              บ
-echo [6Cบ    !4!softarchive.is!cyan!               ณ  !28!win7dl.org!cyan!            ณ   !52!hevcbay.com!cyan!                     บ
-echo [6Cบ    !5!www.downduck.com!cyan!             ณ  !29!www.ddlvalley.me!cyan!      ณ   !53!rarefilmm.com!cyan!                   บ
-echo [6Cบ    !6!scnlog.me!cyan!                    ณ  !30!downtr.cc!cyan!             ณ   !54!the-eye.eu!cyan!                      บ
-echo [6Cบ    !7!www.creaxy.com!cyan!               ณ  !31!releasehive.co!cyan!        ณ   !55!jpddl.com !green!(animes)!cyan!              บ
-echo [6Cบ    !8!downturk.net!cyan!                 ณ  !32!www.kokodown.com!cyan!      ณ   !56!animeshare.cf !green!(animes)!cyan!          บ
-echo [6Cบ    !9!downarchive.org!cyan!              ณ  !33!rlstop.net!cyan!            ณ   !57!anidl.org !green!(animes)!cyan!              บ
-echo [6Cบ   !10!0dayhome.net!cyan!                 ณ  !34!uhdmv.org!cyan!             ณ   !58!hi10anime.com !green!(animes)!cyan!          บ
-echo [6Cบ   !11!scene-rls.net!cyan!                ณ  !35!tfpdl.to!cyan!              ณ   !59!animekayo.com !green!(animes)!cyan!          บ
-echo [6Cบ   !12!www.freshwap.us!cyan!              ณ  !36!softddl.org!cyan!           ณ   !60!animekaizoku.com !green!(animes)!cyan!       บ
-echo [6Cบ   !13!www.apps4all.com!cyan!             ณ  !37!2ddl.it!cyan!               ณ   !61!ssanime.ga !green!(animes)!cyan!             บ
-echo [6Cบ   !14!dl4all.biz!cyan!                   ณ  !38!katzddl.net!cyan!           ณ   !62!animetosho.org !green!(animes)!cyan!         บ
-echo [6Cบ   !15!worldsrc.net!cyan!                 ณ  !39!warezbb.net!cyan!           ณ   !63!cdromance.com !green!(roms)!cyan!            บ
-echo [6Cบ   !16!movieparadise.org!cyan!            ณ  !40!www.300mbfilms.ws!cyan!     ณ   !64!www.romnation.net !green!(roms)!cyan!        บ
-echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ  !41!snahp.it!cyan!              ณ   !65!vimm.net !green!(roms)!cyan!                 บ
-echo [6Cบ   !18!hdencode.org!cyan!                 ณ  !42!downloadhub.wtf!cyan!       ณ   !66!nxmac.com !green!(MAC)!cyan!                 บ
-echo [6Cบ   !19!katzdownload.com!cyan!             ณ  !43!filmsofts.com!cyan!         ณ   !67!macdrop.net !green!(MAC)!cyan!               บ
-echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ  !44!cgpersia.com!cyan!          ณ   !68!sheet-music.xyz !green!(audio)!cyan!         บ
-echo [6Cบ   !21!oneddl.org!cyan!                   ณ  !45!rsload.net!cyan!            ณ   !69!audioz.download !green!(audio)!cyan!         บ
-echo [6Cบ   !22!apps-pack.com!cyan!                ณ  !46!megaddl.co!cyan!            ณ   !70!audiobookbay.nl !green!(audiobooks)!cyan!    บ
-echo [6Cบ   !23!www.rlslog.net!cyan!               ณ  !47!heroturko2.net!cyan!        ณ   !71!www.gfxtra31.com !green!(GFX)!cyan!          บ
-echo [6Cบ   !24!freshwap.cc!cyan!                  ณ  !48!crazy4tv.com!cyan!          ณ   !72!gfx-hub.cc !green!(GFX)!cyan!                บ
+echo [6Cบ    !1!avxhm.is!cyan!                     ณ  !26!warezomen.com!cyan!         ณ   !51!themovieflix.co.in!cyan!              บ
+echo [6Cบ    !2!www.heroturko.net!cyan!            ณ  !27!www.scnsrc.me!cyan!         ณ   !52!hevcbay.com!cyan!                     บ
+echo [6Cบ    !3!rmz.cr!cyan!                       ณ  !28!win7dl.org!cyan!            ณ   !53!rarefilmm.com!cyan!                   บ
+echo [6Cบ    !4!softarchive.is!cyan!               ณ  !29!www.ddlvalley.me!cyan!      ณ   !54!1worldfree4u.trade!cyan!              บ
+echo [6Cบ    !5!www.downduck.com!cyan!             ณ  !30!downtr.cc!cyan!             ณ   !55!the-eye.eu!cyan!                      บ
+echo [6Cบ    !6!scnlog.me!cyan!                    ณ  !31!releasehive.co!cyan!        ณ   !56!jpddl.com !green!(animes)!cyan!              บ
+echo [6Cบ    !7!www.creaxy.com!cyan!               ณ  !32!www.kokodown.com!cyan!      ณ   !57!animeshare.cf !green!(animes)!cyan!          บ
+echo [6Cบ    !8!downturk.net!cyan!                 ณ  !33!rlstop.net!cyan!            ณ   !58!anidl.org !green!(animes)!cyan!              บ
+echo [6Cบ    !9!downarchive.org!cyan!              ณ  !34!uhdmv.org!cyan!             ณ   !59!hi10anime.com !green!(animes)!cyan!          บ
+echo [6Cบ   !10!0dayhome.net!cyan!                 ณ  !35!tfpdl.to!cyan!              ณ   !60!animekayo.com !green!(animes)!cyan!          บ
+echo [6Cบ   !11!scene-rls.net!cyan!                ณ  !36!softddl.org!cyan!           ณ   !61!animekaizoku.com !green!(animes)!cyan!       บ
+echo [6Cบ   !12!www.freshwap.us!cyan!              ณ  !37!2ddl.it!cyan!               ณ   !62!ssanime.ga !green!(animes)!cyan!             บ
+echo [6Cบ   !13!www.apps4all.com!cyan!             ณ  !38!katzddl.net!cyan!           ณ   !63!animetosho.org !green!(animes)!cyan!         บ
+echo [6Cบ   !14!dl4all.biz!cyan!                   ณ  !39!warezbb.net!cyan!           ณ   !64!cdromance.com !green!(roms)!cyan!            บ
+echo [6Cบ   !15!worldsrc.net!cyan!                 ณ  !40!www.300mbfilms.ws!cyan!     ณ   !65!www.romnation.net !green!(roms)!cyan!        บ
+echo [6Cบ   !16!movieparadise.org!cyan!            ณ  !41!snahp.it!cyan!              ณ   !66!vimm.net !green!(roms)!cyan!                 บ
+echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ  !42!downloadhub.wtf!cyan!       ณ   !67!nxmac.com !green!(MAC)!cyan!                 บ
+echo [6Cบ   !18!hdencode.org!cyan!                 ณ  !43!filmsofts.com!cyan!         ณ   !68!macdrop.net !green!(MAC)!cyan!               บ
+echo [6Cบ   !19!katzdownload.com!cyan!             ณ  !44!cgpersia.com!cyan!          ณ   !69!sheet-music.xyz !green!(audio)!cyan!         บ
+echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ  !45!rsload.net!cyan!            ณ   !70!audioz.download !green!(audio)!cyan!         บ
+echo [6Cบ   !21!oneddl.org!cyan!                   ณ  !46!megaddl.co!cyan!            ณ   !71!audiobookbay.nl !green!(audiobooks)!cyan!    บ
+echo [6Cบ   !22!apps-pack.com!cyan!                ณ  !47!heroturko2.net!cyan!        ณ   !72!www.gfxtra31.com !green!(GFX)!cyan!          บ
+echo [6Cบ   !23!www.rlslog.net!cyan!               ณ  !48!crazy4tv.com!cyan!          ณ   !73!gfx-hub.cc !green!(GFX)!cyan!                บ
+echo [6Cบ   !24!freshwap.cc!cyan!                  ณ  !49!x265.club!cyan!             ณ                                          บ
+echo [6Cบ   !25!dl4all.org!cyan!                   ณ  !50!themoviesflix.co.com!cyan!  ณ                                          บ
 echo [6Cบ                                                                                                                  บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -903,15 +905,17 @@ goto :CONTINUEDDLFR
 
 :STREAMING
 title !title:`=Streaming [%Language%]!
+if "!UntrustedWebsitesWarning!"=="1" (
 if "!Language!"=="EN" (
-call :SCALE 101 51
+call :SCALE 101 52
 set t="No payment / installation / registration is required to view the videos on the sites offered by Illegal Service. All sites are free so watch out for scam advertising." "If the player is not visible, disable your ad blocker and click on the button to close the ad in the middle of the video then on the player's Play button to launch the video."
 )
 if "!Language!"=="FR" (
-call :SCALE 101 45
+call :SCALE 101 46
 set t="Aucun payment / installation / inscription n'est requis pour voir les videos sur les sites proposes par Illegal Service. Tous les sites sont gratuits donc faites attention aux publicites d'arnaques." "Si le lecteur n'est pas visible, desactiver votre bloqueur de publicites et clique sur le bouton pour fermer la pub au milieu de la video puis sur le bouton Play du lecteur pour lancer la video."
 )
-call :MSGBOX 2 !t!  69680 "Illegal Services Checker"
+call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
+)
 call :ROSE Streaming
 for %%a in (EN FR) do if "!Language!"=="%%a" goto :STREAMING%%a
 
@@ -991,8 +995,8 @@ call :SCALE 101 46
 title !title:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 45
-set db=www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ www.illimitestreaming.co/ www.streaminz.me/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ antennesport.tv/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+call :CLEAR 1 44
+set db=www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ www.illimitestreaming.co/ www.streaminz.me/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
 call :SCALE 101 46
@@ -1028,13 +1032,13 @@ echo [8Cบ   !28!vostanimez.com!cyan!                 ณ                         
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !39!channelstream.watch!cyan!            ณ   !43!fr4.sportplus.live !green!(sport)!cyan!     บ
-echo [8Cบ   !40!www.myfree-tivi.com!cyan!            ณ   !44!sport-stream.live !green!(sport)!cyan!      บ
-echo [8Cบ   !41!livetv.sx !green!(sport)!cyan!              ณ   !45!streaming-sport.tv !green!(sport)!cyan!     บ
-echo [8Cบ   !42!antennesport.tv !green!(sport)!cyan!        ณ                                         บ
+echo [8Cบ   !39!channelstream.watch!cyan!            ณ   !43!sport-stream.live !green!(sport)!cyan!      บ
+echo [8Cบ   !40!www.myfree-tivi.com!cyan!            ณ   !44!streaming-sport.tv !green!(sport)!cyan!     บ
+echo [8Cบ   !41!livetv.sx !green!(sport)!cyan!              ณ                                         บ
+echo [8Cบ   !42!fr4.sportplus.live !green!(sport)!cyan!     ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-call :DRAW_CENTER "!yellow!46!cyan!  >  !white!Streaming Applications!cyan!" 20
+call :DRAW_CENTER "!yellow!45!cyan!  >  !white!Streaming Applications!cyan!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1043,7 +1047,7 @@ call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGFR
-if "!x!"=="46" (set la=FR) & goto :STREAMINGAPPS
+if "!x!"=="45" (set la=FR) & goto :STREAMINGAPPS
 call :CHOOSE en && goto :STREAMINGEN
 call :CHOOSE search && (call :IS_SEARCH e49c0bfe5fd6d7fb6 & goto :CONTINUESTREAMINGFR)
 call :CHOOSE back && goto :MAINMENU
@@ -3946,7 +3950,7 @@ for %%a in (0 1) do if "!UntrustedWebsitesWarning!"=="%%a" exit /b
 )
 )
 call :ERROR_REGEDIT UntrustedWebsitesWarning UntrustedWebsitesWarning
->nul reg add "!IS_Reg!" /v "UntrustedWebsitesWarning" /t REG_DWORD /d 0 /f
+>nul reg add "!IS_Reg!" /v "UntrustedWebsitesWarning" /t REG_DWORD /d 1 /f
 goto :CHECK_UNTRUSTEDWEBSITESWARNING
 
 :CHECK_YOUTUBEDLP
