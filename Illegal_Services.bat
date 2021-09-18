@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 4. 5
-REM  Fileversion:  5. 8. 4. 5
+REM  Productversion:  5. 8. 4. 6
+REM  Fileversion:  5. 8. 4. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.4.5 - 17/09/2021
+set version=v5.8.4.6 - 18/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -925,7 +925,7 @@ title !title:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 60
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.wtf/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ playing.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ reddit.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 52
@@ -953,7 +953,7 @@ echo [8Cบ   !15!fmovies.to!cyan!                     ณ   !30!allmoviesforyou.co
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ANIMES Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !31!kisscartoon.info!cyan!               ณ   !42!animevibe.wtf!cyan!                  บ
+echo [8Cบ   !31!kisscartoon.info!cyan!               ณ   !42!animevibe.se!cyan!                   บ
 echo [8Cบ   !32!9anime.to!cyan!                      ณ   !43!animixplay.to!cyan!                  บ
 echo [8Cบ   !33!animesuge.io!cyan!                   ณ   !44!www2.kickassanime.ro!cyan!           บ
 echo [8Cบ   !34!animeheaven.pro!cyan!                ณ   !45!animepahe.com!cyan!                  บ
@@ -967,7 +967,7 @@ echo [8Cบ   !41!www2.kiss-anime.asia!cyan!           ณ   !52!twist.moe!cyan!   
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!playing.stream2watch.sx !green!(sport)!cyan!บ
+echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!reddit.stream2watch.sx !green!(sport)!cyan! บ
 echo [8Cบ   !54!time4tv.stream!cyan!                 ณ   !58!sportplus.live !green!(sport)!cyan!         บ
 echo [8Cบ   !55!live94today.com!cyan!                ณ   !59!sportsbay.org !green!(sport)!cyan!          บ
 echo [8Cบ   !56!livetv.sx !green!(sport)!cyan!              ณ   !60!thehomesport.com !green!(sport)!cyan!       บ
@@ -1056,16 +1056,16 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGFR
 
 :STREAMINGAPPS
-call :SCALE 109 35
+call :SCALE 109 34
 title !title:`=Streaming Applications!
 call :ROSE "Streaming Applications"
 
 :CLEARSTREAMINGAPPS
-call :CLEAR 1 15
-set db=popcorn-time.tw/ www.stremio.com/ cinemaapk.com/ www.cinehub.app/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ www.beetvapk.me/ filmplus.app/ www.novatvapk.com/ kisscartoon.info/kisscartoon-official-android-app/ animixplay.to/android/app tvmob.net/ www.livenettv.bz/
+call :CLEAR 1 14
+set db=popcorn-time.tw/ www.stremio.com/ cinemaapk.com/ www.cinehub.app/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ www.beetvapk.me/ filmplus.app/ www.novatvapk.com/ animixplay.to/android/app tvmob.net/ www.livenettv.bz/
 
 :CONTINUESTREAMINGAPPS
-call :SCALE 109 35
+call :SCALE 109 34
 echo !cyan!
 echo [40Cออออออออออออออออออออออออออออออ
 echo [39C// !red!Û!bgyellow!!black! STREAMING APPLICATIONS !red!Û!bgblack!!cyan! \\
@@ -1089,10 +1089,9 @@ echo [6Cบ        !8!www.vivatv.io!cyan!                    บ                   
 echo [6Cบ        !9!www.beetvapk.me!cyan!                  บ                                               บ
 echo [6Cบ       !10!filmplus.app!cyan!                     บ                                               บ
 echo [6Cบ       !11!www.novatvapk.com!cyan!                บ                                               บ
-echo [6Cบ       !12!kisscartoon.info !green!(animes)!cyan!        บ                                               บ
-echo [6Cบ       !13!animixplay.to !green!(animes)!cyan!           บ                                               บ
-echo [6Cบ       !14!tvmob.net !green!(television)!cyan!           บ                                               บ
-echo [6Cบ       !15!www.livenettv.bz !green!(television)!cyan!    บ                                               บ
+echo [6Cบ       !12!animixplay.to !green!(animes)!cyan!           บ                                               บ
+echo [6Cบ       !13!tvmob.net !green!(television)!cyan!           บ                                               บ
+echo [6Cบ       !14!www.livenettv.bz !green!(television)!cyan!    บ                                               บ
 echo [6Cบ                                               บ                                               บ
 echo [6Cศอออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -1410,7 +1409,7 @@ call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
 call :CLEAR 1 27
-set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apkhouse.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
+set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ apkdump.com/ apkhouse.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
 call :SCALE 85 33
@@ -1424,7 +1423,7 @@ echo [7Cบ    !2!apkhome.net!cyan!            ณ   !14!inewkhushi.com!cyan!      
 echo [7Cบ    !3!apkmagic.com.ar!cyan!        ณ   !15!proapk.in!cyan!                บ
 echo [7Cบ    !4!oceanofapk.com!cyan!         ณ   !16!www.apps4download.com!cyan!    บ
 echo [7Cบ    !5!apkgod.net!cyan!             ณ   !17!ihackedit.com!cyan!            บ
-echo [7Cบ    !6!5mod.ru!cyan!                ณ   !18!iplayplus.org!cyan!            บ
+echo [7Cบ    !6!5mod.ru!cyan!                ณ   !18!apkdump.com!cyan!              บ
 echo [7Cบ    !7!apkmb.com!cyan!              ณ   !19!apkhouse.com!cyan!             บ
 echo [7Cบ    !8!apk4free.org!cyan!           ณ   !20!www.rockmods.net!cyan!         บ
 echo [7Cบ    !9!dlandroid.com!cyan!          ณ   !21!www.ytricks.net!cyan!          บ
@@ -2620,8 +2619,8 @@ title !title:`=Ebooks!
 call :ROSE Ebooks
 
 :CLEAREBOOKS
-call :CLEAR 1 77
-set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/alli/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
+call :CLEAR 1 78
+set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangareader.to/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/alli/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
 
 :CONTINUEEBOOKS
 call :SCALE 100 60
@@ -2644,40 +2643,40 @@ echo [7Cบ   !13!magazinelib.com!cyan!                ณ   !15!fr.downmagaz.net !
 echo [7Cบ                                                                                    บ
 echo [7CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û MANGAS Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออน
 echo [7Cบ                                                                                    บ
-echo [7Cบ   !16!mangaowl.net!cyan!                   ณ   !47!toonily.net!cyan!                     บ
-echo [7Cบ   !17!www.mangago.me!cyan!                 ณ   !48!www.nonstopscans.com!cyan!            บ
-echo [7Cบ   !18!mangadex.org!cyan!                   ณ   !49!guya.moe!cyan!                        บ
-echo [7Cบ   !19!manganato.com!cyan!                  ณ   !50!mangahub.io!cyan!                     บ
-echo [7Cบ   !20!unionmangas.top!cyan!                ณ   !51!comick.fun!cyan!                      บ
-echo [7Cบ   !21!mangaplus.shueisha.co.jp!cyan!       ณ   !52!www.japanread.cc!cyan!                บ
-echo [7Cบ   !22!fascans.com!cyan!                    ณ   !53!catmanga.org!cyan!                    บ
-echo [7Cบ   !23!mangakatana.com!cyan!                ณ   !54!mangasushi.net!cyan!                  บ
-echo [7Cบ   !24!manga4life.com!cyan!                 ณ   !55!arangscans.com!cyan!                  บ
-echo [7Cบ   !25!bato.to!cyan!                        ณ   !56!hunlight-scans.info!cyan!             บ
-echo [7Cบ   !26!mangapark.net!cyan!                  ณ   !57!tritinia.com!cyan!                    บ
-echo [7Cบ   !27!www.mangahere.cc!cyan!               ณ   !58!readmanhua.net!cyan!                  บ
-echo [7Cบ   !28!fanfox.net!cyan!                     ณ   !59!flamescans.org!cyan!                  บ
-echo [7Cบ   !29!wuxiaworld.site!cyan!                ณ   !60!immortalupdates.com!cyan!             บ
-echo [7Cบ   !30!hatigarmscanz.net!cyan!              ณ   !61!manga347.com!cyan!                    บ
-echo [7Cบ   !31!leviatanscans.com!cyan!              ณ   !62!www.bilibilicomics.com!cyan!          บ
-echo [7Cบ   !32!methodscans.com!cyan!                ณ   !63!www.mangatown.com!cyan!               บ
-echo [7Cบ   !33!the-nonames.com!cyan!                ณ   !64!www.mangahome.com!cyan!               บ
-echo [7Cบ   !34!lynxscans.com!cyan!                  ณ   !65!manga47.net!cyan!                     บ
-echo [7Cบ   !35!skscans.com!cyan!                    ณ   !66!comix.top!cyan!                       บ
-echo [7Cบ   !36!zeroscans.com!cyan!                  ณ   !67!www.readlightnovel.me!cyan!           บ
-echo [7Cบ   !37!reader.deathtollscans.net!cyan!      ณ   !68!reaperscans.com!cyan!                 บ
-echo [7Cบ   !38!reader.kireicake.com!cyan!           ณ   !69!reaperscans.fr !green!(FR)!cyan!             บ
-echo [7Cบ   !39!sensescans.com!cyan!                 ณ   !70!scantrad.net !green!(FR)!cyan!               บ
-echo [7Cบ   !40!manhuaplus.com!cyan!                 ณ   !71!kangaryu-team.fr !green!(FR)!cyan!           บ
-echo [7Cบ   !41!readm.org!cyan!                      ณ   !72!www.japscan.ws !green!(FR)!cyan!             บ
-echo [7Cบ   !42!mangasee123.com!cyan!                ณ   !73!www.scan-fr.cc !green!(FR)!cyan!             บ
-echo [7Cบ   !43!www.asurascans.com!cyan!             ณ   !74!lelscan-vf.co !green!(FR)!cyan!              บ
-echo [7Cบ   !44!naniscans.com!cyan!                  ณ   !75!mangas.heoo.workers.dev !green!(FR)!cyan!    บ
-echo [7Cบ   !45!merakiscans.com!cyan!                ณ   !76!lectortmo.com !green!(ES)!cyan!              บ
-echo [7Cบ   !46!mangajar.com!cyan!                   ณ                                          บ
+echo [7Cบ   !16!mangaowl.net!cyan!                   ณ   !47!mangajar.com!cyan!                    บ
+echo [7Cบ   !17!mangareader.to!cyan!                 ณ   !48!toonily.net!cyan!                     บ
+echo [7Cบ   !18!www.mangago.me!cyan!                 ณ   !49!www.nonstopscans.com!cyan!            บ
+echo [7Cบ   !19!mangadex.org!cyan!                   ณ   !50!guya.moe!cyan!                        บ
+echo [7Cบ   !20!manganato.com!cyan!                  ณ   !51!mangahub.io!cyan!                     บ
+echo [7Cบ   !21!unionmangas.top!cyan!                ณ   !52!comick.fun!cyan!                      บ
+echo [7Cบ   !22!mangaplus.shueisha.co.jp!cyan!       ณ   !53!www.japanread.cc!cyan!                บ
+echo [7Cบ   !23!fascans.com!cyan!                    ณ   !54!catmanga.org!cyan!                    บ
+echo [7Cบ   !24!mangakatana.com!cyan!                ณ   !55!mangasushi.net!cyan!                  บ
+echo [7Cบ   !25!manga4life.com!cyan!                 ณ   !56!arangscans.com!cyan!                  บ
+echo [7Cบ   !26!bato.to!cyan!                        ณ   !57!hunlight-scans.info!cyan!             บ
+echo [7Cบ   !27!mangapark.net!cyan!                  ณ   !58!tritinia.com!cyan!                    บ
+echo [7Cบ   !28!www.mangahere.cc!cyan!               ณ   !59!readmanhua.net!cyan!                  บ
+echo [7Cบ   !29!fanfox.net!cyan!                     ณ   !60!flamescans.org!cyan!                  บ
+echo [7Cบ   !30!wuxiaworld.site!cyan!                ณ   !61!immortalupdates.com!cyan!             บ
+echo [7Cบ   !31!hatigarmscanz.net!cyan!              ณ   !62!manga347.com!cyan!                    บ
+echo [7Cบ   !32!leviatanscans.com!cyan!              ณ   !63!www.bilibilicomics.com!cyan!          บ
+echo [7Cบ   !33!methodscans.com!cyan!                ณ   !64!www.mangatown.com!cyan!               บ
+echo [7Cบ   !34!the-nonames.com!cyan!                ณ   !65!www.mangahome.com!cyan!               บ
+echo [7Cบ   !35!lynxscans.com!cyan!                  ณ   !66!manga47.net!cyan!                     บ
+echo [7Cบ   !36!skscans.com!cyan!                    ณ   !67!comix.top!cyan!                       บ
+echo [7Cบ   !37!zeroscans.com!cyan!                  ณ   !68!www.readlightnovel.me!cyan!           บ
+echo [7Cบ   !38!reader.deathtollscans.net!cyan!      ณ   !69!reaperscans.com!cyan!                 บ
+echo [7Cบ   !39!reader.kireicake.com!cyan!           ณ   !70!reaperscans.fr !green!(FR)!cyan!             บ
+echo [7Cบ   !40!sensescans.com!cyan!                 ณ   !71!scantrad.net !green!(FR)!cyan!               บ
+echo [7Cบ   !41!manhuaplus.com!cyan!                 ณ   !72!kangaryu-team.fr !green!(FR)!cyan!           บ
+echo [7Cบ   !42!readm.org!cyan!                      ณ   !73!www.japscan.ws !green!(FR)!cyan!             บ
+echo [7Cบ   !43!mangasee123.com!cyan!                ณ   !74!www.scan-fr.cc !green!(FR)!cyan!             บ
+echo [7Cบ   !44!www.asurascans.com!cyan!             ณ   !75!lelscan-vf.co !green!(FR)!cyan!              บ
+echo [7Cบ   !45!naniscans.com!cyan!                  ณ   !76!mangas.heoo.workers.dev !green!(FR)!cyan!    บ
+echo [7Cบ   !46!merakiscans.com!cyan!                ณ   !77!lectortmo.com !green!(ES)!cyan!              บ
 echo [7Cบ                                                                                    บ
-if "!Language!"=="EN" echo [7Cบ                      !brightmagenta!Alternatively you can visit: !77!MALSync!cyan!                   บ
-if "!Language!"=="FR" echo [7Cบ                  !brightmagenta!Alternativement vous pouvez visiter: !77!MALSync!cyan!               บ
+if "!Language!"=="EN" echo [7Cบ                      !brightmagenta!Alternatively you can visit: !78!MALSync!cyan!                   บ
+if "!Language!"=="FR" echo [7Cบ                  !brightmagenta!Alternativement vous pouvez visiter: !78!MALSync!cyan!               บ
 echo [7Cบ                                                                                    บ
 echo [7Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -3636,26 +3635,26 @@ exit /b 0
 
 :IP_DETECTOR
 set height=4
-for /f "delims=" %%a in ('Curl\x!arch!\curl.exe -fkLs "https://ipinfo.io/!x!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
+for /f "tokens=1,2delims=: " %%a in ('Curl\x!arch!\curl.exe -fkLs "https://ipinfo.io/!x!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
 set /a height+=1
 mode 68,!height!
-set "data=%%a"
+set "data=%%a:%%b"
 set "data=!data:"=!"
-set "data=!data:ip:=IPv4     :!"
-set "data=!data:hostname:=Hostname :!"
-set "data=!data:anycast:=Anycast  :!"
-set "data=!data:city:=City     :!"
-set "data=!data:region:=Region   :!"
-set "data=!data:country:=Country  :!"
-set "data=!data:loc:=Location :!"
-set "data=!data:org:=ORG      :!"
-set "data=!data:postal:=Postal   :!"
-set "data=!data:timezone:=Timezone :!"
-set "data=!data:bogon:=Bogon    :!"
+set "data=!data:ip:=IPv4      : !"
+set "data=!data:hostname:=Hostname  : !"
+set "data=!data:anycast:=Anycast   : !"
+set "data=!data:city:=City      : !"
+set "data=!data:region:=Region    : !"
+set "data=!data:country:=Country   : !"
+set "data=!data:loc:=Location  : !"
+set "data=!data:org:=ORG       : !"
+set "data=!data:postal:=Postal    : !"
+set "data=!data:timezone:=Timezone  : !"
+set "data=!data:bogon:=Bogon     : !"
 set "data=!data:true=True!"
 set "data=!data:false=False!"
 if "!data:~-1!"=="," set "data=!data:~,-1!"
-echo   !data!
+echo     !data!
 )>>"!TMPF!\IS_Log.txt"
 exit /b
 
@@ -3663,52 +3662,51 @@ exit /b
 for /f "delims=/" %%a in ("!x:*://=!") do set "x=%%a"
 title !title:`=Looking up ^> %x%!
 set height=4
-for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192" ^| findstr /vc:"<?xml version="') do (
+for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a"
 set "data=!data:query>=IP v4/v6  : !"
 echo     !data!
 )>>"!TMPF!\IS_Log.txt"
-for /f "delims=" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161" ^| findstr /vc:"<?xml version=" /c:"query>"') do (
+for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a"
-set "data=!data:<continent>=Continent : !"
-set "data=!data:<country>=Country   : !"
-set "data=!data:<regionName>=Region    : !"
-set "data=!data:<city>=City      : !"
-set "data=!data:<district>=District  : !"
-set "data=!data:<zip>=Zip       : !"
-set "data=!data:<timezone>=Timezone  : !"
-set "data=!data:<isp>=ISP       : !"
-set "data=!data:<org>=ORG       : !"
-set "data=!data:<as>=AS        : !"
-set "data=!data:<asname>=ASName    : !"
-set "data=!data:<reverse>=Reverse   : !"
-for /f "delims=</" %%a in ("!data!") do echo   %%a
+set "data=!data:"=!"
+set "data=!data:continent>=Continent : !"
+set "data=!data:country>=Country   : !"
+set "data=!data:regionName>=Region    : !"
+set "data=!data:city>=City      : !"
+set "data=!data:district>=District  : !"
+set "data=!data:zip>=Zip       : !"
+set "data=!data:timezone>=Timezone  : !"
+set "data=!data:isp>=ISP       : !"
+set "data=!data:org>=ORG       : !"
+set "data=!data:as>=AS        : !"
+set "data=!data:asname>=ASName    : !"
+set "data=!data:reverse>=Reverse   : !"
+echo     !data!
 )>>"!TMPF!\IS_Log.txt"
 exit /b
 
 :PROXY_DETECTOR
-for /f "delims=" %%a in ('Curl\x!arch!\curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"proxy" /c:"type"') do (
+for /f "tokens=1,2delims=: " %%a in ('Curl\x!arch!\curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
 set /a height+=1
 mode 68,!height!
-set "data=%%a"
-set "data=!data:   = !"
+set "data=%%a:%%b"
 set "data=!data:"=!"
-set "data=!data:,=!"
-set "data=!data:type:=Type     :!"
-set "data=!data:proxy:=Proxy    :!"
+set "data=!data:type:=Type      : !"
+set "data=!data:proxy:=Proxy     : !"
 set "data=!data:no=False!"
 set "data=!data:yes=True!"
-set "data=!data:message:=Message  :!"
-echo !data!
+if "!data:~-1!"=="," set "data=!data:~,-1!"
+echo     !data!
 )>>"!TMPF!\IS_Log.txt"
 exit /b
 
 :VPN_DETECTOR
-for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=16973824" ^| findstr /vc:"<?xml version="') do (
+for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=16973824"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a"
