@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.8.4.5 - 17/09/2021
+v5.8.4.6 - 18/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - IMPROVED flagging of untrusted website.
@@ -136,8 +136,9 @@ v5.8.4.5 - 17/09/2021
 + UPDATED Streaming [EN] : https://ww2.123movieshub.tc/
 + UPDATED Streaming [EN] : https://0gomovies.so/
 + UPDATED Streaming [EN] : https://www2.kiss-anime.asia/
++ UPDATED Streaming [EN] : https://animevibe.se/
 + UPDATED Streaming [EN] : http://live94today.com/
-+ UPDATED Streaming [EN] : https://playing.stream2watch.sx/
++ UPDATED Streaming [EN] : https://reddit.stream2watch.sx/
 + UPDATED Streaming [FR] : https://french-stream.re/
 + UPDATED Streaming [FR] : https://www.streaminz.me/
 + UPDATED Streaming [FR] : https://vostanimez.com/
@@ -160,6 +161,7 @@ v5.8.4.5 - 17/09/2021
 + UPDATED Cracked Windows Apps : https://www.gamestorrents.fm/
 + UPDATED Cracked Windows Apps : https://e13.xatab-repack.com/
 + UPDATED Cracked Android APK's : https://moddroid.co/
++ UPDATED Cracked Android APK's : https://apkdump.com/
 + UPDATED IP Port Scanning : Npcap v1.55
 + UPDATED Portable Apps : CCleaner v585
 + UPDATED Portable Apps : Dism++ v10.1.1002.1
@@ -179,6 +181,7 @@ v5.8.4.5 - 17/09/2021
 - REMOVED Streaming [FR] : https://10flix.com/ (down)
 - REMOVED Streaming [FR] : https://vostfrserie.ws/ (down)
 - REMOVED Streaming [FR] : https://antennesport.tv/ (down)
+- REMOVED Streaming Applications : https://kisscartoon.info/kisscartoon-official-android-app/ (down)
 - REMOVED Streaming Applications : https://animeglare.xyz/ (down)
 - REMOVED Torrenting : https://freetorrent.tk/ (down)
 - REMOVED Torrenting : https://magnet4you.me/library.php (down)
