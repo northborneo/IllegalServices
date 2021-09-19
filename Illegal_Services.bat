@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 8. 4. 6
-REM  Fileversion:  5. 8. 4. 6
+REM  Productversion:  5. 9. 0. 0
+REM  Fileversion:  5. 9. 0. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.8.4.6 - 18/09/2021
+set version=v5.9.0.0 - 19/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -124,9 +124,10 @@ if "!errorlevel!"=="1" call :CHECKER_SETUP_FOUND
 if "!errorlevel!"=="2" call :CHECKER_BUILD_FOUND
 
 :CHECKERINTEGRITY
-if "!Language!"=="EN" echo !sp!Checking files integrity . . .
-if "!Language!"=="FR" echo !sp!V‚rification de l'int‚grite des fichiers . . .
-for %%a in (COPYING ChangeLog.txt cmdbkg.exe cmdwiz.exe SaveFileBox.exe OpenFileBox.exe EULA.rtf Tutorial.html 7za\x!arch!\7zxa.dll 7za\x!arch!\7za.dll 7za\x!arch!\7za.exe Speak\speak-x!arch!.exe Speak\extd.exe Speak\!Language!.lang) do if not exist "%%a" (
+if "!Language!"=="EN" <nul set /p=!sp!Checking files integrity ^>
+if "!Language!"=="FR" <nul set /p=!sp!V‚rification de l'int‚grite des fichiers ^>
+set _el=
+for %%a in (COPYING ChangeLog.txt cmdbkg.exe cmdwiz.exe SaveFileBox.exe OpenFileBox.exe EULA.rtf Tutorial.html 7za\x!arch!\7zxa.dll 7za\x!arch!\7za.dll 7za\x!arch!\7za.exe Speak\speak-x!arch!.exe Speak\extd.exe Speak\!Language!.lang) do if not exist %%a (
 set el=%%a
 set el=!el:\=/!
 call :MISSING_FILE %%a
@@ -134,9 +135,10 @@ call :CURL "%%a" "`git_raw_main`/!el!" || call :ERROR_FATAL %%a
 )
 for /l %%a in (1,1,12) do if not exist "Backgrounds\background-%%a.jpg" (
 call :MISSING_FILE Backgrounds\background-%%a.jpg
-call :CURL "Backgrounds.7z" "`git_raw_downloads`/Backgrounds.7z" || call :ERROR_FATAL Backgrounds\background-!el!.jpg
+call :CURL "Backgrounds.7z" "`git_raw_downloads`/Backgrounds.7z" || call :ERROR_FATAL Backgrounds\background-%%a.jpg
 goto :CHECKERWINDOWS
 )
+if not defined _el echo  !green![PASS] . . .
 
 :CHECKERWINDOWS
 if "!Language!"=="EN" <nul set /p=!sp!Checking Windows version ^>
@@ -200,7 +202,7 @@ echo [19Cº    !yellow!8!cyan!  ^>  !white!YouTube Downloader!cyan!             
 echo [19Cº    !yellow!9!cyan!  ^>  !white!Useful Websites!cyan!                Û    !yellow!18!cyan!  ^>  !white!More Features!cyan!                   º
 echo [19CÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
 if "!Language!"=="EN" echo [19Cº    !yellow!C!cyan!  ^>  !white!Credits!cyan!!underlineoff!     º    !yellow!N!cyan!  ^>  !brightred!Our Social Networks!cyan!    º      !yellow!S!cyan!  ^>  !white!Settings!cyan!!underlineoff!        º
-if "!Language!"=="FR" echo [19Cº    !yellow!C!cyan!  ^>  !white!Credits!cyan!!underlineoff!     º    !yellow!R!cyan!  ^>  !brightred!Nos R‚seaux Sociaux!cyan!    º      !yellow!P!cyan!  ^>  !white!ParamŠtres!cyan!!underlineoff!      º
+if "!Language!"=="FR" echo [19Cº    !yellow!C!cyan!  ^>  !white!Cr‚dits!cyan!!underlineoff!     º    !yellow!R!cyan!  ^>  !brightred!Nos R‚seaux Sociaux!cyan!    º      !yellow!P!cyan!  ^>  !white!ParamŠtres!cyan!!underlineoff!      º
 echo [19CÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -209,13 +211,37 @@ call :DRAW_CENTER "!t1! "!yellow!HELP!grey!" / "!yellow!FAQ!grey!" / "!yellow!CH
 echo:
 call :CHECK_FIRSTLAUNCH
 if "!version:~5,3!"=="0.0" if "!FirstLaunch!"=="1" (
-call :CHECK_FIRSTLAUNCH
-if "!Language!"=="EN" set t="News in !version:~,8!:"" & Chr(10) & Chr(10) & ""Updated: IS Source, Internet Protocol Television, Direct Download Link, Streaming, Torrenting, Subtitles, Cracked Windows Apps, Cracked Android APK's, Useful Websites, IP Denial of Services, Portable Apps, More Features."
-if "!Language!"=="FR" set t="Nouveaut‚s dans la !version:~,8!:"" & Chr(10) & Chr(10) & ""Mise … jour de: IS Source, Internet Protocol Television, Direct Download Link, Streaming, Torrenting, Subtitles, Cracked Windows Apps, Cracked Android APK's, Useful Websites, IP Denial of Services, Portable Apps, More Features."
-mshta vbscript:Execute^("msgbox "!t!",69696,""Illegal Services News"":close"^)
-if "!Language!"=="EN" set t="Developer Note:"" & Chr(10) & Chr(10) & ""In this update, I added 'Warez Wikis' and 'Ebooks' menus in 'More Features'. Reviewed the 'Torrenting' and 'Cracked Windows apps' categories. Updated many categories. Fixed minor bugs."
-if "!Language!"=="FR" set t="Note du d‚veloppeur:"" & Chr(10) & Chr(10) & ""Dans cette mise … jour, j'ai ajout‚ les menus 'Warez Wikis' et 'Ebooks' dans 'More Features'. Pass‚ en revue les cat‚gories 'Torrenting' et 'Cracked Windows apps'. Mis … jour de nombreuses cat‚gories. Corrig‚ des bugs mineurs."
-mshta vbscript:Execute^("msgbox "!t!",69696,""Illegal Services News"":close"^)
+if "!Language!"=="EN" (
+echo Dim Msg,Style,Title,Response
+echo Msg="News in !version:~,8!:"^&vbCrLf^&vbCrLf^&"Updated:"^&vbCrLf^&vbCrLf^&"Settings"^&vbCrLf^&"Internet Protocol Television"^&vbCrLf^&"Direct Download Link"^&vbCrLf^&"Streaming"^&vbCrLf^&"Streaming Applications"^&vbCrLf^&"Torrenting"^&vbCrLf^&"Subtitles"^&vbCrLf^&"Cracked Windows apps"^&vbCrLf^&"Cracked Android APK's"^&vbCrLf^&"Useful Websites"^&vbCrLf^&"IP Denial of Services"^&vbCrLf^&"IP Loggers"^&vbCrLf^&"Doxing"^&vbCrLf^&"Portable Apps"^&vbCrLf^&"More Features Warez Wikis"^&vbCrLf^&"More Features Release Logs"^&vbCrLf^&"More Features Ebooks"^&vbCrLf^&"More Features Musics"^&vbCrLf^&"More Features Forum Websites."
+echo Style=69696
+echo Title="News - Illegal Services"
+echo Response=MsgBox^(Msg,Style,Title^)
+)>"!TMPF!\msgbox.vbs"
+if "!Language!"=="FR" (
+echo Dim Msg,Style,Title,Response
+echo Msg="Nouveautés dans la !version:~,8!:"^&vbCrLf^&vbCrLf^&"Mise à jour de:"^&vbCrLf^&vbCrLf^&"Credits"^&vbCrLf^&"Settings"^&vbCrLf^&"Internet Protocol Television"^&vbCrLf^&"Direct Download Link"^&vbCrLf^&"Streaming"^&vbCrLf^&"Streaming Applications"^&vbCrLf^&"Torrenting"^&vbCrLf^&"Subtitles"^&vbCrLf^&"Cracked Windows apps"^&vbCrLf^&"Cracked Android APK's"^&vbCrLf^&"Useful Websites"^&vbCrLf^&"IP Denial of Services"^&vbCrLf^&"IP Loggers"^&vbCrLf^&"Doxing"^&vbCrLf^&"Portable Apps"^&vbCrLf^&"More Features Warez Wikis"^&vbCrLf^&"More Features Release Logs"^&vbCrLf^&"More Features Ebooks"^&vbCrLf^&"More Features Musics"^&vbCrLf^&"More Features Forum Websites."
+echo Style=69696
+echo Title="Nouveautés - Illegal Services"
+echo Response=MsgBox^(Msg,Style,Title^)
+)>"!TMPF!\msgbox.vbs"
+cscript //nologo "!TMPF!\msgbox.vbs"
+if "!Language!"=="EN" (
+echo Dim Msg,Style,Title,Response
+echo Msg="Developer Note:"^&vbCrLf^&vbCrLf^&"In this update, I added:"^&vbCrLf^&vbCrLf^&"Settings: Untrusted Websites Warning"^&vbCrLf^&"Torrenting: Torrent Applications"^&vbCrLf^&"Useful Websites: Combo Lists"^&vbCrLf^&"More Features: Release Logs"^&vbCrLf^&"More Features: Musics"^&vbCrLf^&vbCrLf^&"Updated many categories and fixed various bugs."^&vbCrLf^&vbCrLf^&"For a full version of the ChangeLog: !git_changelog:404 Git proxy not found=https://github.com/Illegal-Services/Illegal_Services/blob/main/ChangeLog.txt!"
+echo Style=69696
+echo Title="News - Illegal Services"
+echo Response=MsgBox^(Msg,Style,Title^)
+)>"!TMPF!\msgbox.vbs"
+if "!Language!"=="FR" (
+echo Dim Msg,Style,Title,Response
+echo Msg="Note du développeur:"^&vbCrLf^&vbCrLf^&"Dans cette mise à jour, jai ajouté les menus:"^&vbCrLf^&vbCrLf^&"Paramètres: Untrusted Websites Warning"^&vbCrLf^&"Torrenting: Torrent Applications"^&vbCrLf^&"Useful Websites: Combo Lists"^&vbCrLf^&"More Features: Release Logs"^&vbCrLf^&"More Features: Musics"^&vbCrLf^&vbCrLf^&"Mise à jour de nombreuses catégories et corrigé divers bugs."^&vbCrLf^&vbCrLf^&"Pour une version complète du ChangeLog: !git_changelog:404 Git proxy not found=https://github.com/Illegal-Services/Illegal_Services/blob/main/ChangeLog.txt!"
+echo Style=69696
+echo Title="Nouveautés - Illegal Services"
+echo Response=MsgBox^(Msg,Style,Title^)
+)>"!TMPF!\msgbox.vbs"
+cscript //nologo "!TMPF!\msgbox.vbs"
+del /f /q "!TMPF!\msgbox.vbs"
 >nul reg add "!IS_Reg!" /v "FirstLaunch" /t REG_DWORD /d 0 /f
 )
 call :PROMPT
@@ -1333,7 +1359,7 @@ call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
 call :CLEAR 1 78
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ izofile.com/ www.novahax.com/ haxnode.net/ lostvayne.com/ filewomen.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
 call :SCALE 136 53
@@ -1350,7 +1376,7 @@ echo [8Cº    !4!filecr.com!cyan!              ³   !15!!red!haxnode.net!cyan!   
 echo [8Cº    !5!!red!s0ft4pc.com!cyan!             ³   !16!www.novahax.com!cyan!            ³   !27!startcrack.net!cyan!                     º
 echo [8Cº    !6!!red!kolompc.com!cyan!             ³   !17!lostvayne.com!cyan!              ³   !28!keygenninja.net!cyan!                    º
 echo [8Cº    !7!www.mazterize.com!cyan!       ³   !18!filewomen.com!cyan!              ³   !29!fileash.com!cyan!                        º
-echo [8Cº    !8!gigapurbalingga.net!cyan!     ³   !19!izofile.com!cyan!                ³   !30!www.trucnet.com !green!(FR)!cyan!               º
+echo [8Cº    !8!gigapurbalingga.net!cyan!     ³   !19!!red!izofile.com!cyan!                ³   !30!www.trucnet.com !green!(FR)!cyan!               º
 echo [8Cº    !9!appnee.com!cyan!              ³   !20!!red!crackshash.com!cyan!             ³   !31!w14.monkrus.ws !green!(RU)!cyan!                º
 echo [8Cº   !10!!red!www.sadeempc.com!cyan!        ³   !21!!red!www.cybermania.ws!cyan!          ³   !32!www.intercambiosvirtuales.org !green!(ES)!cyan! º
 echo [8Cº   !11!shareappscrack.com!cyan!      ³   !22!cracksurl.com!cyan!              ³                                             º
@@ -1390,7 +1416,7 @@ if "!Language!"=="FR" (set t1=Ecrivez un num‚ro OU) & (set t2=et appuy‚ sur) & s
 call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" !t2! !yellow!{!t3!}!grey!." 30
 echo:
 call :PROMPT
-if "!UntrustedWebsitesWarning!"=="1" for %%a in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 45`cracked-games.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
+if "!UntrustedWebsitesWarning!"=="1" for %%a in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 19`izofile.com 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 45`cracked-games.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
 if "!Language!"=="EN" set t="You have selected '%%c' which is flagged as an untrusted* website. Be careful using it." "*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
 if "!Language!"=="FR" set t="Vous avez s‚lectionn‚ '%%c' qui est signal‚ comme un site web non fiable*. Soyez prudent en l'utilisant." "*Les sites web non fiables sont connus de la communaut‚ warez pour indexer du contenu malveillant ou suspect ainsi que l‚gitime."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -1409,7 +1435,7 @@ call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
 call :CLEAR 1 27
-set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ apkdump.com/ apkhouse.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
+set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ apkdump.com/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
 call :SCALE 85 33
@@ -1424,7 +1450,7 @@ echo [7Cº    !3!apkmagic.com.ar!cyan!        ³   !15!proapk.in!cyan!           
 echo [7Cº    !4!oceanofapk.com!cyan!         ³   !16!www.apps4download.com!cyan!    º
 echo [7Cº    !5!apkgod.net!cyan!             ³   !17!ihackedit.com!cyan!            º
 echo [7Cº    !6!5mod.ru!cyan!                ³   !18!apkdump.com!cyan!              º
-echo [7Cº    !7!apkmb.com!cyan!              ³   !19!apkhouse.com!cyan!             º
+echo [7Cº    !7!apkmb.com!cyan!              ³   !19!apk-house.com!cyan!            º
 echo [7Cº    !8!apk4free.org!cyan!           ³   !20!www.rockmods.net!cyan!         º
 echo [7Cº    !9!dlandroid.com!cyan!          ³   !21!www.ytricks.net!cyan!          º
 echo [7Cº   !10!apk4all.com!cyan!            ³   !22!www.apkheist.com!cyan!         º
@@ -4313,14 +4339,14 @@ git_source
 ) do set %%a=404 Git proxy not found
 exit /b
 
+:CURL_RAW
+for /f "delims=" %%a in ('Curl\x!arch!\curl.exe -fkLs "https://pastebin.com/raw/%1"') do set %2=%%a
+exit /b
+
 :ERROR_WINDOWS_VERSION
 if "!Language!"=="EN" set t="Your Windows version is not compatible with that feature."
 if "!Language!"=="FR" set t="Votre version de Windows n'est pas compatible avec cette fonctionnalit‚."
 call :MSGBOX 1 !t! 69648 "Illegal Services Checker"
-exit /b
-
-:CURL_RAW
-for /f "delims=" %%a in ('Curl\x!arch!\curl.exe -fkLs "https://pastebin.com/raw/%1"') do set %2=%%a
 exit /b
 
 :OPEN_FOLDER
@@ -4353,6 +4379,10 @@ exit /b 0
 exit /b 1
 
 :MISSING_FILE
+if not defined _el (
+echo  !red![FAIL] . . .
+set _el=1
+)
 if "!Language!"=="EN" set t=The file "!IS_Dir!%1" is missing, trying to download it
 if "!Language!"=="FR" set t=Le fichier "!IS_Dir!%1" est manquant, tentative de t‚l‚chargement
 echo !red!!t!...!grey!
