@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.8.4.6 - 18/09/2021
+v5.9.0.0 - 19/09/2021
 - REDUCED Code. (~12 ko)
 - IMPROVED code.
 - IMPROVED flagging of untrusted website.
@@ -67,7 +67,7 @@ v5.8.4.6 - 18/09/2021
 + ADDED Torrenting : https://vstorrent.org/
 + ADDED Torrenting : https://torrentz2eu.me/
 + ADDED Torrenting : https://proxyninja.org/
-+ ADDED Torrenting Windows Clients.
++ ADDED Torrenting Torrent Applications.
 + ADDED Subtitles : https://ytsubtitles.com/
 + ADDED Subtitles : https://www.sous-titres.eu/
 + ADDED Subtitles : https://www.u-sub.net/
@@ -121,7 +121,10 @@ v5.8.4.6 - 18/09/2021
 + ADDED More Features Forum Websites : https://planete-warez.net/
 + ADDED More Features Forum Websites : https://www.tigers-dl.net/
 + ADDED More Features Forum Websites : https://mailaccess.top/
++ UPDATED IS Source : curl.exe v7.79.0
++ UPDATED IS Source : EULA.rtf
 + UPDATED IS Source : Tutorial.html (thanks @anic17)
++ UPDATED Credits.
 + UPDATED Internet Protocol Television : http://pro.allkaicerteam.com/
 + UPDATED Direct Download Link [EN] : https://downturk.net/
 + UPDATED Direct Download Link [EN] : https://2ddl.it/
@@ -162,6 +165,7 @@ v5.8.4.6 - 18/09/2021
 + UPDATED Cracked Windows Apps : https://e13.xatab-repack.com/
 + UPDATED Cracked Android APK's : https://moddroid.co/
 + UPDATED Cracked Android APK's : https://apkdump.com/
++ UPDATED Cracked Android APK's : https://apk-house.com/
 + UPDATED IP Port Scanning : Npcap v1.55
 + UPDATED Portable Apps : CCleaner v585
 + UPDATED Portable Apps : Dism++ v10.1.1002.1
