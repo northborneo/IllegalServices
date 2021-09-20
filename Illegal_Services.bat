@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 0. 0
-REM  Fileversion:  5. 9. 0. 0
+REM  Productversion:  5. 9. 0. 1
+REM  Fileversion:  5. 9. 0. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.9.0.0 - 19/09/2021
+set version=v5.9.0.1 - 20/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -144,8 +144,8 @@ if not defined _el echo  !green![PASS] . . .
 if "!Language!"=="EN" <nul set /p=!sp!Checking Windows version ^>
 if "!Language!"=="FR" <nul set /p=!sp!Vrification de votre version de Windows ^>
 for /f "tokens=4-7delims=[.] " %%a in ('ver') do if /i "%%a"=="Version" (set "windowsversion=%%b.%%c") else set "windowsversion=%%a.%%b"
-for /f "tokens=2delims=:" %%a in ('chcp') do set /a CP=%%a
-if defined windowsversion (echo  !green![!windowsversion!, x!arch!] . . .) else echo  !red![?, !green!x!arch!!red!] . . .
+for /f "tokens=2delims=:." %%a in ('chcp') do set /a "CP=%%a"
+if defined windowsversion (echo  !green![!windowsversion!, x!arch!, CHCP:!CP!] . . .) else echo  !red![?, !green!x!arch!!red!] . . .
 if not "!windowsversion!"=="10.0" if not "!windowsversion!"=="6.3" if not "!windowsversion!"=="6.2" if not "!windowsversion!"=="6.1" (
 if "!Language!"=="EN" set t="ERROR: Your computer does not reach the minimum Windows version compatible with Illegal Services." "You need Windows 7 or higher."
 if "!Language!"=="FR" set t="ERREUR: Votre ordinateur n'atteint pas la version minimale de Windows compatible avec Illegal Services." "Vous avez besoin de Windows 7 ou suprieur."
@@ -329,7 +329,7 @@ if "!Language!"=="EN" set t="Helped improving and reducing code." "Helped fixing
 if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "A aid … la correction d'un bug qui entranait la cration de fichiers temporaires sans les supprimer." "A aid … amliorer l'API de l'IP Lookup." "A aid … l'ajout des mises … jour du launcher."
 call :MSGBOX 4 !t! 69696 "anic17 'Task failed successfully'"
 if "!Language!"=="EN" set t="Helping to find existing bugs and vulnerabilities." "Helped to fix bugs related to user input in Regedit."
-if "!Language!"=="FR" set t="A aid … trouver les bugs et vulnrabilites existantes." "A aid … la correction de bugs lis เ la saisie de l'utilisateur dans le Regedit."
+if "!Language!"=="FR" set t="A aid … trouver les bugs et vulnrabilites existantes." "A aid … la correction de bugs lis … la saisie de l'utilisateur dans le Regedit."
 call :MSGBOX 2 !t! 69696 "anic17 'Task failed successfully'"
 start https://github.com/anic17
 )
@@ -344,7 +344,7 @@ if "!Language!"=="EN" set t="Helped improving and reducing code." "Helped using 
 if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "A aid … l'utilisation de curl pour la source d'IS." "A aid … l'ajout de l'assistante vocale Rose." "A aid … l'ajout de la vrification des choix."
 call :MSGBOX 4 !t! 69696 "sintrode"
 if "!Language!"=="EN" set t="Helped adding Automatic proxy switcher." "Helped to fix bugs related to user input in Regedit."
-if "!Language!"=="FR" set t="A aid … ajouter le proxy switcher automatique." "A aid … la correction de bugs lis เ la saisie de l'utilisateur dans le Regedit."
+if "!Language!"=="FR" set t="A aid … ajouter le proxy switcher automatique." "A aid … la correction de bugs lis … la saisie de l'utilisateur dans le Regedit."
 call :MSGBOX 2 !t! 69696 "sintrode"
 start https://github.com/sintrode
 )
@@ -424,7 +424,7 @@ if "!BackgroundBorderTransparencyValue!"=="1" set "BackgroundBorderTransparencyI
 if "!BackgroundBorderTransparencyValue!"=="0" set "BackgroundBorderTransparencyInfo=Transparence des bords !cyan!(!red!OFF!!cyan!)             บ"
 if "!BackgroundDisabled!"=="0" set "BackgroundDisabledInfo=Fond d'cran !cyan!(!green!ON!!cyan!)                        บ"
 if "!BackgroundDisabled!"=="1" set "BackgroundDisabledInfo=Fond d'cran !cyan!(!red!OFF!!cyan!)                       บ"
-if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Pop-up des sites web non fiables !cyan!(!green!ON!!cyan!)   บ"
+if "!UntrustedWebsitesWarning!"=="1" set "UntrustedWebsitesWarningInfo=Pop-up des sites web non fiables !cyan!(!green!ON!!cyan!)    บ"
 if "!UntrustedWebsitesWarning!"=="0" set "UntrustedWebsitesWarningInfo=Pop-up des sites web non fiables !cyan!(!red!OFF!!cyan!)   บ"
 if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Assistance vocal Rose !cyan!(!green!ON!!cyan!)               บ"
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Assistance vocal Rose !cyan!(!red!OFF!!cyan!)              บ"
@@ -1353,16 +1353,16 @@ call :ERRORMESSAGE
 goto :CONTINUESUBTITLES
 
 :WINDOWS
-call :SCALE 136 53
+call :SCALE 136 54
 title !title:`=Cracked Windows apps!
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
-call :CLEAR 1 78
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ e13.xatab-repack.com/ qoob.name/
+call :CLEAR 1 79
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ patricktech-repacks.xyz/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
-call :SCALE 136 53
+call :SCALE 136 54
 echo !cyan!
 echo [56Cออออออออออออออออออออออออออออ
 echo [55C// !red!Û!bgyellow!!black! CRACKED WINDOWS APPS !red!Û!bgblack!!cyan! \\
@@ -1402,12 +1402,13 @@ echo [8Cบ   !46!www.ovagames.com!cyan!        ณ   !54!gogunlocked.com!cyan!    
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogame Repacks Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !61!repack-games.com!cyan!        ณ   !67!darckrepacks.com!cyan!           ณ   !73!cpgrepacks.site!cyan!                    บ
-echo [8Cบ   !62!www.game-repack.site!cyan!    ณ   !68!dodi-repacks.site!cyan!          ณ   !74!www.tiny-repacks.win!cyan!               บ
-echo [8Cบ   !63!elamigos.site!cyan!           ณ   !69!www.blackboxrepack.com!cyan!     ณ   !75!repack.info!cyan!                        บ
-echo [8Cบ   !64!fitgirl-repacks.site!cyan!    ณ   !70!masquerade.site!cyan!            ณ   !76!m4ckd0ge-repacks.me!cyan!                บ
-echo [8Cบ   !65!repack-mechanics.com!cyan!    ณ   !71!scooter-repacks.site!cyan!       ณ   !77!e13.xatab-repack.com !green!(RU)!cyan!          บ
-echo [8Cบ   !66!gamesdrive.net!cyan!          ณ   !72!www.gnarly-repacks.site!cyan!    ณ   !78!qoob.name !green!(RU)!cyan!                     บ
+echo [8Cบ   !61!repack-games.com!cyan!        ณ   !68!dodi-repacks.site!cyan!           ณ   !75!repack.info!cyan!                       บ
+echo [8Cบ   !62!www.game-repack.site!cyan!    ณ   !69!www.blackboxrepack.com!cyan!      ณ   !76!m4ckd0ge-repacks.me!cyan!               บ
+echo [8Cบ   !63!elamigos.site!cyan!           ณ   !70!masquerade.site!cyan!             ณ   !77!patricktech-repacks.xyz!cyan!           บ
+echo [8Cบ   !64!fitgirl-repacks.site!cyan!    ณ   !71!scooter-repacks.site!cyan!        ณ   !78!e13.xatab-repack.com !green!(RU)!cyan!         บ
+echo [8Cบ   !65!repack-mechanics.com!cyan!    ณ   !72!www.gnarly-repacks.site!cyan!     ณ   !79!qoob.name !green!(RU)!cyan!                    บ
+echo [8Cบ   !66!gamesdrive.net!cyan!          ณ   !73!cpgrepacks.site!cyan!             ณ                                            บ
+echo [8Cบ   !67!darckrepacks.com!cyan!        ณ   !74!www.tiny-repacks.win!cyan!        ณ                                            บ
 echo [8Cบ                                                                                                                      บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
