@@ -423,6 +423,7 @@ cpgrepacks.site
 www.tiny-repacks.win
 repack.info
 m4ckd0ge-repacks.me
+patricktech-repacks.xyz
 e13.xatab-repack.com
 qoob.name
 ;;ANDROID
