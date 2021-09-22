@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 0. 1
-REM  Fileversion:  5. 9. 0. 1
+REM  Productversion:  5. 9. 0. 2
+REM  Fileversion:  5. 9. 0. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,20 +69,20 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.9.0.1 - 20/09/2021
+set version=v5.9.0.2 - 22/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
 call :DRAW_LOGO
 echo:
-echo [29C!cyan!{!red!+!cyan!}---------------------------------------------------------------{!red!+!cyan!}!red!
+echo [28C!cyan!{!red!+!cyan!}---------------------------------------------------------------{!red!+!cyan!}!red!
 if "!Language!"=="EN" call :DRAW_CENTER "   !yellow!Welcome [!red!!IS_Username!!yellow!] to Illegal Services !version:~,8!   !red!" 20
 if "!Language!"=="FR" call :DRAW_CENTER "   !yellow!Bienvenue [!red!!IS_Username!!yellow!] dans Illegal Services !version:~,8!   !red!" 20
-echo [29C!cyan!{!red!+!cyan!}---------------------------------------------------------------{!red!+!cyan!}
+echo [28C!cyan!{!red!+!cyan!}---------------------------------------------------------------{!red!+!cyan!}
 for /f %%a in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%a"
 for %%a in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~a" del /f /q "%%~a"
 for %%a in ("!cd:~,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~a" 2>nul rd /s /q "%%~a"
-set "sp=!grey![30C$ [!red!!IS_Username!!grey!] "
+set "sp=[29C!yellow!{$} !grey!"
 echo !grey!
 if defined ProgramFiles(x86) (set arch=64) else set arch=86
 set "IS_Dir=%~dp0Illegal Services\"
@@ -96,36 +96,35 @@ exit
 )
 
 :LAUNCHER_PROXY
-if "!Language!"=="EN" set t=Searching a
-if "!Language!"=="FR" set t=Recherche d'un
-<nul set /p=!sp!!t! proxy ^>
+if "!Language!"=="EN" <nul set /p="!sp!Searching a proxy ^> "
+if "!Language!"=="FR" <nul set /p="!sp!Recherche d'un proxy ^> "
 set git_list=github.com/Illegal-Services/Illegal_Services bitbucket.org/IllegalServices/illegal_services git.teknik.io/Illegal-Services/Illegal_Services gitee.com/Illegal-Services/illegal_services
 call :PROXY
 
 :LAUNCHER_VERSION
-if defined git for /f "delims=/" %%a in ("!git:*://=!") do if defined git_backup (echo  !green![!red!Git backup server: !green!%%a] . . .) else if "!git!"=="404 Git proxy not found" (
-if "!Language!"=="EN" echo  !red![FAILED] . . .
-if "!Language!"=="FR" echo  !red![ECHEC] . . .
-) else echo  !green![%%a] . . .
-if "!Language!"=="EN" <nul set /p=!sp!Searching for a new update ^>
-if "!Language!"=="FR" <nul set /p=!sp!Recherche d'une nouvelle mise … jour ^>
+if defined git for /f "delims=/" %%a in ("!git:*://=!") do if defined git_backup (echo !green![!red!Git backup server: !green!%%a] . . .) else if "!git!"=="404 Git proxy not found" (
+if "!Language!"=="EN" echo !red![FAILED] . . .
+if "!Language!"=="FR" echo !red![ECHEC] . . .
+) else echo !green![%%a] . . .
+if "!Language!"=="EN" <nul set /p="!sp!Searching for a new update ^> "
+if "!Language!"=="FR" <nul set /p="!sp!Recherche d'une nouvelle mise … jour ^> "
 call :CHECK_VOICEASSISTANT
 call :GET_VERSION
 if defined old_version if defined old_lastversion if "!old_version!"=="!version!" if "!old_lastversion!"=="!lastversion!" (
-if "!Language!"=="EN" echo  !red![FAILED: Wait for the next build update.] . . .
-if "!Language!"=="FR" echo  !red![ECHEC: Attendez la prochaine mise … jour de la build.] . . .
+if "!Language!"=="EN" echo !red![FAILED: Wait for the next build update.] . . .
+if "!Language!"=="FR" echo !red![ECHEC: Attendez la prochaine mise … jour de la build.] . . .
 goto :CHECKERINTEGRITY
 )
-if defined lastversion (echo  !green![!lastversion!] . . .) else (
-if "!Language!"=="EN" echo  !red![FAILED] . . .
-if "!Language!"=="FR" echo  !red![ECHEC] . . .
+if defined lastversion (echo !green![!lastversion!] . . .) else (
+if "!Language!"=="EN" echo !red![FAILED] . . .
+if "!Language!"=="FR" echo !red![ECHEC] . . .
 )
 if "!errorlevel!"=="1" call :CHECKER_SETUP_FOUND
 if "!errorlevel!"=="2" call :CHECKER_BUILD_FOUND
 
 :CHECKERINTEGRITY
-if "!Language!"=="EN" <nul set /p=!sp!Checking files integrity ^>
-if "!Language!"=="FR" <nul set /p=!sp!Vrification de l'intgrite des fichiers ^>
+if "!Language!"=="EN" <nul set /p="!sp!Checking files integrity ^> "
+if "!Language!"=="FR" <nul set /p="!sp!Vrification de l'intgrite des fichiers ^> "
 set _el=
 for %%a in (COPYING ChangeLog.txt cmdbkg.exe cmdwiz.exe SaveFileBox.exe OpenFileBox.exe EULA.rtf Tutorial.html 7za\x!arch!\7zxa.dll 7za\x!arch!\7za.dll 7za\x!arch!\7za.exe Speak\speak-x!arch!.exe Speak\extd.exe Speak\!Language!.lang) do if not exist %%a (
 set el=%%a
@@ -136,39 +135,57 @@ call :CURL "%%a" "`git_raw_main`/!el!" || call :ERROR_FATAL %%a
 for /l %%a in (1,1,12) do if not exist "Backgrounds\background-%%a.jpg" (
 call :MISSING_FILE Backgrounds\background-%%a.jpg
 call :CURL "Backgrounds.7z" "`git_raw_downloads`/Backgrounds.7z" || call :ERROR_FATAL Backgrounds\background-%%a.jpg
-goto :CHECKERWINDOWS
 )
-if not defined _el echo  !green![PASS] . . .
+if not defined _el (
+if "!Language!"=="EN" echo  !green![PASSED] . . .
+if "!Language!"=="FR" echo  !green![PASSER] . . .
+)
 
 :CHECKERWINDOWS
-if "!Language!"=="EN" <nul set /p=!sp!Checking Windows version ^>
-if "!Language!"=="FR" <nul set /p=!sp!Vrification de votre version de Windows ^>
+if "!Language!"=="EN" <nul set /p="!sp!Checking Windows version ^> "
+if "!Language!"=="FR" <nul set /p="!sp!Vrification de votre version de Windows ^> "
 for /f "tokens=4-7delims=[.] " %%a in ('ver') do if /i "%%a"=="Version" (set "windowsversion=%%b.%%c") else set "windowsversion=%%a.%%b"
 for /f "tokens=2delims=:." %%a in ('chcp') do set /a "CP=%%a"
-if defined windowsversion (echo  !green![!windowsversion!, x!arch!, CHCP:!CP!] . . .) else echo  !red![?, !green!x!arch!!red!] . . .
+for %%a in (windowsversion arch CP) do if not defined %%a set %%a=?
+if "!windowsversion!"=="?" (<nul set /p="!red![!windowsversion!], ") else <nul set /p="!green![!windowsversion!], "
+if "!arch!"=="?" (<nul set /p="!red![!arch!], ") else <nul set /p="!green![x!arch!], "
+if "!CP!"=="?" (<nul set /p="!red![!CP!] . . .") else <nul set /p="!green![CHCP:!CP!] . . ."
+echo:
 if not "!windowsversion!"=="10.0" if not "!windowsversion!"=="6.3" if not "!windowsversion!"=="6.2" if not "!windowsversion!"=="6.1" (
 if "!Language!"=="EN" set t="ERROR: Your computer does not reach the minimum Windows version compatible with Illegal Services." "You need Windows 7 or higher."
 if "!Language!"=="FR" set t="ERREUR: Votre ordinateur n'atteint pas la version minimale de Windows compatible avec Illegal Services." "Vous avez besoin de Windows 7 ou suprieur."
 call :MSGBOX 2 !t! 69648 "Illegal Services Checker"
 exit
 )
+if "!CP!"=="?" (
+if "!Language!"=="EN" set t="Illegal Services could not determine your CHCP number." "Please report this bug on the Illegal Services Telegram forum in order to correct this bug in a future release."
+if "!Language!"=="FR" set t="Illegal Services n'a pas pu dterminer votre numro CHCP." "Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+call :MSGBOX 2 !t! 69648 "Illegal Services Checker"
+start https://t.me/illegal_services_forum
+exit
+)
 if not "!windowsversion!"=="10.0" call :INSTALL_ANSICON "%~f0"
 
+
 :LAUNCHER_APPLY_SETTINGS
-if "!Language!"=="EN" echo !sp!Applying your settings . . .
-if "!Language!"=="FR" echo !sp!Applique vos paramtres . . .
+if "!Language!"=="EN" <nul set /p="!sp!Applying your settings ^> "
+if "!Language!"=="FR" <nul set /p="!sp!Applique vos paramtres ^> "
 call :APPLY_SETTINGS
 call :CHECK_UNTRUSTEDWEBSITESWARNING
+if "!Language!"=="EN" echo !green![PASSED] . . .
+if "!Language!"=="FR" echo !green![PASSER] . . .
 
 :LAUNCHER_START
 call :ROSE "Welcome Back"
-if "!Language!"=="EN" echo !sp!Starting Illegal Services . . .
-if "!Language!"=="FR" echo !sp!Dmarrage d'Illegal Services . . .
+if "!Language!"=="EN" <nul set /p="!sp!Starting Illegal Services ^> "
+if "!Language!"=="FR" <nul set /p="!sp!Dmarrage d'Illegal Services ^> "
 for /f "tokens=2*" %%a in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set "ISOutputDirectory=%%b\Illegal Services"
 set "checked=!cyan![!yellow!x!cyan!]!white! "
 set "unchecked=!cyan![ ]!white! "
 call :CHECK_VOICEASSISTANTCHOICE
 if "!VoiceAssistantChoice!"=="1" call :ROSE_SETUP
+if "!Language!"=="EN" echo !green![PASSED] . . .
+if "!Language!"=="FR" echo !green![PASSER] . . .
 :L1
 for %%a in (extd speak-x!arch!) do tasklist /fo csv /fi "imagename eq %%a.exe" | >nul findstr /c:"%%a.exe" && goto :L1
 if "!VoiceAssistant!"=="0" >nul timeout /t 1 /nobreak
@@ -893,7 +910,7 @@ title !title:`=Direct Download Link (DDL) [FR]!
 
 :CLEARDDLFR
 call :CLEAR 1 11
-set db=www.tirexo.work/ free-telecharger.net/ libertyvf.bz/ www.extreme-down.plus/home.html zone-telechargement.cam/ www.wawacity.one/ ww1.jeddl.com/ www.zone-mania.com/ www.zone-down.com/ nandesuka.moe/ 9docu.org/
+set db=www.tirexo.work/ free-telecharger.net/ libertyvf.bz/ www.extreme-down.plus/home.html zone-telechargement.cam/ www.wawacity.one/ ww2.jeddl.com/ www.zone-mania.com/ www.zone-down.com/ nandesuka.moe/ 9docu.org/
 
 :CONTINUEDDLFR
 call :SCALE 71 24
@@ -908,7 +925,7 @@ echo [9Cบ    !3!libertyvf.bz!cyan!                            บ
 echo [9Cบ    !4!www.extreme-down.plus!cyan!                   บ
 echo [9Cบ    !5!zone-telechargement.cam!cyan!                 บ
 echo [9Cบ    !6!www.wawacity.one!cyan!                        บ
-echo [9Cบ    !7!ww1.jeddl.com!cyan!                           บ
+echo [9Cบ    !7!ww2.jeddl.com!cyan!                           บ
 echo [9Cบ    !8!www.zone-mania.com!cyan!                      บ
 echo [9Cบ    !9!www.zone-down.com!cyan!                       บ
 echo [9Cบ   !10!nandesuka.moe !green!(animes)!cyan!                  บ
@@ -933,11 +950,11 @@ goto :CONTINUEDDLFR
 title !title:`=Streaming [%Language%]!
 if "!UntrustedWebsitesWarning!"=="1" (
 if "!Language!"=="EN" (
-call :SCALE 101 52
+call :SCALE 101 53
 set t="No payment / installation / registration is required to view the videos on the sites offered by Illegal Service. All sites are free so watch out for scam advertising." "If the player is not visible, disable your ad blocker and click on the button to close the ad in the middle of the video then on the player's Play button to launch the video."
 )
 if "!Language!"=="FR" (
-call :SCALE 101 46
+call :SCALE 101 48
 set t="Aucun payment / installation / inscription n'est requis pour voir les videos sur les sites proposes par Illegal Service. Tous les sites sont gratuits donc faites attention aux publicites d'arnaques." "Si le lecteur n'est pas visible, desactiver votre bloqueur de publicites et clique sur le bouton pour fermer la pub au milieu de la video puis sur le bouton Play du lecteur pour lancer la video."
 )
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -946,60 +963,61 @@ call :ROSE Streaming
 for %%a in (EN FR) do if "!Language!"=="%%a" goto :STREAMING%%a
 
 :STREAMINGEN
-call :SCALE 101 52
+call :SCALE 101 53
 title !title:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
-call :CLEAR 1 60
-set db=www.primewire.li/ losmovies.app/ gomovie.co/ 123movies.jp/ www1.123movies.co/ www4.yesmovies.so/ 5movies.pw/ gomovies-online.cam/ myflixertv.to/ yesmovies.ag/ www11.123movieshub.one/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ reddit.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+call :CLEAR 1 62
+set db=www.primewire.li/ losmovies.app/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ 123movies.jp/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ yesmovies.ag/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ reddit.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
-call :SCALE 101 52
+call :SCALE 101 53
 echo !cyan!
 echo [40Cออออออออออออออออออออออ
 echo [39C// !red!Û!bgyellow!!black! STREAMING [EN] !red!Û!bgblack!!cyan! \\
 echo [8Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û FILMS Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ    !1!www.primewire.li!cyan!               ณ   !16!lookmovie.io!cyan!                   บ
-echo [8Cบ    !2!losmovies.app!cyan!                  ณ   !17!www2.solarmovie.to!cyan!             บ
-echo [8Cบ    !3!gomovie.co!cyan!                     ณ   !18!ww.123movies.sc!cyan!                บ
-echo [8Cบ    !4!123movies.jp!cyan!                   ณ   !19!frenzymovies.net!cyan!               บ
-echo [8Cบ    !5!www1.123movies.co!cyan!              ณ   !20!supernova.to!cyan!                   บ
-echo [8Cบ    !6!www4.yesmovies.so!cyan!              ณ   !21!vumoo.to!cyan!                       บ
-echo [8Cบ    !7!5movies.pw!cyan!                     ณ   !22!hulu.sc!cyan!                        บ
-echo [8Cบ    !8!gomovies-online.cam!cyan!            ณ   !23!watchtvepisodes.me!cyan!             บ
-echo [8Cบ    !9!myflixertv.to!cyan!                  ณ   !24!ww2.123movieshub.tc!cyan!            บ
-echo [8Cบ   !10!yesmovies.ag!cyan!                   ณ   !25!0gomovies.so!cyan!                   บ
-echo [8Cบ   !11!www11.123movieshub.one!cyan!         ณ   !26!soap2day.to!cyan!                    บ
-echo [8Cบ   !12!watch-serieshd.cc!cyan!              ณ   !27!www1.movie4u.live!cyan!              บ
-echo [8Cบ   !13!watchseriess.net!cyan!               ณ   !28!cinehub.wtf!cyan!                    บ
-echo [8Cบ   !14!flixtor.to!cyan!                     ณ   !29!openloadfreetv.me!cyan!              บ
-echo [8Cบ   !15!fmovies.to!cyan!                     ณ   !30!allmoviesforyou.co!cyan!             บ
+echo [8Cบ    !1!www.primewire.li!cyan!               ณ   !17!fmovies.to!cyan!                     บ
+echo [8Cบ    !2!losmovies.app!cyan!                  ณ   !18!lookmovie.io!cyan!                   บ
+echo [8Cบ    !3!m4ufree.to!cyan!                     ณ   !19!www2.solarmovie.to!cyan!             บ
+echo [8Cบ    !4!gomovie.co!cyan!                     ณ   !20!ww.123movies.sc!cyan!                บ
+echo [8Cบ    !5!gomovies-online.cam!cyan!            ณ   !21!frenzymovies.net!cyan!               บ
+echo [8Cบ    !6!123movies.jp!cyan!                   ณ   !22!supernova.to!cyan!                   บ
+echo [8Cบ    !7!www1.123movies.co!cyan!              ณ   !23!vumoo.to!cyan!                       บ
+echo [8Cบ    !8!myflixertv.to!cyan!                  ณ   !24!hulu.sc!cyan!                        บ
+echo [8Cบ    !9!www4.yesmovies.so!cyan!              ณ   !25!watchtvepisodes.me!cyan!             บ
+echo [8Cบ   !10!5movies.pw!cyan!                     ณ   !26!ww2.123movieshub.tc!cyan!            บ
+echo [8Cบ   !11!yesmovies.ag!cyan!                   ณ   !27!0gomovies.so!cyan!                   บ
+echo [8Cบ   !12!www11.123movieshub.one!cyan!         ณ   !28!soap2day.to!cyan!                    บ
+echo [8Cบ   !13!hollymoviehd.cc!cyan!                ณ   !29!www1.movie4u.live!cyan!              บ
+echo [8Cบ   !14!watch-serieshd.cc!cyan!              ณ   !30!cinehub.wtf!cyan!                    บ
+echo [8Cบ   !15!watchseriess.net!cyan!               ณ   !31!openloadfreetv.me!cyan!              บ
+echo [8Cบ   !16!flixtor.to!cyan!                     ณ   !32!allmoviesforyou.co!cyan!             บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ANIMES Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !31!kisscartoon.info!cyan!               ณ   !42!animevibe.se!cyan!                   บ
-echo [8Cบ   !32!9anime.to!cyan!                      ณ   !43!animixplay.to!cyan!                  บ
-echo [8Cบ   !33!animesuge.io!cyan!                   ณ   !44!www2.kickassanime.ro!cyan!           บ
-echo [8Cบ   !34!animeheaven.pro!cyan!                ณ   !45!animepahe.com!cyan!                  บ
-echo [8Cบ   !35!animeowl.net!cyan!                   ณ   !46!ww1.animesimple.com!cyan!            บ
-echo [8Cบ   !36!animeow.me!cyan!                     ณ   !47!zoro.to!cyan!                        บ
-echo [8Cบ   !37!arrayanime.com!cyan!                 ณ   !48!www1.animeultima.to!cyan!            บ
-echo [8Cบ   !38!gogoanime.vc!cyan!                   ณ   !49!animedao.to!cyan!                    บ
-echo [8Cบ   !39!animefrenzy.org!cyan!                ณ   !50!kissanimefree.to!cyan!               บ
-echo [8Cบ   !40!anime8.ru!cyan!                      ณ   !51!www1.7anime.io!cyan!                 บ
-echo [8Cบ   !41!www2.kiss-anime.asia!cyan!           ณ   !52!twist.moe!cyan!                      บ
+echo [8Cบ   !33!kisscartoon.info!cyan!               ณ   !44!animevibe.se!cyan!                   บ
+echo [8Cบ   !34!9anime.to!cyan!                      ณ   !45!animixplay.to!cyan!                  บ
+echo [8Cบ   !35!animesuge.io!cyan!                   ณ   !46!www2.kickassanime.ro!cyan!           บ
+echo [8Cบ   !36!animeheaven.pro!cyan!                ณ   !47!animepahe.com!cyan!                  บ
+echo [8Cบ   !37!animeowl.net!cyan!                   ณ   !48!ww1.animesimple.com!cyan!            บ
+echo [8Cบ   !38!animeow.me!cyan!                     ณ   !49!zoro.to!cyan!                        บ
+echo [8Cบ   !39!arrayanime.com!cyan!                 ณ   !50!www1.animeultima.to!cyan!            บ
+echo [8Cบ   !40!gogoanime.vc!cyan!                   ณ   !51!animedao.to!cyan!                    บ
+echo [8Cบ   !41!animefrenzy.org!cyan!                ณ   !52!kissanimefree.to!cyan!               บ
+echo [8Cบ   !42!anime8.ru!cyan!                      ณ   !53!www1.7anime.io!cyan!                 บ
+echo [8Cบ   !43!www2.kiss-anime.asia!cyan!           ณ   !54!twist.moe!cyan!                      บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!reddit.stream2watch.sx !green!(sport)!cyan! บ
-echo [8Cบ   !54!time4tv.stream!cyan!                 ณ   !58!sportplus.live !green!(sport)!cyan!         บ
-echo [8Cบ   !55!live94today.com!cyan!                ณ   !59!sportsbay.org !green!(sport)!cyan!          บ
-echo [8Cบ   !56!livetv.sx !green!(sport)!cyan!              ณ   !60!thehomesport.com !green!(sport)!cyan!       บ
+echo [8Cบ   !55!runnel.ir!cyan!                      ณ   !59!reddit.stream2watch.sx !green!(sport)!cyan! บ
+echo [8Cบ   !56!time4tv.stream!cyan!                 ณ   !60!sportplus.live !green!(sport)!cyan!         บ
+echo [8Cบ   !57!live94today.com!cyan!                ณ   !61!sportsbay.org !green!(sport)!cyan!          บ
+echo [8Cบ   !58!livetv.sx !green!(sport)!cyan!              ณ   !62!thehomesport.com !green!(sport)!cyan!       บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-call :DRAW_CENTER "!yellow!61!cyan!  >  !white!Streaming Applications!cyan!" 20
+call :DRAW_CENTER "!yellow!63!cyan!  >  !white!Streaming Applications!cyan!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1008,7 +1026,7 @@ call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGEN
-if "!x!"=="61" (set la=EN) & goto :STREAMINGAPPS
+if "!x!"=="63" (set la=EN) & goto :STREAMINGAPPS
 call :CHOOSE fr && goto :STREAMINGFR
 call :CHOOSE search && (call :IS_SEARCH ef3978005ffa01b49 & goto :CONTINUESTREAMINGEN)
 call :CHOOSE back && goto :MAINMENU
@@ -1017,54 +1035,56 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGEN
 
 :STREAMINGFR
-call :SCALE 101 46
+call :SCALE 101 48
 title !title:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 44
-set db=www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ www.illimitestreaming.co/ www.streaminz.me/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+call :CLEAR 1 49
+set db=www.filmstreaming1.tel/streaml/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ www.streaminz.me/ filmpourvous.com/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
-call :SCALE 101 46
+call :SCALE 101 48
 echo !cyan!
 echo [40Cออออออออออออออออออออออ
 echo [39C// !red!Û!bgyellow!!black! STREAMING [FR] !red!Û!bgblack!!cyan! \\
 echo [8Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û FILMS Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ    !1!www6.filmstreaming.to!cyan!          ณ   !10!wwv.streamfilm.cc!cyan!              บ
-echo [8Cบ    !2!french-stream.re!cyan!               ณ   !11!www.illimitestreaming.co!cyan!       บ
-echo [8Cบ    !3!wvw.hds.lc!cyan!                     ณ   !12!www.streaminz.me!cyan!               บ
-echo [8Cบ    !4!hdss.papystreaming.net!cyan!         ณ   !13!www.cinezzz.org!cyan!                บ
-echo [8Cบ    !5!fcine.me!cyan!                       ณ   !14!voirseries.tv !green!(series)!cyan!         บ
-echo [8Cบ    !6!libertyvf.bz!cyan!                   ณ   !15!www.papystreaming.cc!cyan!           บ
-echo [8Cบ    !7!www.filmstreaminglol.com!cyan!       ณ   !16!streamcomplet.buzz!cyan!             บ
-echo [8Cบ    !8!streaming-films.net!cyan!            ณ   !17!tratov.com!cyan!                     บ
-echo [8Cบ    !9!vfstreamiz.com!cyan!                 ณ                                         บ
+echo [8Cบ    !1!www.filmstreaming1.tel!cyan!         ณ   !12!wwv.streamfilm.cc!cyan!              บ
+echo [8Cบ    !2!www6.filmstreaming.to!cyan!          ณ   !13!vw.streampourvous.ws!cyan!           บ
+echo [8Cบ    !3!french-stream.re!cyan!               ณ   !14!www.streaminz.me!cyan!               บ
+echo [8Cบ    !4!wvw.hds.lc!cyan!                     ณ   !15!filmpourvous.com!cyan!               บ
+echo [8Cบ    !5!hdss.papystreaming.net!cyan!         ณ   !16!www.illimitestreaming.co!cyan!       บ
+echo [8Cบ    !6!fcine.me!cyan!                       ณ   !17!www.cinezzz.org!cyan!                บ
+echo [8Cบ    !7!wwv.films-streams.com!cyan!          ณ   !18!voirseries.tv !green!(series)!cyan!         บ
+echo [8Cบ    !8!libertyvf.bz!cyan!                   ณ   !19!www.papystreaming.cc!cyan!           บ
+echo [8Cบ    !9!www.filmstreaminglol.com!cyan!       ณ   !20!streamcomplet.buzz!cyan!             บ
+echo [8Cบ   !10!streaming-films.net!cyan!            ณ   !21!tratov.com!cyan!                     บ
+echo [8Cบ   !11!vfstreamiz.com!cyan!                 ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ANIMES Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !18!voiranime.com!cyan!                  ณ   !29!wvvw.toonanime.tv!cyan!              บ
-echo [8Cบ   !19!neko-sama.fr!cyan!                   ณ   !30!wvw.jetanimes.com!cyan!              บ
-echo [8Cบ   !20!french-manga.net!cyan!               ณ   !31!vostfree.tv!cyan!                    บ
-echo [8Cบ   !21!www.adkami.com!cyan!                 ณ   !32!www.universanime.co!cyan!            บ
-echo [8Cบ   !22!www.ianimes.org!cyan!                ณ   !33!dbanimes.com!cyan!                   บ
-echo [8Cบ   !23!mavanimes.cc!cyan!                   ณ   !34!daijoubu.si!cyan!                    บ
-echo [8Cบ   !24!streaming-integrale.com!cyan!        ณ   !35!animevostfr.tv!cyan!                 บ
-echo [8Cบ   !25!gum-gum-streaming.com!cyan!          ณ   !36!animecomplet.me!cyan!                บ
-echo [8Cบ   !26!otakufr.co!cyan!                     ณ   !37!www.anime-ultime.net!cyan!           บ
-echo [8Cบ   !27!www.mavanimes.co!cyan!               ณ   !38!v5.anime-ultime.net!cyan!            บ
-echo [8Cบ   !28!vostanimez.com!cyan!                 ณ                                         บ
+echo [8Cบ   !22!voiranime.com!cyan!                  ณ   !33!wvvw.toonanime.tv!cyan!              บ
+echo [8Cบ   !23!neko-sama.fr!cyan!                   ณ   !34!wvw.jetanimes.com!cyan!              บ
+echo [8Cบ   !24!french-manga.net!cyan!               ณ   !35!vostfree.tv!cyan!                    บ
+echo [8Cบ   !25!www.adkami.com!cyan!                 ณ   !36!www.universanime.co!cyan!            บ
+echo [8Cบ   !26!www.ianimes.org!cyan!                ณ   !37!dbanimes.com!cyan!                   บ
+echo [8Cบ   !27!mavanimes.cc!cyan!                   ณ   !38!daijoubu.si!cyan!                    บ
+echo [8Cบ   !28!streaming-integrale.com!cyan!        ณ   !39!animepourvous.com!cyan!              บ
+echo [8Cบ   !29!gum-gum-streaming.com!cyan!          ณ   !40!animevostfr.tv!cyan!                 บ
+echo [8Cบ   !30!otakufr.co!cyan!                     ณ   !41!animecomplet.me!cyan!                บ
+echo [8Cบ   !31!www.mavanimes.co!cyan!               ณ   !42!www.anime-ultime.net!cyan!           บ
+echo [8Cบ   !32!vostanimez.com!cyan!                 ณ   !43!v5.anime-ultime.net!cyan!            บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !39!channelstream.watch!cyan!            ณ   !43!sport-stream.live !green!(sport)!cyan!      บ
-echo [8Cบ   !40!www.myfree-tivi.com!cyan!            ณ   !44!streaming-sport.tv !green!(sport)!cyan!     บ
-echo [8Cบ   !41!livetv.sx !green!(sport)!cyan!              ณ                                         บ
-echo [8Cบ   !42!fr4.sportplus.live !green!(sport)!cyan!     ณ                                         บ
+echo [8Cบ   !44!channelstream.watch!cyan!            ณ   !48!sport-stream.live !green!(sport)!cyan!      บ
+echo [8Cบ   !45!www.myfree-tivi.com!cyan!            ณ   !49!streaming-sport.tv !green!(sport)!cyan!     บ
+echo [8Cบ   !46!livetv.sx !green!(sport)!cyan!              ณ                                         บ
+echo [8Cบ   !47!fr4.sportplus.live !green!(sport)!cyan!     ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-call :DRAW_CENTER "!yellow!45!cyan!  >  !white!Streaming Applications!cyan!" 20
+call :DRAW_CENTER "!yellow!50!cyan!  >  !white!Streaming Applications!cyan!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1073,7 +1093,7 @@ call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGFR
-if "!x!"=="45" (set la=FR) & goto :STREAMINGAPPS
+if "!x!"=="50" (set la=FR) & goto :STREAMINGAPPS
 call :CHOOSE en && goto :STREAMINGEN
 call :CHOOSE search && (call :IS_SEARCH e49c0bfe5fd6d7fb6 & goto :CONTINUESTREAMINGFR)
 call :CHOOSE back && goto :MAINMENU
@@ -1436,7 +1456,7 @@ call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
 call :CLEAR 1 27
-set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ apkdump.com/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
+set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
 call :SCALE 85 33
@@ -1450,7 +1470,7 @@ echo [7Cบ    !2!apkhome.net!cyan!            ณ   !14!inewkhushi.com!cyan!      
 echo [7Cบ    !3!apkmagic.com.ar!cyan!        ณ   !15!proapk.in!cyan!                บ
 echo [7Cบ    !4!oceanofapk.com!cyan!         ณ   !16!www.apps4download.com!cyan!    บ
 echo [7Cบ    !5!apkgod.net!cyan!             ณ   !17!ihackedit.com!cyan!            บ
-echo [7Cบ    !6!5mod.ru!cyan!                ณ   !18!apkdump.com!cyan!              บ
+echo [7Cบ    !6!5mod.ru!cyan!                ณ   !18!iplayplus.org!cyan!            บ
 echo [7Cบ    !7!apkmb.com!cyan!              ณ   !19!apk-house.com!cyan!            บ
 echo [7Cบ    !8!apk4free.org!cyan!           ณ   !20!www.rockmods.net!cyan!         บ
 echo [7Cบ    !9!dlandroid.com!cyan!          ณ   !21!www.ytricks.net!cyan!          บ
@@ -2769,7 +2789,7 @@ call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
 call :CLEAR 1 38
-set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php forum.snahp.it/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ www.wawa-rammstein.de/ starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ raidforums.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
+set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php fora.snahp.eu/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ www.wawa-rammstein.de/ starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ raidforums.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
 
 :CONTINUEFORUMWEBSITES
 call :SCALE 126 38
@@ -2782,7 +2802,7 @@ echo [7Cบ                                                                      
 echo [7Cบ    !1!www.adit-hd.com        !green!DDL        [EN]!cyan!    ณ   !16!forums.anidex.moe           !green!Torrenting [EN]!cyan!    บ
 echo [7Cบ    !2!forum.ddlvalley.me     !green!DDL        [EN]!cyan!    ณ   !17!prostylex.org               !green!Torrenting [EN]!cyan!    บ
 echo [7Cบ    !3!www.warezheaven.com    !green!DDL        [EN]!cyan!    ณ   !18!angietorrents.cc            !green!Torrenting [EN]!cyan!    บ
-echo [7Cบ    !4!forum.snahp.it         !green!DDL        [EN]!cyan!    ณ   !19!forum.p2pfr.com             !green!Torrenting [FR]!cyan!    บ
+echo [7Cบ    !4!fora.snahp.eu          !green!DDL        [EN]!cyan!    ณ   !19!forum.p2pfr.com             !green!Torrenting [FR]!cyan!    บ
 echo [7Cบ    !5!www.mywarez.org        !green!DDL        [EN]!cyan!    ณ   !20!www.tigers-dl.net           !green!Torrenting [FR]!cyan!    บ
 echo [7Cบ    !6!ddlbase.net            !green!DDL        [EN]!cyan!    ณ   !21!www.forumzt.com             !green!Torrenting [FR]!cyan!    บ
 echo [7Cบ    !7!forumpoint.org         !green!DDL        [EN]!cyan!    ณ   !22!www.frboard.com             !green!Torrenting [FR]!cyan!    บ
@@ -4381,12 +4401,12 @@ exit /b 1
 
 :MISSING_FILE
 if not defined _el (
-echo  !red![FAIL] . . .
+if "!Language!"=="EN" echo !red![FAILED: missing file^(s^)] . . .
+if "!Language!"=="FR" echo !red![ECHEC: fichier^(s^) manquant^(s^)] . . .
 set _el=1
 )
-if "!Language!"=="EN" set t=The file "!IS_Dir!%1" is missing, trying to download it
-if "!Language!"=="FR" set t=Le fichier "!IS_Dir!%1" est manquant, tentative de tlchargement
-echo !red!!t!...!grey!
+if "!Language!"=="EN" echo !cyan!The file !red!"!IS_Dir!%1"!cyan! is missing, trying to download it...
+if "!Language!"=="FR" echo !cyan!Le fichier !red!"!IS_Dir!%1"!cyan! est manquant, tentative de tlchargement...
 exit /b
 
 :ERROR_FATAL
