@@ -7,9 +7,21 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.0.1 - 20/09/2021
+v5.9.0.2 - 22/09/2021
 - FIXED minor bugs.
+- IMPROVED Launcher : Checking files integrity.
+- IMPROVED Launcher : Checking Windows version.
++ UPDATED Direct Download Link [FR] : https://ww2.jeddl.com/
++ ADDED Streaming [EN] : https://m4ufree.to/
++ ADDED Streaming [EN] : https://www11.123movieshub.one/
++ ADDED Streaming [FR] : https://www.filmstreaming1.tel/streaml/
++ ADDED Streaming [FR] : https://wwv.films-streams.com/
++ ADDED Streaming [FR] : https://vvw.streampourvous.ws/
++ ADDED Streaming [FR] : https://filmpourvous.com/
++ ADDED Streaming [FR] : https://animepourvous.com/
 + ADDED Cracked Windows apps : https://patricktech-repacks.xyz/
++ UPDATED Cracked Android APK's : https://iplayplus.org/
++ UPDATED More Features Forum Websites : https://fora.snahp.eu/
 
 v5.9.0.0 - 19/09/2021
 - REDUCED Code. (~12 ko)
