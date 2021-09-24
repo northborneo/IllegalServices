@@ -7,10 +7,12 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.0.2 - 22/09/2021
+v5.9.0.3 - 24/09/2021
+- FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
 - FIXED minor bugs.
 - IMPROVED Launcher : Checking files integrity.
 - IMPROVED Launcher : Checking Windows version.
++ UPDATED Credits.
 + UPDATED Direct Download Link [FR] : https://ww2.jeddl.com/
 + ADDED Streaming [EN] : https://m4ufree.to/
 + ADDED Streaming [EN] : https://www11.123movieshub.one/
@@ -20,8 +22,16 @@ v5.9.0.2 - 22/09/2021
 + ADDED Streaming [FR] : https://filmpourvous.com/
 + ADDED Streaming [FR] : https://animepourvous.com/
 + ADDED Cracked Windows apps : https://patricktech-repacks.xyz/
++ ADDED Useful Websites : https://www.urban-vpn.com/
++ ADDED Useful Websites : https://github.com/gibbed/SteamAchievementManager (thanks @0x00)
++ ADDED Portable Apps : SophiApp (thanks @0x00)
++ ADDED Portable Apps : Sophia-Script-for-Windows (thanks @0x00)
++ ADDED Portable Apps : NVCleanstall
++ ADDED Portable Apps Windows and Office Cracks : Microsoft-Activation-Scripts (thanks @0x00)
 + UPDATED Cracked Android APK's : https://iplayplus.org/
++ UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED More Features Forum Websites : https://fora.snahp.eu/
+- REMOVED Direct Download Link [EN] : https://snahp.it/ (down)
 
 v5.9.0.0 - 19/09/2021
 - REDUCED Code. (~12 ko)
@@ -687,7 +697,7 @@ v5.2.0.0 - 08/03/2021
 + UPDATED Portable Apps : CCleaner v577
 + UPDATED Portable Apps : Process Hacker v3.0.3866
 + UPDATED Portable Apps : CrystalDiskInfo v8.11.2
-+ UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
++ UPDATED Portable Apps Windows and Office Cracks. (links been removed for Illegal reasons)
 - REMOVED Internet Protocol Television : https://www.iptv4free.com/ (down)
 - REMOVED Internet Protocol Television : https://github.com/aniceto097tamo415/Aniceto-IPTV-Lists (down)
 - REMOVED Internet Protocol Television : https://github.com/diony462/IPTV (down)
@@ -705,6 +715,7 @@ v5.1.0.0 - 18/02/2021
 - FIXED some display bugs.
 - FIXED Settings : Developer Mode empty choice making IS unuseable.
 - MOVED Main Menu : Download Subtitles
+- MOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ in Portable Apps Windows and Office Cracks.
 + ADDED IS Source : Tutorial.html
 + ADDED Main Menu : Internet Protocol Television (IPTV) (thanks @Chonkus)
 + ADDED Direct Download Link [EN] : https://scnlog.me/
@@ -754,8 +765,8 @@ v5.1.0.0 - 18/02/2021
 + ADDED Doxing : https://saucenao.com/
 + ADDED Doxing : https://trace.moe/
 + ADDED Doxing : https://ascii2d.net/
-+ ADDED Windows and Office Cracks : https://rg-adguard.net/
-+ ADDED Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
++ ADDED Portable Apps Windows and Office Cracks : https://rg-adguard.net/
++ ADDED Portable Apps Windows and Office Cracks : https://the-eye.eu/public/MSDN/Windows 7/
 + ADDED More Features : Download subtitles.
 + ADDED Credits : All other people who helped me
 + ADDED Settings : Uninstall Illegal Services.
@@ -796,21 +807,20 @@ v5.1.0.0 - 18/02/2021
 + UPDATED Portable Apps : Everything v1.4.1.1005
 + UPDATED Portable Apps : Process Hacker v3.0.3835
 + UPDATED Portable Apps : CrystalDiskInfo v8.11.1
-+ UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
-+ UPDATED Windows and Office Cracks : AAct v4.2.1
-+ UPDATED Windows and Office Cracks : ConsoleAct v3.0
-+ UPDATED Windows and Office Cracks : KMSoffline v2.1.9
-+ UPDATED Windows and Office Cracks : MSAct++ v2.07.4
-+ UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
++ UPDATED Portable Apps Windows and Office Cracks. (links been removed for Illegal reasons)
++ UPDATED Portable Apps Windows and Office Cracks : AAct v4.2.1
++ UPDATED Portable Apps Windows and Office Cracks : ConsoleAct v3.0
++ UPDATED Portable Apps Windows and Office Cracks : KMSoffline v2.1.9
++ UPDATED Portable Apps Windows and Office Cracks : MSAct++ v2.07.4
++ UPDATED Portable Apps Windows and Office Cracks : Office 2013-2019 C2R Install v7.1.0
 - REMOVED IS Source : Get the latest version here.url
 - REMOVED IS Source : Tutorial.txt
-- REMOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ (moved to Portable Apps > Windows and Office Cracks)
 - REMOVED Direct Download Link [FR] : http://www.site-de-telechargement.com/ (down)
 - REMOVED Streaming [EN] : http://www.5movies.to/ (down)
 - REMOVED Streaming [FR] : https://cinemey.com/ (scam)
 - REMOVED Streaming [FR] : https://www.streamoi.com/ (scam)
 - REMOVED Streaming [FR] : https://voir.lesseriestreaming.com/ (scam)
-- REMOVED Windows and Office Cracks : https://babupc.com/ (scam)
+- REMOVED Portable Apps Windows and Office Cracks : https://babupc.com/ (scam)
 - REMOVED IP Denial of Services : https://freeboot.to/ (down)
 - REMOVED IP Denial of Services : https://litestress.com/ (down)
 - REMOVED IP Denial of Services : https://str3ssed.co/ (not free anymore)
@@ -1002,11 +1012,11 @@ v3.8.0.0 - 12/11/2020
 + UPDATED Portable Apps : Blacbird v1.0.80.2:
 + UPDATED Portable Apps : Display Driver Uninstaller v18.0.3.4
 + UPDATED Portable Apps : Windows ISO Downloader
-+ UPDATED Windows and Office Cracks. (links been removed for Illegal reasons)
-+ UPDATED Windows and Office Cracks : KMSoffline v2.1.8
-+ UPDATED Windows and Office Cracks : Office 2013-2019 C2R Install v7.0.8
-+ UPDATED Windows and Office Cracks : W10 Digital License C# v3.7 Multilingual v3.7.0
-+ UPDATED Windows and Office Cracks : AAct v4.2
++ UPDATED Portable Apps Windows and Office Cracks. (links been removed for Illegal reasons)
++ UPDATED Portable Apps Windows and Office Cracks : KMSoffline v2.1.8
++ UPDATED Portable Apps Windows and Office Cracks : Office 2013-2019 C2R Install v7.0.8
++ UPDATED Portable Apps Windows and Office Cracks : W10 Digital License C# v3.7 Multilingual v3.7.0
++ UPDATED Portable Apps Windows and Office Cracks : AAct v4.2
 - REMOVED Launcher : Alpha Tester Code. (Not useful anymore since the build updates system)
 - REMOVED Streaming [FR] : https://streamings-vf.net/ (scam)
 
@@ -1080,8 +1090,8 @@ v3.1.0.0 - 23/10/2020
 + ADDED IS Source : Speak
 + ADDED Settings : Scan down websites.
 - REMOVED Launcher : Scan down websites.
-- REMOVED Torrenting : https://extratorrent.ag/ (closed)
-- REMOVED Torrenting : https://horriblesubs.info/ (closed)
+- REMOVED Torrenting : https://extratorrent.ag/ (down)
+- REMOVED Torrenting : https://horriblesubs.info/ (down)
 
 v3.0.0.0 - 19/10/2020
 - IMPROVED Code.
@@ -1159,8 +1169,8 @@ v2.7.0.0 - 09/10/2020
 + UPDATED Portable Apps : Windows Repair AIO v4.9.5
 + UPDATED Portable Apps : Crystal Disk Info v8.8.9
 + UPDATED Portable Apps : Everything v1.4.1.992
-+ UPDATED Portable Apps : Glary Utilities Crack
-+ UPDATED Portable Apps : Windows and Office Cracks
++ UPDATED Portable Apps : Glary Utilities
++ UPDATED Portable Apps Windows and Office Cracks
 - REMOVED Launcher : Checking your internet connection . . . (Code still present in "Searching for a new update . . .")
 
 v2.6.0.0 - 18/09/2020
