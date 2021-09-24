@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 0. 2
-REM  Fileversion:  5. 9. 0. 2
+REM  Productversion:  5. 9. 0. 3
+REM  Fileversion:  5. 9. 0. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.9.0.2 - 22/09/2021
+set version=v5.9.0.3 - 24/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -82,7 +82,7 @@ echo [28C!cyan!{!red!+!cyan!}--------------------------------------------------
 for /f %%a in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%a"
 for %%a in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~a" del /f /q "%%~a"
 for %%a in ("!cd:~,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~a" 2>nul rd /s /q "%%~a"
-set "sp=[29C!yellow!{$} !grey!"
+set "sp=[28C!yellow!{$} !grey!"
 echo !grey!
 if defined ProgramFiles(x86) (set arch=64) else set arch=86
 set "IS_Dir=%~dp0Illegal Services\"
@@ -387,14 +387,14 @@ call :MSGBOX 1 !t! 69696 "Ms.CatFire"
 if "!x!"=="18" (
 if "!Language!"=="EN" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
+echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@0x00 - Added 4 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
 echo Style=69696
 echo Title="All other contributors:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 if "!Language!"=="FR" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
+echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise เ jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aid้ เ trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@0x00 - A ajout้ 4 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
 echo Style=69696
 echo Title="Toutes les autres personnes qui m'ont aid้"
 echo Response=MsgBox^(Msg,Style,Title^)
@@ -725,7 +725,7 @@ call :ROSE "Internet Protocol Television"
 
 :CLEARIPTV
 call :CLEAR 1 38
-set db=iptvcat.com/home_11 `pro.allkaicerteam.com/ www.iptvm3ulist.com/ip-tv-free/ www.iptvm3ufree.com/ iptvmate.net/m3u_iptv/ www.links-iptv.com/ iptvforpcwindows.com/ www.techtoreview.com/top-picks/m3u-playlist-url.html www.iptv4free.com/ m3u.pktelcos.com/ freem3uhd.blogspot.com/ dailym3uiptv.com/m3u-lists/ www.iptv1.org/ telechargeriptv.com/ www.5kplayer.com/video-music-player/free-iptv-playlist-m3u-links.htm github.com/monetareq/iptv1 github.com/cbn88/cbn88.github.io github.com/Free-IPTV/Countries github.com/coodertv/IPTVM3U8 github.com/Sumon2021/Sumon-IPTV github.com/mancinibig55/45125623 github.com/firojshahriyarmasud/IPTV github.com/duyminh215/iptv-list github.com/riqueenz/iptv github.com/iptv-org/iptv github.com/imDazui/Tvlist-awesome-m3u-m3u8 github.com/tvheadend/tvheadend github.com/Cigaras/IPTV.bundle github.com/lucifersun/China-Telecom-ShangHai-IPTV-list github.com/notanewbie/LegalStream github.com/Fleker/CumulusTV github.com/lylehust/Chinese-IPTV github.com/AlexanderSofronov/iptv.example github.com/chwlibre/iptv github.com/myIPTVChannels/lists github.com/free-greek-iptv/greek-iptv github.com/iptv-ch/iptv-ch.github.io github.com/iptv-restream/iptv-channels
+set db=iptvcat.com/home_11 `pro.allkaicerteam.com/ www.iptvm3ulist.com/ip-tv-free/ www.iptvm3ufree.com/ iptvmate.net/m3u_iptv/ www.links-iptv.com/ iptvforpcwindows.com/ www.techtoreview.com/top-picks/m3u-playlist-url.html www.iptv4free.com/ m3u.pktelcos.com/ freem3uhd.blogspot.com/ dailym3uiptv.com/m3u-list/ www.iptv1.org/ telechargeriptv.com/ www.5kplayer.com/video-music-player/free-iptv-playlist-m3u-links.htm github.com/monetareq/iptv1 github.com/cbn88/cbn88.github.io github.com/Free-IPTV/Countries github.com/coodertv/IPTVM3U8 github.com/Sumon2021/Sumon-IPTV github.com/mancinibig55/45125623 github.com/firojshahriyarmasud/IPTV github.com/duyminh215/iptv-list github.com/riqueenz/iptv github.com/iptv-org/iptv github.com/imDazui/Tvlist-awesome-m3u-m3u8 github.com/tvheadend/tvheadend github.com/Cigaras/IPTV.bundle github.com/lucifersun/China-Telecom-ShangHai-IPTV-list github.com/notanewbie/LegalStream github.com/Fleker/CumulusTV github.com/lylehust/Chinese-IPTV github.com/AlexanderSofronov/iptv.example github.com/chwlibre/iptv github.com/myIPTVChannels/lists github.com/free-greek-iptv/greek-iptv github.com/iptv-ch/iptv-ch.github.io github.com/iptv-restream/iptv-channels
 
 :CONTINUEIPTV
 call :SCALE 91 32
@@ -849,45 +849,44 @@ call :ROSE "Direct Download Link"
 for %%a in (EN FR) do if "!Language!"=="%%a" goto :DDL%%a
 
 :DDLEN
-call :SCALE 128 38
+call :SCALE 128 37
 title !title:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
-call :CLEAR 1 73
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ snahp.it/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1 72
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ www.kokodown.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.ws/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
-call :SCALE 128 38
+call :SCALE 128 37
 echo !cyan!
 echo [44Cอออออออออออออออออออออออออออออออออออออออ
 echo [43C// !red!Û!bgyellow!!black! DIRECT DOWNLOAD LINK (DDL) [EN] !red!Û!bgblack!!cyan! \\
 echo [6Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [6Cบ                                                                                                                  บ
-echo [6Cบ    !1!avxhm.is!cyan!                     ณ  !26!warezomen.com!cyan!         ณ   !51!themovieflix.co.in!cyan!              บ
-echo [6Cบ    !2!www.heroturko.net!cyan!            ณ  !27!www.scnsrc.me!cyan!         ณ   !52!hevcbay.com!cyan!                     บ
-echo [6Cบ    !3!rmz.cr!cyan!                       ณ  !28!win7dl.org!cyan!            ณ   !53!rarefilmm.com!cyan!                   บ
-echo [6Cบ    !4!softarchive.is!cyan!               ณ  !29!www.ddlvalley.me!cyan!      ณ   !54!1worldfree4u.trade!cyan!              บ
-echo [6Cบ    !5!www.downduck.com!cyan!             ณ  !30!downtr.cc!cyan!             ณ   !55!the-eye.eu!cyan!                      บ
-echo [6Cบ    !6!scnlog.me!cyan!                    ณ  !31!releasehive.co!cyan!        ณ   !56!jpddl.com !green!(animes)!cyan!              บ
-echo [6Cบ    !7!www.creaxy.com!cyan!               ณ  !32!www.kokodown.com!cyan!      ณ   !57!animeshare.cf !green!(animes)!cyan!          บ
-echo [6Cบ    !8!downturk.net!cyan!                 ณ  !33!rlstop.net!cyan!            ณ   !58!anidl.org !green!(animes)!cyan!              บ
-echo [6Cบ    !9!downarchive.org!cyan!              ณ  !34!uhdmv.org!cyan!             ณ   !59!hi10anime.com !green!(animes)!cyan!          บ
-echo [6Cบ   !10!0dayhome.net!cyan!                 ณ  !35!tfpdl.to!cyan!              ณ   !60!animekayo.com !green!(animes)!cyan!          บ
-echo [6Cบ   !11!scene-rls.net!cyan!                ณ  !36!softddl.org!cyan!           ณ   !61!animekaizoku.com !green!(animes)!cyan!       บ
-echo [6Cบ   !12!www.freshwap.us!cyan!              ณ  !37!2ddl.it!cyan!               ณ   !62!ssanime.ga !green!(animes)!cyan!             บ
-echo [6Cบ   !13!www.apps4all.com!cyan!             ณ  !38!katzddl.net!cyan!           ณ   !63!animetosho.org !green!(animes)!cyan!         บ
-echo [6Cบ   !14!dl4all.biz!cyan!                   ณ  !39!warezbb.net!cyan!           ณ   !64!cdromance.com !green!(roms)!cyan!            บ
-echo [6Cบ   !15!worldsrc.net!cyan!                 ณ  !40!www.300mbfilms.ws!cyan!     ณ   !65!www.romnation.net !green!(roms)!cyan!        บ
-echo [6Cบ   !16!movieparadise.org!cyan!            ณ  !41!snahp.it!cyan!              ณ   !66!vimm.net !green!(roms)!cyan!                 บ
-echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ  !42!downloadhub.wtf!cyan!       ณ   !67!nxmac.com !green!(MAC)!cyan!                 บ
-echo [6Cบ   !18!hdencode.org!cyan!                 ณ  !43!filmsofts.com!cyan!         ณ   !68!macdrop.net !green!(MAC)!cyan!               บ
-echo [6Cบ   !19!katzdownload.com!cyan!             ณ  !44!cgpersia.com!cyan!          ณ   !69!sheet-music.xyz !green!(audio)!cyan!         บ
-echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ  !45!rsload.net!cyan!            ณ   !70!audioz.download !green!(audio)!cyan!         บ
-echo [6Cบ   !21!oneddl.org!cyan!                   ณ  !46!megaddl.co!cyan!            ณ   !71!audiobookbay.nl !green!(audiobooks)!cyan!    บ
-echo [6Cบ   !22!apps-pack.com!cyan!                ณ  !47!heroturko2.net!cyan!        ณ   !72!www.gfxtra31.com !green!(GFX)!cyan!          บ
-echo [6Cบ   !23!www.rlslog.net!cyan!               ณ  !48!crazy4tv.com!cyan!          ณ   !73!gfx-hub.cc !green!(GFX)!cyan!                บ
-echo [6Cบ   !24!freshwap.cc!cyan!                  ณ  !49!x265.club!cyan!             ณ                                          บ
-echo [6Cบ   !25!dl4all.org!cyan!                   ณ  !50!themoviesflix.co.com!cyan!  ณ                                          บ
+echo [6Cบ    !1!avxhm.is!cyan!                     ณ   !25!dl4all.org!cyan!           ณ   !49!themoviesflix.co.com!cyan!            บ
+echo [6Cบ    !2!www.heroturko.net!cyan!            ณ   !26!warezomen.com!cyan!        ณ   !50!themovieflix.co.in!cyan!              บ
+echo [6Cบ    !3!rmz.cr!cyan!                       ณ   !27!www.scnsrc.me!cyan!        ณ   !51!hevcbay.com!cyan!                     บ
+echo [6Cบ    !4!softarchive.is!cyan!               ณ   !28!win7dl.org!cyan!           ณ   !52!rarefilmm.com!cyan!                   บ
+echo [6Cบ    !5!www.downduck.com!cyan!             ณ   !29!www.ddlvalley.me!cyan!     ณ   !53!1worldfree4u.trade!cyan!              บ
+echo [6Cบ    !6!scnlog.me!cyan!                    ณ   !30!downtr.cc!cyan!            ณ   !54!the-eye.eu!cyan!                      บ
+echo [6Cบ    !7!www.creaxy.com!cyan!               ณ   !31!releasehive.co!cyan!       ณ   !55!jpddl.com !green!(animes)!cyan!              บ
+echo [6Cบ    !8!downturk.net!cyan!                 ณ   !32!www.kokodown.com!cyan!     ณ   !56!animeshare.cf !green!(animes)!cyan!          บ
+echo [6Cบ    !9!downarchive.org!cyan!              ณ   !33!rlstop.net!cyan!           ณ   !57!anidl.org !green!(animes)!cyan!              บ
+echo [6Cบ   !10!0dayhome.net!cyan!                 ณ   !34!uhdmv.org!cyan!            ณ   !58!hi10anime.com !green!(animes)!cyan!          บ
+echo [6Cบ   !11!scene-rls.net!cyan!                ณ   !35!tfpdl.to!cyan!             ณ   !59!animekayo.com !green!(animes)!cyan!          บ
+echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!softddl.org!cyan!          ณ   !60!animekaizoku.com !green!(animes)!cyan!       บ
+echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!2ddl.it!cyan!              ณ   !61!ssanime.ga !green!(animes)!cyan!             บ
+echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!katzddl.net!cyan!          ณ   !62!animetosho.org !green!(animes)!cyan!         บ
+echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!warezbb.net!cyan!          ณ   !63!cdromance.com !green!(roms)!cyan!            บ
+echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!www.300mbfilms.ws!cyan!    ณ   !64!www.romnation.net !green!(roms)!cyan!        บ
+echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!downloadhub.wtf!cyan!      ณ   !65!vimm.net !green!(roms)!cyan!                 บ
+echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!filmsofts.com!cyan!        ณ   !66!nxmac.com !green!(MAC)!cyan!                 บ
+echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!cgpersia.com!cyan!         ณ   !67!macdrop.net !green!(MAC)!cyan!               บ
+echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!rsload.net!cyan!           ณ   !68!sheet-music.xyz !green!(audio)!cyan!         บ
+echo [6Cบ   !21!oneddl.org!cyan!                   ณ   !45!megaddl.co!cyan!           ณ   !69!audioz.download !green!(audio)!cyan!         บ
+echo [6Cบ   !22!apps-pack.com!cyan!                ณ   !46!heroturko2.net!cyan!       ณ   !70!audiobookbay.nl !green!(audiobooks)!cyan!    บ
+echo [6Cบ   !23!www.rlslog.net!cyan!               ณ   !47!crazy4tv.com!cyan!         ณ   !71!www.gfxtra31.com !green!(GFX)!cyan!          บ
+echo [6Cบ   !24!freshwap.cc!cyan!                  ณ   !48!x265.club!cyan!            ณ   !72!gfx-hub.cc !green!(GFX)!cyan!                บ
 echo [6Cบ                                                                                                                  บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -1205,7 +1204,7 @@ echo [8Cบ   !60!ettvproxies.com!cyan!            ณ   !65!torrentbay.to!cyan!   
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Applications Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !70!Jacket!cyan!                     ณ   !73!sonarr.tv!cyan!                ณ   !76!DuckieTV!cyan!                       บ
+echo [8Cบ   !70!Jackett!cyan!                    ณ   !73!sonarr.tv!cyan!                ณ   !76!DuckieTV!cyan!                       บ
 echo [8Cบ   !71!www.qbittorrent.org!cyan!        ณ   !74!radarr.video!cyan!             ณ   !77!couchpota.to!cyan!                   บ
 echo [8Cบ   !72!www.torrentrover.com!cyan!       ณ   !75!lidarr.audio!cyan!             ณ                                         บ
 echo [8Cบ                                                                                                                   บ
@@ -1704,16 +1703,16 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :USEFULWEBSITES
-call :SCALE 139 47
+call :SCALE 139 48
 title !title:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-call :CLEAR 1 60
-set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ freevpn.me/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.io/ combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist onehack.us/ www.torproject.org/
+call :CLEAR 1 62
+set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ freevpn.me/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.io/ combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.torproject.org/
 
 :CONTINUEUSEFULWEBSITES
-call :SCALE 139 47
+call :SCALE 139 48
 echo !cyan!
 echo [58Cอออออออออออออออออออออออ
 echo [57C// !red!Û!bgyellow!!black! USEFUL WEBSITES !red!Û!bgblack!!cyan! \\
@@ -1729,30 +1728,31 @@ echo [8Cบ    !6!urlscan.io!cyan!                  บ                            
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8CฬอออออþÛ!bgyellow!!red!Û Free VPNs and Proxys Û!bgblack!!cyan!ÛþอออออฮออออออออออþÛ!bgyellow!!red!Û Mails and SMS Û!bgblack!!cyan!ÛþอออออออออออฮออออออออþÛ!bgyellow!!red!Û Web Resolvers Û!bgblack!!cyan!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8Cบ   !17!protonvpn.com!cyan!               บ   !27!protonmail.com!cyan!                  บ    !35!webresolver.nl!cyan!            บ
-echo [8Cบ   !18!courvix.com!cyan!                 บ   !28!www.startmail.com!cyan!               บ    !36!www.vedbex.com!cyan!            บ
-echo [8Cบ   !19!www.freeopenvpn.org!cyan!         บ   !29!temp-mail.org!cyan!                   บ    !37!wannabe1337.xyz!cyan!           บ
-echo [8Cบ   !20!www.vpnbook.com!cyan!             บ   !30!dropmail.me!cyan!                     บ    !38!mostwantedhf.info!cyan!         บ
-echo [8Cบ   !21!freevpn.me!cyan!                  บ   !31!yopmail.com!cyan!                     บ    !39!shadowcrypt.net!cyan!           บ
-echo [8Cบ   !22!free-proxy-list.net!cyan!         บ   !32!generator.email!cyan!                 บ    !40!xresolver.com!cyan!             บ
-echo [8Cบ   !23!proxy-daily.com!cyan!             บ   !33!temp-sms.org!cyan!                    บ    !41!www.skypeipresolver.net!cyan!   บ
-echo [8Cบ   !24!smallseotools.com!cyan!           บ   !34!cyber-hub.pw!cyan!                    บ                                     บ
-echo [8Cบ   !25!cloudssh.net!cyan!                บ                                          บ                                     บ
-echo [8Cบ   !26!sshdropbear.net!cyan!             บ                                          บ                                     บ
+echo [8Cบ   !17!protonvpn.com!cyan!               บ   !28!protonmail.com!cyan!                  บ    !36!webresolver.nl!cyan!            บ
+echo [8Cบ   !18!www.urban-vpn.com!cyan!           บ   !29!www.startmail.com!cyan!               บ    !37!www.vedbex.com!cyan!            บ
+echo [8Cบ   !19!courvix.com!cyan!                 บ   !30!temp-mail.org!cyan!                   บ    !38!wannabe1337.xyz!cyan!           บ
+echo [8Cบ   !20!www.freeopenvpn.org!cyan!         บ   !31!dropmail.me!cyan!                     บ    !39!mostwantedhf.info!cyan!         บ
+echo [8Cบ   !21!www.vpnbook.com!cyan!             บ   !32!yopmail.com!cyan!                     บ    !40!shadowcrypt.net!cyan!           บ
+echo [8Cบ   !22!freevpn.me!cyan!                  บ   !33!generator.email!cyan!                 บ    !41!xresolver.com!cyan!             บ
+echo [8Cบ   !23!free-proxy-list.net!cyan!         บ   !34!temp-sms.org!cyan!                    บ    !42!www.skypeipresolver.net!cyan!   บ
+echo [8Cบ   !24!proxy-daily.com!cyan!             บ   !35!cyber-hub.pw!cyan!                    บ                                     บ
+echo [8Cบ   !25!smallseotools.com!cyan!           บ                                          บ                                     บ
+echo [8Cบ   !26!cloudssh.net!cyan!                บ                                          บ                                     บ
+echo [8Cบ   !27!sshdropbear.net!cyan!             บ                                          บ                                     บ
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8CฬอออออออþÛ!bgyellow!!red!Û Fake Generators Û!bgblack!!cyan!ÛþออออออออฮออออออออออออþÛ!bgyellow!!red!Û Warez News Û!bgblack!!cyan!ÛþออออออออออออฮอออออออþÛ!bgyellow!!red!Û File Searching Û!bgblack!!cyan!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
-echo [8Cบ   !42!fakepersongenerator.com!cyan!     บ   !46!torrentfreak.com!cyan!                บ    !49!www.aiosearch.com!cyan!         บ
-echo [8Cบ   !43!www.fakeimess.com!cyan!           บ   !47!nextwarez.com !green!(FR)!cyan!              บ    !50!www.filechef.com!cyan!          บ
-echo [8Cบ   !44!fakeproof.xenot.pro!cyan!         บ   !48!filepursuit.com!cyan!                 บ                                     บ
-echo [8Cบ   !45!www.vedbex.com!cyan!              บ                                          บ                                     บ
+echo [8Cบ   !43!fakepersongenerator.com!cyan!     บ   !47!torrentfreak.com!cyan!                บ    !50!www.aiosearch.com!cyan!         บ
+echo [8Cบ   !44!www.fakeimess.com!cyan!           บ   !48!nextwarez.com !green!(FR)!cyan!              บ    !51!www.filechef.com!cyan!          บ
+echo [8Cบ   !45!fakeproof.xenot.pro!cyan!         บ   !49!filepursuit.com!cyan!                 บ                                     บ
+echo [8Cบ   !46!www.vedbex.com!cyan!              บ                                          บ                                     บ
 echo [8Cบ                                                                                 บ                                     บ
 echo [8CฬอออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Combo Lists Û!bgblack!!cyan!ÛþอออออออออออออออออออออออออออออออออฮอออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออน
 echo [8Cบ                                                                                 บ                                     บ
-echo [8Cบ   !51!leak.sx!cyan!                     ณ   !55!combolist.top!cyan!                   บ   !59!onehack.us!cyan!                 บ
-echo [8Cบ   !52!combo-list.com!cyan!              ณ   !56!sinister.ly!cyan!                     บ   !60!www.torproject.org!cyan!         บ
-echo [8Cบ   !53!www.frecombo.com!cyan!            ณ   !57!mailaccess.top!cyan!                  บ                                     บ
-echo [8Cบ   !54!combolist.io!cyan!                ณ   !58!dailycombolist!cyan!                  บ                                     บ
+echo [8Cบ   !52!leak.sx!cyan!                     ณ   !56!combolist.top!cyan!                   บ   !60!SteamAchievementManager!cyan!    บ
+echo [8Cบ   !53!combo-list.com!cyan!              ณ   !57!sinister.ly!cyan!                     บ   !61!onehack.us!cyan!                 บ
+echo [8Cบ   !54!www.frecombo.com!cyan!            ณ   !58!mailaccess.top!cyan!                  บ   !62!www.torproject.org!cyan!         บ
+echo [8Cบ   !55!combolist.io!cyan!                ณ   !59!dailycombolist!cyan!                  บ                                     บ
 echo [8Cบ                                                                                 บ                                     บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออผ
 echo !grey!
@@ -2243,53 +2243,57 @@ call :ERRORMESSAGE
 goto :CONTINUEDOXING
 
 :PORTABLEAPPS
-call :SCALE 138 43
+call :SCALE 138 47
 title !title:`=Portable Apps!
 call :ROSE "Portable Apps"
 
 :CLEARPORTABLEAPPS
-call :CLEAR 1 53
-set db="Winaero Tweaker" "Ultimate Windows Tweaker" "TCP Optimizer" "DNS Jumper" Autoruns SpeedyFox "CCleaner + CCEnhancer" BleachBit Dism++ "Glary Utilities" "Revo Uninstaller" "Windows Repair AIO" "Windows Repair Toolbox" FixWin "Patch My PC" "UCheck" "Windows Update MiniTool" "WSUS Offline Update" DriversCloud "Snappy Driver Installer" "Driver Store Explorer" "Device Cleanup Tool" "Display Driver Uninstaller" "Radeon Software Slimmer" NVSlimmer "MSI Util v3" CPU-Z "OOSU10 (Win 10)" "Ashampoo AntiSpy (Win 10)" "DoNotSpy 10" "Windows Privacy Dashboard" "Windows 10 Privacy" "Windows Spy Blocker" "Destroy Windows 10 Spying" Blackbird "ADW Cleaner" "ZHP Cleaner" "Rogue Killer" "No Bot" "Kaspersky KVRT" "Kaspersky TDSSKiller" "Microsoft Safety Scanner" "Spybot - Search and Destroy" "Batch Antivirus" Everything "Process Hacker" CrystalDiskInfo "Defender Control" "Edge Blocker" "Mem Reduct" GiveMePower RegScanner ISLC
+call :CLEAR 1 56
+set db="Winaero Tweaker" "Ultimate Windows Tweaker" SophiApp "Sophia Script" "TCP Optimizer" "DNS Jumper" Autoruns SpeedyFox "CCleaner + CCEnhancer" BleachBit Dism++ "Glary Utilities" "Revo Uninstaller" "Windows Repair AIO" "Windows Repair Toolbox" FixWin "Patch My PC" "UCheck" "Windows Update MiniTool" "WSUS Offline Update" DriversCloud "Snappy Driver Installer" "Driver Store Explorer" "Device Cleanup Tool" "Display Driver Uninstaller" "Radeon Software Slimmer" NVSlimmer NVCleanstall "MSI Util v3" CPU-Z "OOSU10 (Win 10)" "Ashampoo AntiSpy (Win 10)" "DoNotSpy 10" "Windows Privacy Dashboard" "Windows 10 Privacy" "Windows Spy Blocker" "Destroy Windows 10 Spying" Blackbird "ADW Cleaner" "ZHP Cleaner" "Rogue Killer" "No Bot" "Kaspersky KVRT" "Kaspersky TDSSKiller" "Microsoft Safety Scanner" "Spybot - Search and Destroy" "Batch Antivirus" Everything "Process Hacker" CrystalDiskInfo "Defender Control" "Edge Blocker" "Mem Reduct" GiveMePower RegScanner ISLC
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEPORTABLEAPPS
-call :SCALE 138 43
+call :SCALE 138 47
 echo !cyan!
 echo [59Cอออออออออออออออออออออ
 echo [58C// !red!Û!bgyellow!!black! PORTABLE APPS !red!Û!bgblack!!cyan! \\
 echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออออ//อออออออออออออออออออออ\\อออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬออออออออออออþÛ!bgyellow!!red!Û Tweakers Û!bgblack!!cyan!ÛþออออออออออออหออออออออออออþÛ!bgyellow!!red!Û Cleaners Û!bgblack!!cyan!ÛþอออออออออออออหอออออออþÛ!bgyellow!!red!Û Windows Repairs Û!bgblack!!cyan!Ûþอออออออน
 echo [8Cบ                                        บ                                         บ                                     บ
-echo [8Cบ    !1!Winaero Tweaker!cyan!               บ    !7!CCleaner + CCEnhancer!cyan!          บ   !12!Windows Repair AIO!cyan!         บ
-echo [8Cบ    !2!Ultimate Windows Tweaker!cyan!      บ    !8!BleachBit!cyan!                      บ   !13!Windows Repair Toolbox!cyan!     บ
-echo [8Cบ    !3!TCP Optimizer!cyan!                 บ    !9!Dism++!cyan!                         บ   !14!FixWin!cyan!                     บ
-echo [8Cบ    !4!DNS Jumper!cyan!                    บ   !10!Glary Utilities!cyan!                บ                                     บ
-echo [8Cบ    !5!Autoruns!cyan!                      บ   !11!Revo Uninstaller!cyan!               บ                                     บ
-echo [8Cบ    !6!SpeedyFox!cyan!                     บ                                         บ                                     บ
+echo [8Cบ    !1!Winaero Tweaker!cyan!               บ    !9!CCleaner + CCEnhancer!cyan!          บ   !14!Windows Repair AIO!cyan!         บ
+echo [8Cบ    !2!Ultimate Windows Tweaker!cyan!      บ   !10!BleachBit!cyan!                      บ   !15!Windows Repair Toolbox!cyan!     บ
+echo [8Cบ    !3!SophiApp!cyan!                      บ   !11!Dism++!cyan!                         บ   !16!FixWin!cyan!                     บ
+echo [8Cบ    !4!Sophia Script!cyan!                 บ   !12!Glary Utilities!cyan!                บ                                     บ
+echo [8Cบ    !5!TCP Optimizer!cyan!                 บ   !13!Revo Uninstaller!cyan!               บ                                     บ
+echo [8Cบ    !6!DNS Jumper!cyan!                    บ                                         บ                                     บ
+echo [8Cบ    !7!SpeedyFox!cyan!                     บ                                         บ                                     บ
+echo [8Cบ    !8!Autoruns!cyan!                      บ                                         บ                                     บ
 echo [8Cบ                                        บ                                         บ                                     บ
 echo [8CฬอออออออþÛ!bgyellow!!red!Û Updaters + Drivers Û!bgblack!!cyan!ÛþอออออออฮอออออออออออออþÛ!bgyellow!!red!Û Drivers Û!bgblack!!cyan!ÛþอออออออออออออฮอออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออน
 echo [8Cบ                                        บ                                         บ                                     บ
-echo [8Cบ   !15!Patch My PC!cyan!                   บ   !21!Driver Store Explorer!cyan!          บ   !45!Everything!cyan!                 บ
-echo [8Cบ   !16!UCheck!cyan!                        บ   !22!Device Cleanup Tool!cyan!            บ   !46!Process Hacker!cyan!             บ
-echo [8Cบ   !17!Windows Update MiniTool!cyan!       บ   !23!Display Driver Uninstaller!cyan!     บ   !47!CrystalDiskInfo!cyan!            บ
-echo [8Cบ   !18!WSUS Offline Update!cyan!           บ   !24!Radeon Software Slimmer!cyan!        บ   !48!Defender Control!cyan!           บ
-echo [8Cบ   !19!DriversCloud!cyan!                  บ   !25!NVSlimmer!cyan!                      บ   !49!Edge Blocker!cyan!               บ
-echo [8Cบ   !20!Snappy Driver Installer!cyan!       บ   !26!MSI Util v3!cyan!                    บ   !50!Mem Reduct!cyan!                 บ
-echo [8Cบ                                        บ   !27!CPU-Z!cyan!                          บ   !51!GiveMePower!cyan!                บ
-echo [8Cบ                                        บ                                         บ   !52!RegScanner!cyan!                 บ
-echo [8CฬอออþÛ!bgyellow!!red!Û Windows Privacy/Telemetry Û!bgblack!!cyan!ÛþออออฮออออþÛ!bgyellow!!red!Û Anti Viruses and Malwares Û!bgblack!!cyan!Ûþออออน   !53!ISLC!cyan!                       บ
+echo [8Cบ   !17!Patch My PC!cyan!                   บ   !23!Driver Store Explorer!cyan!          บ   !48!Everything!cyan!                 บ
+echo [8Cบ   !18!UCheck!cyan!                        บ   !24!Device Cleanup Tool!cyan!            บ   !49!Process Hacker!cyan!             บ
+echo [8Cบ   !19!Windows Update MiniTool!cyan!       บ   !25!Display Driver Uninstaller!cyan!     บ   !50!CrystalDiskInfo!cyan!            บ
+echo [8Cบ   !20!WSUS Offline Update!cyan!           บ   !26!Radeon Software Slimmer!cyan!        บ   !51!Defender Control!cyan!           บ
+echo [8Cบ   !21!DriversCloud!cyan!                  บ   !27!NVSlimmer!cyan!                      บ   !52!Edge Blocker!cyan!               บ
+echo [8Cบ   !22!Snappy Driver Installer!cyan!       บ   !28!NVCleanstall!cyan!                   บ   !53!Mem Reduct!cyan!                 บ
+echo [8Cบ                                        บ   !29!MSI Util v3!cyan!                    บ   !54!GiveMePower!cyan!                บ
+echo [8Cบ                                        บ   !30!CPU-Z!cyan!                          บ   !55!RegScanner!cyan!                 บ
+echo [8Cบ                                        บ                                         บ   !56!ISLC!cyan!                       บ
+echo [8CฬอออþÛ!bgyellow!!red!Û Windows Privacy/Telemetry Û!bgblack!!cyan!ÛþออออฮออออþÛ!bgyellow!!red!Û Anti Viruses and Malwares Û!bgblack!!cyan!Ûþออออน                                     บ
 echo [8Cบ                                        บ                                         บ                                     บ
-echo [8Cบ   !28!OOSU10 (Win 10)!cyan!               บ   !36!ADW Cleaner!cyan!                    บ                                     บ
-echo [8Cบ   !29!Ashampoo AntiSpy (Win 10)!cyan!     บ   !37!ZHP Cleaner!cyan!                    บ                                     บ
-echo [8Cบ   !30!DoNotSpy 10!cyan!                   บ   !38!Rogue Killer!cyan!                   บ                                     บ
-echo [8Cบ   !31!Windows Privacy Dashboard!cyan!     บ   !39!No Bot!cyan!                         บ                                     บ
-echo [8Cบ   !32!Windows 10 Privacy!cyan!            บ   !40!Kaspersky KVRT!cyan!                 บ                                     บ
-echo [8Cบ   !33!Windows Spy Blocker!cyan!           บ   !41!Kaspersky TDSSKiller!cyan!           บ                                     บ
-echo [8Cบ   !34!Destroy Windows 10 Spying!cyan!     บ   !42!Microsoft Safety Scanner!cyan!       บ                                     บ
-echo [8Cบ   !35!Blackbird!cyan!                     บ   !43!Spybot - Search and Destroy!cyan!    บ                                     บ
-echo [8Cบ                                        บ   !44!Batch Antivirus!cyan!                บ                                     บ
+echo [8Cบ   !31!OOSU10 (Win 10)!cyan!               บ   !39!ADW Cleaner!cyan!                    บ                                     บ
+echo [8Cบ   !32!Ashampoo AntiSpy (Win 10)!cyan!     บ   !40!ZHP Cleaner!cyan!                    บ                                     บ
+echo [8Cบ   !33!DoNotSpy 10!cyan!                   บ   !41!Rogue Killer!cyan!                   บ                                     บ
+echo [8Cบ   !34!Windows Privacy Dashboard!cyan!     บ   !42!No Bot!cyan!                         บ                                     บ
+echo [8Cบ   !35!Windows 10 Privacy!cyan!            บ   !43!Kaspersky KVRT!cyan!                 บ                                     บ
+echo [8Cบ   !36!Windows Spy Blocker!cyan!           บ   !44!Kaspersky TDSSKiller!cyan!           บ                                     บ
+echo [8Cบ   !37!Destroy Windows 10 Spying!cyan!     บ   !45!Microsoft Safety Scanner!cyan!       บ                                     บ
+echo [8Cบ   !38!Blackbird!cyan!                     บ   !46!Spybot - Search and Destroy!cyan!    บ                                     บ
+echo [8Cบ                                        บ   !47!Batch Antivirus!cyan!                บ                                     บ
+echo [8Cบ                                        บ                                         บ                                     บ
 echo [8Cฬออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออน
-echo [8Cบ                                             !yellow!54!cyan!  ^>  !white!Windows and Office Cracks!cyan!                                           บ
+echo [8Cบ                                             !yellow!57!cyan!  ^>  !white!Windows and Office Cracks!cyan!                                           บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -2298,7 +2302,7 @@ call :DRAW_CENTER "!t1! "!yellow!OPEN!grey!" / "!yellow!BACK!grey!" !t2! !yellow
 echo:
 call :PROMPT
 for /l %%a in (!c1!,1,!c2!) do if "!x!"=="%%a" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUEPORTABLEAPPS)
-if "!x!"=="54" goto :WINDOWSANDOFFICE
+if "!x!"=="57" goto :WINDOWSANDOFFICE
 call :WEBSITECHECK && goto :CONTINUEPORTABLEAPPS
 call :CHOOSE open && (call :OPEN_FOLDER Portable_Apps & goto :CONTINUEPORTABLEAPPS)
 call :CHOOSE back && goto :MAINMENU
@@ -2316,99 +2320,113 @@ for %%a in (6.3 6.2) do if "!windowsversion!"=="%%a" call :CURL "Portable_Apps\U
 for %%a in (6.1 6.0) do if "!windowsversion!"=="%%a" call :CURL "Portable_Apps\Ultimate Windows Tweaker.zip" "https://www.thewindowsclub.com/downloads/UWT.zip"
 if not "!windowsversion:~,2!"=="10" if not "!windowsversion:~,1!"=="6" call :MSGBOX 2 "Your Windows version is not supported." "Found more informations at: https://www.thewindowsclub.com/ultimate-windows-tweaker-4-windows-10" 69648 "Illegal Services Checker"
 )
-if "!3!"=="!yellow!3 !checked!" call :CURL "Portable_Apps\TCPOptimizer.exe" "https://www.speedguide.net/files/TCPOptimizer.exe"
-if "!4!"=="!yellow!4 !checked!" call :CURL "Portable_Apps\DnsJumper.7z" "`git_raw_downloads`/DnsJumper.7z"
-if "!5!"=="!yellow!5 !checked!" call :CURL "Portable_Apps\Autoruns.zip" "https://download.sysinternals.com/files/Autoruns.zip"
-if "!6!"=="!yellow!6 !checked!" call :CURL "Portable_Apps\Speedyfox.zip" "https://crystalidea.com/downloads/speedyfox.zip"
-if "!7!"=="!yellow!7 !checked!" (
+if "!3!"=="!yellow!3 !checked!" call :CURL "Portable_Apps\SophiApp.zip" "https://github.com/Sophia-Community/SophiApp/releases/latest/download/SophiApp.zip"
+if "!4!"=="!yellow!4 !checked!" (
+call :CURL "Portable_Apps\Sophia.Script.LTSC.v5.2.14.zip" "https://github.com/farag2/Sophia-Script-for-Windows/releases/download/5.12.3/Sophia.Script.LTSC.v5.2.14.zip"
+call :CURL "Portable_Apps\Sophia.Script.v5.12.3.PowerShell.7.zip" "https://github.com/farag2/Sophia-Script-for-Windows/releases/download/5.12.3/Sophia.Script.v5.12.3.PowerShell.7.zip"
+call :CURL "Portable_Apps\Sophia.Script.v5.12.3.zip" "https://github.com/farag2/Sophia-Script-for-Windows/releases/download/5.12.3/Sophia.Script.v5.12.3.zip"
+call :CURL "Portable_Apps\Sophia.Script.Windows.11.v6.0.4.zip" "https://github.com/farag2/Sophia-Script-for-Windows/releases/download/5.12.3/Sophia.Script.Windows.11.v6.0.4.zip"
+call :CURL "Portable_Apps\Sophia.Script.Wrapper.v2.4.zip" "https://github.com/farag2/Sophia-Script-for-Windows/releases/download/5.12.3/Sophia.Script.Wrapper.v2.4.zip"
+)
+if "!5!"=="!yellow!5 !checked!" call :CURL "Portable_Apps\TCPOptimizer.exe" "https://www.speedguide.net/files/TCPOptimizer.exe"
+if "!6!"=="!yellow!6 !checked!" call :CURL "Portable_Apps\DnsJumper.7z" "`git_raw_downloads`/DnsJumper.7z"
+if "!7!"=="!yellow!7 !checked!" call :CURL "Portable_Apps\Speedyfox.zip" "https://crystalidea.com/downloads/speedyfox.zip"
+if "!8!"=="!yellow!8 !checked!" call :CURL "Portable_Apps\Autoruns.zip" "https://download.sysinternals.com/files/Autoruns.zip"
+if "!9!"=="!yellow!9 !checked!" (
 call :CURL "Portable_Apps\CCleaner.zip" "https://download.ccleaner.com/portable/ccsetup585.zip"
 call :CURL "Portable_Apps\CCEnhancer Multilingual.zip" "https://singularlabs.com/download/10320/"
 )
-if "!8!"=="!yellow!8 !checked!" call :CURL "Portable_Apps\BleachBit.zip" "https://download.bleachbit.org/BleachBit-4.2.0-portable.zip"
-if "!9!"=="!yellow!9 !checked!" call :CURL "Portable_Apps\Dism++.zip" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.1/Dism++10.1.1002.1.zip"
-if "!10!"=="!yellow!10 !checked!" (
-if "!Language!"=="EN" set t=Do you want to
-if "!Language!"=="FR" set t=Voulez vous
-call :MSGBOXLEVEL 1 "!t! crack Glary Utilities ?" 69668 "Illegal Services Checker"
-if "!el!"=="6" start http://www.solidfiles.com/v/kXqVAMLvWaLLL
-if "!el!"=="7" call :CURL "Portable_Apps\GlaryUtilities.exe" "https://download.glarysoft.com/guportable.exe"
+if "!10!"=="!yellow!10 !checked!" call :CURL "Portable_Apps\BleachBit.zip" "https://download.bleachbit.org/BleachBit-4.2.0-portable.zip"
+if "!11!"=="!yellow!11 !checked!" call :CURL "Portable_Apps\Dism++.zip" "https://github.com/Chuyu-Team/Dism-Multi-language/releases/download/v10.1.1002.1/Dism++10.1.1002.1.zip"
+if "!12!"=="!yellow!12 !checked!" (
+if "!Language!"=="EN" set t="Do you want to crack Glary Utilities ?"
+if "!Language!"=="FR" set t="Voulez vous crack Glary Utilities ?"
+call :MSGBOXLEVEL 1 !t! 69668 "Illegal Services Checker"
+if "!el!"=="6" (
+<nul set /p="3788-6167-9582-6222-6668" | clip
+if "!Language!"=="EN" set t="License key copied to your Windows clipboard." "Paste and register it in Glary Utilities with the username of your choice." "License key: 3788-6167-9582-6222-6668"
+if "!Language!"=="FR" set t="Cl de license copis dans votre presse-papiers Windows." "Collez et enregistrez-la dans Glary Utilities avec le nom d'utilisateur de votre choix." "Cl de license: 3788-6167-9582-6222-6668"
+call :MSGBOX 3 !t! 69696 "Illegal Services Checker"
 )
-if "!11!"=="!yellow!11 !checked!" call :CURL "Portable_Apps\RevoUninstaller.zip" "https://www.revouninstaller.com/download-free-portable.php"
-if "!12!"=="!yellow!12 !checked!" call :CURL "Portable_Apps\Tweaking.com - Windows Repair.7z" "`git_raw_downloads`/Tweaking.com_-_Windows_Repair.7z"
-if "!13!"=="!yellow!13 !checked!" call :CURL "Portable_Apps\Windows Repair Toolbox.zip" "https://windows-repair-toolbox.com/files/Windows_Repair_Toolbox.zip"
-if "!14!"=="!yellow!14 !checked!" (
+call :CURL "Portable_Apps\GlaryUtilities.exe" "https://download.glarysoft.com/guportable.exe"
+)
+if "!13!"=="!yellow!13 !checked!" call :CURL "Portable_Apps\RevoUninstaller.zip" "https://www.revouninstaller.com/download-free-portable.php"
+if "!14!"=="!yellow!14 !checked!" call :CURL "Portable_Apps\Tweaking.com - Windows Repair.7z" "`git_raw_downloads`/Tweaking.com_-_Windows_Repair.7z"
+if "!15!"=="!yellow!15 !checked!" call :CURL "Portable_Apps\Windows Repair Toolbox.zip" "https://windows-repair-toolbox.com/files/Windows_Repair_Toolbox.zip"
+if "!16!"=="!yellow!16 !checked!" (
 if "!windowsversion!"=="10.0" call :CURL "Portable_Apps\FixWin10.zip" "https://www.thewindowsclub.com/downloads/FixWin10.zip"
 for %%a in (6.3 6.2) do if "!windowsversion!"=="%%a" call :CURL "Portable_Apps\fixwin2.zip" "https://www.thewindowsclub.com/downloads/fixwin2.zip"
 for %%a in (6.1 6.0) do if "!windowsversion!"=="%%a" call :CURL "Portable_Apps\FixWin.zip" "https://www.thewindowsclub.com/downloads/FixWin.zip"
 if not "!windowsversion:~,2!"=="10" if not "!windowsversion:~,1!"=="6" call :MSGBOX 2 "Your Windows version is not supported." "Found more informations at: https://www.thewindowsclub.com/fixwin-for-windows-10" 69648 "Illegal Services Checker"
 )
-if "!15!"=="!yellow!15 !checked!" call :CURL "Portable_Apps\PatchMyPC\PatchMyPC.exe" "https://patchmypc.com/freeupdater/PatchMyPC.exe"
-if "!16!"=="!yellow!16 !checked!" (
+if "!17!"=="!yellow!17 !checked!" call :CURL "Portable_Apps\PatchMyPC\PatchMyPC.exe" "https://patchmypc.com/freeupdater/PatchMyPC.exe"
+if "!18!"=="!yellow!18 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\UCheck_portable64.exe" "https://download.adlice.com/api/?action=download&app=ucheck&type=x64"
 if "!arch!"=="86" call :CURL "Portable_Apps\UCheck_portable32.exe" "https://download.adlice.com/api/?action=download&app=ucheck&type=x86"
 )
-if "!17!"=="!yellow!17 !checked!" call :CURL "Portable_Apps\Windows Update MiniTool\wumt_x64.exe" "`git_raw_downloads`/Windows_Update_MiniTool.7z"
-if "!18!"=="!yellow!18 !checked!" call :CURL "Portable_Apps\WSUS Offline Update.zip" "https://download.wsusoffline.net/wsusoffline120.zip"
-if "!19!"=="!yellow!19 !checked!" (
+if "!19!"=="!yellow!19 !checked!" call :CURL "Portable_Apps\Windows_Update_MiniTool.7z" "`git_raw_downloads`/Windows_Update_MiniTool.7z"
+if "!20!"=="!yellow!20 !checked!" call :CURL "Portable_Apps\WSUS Offline Update.zip" "https://download.wsusoffline.net/wsusoffline120.zip"
+if "!21!"=="!yellow!21 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\DriversCloud.zip" "https://www.driverscloud.com/plugins/DriversCloudx64_11_0_2_0.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\DriversCloud.zip" "https://www.driverscloud.com/plugins/DriversCloud_11_0_2_0.zip"
 )
-if "!20!"=="!yellow!20 !checked!" call :CURL "Portable_Apps\Snappy Driver Installer.zip" "https://sdi-tool.org/releases/SDI_R2102.zip"
-if "!21!"=="!yellow!21 !checked!" call :CURL "Portable_Apps\Driver Store Explorer.zip" "https://github.com/lostindark/DriverStoreExplorer/releases/download/v0.11.72/DriverStoreExplorer.v0.11.72.zip"
-if "!22!"=="!yellow!22 !checked!" call :CURL "Portable_Apps\DeviceCleanup.zip" "https://www.uwe-sieber.de/files/DeviceCleanup.zip"
-if "!23!"=="!yellow!23 !checked!" call :CURL "Portable_Apps\DDU.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/ddu/%%%%5BGuru3D.com%%%%5D-DDU.zip"
-if "!24!"=="!yellow!24 !checked!" (
+if "!22!"=="!yellow!22 !checked!" call :CURL "Portable_Apps\Snappy Driver Installer.zip" "https://sdi-tool.org/releases/SDI_R2102.zip"
+if "!23!"=="!yellow!23 !checked!" call :CURL "Portable_Apps\Driver Store Explorer.zip" "https://github.com/lostindark/DriverStoreExplorer/releases/download/v0.11.72/DriverStoreExplorer.v0.11.72.zip"
+if "!24!"=="!yellow!24 !checked!" call :CURL "Portable_Apps\DeviceCleanup.zip" "https://www.uwe-sieber.de/files/DeviceCleanup.zip"
+if "!25!"=="!yellow!25 !checked!" call :CURL "Portable_Apps\DDU.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/ddu/%%%%5BGuru3D.com%%%%5D-DDU.zip"
+if "!26!"=="!yellow!26 !checked!" (
 call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_net48.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.2.0/RadeonSoftwareSlimmer_1.2.0_net48.zip"
 call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_net50.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.2.0/RadeonSoftwareSlimmer_1.2.0_net50.zip"
 call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_netcoreapp31.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.2.0/RadeonSoftwareSlimmer_1.2.0_netcoreapp31.zip"
 )
-if "!25!"=="!yellow!25 !checked!" call :CURL "Portable_Apps\NVSlimmer.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/nvslimmer/%%%%5BGuru3D.com%%%%5D-NVSlimmer.zip"
-if "!26!"=="!yellow!26 !checked!" call :CURL "Portable_Apps\MSI_util_v3.exe" "`git_raw_downloads`/MSI_util_v3.exe"
-if "!27!"=="!yellow!27 !checked!" call :CURL "Portable_Apps\CPU-Z.zip" "https://download.cpuid.com/cpu-z/cpu-z_1.97-en.zip"
-if "!28!"=="!yellow!28 !checked!" call :CURL "Portable_Apps\OOSU10\OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
-if "!29!"=="!yellow!29 !checked!" call :CURL "Portable_Apps\Ashampoo_AntiSpy\Ashampoo_AntiSpy.exe" "https://cdn1.ashampoo.net/public/ashf/1004/Ashampoo_AntiSpy.exe"
-if "!30!"=="!yellow!30 !checked!" call :CURL "Portable_Apps\DoNotSpy10.7z" "`git_raw_downloads`/DoNotSpy10.7z"
-if "!31!"=="!yellow!31 !checked!" call :CURL "Portable_Apps\Windows Privacy Dashboard.zip" "https://wpd.app/get/latest.zip"
-if "!32!"=="!yellow!32 !checked!" call :CURL "Portable_Apps\W10Privacy.zip" "https://www.w10privacy.de/app/download/12302828636/W10Privacy.zip"
-if "!33!"=="!yellow!33 !checked!" call :CURL "Portable_Apps\WindowsSpyBlocker\WindowsSpyBlocker.exe" "https://github.com/crazy-max/WindowsSpyBlocker/releases/latest/download/WindowsSpyBlocker.exe"
-if "!34!"=="!yellow!34 !checked!" (
+if "!27!"=="!yellow!27 !checked!" call :CURL "Portable_Apps\NVSlimmer.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/nvslimmer/%%%%5BGuru3D.com%%%%5D-NVSlimmer.zip"
+if "!28!"=="!yellow!28 !checked!" call :CURL "Portable_Apps\NVCleanstall_1.10.0.exe" "https://www.techspot.com/downloads/downloadnow/7246/?evp=99dc9f075f5dc723cda250985ad614d8&file=9654"
+if "!29!"=="!yellow!29 !checked!" call :CURL "Portable_Apps\MSI_util_v3.exe" "`git_raw_downloads`/MSI_util_v3.exe"
+if "!30!"=="!yellow!30 !checked!" call :CURL "Portable_Apps\CPU-Z.zip" "https://download.cpuid.com/cpu-z/cpu-z_1.97-en.zip"
+if "!31!"=="!yellow!31 !checked!" call :CURL "Portable_Apps\OOSU10\OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
+if "!32!"=="!yellow!32 !checked!" call :CURL "Portable_Apps\Ashampoo_AntiSpy\Ashampoo_AntiSpy.exe" "https://cdn1.ashampoo.net/public/ashf/1004/Ashampoo_AntiSpy.exe"
+if "!33!"=="!yellow!33 !checked!" call :CURL "Portable_Apps\DoNotSpy10.7z" "`git_raw_downloads`/DoNotSpy10.7z"
+if "!34!"=="!yellow!34 !checked!" call :CURL "Portable_Apps\Windows Privacy Dashboard.zip" "https://wpd.app/get/latest.zip"
+if "!38!"=="!yellow!35 !checked!" call :CURL "Portable_Apps\W10Privacy.zip" "https://www.w10privacy.de/app/download/12302828636/W10Privacy.zip"
+if "!36!"=="!yellow!36 !checked!" call :CURL "Portable_Apps\WindowsSpyBlocker\WindowsSpyBlocker.exe" "https://github.com/crazy-max/WindowsSpyBlocker/releases/latest/download/WindowsSpyBlocker.exe"
+if "!37!"=="!yellow!37 !checked!" (
 call :CURL "Portable_Apps\Destroy Windows 10 Spying.zip" "https://github.com/Wohlstand/Destroy-Windows-10-Spying/releases/download/2.2.2.2.27/DWS-build-Win7881-2.2.2.2.27.zip"
 call :CURL "Portable_Apps\Destroy Windows 10 Spying RE.zip" "https://github.com/Wohlstand/Destroy-Windows-10-Spying/releases/download/RE-1.0.2.0.23.1/DWS-RE-1.0.2.0.23.zip"
 )
-if "!35!"=="!yellow!35 !checked!" (
+if "!38!"=="!yellow!38 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\Blackbird.zip" "https://getblackbird.net/download/Blackbird_v1.0.80.2_x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\Blackbird.zip" "https://getblackbird.net/download/Blackbird_v1.0.80.2_x32.zip"
 )
-if "!36!"=="!yellow!36 !checked!" call :CURL "Portable_Apps\AdwCleaner\AdwCleaner.exe" "https://download.toolslib.net/download/direct/1/latest"
-if "!37!"=="!yellow!37 !checked!" call :CURL "Portable_Apps\ZHPCleaner\ZHPCleaner.exe" "https://nicolascoolman.eu/download/telechargez-zhpcleaner-gratuit/?wpdmdl=23616"
-if "!38!"=="!yellow!38 !checked!" (
+if "!39!"=="!yellow!39 !checked!" call :CURL "Portable_Apps\AdwCleaner\AdwCleaner.exe" "https://download.toolslib.net/download/direct/1/latest"
+if "!40!"=="!yellow!40 !checked!" call :CURL "Portable_Apps\ZHPCleaner\ZHPCleaner.exe" "https://nicolascoolman.eu/download/telechargez-zhpcleaner-gratuit/?wpdmdl=23616"
+if "!41!"=="!yellow!41 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\RogueKiller\RogueKiller_portable64.exe" "https://download.adlice.com/api/?action=download&app=roguekiller&type=x64"
 if "!arch!"=="86" call :CURL "Portable_Apps\RogueKiller\RogueKiller_portable86.exe" "https://download.adlice.com/api/?action=download&app=roguekiller&type=x86"
 )
-if "!39!"=="!yellow!39 !checked!" call :CURL "Portable_Apps\NoBot\NoBot.exe" "https://nobotsecurity.com/Software/NoBot.exe"
-if "!40!"=="!yellow!40 !checked!" call :CURL "Portable_Apps\KVRT.exe" "https://devbuilds.s.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe"
-if "!41!"=="!yellow!41 !checked!" call :CURL "Portable_Apps\tdsskiller.exe" "https://media.kaspersky.com/utilities/VirusUtilities/EN/tdsskiller.exe"
-if "!42!"=="!yellow!42 !checked!" (
+if "!42!"=="!yellow!42 !checked!" call :CURL "Portable_Apps\NoBot\NoBot.exe" "https://nobotsecurity.com/Software/NoBot.exe"
+if "!43!"=="!yellow!43 !checked!" call :CURL "Portable_Apps\KVRT.exe" "https://devbuilds.s.kaspersky-labs.com/devbuilds/KVRT/latest/full/KVRT.exe"
+if "!44!"=="!yellow!44 !checked!" call :CURL "Portable_Apps\tdsskiller.exe" "https://media.kaspersky.com/utilities/VirusUtilities/EN/tdsskiller.exe"
+if "!45!"=="!yellow!45 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\MSERT.exe" "https://go.microsoft.com/fwlink/?LinkId=212732"
 if "!arch!"=="86" call :CURL "Portable_Apps\MSERT.exe" "https://go.microsoft.com/fwlink/?LinkId=212733"
 )
-if "!43!"=="!yellow!43 !checked!" call :CURL "Portable_Apps\SpybotPortable_2.7.64-2020-02.paf.exe" "https://download3.portableapps.com/portableapps/SpybotPortable/SpybotPortable_2.8.68.paf.exe"
-if "!44!"=="!yellow!44 !checked!" call :CURL "Portable_Apps\Batch Antivirus.zip" "https://github.com/anic17/Batch-Antivirus/archive/master.zip"
-if "!45!"=="!yellow!45 !checked!" (
+if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\SpybotPortable_2.7.64-2020-02.paf.exe" "https://download3.portableapps.com/portableapps/SpybotPortable/SpybotPortable_2.8.68.paf.exe"
+if "!47!"=="!yellow!47 !checked!" call :CURL "Portable_Apps\Batch Antivirus.zip" "https://github.com/anic17/Batch-Antivirus/archive/master.zip"
+if "!48!"=="!yellow!48 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!46!"=="!yellow!46 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/w5s14xlhhnl9yfqn/artifacts/processhacker-3.0.4365-bin.zip"
-if "!47!"=="!yellow!47 !checked!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
-if "!48!"=="!yellow!48 !checked!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
-if "!49!"=="!yellow!49 !checked!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
-if "!50!"=="!yellow!50 !checked!" call :CURL "Portable_Apps\memreduct-3.3.5-bin.zip" "https://github.com/henrypp/memreduct/releases/download/v.3.3.5/memreduct-3.3.5-bin.zip"
-if "!51!"=="!yellow!51 !checked!" call :CURL "Portable_Apps\GiveMePower v2.1.0.0.exe" "https://www.wagnardsoft.com/DDU/download/GiveMePower%%%%20v2.1.0.0.exe"
-if "!52!"=="!yellow!52 !checked!" (
+if "!49!"=="!yellow!49 !checked!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/w5s14xlhhnl9yfqn/artifacts/processhacker-3.0.4365-bin.zip"
+if "!50!"=="!yellow!50 !checked!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
+if "!51!"=="!yellow!51 !checked!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
+if "!52!"=="!yellow!52 !checked!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
+if "!53!"=="!yellow!53 !checked!" call :CURL "Portable_Apps\memreduct-3.3.5-bin.zip" "https://github.com/henrypp/memreduct/releases/download/v.3.3.5/memreduct-3.3.5-bin.zip"
+if "!54!"=="!yellow!54 !checked!" call :CURL "Portable_Apps\GiveMePower v2.1.0.0.exe" "https://www.wagnardsoft.com/DDU/download/GiveMePower%%%%20v2.1.0.0.exe"
+if "!55!"=="!yellow!55 !checked!" (
 if "!arch!"=="64" call :CURL "Portable_Apps\regscanner-x64.zip" "https://www.nirsoft.net/utils/regscanner-x64.zip"
 if "!arch!"=="86" call :CURL "Portable_Apps\regscanner.zip" "https://www.nirsoft.net/utils/regscanner.zip"
 )
-if "!53!"=="!yellow!53 !checked!" call :CURL "Portable_Apps\ISLC v1.0.2.5.exe" "https://www.wagnardsoft.com/ISLC/ISLC%%%%20v1.0.2.5.exe"
+if "!56!"=="!yellow!56 !checked!" call :CURL "Portable_Apps\ISLC v1.0.2.5.exe" "https://www.wagnardsoft.com/ISLC/ISLC%%%%20v1.0.2.5.exe"
 set IS_Log=
 if exist "!TMPF!\IS_Log.txt" (
 echo !red!
@@ -2421,41 +2439,44 @@ if defined Start_Folder start /max explorer.exe "Portable_Apps"
 goto :CLEARPORTABLEAPPS
 
 :WINDOWSANDOFFICE
-call :SCALE 90 31
+call :SCALE 99 34
 title !title:`=Windows and Office Cracks!
 call :ROSE "Windows and Office Cracks"
 
 :CLEARWINDOWSANDOFFICE
-call :CLEAR 1 19
-set db=free.appnee.com/consoleact/ free.appnee.com/aact/ free.appnee.com/ra1n-act1vat0r/ free.appnee.com/re-loader-activator/ free.appnee.com/windows-loader/ free.appnee.com/hwid-gen/ free.appnee.com/w10-digital-license-c-sharp/ free.appnee.com/kmsauto-lite/ free.appnee.com/kmsauto-net/ free.appnee.com/kmsoffline/ free.appnee.com/kmsonline/ free.appnee.com/kmsauto-helper/ `www.solidfiles.com/v/QnQeqgqKa3jev `www.solidfiles.com/v/kXqVBML2mmBDA free.appnee.com/msact/ "Windows ISO Downloader" the-eye.eu/public/MSDN/Windows%%207/ tb.rg-adguard.net/public.php free.appnee.com/office-2013-2021-c2r-install/
+call :CLEAR 1 20
+set db=free.appnee.com/consoleact/ free.appnee.com/aact/ free.appnee.com/ra1n-act1vat0r/ free.appnee.com/re-loader-activator/ free.appnee.com/windows-loader/ free.appnee.com/hwid-gen/ free.appnee.com/w10-digital-license-c-sharp/ free.appnee.com/kmsauto-lite/ free.appnee.com/kmsauto-net/ free.appnee.com/kmsoffline/ free.appnee.com/kmsonline/ github.com/massgravel/Microsoft-Activation-Scripts free.appnee.com/kmsauto-helper/ `www.solidfiles.com/v/QnQeqgqKa3jev `www.solidfiles.com/v/kXqVBML2mmBDA free.appnee.com/msact/ "Windows ISO Downloader" the-eye.eu/public/MSDN/Windows%%207/ tb.rg-adguard.net/public.php free.appnee.com/office-2013-2021-c2r-install/
 
 :CONTINUEWINDOWSANDOFFICE
-call :SCALE 90 31
+call :SCALE 99 34
 echo !cyan!
-echo [30Cอออออออออออออออออออออออออออออออออ
-echo [29C// !red!Û!bgyellow!!black! WINDOWS AND OFFICE CRACKS !red!Û!bgblack!!cyan! \\
-echo [10Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
-echo [10CฬออออออออþÛ!bgyellow!!red!Û Activators Û!bgblack!!cyan!ÛþออออออออหออออออออออþÛ!bgyellow!!red!Û Tools Û!bgblack!!cyan!Ûþอออออออออออน
-echo [10Cบ                                  บ                                  บ
-echo [10Cบ     !1!ConsoleAct!cyan!             บ    !12!KMSAuto Helper!cyan!         บ
-echo [10Cบ     !2!AAct!cyan!                   บ    !13!KMSCleaner!cyan!             บ
-echo [10Cบ     !3!Ra1n Act1vat0r!cyan!         บ    !14!WAT Fix!cyan!                บ
-echo [10Cบ     !4!Re-Loader Activator!cyan!    บ    !15!MSAct!cyan!                  บ
-echo [10Cบ     !5!Windows Loader!cyan!         บ                                  บ
-echo [10Cบ     !6!HWID GEN MkVI!cyan!          บ                                  บ
-echo [10Cบ     !7!W10 Digital License!cyan!    บ                                  บ
-echo [10Cบ     !8!KMSAuto Lite!cyan!           บ                                  บ
-echo [10Cบ     !9!KMSAuto Net!cyan!            บ                                  บ
-echo [10Cบ    !10!KMSoffline!cyan!             บ                                  บ
-echo [10Cบ    !11!KMSonline!cyan!              บ                                  บ
-echo [10Cฬออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออออออออน
-echo [10CฬอออออออออออออออออออออออออþÛ!bgyellow!!red!Û Downloaders Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออน
-echo [10Cบ                                                                     บ
-echo [10Cบ               !16!Windows ISO Downloader!cyan!                         บ
-echo [10Cบ               !17!the-eye.eu!cyan!                                     บ
-echo [10Cบ               !18!rg-adguard.net!cyan!                                 บ
-echo [10Cบ               !19!Office 2013-2019 C2R Install!cyan!                   บ
-echo [10Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
+echo [35Cอออออออออออออออออออออออออออออออออ
+echo [34C// !red!Û!bgyellow!!black! Windows and Office Cracks !red!Û!bgblack!!cyan! \\
+echo [6Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
+echo [6CฬออออออออออออþÛ!bgyellow!!red!Û Activators Û!bgblack!!cyan!ÛþออออออออออออหออออออออออออออþÛ!bgyellow!!red!Û Tools Û!bgblack!!cyan!Ûþอออออออออออออออน
+echo [6Cบ                                          บ                                          บ
+echo [6Cบ    !1!ConsoleAct!cyan!                      บ   !13!KMSAuto Helper!cyan!                  บ
+echo [6Cบ    !2!AAct!cyan!                            บ   !14!KMSCleaner!cyan!                      บ
+echo [6Cบ    !3!Ra1n Act1vat0r!cyan!                  บ   !15!WAT Fix!cyan!                         บ
+echo [6Cบ    !4!Re-Loader Activator!cyan!             บ   !16!MSAct!cyan!                           บ
+echo [6Cบ    !5!Windows Loader!cyan!                  บ                                          บ
+echo [6Cบ    !6!HWID GEN MkVI!cyan!                   บ                                          บ
+echo [6Cบ    !7!W10 Digital License!cyan!             บ                                          บ
+echo [6Cบ    !8!KMSAuto Lite!cyan!                    บ                                          บ
+echo [6Cบ    !9!KMSAuto Net!cyan!                     บ                                          บ
+echo [6Cบ   !10!KMSoffline!cyan!                      บ                                          บ
+echo [6Cบ   !11!KMSonline!cyan!                       บ                                          บ
+echo [6Cบ   !12!Microsoft Activation Scripts!cyan!    บ                                          บ
+echo [6Cบ                                          บ                                          บ
+echo [6Cฬออออออออออออออออออออออออออออออออออออออออออสออออออออออออออออออออออออออออออออออออออออออน
+echo [6CฬอออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ISO Downloaders Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออน
+echo [6Cบ                                                                                     บ
+echo [6Cบ                          !17!Windows ISO Downloader!cyan!                              บ
+echo [6Cบ                          !18!the-eye.eu!cyan!                                          บ
+echo [6Cบ                          !19!rg-adguard.net!cyan!                                      บ
+echo [6Cบ                          !20!Office 2013-2019 C2R Install!cyan!                        บ
+echo [6Cบ                                                                                     บ
+echo [6Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !grey!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
@@ -2667,7 +2688,7 @@ call :ROSE Ebooks
 
 :CLEAREBOOKS
 call :CLEAR 1 78
-set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangareader.to/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/alli/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
+set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangareader.to/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/az methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
 
 :CONTINUEEBOOKS
 call :SCALE 100 60
