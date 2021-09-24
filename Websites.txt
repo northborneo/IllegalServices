@@ -82,7 +82,6 @@ softddl.org
 katzddl.net
 warezbb.net
 www.300mbfilms.ws
-snahp.it
 downloadhub.wtf
 filmsofts.com
 cgpersia.com
@@ -481,6 +480,7 @@ leak-lookup.com
 webresolver.nl
 weleakinfo.to
 protonvpn.com
+www.urban-vpn.com
 courvix.com
 www.freeopenvpn.org
 www.vpnbook.com
@@ -618,6 +618,7 @@ sdi-tool.org
 www.uwe-sieber.de
 www.wagnardsoft.com
 ftp.nluug.nl
+www.techspot.com
 download.cpuid.com
 dl5.oo-software.com
 cdn1.ashampoo.net
