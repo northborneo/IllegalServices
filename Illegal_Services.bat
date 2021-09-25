@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 0. 3
-REM  Fileversion:  5. 9. 0. 3
+REM  Productversion:  5. 9. 0. 4
+REM  Fileversion:  5. 9. 0. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,7 +69,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.9.0.3 - 24/09/2021
+set version=v5.9.0.4 - 25/09/2021
 set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -387,14 +387,14 @@ call :MSGBOX 1 !t! 69696 "Ms.CatFire"
 if "!x!"=="18" (
 if "!Language!"=="EN" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@0x00 - Added 4 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
+echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@0x00 - Added 5 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
 echo Style=69696
 echo Title="All other contributors:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 if "!Language!"=="FR" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - A ajouté les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aidé à trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise à jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajouté Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aidé à trouver les bugs existants."^&vbCrLf^&"@Simi - A aidé pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aidé à améliorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise à jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aidé à trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@blacktario - A ajouté 14 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajouté 6 sites internet."^&vbCrLf^&"@0x00 - A ajouté 4 sites internet."^&vbCrLf^&"@Trident Security - A ajouté 2 sites internet."^&vbCrLf^&"@Bastien - A ajouté 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajouté 1 site internet."^&vbCrLf^&"@snipercat - A ajouté 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajouté 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajouté 1 site internet."^&vbCrLf^&"@Eiralys - A ajouté 1 site internet."
+echo Msg="@Agam - A ajouté les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aidé à trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise à jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajouté Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aidé à trouver les bugs existants."^&vbCrLf^&"@Simi - A aidé pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aidé à améliorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise à jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aidé à trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@blacktario - A ajouté 14 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajouté 6 sites internet."^&vbCrLf^&"@0x00 - A ajouté 5 sites internet."^&vbCrLf^&"@Trident Security - A ajouté 2 sites internet."^&vbCrLf^&"@Bastien - A ajouté 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajouté 1 site internet."^&vbCrLf^&"@snipercat - A ajouté 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajouté 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajouté 1 site internet."^&vbCrLf^&"@Eiralys - A ajouté 1 site internet."
 echo Style=69696
 echo Title="Toutes les autres personnes qui m'ont aidé"
 echo Response=MsgBox^(Msg,Style,Title^)
@@ -967,7 +967,7 @@ title !title:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 62
-set db=www.primewire.li/ losmovies.app/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ 123movies.jp/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ yesmovies.ag/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ reddit.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
+set db=www.primewire.li/ losmovies.app/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ 123movies.jp/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ yesmovies.ag/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww1.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ www1.animeultima.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ love.stream2watch.sx/ sportplus.live/ sportsbay.org/live-streams thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 53
@@ -986,7 +986,7 @@ echo [8Cº    !6!123movies.jp!cyan!                   ³   !22!supernova.to!cyan!
 echo [8Cº    !7!www1.123movies.co!cyan!              ³   !23!vumoo.to!cyan!                       º
 echo [8Cº    !8!myflixertv.to!cyan!                  ³   !24!hulu.sc!cyan!                        º
 echo [8Cº    !9!www4.yesmovies.so!cyan!              ³   !25!watchtvepisodes.me!cyan!             º
-echo [8Cº   !10!5movies.pw!cyan!                     ³   !26!ww2.123movieshub.tc!cyan!            º
+echo [8Cº   !10!5movies.pw!cyan!                     ³   !26!ww1.123movieshub.tc!cyan!            º
 echo [8Cº   !11!yesmovies.ag!cyan!                   ³   !27!0gomovies.so!cyan!                   º
 echo [8Cº   !12!www11.123movieshub.one!cyan!         ³   !28!soap2day.to!cyan!                    º
 echo [8Cº   !13!hollymoviehd.cc!cyan!                ³   !29!www1.movie4u.live!cyan!              º
@@ -1010,7 +1010,7 @@ echo [8Cº   !43!www2.kiss-anime.asia!cyan!           ³   !54!twist.moe!cyan!   
 echo [8Cº                                                                                   º
 echo [8CÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!ÛþÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
 echo [8Cº                                                                                   º
-echo [8Cº   !55!runnel.ir!cyan!                      ³   !59!reddit.stream2watch.sx !green!(sport)!cyan! º
+echo [8Cº   !55!runnel.ir!cyan!                      ³   !59!love.stream2watch.sx !green!(sport)!cyan!   º
 echo [8Cº   !56!time4tv.stream!cyan!                 ³   !60!sportplus.live !green!(sport)!cyan!         º
 echo [8Cº   !57!live94today.com!cyan!                ³   !61!sportsbay.org !green!(sport)!cyan!          º
 echo [8Cº   !58!livetv.sx !green!(sport)!cyan!              ³   !62!thehomesport.com !green!(sport)!cyan!       º
@@ -1708,8 +1708,8 @@ title !title:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-call :CLEAR 1 62
-set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ freevpn.me/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.io/ combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.torproject.org/
+call :CLEAR 1 63
+set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ freevpn.me/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.io/ combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.revshells.com/ www.torproject.org/
 
 :CONTINUEUSEFULWEBSITES
 call :SCALE 139 48
@@ -1751,8 +1751,8 @@ echo [8CÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍþÛ!bgyellow!!red!Û Combo Lists Û!bgblack!
 echo [8Cº                                                                                 º                                     º
 echo [8Cº   !52!leak.sx!cyan!                     ³   !56!combolist.top!cyan!                   º   !60!SteamAchievementManager!cyan!    º
 echo [8Cº   !53!combo-list.com!cyan!              ³   !57!sinister.ly!cyan!                     º   !61!onehack.us!cyan!                 º
-echo [8Cº   !54!www.frecombo.com!cyan!            ³   !58!mailaccess.top!cyan!                  º   !62!www.torproject.org!cyan!         º
-echo [8Cº   !55!combolist.io!cyan!                ³   !59!dailycombolist!cyan!                  º                                     º
+echo [8Cº   !54!www.frecombo.com!cyan!            ³   !58!mailaccess.top!cyan!                  º   !62!www.revshells.com!cyan!          º
+echo [8Cº   !55!combolist.io!cyan!                ³   !59!dailycombolist!cyan!                  º   !63!www.torproject.org!cyan!         º
 echo [8Cº                                                                                 º                                     º
 echo [8CÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÊÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 echo !grey!
@@ -2687,8 +2687,8 @@ title !title:`=Ebooks!
 call :ROSE Ebooks
 
 :CLEAREBOOKS
-call :CLEAR 1 78
-set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangareader.to/ mangadex.org/ manganato.com/ unionmangas.top/home mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/az methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
+call :CLEAR 1 77
+set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ mangaowl.net/ mangareader.to/ mangadex.org/ manganato.com/ mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/az/ methodscans.com/home the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ www.readlightnovel.me/ reaperscans.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
 
 :CONTINUEEBOOKS
 call :SCALE 100 60
@@ -2711,40 +2711,40 @@ echo [7Cº   !13!magazinelib.com!cyan!                ³   !15!fr.downmagaz.net !
 echo [7Cº                                                                                    º
 echo [7CÌÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍþÛ!bgyellow!!red!Û MANGAS Û!bgblack!!cyan!ÛþÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¹
 echo [7Cº                                                                                    º
-echo [7Cº   !16!mangaowl.net!cyan!                   ³   !47!mangajar.com!cyan!                    º
-echo [7Cº   !17!mangareader.to!cyan!                 ³   !48!toonily.net!cyan!                     º
-echo [7Cº   !18!www.mangago.me!cyan!                 ³   !49!www.nonstopscans.com!cyan!            º
-echo [7Cº   !19!mangadex.org!cyan!                   ³   !50!guya.moe!cyan!                        º
-echo [7Cº   !20!manganato.com!cyan!                  ³   !51!mangahub.io!cyan!                     º
-echo [7Cº   !21!unionmangas.top!cyan!                ³   !52!comick.fun!cyan!                      º
-echo [7Cº   !22!mangaplus.shueisha.co.jp!cyan!       ³   !53!www.japanread.cc!cyan!                º
-echo [7Cº   !23!fascans.com!cyan!                    ³   !54!catmanga.org!cyan!                    º
-echo [7Cº   !24!mangakatana.com!cyan!                ³   !55!mangasushi.net!cyan!                  º
-echo [7Cº   !25!manga4life.com!cyan!                 ³   !56!arangscans.com!cyan!                  º
-echo [7Cº   !26!bato.to!cyan!                        ³   !57!hunlight-scans.info!cyan!             º
-echo [7Cº   !27!mangapark.net!cyan!                  ³   !58!tritinia.com!cyan!                    º
-echo [7Cº   !28!www.mangahere.cc!cyan!               ³   !59!readmanhua.net!cyan!                  º
-echo [7Cº   !29!fanfox.net!cyan!                     ³   !60!flamescans.org!cyan!                  º
-echo [7Cº   !30!wuxiaworld.site!cyan!                ³   !61!immortalupdates.com!cyan!             º
-echo [7Cº   !31!hatigarmscanz.net!cyan!              ³   !62!manga347.com!cyan!                    º
-echo [7Cº   !32!leviatanscans.com!cyan!              ³   !63!www.bilibilicomics.com!cyan!          º
-echo [7Cº   !33!methodscans.com!cyan!                ³   !64!www.mangatown.com!cyan!               º
-echo [7Cº   !34!the-nonames.com!cyan!                ³   !65!www.mangahome.com!cyan!               º
-echo [7Cº   !35!lynxscans.com!cyan!                  ³   !66!manga47.net!cyan!                     º
-echo [7Cº   !36!skscans.com!cyan!                    ³   !67!comix.top!cyan!                       º
-echo [7Cº   !37!zeroscans.com!cyan!                  ³   !68!www.readlightnovel.me!cyan!           º
-echo [7Cº   !38!reader.deathtollscans.net!cyan!      ³   !69!reaperscans.com!cyan!                 º
-echo [7Cº   !39!reader.kireicake.com!cyan!           ³   !70!reaperscans.fr !green!(FR)!cyan!             º
-echo [7Cº   !40!sensescans.com!cyan!                 ³   !71!scantrad.net !green!(FR)!cyan!               º
-echo [7Cº   !41!manhuaplus.com!cyan!                 ³   !72!kangaryu-team.fr !green!(FR)!cyan!           º
-echo [7Cº   !42!readm.org!cyan!                      ³   !73!www.japscan.ws !green!(FR)!cyan!             º
-echo [7Cº   !43!mangasee123.com!cyan!                ³   !74!www.scan-fr.cc !green!(FR)!cyan!             º
-echo [7Cº   !44!www.asurascans.com!cyan!             ³   !75!lelscan-vf.co !green!(FR)!cyan!              º
-echo [7Cº   !45!naniscans.com!cyan!                  ³   !76!mangas.heoo.workers.dev !green!(FR)!cyan!    º
-echo [7Cº   !46!merakiscans.com!cyan!                ³   !77!lectortmo.com !green!(ES)!cyan!              º
+echo [7Cº   !16!mangaowl.net!cyan!                   ³   !47!toonily.net!cyan!                     º
+echo [7Cº   !17!mangareader.to!cyan!                 ³   !48!www.nonstopscans.com!cyan!            º
+echo [7Cº   !18!www.mangago.me!cyan!                 ³   !49!guya.moe!cyan!                        º
+echo [7Cº   !19!mangadex.org!cyan!                   ³   !50!mangahub.io!cyan!                     º
+echo [7Cº   !20!manganato.com!cyan!                  ³   !51!comick.fun!cyan!                      º
+echo [7Cº   !21!mangaplus.shueisha.co.jp!cyan!       ³   !52!www.japanread.cc!cyan!                º
+echo [7Cº   !22!fascans.com!cyan!                    ³   !53!catmanga.org!cyan!                    º
+echo [7Cº   !23!mangakatana.com!cyan!                ³   !54!mangasushi.net!cyan!                  º
+echo [7Cº   !24!manga4life.com!cyan!                 ³   !55!arangscans.com!cyan!                  º
+echo [7Cº   !25!bato.to!cyan!                        ³   !56!hunlight-scans.info!cyan!             º
+echo [7Cº   !26!mangapark.net!cyan!                  ³   !57!tritinia.com!cyan!                    º
+echo [7Cº   !27!www.mangahere.cc!cyan!               ³   !58!readmanhua.net!cyan!                  º
+echo [7Cº   !28!fanfox.net!cyan!                     ³   !59!flamescans.org!cyan!                  º
+echo [7Cº   !29!wuxiaworld.site!cyan!                ³   !60!immortalupdates.com!cyan!             º
+echo [7Cº   !30!hatigarmscanz.net!cyan!              ³   !61!manga347.com!cyan!                    º
+echo [7Cº   !31!leviatanscans.com!cyan!              ³   !62!www.bilibilicomics.com!cyan!          º
+echo [7Cº   !32!methodscans.com!cyan!                ³   !63!www.mangatown.com!cyan!               º
+echo [7Cº   !33!the-nonames.com!cyan!                ³   !64!www.mangahome.com!cyan!               º
+echo [7Cº   !34!lynxscans.com!cyan!                  ³   !65!manga47.net!cyan!                     º
+echo [7Cº   !35!skscans.com!cyan!                    ³   !66!comix.top!cyan!                       º
+echo [7Cº   !36!zeroscans.com!cyan!                  ³   !67!www.readlightnovel.me!cyan!           º
+echo [7Cº   !37!reader.deathtollscans.net!cyan!      ³   !68!reaperscans.com!cyan!                 º
+echo [7Cº   !38!reader.kireicake.com!cyan!           ³   !69!reaperscans.fr !green!(FR)!cyan!             º
+echo [7Cº   !39!sensescans.com!cyan!                 ³   !70!scantrad.net !green!(FR)!cyan!               º
+echo [7Cº   !40!manhuaplus.com!cyan!                 ³   !71!kangaryu-team.fr !green!(FR)!cyan!           º
+echo [7Cº   !41!readm.org!cyan!                      ³   !72!www.japscan.ws !green!(FR)!cyan!             º
+echo [7Cº   !42!mangasee123.com!cyan!                ³   !73!www.scan-fr.cc !green!(FR)!cyan!             º
+echo [7Cº   !43!www.asurascans.com!cyan!             ³   !74!lelscan-vf.co !green!(FR)!cyan!              º
+echo [7Cº   !44!naniscans.com!cyan!                  ³   !75!mangas.heoo.workers.dev !green!(FR)!cyan!    º
+echo [7Cº   !45!merakiscans.com!cyan!                ³   !76!lectortmo.com !green!(ES)!cyan!              º
+echo [7Cº   !46!mangajar.com!cyan!                   ³                                          º
 echo [7Cº                                                                                    º
-if "!Language!"=="EN" echo [7Cº                      !brightmagenta!Alternatively you can visit: !78!MALSync!cyan!                   º
-if "!Language!"=="FR" echo [7Cº                  !brightmagenta!Alternativement vous pouvez visiter: !78!MALSync!cyan!               º
+if "!Language!"=="EN" echo [7Cº                      !brightmagenta!Alternatively you can visit: !77!MALSync!cyan!                   º
+if "!Language!"=="FR" echo [7Cº                  !brightmagenta!Alternativement vous pouvez visiter: !77!MALSync!cyan!               º
 echo [7Cº                                                                                    º
 echo [7CÈÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍÍ¼
 echo !grey!
@@ -3315,7 +3315,7 @@ if "!Language!"=="FR" set t=Etablissement de la connexion … la base de donn‚e de
 set url=!git_raw_downloads!/Websites.txt
 title !debug!!t!: '!url!'. - Illegal Services
 >nul Curl\x!arch!\curl.exe -fIkLs "!url!" || (call :ERROR_INTERNET & exit)
-for %%a in (index cn result el) do set %%a=0
+for %%a in (index cn el result) do set %%a=0
 set s=
 if "!Language!"=="EN" (
 set o1=Website Down
@@ -3327,7 +3327,7 @@ set o2=Site Internet Chang‚ de Domaine
 )
 for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
 set /a index+=1
-title !debug![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^| ... - Illegal Services
+title !debug![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^| [...] - Illegal Services
 )
 echo !cyan!
 if "!Language!"=="EN" echo Scan of the !index! indexed websites has started. You will be notified if any of them are down or have changed domain.
@@ -3337,7 +3337,7 @@ for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t1=(((1%%a*60)+1%
 for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
 set /a "cn+=1, el=cn*100/index"
 if !result! gtr 1 set s=s
-title !debug![!result! result!s! found from !cn!/!index! websites indexed]  ^|  [!el!/100%%]  ^|  %%a - Illegal Services
+title !debug![!result! result!s! found from !cn!/!index! websites indexed]  ^|  [!el!/100%%]  ^|  [%%a] - Illegal Services
 >nul ping -w 1000 -n 1 "%%a" || >nul Curl\x!arch!\curl.exe -IkLs "https://%%a/" || >nul Curl\x!arch!\curl.exe -IkLs "http://%%a/" || (
 set /a result+=1
 echo !red!!o1!: !yellow!%%a !red!seems to be down for you ^^!
@@ -3353,7 +3353,7 @@ for /f "delims=//" %%e in ("%%c") do echo !red!!o2!: !yellow!https://%%a/ !green
 )
 echo !cyan!
 for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t2=(((1%%a*60)+1%%b)*60+1%%c)*100+1%%d-36610100, tDiff=t2-t1, tDiff+=((~(tDiff&(1<<31))>>31)+1)*8640000, seconds=tDiff/100"
-title !debug![!result! result!s! found from !index! websites indexed]  ^|  Scan finished in !seconds! seconds. - Illegal Services
+title !debug![!result! result!s! found from !index! websites indexed]  ^|  [Scan finished in !seconds! seconds.] - Illegal Services
 if "!Language!"=="EN" echo Scan ended with !result! result!s! found from !index! websites indexed in !seconds! seconds.
 if "!Language!"=="FR" echo L'analyse s'est termin‚e avec !result! r‚sultats trouv‚s … partir de !index! sites web index‚s en !seconds! secondes.
 echo:
