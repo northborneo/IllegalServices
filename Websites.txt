@@ -152,7 +152,7 @@ supernova.to
 vumoo.to
 hulu.sc
 watchtvepisodes.me
-ww2.123movieshub.tc
+ww1.123movieshub.tc
 0gomovies.so
 soap2day.to
 www1.movie4u.live
@@ -185,7 +185,7 @@ runnel.ir
 time4tv.stream
 live94today.com
 livetv.sx
-reddit.stream2watch.sx
+love.stream2watch.sx
 sportplus.live
 sportsbay.org
 thehomesport.com
@@ -520,6 +520,7 @@ combolist.top
 sinister.ly
 mailaccess.top
 onehack.us
+www.revshells.com
 www.torproject.org
 ;;DDOS
 quez.in
@@ -693,7 +694,6 @@ mangareader.to
 www.mangago.me
 mangadex.org
 manganato.com
-unionmangas.top
 mangaplus.shueisha.co.jp
 fascans.com
 mangakatana.com
