@@ -137,7 +137,6 @@ www1.123movies.co
 myflixertv.to
 www4.yesmovies.so
 5movies.pw
-yesmovies.ag
 www11.123movieshub.one
 hollymoviehd.cc
 watch-serieshd.cc
@@ -187,7 +186,6 @@ live94today.com
 livetv.sx
 love.stream2watch.sx
 sportplus.live
-sportsbay.org
 thehomesport.com
 ;;STREAMINGFR
 www.filmstreaming1.tel
@@ -286,7 +284,6 @@ torrent9.to
 filelisting.com
 bt4g.org
 www.7torrents.cc
-bitcq.com
 knaben.eu
 torrentproject2.com
 torrent-paradise.ml
@@ -295,7 +292,6 @@ ext.to
 www.torlock.com
 ibit.to
 zooqle.com
-torrentparadise.pm
 snowfl.com
 idope.se
 isohunt.app
@@ -456,9 +452,9 @@ www.rockmods.net
 www.ytricks.net
 www.apkheist.com
 apkfolks.com
+bluesmods.com
 www.whatsappmods.net
 vancedapp.com
-bluesmods.com
 ;;YOUTUBEDOWNLOADER
 yt-dl.org
 download.microsoft.com
@@ -595,7 +591,6 @@ checkusernames.com
 instantusername.com
 analyzeid.com
 namechk.com
-checkuser.org
 www.namecheckr.com
 usersearch.org
 www.toolsbug.com
@@ -656,7 +651,6 @@ mediaarea.net
 weboas.is
 dirtywarez.org
 link-base.org
-lamule.eu
 p2pfr.com
 www.mega-p2p.net
 lewebde.com
