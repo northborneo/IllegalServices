@@ -81,7 +81,7 @@ softddl.org
 2ddl.it
 katzddl.net
 warezbb.net
-www.300mbfilms.ws
+www.300mbfilms.cx
 downloadhub.wtf
 filmsofts.com
 cgpersia.com
@@ -128,7 +128,7 @@ nandesuka.moe
 9docu.org
 ;;STREAMINGEN
 www.primewire.li
-losmovies.app
+losmovies.top
 m4ufree.to
 gomovie.co
 gomovies-online.cam
@@ -250,7 +250,7 @@ www.novatvapk.com
 tvmob.net
 www.livenettv.bz
 ;;TORRENTING
-bitsearch.to
+solidtorrents.net
 www.limetorrents.pro
 www.torrentfunk.com
 www.toros.co
@@ -283,6 +283,7 @@ www.oxtorrent.nz
 torrent9.to
 filelisting.com
 bt4g.org
+bitsearch.to
 www.7torrents.cc
 knaben.eu
 torrentproject2.com
@@ -323,6 +324,13 @@ sonarr.tv
 radarr.video
 lidarr.audio
 couchpota.to
+;;WEBTORRENTING
+webtorrent.io
+webtor.io
+instant.io
+btorrent.xyz
+www.torrentsafe.com
+zbigz.com
 ;;TORRENTTUTORIAL
 downloads.sourceforge.net
 ;;SUBTITLES
@@ -481,6 +489,7 @@ courvix.com
 www.freeopenvpn.org
 www.vpnbook.com
 freevpn.me
+www.proxyscan.io
 free-proxy-list.net
 proxy-daily.com
 smallseotools.com
@@ -786,3 +795,7 @@ cracked.to
 payload.sh
 teamos-hkrg.com
 forum.ru-board.com
+;;SPOOFING
+technitium.com
+docs.microsoft.com
+github.com
