@@ -7,7 +7,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.0.6 - 29/09/2021
+v5.9.0.7 - 01/10/2021
 - FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
 - FIXED minor bugs.
 - IMPROVED Launcher : Checking files integrity.
@@ -34,13 +34,16 @@ v5.9.0.6 - 29/09/2021
 + ADDED Portable Apps Windows and Office Cracks : Microsoft-Activation-Scripts (thanks @0x00)
 + ADDED More Features : Spoofing. (thanks @0x00)
 + UPDATED Streaming [EN] : https://ww1.123movieshub.tc/
-+ UPDATED Streaming [EN] : https://love.stream2watch.sx/
++ UPDATED Streaming [EN] : https://en.stream2watch.sx/
 + UPDATED Cracked Android APK's : https://iplayplus.org/
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED More Features Forum Websites : https://fora.snahp.eu/
+- REMOVED Direct Download Link [EN] : https://www.kokodown.com/ (down)
 - REMOVED Direct Download Link [EN] : https://snahp.it/ (down)
 - REMOVED Streaming [EN] : https://yesmovies.ag/ (down)
+- REMOVED Streaming [EN] : https://www1.animeultima.to/ (down)
 - REMOVED Streaming [EN] : https://sportsbay.org/live-streams (down)
+- REMOVED Streaming Applications : https://www.cinehub.app/ (down)
 - REMOVED Torrenting : https://bitcq.com/ (down)
 - REMOVED Torrenting : https://torrentparadise.pm/ (down)
 - REMOVED Useful Websites : https://lamule.eu/ (down)
@@ -48,6 +51,7 @@ v5.9.0.6 - 29/09/2021
 - REMOVED Doxing : https://checkuser.org/ (down)
 - REMOVED More Features Release Logs : https://forum.squawkr.io/ (down)
 - REMOVED More Features Ebooks : https://unionmangas.to/ (IS does not include Portuguese websites.)
+- REMOVED More Features Ebooks : https://hatigarmscanz.net/home (down)
 
 v5.9.0.0 - 19/09/2021
 - REDUCED Code. (~12 ko)
