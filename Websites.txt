@@ -73,7 +73,6 @@ win7dl.org
 www.ddlvalley.me
 downtr.cc
 releasehive.com
-www.kokodown.com
 rlstop.net
 uhdmv.org
 tfpdl.to
@@ -175,7 +174,6 @@ www2.kickassanime.ro
 animepahe.com
 ww1.animesimple.com
 zoro.to
-www1.animeultima.to
 animedao.to
 kissanimefree.to
 www1.7anime.io
@@ -184,7 +182,7 @@ runnel.ir
 time4tv.stream
 live94today.com
 livetv.sx
-love.stream2watch.sx
+en.stream2watch.sx
 sportplus.live
 thehomesport.com
 ;;STREAMINGFR
@@ -239,7 +237,6 @@ streaming-sport.tv
 popcorn-time.tw
 www.stremio.com
 cinemaapk.com
-www.cinehub.app
 teatv.net
 www.morpheustvbox.com
 mediaboxhd.net
@@ -706,7 +703,6 @@ mangapark.net
 www.mangahere.cc
 fanfox.net
 wuxiaworld.site
-hatigarmscanz.net
 leviatanscans.com
 methodscans.com
 the-nonames.com
