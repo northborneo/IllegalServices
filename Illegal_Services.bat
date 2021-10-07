@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 0. 7
-REM  Fileversion:  5. 9. 0. 7
+REM  Productversion:  5. 9. 0. 8
+REM  Fileversion:  5. 9. 0. 8
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -69,8 +69,8 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.9.0.7 - 01/10/2021
-set "el=bgblack=[40m,bgyellow=[43m,bgwhite=[47m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,grey=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m,underline=[4m,underlineoff=[24m"
+set version=v5.9.0.8 - 07/10/2021
+set "el=underline=[4m,underlineoff=[24m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,bgblack=[40m,bgyellow=[43m,bgwhite=[47m,brightblack=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
 call :DRAW_LOGO
@@ -82,18 +82,13 @@ echo [28C!cyan!{!red!+!cyan!}--------------------------------------------------
 for /f %%a in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%a"
 for %%a in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~a" del /f /q "%%~a"
 for %%a in ("!cd:~,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~a" 2>nul rd /s /q "%%~a"
-set "sp=[28C!yellow!{$} !grey!"
-echo !grey!
+set "sp=[28C!yellow!{$} !brightblack!"
+echo !brightblack!
 set "IS_Dir=%~dp0Illegal Services\"
 set "IS_Dir=!IS_Dir:Illegal Services\Illegal Services\=Illegal Services\!"
 if defined ProgramFiles(x86) (set arch=64) else set arch=86
-for %%a in (Curl\x!arch!\curl.exe) do if not exist "%%a" (
-if "!Language!"=="EN" set t="Illegal Services can't start because '!IS_Dir!%%a' is missing." "Please reinstall Illegal Services and try again."
-if "!Language!"=="FR" set t="Illegal Services ne peut pas dmarrer car '!IS_Dir!%%a' est manquant." "Veuillez rinstaller Illegal Services et ressayer."
-call :MSGBOX 2 !t! 69648 "Illegal Services Checker"
-start https://t.me/illegal_services
-exit
-)
+set "PATH=!PATH!;Curl\x!arch!"
+>nul 2>&1 where curl.exe || call :ERROR_FATAL !PATH:~-8!\curl.exe CURL
 
 :LAUNCHER_PROXY
 if "!Language!"=="EN" <nul set /p="!sp!Searching a proxy ^> "
@@ -126,15 +121,11 @@ if "!errorlevel!"=="2" call :CHECKER_BUILD_FOUND
 if "!Language!"=="EN" <nul set /p="!sp!Checking files integrity ^> "
 if "!Language!"=="FR" <nul set /p="!sp!Vrification de l'intgrite des fichiers ^> "
 set _el=
-for %%a in (7za\x!arch!\7za.dll 7za\x!arch!\7za.exe 7za\x!arch!\7zxa.dll ChangeLog.txt cmdbkg.exe cmdwiz.exe COPYING EULA.rtf OpenFileBox.exe SaveFileBox.exe Speak\!Language!.lang Speak\extd.exe Speak\speak-x!arch!.exe Tutorial.html) do if not exist %%a (
+for %%a in (7za\x64\7za.dll 7za\x64\7za.exe 7za\x64\7zxa.dll 7za\x86\7za.dll 7za\x86\7za.exe 7za\x86\7zxa.dll Ansicon\x64\ANSI32.dll Ansicon\x64\ANSI64.dll Ansicon\x64\ansicon.exe Ansicon\x86\ANSI32.dll Ansicon\x86\ansicon.exe Backgrounds\background-1.jpg Backgrounds\background-2.jpg Backgrounds\background-3.jpg Backgrounds\background-4.jpg Backgrounds\background-5.jpg Backgrounds\background-6.jpg Backgrounds\background-7.jpg Backgrounds\background-8.jpg Backgrounds\background-9.jpg Backgrounds\background-10.jpg Backgrounds\background-11.jpg Backgrounds\background-12.jpg ChangeLog.txt cmdbkg.exe cmdwiz.exe COPYING Curl\x64\curl.exe Curl\x86\curl.exe EULA.rtf Illegal_Services.exe OpenFileBox.exe SaveFileBox.exe Speak\EN.lang Speak\extd.exe Speak\FR.lang Speak\speak-x64.exe Speak\speak-x86.exe Tutorial.html) do if not exist %%a (
 set el=%%a
 set el=!el:\=/!
 call :MISSING_FILE %%a
 call :CURL "%%a" "`git_raw_main`/!el!" || call :ERROR_FATAL %%a
-)
-for /l %%a in (1,1,12) do if not exist "Backgrounds\background-%%a.jpg" (
-call :MISSING_FILE Backgrounds\background-%%a.jpg
-call :CURL "Backgrounds.7z" "`git_raw_downloads`/Backgrounds.7z" || call :ERROR_FATAL Backgrounds\background-%%a.jpg
 )
 if not defined _el (
 if "!Language!"=="EN" echo  !green![PASSED] . . .
@@ -164,8 +155,14 @@ call :MSGBOX 2 !t! 69648 "Illegal Services Checker"
 start https://t.me/illegal_services_forum
 exit
 )
-if not "!Windows_Version!"=="10.0" if not defined ANSICON_VER call :INSTALL_ANSICON "%~f0"
-
+if not "!Windows_Version!"=="10.0" if not defined ANSICON_VER (
+pushd "Ansicon\x!arch!"
+ansicon.exe -i
+popd
+endlocal
+start "" "%~f0"
+exit
+)
 
 :LAUNCHER_APPLY_SETTINGS
 if "!Language!"=="EN" <nul set /p="!sp!Applying your settings ^> "
@@ -200,7 +197,7 @@ cmdwiz.exe delay 5
 title !title:`=Main Menu ^|Git %git_backup%proxy: %git%^|!
 if defined MAINMENU (call :ROSE) else (call :ROSE "Main Menu" & set MAINMENU=1)
 call :SCALE 125 29
-echo !grey!
+echo !brightblack!
 call :DRAW_LOGO
 echo !cyan!
 echo [19Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
@@ -221,10 +218,10 @@ echo [19Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออ
 if "!Language!"=="EN" echo [19Cบ    !yellow!C!cyan!  ^>  !white!Credits!cyan!!underlineoff!     บ    !yellow!N!cyan!  ^>  !brightred!Our Social Networks!cyan!    บ      !yellow!S!cyan!  ^>  !white!Settings!cyan!!underlineoff!        บ
 if "!Language!"=="FR" echo [19Cบ    !yellow!C!cyan!  ^>  !white!Crdits!cyan!!underlineoff!     บ    !yellow!R!cyan!  ^>  !brightred!Nos Rseaux Sociaux!cyan!    บ      !yellow!P!cyan!  ^>  !white!Paramtres!cyan!!underlineoff!      บ
 echo [19Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!HELP!grey!" / "!yellow!FAQ!grey!" / "!yellow!CHANGELOG!grey!" !t2! !yellow!{!t3!}!grey!." 40
+call :DRAW_CENTER "!t1! "!yellow!HELP!brightblack!" / "!yellow!FAQ!brightblack!" / "!yellow!CHANGELOG!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 40
 echo:
 call :CHECK_FIRSTLAUNCH
 if "!version:~5,3!"=="0.0" if "!FirstLaunch!"=="1" (
@@ -286,6 +283,7 @@ call :CHOOSE !t! && goto :SETTINGS
 call :CHOOSE help && (start /max tutorial.html & goto :MAINMENU)
 call :CHOOSE changelog && (start /max changeLog.txt & goto :MAINMENU)
 call :CHOOSE faq && (call :SHOW_WINDOW "Frequently Asked Questions" || (start "" "%~0" FAQ) & goto :MAINMENU)
+if /i "!x!"=="--dump" (>LOG_DUMP.txt set & start LOG_DUMP.txt & goto :MAINMENU)
 call :ERRORMESSAGE
 goto :MAINMENU
 
@@ -324,10 +322,10 @@ echo [9Cบ                   !yellow!16!cyan!  ^>  !white!@Rosalyn!cyan!        
 echo [9Cบ                   !yellow!17!cyan!  ^>  !white!@Ms.CatFire!cyan!                                     บ
 echo [9Cบ                   !yellow!18!cyan!  ^>  !white!All other contributors!cyan!                          บ
 echo [9Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 if "!x!"=="1" start https://www.robvanderwoude.com/dialogboxes.php
@@ -369,9 +367,9 @@ if "!x!"=="15" (
 if "!Language!"=="EN" set t="Helped improving and reducing code." "Created IS Bookmarks web extension." "Created the timer in seconds to scan indexed websites." "Fixed a bug with the stack memory overflow causing IS to crash. "
 if "!Language!"=="FR" set t="A aid … amliorer et … rduire le code." "Cration de l'extension web IS Bookmarks." "Cration de la minuterie en secondes du scan des sites internet indexs." "Correction d'un bug avec le dbordement de la mmoire de la pile provoquant le plantage d'IS."
 call :MSGBOX 4 !t! 69696 "Grub4K"
-if "!Language!"=="EN" set t="Created the code to center the text on the UI."
-if "!Language!"=="FR" set t="A cr le code pour centrer le texte sur l'UI."
-call :MSGBOX 1 !t! 69696 "Grub4K"
+if "!Language!"=="EN" set t="Created the code to center the text on the UI." "Helped reducing Curl PATH algorithm."
+if "!Language!"=="FR" set t="A cr le code pour centrer le texte sur l'UI." "A aid … rduire le code de l'algorithme de la PATH de Curl."
+call :MSGBOX 2 !t! 69696 "Grub4K"
 start https://github.com/Grub4K
 )
 if "!x!"=="16" (
@@ -387,14 +385,14 @@ call :MSGBOX 1 !t! 69696 "Ms.CatFire"
 if "!x!"=="18" (
 if "!Language!"=="EN" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@0x00 - Added More Features Spoofing."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@0x00 - Added 8 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."
+echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@0x00 - Added More Features Spoofing."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@0x00 - Added 8 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."^&vbCrLf^&"@ayo - Added 1 website."
 echo Style=69696
 echo Title="All other contributors:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 if "!Language!"=="FR" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise เ jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aid้ เ trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@0x00 - A ajout้ More Features Spoofing."^&vbCrLf^&"@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@0x00 - A ajout้ 8 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."
+echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise เ jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aid้ เ trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@0x00 - A ajout้ More Features Spoofing."^&vbCrLf^&"@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@0x00 - A ajout้ 8 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."^&vbCrLf^&"@ayo - A ajout้ 1 site internet."
 echo Style=69696
 echo Title="Toutes les autres personnes qui m'ont aid้"
 echo Response=MsgBox^(Msg,Style,Title^)
@@ -492,10 +490,10 @@ if "!Language!"=="EN" echo [7Cบ   !yellow!12!cyan!  ^>  !white!World map (cool)
 if "!Language!"=="FR" echo [7Cบ   !yellow!12!cyan!  ^>  !white!Carte du monde (cool)!cyan!              บ   !ExtractSourceInfo!
 echo [7Cบ                                             บ                                                   บ
 echo [7Cศอออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!OPEN!grey!" / "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!OPEN!brightblack!" / "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 for %%a in (8,9) do if "!x!"=="1%%a" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUESETTINGS)
@@ -755,10 +753,10 @@ echo [7Cบ   !18!Free-IPTV!cyan!                  ณ   !37!iptv-ch!cyan!         
 echo [7Cบ   !19!coodertv!cyan!                   ณ   !38!iptv-restream!cyan!              บ
 echo [7Cบ                                                                           บ
 echo [7Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!INSTALL!grey!" / "!yellow!SEARCH!grey!" / "!yellow!HELP!grey!" !t2! !yellow!{!t3!}!grey!." 50
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!INSTALL!brightblack!" / "!yellow!SEARCH!brightblack!" / "!yellow!HELP!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 50
 echo !red!
 >nul 2>&1 reg query "HKCR\.m3u8" || (
 if "!Language!"=="EN" echo [17CERROR: To be able to use !yellow!IPTV!red!, first you need to choose: !yellow![INSTALL]
@@ -833,10 +831,10 @@ if "!Language!"=="EN" echo [4Cบ    To navigate among channels, press "Ctrl + L"
 if "!Language!"=="FR" echo [4Cบ    Pour naviguer parmi les chanes, appuyez sur "Ctrl + L" pour afficher tout le contenu disponible.                                        บ
 echo [4Cบ                                                                                                                                             บ
 echo [4Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 if "!x!"=="1" call :INSTALL_FILE VLC & goto :CONTINUEIPTVTUTORIAL
@@ -854,7 +852,7 @@ title !title:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
 call :CLEAR 1 71
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.cx/ downloadhub.wtf/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ x265.club/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.cx/ downloadhub.onl/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ psarips.top/ themoviesflix.co.com/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
 call :SCALE 128 37
@@ -878,21 +876,21 @@ echo [6Cบ   !12!www.freshwap.us!cyan!              ณ   !36!2ddl.it!cyan!       
 echo [6Cบ   !13!www.apps4all.com!cyan!             ณ   !37!katzddl.net!cyan!          ณ   !61!animetosho.org !green!(animes)!cyan!         บ
 echo [6Cบ   !14!dl4all.biz!cyan!                   ณ   !38!warezbb.net!cyan!          ณ   !62!cdromance.com !green!(roms)!cyan!            บ
 echo [6Cบ   !15!worldsrc.net!cyan!                 ณ   !39!www.300mbfilms.cx!cyan!    ณ   !63!www.romnation.net !green!(roms)!cyan!        บ
-echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!downloadhub.wtf!cyan!      ณ   !64!vimm.net !green!(roms)!cyan!                 บ
+echo [6Cบ   !16!movieparadise.org!cyan!            ณ   !40!downloadhub.onl!cyan!      ณ   !64!vimm.net !green!(roms)!cyan!                 บ
 echo [6Cบ   !17!release.movieparadise.org!cyan!    ณ   !41!filmsofts.com!cyan!        ณ   !65!nxmac.com !green!(MAC)!cyan!                 บ
 echo [6Cบ   !18!hdencode.org!cyan!                 ณ   !42!cgpersia.com!cyan!         ณ   !66!macdrop.net !green!(MAC)!cyan!               บ
 echo [6Cบ   !19!katzdownload.com!cyan!             ณ   !43!rsload.net!cyan!           ณ   !67!sheet-music.xyz !green!(audio)!cyan!         บ
 echo [6Cบ   !20!rlsbb.ru!cyan!                     ณ   !44!megaddl.co!cyan!           ณ   !68!audioz.download !green!(audio)!cyan!         บ
 echo [6Cบ   !21!oneddl.org!cyan!                   ณ   !45!heroturko2.net!cyan!       ณ   !69!audiobookbay.nl !green!(audiobooks)!cyan!    บ
 echo [6Cบ   !22!apps-pack.com!cyan!                ณ   !46!crazy4tv.com!cyan!         ณ   !70!www.gfxtra31.com !green!(GFX)!cyan!          บ
-echo [6Cบ   !23!www.rlslog.net!cyan!               ณ   !47!x265.club!cyan!            ณ   !71!gfx-hub.cc !green!(GFX)!cyan!                บ
+echo [6Cบ   !23!www.rlslog.net!cyan!               ณ   !47!psarips.top!cyan!          ณ   !71!gfx-hub.cc !green!(GFX)!cyan!                บ
 echo [6Cบ   !24!freshwap.cc!cyan!                  ณ   !48!themoviesflix.co.com!cyan! ณ                                          บ
 echo [6Cบ                                                                                                                  บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow!FR!grey!" !t2! !yellow!{!t3!}!grey!." 40
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / "!yellow!FR!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 40
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDLEN
@@ -931,10 +929,10 @@ echo [9Cบ   !10!nandesuka.moe !green!(animes)!cyan!                  บ
 echo [9Cบ   !11!9docu.org !green!(documentaries)!cyan!               บ
 echo [9Cบ                                                  บ
 echo [9Cศออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow!EN!grey!" !t2! !yellow!{!t3!}!grey!." 40
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / "!yellow!EN!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 40
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDLFR
@@ -967,7 +965,7 @@ title !title:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
 call :CLEAR 1 59
-set db=www.primewire.li/ losmovies.top/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ 123movies.jp/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww1.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ animepahe.com/ ww1.animesimple.com/ zoro.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ en.stream2watch.sx/ sportplus.live/ thehomesport.com/
+set db=www.primewire.li/ losmovies.top/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ 123movies.jp/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww1.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/ openloadfreetv.me/ allmoviesforyou.co/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ www2.kiss-anime.asia/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ www.animerush.tv/ animepahe.com/ ww1.animesimple.com/ zoro.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ en.stream2watch.sx/ sportplus.live/ thehomesport.com/
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 53
@@ -999,33 +997,33 @@ echo [8Cบ                                                                      
 echo [8Cบ   !32!kisscartoon.info!cyan!               ณ   !43!animevibe.se!cyan!                   บ
 echo [8Cบ   !33!9anime.to!cyan!                      ณ   !44!animixplay.to!cyan!                  บ
 echo [8Cบ   !34!animesuge.io!cyan!                   ณ   !45!www2.kickassanime.ro!cyan!           บ
-echo [8Cบ   !35!animeheaven.pro!cyan!                ณ   !46!animepahe.com!cyan!                  บ
-echo [8Cบ   !36!animeowl.net!cyan!                   ณ   !47!ww1.animesimple.com!cyan!            บ
-echo [8Cบ   !37!animeow.me!cyan!                     ณ   !48!zoro.to!cyan!                        บ
-echo [8Cบ   !38!arrayanime.com!cyan!                 ณ   !49!animedao.to!cyan!                    บ
-echo [8Cบ   !39!gogoanime.vc!cyan!                   ณ   !50!kissanimefree.to!cyan!               บ
-echo [8Cบ   !40!animefrenzy.org!cyan!                ณ   !51!www1.7anime.io!cyan!                 บ
-echo [8Cบ   !41!anime8.ru!cyan!                      ณ   !52!twist.moe!cyan!                      บ
-echo [8Cบ   !42!www2.kiss-anime.asia!cyan!           ณ                                         บ
+echo [8Cบ   !35!animeheaven.pro!cyan!                ณ   !46!www.animerush.tv!cyan!               บ
+echo [8Cบ   !36!animeowl.net!cyan!                   ณ   !47!animepahe.com!cyan!                  บ
+echo [8Cบ   !37!animeow.me!cyan!                     ณ   !48!ww1.animesimple.com!cyan!            บ
+echo [8Cบ   !38!arrayanime.com!cyan!                 ณ   !49!zoro.to!cyan!                        บ
+echo [8Cบ   !39!gogoanime.vc!cyan!                   ณ   !50!animedao.to!cyan!                    บ
+echo [8Cบ   !40!animefrenzy.org!cyan!                ณ   !51!kissanimefree.to!cyan!               บ
+echo [8Cบ   !41!anime8.ru!cyan!                      ณ   !52!www1.7anime.io!cyan!                 บ
+echo [8Cบ   !42!www2.kiss-anime.asia!cyan!           ณ   !53!twist.moe!cyan!                      บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û TELEVISION Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !53!runnel.ir!cyan!                      ณ   !57!en.stream2watch.sx !green!(sport)!cyan!     บ
-echo [8Cบ   !54!time4tv.stream!cyan!                 ณ   !58!sportplus.live !green!(sport)!cyan!         บ
-echo [8Cบ   !55!live94today.com!cyan!                ณ   !59!thehomesport.com !green!(sport)!cyan!       บ
-echo [8Cบ   !56!livetv.sx !green!(sport)!cyan!              ณ                                         บ
+echo [8Cบ   !54!runnel.ir!cyan!                      ณ   !58!en.stream2watch.sx !green!(sport)!cyan!     บ
+echo [8Cบ   !55!time4tv.stream!cyan!                 ณ   !59!sportplus.live !green!(sport)!cyan!         บ
+echo [8Cบ   !56!live94today.com!cyan!                ณ   !60!thehomesport.com !green!(sport)!cyan!       บ
+echo [8Cบ   !57!livetv.sx !green!(sport)!cyan!              ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-call :DRAW_CENTER "!yellow!60!cyan!  >  !white!Streaming Applications!cyan!" 20
+call :DRAW_CENTER "!yellow!61!cyan!  >  !white!Streaming Applications!cyan!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow!FR!grey!" !t2! !yellow!{!t3!}!grey!." 40
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / "!yellow!FR!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 40
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGEN
-if "!x!"=="60" (set la=EN) & goto :STREAMINGAPPS
+if "!x!"=="61" (set la=EN) & goto :STREAMINGAPPS
 call :CHOOSE fr && goto :STREAMINGFR
 call :CHOOSE search && (call :IS_SEARCH ef3978005ffa01b49 & goto :CONTINUESTREAMINGEN)
 call :CHOOSE back && goto :MAINMENU
@@ -1039,7 +1037,7 @@ title !title:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
 call :CLEAR 1 49
-set db=www.filmstreaming1.tel/streaml/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ www.streaminz.me/ filmpourvous.com/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+set db=www.filmstreaming1.tel/stream1u/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ www.streaminz.me/ filmpourvous.com/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
 call :SCALE 101 48
@@ -1085,10 +1083,10 @@ echo [8Cบ                                                                      
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
 call :DRAW_CENTER "!yellow!50!cyan!  >  !white!Streaming Applications!cyan!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / "!yellow!EN!grey!" !t2! !yellow!{!t3!}!grey!." 40
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / "!yellow!EN!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 40
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGFR
@@ -1138,10 +1136,10 @@ echo [6Cบ       !12!tvmob.net !green!(television)!cyan!           บ            
 echo [6Cบ       !13!www.livenettv.bz !green!(television)!cyan!    บ                                               บ
 echo [6Cบ                                               บ                                               บ
 echo [6Cศอออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGAPPS
@@ -1156,8 +1154,8 @@ title !title:`=Torrenting!
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 76
-set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ bitsearch.to/ www.7torrents.cc/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ search.torrends.to/ proxy-bay.dev/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.ws/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+call :CLEAR 1 77
+set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.nz/ torrent9.to/ filelisting.com/ bt4g.org/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ search.torrends.to/ proxy-bay.dev/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
 call :SCALE 133 55
@@ -1184,36 +1182,36 @@ echo [8Cบ   !29!www.sharewood.tv!cyan!           ณ   !31!torrent9.to!cyan!     
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Searching Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !32!filelisting.com!cyan!            ณ   !40!ext.to!cyan!                   ณ   !48!pirateiro.com!cyan!                  บ
-echo [8Cบ   !33!bt4g.org!cyan!                   ณ   !41!www.torlock.com!cyan!          ณ   !49!torrentseeker.com!cyan!              บ
-echo [8Cบ   !34!bitsearch.to!cyan!               ณ   !42!ibit.to!cyan!                  ณ   !50!otorrents.com!cyan!                  บ
-echo [8Cบ   !35!www.7torrents.cc!cyan!           ณ   !43!zooqle.com!cyan!               ณ   !51!vstorrent.org!cyan!                  บ
-echo [8Cบ   !36!knaben.eu!cyan!                  ณ   !44!snowfl.com!cyan!               ณ   !52!torrents-csv.ml!cyan!                บ
-echo [8Cบ   !37!torrentproject2.com!cyan!        ณ   !45!idope.se!cyan!                 ณ   !53!torrentz2eu.me!cyan!                 บ
-echo [8Cบ   !38!torrent-paradise.ml!cyan!        ณ   !46!isohunt.app!cyan!              ณ   !54!search.torrends.to!cyan!             บ
-echo [8Cบ   !39!btdig.com!cyan!                  ณ   !47!extratorrents.it!cyan!         ณ                                         บ
+echo [8Cบ   !32!filelisting.com!cyan!            ณ   !40!btdig.com!cyan!                ณ   !48!extratorrents.it!cyan!
+echo [8Cบ   !33!bt4g.org!cyan!                   ณ   !41!ext.to!cyan!                   ณ   !49!pirateiro.com!cyan!                  บ
+echo [8Cบ   !34!bitsearch.to!cyan!               ณ   !42!www.torlock.com!cyan!          ณ   !50!torrentseeker.com!cyan!              บ
+echo [8Cบ   !35!www.7torrents.cc!cyan!           ณ   !43!ibit.to!cyan!                  ณ   !51!otorrents.com!cyan!                  บ
+echo [8Cบ   !36!bitcq.com!cyan!                  ณ   !44!zooqle.com!cyan!               ณ   !52!vstorrent.org!cyan!                  บ
+echo [8Cบ   !37!knaben.eu!cyan!                  ณ   !45!snowfl.com!cyan!               ณ   !53!torrents-csv.ml!cyan!                บ
+echo [8Cบ   !38!torrentproject2.com!cyan!        ณ   !46!idope.se!cyan!                 ณ   !54!torrentz2eu.me!cyan!                 บ
+echo [8Cบ   !39!torrent-paradise.ml!cyan!        ณ   !47!isohunt.app!cyan!              ณ   !55!search.torrends.to!cyan!             บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Proxys Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !55!proxy-bay.dev!cyan!              ณ   !60!siteunblocked.info!cyan!       ณ   !65!proxyninja.org!cyan!                 บ
-echo [8Cบ   !56!proxygalaxy.pw!cyan!             ณ   !61!unblockproject.monster!cyan!   ณ   !66!knaben.info!cyan!                    บ
-echo [8Cบ   !57!yifystatus.com!cyan!             ณ   !62!unblocksource.net!cyan!        ณ   !67!unblocktorrent.com!cyan!             บ
-echo [8Cบ   !58!eztvstatus.com!cyan!             ณ   !63!unblockit.ws!cyan!             ณ   !68!torrends.to!cyan!                    บ
-echo [8Cบ   !59!ettvproxies.com!cyan!            ณ   !64!torrentbay.to!cyan!            ณ                                         บ
+echo [8Cบ   !56!proxy-bay.dev!cyan!              ณ   !61!siteunblocked.info!cyan!       ณ   !66!proxyninja.org!cyan!                 บ
+echo [8Cบ   !57!proxygalaxy.pw!cyan!             ณ   !62!unblockproject.monster!cyan!   ณ   !67!knaben.info!cyan!                    บ
+echo [8Cบ   !58!yifystatus.com!cyan!             ณ   !63!unblocksource.net!cyan!        ณ   !68!unblocktorrent.com!cyan!             บ
+echo [8Cบ   !59!eztvstatus.com!cyan!             ณ   !64!unblockit.kim!cyan!            ณ   !69!torrends.to!cyan!                    บ
+echo [8Cบ   !60!ettvproxies.com!cyan!            ณ   !65!torrentbay.to!cyan!            ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Torrent Applications Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !69!Jackett!cyan!                    ณ   !72!sonarr.tv!cyan!                ณ   !75!DuckieTV!cyan!                       บ
-echo [8Cบ   !70!www.qbittorrent.org!cyan!        ณ   !73!radarr.video!cyan!             ณ   !76!couchpota.to!cyan!                   บ
-echo [8Cบ   !71!www.torrentrover.com!cyan!       ณ   !74!lidarr.audio!cyan!             ณ                                         บ
+echo [8Cบ   !70!Jackett!cyan!                    ณ   !73!sonarr.tv!cyan!                ณ   !76!DuckieTV!cyan!                       บ
+echo [8Cบ   !71!www.qbittorrent.org!cyan!        ณ   !74!radarr.video!cyan!             ณ   !77!couchpota.to!cyan!                   บ
+echo [8Cบ   !72!www.torrentrover.com!cyan!       ณ   !75!lidarr.audio!cyan!             ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-echo [8Cบ                                             !yellow!77!cyan!  ^>  !white!Web Torrenting!cyan!                                                 บ
+echo [8Cบ                                             !yellow!78!cyan!  ^>  !white!Web Torrenting!cyan!                                                 บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!INSTALL!grey!" / "!yellow!SEARCH!grey!" / "!yellow!ADD!grey!" / "!yellow!HELP!grey!" !t2! !yellow!{!t3!}!grey!." 60
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!INSTALL!brightblack!" / "!yellow!SEARCH!brightblack!" / "!yellow!ADD!brightblack!" / "!yellow!HELP!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 60
 echo !red!
 >nul 2>&1 reg query "HKCR\.torrent" || (
 if "!Language!"=="EN" call :DRAW_CENTER "ERROR: To be able to use !yellow!TORRENTING!red!, first you need to choose: !yellow![INSTALL]" 15
@@ -1221,7 +1219,7 @@ if "!Language!"=="FR" call :DRAW_CENTER "ERREUR: Pour pouvoir utiliser !yellow!T
 echo:
 )
 call :PROMPT
-if "!x!"=="77" goto :WEBTORRENTING
+if "!x!"=="78" goto :WEBTORRENTING
 if "!UntrustedWebsitesWarning!"=="1" for %%a in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
 if "!Language!"=="EN" set t="You have selected '%%c' which is flagged as an untrusted website." "Be careful using it."
 if "!Language!"=="FR" set t="Vous avez slectionn '%%c' qui est signal comme un site web non fiable." "Soyez prudent en l'utilisant."
@@ -1261,10 +1259,10 @@ echo [9Cบ    !5!www.torrentsafe.com!cyan!    บ
 echo [9Cบ    !6!zbigz.com!cyan!              บ
 echo [9Cบ                                 บ
 echo [9Cศอออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWEBTORRENTING
@@ -1306,10 +1304,10 @@ if "!Language!"=="EN" echo [4Cบ  Then you can run the .torrent that you have do
 if "!Language!"=="FR" echo [4Cบ  Ensuite, vous pouvez excuter le .torrent que vous avez tlcharg dans l'un des liens de Torrenting depuis Illegal Services.            บ
 echo [4Cบ                                                                                                                                           บ
 echo [4Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 if "!x!"=="1" call :INSTALL_FILE qBittorent & goto :CONTINUETORRENTTUTORIAL
@@ -1396,10 +1394,10 @@ echo [9Cบ   !22!www.kitsunekko.net !green!(animes)!cyan!                บ
 echo [9Cบ   !23!subs.nandesuka.workers.dev !green!(animes) [FR]!cyan!   บ
 echo [9Cบ                                                     บ
 echo [9Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESUBTITLES
@@ -1416,7 +1414,7 @@ call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
 call :CLEAR 1 79
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ patricktech-repacks.xyz/ e13.xatab-repack.com/ qoob.name/
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/software/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ skidrowrepacks.com/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ patricktech-repacks.xyz/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
 call :SCALE 136 54
@@ -1450,7 +1448,7 @@ echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û V
 echo [8Cบ                                                                                                                      บ
 echo [8Cบ   !39!!red!igg-games.com!cyan!           ณ   !47!steamunlocked.net!cyan!          ณ   !55!alltorrents.co!cyan!                     บ
 echo [8Cบ   !40!!red!pcgamestorrents.com!cyan!     ณ   !48!gog-games.com!cyan!              ณ   !56!www.myabandonware.com !green!(retro)!cyan!      บ
-echo [8Cบ   !41!www.skidrowcodex.net!cyan!    ณ   !49!codex-games.com!cyan!            ณ   !57!gamesnostalgia.com !green!(retro)!cyan!         บ
+echo [8Cบ   !41!!red!www.skidrowcodex.net!cyan!    ณ   !49!!red!codex-games.com!cyan!            ณ   !57!gamesnostalgia.com !green!(retro)!cyan!         บ
 echo [8Cบ   !42!www.mrpcgamer.co!cyan!        ณ   !50!getgamez.net!cyan!               ณ   !58!cygames.fr !green!(FR)!cyan!                    บ
 echo [8Cบ   !43!www.game3rb.com!cyan!         ณ   !51!www.elamigos-games.com!cyan!     ณ   !59!telecharger-jeuxpc.fr !green!(FR)!cyan!         บ
 echo [8Cบ   !44!agfy.co!cyan!                 ณ   !52!crackhub.site!cyan!              ณ   !60!www.gamestorrents.fm !green!(ES)!cyan!          บ
@@ -1459,22 +1457,22 @@ echo [8Cบ   !46!www.ovagames.com!cyan!        ณ   !54!gogunlocked.com!cyan!    
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Videogame Repacks Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !61!repack-games.com!cyan!        ณ   !68!dodi-repacks.site!cyan!           ณ   !75!repack.info!cyan!                       บ
-echo [8Cบ   !62!www.game-repack.site!cyan!    ณ   !69!www.blackboxrepack.com!cyan!      ณ   !76!m4ckd0ge-repacks.me!cyan!               บ
-echo [8Cบ   !63!elamigos.site!cyan!           ณ   !70!masquerade.site!cyan!             ณ   !77!patricktech-repacks.xyz!cyan!           บ
-echo [8Cบ   !64!fitgirl-repacks.site!cyan!    ณ   !71!scooter-repacks.site!cyan!        ณ   !78!e13.xatab-repack.com !green!(RU)!cyan!         บ
-echo [8Cบ   !65!repack-mechanics.com!cyan!    ณ   !72!www.gnarly-repacks.site!cyan!     ณ   !79!qoob.name !green!(RU)!cyan!                    บ
-echo [8Cบ   !66!gamesdrive.net!cyan!          ณ   !73!cpgrepacks.site!cyan!             ณ                                            บ
-echo [8Cบ   !67!darckrepacks.com!cyan!        ณ   !74!www.tiny-repacks.win!cyan!        ณ                                            บ
+echo [8Cบ   !61!repack-games.com!cyan!        ณ   !68!darckrepacks.com!cyan!           ณ   !75!repack.info!cyan!                        บ
+echo [8Cบ   !62!www.game-repack.site!cyan!    ณ   !69!dodi-repacks.site!cyan!          ณ   !76!m4ckd0ge-repacks.me!cyan!                บ
+echo [8Cบ   !63!elamigos.site!cyan!           ณ   !70!masquerade.site!cyan!            ณ   !77!patricktech-repacks.xyz!cyan!            บ
+echo [8Cบ   !64!skidrowrepacks.com!cyan!      ณ   !71!scooter-repacks.site!cyan!       ณ   !78!e13.xatab-repack.com !green!(RU)!cyan!          บ
+echo [8Cบ   !65!fitgirl-repacks.site!cyan!    ณ   !72!www.gnarly-repacks.site!cyan!    ณ   !79!qoob.name !green!(RU)!cyan!                     บ
+echo [8Cบ   !66!repack-mechanics.com!cyan!    ณ   !73!cpgrepacks.site!cyan!            ณ                                             บ
+echo [8Cบ   !67!gamesdrive.net!cyan!          ณ   !74!www.tiny-repacks.win!cyan!       ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
-if "!UntrustedWebsitesWarning!"=="1" for %%a in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 19`izofile.com 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 40`pcgamestorrents.com 45`cracked-games.org) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
+if "!UntrustedWebsitesWarning!"=="1" for %%a in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 19`izofile.com 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 40`pcgamestorrents.com 41`www.skidrowcodex.net 45`cracked-games.org 49`codex-games.com) do for /f "tokens=1,2delims=`" %%b in ("%%a") do if "!x!"=="%%b" if "!%%b!"=="!yellow!%%b !unchecked!" (
 if "!Language!"=="EN" set t="You have selected '%%c' which is flagged as an untrusted* website. Be careful using it." "*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
 if "!Language!"=="FR" set t="Vous avez slectionn '%%c' qui est signal comme un site web non fiable*. Soyez prudent en l'utilisant." "*Les sites web non fiables sont connus de la communaut warez pour indexer du contenu malveillant ou suspect ainsi que lgitime."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -1493,7 +1491,7 @@ call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
 call :CLEAR 1 27
-set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
+set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/new-home inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
 call :SCALE 85 33
@@ -1524,10 +1522,10 @@ echo [7Cบ                                 บ                                   บ
 echo [7Cบ   !26!vancedapp.com!cyan!          บ   !27!xManager-v2!cyan!              บ
 echo [7Cบ                                 บ                                   บ
 echo [7Cศอออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / !yellow!SEARCH!grey! !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / !yellow!SEARCH!brightblack! !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEANDROID
@@ -1603,10 +1601,10 @@ if "!Language!"=="EN" set t=Download location:
 if "!Language!"=="FR" set t=Emplacement de tlchargement:
 echo           !brightmagenta!!t!!white! !YouTubeDLOutputDirectory!!cyan!
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!OPEN!grey!" / "!yellow!PRIORITY!grey!" / "!yellow!INSTALL!grey!" !t2! !yellow!{!t3!}!grey!." 50
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!OPEN!brightblack!" / "!yellow!PRIORITY!brightblack!" / "!yellow!INSTALL!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 50
 echo:
 call :PROMPT
 for /l %%a in (1,1,14) do if "!x!"=="%%a" call :CHECK_INTERNET && goto :GOYOUTUBEDL || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
@@ -1685,7 +1683,7 @@ if "!x!"=="14" (
 set o1=Convert to .wav
 set a=--extract-audio --audio-format wav --audio-quality 0
 )
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %showcursor%
@@ -1720,7 +1718,7 @@ if "!Language!"=="EN" set t=Enter new download location
 if "!Language!"=="FR" set t=Entrer le nouvel emplacement de tlchargement
 %showcursor%
 set x=
-set /p "x=!grey!!t!: !yellow!"
+set /p "x=!brightblack!!t!: !yellow!"
 %hidecursor%
 if defined x (
 set "x=!x:"=!"
@@ -1794,10 +1792,10 @@ echo [8Cบ   !55!www.frecombo.com!cyan!            ณ   !59!mailaccess.top!cyan! 
 echo [8Cบ   !56!combolist.io!cyan!                ณ   !60!dailycombolist!cyan!                  บ   !64!www.torproject.org!cyan!         บ
 echo [8Cบ                                                                                 บ                                     บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEUSEFULWEBSITES
@@ -1848,10 +1846,10 @@ echo [28C!brightmagenta!Mise … jour le: !white!14/09/2021
 echo [11C!brightmagenta!Alternativement vous pouvez visiter: !18!ddosforhire.net
 )
 echo [8C!cyan!ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDOS
@@ -1899,10 +1897,10 @@ if "!Language!"=="FR" echo [17CฬอþÛ!bgyellow!!red!Û  IP Dynamique ou Satique ? 
 echo [17Cบ                                     บ
 echo [17Cบ    !8!whatismyipaddress.com!cyan!      บ
 echo [17Cศอออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!READ!grey!" / "!yellow!DELETE!grey!" !t2! !yellow!{!t3!}!grey!." 40
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!READ!brightblack!" / "!yellow!DELETE!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 40
 echo:
 call :PROMPT
 for %%a in (1 2 3) do if "%%a"=="!x!" call :CHECK_INTERNET && set "_el=!x!" || (call :ERROR_INTERNET & goto :CLEARIPLOOKUP)
@@ -1921,7 +1919,7 @@ goto :CONTINUEIPLOOKUP
 cls
 if "!x!"=="1" (
 title !title:`=Looking up ^> ...!
-for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "https://api.ipify.org"') do set x=%%a
+for /f %%a in ('curl.exe -fkLs "https://api.ipify.org"') do set x=%%a
 )
 >nul chcp 65001
 for %%a in (1 2) do if "!_el!"=="%%a" (
@@ -1934,10 +1932,10 @@ call :VPN_DETECTOR
 echo !cyan!
 type "!TMPF!\IS_Log.txt"
 >nul chcp !CP!
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" set t=Do you want to
 if "!Language!"=="FR" set t=Voulez vous
-call :DRAW_CENTER "!t! Save (!yellow!S!grey!) / Read (!yellow!R!grey!) / Delete (!yellow!D!grey!) / Back (!yellow!B!grey!) ?" 40
+call :DRAW_CENTER "!t! Save (!yellow!S!brightblack!) / Read (!yellow!R!brightblack!) / Delete (!yellow!D!brightblack!) / Back (!yellow!B!brightblack!) ?" 40
 
 :CHOICE_IPLOOKUP
 >nul choice /n /c SRDB
@@ -2025,13 +2023,13 @@ echo [8Cบ                            !11!portforward.com!cyan!                 
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo:
 >nul 2>&1 sc query npcap || (
-if "!Language!"=="EN" call :DRAW_CENTER "!red!ERROR: !grey!To use NMAP, you must first choose: "!yellow!INSTALL!grey!"" 20
-if "!Language!"=="FR" call :DRAW_CENTER "!red!ERREUR: !grey!Pour utiliser NMAP, vous devez d'abord choisir: "!yellow!INSTALL!grey!"" 20
+if "!Language!"=="EN" call :DRAW_CENTER "!red!ERROR: !brightblack!To use NMAP, you must first choose: "!yellow!INSTALL!brightblack!"" 20
+if "!Language!"=="FR" call :DRAW_CENTER "!red!ERREUR: !brightblack!Pour utiliser NMAP, vous devez d'abord choisir: "!yellow!INSTALL!brightblack!"" 20
 echo:
 )
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!grey!!t1! "!yellow!BACK!grey!" / "!yellow!INSTALL!grey!" / "!yellow!PRIORITY!grey!" !t2! !yellow!{!t3!}!grey!." 45
+call :DRAW_CENTER "!brightblack!!t1! "!yellow!BACK!brightblack!" / "!yellow!INSTALL!brightblack!" / "!yellow!PRIORITY!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 45
 echo:
 call :PROMPT
 for /l %%a in (1,1,7) do if "!x!"=="%%a" call :CHECK_INTERNET && goto :GOPORTSCANNING || (call :ERROR_INTERNET & goto :CONTINUEPORT)
@@ -2080,12 +2078,12 @@ if "!x!"=="7" (
 if "!Language!"=="EN" set t=Enter start port
 if "!Language!"=="FR" set t=Entrer le port de dbut
 set p1=
-set /p "p1=!grey!!t!: !yellow!"
+set /p "p1=!brightblack!!t!: !yellow!"
 call :CHECK_PORT p1 || goto :CLEARPORT
 if "!Language!"=="EN" set t=Enter end port
 if "!Language!"=="FR" set t=Entrer le port de fin
 set p2=
-set /p "p2=!grey!!t!: !yellow!"
+set /p "p2=!brightblack!!t!: !yellow!"
 call :CHECK_PORT p2 || goto :CLEARPORT
 set a=-p!p1!-!p2!
 if "!Language!"=="EN" set o1=Scan your range of custom ports.
@@ -2096,7 +2094,7 @@ if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %showcursor%
 set x=
-set /p "x=!grey!!t!IP/URL: !yellow!"
+set /p "x=!brightblack!!t!IP/URL: !yellow!"
 call :CHECK_URL x IP/URL || goto :CLEARPORT
 if not defined o1 (
 if not exist "TCP_Port_Scanner.exe" call :CURL "Portable_Apps\TCP_Port_Scanner.exe" "`git_raw_downloads`/TCP_Port_Scanner.exe" || (call :ERROR_INTERNET & goto :CLEARPORT)
@@ -2135,14 +2133,14 @@ if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %showcursor%
 set x=
-set /p "x=!grey!!t!IP/URL: !yellow!"
+set /p "x=!brightblack!!t!IP/URL: !yellow!"
 %hidecursor%
 call :CHECK_URL x IP/URL || goto :MAINMENU
 if "!Language!"=="EN" set t=Enter Port
 if "!Language!"=="FR" set t=Entrer le Port
 %showcursor%
 set p1=
-set /p "p1=!grey!!t!: !yellow!"
+set /p "p1=!brightblack!!t!: !yellow!"
 %hidecursor%
 call :CHECK_PORT p1 || goto :MAINMENU
 if not exist "Portable_Apps\paping.exe" call :CURL "Portable_Apps\paping.exe" "`git_raw_downloads`/paping.exe" || (call :ERROR_INTERNET & goto :MAINMENU)
@@ -2158,7 +2156,7 @@ if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %showcursor%
 set x=
-set /p "x=!grey!!t!IP/URL: !yellow!"
+set /p "x=!brightblack!!t!IP/URL: !yellow!"
 %hidecursor%
 call :CHECK_URL x IP/URL || goto :MAINMENU
 start "" "%~f0" PINGER
@@ -2198,10 +2196,10 @@ echo [16Cบ    !8!tiny.cc!cyan!            บ
 echo [16Cบ    !9!bitly.com!cyan!          บ
 echo [16Cบ                             บ
 echo [16Cศอออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEIPLOGGERS
@@ -2268,10 +2266,10 @@ echo [8Cบ                                                                      
 echo [8Cบ                                !38!doxbin.org!cyan!                                    บ
 echo [8Cบ                                                                                     บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDOXING
@@ -2333,10 +2331,10 @@ echo [8Cบ                                        บ                             
 echo [8Cฬออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                             !yellow!57!cyan!  ^>  !white!Windows and Office Cracks!cyan!                                           บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!OPEN!grey!" / "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!OPEN!brightblack!" / "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 for /l %%a in (!c1!,1,!c2!) do if "!x!"=="%%a" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUEPORTABLEAPPS)
@@ -2515,10 +2513,10 @@ echo [6Cบ                          !19!rg-adguard.net!cyan!                    
 echo [6Cบ                          !20!Office 2013-2019 C2R Install!cyan!                        บ
 echo [6Cบ                                                                                     บ
 echo [6Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!OPEN!grey!" / "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!OPEN!brightblack!" / "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWINDOWSANDOFFICE
@@ -2552,10 +2550,10 @@ echo [11Cบ    !yellow!9 !white!Windows Game Booster!cyan!           บ
 echo [11Cบ   !yellow!10 !white!Spoofing!cyan!                       บ
 echo [11Cบ                                     บ
 echo [11Cศอออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!OPEN!grey!" / "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!OPEN!brightblack!" / "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 set cn=
@@ -2595,10 +2593,10 @@ echo [5Cบ    !8!MediaInfo !green!(Digital Media Analysis)!cyan!             บ
 echo [5Cบ    !9!Open Broadcaster Software !green!(Screen Recorder)!cyan!    บ
 echo [5Cบ                                                         บ
 echo [5Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWAREZCONTENTCREATOR
@@ -2657,10 +2655,10 @@ echo [6Cบ   !19!dark.fail !green!(darknet)!cyan!                               
 echo [6Cบ   !20!ddosforhire.net !green!(DDoS)!cyan!                              บ
 echo [6Cบ                                                              บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWAREZWIKIS
@@ -2670,16 +2668,16 @@ call :ERRORMESSAGE
 goto :CONTINUEWAREZWIKIS
 
 :RELEASELOGS
-call :SCALE 66 19
+call :SCALE 66 20
 title !title:`=Release Logs!
 call :ROSE "Release Logs"
 
 :CLEARRELEASELOGS
-call :CLEAR 1 6
-set db=predb.me/ corrupt-net.org/ m2v.ru/ upawg.ca/ nzbindex.com/ binsearch.info/
+call :CLEAR 1 7
+set db=predb.me/ corrupt-net.org/ m2v.ru/ forum.squawkr.io/ upawg.ca/ nzbindex.com/ binsearch.info/
 
 :CONTINUERELEASELOGS
-call :SCALE 66 19
+call :SCALE 66 20
 echo !cyan!
 echo [22Cออออออออออออออออออออ
 echo [21C// !red!Û!bgyellow!!black! Release Logs !red!Û!bgblack!!cyan! \\
@@ -2688,15 +2686,16 @@ echo [12Cบ                                       บ
 echo [12Cบ    !1!predb.me!cyan!                     บ
 echo [12Cบ    !2!corrupt-net.org!cyan!              บ
 echo [12Cบ    !3!m2v.ru!cyan!                       บ
-echo [12Cบ    !4!upawg.ca !green!(audio)!cyan!             บ
-echo [12Cบ    !5!nzbindex.com !green!(NZB)!cyan!           บ
-echo [12Cบ    !6!binsearch.info !green!(NZB)!cyan!         บ
+echo [12Cบ    !4!forum.squawkr.io !green!(movies)!cyan!    บ
+echo [12Cบ    !5!upawg.ca !green!(audio)!cyan!             บ
+echo [12Cบ    !6!nzbindex.com !green!(NZB)!cyan!           บ
+echo [12Cบ    !7!binsearch.info !green!(NZB)!cyan!         บ
 echo [12Cบ                                       บ
 echo [12Cศอออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUERELEASELOGS
@@ -2736,7 +2735,7 @@ echo [7Cบ   !13!magazinelib.com!cyan!                ณ   !15!fr.downmagaz.net !
 echo [7Cบ                                                                                    บ
 echo [7CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û MANGAS Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออน
 echo [7Cบ                                                                                    บ
-echo [7Cบ   !16!mangaowl.net!cyan!                   ณ   !46!toonily.net!cyan!
+echo [7Cบ   !16!mangaowl.net!cyan!                   ณ   !46!toonily.net!cyan!                     บ
 echo [7Cบ   !17!mangareader.to!cyan!                 ณ   !47!www.nonstopscans.com!cyan!            บ
 echo [7Cบ   !18!www.mangago.me!cyan!                 ณ   !48!guya.moe!cyan!                        บ
 echo [7Cบ   !19!mangadex.org!cyan!                   ณ   !49!mangahub.io!cyan!                     บ
@@ -2771,10 +2770,10 @@ if "!Language!"=="EN" echo [7Cบ                      !brightmagenta!Alternative
 if "!Language!"=="FR" echo [7Cบ                  !brightmagenta!Alternativement vous pouvez visiter: !76!MALSync!cyan!               บ
 echo [7Cบ                                                                                    บ
 echo [7Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEEBOOKS
@@ -2814,10 +2813,10 @@ echo [8Cบ    !8!deemix.app!cyan!                              บ
 echo [8Cบ    !9!freezer.life!cyan!                            บ
 echo [8Cบ                                                  บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" / "!yellow!SEARCH!grey!" / !t2! !yellow!{!t3!}!grey!." 30
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" / "!yellow!SEARCH!brightblack!" / !t2! !yellow!{!t3!}!brightblack!." 30
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEMUSICS
@@ -2834,7 +2833,7 @@ call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
 call :CLEAR 1 38
-set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php fora.snahp.eu/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ www.wawa-rammstein.de/ starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ raidforums.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
+set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php fora.snahp.eu/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ www.wawa-rammstein.de/ starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ rfmirror.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
 
 :CONTINUEFORUMWEBSITES
 call :SCALE 126 38
@@ -2863,17 +2862,17 @@ echo [7Cบ                                                                      
 echo [7CฬออออออออออออออออออþÛ!bgyellow!!red!Û Hacking Û!bgblack!!cyan!ÛþอออออออออออออออออออหอออออออออออออออออออออþÛ!bgyellow!!red!Û Others Û!bgblack!!cyan!Ûþออออออออออออออออออออออน
 echo [7Cบ                                                    บ                                                         บ
 echo [7Cบ   !31!www.nulled.to  !green![EN]!cyan!                       บ   !37!teamos-hkrg.com    !green![EN]!cyan!                        บ
-echo [7Cบ   !32!raidforums.com !green![EN]!cyan!                       บ   !38!forum.ru-board.com !green![RU]!cyan!                        บ
+echo [7Cบ   !32!rfmirror.com   !green![EN]!cyan!                       บ   !38!forum.ru-board.com !green![RU]!cyan!                        บ
 echo [7Cบ   !33!hackforums.net !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ   !34!cracked.to     !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ   !35!payload.sh     !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ   !36!mailaccess.top !green![EN]!cyan!                       บ                                                         บ
 echo [7Cบ                                                    บ                                                         บ
 echo [7Cศออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEFORUMWEBSITES
@@ -2910,10 +2909,10 @@ echo [16Cบ      !yellow!8!white! Wifi Hotspot!cyan!                   บ
 echo [16Cบ      !yellow!9!white! Clipboard History!cyan!              บ
 echo [16Cบ     !yellow!10!white! Background Apps!cyan!                บ
 echo [16Cศอออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 if "!x!"=="1" start cmd /c sfc /ScanNow ^& pause ^& exit
@@ -3103,10 +3102,10 @@ echo [6Cบ    !yellow!9!white! Disk Cleanup.!cyan!                              
 echo [6Cบ   !yellow!10!cyan!  ^>  !white!More Windows Tweaks !green!(Portable Apps)!cyan!               บ
 echo [6Cบ                                                            บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 for /l %%a in (1,1,7) do if "!x!"=="%%a" (
@@ -3258,10 +3257,10 @@ echo [11Cบ    !2!Volume ID!cyan!         บ
 echo [11Cบ    !3!AntiOS!cyan!            บ
 echo [11Cบ                            บ
 echo [11Cศออออออออออออออออออออออออออออผ
-echo !grey!
+echo !brightblack!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numro OU) & (set t2=et appuy sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!yellow!BACK!grey!" !t2! !yellow!{!t3!}!grey!." 20
+call :DRAW_CENTER "!t1! "!yellow!BACK!brightblack!" !t2! !yellow!{!t3!}!brightblack!." 20
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESPOOFING
@@ -3384,8 +3383,8 @@ if "!Language!"=="EN" set t=Establishing connection to websites database
 if "!Language!"=="FR" set t=Etablissement de la connexion … la base de donne des sites internet
 set url=!git_raw_downloads!/Websites.txt
 title !debug!!t!: '!url!'. - Illegal Services
-Curl\x!arch!\curl.exe -fIkLs "!url!" -o NUL || (call :ERROR_INTERNET & exit)
-set /a index=0, cn=0, el=0, result=0
+curl.exe -fIkLs "!url!" -o NUL || (call :ERROR_INTERNET & exit)
+set /a index=0, cn=0, result=0
 set s=
 if "!Language!"=="EN" (
 set o1=Website Down
@@ -3395,7 +3394,7 @@ if "!Language!"=="FR" (
 set o1=Site Internet Mort
 set o2=Site Internet Chang de Domaine
 )
-for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
+for /f %%a in ('curl.exe -fkLs "!url!"') do (
 set /a index+=1
 title !debug![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^|  [...] - Illegal Services
 )
@@ -3404,27 +3403,27 @@ if "!Language!"=="EN" echo Scan of the !index! indexed websites has started. You
 if "!Language!"=="FR" echo Le scan des !index! sites web indexs a commenc. Vous serez notifi si l'un d'entre eux est mort ou a chang de domaine.
 echo:
 for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t1=(((1%%a*60)+1%%b)*60+1%%c)*100+1%%d-36610100"
-for /f %%a in ('Curl\x!arch!\curl.exe -fkLs "!url!"') do (
+for /f %%a in ('curl.exe -fkLs "!url!"') do (
 set /a cn+=1, el=cn*100/index
 if !result! gtr 1 set s=s
 title !debug![!result! result!s! found from !cn!/!index! websites indexed]  ^|  [!el!/100%%]  ^|  [%%a] - Illegal Services
->nul ping -w 1000 -n 1 "%%a" || >nul Curl\x!arch!\curl.exe -IkLs "https://%%a/" || >nul Curl\x!arch!\curl.exe -IkLs "http://%%a/" || (
+>nul ping -w 1000 -n 1 "%%a" || >nul curl.exe -IkLs "https://%%a/" || >nul curl.exe -IkLs "http://%%a/" || (
 set /a result+=1
 echo !red!!o1!: !yellow!%%a !red!seems to be down for you ^^!
-Curl\x!arch!\curl.exe -fkLs "https://isitup.org/%%a" | >nul findstr /ic:"Oh no %%a" && (
+curl.exe -fkLs "https://isitup.org/%%a" | >nul findstr /ic:"Oh no %%a" && (
 set /a result+=1
 echo !red!!o1!: !yellow!%%a !red!seems to be down for everyone ^^!
 )
 )
-for /f "tokens=1,*delims=-" %%b in ('Curl\x!arch!\curl.exe -Iksw "%%{response_code}-%%{redirect_url}" "https://%%a/"') do if "%%b"=="301" for /f "tokens=2delims=/" %%d in ("%%c") do if not "%%d"=="%%a" if not "%%d"=="github.com" if not "%%d"=="www.microsoft.com" if not "%%d"=="discord.com" if not "%%d"=="danse-musique.org" (
+for /f "tokens=1,*delims=-" %%b in ('curl.exe -Iksw "%%{response_code}-%%{redirect_url}" "https://%%a/"') do if "%%b"=="301" for /f "tokens=2delims=/" %%d in ("%%c") do if not "%%d"=="%%a" if not "%%d"=="github.com" if not "%%d"=="www.microsoft.com" if not "%%d"=="discord.com" if not "%%d"=="danse-musique.org" (
 set /a result+=1
 for /f "delims=//" %%e in ("%%c") do echo !red!!o2!: !yellow!https://%%a/ !green!^> !yellow!%%e//%%d/
 )
 )
 echo !cyan!
 for /f "tokens=1-4delims=:.," %%a in ("!time: =0!") do set /a "t2=(((1%%a*60)+1%%b)*60+1%%c)*100+1%%d-36610100, tDiff=t2-t1, tDiff+=((~(tDiff&(1<<31))>>31)+1)*8640000, seconds=tDiff/100"
-title !debug![!result! result!s! found from !index! websites indexed]  ^|  [Scan finished in !seconds! seconds.] - Illegal Services
-if "!Language!"=="EN" echo Scan ended with !result! result!s! found from !index! websites indexed in !seconds! seconds.
+title !debug![!result! result!s! found from !index! websites indexed]  ^|  [Scan completed in !seconds! seconds.] - Illegal Services
+if "!Language!"=="EN" echo Scan completed with !result! result!s! found from !index! websites indexed in !seconds! seconds.
 if "!Language!"=="FR" echo L'analyse s'est termine avec !result! rsultats trouvs … partir de !index! sites web indexs en !seconds! secondes.
 echo:
 pause
@@ -3433,10 +3432,10 @@ exit
 :PROCESS_YOUTUBEDL
 call :CHECK_YOUTUBEDLPRIORITY
 title !debug!YouTube DL    ^|!youtube_dl!.exe !a!^|    ^|!o1!^|    ^|Priority: !YouTubeDLPriority:~1!^| - Illegal Services
-echo !grey!
+echo !brightblack!
 echo [7C##############################################
-if "!Language!"=="EN" echo [7C#       !brightred!   !cyan!Welcome in YouTube DL   !brightred!!grey!        #
-if "!Language!"=="FR" echo [7C#      !brightred!   !cyan!Bievenue dans YouTube DL   !brightred!!grey!      #
+if "!Language!"=="EN" echo [7C#       !brightred!   !cyan!Welcome in YouTube DL   !brightred!!brightblack!        #
+if "!Language!"=="FR" echo [7C#      !brightred!   !cyan!Bievenue dans YouTube DL   !brightred!!brightblack!      #
 echo [7C##############################################
 echo:
 if "!Language!"=="EN" (
@@ -3447,16 +3446,16 @@ if "!Language!"=="FR" (
 set t1=Choix
 set t2=Veuillez patienter pendant le tlchargement de
 )
-echo [7C !cyan!!t1!: !yellow!!o1!!grey!
+echo [7C !cyan!!t1!: !yellow!!o1!!brightblack!
 echo [7C !cyan!!t2!: !yellow!!x!!cyan! . . .
-echo !grey!
+echo !brightblack!
 echo =========================================================================================================
 echo !red!
 >nul chcp 65001
 start /b /w !YouTubeDLPriority! Portable_Apps\YouTube-DL\!youtube_dl!.exe --ffmpeg-location "Portable_Apps\YouTube-DL" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
 set el=!errorlevel!
 >nul chcp !CP!
-echo !grey!
+echo !brightblack!
 echo =========================================================================================================
 echo !cyan!
 if "!Language!"=="EN" if "!el!"=="0" (
@@ -3485,10 +3484,10 @@ title !debug!NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !Po
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d 64534 /f
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d 30 /f
 >nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "StrictTimeWaitSeqCheck" /t REG_DWORD /d 1 /f
-echo !grey!
+echo !brightblack!
 echo [7C#################################################################
-if "!Language!"=="EN" echo [7C#       !brightred!   !cyan!Welcome in the best Port Scanner by NMAP   !brightred!!grey!        #
-if "!Language!"=="FR" echo [7C#    !brightred!   !cyan!Bienvenue dans le meilleur Port Scanner par NMAP   !brightred!!grey!   #
+if "!Language!"=="EN" echo [7C#       !brightred!   !cyan!Welcome in the best Port Scanner by NMAP   !brightred!!brightblack!        #
+if "!Language!"=="FR" echo [7C#    !brightred!   !cyan!Bienvenue dans le meilleur Port Scanner par NMAP   !brightred!!brightblack!   #
 echo [7C#################################################################
 echo:
 if "!Language!"=="EN" (
@@ -3499,17 +3498,17 @@ if "!Language!"=="FR" (
 set t1=Temps
 set t2=Veuillez patienter pendant le scan de
 )
-echo [7C !cyan!Scan: !yellow!!o1!!grey!
-echo [7C !cyan!!t1!: !yellow!!o2!!grey!
+echo [7C !cyan!Scan: !yellow!!o1!!brightblack!
+echo [7C !cyan!!t1!: !yellow!!o2!!brightblack!
 echo [7C !cyan!!t2!: !yellow!!x!!cyan! . . .
-echo !grey!
+echo !brightblack!
 echo =========================================================================================================
 echo !red!
 >nul chcp 65000
 start /b /w !PortPriority! Portable_Apps\NMAP\nmap.exe !a!
 set el=!errorlevel!
 >nul chcp !CP!
-echo !grey!
+echo !brightblack!
 echo =========================================================================================================
 echo !cyan!
 if "!Language!"=="EN" if "!el!"=="0" (
@@ -3551,9 +3550,9 @@ echo       \________________________________________________/                 !r
 echo        \                                              /
 echo         \          Made By IB_U_Z_Z_A_R_Dl           /
 echo          \__________________________________________/
-echo !grey!
-if "!Language!"=="EN" echo                       ** PRESS !yellow![CTRL + C]!grey! ^> !yellow![N]!grey! ^> !yellow![ENTER]!grey! to view result and restart. **
-if "!Language!"=="FR" echo               ** Presser !yellow![CTRL + C]!grey! ^> !yellow![N]!grey! ^> !yellow![ENTRER]!grey! pour afficher le rsultat et recommencer. **
+echo !brightblack!
+if "!Language!"=="EN" echo                       ** PRESS !yellow![CTRL + C]!brightblack! ^> !yellow![N]!brightblack! ^> !yellow![ENTER]!brightblack! to view result and restart. **
+if "!Language!"=="FR" echo               ** Presser !yellow![CTRL + C]!brightblack! ^> !yellow![N]!brightblack! ^> !yellow![ENTRER]!brightblack! pour afficher le rsultat et recommencer. **
 echo !white!
 ping -t -l 0 !x!
 goto :_PING
@@ -3584,17 +3583,8 @@ call :MSGBOX 1 !t! 69680 "Illegal Services Checker"
 exit /b
 
 :CHECK_INTERNET
-for %%a in (https http) do Curl\x!arch!\curl.exe -fIkLs "%%a://www.google.com/" -o NUL && exit /b 0
+for %%a in (https http) do curl.exe -fIkLs "%%a://www.google.com/" -o NUL && exit /b 0
 exit /b 1
-
-:INSTALL_ANSICON
-for %%a in (ansicon.exe ANSI32.dll) do if not exist "Ansicon\x!arch!\%%a" call :CURL "Ansicon\x!arch!\%%a" "`git_raw_main`/Ansicon/x!arch!/%%a" || (call :ERROR_INTERNET & exit)
-if "!arch!"=="64" if not exist "Ansicon\x64\ANSI64.dll" call :CURL "Ansicon\x!arch!\ANSI64.dll" "`git_raw_main`/Ansicon/x!arch!/ANSI64.dll" || (call :ERROR_INTERNET & exit)
-pushd "Ansicon\x!arch!"
-ansicon.exe -i
-popd
-start "" "%~f1"
-exit
 
 :MSGBOX
 if "%1"=="UPDATER" mshta vbscript:Execute("msgbox ""%~2"" & Chr(10) & Chr(10) & ""%~3"" & Chr(10) & ""%~4"",%5,""%~6"":close")
@@ -3721,7 +3711,7 @@ if "!Language!"=="EN" set t=Downloading
 if "!Language!"=="FR" set t=Tlchargement
 <nul set /p="!cyan!!t!: !yellow!!url!!cyan!"
 echo:
-Curl\x!arch!\curl.exe --create-dirs -f#kLo "%~1" "!url!" || if not "!url:%git%=!"=="!url!" call :CURL_PROXYS "%~1" "!url!" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4)
+curl.exe --create-dirs -f#kLo "%~1" "!url!" || if not "!url:%git%=!"=="!url!" call :CURL_PROXYS "%~1" "!url!" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4)
 if exist "%~f1" for %%a in (7z zip) do if "%~x1"==".%%a" if "%~nx1"=="ffmpeg.7z" (7za\x!arch!\7za.exe x -aoa -bso0 -o"%~dp1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4) & del /f /q "%~f1") else (7za\x!arch!\7za.exe x -aoa -bso0 -o"%~dpn1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4) & del /f /q "%~f1")
 set Start_Folder=1
 exit /b 0
@@ -3740,7 +3730,7 @@ if "!Language!"=="FR" set t=Tlchargement
 cmd /c rem
 <nul set /p="!cyan!!t!: !yellow!https://!el!!cn!%~nx2!cyan!"
 echo:
-Curl\x!arch!\curl.exe --create-dirs -f#kLo "%~1" "https://!el!!cn!%~nx2" && exit /b 0
+curl.exe --create-dirs -f#kLo "%~1" "https://!el!!cn!%~nx2" && exit /b 0
 )
 exit /b 1
 
@@ -3760,7 +3750,7 @@ if "!Language!"=="EN" set t=Enter the %1 to track
 if "!Language!"=="FR" set t=Entrer l'%1 … tracker
 %showcursor%
 set x=
-set /p "x=!grey!!t!: !yellow!"
+set /p "x=!brightblack!!t!: !yellow!"
 %hidecursor%
 if "%1"=="IP" (call :CHECK_IP x || exit /b 1) else call :CHECK_URL x IP/URL || exit /b 1
 if "!4!"=="!yellow!4 !checked!" start "" "https://check-host.net/ip-info?host=!x!" && cmdwiz.exe delay 1500
@@ -3772,7 +3762,7 @@ exit /b 0
 
 :IP_DETECTOR
 set height=4
-for /f "tokens=1,2delims=: " %%a in ('Curl\x!arch!\curl.exe -fkLs "https://ipinfo.io/!x!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
+for /f "tokens=1,2delims=: " %%a in ('curl.exe -fkLs "https://ipinfo.io/!x!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a:%%b"
@@ -3799,14 +3789,14 @@ exit /b
 for /f "delims=/" %%a in ("!x:*://=!") do set "x=%%a"
 title !title:`=Looking up ^> %x%!
 set height=4
-for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192"') do (
+for /f "tokens=2delims=</" %%a in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a"
 set "data=!data:query>=IP v4/v6  : !"
 echo     !data!
 )>>"!TMPF!\IS_Log.txt"
-for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161"') do (
+for /f "tokens=2delims=</" %%a in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a"
@@ -3828,7 +3818,7 @@ echo     !data!
 exit /b
 
 :PROXY_DETECTOR
-for /f "tokens=1,2delims=: " %%a in ('Curl\x!arch!\curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
+for /f "tokens=1,2delims=: " %%a in ('curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a:%%b"
@@ -3843,7 +3833,7 @@ echo     !data!
 exit /b
 
 :VPN_DETECTOR
-for /f "tokens=2delims=</" %%a in ('Curl\x!arch!\curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=16973824"') do (
+for /f "tokens=2delims=</" %%a in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=16973824"') do (
 set /a height+=1
 mode 68,!height!
 set "data=%%a"
@@ -4246,11 +4236,11 @@ exit /b !_el!
 :ERRORMESSAGE
 call :ROSE "Error Choice"
 if "%~1"=="" (
-if "!Language!"=="EN" set "t=ERROR: !grey!"!yellow!!x!!grey!" is not a valid choice"
-if "!Language!"=="FR" set "t=ERREUR: !grey!"!yellow!!x!!grey!" n'est pas un choix valide"
+if "!Language!"=="EN" set "t=ERROR: !brightblack!"!yellow!!x!!brightblack!" is not a valid choice"
+if "!Language!"=="FR" set "t=ERREUR: !brightblack!"!yellow!!x!!brightblack!" n'est pas un choix valide"
 ) else (
-if "!Language!"=="EN" set "t=ERROR: !grey!"!yellow!!%1!!grey!" is not a valid %~3"
-if "!Language!"=="FR" set "t=ERREUR: !grey!"!yellow!!%1!!grey!" n'est pas %~2 valide"
+if "!Language!"=="EN" set "t=ERROR: !brightblack!"!yellow!!%1!!brightblack!" is not a valid %~3"
+if "!Language!"=="FR" set "t=ERREUR: !brightblack!"!yellow!!%1!!brightblack!" n'est pas %~2 valide"
 )
 set t=!red!!t!...
 call :DRAW_CENTER_ERROR t 20
@@ -4417,7 +4407,7 @@ call :MSGBOX 2 !t! 69648 "Illegal Services Checker"
 exit /b 2
 
 :_PROXY
-for /f %%a in ('Curl\x!arch!\curl.exe -fIksw "%%{response_code}" -o NUL "https://%1"') do if "%%a"=="200" (
+for /f %%a in ('curl.exe -fIksw "%%{response_code}" -o NUL "https://%1"') do if "%%a"=="200" (
 if "%1"=="github.com/Illegal-Services/Illegal_Services" call :__PROXY %1 raw tree/source & exit /b 0
 if "%1"=="bitbucket.org/IllegalServices/illegal_services" call :__PROXY %1 raw src/source/ & exit /b 0
 if "%1"=="git.teknik.io/Illegal-Services/Illegal_Services" call :__PROXY %1 raw/branch src/branch/source & exit /b 0
@@ -4451,7 +4441,7 @@ git_source
 exit /b
 
 :CURL_RAW
-for /f "delims=" %%a in ('Curl\x!arch!\curl.exe -fkLs "https://pastebin.com/raw/%1"') do set %2=%%a
+for /f "delims=" %%a in ('curl.exe -fkLs "https://pastebin.com/raw/%1"') do set %2=%%a
 exit /b
 
 :ERROR_WINDOWS_VERSION
@@ -4500,8 +4490,14 @@ if "!Language!"=="FR" echo !cyan!Le fichier !red!"!IS_Dir!%1"!cyan! est manquant
 exit /b
 
 :ERROR_FATAL
+set el=
 if "!Language!"=="EN" set t="Illegal Services can't start because '!IS_Dir!%1' is missing."
 if "!Language!"=="FR" set t="Illegal Services ne peut pas dmarrer car '!IS_Dir!%1' est manquant."
+if "%2"=="CURL" (
+if "!Language!"=="EN" set t=!t! "Please reinstall Illegal Services and try again."
+if "!Language!"=="FR" set t=!t! "Veuillez rinstaller Illegal Services et ressayer."
+set el=2
+) else (
 if "!errorlevel!"=="1" (
 if "!Language!"=="EN" set t=!t! "You must activate Internet and try again."
 if "!Language!"=="FR" set t=!t! "You must activate Internet and try again."
@@ -4511,6 +4507,8 @@ if "!Language!"=="EN" set t=!t! "IS Git proxy: '!git!' appears to be offline. Fo
 if "!Language!"=="FR" set t=!t! "IS Git proxy: '!git!' semble tre hors ligne. Pour plus de mises … jour, visitez notre Telegram."
 set el=1
 )
+)
 call :MSGBOX 2 !t! 69648 "Illegal Services Checker"
 if "!el!"=="1" start https://t.me/illegal_services_forum
+if "!el!"=="2" start https://t.me/illegal_services
 exit
