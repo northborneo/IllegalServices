@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 0. 9
-REM  Fileversion:  5. 9. 0. 9
+REM  Productversion:  5. 9. 1. 0
+REM  Fileversion:  5. 9. 1. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -23,7 +23,7 @@ set "hidecursor=<nul set /p=[?25l"
 set "showcursor=<nul set /p=[?25h"
 %hidecursor%
 for %%a in (%*) do if "%%~a"=="--debug" set "debug=[Debug] "
-if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%a" (
+if not "%~1"=="" if defined Language for %%a in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%a" (
 call :APPLY_SETTINGS
 for /f "tokens=6" %%a in ('cmdwiz.exe getconsoledim') do if %%a lss 120 call :SCALE 120 30
 goto :PROCESS_%%a
@@ -53,6 +53,7 @@ if "%~nx0"=="Illegal Services.exe" (
 >nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
 >nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !debug!) && exit
 )
+set cn=
 for /f %%a in ('tasklist /fo csv /fi "imagename eq %~nx0" ^| findstr /c:"%~nx0"') do set /a cn+=1
 pushd "!TMPF!"
 set batused=
@@ -69,7 +70,7 @@ if not "%%a"=="!batused!" del /f /q /a "%%a"
 :LAUNCHER
 popd
 for %%a in (version lastversion) do if defined %%a set old_%%a=!%%a!
-set version=v5.9.0.9 - 08/10/2021
+set version=v5.9.1.0 - 09/10/2021
 set "el=underline=[4m,underlineoff=[24m,black=[30m,red=[31m,green=[32m,yellow=[33m,blue=[34m,magenta=[35m,cyan=[36m,white=[37m,bgblack=[40m,bgyellow=[43m,bgwhite=[47m,brightblack=[90m,brightred=[91m,brightblue=[94m,brightmagenta=[95m"
 set "%el:,=" && set "%"
 echo !bgblack!!brightblue!
@@ -87,7 +88,7 @@ echo !brightblack!
 set "IS_Dir=%~dp0Illegal Services\"
 set "IS_Dir=!IS_Dir:Illegal Services\Illegal Services\=Illegal Services\!"
 if defined ProgramFiles(x86) (set arch=64) else set arch=86
-set "PATH=!PATH!;Curl\x!arch!"
+if not "!PATH:~-9!"==";Curl\x!arch!" set "PATH=!PATH!;Curl\x!arch!"
 >nul 2>&1 where curl.exe || call :ERROR_FATAL !PATH:~-8!\curl.exe CURL
 
 :LAUNCHER_PROXY
@@ -176,7 +177,7 @@ if "!Language!"=="FR" echo !green![PASSER] . . .
 call :ROSE "Welcome Back"
 if "!Language!"=="EN" <nul set /p="!sp!Starting Illegal Services ^> "
 if "!Language!"=="FR" <nul set /p="!sp!Dmarrage d'Illegal Services ^> "
-for /f "tokens=2*" %%a in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set "ISOutputDirectory=%%b\Illegal Services"
+for /f "tokens=2*" %%a in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set "IS_OutputDirectory=%%b\Illegal Services"
 set "checked=!cyan![!yellow!x!cyan!]!white! "
 set "unchecked=!cyan![ ]!white! "
 call :CHECK_VOICEASSISTANTCHOICE
@@ -269,11 +270,13 @@ call :CHOOSE credit && goto :CREDITS
 if "!Language!"=="EN" set t=networks
 if "!Language!"=="FR" set t=reseaux
 call :CHOOSE !t! && (
+start https://illegal-services.github.io/Illegal_Services/ && cmdwiz.exe delay 1500
 start https://github.com/Illegal-Services/Illegal_Services && cmdwiz.exe delay 1500
 start https://t.me/illegal_services_forum && cmdwiz.exe delay 1500
 start https://t.me/illegal_services && cmdwiz.exe delay 1500
 start https://discord.gg/rU2w2E83KF && cmdwiz.exe delay 1500
 start https://twitter.com/illegalservices && cmdwiz.exe delay 1500
+start https://chrome.google.com/webstore/detail/illegal-services-bookmark/dkddkjnnbeohinbbcfdklcehcmgpdofi && cmdwiz.exe delay 1500
 start https://addons.mozilla.org/addon/illegal-services
 goto :MAINMENU
 )
@@ -510,7 +513,7 @@ if "!x!"=="21" goto :SETTING_USERNAME
 if "!x!"=="22" goto :SETTING_LANGUAGE
 if "!x!"=="23" goto :SETTING_EXPORTIMPORT
 if "!x!"=="24" if "!DeveloperMode!"=="1" goto :SETTING_EXTRACT_SOURCE
-call :CHOOSE open && (call :OPEN_FOLDER "!ISOutputDirectory!" & goto :CONTINUESETTINGS)
+call :CHOOSE open && (call :OPEN_FOLDER "!IS_OutputDirectory!" & goto :CONTINUESETTINGS)
 call :CHOOSE back && goto :MAINMENU
 call :ERRORMESSAGE
 goto :CONTINUESETTINGS
@@ -645,7 +648,7 @@ for %%a in (extd speak-x!arch!) do >nul 2>&1 taskkill /f /im "%%a.exe" /t
 goto :CLEARSETTINGS
 
 :SETTING_EXPORTIMPORT
-if not exist "!ISOutputDirectory!" md "!ISOutputDirectory!"
+if not exist "!IS_OutputDirectory!" md "!IS_OutputDirectory!"
 echo !cyan!
 if "!Language!"=="EN" echo Do you want to [!yellow!E!cyan!]xport or [!yellow!I!cyan!]mport your current settings ?
 if "!Language!"=="FR" echo Voulez-vous [!yellow!E!cyan!]xporter ou [!yellow!I!cyan!]mporter vos paramtres actuels ?
@@ -662,7 +665,7 @@ if "!Language!"=="FR" (
 set t1=Fichiers d'enregistrements
 set t2=Enregistrer sous
 )
-for /f "delims=" %%a in ('SaveFileBox.exe IS_Settings.reg "!t1! (*.reg)|*.reg" "!ISOutputDirectory!" "!t2!" /f') do set el=%%a
+for /f "delims=" %%a in ('SaveFileBox.exe IS_Settings.reg "!t1! (*.reg)|*.reg" "!IS_OutputDirectory!" "!t2!" /f') do set el=%%a
 >nul 2>&1 reg export "!IS_Reg!" "!el!" /y && (
 if "!Language!"=="EN" (
 set t1=Settings exported successfully.
@@ -685,7 +688,7 @@ if "!Language!"=="FR" (
 set t1=Fichiers d'enregistrements
 set t2=Ouvrir
 )
-for /f "delims=" %%a in ('OpenFileBox.exe "!t1! (*.reg)|*.reg" "!ISOutputDirectory!" "!t2!"') do if /i "%%~xa"==".reg" set _el=%%a
+for /f "delims=" %%a in ('OpenFileBox.exe "!t1! (*.reg)|*.reg" "!IS_OutputDirectory!" "!t2!"') do if /i "%%~xa"==".reg" set _el=%%a
 >nul 2>&1 find /i "[HKEY_CURRENT_USER\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services]" "!_el!" && >nul 2>&1 reg import "!_el!" && (
 for %%a in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS DEVELOPERMODE) do call :CHECK_%%a
 call :APPLY_SETTINGS
@@ -1037,7 +1040,7 @@ title !title:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
 call :CLEAR 1 49
-set db=www.filmstreaming1.tel/stream1u/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ www.streaminz.me/ filmpourvous.com/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ wvvw.toonanime.tv/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+set db=www.filmstreaming1.tel/stream1u/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ hdss.papystreaming.net/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ www.streaminz.me/ filmpourvous.com/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ www.papystreaming.cc/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ dbanimes.com/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
 call :SCALE 101 48
@@ -1061,7 +1064,7 @@ echo [8Cบ   !11!vfstreamiz.com!cyan!                 ณ                         
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û ANIMES Û!bgblack!!cyan!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !22!voiranime.com!cyan!                  ณ   !33!wvvw.toonanime.tv!cyan!              บ
+echo [8Cบ   !22!voiranime.com!cyan!                  ณ   !33!toonanime.cc!cyan!                   บ
 echo [8Cบ   !23!neko-sama.fr!cyan!                   ณ   !34!wvw.jetanimes.com!cyan!              บ
 echo [8Cบ   !24!french-manga.net!cyan!               ณ   !35!vostfree.tv!cyan!                    บ
 echo [8Cบ   !25!www.adkami.com!cyan!                 ณ   !36!www.universanime.co!cyan!            บ
@@ -1419,8 +1422,8 @@ set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.
 :CONTINUEWINDOWS
 call :SCALE 136 54
 echo !cyan!
-echo [56Cออออออออออออออออออออออออออออ
-echo [55C// !red!Û!bgyellow!!black! CRACKED WINDOWS APPS !red!Û!bgblack!!cyan! \\
+echo [54Cออออออออออออออออออออออออออออ
+echo [53C// !red!Û!bgyellow!!black! CRACKED WINDOWS APPS !red!Û!bgblack!!cyan! \\
 echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออออออþÛ!bgyellow!!red!Û Applications Û!bgblack!!cyan!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
@@ -1491,7 +1494,7 @@ call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
 call :CLEAR 1 27
-set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/new-home inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
+set db=a2zapk.com/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/temp-home apkmody.io/new-home inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
 call :SCALE 85 33
@@ -1949,21 +1952,21 @@ goto :CHOICE_IPLOOKUP
 if "!Language!"=="EN" set t=Enter victim's name
 if "!Language!"=="FR" set t=Entrez le nom de la victime
 call :INPUTBOX "!t!: "
-if not exist "!ISOutputDirectory!\IP Lookup Saved.txt" (
-2>nul md "!ISOutputDirectory!"
-echo =============================================>"!ISOutputDirectory!\IP Lookup Saved.txt"
+if not exist "!IS_OutputDirectory!\IP Lookup Saved.txt" (
+2>nul md "!IS_OutputDirectory!"
+echo =============================================>"!IS_OutputDirectory!\IP Lookup Saved.txt"
 )
 >nul chcp 1252
-echo   Name: !ID!>>"!ISOutputDirectory!\IP Lookup Saved.txt"
+echo   Name: !ID!>>"!IS_OutputDirectory!\IP Lookup Saved.txt"
 >nul chcp !CP!
-echo =============================================>>"!ISOutputDirectory!\IP Lookup Saved.txt"
-type "!TMPF!\IS_Log.txt">>"!ISOutputDirectory!\IP Lookup Saved.txt"
-echo =============================================>>"!ISOutputDirectory!\IP Lookup Saved.txt"
+echo =============================================>>"!IS_OutputDirectory!\IP Lookup Saved.txt"
+type "!TMPF!\IS_Log.txt">>"!IS_OutputDirectory!\IP Lookup Saved.txt"
+echo =============================================>>"!IS_OutputDirectory!\IP Lookup Saved.txt"
 if "!errorlevel!"=="0" (
-if "!Language!"=="EN" set t="IP Lookup successfully saved at: " "'!ISOutputDirectory!\IP Lookup Saved.txt'" "Do you want to open it now ?"
-if "!Language!"=="FR" set t="IP Lookup enregistr้s avec succ่s เ: " "'!ISOutputDirectory!\IP Lookup Saved.txt'" "Voulez-vous l'ouvrir maintenant ?"
+if "!Language!"=="EN" set t="IP Lookup successfully saved at: " "'!IS_OutputDirectory!\IP Lookup Saved.txt'" "Do you want to open it now ?"
+if "!Language!"=="FR" set t="IP Lookup enregistr้s avec succ่s เ: " "'!IS_OutputDirectory!\IP Lookup Saved.txt'" "Voulez-vous l'ouvrir maintenant ?"
 call :MSGBOXLEVEL 3 !t! 69668 "Illegal Services Checker"
-if "!el!"=="6" start /max explorer.exe "!ISOutputDirectory!\IP Lookup Saved.txt"
+if "!el!"=="6" start /max explorer.exe "!IS_OutputDirectory!\IP Lookup Saved.txt"
 ) else (
 if "!Language!"=="EN" set t="An unexpected error has occurred."
 if "!Language!"=="FR" set t="Une erreur inattendue est survenue."
@@ -4343,7 +4346,7 @@ for %%b in (!len!) do if "!str:~%%b,1!"=="" set /a "len&=~1<<%%a"
 exit /b
 
 :READ_IPLOOKUP
-if exist "!ISOutputDirectory!\IP Lookup Saved.txt" (start "" "!ISOutputDirectory!\IP Lookup Saved.txt") else (
+if exist "!IS_OutputDirectory!\IP Lookup Saved.txt" (start "" "!IS_OutputDirectory!\IP Lookup Saved.txt") else (
 if "!Language!"=="EN" set t="IP Lookup list not found." "You must first save a Lookup to be able to read it."
 if "!Language!"=="FR" set t="Liste d'IP Lookup non trouve." "Vous devez d'abord enregistrer une Lookup pour pouvoir la lire."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -4351,8 +4354,8 @@ call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
 exit /b
 
 :DELETE_IPLOOKUP
-if exist "!ISOutputDirectory!\IP Lookup Saved.txt" (
-del /f /q "!ISOutputDirectory!\IP Lookup Saved.txt" && (
+if exist "!IS_OutputDirectory!\IP Lookup Saved.txt" (
+del /f /q "!IS_OutputDirectory!\IP Lookup Saved.txt" && (
 if "!Language!"=="EN" set t="IP Lookup list successfully deleted."
 if "!Language!"=="FR" set t="La liste d'IP Lookup a bien t supprime."
 call :MSGBOX 1 !t! 69696 "Illegal Services Checker"
