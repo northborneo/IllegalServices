@@ -7,6 +7,7 @@ pastebin.com
 cse.google.com
 www.google.com
 ;;MAINMENU
+illegal-services.github.io
 t.me
 twitter.com
 discord.gg
@@ -217,7 +218,7 @@ gum-gum-streaming.com
 otakufr.co
 www.mavanimes.co
 vostanimez.com
-wvvw.toonanime.tv
+toonanime.cc
 wvw.jetanimes.com
 vostfree.tv
 www.universanime.co
