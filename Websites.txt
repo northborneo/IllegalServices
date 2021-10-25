@@ -50,6 +50,7 @@ softarchive.is
 www.downduck.com
 scnlog.me
 www.creaxy.com
+downturk.net
 downarchive.org
 0dayhome.net
 scene-rls.net
@@ -89,7 +90,7 @@ megaddl.co
 heroturko2.net
 crazy4tv.com
 psarips.top
-themoviesflix.co.com
+themoviesflix.com.co
 themovieflix.co.in
 hevcbay.com
 rarefilmm.com
@@ -119,7 +120,7 @@ free-telecharger.net
 libertyvf.bz
 www.extreme-down.plus
 zone-telechargement.cam
-www.wawacity.one
+www.wawacity.work
 ww2.jeddl.com
 www.zone-mania.com
 www.zone-down.com
@@ -150,13 +151,13 @@ supernova.to
 vumoo.to
 hulu.sc
 watchtvepisodes.me
-ww1.123movieshub.tc
+ww2.123movieshub.tc
 0gomovies.so
 soap2day.to
 www1.movie4u.live
 cinehub.wtf
 openloadfreetv.me
-allmoviesforyou.co
+allmoviesforyou.net
 kisscartoon.info
 9anime.to
 animesuge.io
@@ -167,7 +168,6 @@ arrayanime.com
 gogoanime.vc
 animefrenzy.org
 anime8.ru
-www2.kiss-anime.asia
 animevibe.se
 animixplay.to
 www2.kickassanime.ro
@@ -183,7 +183,7 @@ runnel.ir
 time4tv.stream
 live94today.com
 livetv.sx
-en.stream2watch.sx
+apps.stream2watch.sx
 sportplus.live
 thehomesport.com
 ;;STREAMINGFR
@@ -191,7 +191,7 @@ www.filmstreaming1.tel
 www6.filmstreaming.to
 french-stream.re
 wvw.hds.lc
-hdss.papystreaming.net
+papystreaming-vf.com
 fcine.me
 wwv.films-streams.com
 www.filmstreaminglol.com
@@ -199,12 +199,11 @@ streaming-films.net
 vfstreamiz.com
 wwv.streamfilm.cc
 vvw.streampourvous.ws
-www.streaminz.me
-filmpourvous.com
+streaminz.me
+filmstreamingvf.org
 www.illimitestreaming.co
 www.cinezzz.org
 voirseries.tv
-www.papystreaming.cc
 streamcomplet.buzz
 tratov.com
 voiranime.com
@@ -222,7 +221,6 @@ toonanime.cc
 wvw.jetanimes.com
 vostfree.tv
 www.universanime.co
-dbanimes.com
 daijoubu.si
 animepourvous.com
 animevostfr.tv
@@ -242,7 +240,7 @@ teatv.net
 www.morpheustvbox.com
 mediaboxhd.net
 www.vivatv.io
-www.beetvapk.me
+beetvapk.me
 filmplus.app
 www.novatvapk.com
 tvmob.net
@@ -256,7 +254,6 @@ www.gtdb.to
 www.torrentdownloads.pro
 1337x.to
 rarbg.to
-www.ettvcentral.com
 torrentz2k.xyz
 thepiratebay.org
 prostylex.org
@@ -277,9 +274,8 @@ yts.mx
 eztv.re
 www3.yggtorrent.nz
 www.sharewood.tv
-www.oxtorrent.nz
+www.oxtorrent.sh
 torrent9.to
-filelisting.com
 bt4g.org
 bitsearch.to
 www.7torrents.cc
@@ -303,11 +299,10 @@ vstorrent.org
 torrents-csv.ml
 torrentz2eu.me
 search.torrends.to
-proxy-bay.dev
+proxy-bay.me
 proxygalaxy.pw
 yifystatus.com
 eztvstatus.com
-ettvproxies.com
 siteunblocked.info
 unblockproject.monster
 unblocksource.net
@@ -425,6 +420,7 @@ repack-mechanics.com
 gamesdrive.net
 darckrepacks.com
 dodi-repacks.site
+www.blackboxrepack.com
 masquerade.site
 scooter-repacks.site
 www.gnarly-repacks.site
@@ -519,7 +515,6 @@ www.filechef.com
 leak.sx
 combo-list.com
 www.frecombo.com
-combolist.io
 combolist.top
 sinister.ly
 mailaccess.top
@@ -534,8 +529,6 @@ www.ipstresser.com
 ipstress.in
 royalstresser.com
 anonboot.com
-stresser.zone
-xtremebooter.xyz
 eor-n.to
 str3ssed.co
 vtoxicity.net
@@ -706,8 +699,8 @@ mangapark.net
 www.mangahere.cc
 fanfox.net
 wuxiaworld.site
+hatigarmscanz.net
 leviatanscans.com
-methodscans.com
 the-nonames.com
 lynxscans.com
 skscans.com
