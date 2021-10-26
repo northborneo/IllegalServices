@@ -205,6 +205,7 @@ www.illimitestreaming.co
 www.cinezzz.org
 voirseries.tv
 streamcomplet.buzz
+comustream.fr
 tratov.com
 voiranime.com
 neko-sama.fr
@@ -254,6 +255,7 @@ www.gtdb.to
 www.torrentdownloads.pro
 1337x.to
 rarbg.to
+www.ettvcentral.com
 torrentz2k.xyz
 thepiratebay.org
 prostylex.org
@@ -277,6 +279,7 @@ www.sharewood.tv
 www.oxtorrent.sh
 torrent9.to
 bt4g.org
+xbit.pw
 bitsearch.to
 www.7torrents.cc
 bitcq.com
@@ -303,6 +306,7 @@ proxy-bay.me
 proxygalaxy.pw
 yifystatus.com
 eztvstatus.com
+ettvproxies.com
 siteunblocked.info
 unblockproject.monster
 unblocksource.net
@@ -661,10 +665,13 @@ www.reddit.com
 rentry.org
 darknetlive.com
 dark.fail
+piracy.moe
 ;;RELEASELOGS
+predb.ovh
 predb.me
 corrupt-net.org
 m2v.ru
+www.xrel.to
 forum.squawkr.io
 upawg.ca
 nzbindex.com
@@ -748,9 +755,12 @@ lectortmo.com
 ;;MUSICS
 flacmusic.info
 losslessma.net
+muxiv.net
+slider.kz
 downloads.khinsider.com
 www.vgmusic.com
 freshremix.ru
+hikarinoakari.com
 www.slsknet.org
 deemix.app
 freezer.life
