@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 1. 1
-REM  Fileversion:  5. 9. 1. 1
+REM  Productversion:  5. 9. 1. 2
+REM  Fileversion:  5. 9. 1. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -73,7 +73,7 @@ if not "%%A"=="!BATUSED!" del /f /q /a "%%A"
 :LAUNCHER
 popd
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.1.1 - 25/10/2021
+set VERSION=v5.9.1.2 - 26/10/2021
 set "el=UNDERLINE=[4m,UNDERLINEOFF=[24m,BLACK=[30m,RED=[31m,GREEN=[32m,YELLOW=[33m,BLUE=[34m,MAGENTA=[35m,CYAN=[36m,WHITE=[37m,BGBLACK=[40m,BGYELLOW=[43m,BGWHITE=[47m,BRIGHTBLACK=[90m,BRIGHTRED=[91m,BRIGHTBLUE=[94m,BRIGHTMAGENTA=[95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -397,16 +397,31 @@ call :MSGBOX 1 !t! 69696 "Ms.CatFire"
 if "!x!"=="18" (
 if "!Language!"=="EN" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@0x00 - Added More Features Spoofing."^&vbCrLf^&"@blacktario - Added 14 websites."^&vbCrLf^&"@0x00 - Added 8 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."^&vbCrLf^&"@ayo - Added 1 website."
+echo Msg="@Agam - Added ON/OFF switches."^&vbCrLf^&"@Vincent - Helped finding a bug with wrong choices."^&vbCrLf^&"@cocorisss - Updated Python Port Scanner."^&vbCrLf^&"@Chonkus - Added Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - Helped finding existing bugs."^&vbCrLf^&"@Simi - Helped with some English translation."^&vbCrLf^&"@Saltyy - Helped improving UI choices."^&vbCrLf^&"@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Updated Glary Utilities crack."^&vbCrLf^&"@0x00 - Helped finding a bug with Windows Update MiniTool."^&vbCrLf^&"@0x00 - Added More Features Spoofing."
 echo Style=69696
 echo Title="All other contributors:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 if "!Language!"=="FR" (
 echo Dim Msg,Style,Title,Response
-echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise เ jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aid้ เ trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@0x00 - A ajout้ More Features Spoofing."^&vbCrLf^&"@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@0x00 - A ajout้ 8 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."^&vbCrLf^&"@ayo - A ajout้ 1 site internet."
+echo Msg="@Agam - A ajout้ les interrupteurs ON/OFF."^&vbCrLf^&"@Vincent - A aid้ เ trouver un bug avec les mauvais choix."^&vbCrLf^&"@cocorisss - Mise เ jour du Port Scanner Python."^&vbCrLf^&"@Chonkus - A ajout้ Internet Protocol TV (IPTV)."^&vbCrLf^&"@KiritoLeFakePK - A aid้ เ trouver les bugs existants."^&vbCrLf^&"@Simi - A aid้ pour certaines traductions Anglaise."^&vbCrLf^&"@Saltyy - A aid้ เ am้liorer les choix d'interface utilisateur."^&vbCrLf^&"@AMIT - A corrig้ 'ControlSet001' vers 'CurrentControlSet'."^&vbCrLf^&"@0x00 - Mise เ jour du crack de Glary Utilities."^&vbCrLf^&"@0x00 - A aid้ เ trouver un bug avec Windows Update MiniTool."^&vbCrLf^&"@0x00 - A ajout้ More Features Spoofing."
 echo Style=69696
-echo Title="Toutes les autres personnes qui m'ont aid้"
+echo Title="Tous les autres contributeurs:"
+echo Response=MsgBox^(Msg,Style,Title^)
+)>"!TMPF!\msgbox.vbs"
+cscript //nologo "!TMPF!\msgbox.vbs"
+if "!Language!"=="EN" (
+echo Dim Msg,Style,Title,Response
+echo Msg="@blacktario - Added 14 websites."^&vbCrLf^&"@0x00 - Added 8 websites."^&vbCrLf^&"@LeSaintFisti - Added 6 websites."^&vbCrLf^&"@Trident Security - Added 2 websites."^&vbCrLf^&"@Bastien - Added 1 website."^&vbCrLf^&"@RaaFii1 - Added 1 website."^&vbCrLf^&"@snipercat - Added 1 website."^&vbCrLf^&"@PistachePoilue - Added 1 website."^&vbCrLf^&"@FZ_PARRAIN_ZF - Added 1 website."^&vbCrLf^&"@Eiralys - Added 1 website."^&vbCrLf^&"@ayo - Added 1 website."^&vbCrLf^&"@Zyker - Added 1 website."
+echo Style=69696
+echo Title="All other contributors:"
+echo Response=MsgBox^(Msg,Style,Title^)
+)>"!TMPF!\msgbox.vbs"
+if "!Language!"=="FR" (
+echo Dim Msg,Style,Title,Response
+echo Msg="@blacktario - A ajout้ 14 sites internet."^&vbCrLf^&"@0x00 - A ajout้ 8 sites internet."^&vbCrLf^&"@LeSaintFisti - A ajout้ 6 sites internet."^&vbCrLf^&"@Trident Security - A ajout้ 2 sites internet."^&vbCrLf^&"@Bastien - A ajout้ 1 site internet."^&vbCrLf^&"@RaaFii1 - A ajout้ 1 site internet."^&vbCrLf^&"@snipercat - A ajout้ 1 site internet."^&vbCrLf^&"@PistachePoilue - A ajout้ 1 site internet."^&vbCrLf^&"@FZ_PARRAIN_ZF - A ajout้ 1 site internet."^&vbCrLf^&"@Eiralys - A ajout้ 1 site internet."^&vbCrLf^&"@ayo - A ajout้ 1 site internet."^&vbCrLf^&"@Zyker - A ajout้ 1 site internet."
+echo Style=69696
+echo Title="Tous les autres contributeurs:"
 echo Response=MsgBox^(Msg,Style,Title^)
 )>"!TMPF!\msgbox.vbs"
 cscript //nologo "!TMPF!\msgbox.vbs"
@@ -1044,55 +1059,56 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGEN
 
 :STREAMINGFR
-call :SCALE 101 47
+call :SCALE 101 48
 title !TITLE:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 47
-set db=www.filmstreaming1.tel/stream1u/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ papystreaming-vf.com/accueil// fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ streaminz.me/ filmstreamingvf.org/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ streamcomplet.buzz/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+call :CLEAR 1 48
+set db=www.filmstreaming1.tel/stream1u/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ papystreaming-vf.com/accueil// fcine.me/ wwv.films-streams.com/ libertyvf.bz/ www.filmstreaminglol.com/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ streaminz.me/ filmstreamingvf.org/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ streamcomplet.buzz/ comustream.fr/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
-call :SCALE 101 47
+call :SCALE 101 48
 echo !CYAN!
 echo [40Cออออออออออออออออออออออ
 echo [39C// !RED!Û!BGYELLOW!!BLACK! STREAMING [FR] !RED!Û!BGBLACK!!CYAN! \\
 echo [8Cษอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û FILMS Û!BGBLACK!!CYAN!Ûþอออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ    !1!www.filmstreaming1.tel!CYAN!         ณ   !11!vfstreamiz.com!CYAN!                 บ
-echo [8Cบ    !2!www6.filmstreaming.to!CYAN!          ณ   !12!wwv.streamfilm.cc!CYAN!              บ
-echo [8Cบ    !3!french-stream.re!CYAN!               ณ   !13!vw.streampourvous.ws!CYAN!           บ
-echo [8Cบ    !4!wvw.hds.lc!CYAN!                     ณ   !14!streaminz.me!CYAN!                   บ
-echo [8Cบ    !5!papystreaming-vf.com!CYAN!           ณ   !15!filmstreamingvf.org!CYAN!            บ
-echo [8Cบ    !6!fcine.me!CYAN!                       ณ   !16!www.illimitestreaming.co!CYAN!       บ
-echo [8Cบ    !7!wwv.films-streams.com!CYAN!          ณ   !17!www.cinezzz.org!CYAN!                บ
-echo [8Cบ    !8!libertyvf.bz!CYAN!                   ณ   !18!voirseries.tv !GREEN!(series)!CYAN!         บ
-echo [8Cบ    !9!www.filmstreaminglol.com!CYAN!       ณ   !19!streamcomplet.buzz!CYAN!             บ
-echo [8Cบ   !10!streaming-films.net!CYAN!            ณ   !20!tratov.com!CYAN!                     บ
+echo [8Cบ    !1!www.filmstreaming1.tel!CYAN!         ณ   !12!wwv.streamfilm.cc!CYAN!              บ
+echo [8Cบ    !2!www6.filmstreaming.to!CYAN!          ณ   !13!vw.streampourvous.ws!CYAN!           บ
+echo [8Cบ    !3!french-stream.re!CYAN!               ณ   !14!streaminz.me!CYAN!                   บ
+echo [8Cบ    !4!wvw.hds.lc!CYAN!                     ณ   !15!filmstreamingvf.org!CYAN!            บ
+echo [8Cบ    !5!papystreaming-vf.com!CYAN!           ณ   !16!www.illimitestreaming.co!CYAN!       บ
+echo [8Cบ    !6!fcine.me!CYAN!                       ณ   !17!www.cinezzz.org!CYAN!                บ
+echo [8Cบ    !7!wwv.films-streams.com!CYAN!          ณ   !18!voirseries.tv !GREEN!(series)!CYAN!         บ
+echo [8Cบ    !8!libertyvf.bz!CYAN!                   ณ   !19!streamcomplet.buzz!CYAN!             บ
+echo [8Cบ    !9!www.filmstreaminglol.com!CYAN!       ณ   !20!comustream.fr!CYAN!                  บ
+echo [8Cบ    !9!streaming-films.net!CYAN!            ณ   !21!tratov.com!CYAN!                     บ
+echo [8Cบ   !10!vfstreamiz.com!CYAN!                 ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û ANIMES Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !21!voiranime.com!CYAN!                  ณ   !32!toonanime.cc!CYAN!                   บ
-echo [8Cบ   !22!neko-sama.fr!CYAN!                   ณ   !33!wvw.jetanimes.com!CYAN!              บ
-echo [8Cบ   !23!french-manga.net!CYAN!               ณ   !34!vostfree.tv!CYAN!                    บ
-echo [8Cบ   !24!www.adkami.com!CYAN!                 ณ   !35!www.universanime.co!CYAN!            บ
-echo [8Cบ   !25!www.ianimes.org!CYAN!                ณ   !36!daijoubu.si!CYAN!                    บ
-echo [8Cบ   !26!mavanimes.cc!CYAN!                   ณ   !37!animepourvous.com!CYAN!              บ
-echo [8Cบ   !27!streaming-integrale.com!CYAN!        ณ   !38!animevostfr.tv!CYAN!                 บ
-echo [8Cบ   !28!gum-gum-streaming.com!CYAN!          ณ   !39!animecomplet.me!CYAN!                บ
-echo [8Cบ   !29!otakufr.co!CYAN!                     ณ   !40!www.anime-ultime.net!CYAN!           บ
-echo [8Cบ   !30!www.mavanimes.co!CYAN!               ณ   !41!v5.anime-ultime.net!CYAN!            บ
-echo [8Cบ   !31!vostanimez.com!CYAN!                 ณ                                         บ
+echo [8Cบ   !22!voiranime.com!CYAN!                  ณ   !33!toonanime.cc!CYAN!                   บ
+echo [8Cบ   !23!neko-sama.fr!CYAN!                   ณ   !34!wvw.jetanimes.com!CYAN!              บ
+echo [8Cบ   !24!french-manga.net!CYAN!               ณ   !35!vostfree.tv!CYAN!                    บ
+echo [8Cบ   !25!www.adkami.com!CYAN!                 ณ   !36!www.universanime.co!CYAN!            บ
+echo [8Cบ   !26!www.ianimes.org!CYAN!                ณ   !37!daijoubu.si!CYAN!                    บ
+echo [8Cบ   !27!mavanimes.cc!CYAN!                   ณ   !38!animepourvous.com!CYAN!              บ
+echo [8Cบ   !28!streaming-integrale.com!CYAN!        ณ   !39!animevostfr.tv!CYAN!                 บ
+echo [8Cบ   !29!gum-gum-streaming.com!CYAN!          ณ   !40!animecomplet.me!CYAN!                บ
+echo [8Cบ   !30!otakufr.co!CYAN!                     ณ   !41!www.anime-ultime.net!CYAN!           บ
+echo [8Cบ   !31!www.mavanimes.co!CYAN!               ณ   !42!v5.anime-ultime.net!CYAN!            บ
+echo [8Cบ   !32!vostanimez.com!CYAN!                 ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û TELEVISION Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                   บ
-echo [8Cบ   !42!channelstream.watch!CYAN!            ณ   !46!sport-stream.live !GREEN!(sport)!CYAN!      บ
-echo [8Cบ   !43!www.myfree-tivi.com!CYAN!            ณ   !47!streaming-sport.tv !GREEN!(sport)!CYAN!     บ
-echo [8Cบ   !44!livetv.sx !GREEN!(sport)!CYAN!              ณ                                         บ
-echo [8Cบ   !45!fr4.sportplus.live !GREEN!(sport)!CYAN!     ณ                                         บ
+echo [8Cบ   !43!channelstream.watch!CYAN!            ณ   !47!sport-stream.live !GREEN!(sport)!CYAN!      บ
+echo [8Cบ   !44!www.myfree-tivi.com!CYAN!            ณ   !48!streaming-sport.tv !GREEN!(sport)!CYAN!     บ
+echo [8Cบ   !45!livetv.sx !GREEN!(sport)!CYAN!              ณ                                         บ
+echo [8Cบ   !46!fr4.sportplus.live !GREEN!(sport)!CYAN!     ณ                                         บ
 echo [8Cบ                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-call :DRAW_CENTER "!YELLOW!48!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
+call :DRAW_CENTER "!YELLOW!49!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1101,7 +1117,7 @@ call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLAC
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGFR
-if "!x!"=="48" (set la=FR) & goto :STREAMINGAPPS
+if "!x!"=="49" (set la=FR) & goto :STREAMINGAPPS
 call :CHOOSE en && goto :STREAMINGEN
 call :CHOOSE search && (call :IS_SEARCH e49c0bfe5fd6d7fb6 & goto :CONTINUESTREAMINGFR)
 call :CHOOSE back && goto :MAINMENU
@@ -1160,64 +1176,65 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGAPPS
 
 :TORRENTING
-call :SCALE 133 55
+call :SCALE 133 56
 title !TITLE:`=Torrenting!
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 74
-set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.sh/ torrent9.to/ bt4g.org/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ search.torrends.to/ proxy-bay.me/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+call :CLEAR 1 77
+set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.sh/ torrent9.to/ bt4g.org/ xbit.pw/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ search.torrends.to/ proxy-bay.me/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.monster/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
-call :SCALE 133 55
+call :SCALE 133 56
 echo !CYAN!
 echo [57Cออออออออออออออออออ
 echo [56C// !RED!Û!BGYELLOW!!BLACK! TORRENTING !RED!Û!BGBLACK!!CYAN! \\
 echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออ//ออออออออออออออออออ\\อออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û English Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ    !1!solidtorrents.net!CYAN!          ณ   !10!!RED!thepiratebay.org!CYAN!         ณ   !19!concen.org!CYAN!                     บ
-echo [8Cบ    !2!www.limetorrents.pro!CYAN!       ณ   !11!prostylex.org!CYAN!            ณ   !20!nyaa.si !GREEN!(animes)!CYAN!               บ
-echo [8Cบ    !3!www.torrentfunk.com!CYAN!        ณ   !12!torrentgalaxy.to!CYAN!         ณ   !21!www.anirena.com !GREEN!(animes)!CYAN!       บ
-echo [8Cบ    !4!www.toros.co!CYAN!               ณ   !13!yourbittorrent.com!CYAN!       ณ   !22!subsplease.org !GREEN!(animes)!CYAN!        บ
-echo [8Cบ    !5!www.gtdb.to!CYAN!                ณ   !14!anidex.info!CYAN!              ณ   !23!mac-torrent-download.net !GREEN!(MAC)!CYAN! บ
-echo [8Cบ    !6!www.torrentdownloads.pro!CYAN!   ณ   !15!www.demonoid.is!CYAN!          ณ   !24!mac-torrents.io !GREEN!(MAC)!CYAN!          บ
-echo [8Cบ    !7!1337x.to!CYAN!                   ณ   !16!angietorrents.cc!CYAN!         ณ   !25!yts.mx !GREEN!(movies)!CYAN!                บ
-echo [8Cบ    !8!rarbg.to!CYAN!                   ณ   !17!badasstorrents.com!CYAN!       ณ   !26!eztv.re !GREEN!(TV)!CYAN!                   บ
-echo [8Cบ    !9!torrentz2k.xyz!CYAN!             ณ   !18!www.torrentdownload.info!CYAN! ณ                                         บ
+echo [8Cบ    !1!solidtorrents.net!CYAN!          ณ   !10!torrentz2k.xyz!CYAN!           ณ   !19!www.torrentdownload.info!CYAN!       บ
+echo [8Cบ    !2!www.limetorrents.pro!CYAN!       ณ   !11!!RED!thepiratebay.org!CYAN!         ณ   !20!concen.org!CYAN!                     บ
+echo [8Cบ    !3!www.torrentfunk.com!CYAN!        ณ   !12!prostylex.org!CYAN!            ณ   !21!nyaa.si !GREEN!(animes)!CYAN!               บ
+echo [8Cบ    !4!www.toros.co!CYAN!               ณ   !13!torrentgalaxy.to!CYAN!         ณ   !22!www.anirena.com !GREEN!(animes)!CYAN!       บ
+echo [8Cบ    !5!www.gtdb.to!CYAN!                ณ   !14!yourbittorrent.com!CYAN!       ณ   !23!subsplease.org !GREEN!(animes)!CYAN!        บ
+echo [8Cบ    !6!www.torrentdownloads.pro!CYAN!   ณ   !15!anidex.info!CYAN!              ณ   !24!mac-torrent-download.net !GREEN!(MAC)!CYAN! บ
+echo [8Cบ    !7!1337x.to!CYAN!                   ณ   !16!www.demonoid.is!CYAN!          ณ   !25!mac-torrents.io !GREEN!(MAC)!CYAN!          บ
+echo [8Cบ    !8!rarbg.to!CYAN!                   ณ   !17!angietorrents.cc!CYAN!         ณ   !26!yts.mx !GREEN!(movies)!CYAN!                บ
+echo [8Cบ    !9!www.ettvcentral.com!CYAN!        ณ   !18!badasstorrents.com!CYAN!       ณ   !27!eztv.re !GREEN!(TV)!CYAN!                   บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û French Û!BGBLACK!!CYAN!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !27!www3.yggtorrent.nz!CYAN!         ณ   !29!www.oxtorrent.sh!CYAN!         ณ                                         บ
-echo [8Cบ   !28!www.sharewood.tv!CYAN!           ณ   !30!torrent9.to!CYAN!              ณ                                         บ
+echo [8Cบ   !28!www3.yggtorrent.nz!CYAN!         ณ   !30!www.oxtorrent.sh!CYAN!         ณ                                         บ
+echo [8Cบ   !29!www.sharewood.tv!CYAN!           ณ   !31!torrent9.to!CYAN!              ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Torrent Searching Û!BGBLACK!!CYAN!Ûþอออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !31!bt4g.org!CYAN!                  ณ   !39!ext.to!CYAN!                  ณ   !47!pirateiro.com!CYAN!                  บ
-echo [8Cบ   !32!bitsearch.to!CYAN!              ณ   !40!www.torlock.com!CYAN!         ณ   !48!torrentseeker.com!CYAN!              บ
-echo [8Cบ   !33!www.7torrents.cc!CYAN!          ณ   !41!ibit.to!CYAN!                 ณ   !49!otorrents.com!CYAN!                  บ
-echo [8Cบ   !34!bitcq.com!CYAN!                 ณ   !42!zooqle.com!CYAN!              ณ   !50!vstorrent.org!CYAN!                  บ
-echo [8Cบ   !35!knaben.eu!CYAN!                 ณ   !43!snowfl.com!CYAN!              ณ   !51!torrents-csv.ml!CYAN!                บ
-echo [8Cบ   !36!torrentproject2.com!CYAN!       ณ   !44!idope.se!CYAN!                ณ   !52!torrentz2eu.me!CYAN!                 บ
-echo [8Cบ   !37!torrent-paradise.ml!CYAN!       ณ   !45!isohunt.app!CYAN!             ณ   !53!search.torrends.to!CYAN!             บ
-echo [8Cบ   !38!btdig.com!CYAN!                 ณ   !46!extratorrents.it!CYAN!        ณ                                         บ
+echo [8Cบ   !32!bt4g.org!CYAN!                   ณ   !41!ext.to!CYAN!                   ณ   !50!torrentseeker.com!CYAN!              บ
+echo [8Cบ   !33!xbit.pw!CYAN!                    ณ   !42!www.torlock.com!CYAN!          ณ   !51!otorrents.com!CYAN!                  บ
+echo [8Cบ   !34!bitsearch.to!CYAN!               ณ   !43!ibit.to!CYAN!                  ณ   !52!vstorrent.org!CYAN!                  บ
+echo [8Cบ   !35!www.7torrents.cc!CYAN!           ณ   !44!zooqle.com!CYAN!               ณ   !53!torrents-csv.ml!CYAN!                บ
+echo [8Cบ   !36!bitcq.com!CYAN!                  ณ   !45!snowfl.com!CYAN!               ณ   !54!torrentz2eu.me!CYAN!                 บ
+echo [8Cบ   !37!knaben.eu!CYAN!                  ณ   !46!idope.se!CYAN!                 ณ   !55!search.torrends.to!CYAN!             บ
+echo [8Cบ   !38!torrentproject2.com!CYAN!        ณ   !47!isohunt.app!CYAN!              ณ                                         บ
+echo [8Cบ   !39!torrent-paradise.ml!CYAN!        ณ   !48!extratorrents.it!CYAN!         ณ                                         บ
+echo [8Cบ   !40!btdig.com!CYAN!                  ณ   !49!pirateiro.com!CYAN!            ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Torrent Proxys Û!BGBLACK!!CYAN!Ûþอออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !54!proxy-bay.me!CYAN!               ณ   !59!unblockproject.monster!CYAN!   ณ   !64!knaben.info!CYAN!                    บ
-echo [8Cบ   !55!proxygalaxy.pw!CYAN!             ณ   !60!unblocksource.net!CYAN!        ณ   !65!unblocktorrent.com!CYAN!             บ
-echo [8Cบ   !56!yifystatus.com!CYAN!             ณ   !61!unblockit.kim!CYAN!            ณ   !66!torrends.to!CYAN!                    บ
-echo [8Cบ   !57!eztvstatus.com!CYAN!             ณ   !62!torrentbay.to!CYAN!            ณ                                         บ
-echo [8Cบ   !58!siteunblocked.info!CYAN!         ณ   !63!proxyninja.org!CYAN!           ณ                                         บ
+echo [8Cบ   !56!proxy-bay.me!CYAN!               ณ   !61!siteunblocked.info!CYAN!       ณ   !66!proxyninja.org!CYAN!                 บ
+echo [8Cบ   !57!proxygalaxy.pw!CYAN!             ณ   !62!unblockproject.monster!CYAN!   ณ   !67!knaben.info!CYAN!                    บ
+echo [8Cบ   !58!yifystatus.com!CYAN!             ณ   !63!unblocksource.net!CYAN!        ณ   !68!unblocktorrent.com!CYAN!             บ
+echo [8Cบ   !59!eztvstatus.com!CYAN!             ณ   !64!unblockit.kim!CYAN!            ณ   !69!torrends.to!CYAN!                    บ
+echo [8Cบ   !60!ettvproxies.com!CYAN!            ณ   !65!torrentbay.to!CYAN!            ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Torrent Applications Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                   บ
-echo [8Cบ   !67!Jackett!CYAN!                    ณ   !70!sonarr.tv!CYAN!                ณ   !73!DuckieTV!CYAN!                       บ
-echo [8Cบ   !68!www.qbittorrent.org!CYAN!        ณ   !71!radarr.video!CYAN!             ณ   !74!couchpota.to!CYAN!                   บ
-echo [8Cบ   !69!www.torrentrover.com!CYAN!       ณ   !72!lidarr.audio!CYAN!             ณ                                         บ
+echo [8Cบ   !70!Jackett!CYAN!                    ณ   !73!sonarr.tv!CYAN!                ณ   !76!DuckieTV!CYAN!                       บ
+echo [8Cบ   !71!www.qbittorrent.org!CYAN!        ณ   !74!radarr.video!CYAN!             ณ   !77!couchpota.to!CYAN!                   บ
+echo [8Cบ   !72!www.torrentrover.com!CYAN!       ณ   !75!lidarr.audio!CYAN!             ณ                                         บ
 echo [8Cบ                                                                                                                   บ
 echo [8Cฬอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออน
-echo [8Cบ                                             !YELLOW!75!CYAN!  ^>  !WHITE!Web Torrenting!CYAN!                                                 บ
+echo [8Cบ                                             !YELLOW!78!CYAN!  ^>  !WHITE!Web Torrenting!CYAN!                                                 บ
 echo [8Cศอออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1230,8 +1247,8 @@ if "!Language!"=="FR" call :DRAW_CENTER "ERREUR: Pour pouvoir utiliser !YELLOW!T
 echo:
 )
 call :PROMPT
-if "!x!"=="78" goto :WEBTORRENTING
-if "!UntrustedWebsitesWarning!"=="1" for %%A in (10`thepiratebay.org) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
+if "!x!"=="75" goto :WEBTORRENTING
+if "!UntrustedWebsitesWarning!"=="1" for %%A in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
 if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted website." "Be careful using it."
 if "!Language!"=="FR" set t="Vous avez slectionn '%%C' qui est signal comme un site web non fiable." "Soyez prudent en l'utilisant."
 call :MSGBOX 2 !t! 69680 "Illegal Services Checker"
@@ -1442,14 +1459,14 @@ echo [8Cบ    !4!filecr.com!CYAN!              ณ   !15!!RED!haxnode.net!CYAN!   
 echo [8Cบ    !5!!RED!s0ft4pc.com!CYAN!             ณ   !16!www.novahax.com!CYAN!            ณ   !27!startcrack.net!CYAN!                     บ
 echo [8Cบ    !6!!RED!kolompc.com!CYAN!             ณ   !17!lostvayne.com!CYAN!              ณ   !28!keygenninja.net!CYAN!                    บ
 echo [8Cบ    !7!www.mazterize.com!CYAN!       ณ   !18!filewomen.com!CYAN!              ณ   !29!fileash.com!CYAN!                        บ
-echo [8Cบ    !8!gigapurbalingga.net!CYAN!     ณ   !19!!RED!izofile.com!CYAN!                ณ   !30!www.trucnet.com !GREEN!(FR)!CYAN!               บ
-echo [8Cบ    !9!appnee.com!CYAN!              ณ   !20!!RED!crackshash.com!CYAN!             ณ   !31!w14.monkrus.ws !GREEN!(RU)!CYAN!                บ
-echo [8Cบ   !10!!RED!www.sadeempc.com!CYAN!        ณ   !21!!RED!www.cybermania.ws!CYAN!          ณ   !32!www.intercambiosvirtuales.org !GREEN!(ES)!CYAN! บ
+echo [8Cบ    !8!gigapurbalingga.net!CYAN!     ณ   !19!!RED!izofile.com!CYAN!                ณ   !30!www.trucnet.com !GREEN![FR]!CYAN!               บ
+echo [8Cบ    !9!appnee.com!CYAN!              ณ   !20!!RED!crackshash.com!CYAN!             ณ   !31!w14.monkrus.ws !GREEN![RU]!CYAN!                บ
+echo [8Cบ   !10!!RED!www.sadeempc.com!CYAN!        ณ   !21!!RED!www.cybermania.ws!CYAN!          ณ   !32!www.intercambiosvirtuales.org !GREEN![ES]!CYAN! บ
 echo [8Cบ   !11!shareappscrack.com!CYAN!      ณ   !22!cracksurl.com!CYAN!              ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬอออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Application Repacks Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
-echo [8Cบ   !33!diakov.net !GREEN!(RU)!CYAN!         ณ   !34!lrepacks.net !GREEN!(RU)!CYAN!          ณ   !35!repack.me !GREEN!(RU)!CYAN!                     บ
+echo [8Cบ   !33!diakov.net !GREEN![RU]!CYAN!         ณ   !34!lrepacks.net !GREEN![RU]!CYAN!          ณ   !35!repack.me !GREEN![RU]!CYAN!                     บ
 echo [8Cบ                                                                                                                      บ
 echo [8CฬออออออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Portable Apps Û!BGBLACK!!CYAN!Ûþอออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [8Cบ                                                                                                                      บ
@@ -1460,9 +1477,9 @@ echo [8Cบ                                                                      
 echo [8Cบ   !39!!RED!igg-games.com!CYAN!           ณ   !47!steamunlocked.net!CYAN!          ณ   !55!alltorrents.co!CYAN!                     บ
 echo [8Cบ   !40!!RED!pcgamestorrents.com!CYAN!     ณ   !48!gog-games.com!CYAN!              ณ   !56!www.myabandonware.com !GREEN!(retro)!CYAN!      บ
 echo [8Cบ   !41!!RED!www.skidrowcodex.net!CYAN!    ณ   !49!!RED!codex-games.com!CYAN!            ณ   !57!gamesnostalgia.com !GREEN!(retro)!CYAN!         บ
-echo [8Cบ   !42!www.mrpcgamer.co!CYAN!        ณ   !50!getgamez.net!CYAN!               ณ   !58!cygames.fr !GREEN!(FR)!CYAN!                    บ
-echo [8Cบ   !43!www.game3rb.com!CYAN!         ณ   !51!www.elamigos-games.com!CYAN!     ณ   !59!telecharger-jeuxpc.fr !GREEN!(FR)!CYAN!         บ
-echo [8Cบ   !44!agfy.co!CYAN!                 ณ   !52!crackhub.site!CYAN!              ณ   !60!www.gamestorrents.fm !GREEN!(ES)!CYAN!          บ
+echo [8Cบ   !42!www.mrpcgamer.co!CYAN!        ณ   !50!getgamez.net!CYAN!               ณ   !58!cygames.fr !GREEN![FR]!CYAN!                    บ
+echo [8Cบ   !43!www.game3rb.com!CYAN!         ณ   !51!www.elamigos-games.com!CYAN!     ณ   !59!telecharger-jeuxpc.fr !GREEN![FR]!CYAN!         บ
+echo [8Cบ   !44!agfy.co!CYAN!                 ณ   !52!crackhub.site!CYAN!              ณ   !60!www.gamestorrents.fm !GREEN![ES]!CYAN!          บ
 echo [8Cบ   !45!!RED!cracked-games.org!CYAN!       ณ   !53!freegameshub.co!CYAN!            ณ                                             บ
 echo [8Cบ   !46!www.ovagames.com!CYAN!        ณ   !54!gogunlocked.com!CYAN!            ณ                                             บ
 echo [8Cบ                                                                                                                      บ
@@ -1472,8 +1489,8 @@ echo [8Cบ   !61!repack-games.com!CYAN!        ณ   !68!darckrepacks.com!CYAN!   
 echo [8Cบ   !62!www.game-repack.site!CYAN!    ณ   !69!dodi-repacks.site!CYAN!          ณ   !76!repack.info!CYAN!                        บ
 echo [8Cบ   !63!elamigos.site!CYAN!           ณ   !70!www.blackboxrepack.com!CYAN!     ณ   !77!m4ckd0ge-repacks.me!CYAN!                บ
 echo [8Cบ   !64!skidrowrepacks.com!CYAN!      ณ   !71!masquerade.site!CYAN!            ณ   !78!patricktech-repacks.xyz!CYAN!            บ
-echo [8Cบ   !65!fitgirl-repacks.site!CYAN!    ณ   !72!scooter-repacks.site!CYAN!       ณ   !79!e13.xatab-repack.com !GREEN!(RU)!CYAN!          บ
-echo [8Cบ   !66!repack-mechanics.com!CYAN!    ณ   !73!www.gnarly-repacks.site!CYAN!    ณ   !80!qoob.name !GREEN!(RU)!CYAN!                     บ
+echo [8Cบ   !65!fitgirl-repacks.site!CYAN!    ณ   !72!scooter-repacks.site!CYAN!       ณ   !79!e13.xatab-repack.com !GREEN![RU]!CYAN!          บ
+echo [8Cบ   !66!repack-mechanics.com!CYAN!    ณ   !73!www.gnarly-repacks.site!CYAN!    ณ   !80!qoob.name !GREEN![RU]!CYAN!                     บ
 echo [8Cบ   !67!gamesdrive.net!CYAN!          ณ   !74!cpgrepacks.site!CYAN!            ณ                                             บ
 echo [8Cบ                                                                                                                      บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
@@ -1791,7 +1808,7 @@ echo [8Cบ                                      บ                               
 echo [8CฬอออออออþÛ!BGYELLOW!!RED!Û Fake Generators Û!BGBLACK!!CYAN!ÛþออออออออฮออออออออออออþÛ!BGYELLOW!!RED!Û Warez News Û!BGBLACK!!CYAN!ÛþออออออออออออฮอออออออþÛ!BGYELLOW!!RED!Û File Searching Û!BGBLACK!!CYAN!Ûþออออออออน
 echo [8Cบ                                      บ                                          บ                                     บ
 echo [8Cบ   !44!fakepersongenerator.com!CYAN!     บ   !48!torrentfreak.com!CYAN!                บ    !51!www.aiosearch.com!CYAN!         บ
-echo [8Cบ   !45!www.fakeimess.com!CYAN!           บ   !49!nextwarez.com !GREEN!(FR)!CYAN!              บ    !52!www.filechef.com!CYAN!          บ
+echo [8Cบ   !45!www.fakeimess.com!CYAN!           บ   !49!nextwarez.com !GREEN![FR]!CYAN!              บ    !52!www.filechef.com!CYAN!          บ
 echo [8Cบ   !46!fakeproof.xenot.pro!CYAN!         บ   !50!filepursuit.com!CYAN!                 บ                                     บ
 echo [8Cบ   !47!www.vedbex.com!CYAN!              บ                                          บ                                     บ
 echo [8Cบ                                                                                 บ                                     บ
@@ -1816,16 +1833,16 @@ call :ERRORMESSAGE
 goto :CONTINUEUSEFULWEBSITES
 
 :DDOS
-call :SCALE 82 30
+call :SCALE 82 31
 title !TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
-call :CLEAR 1 16
+call :CLEAR 1 17
 set db=quez.in/ instant-stresser.com/ freestresser.to/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ anonboot.com/ eor-n.to/ str3ssed.co/ wannabe1337.xyz/stresser vtoxicity.net/ str3sser.io/ databooter.to/ asylumstresser.to/ deltastress.com/ ddosforhire.net/
 
 :CONTINUEDDOS
-call :SCALE 82 30
+call :SCALE 82 31
 echo !CYAN!
 echo [23Cออออออออออออออออออออออออออออออออออออออ
 echo [22C// !RED!Û!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!Û!BGBLACK!!CYAN! \\
@@ -1837,21 +1854,22 @@ echo [8Cบ   !4!www.ipstresser.com!CYAN!     บ           [200/Mbps] [300/s]  บ
 echo [8Cบ   !5!ipstress.in!CYAN!            บ           [  ?/Gbps] [250/s]  บ
 echo [8Cบ   !6!royalstresser.com!CYAN!      บ           [  ?/Gbps] [200/s]  บ
 echo [8Cบ   !7!anonboot.com!CYAN!           บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ   !8!eor-n.to!CYAN!               บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ   !9!str3ssed.co!CYAN!            บ           [  1/Gbps] [120/s]  บ
-echo [8Cบ  !10!wannabe1337.xyz!CYAN!        บ           [  ?/Gbps] [120/s]  บ
-echo [8Cบ  !11!vtoxicity.net!CYAN!          บ           [100/Mbps] [120/s]  บ
-echo [8Cบ  !12!str3sser.io!CYAN!            บ           [  1/Gbps] [ 60/s]  บ
-echo [8Cบ  !13!databooter.to!CYAN!          บ           [  1/Gbps] [ 60/s]  บ
-echo [8Cบ  !14!asylumstresser.to!CYAN!      บ           [  1/Gbps] [ 60/s]  บ
-echo [8Cบ  !15!deltastress.com!CYAN!        บ           [  ?/Gbps] [ 30/s]  บ
+echo [8Cบ   !8!stresser.zone!CYAN!          บ           [  ?/Gbps] [120/s]  บ
+echo [8Cบ   !9!eor-n.to!CYAN!               บ           [  ?/Gbps] [120/s]  บ
+echo [8Cบ  !10!str3ssed.co!CYAN!            บ           [  1/Gbps] [120/s]  บ
+echo [8Cบ  !11!wannabe1337.xyz!CYAN!        บ           [  ?/Gbps] [120/s]  บ
+echo [8Cบ  !12!vtoxicity.net!CYAN!          บ           [100/Mbps] [120/s]  บ
+echo [8Cบ  !13!str3sser.io!CYAN!            บ           [  1/Gbps] [ 60/s]  บ
+echo [8Cบ  !14!databooter.to!CYAN!          บ           [  1/Gbps] [ 60/s]  บ
+echo [8Cบ  !15!asylumstresser.to!CYAN!      บ           [  1/Gbps] [ 60/s]  บ
+echo [8Cบ  !16!deltastress.com!CYAN!        บ           [  ?/Gbps] [ 30/s]  บ
 echo [8Cฬออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออน
 if "!Language!"=="EN" (
-echo [29C!BRIGHTMAGENTA!Last Updated: !WHITE!25/10/2021
+echo [29C!BRIGHTMAGENTA!Last Updated: !WHITE!26/10/2021
 echo [15C!BRIGHTMAGENTA!Alternatively you can visit: !17!ddosforhire.net
 )
 if "!Language!"=="FR" (
-echo [28C!BRIGHTMAGENTA!Mise … jour le: !WHITE!25/10/2021
+echo [28C!BRIGHTMAGENTA!Mise … jour le: !WHITE!26/10/2021
 echo [11C!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !17!ddosforhire.net
 )
 echo [8C!CYAN!ศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
@@ -2421,9 +2439,9 @@ if "!23!"=="!YELLOW!23 !CHECKED!" call :CURL "Portable_Apps\Driver Store Explore
 if "!24!"=="!YELLOW!24 !CHECKED!" call :CURL "Portable_Apps\DeviceCleanup.zip" "https://www.uwe-sieber.de/files/DeviceCleanup.zip"
 if "!25!"=="!YELLOW!25 !CHECKED!" call :CURL "Portable_Apps\DDU.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/ddu/%%%%5BGuru3D.com%%%%5D-DDU.zip"
 if "!26!"=="!YELLOW!26 !CHECKED!" (
-call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_net48.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.2.0/RadeonSoftwareSlimmer_1.2.0_net48.zip"
-call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_net50.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.2.0/RadeonSoftwareSlimmer_1.2.0_net50.zip"
-call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.2.0_netcoreapp31.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.2.0/RadeonSoftwareSlimmer_1.2.0_netcoreapp31.zip"
+call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_net48.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.3.0/RadeonSoftwareSlimmer_1.3.0_net48.zip"
+call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_net50.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.3.0/RadeonSoftwareSlimmer_1.3.0_net50.zip"
+call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_netcoreapp31.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.3.0/RadeonSoftwareSlimmer_1.3.0_netcoreapp31.zip"
 )
 if "!27!"=="!YELLOW!27 !CHECKED!" call :CURL "Portable_Apps\NVSlimmer.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/nvslimmer/%%%%5BGuru3D.com%%%%5D-NVSlimmer.zip"
 if "!28!"=="!YELLOW!28 !CHECKED!" call :CURL "Portable_Apps\NVCleanstall_1.10.0.exe" "https://www.techspot.com/downloads/downloadnow/7246/?evp=99dc9f075f5dc723cda250985ad614d8&file=9654"
@@ -2628,16 +2646,16 @@ if "!9!"=="!YELLOW!9 !CHECKED!" start "" "https://obsproject.com/"
 goto :CLEARWAREZCONTENTCREATOR
 
 :WAREZWIKIS
-call :SCALE 76 33
+call :SCALE 76 34
 title !TITLE:`=Warez Wikis!
 call :ROSE "Warez Wikis"
 
 :CLEARWAREZWIKIS
-call :CLEAR 1 20
-set db=weboas.is/ dirtywarez.org/ link-base.org/warez p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/SoftwarePirates-Megathread rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/PiratedGames/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/
+call :CLEAR 1 21
+set db=weboas.is/ dirtywarez.org/ link-base.org/warez p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/SoftwarePirates-Megathread rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/PiratedGames/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/ piracy.moe/
 
 :CONTINUEWAREZWIKIS
-call :SCALE 76 33
+call :SCALE 76 34
 echo !CYAN!
 echo [28Cอออออออออออออออออออ
 echo [27C// !RED!Û!BGYELLOW!!BLACK! WAREZ WIKIS !RED!Û!BGBLACK!!CYAN! \\
@@ -2646,10 +2664,10 @@ echo [6Cบ                                                              บ
 echo [6Cบ    !1!weboas.is!CYAN!                                           บ
 echo [6Cบ    !2!dirtywarez.org!CYAN!                                      บ
 echo [6Cบ    !3!link-base.org!CYAN!                                       บ
-echo [6Cบ    !4!p2pfr.com !GREEN!(FR)!CYAN!                                      บ
-echo [6Cบ    !5!www.mega-p2p.net !GREEN!(FR)!CYAN!                               บ
-echo [6Cบ    !6!lewebde.com !GREEN!(FR)!CYAN!                                    บ
-echo [6Cบ    !7!machicoulis.over-blog.com !GREEN!(FR)!CYAN!                      บ
+echo [6Cบ    !4!p2pfr.com !GREEN![FR]!CYAN!                                      บ
+echo [6Cบ    !5!www.mega-p2p.net !GREEN![FR]!CYAN!                               บ
+echo [6Cบ    !6!lewebde.com !GREEN![FR]!CYAN!                                    บ
+echo [6Cบ    !7!machicoulis.over-blog.com !GREEN![FR]!CYAN!                      บ
 echo [6Cบ    !8!r/Piracy!CYAN!                                            บ
 echo [6Cบ    !9!r/FREEMEDIAHECKYEAH!CYAN!                                 บ
 echo [6Cบ   !10!r/SoftwarePirates!CYAN!                                   บ
@@ -2663,6 +2681,7 @@ echo [6Cบ   !17!Rekulous/The-Piratez-list !GREEN!(softwares)!CYAN!             
 echo [6Cบ   !18!darknetlive.com !GREEN!(darknet)!CYAN!                           บ
 echo [6Cบ   !19!dark.fail !GREEN!(darknet)!CYAN!                                 บ
 echo [6Cบ   !20!ddosforhire.net !GREEN!(DDoS)!CYAN!                              บ
+echo [6Cบ   !21!piracy.moe !GREEN!(animes)!CYAN!                                 บ
 echo [6Cบ                                                              บ
 echo [6Cศออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !BRIGHTBLACK!
@@ -2678,28 +2697,31 @@ call :ERRORMESSAGE
 goto :CONTINUEWAREZWIKIS
 
 :RELEASELOGS
-call :SCALE 66 20
+call :SCALE 66 23
 title !TITLE:`=Release Logs!
 call :ROSE "Release Logs"
 
 :CLEARRELEASELOGS
-call :CLEAR 1 7
-set db=predb.me/ corrupt-net.org/ m2v.ru/ forum.squawkr.io/ upawg.ca/ nzbindex.com/ binsearch.info/
+call :CLEAR 1 10
+set db=predb.ovh/ predb.me/ corrupt-net.org/ m2v.ru/ www.xrel.to/ forum.squawkr.io/ upawg.ca/ nzbindex.com/ binsearch.info/ www.reddit.com/r/CrackWatch/
 
 :CONTINUERELEASELOGS
-call :SCALE 66 20
+call :SCALE 66 23
 echo !CYAN!
 echo [22Cออออออออออออออออออออ
 echo [21C// !RED!Û!BGYELLOW!!BLACK! Release Logs !RED!Û!BGBLACK!!CYAN! \\
 echo [12Cษอออออออออออออออออออออออออออออออออออออออป
 echo [12Cบ                                       บ
-echo [12Cบ    !1!predb.me!CYAN!                     บ
-echo [12Cบ    !2!corrupt-net.org!CYAN!              บ
-echo [12Cบ    !3!m2v.ru!CYAN!                       บ
-echo [12Cบ    !4!forum.squawkr.io !GREEN!(movies)!CYAN!    บ
-echo [12Cบ    !5!upawg.ca !GREEN!(audio)!CYAN!             บ
-echo [12Cบ    !6!nzbindex.com !GREEN!(NZB)!CYAN!           บ
-echo [12Cบ    !7!binsearch.info !GREEN!(NZB)!CYAN!         บ
+echo [12Cบ    !1!predb.ovh!CYAN!                    บ
+echo [12Cบ    !2!predb.me!CYAN!                     บ
+echo [12Cบ    !3!corrupt-net.org!CYAN!              บ
+echo [12Cบ    !4!m2v.ru!CYAN!                       บ
+echo [12Cบ    !5!www.xrel.to !GREEN![DE]!CYAN!    บ
+echo [12Cบ    !6!forum.squawkr.io !GREEN!(movies)!CYAN!    บ
+echo [12Cบ    !7!upawg.ca !GREEN!(audio)!CYAN!             บ
+echo [12Cบ    !8!nzbindex.com !GREEN!(NZB)!CYAN!           บ
+echo [12Cบ    !9!binsearch.info !GREEN!(NZB)!CYAN!         บ
+echo [12Cบ   !10!r/CrackWatch !GREEN!(videogames)!CYAN!    บ
 echo [12Cบ                                       บ
 echo [12Cศอออออออออออออออออออออออออออออออออออออออผ
 echo !BRIGHTBLACK!
@@ -2731,17 +2753,17 @@ echo [43Cออออออออออออออ
 echo [42C// !RED!Û!BGYELLOW!!BLACK! Ebooks !RED!Û!BGBLACK!!CYAN! \\
 echo [7Cษออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [7Cบ                                                                                    บ
-echo [7Cบ    !1!z-lib.org!CYAN!                      ณ   !7!ebook-planete.org !GREEN!(FR)!CYAN!           บ
-echo [7Cบ    !2!www.pdfdrive.com!CYAN!               ณ   !8!planete-bd.org !GREEN!(FR)!CYAN!              บ
-echo [7Cบ    !3!english-bookys.com!CYAN!             ณ   !9!dbfree.me !GREEN!(FR)!CYAN!                   บ
-echo [7Cบ    !4!bookddl.com !GREEN!(FR)!CYAN!               ณ  !10!pdf.1001ebooks.com !GREEN!(FR)!CYAN!          บ
-echo [7Cบ    !5!zone-ebook.com !GREEN!(FR)!CYAN!            ณ  !11!www.pdf-ebookys.com !GREEN!(FR)!CYAN!         บ
-echo [7Cบ    !6!ww2.bookys-ebooks.com !GREEN!(FR)!CYAN!     ณ                                          บ
+echo [7Cบ    !1!z-lib.org!CYAN!                      ณ   !7!ebook-planete.org !GREEN![FR]!CYAN!           บ
+echo [7Cบ    !2!www.pdfdrive.com!CYAN!               ณ   !8!planete-bd.org !GREEN![FR]!CYAN!              บ
+echo [7Cบ    !3!english-bookys.com!CYAN!             ณ   !9!dbfree.me !GREEN![FR]!CYAN!                   บ
+echo [7Cบ    !4!bookddl.com !GREEN![FR]!CYAN!               ณ  !10!pdf.1001ebooks.com !GREEN![FR]!CYAN!          บ
+echo [7Cบ    !5!zone-ebook.com !GREEN![FR]!CYAN!            ณ  !11!www.pdf-ebookys.com !GREEN![FR]!CYAN!         บ
+echo [7Cบ    !6!ww2.bookys-ebooks.com !GREEN![FR]!CYAN!     ณ                                          บ
 echo [7Cบ                                                                                    บ
 echo [7CฬอออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û MAGAZINES Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออออน
 echo [7Cบ                                                                                    บ
-echo [7Cบ   !12!downmagaz.net!CYAN!                  ณ   !14!telecharge-magazines.com !GREEN!(FR)!CYAN!   บ
-echo [7Cบ   !13!magazinelib.com!CYAN!                ณ   !15!fr.downmagaz.net !GREEN!(FR)!CYAN!           บ
+echo [7Cบ   !12!downmagaz.net!CYAN!                  ณ   !14!telecharge-magazines.com !GREEN![FR]!CYAN!   บ
+echo [7Cบ   !13!magazinelib.com!CYAN!                ณ   !15!fr.downmagaz.net !GREEN![FR]!CYAN!           บ
 echo [7Cบ                                                                                    บ
 echo [7CฬอออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û MANGAS Û!BGBLACK!!CYAN!Ûþอออออออออออออออออออออออออออออออออออน
 echo [7Cบ                                                                                    บ
@@ -2767,14 +2789,14 @@ echo [7Cบ   !34!skscans.com!CYAN!                    ณ   !64!manga47.net!CYAN! 
 echo [7Cบ   !35!zeroscans.com!CYAN!                  ณ   !65!comix.top!CYAN!                       บ
 echo [7Cบ   !36!reader.deathtollscans.net!CYAN!      ณ   !66!www.readlightnovel.me!CYAN!           บ
 echo [7Cบ   !37!reader.kireicake.com!CYAN!           ณ   !67!reaperscans.com!CYAN!                 บ
-echo [7Cบ   !38!sensescans.com!CYAN!                 ณ   !68!reaperscans.fr !GREEN!(FR)!CYAN!             บ
-echo [7Cบ   !39!manhuaplus.com!CYAN!                 ณ   !69!scantrad.net !GREEN!(FR)!CYAN!               บ
-echo [7Cบ   !40!readm.org!CYAN!                      ณ   !70!kangaryu-team.fr !GREEN!(FR)!CYAN!           บ
-echo [7Cบ   !41!mangasee123.com!CYAN!                ณ   !71!www.japscan.ws !GREEN!(FR)!CYAN!             บ
-echo [7Cบ   !42!www.asurascans.com!CYAN!             ณ   !72!www.scan-fr.cc !GREEN!(FR)!CYAN!             บ
-echo [7Cบ   !43!naniscans.com!CYAN!                  ณ   !73!lelscan-vf.co !GREEN!(FR)!CYAN!              บ
-echo [7Cบ   !44!merakiscans.com!CYAN!                ณ   !74!mangas.heoo.workers.dev !GREEN!(FR)!CYAN!    บ
-echo [7Cบ   !45!mangajar.com!CYAN!                   ณ   !75!lectortmo.com !GREEN!(ES)!CYAN!              บ
+echo [7Cบ   !38!sensescans.com!CYAN!                 ณ   !68!reaperscans.fr !GREEN![FR]!CYAN!             บ
+echo [7Cบ   !39!manhuaplus.com!CYAN!                 ณ   !69!scantrad.net !GREEN![FR]!CYAN!               บ
+echo [7Cบ   !40!readm.org!CYAN!                      ณ   !70!kangaryu-team.fr !GREEN![FR]!CYAN!           บ
+echo [7Cบ   !41!mangasee123.com!CYAN!                ณ   !71!www.japscan.ws !GREEN![FR]!CYAN!             บ
+echo [7Cบ   !42!www.asurascans.com!CYAN!             ณ   !72!www.scan-fr.cc !GREEN![FR]!CYAN!             บ
+echo [7Cบ   !43!naniscans.com!CYAN!                  ณ   !73!lelscan-vf.co !GREEN![FR]!CYAN!              บ
+echo [7Cบ   !44!merakiscans.com!CYAN!                ณ   !74!mangas.heoo.workers.dev !GREEN![FR]!CYAN!    บ
+echo [7Cบ   !45!mangajar.com!CYAN!                   ณ   !75!lectortmo.com !GREEN![ES]!CYAN!              บ
 echo [7Cบ                                                                                    บ
 if "!Language!"=="EN" echo [7Cบ                      !BRIGHTMAGENTA!Alternatively you can visit: !76!MALSync!CYAN!                   บ
 if "!Language!"=="FR" echo [7Cบ                  !BRIGHTMAGENTA!Alternativement vous pouvez visiter: !76!MALSync!CYAN!               บ
@@ -2794,16 +2816,16 @@ call :ERRORMESSAGE
 goto :CONTINUEEBOOKS
 
 :MUSICS
-call :SCALE 68 25
+call :SCALE 68 28
 title !TITLE:`=Musics!
 call :ROSE Musics
 
 :CLEARMUSICS
-call :CLEAR 1 9
-set db=flacmusic.info/ losslessma.net/ www.reddit.com/r/riprequests/ downloads.khinsider.com/ www.vgmusic.com/ freshremix.ru/ www.slsknet.org/news/ deemix.app/ freezer.life/
+call :CLEAR 1 12
+set db=flacmusic.info/ losslessma.net/ muxiv.net/ slider.kz/ www.reddit.com/r/riprequests/ downloads.khinsider.com/ www.vgmusic.com/ freshremix.ru/ hikarinoakari.com/ www.slsknet.org/news/ deemix.app/ freezer.life/
 
 :CONTINUEMUSICS
-call :SCALE 68 25
+call :SCALE 68 28
 echo !CYAN!
 echo [27Cออออออออออออออ
 echo [26C// !RED!Û!BGYELLOW!!BLACK! Musics !RED!Û!BGBLACK!!CYAN! \\
@@ -2811,16 +2833,19 @@ echo [8Cษออออออออออออออออออออออออออออออออออออออออออออออออออป
 echo [8Cบ                                                  บ
 echo [8Cบ    !1!flacmusic.info!CYAN!                          บ
 echo [8Cบ    !2!losslessma.net!CYAN!                          บ
-echo [8Cบ    !3!r/riprequests!CYAN!                           บ
-echo [8Cบ    !4!downloads.khinsider.com !GREEN!(videogames)!CYAN!    บ
-echo [8Cบ    !5!www.vgmusic.com !GREEN!(videogames)!CYAN!            บ
-echo [8Cบ    !6!freshremix.ru !GREEN!(remixes)!CYAN!                 บ
+echo [8Cบ    !3!muxiv.net!CYAN!                               บ
+echo [8Cบ    !4!slider.kz!CYAN!                               บ
+echo [8Cบ    !5!r/riprequests!CYAN!                           บ
+echo [8Cบ    !6!downloads.khinsider.com !GREEN!(videogames)!CYAN!    บ
+echo [8Cบ    !7!www.vgmusic.com !GREEN!(videogames)!CYAN!            บ
+echo [8Cบ    !8!freshremix.ru !GREEN!(remixes)!CYAN!                 บ
+echo [8Cบ    !9!hikarinoakari.com !GREEN!(animes)!CYAN!              บ
 echo [8Cบ                                                  บ
 echo [8CฬออออออออออออþÛ!BGYELLOW!!RED!Û Music Applications Û!BGBLACK!!CYAN!Ûþออออออออออออน
 echo [8Cบ                                                  บ
-echo [8Cบ    !7!www.slsknet.org!CYAN!                         บ
-echo [8Cบ    !8!deemix.app!CYAN!                              บ
-echo [8Cบ    !9!freezer.life!CYAN!                            บ
+echo [8Cบ   !10!www.slsknet.org!CYAN!                         บ
+echo [8Cบ   !11!deemix.app!CYAN!                              บ
+echo [8Cบ   !12!freezer.life!CYAN!                            บ
 echo [8Cบ                                                  บ
 echo [8Cศออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !BRIGHTBLACK!
@@ -2842,8 +2867,8 @@ title !TITLE:`=Forum Websites!
 call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
-call :CLEAR 1 37
-set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php fora.snahp.eu/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ wawa-rammstein.de/index.php starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ rfmirror.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
+call :CLEAR 1 38
+set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php fora.snahp.eu/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ wawa-rammstein.de/index.php starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ rfmirror.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
 
 :CONTINUEFORUMWEBSITES
 call :SCALE 126 38
@@ -2853,30 +2878,30 @@ echo [50C// !RED!Û!BGYELLOW!!BLACK! FORUM WEBSITES !RED!Û!BGBLACK!!CYAN! \\
 echo [7Cษอออออออออออออออออออออออออออออออออออออออออ//ออออออออออออออออออออออ\\อออออออออออออออออออออออออออออออออออออออออออป
 echo [7CฬอออออออออออออออออออออออออออออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Warez Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออออออออออออออออออออออออออออออน
 echo [7Cบ                                                                                                              บ
-echo [7Cบ    !1!www.adit-hd.com        !GREEN!DDL        [EN]!CYAN!    ณ   !16!prostylex.org               !GREEN!Torrenting [EN]!CYAN!    บ
-echo [7Cบ    !2!forum.ddlvalley.me     !GREEN!DDL        [EN]!CYAN!    ณ   !17!angietorrents.cc            !GREEN!Torrenting [EN]!CYAN!    บ
-echo [7Cบ    !3!www.warezheaven.com    !GREEN!DDL        [EN]!CYAN!    ณ   !18!forum.p2pfr.com             !GREEN!Torrenting [FR]!CYAN!    บ
-echo [7Cบ    !4!fora.snahp.eu          !GREEN!DDL        [EN]!CYAN!    ณ   !19!www.tigers-dl.net           !GREEN!Torrenting [FR]!CYAN!    บ
-echo [7Cบ    !5!www.mywarez.org        !GREEN!DDL        [EN]!CYAN!    ณ   !20!www.forumzt.com             !GREEN!Torrenting [FR]!CYAN!    บ
-echo [7Cบ    !6!ddlbase.net            !GREEN!DDL        [EN]!CYAN!    ณ   !21!www.frboard.com             !GREEN!Torrenting [FR]!CYAN!    บ
-echo [7Cบ    !7!forumpoint.org         !GREEN!DDL        [EN]!CYAN!    ณ   !22!rutracker.org               !GREEN!Torrenting [RU]!CYAN!    บ
-echo [7Cบ    !8!www.wawa-rammstein.de  !GREEN!DDL        [EN]!CYAN!    ณ   !23!forum.mobilism.me           !GREEN!Cracking   [EN]!CYAN!    บ
-echo [7Cบ    !9!starwarez-sharing.name !GREEN!DDL        [FR]!CYAN!    ณ   !24!forum.release-apk.com       !GREEN!Cracking   [EN]!CYAN!    บ
-echo [7Cบ   !10!forum.anime-ultime.net !GREEN!Streaming  [FR]!CYAN!    ณ   !25!platinmods.com              !GREEN!Cracking   [EN]!CYAN!    บ
-echo [7Cบ   !11!pirates-forum.org      !GREEN!Torrenting [EN]!CYAN!    ณ   !26!forum.telecharger-jeuxpc.fr !GREEN!Cracking   [FR]!CYAN!    บ
-echo [7Cบ   !12!eztv.re                !GREEN!Torrenting [EN]!CYAN!    ณ   !27!tapochek.net                !GREEN!Cracking   [RU]!CYAN!    บ
-echo [7Cบ   !13!forums.glodls.to       !GREEN!Torrenting [EN]!CYAN!    ณ   !28!forum.repack.me             !GREEN!Cracking   [RU]!CYAN!    บ
-echo [7Cบ   !14!torrentgalaxy.to       !GREEN!Torrenting [EN]!CYAN!    ณ   !29!planete-warez.net           !GREEN!Warez      [FR]!CYAN!    บ
-echo [7Cบ   !15!forums.anidex.moe      !GREEN!Torrenting [EN]!CYAN!    ณ                                                         บ
+echo [7Cบ    !1!www.adit-hd.com        !GREEN!DDL        [EN]!CYAN!    ณ   !16!forums.anidex.moe           !GREEN!Torrenting [EN]!CYAN!    บ
+echo [7Cบ    !2!forum.ddlvalley.me     !GREEN!DDL        [EN]!CYAN!    ณ   !17!prostylex.org               !GREEN!Torrenting [EN]!CYAN!    บ
+echo [7Cบ    !3!www.warezheaven.com    !GREEN!DDL        [EN]!CYAN!    ณ   !18!angietorrents.cc            !GREEN!Torrenting [EN]!CYAN!    บ
+echo [7Cบ    !4!fora.snahp.eu          !GREEN!DDL        [EN]!CYAN!    ณ   !19!forum.p2pfr.com             !GREEN!Torrenting [FR]!CYAN!    บ
+echo [7Cบ    !5!www.mywarez.org        !GREEN!DDL        [EN]!CYAN!    ณ   !20!www.tigers-dl.net           !GREEN!Torrenting [FR]!CYAN!    บ
+echo [7Cบ    !6!ddlbase.net            !GREEN!DDL        [EN]!CYAN!    ณ   !21!www.forumzt.com             !GREEN!Torrenting [FR]!CYAN!    บ
+echo [7Cบ    !7!forumpoint.org         !GREEN!DDL        [EN]!CYAN!    ณ   !22!www.frboard.com             !GREEN!Torrenting [FR]!CYAN!    บ
+echo [7Cบ    !8!www.wawa-rammstein.de  !GREEN!DDL        [EN]!CYAN!    ณ   !23!rutracker.org               !GREEN!Torrenting [RU]!CYAN!    บ
+echo [7Cบ    !9!starwarez-sharing.name !GREEN!DDL        [FR]!CYAN!    ณ   !24!forum.mobilism.me           !GREEN!Cracking   [EN]!CYAN!    บ
+echo [7Cบ   !10!forum.anime-ultime.net !GREEN!Streaming  [FR]!CYAN!    ณ   !25!forum.release-apk.com       !GREEN!Cracking   [EN]!CYAN!    บ
+echo [7Cบ   !11!pirates-forum.org      !GREEN!Torrenting [EN]!CYAN!    ณ   !26!platinmods.com              !GREEN!Cracking   [EN]!CYAN!    บ
+echo [7Cบ   !12!eztv.re                !GREEN!Torrenting [EN]!CYAN!    ณ   !27!forum.telecharger-jeuxpc.fr !GREEN!Cracking   [FR]!CYAN!    บ
+echo [7Cบ   !13!forums.glodls.to       !GREEN!Torrenting [EN]!CYAN!    ณ   !28!tapochek.net                !GREEN!Cracking   [RU]!CYAN!    บ
+echo [7Cบ   !14!torrentgalaxy.to       !GREEN!Torrenting [EN]!CYAN!    ณ   !29!forum.repack.me             !GREEN!Cracking   [RU]!CYAN!    บ
+echo [7Cบ   !15!www.ettvcentral.com    !green!Torrenting [EN]!cyan!    ณ   !30!planete-warez.net           !GREEN!Warez      [FR]!CYAN!    บ
 echo [7Cบ                                                                                                              บ
 echo [7CฬออออออออออออออออออþÛ!BGYELLOW!!RED!Û Hacking Û!BGBLACK!!CYAN!ÛþอออออออออออออออออออหอออออออออออออออออออออþÛ!BGYELLOW!!RED!Û Others Û!BGBLACK!!CYAN!Ûþออออออออออออออออออออออน
 echo [7Cบ                                                    บ                                                         บ
-echo [7Cบ   !30!www.nulled.to  !GREEN![EN]!CYAN!                       บ   !36!teamos-hkrg.com    !GREEN![EN]!CYAN!                        บ
-echo [7Cบ   !31!rfmirror.com   !GREEN![EN]!CYAN!                       บ   !37!forum.ru-board.com !GREEN![RU]!CYAN!                        บ
-echo [7Cบ   !32!hackforums.net !GREEN![EN]!CYAN!                       บ                                                         บ
-echo [7Cบ   !33!cracked.to     !GREEN![EN]!CYAN!                       บ                                                         บ
-echo [7Cบ   !34!payload.sh     !GREEN![EN]!CYAN!                       บ                                                         บ
-echo [7Cบ   !35!mailaccess.top !GREEN![EN]!CYAN!                       บ                                                         บ
+echo [7Cบ   !31!www.nulled.to  !GREEN![EN]!CYAN!                       บ   !37!teamos-hkrg.com    !GREEN![EN]!CYAN!                        บ
+echo [7Cบ   !32!rfmirror.com   !GREEN![EN]!CYAN!                       บ   !38!forum.ru-board.com !GREEN![RU]!CYAN!                        บ
+echo [7Cบ   !33!hackforums.net !GREEN![EN]!CYAN!                       บ                                                         บ
+echo [7Cบ   !34!cracked.to     !GREEN![EN]!CYAN!                       บ                                                         บ
+echo [7Cบ   !35!payload.sh     !GREEN![EN]!CYAN!                       บ                                                         บ
+echo [7Cบ   !36!mailaccess.top !GREEN![EN]!CYAN!                       บ                                                         บ
 echo [7Cบ                                                    บ                                                         บ
 echo [7Cศออออออออออออออออออออออออออออออออออออออออออออออออออออสอออออออออออออออออออออออออออออออออออออออออออออออออออออออออผ
 echo !BRIGHTBLACK!
