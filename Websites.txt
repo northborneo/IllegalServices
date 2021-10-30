@@ -82,7 +82,7 @@ softddl.org
 katzddl.net
 warezbb.net
 www.300mbfilms.cx
-downloadhub.onl
+downloadhub.cfd
 filmsofts.com
 cgpersia.com
 rsload.net
@@ -102,7 +102,7 @@ anidl.org
 hi10anime.com
 animekayo.com
 animekaizoku.com
-ssanime.ga
+www.ssanime.ga
 animetosho.org
 cdromance.com
 www.romnation.net
@@ -187,7 +187,7 @@ apps.stream2watch.sx
 sportplus.live
 thehomesport.com
 ;;STREAMINGFR
-www.filmstreaming1.tel
+www.filmstoon.one
 www6.filmstreaming.to
 french-stream.re
 wvw.hds.lc
@@ -219,7 +219,7 @@ otakufr.co
 www.mavanimes.co
 vostanimez.com
 toonanime.cc
-wvw.jetanimes.com
+www.jetanimes.co
 vostfree.tv
 www.universanime.co
 daijoubu.si
@@ -308,7 +308,7 @@ yifystatus.com
 eztvstatus.com
 ettvproxies.com
 siteunblocked.info
-unblockproject.monster
+unblockproject.top
 unblocksource.net
 unblockit.kim
 torrentbay.to
@@ -437,6 +437,7 @@ e13.xatab-repack.com
 qoob.name
 ;;ANDROID
 a2zapk.com
+android-zone.ws
 apkhome.net
 apkmagic.com.ar
 oceanofapk.com
