@@ -8,7 +8,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.1.3 - 30/10/2021
+v5.9.1.4 - 31/10/2021
 - FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
 - FIXED a bug where old Windows installing ansicon skipped update in the launcher.
 - FIXED minor bugs.
@@ -32,7 +32,7 @@ v5.9.1.3 - 30/10/2021
 + UPDATED Streaming [FR] : https://streaminz.me/
 + UPDATED Streaming [FR] : https://filmstreamingvf.org/
 + UPDATED Streaming [FR] : https://toonanime.cc/
-+ UPDATED Streaming [FR] : https://www.jetanimes.co/
++ UPDATED Streaming [FR] : https://wvw.jetanimes.com/
 + UPDATED Streaming Applications : https://beetvapk.me/
 + UPDATED Torrenting : https://www.oxtorrent.sh/homec.html
 + UPDATED Torrenting : https://proxy-bay.me/
@@ -42,26 +42,30 @@ v5.9.1.3 - 30/10/2021
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED Portable Apps : Radeon Software Slimmer v1.3.0
 + UPDATED More Features Forum Websites : https://fora.snahp.eu/
-+ UPDATED More Features Forum Websites : https://rfmirror.com/
 + ADDED Streaming [EN] : https://m4ufree.to/
 + ADDED Streaming [EN] : https://www11.123movieshub.one/
 + ADDED Streaming [EN] : https://www.animerush.tv/
++ ADDED Streaming [EN] : https://allanime.site/anime
 + ADDED Streaming [FR] : https://www.filmstreaming1.tel/streaml/
 + ADDED Streaming [FR] : https://wwv.films-streams.com/
 + ADDED Streaming [FR] : https://vvw.streampourvous.ws/
 + ADDED Streaming [FR] : https://filmstreamingvf.org/
 + ADDED Streaming [FR] : https://comustream.fr/ (thanks @Zyker)
++ ADDED Streaming [FR] : https://voststream.com/
 + ADDED Streaming [FR] : https://animepourvous.com/
 + ADDED Torrenting : https://xbit.pw/
 + ADDED Torrenting : https://solidtorrents.net/
 + ADDED Torrenting : Web Torrenting.
 + ADDED Cracked Android APK's : https://android-zone.ws/
++ ADDED Cracked Android APK's : https://newpipe.net/
 + ADDED Cracked Windows apps : https://skidrowrepacks.com/ (thanks @ayo)
 + ADDED Cracked Windows apps : https://patricktech-repacks.xyz/
 + ADDED Useful Websites : https://www.urban-vpn.com/
 + ADDED Useful Websites : https://www.proxyscan.io/
 + ADDED Useful Websites : https://github.com/gibbed/SteamAchievementManager (thanks @0x00)
 + ADDED Useful Websites : https://www.revshells.com/ (thanks @0x00)
++ ADDED IP Denial of Services : https://downthem.in/
++ ADDED IP Denial of Services : https://booter.sx/
 + ADDED Portable Apps : SophiApp (thanks @0x00)
 + ADDED Portable Apps : Sophia-Script-for-Windows (thanks @0x00)
 + ADDED Portable Apps : NVCleanstall
@@ -70,8 +74,14 @@ v5.9.1.3 - 30/10/2021
 + ADDED More Features Release Logs : https://predb.ovh/
 + ADDED More Features Release Logs : https://www.xrel.to/
 + ADDED More Features Release Logs : https://www.reddit.com/r/CrackWatch/
++ ADDED More Features Ebooks : https://allanime.site/manga
++ ADDED More Features Ebooks : https://www.rndnovels.com/
++ ADDED More Features Ebooks : https://www.justlightnovels.com/
++ ADDED More Features Ebooks : https://rektnovelcompilations.wordpress.com/
++ ADDED More Features Ebooks : https://henkanepubs.wordpress.com/
 + ADDED More Features Musics : https://muxiv.net/
 + ADDED More Features Musics : https://slider.kz/
++ ADDED More Features Musics : https://allanime.site/music
 + ADDED More Features Musics : https://hikarinoakari.com/
 + ADDED More Features : Spoofing. (thanks @0x00)
 - REMOVED Direct Download Link [EN] : https://www.kokodown.com/ (down)
@@ -80,10 +90,10 @@ v5.9.1.3 - 30/10/2021
 - REMOVED Streaming [EN] : https://kiss-anime.asia/ (down)
 - REMOVED Streaming [EN] : https://www1.animeultima.to/ (down)
 - REMOVED Streaming [EN] : https://sportsbay.org/live-streams (down)
+- REMOVED Streaming [FR] : https://www.filmstreaminglol.com/ (down)
 - REMOVED Streaming [FR] : https://www.papystreaming.cc/ (down)
 - REMOVED Streaming [FR] : https://dbanimes.com/ (down)
 - REMOVED Streaming Applications : https://www.cinehub.app/ (down)
-- REMOVED Torrenting : https://filelisting.com/ (down)
 - REMOVED Torrenting : https://torrentparadise.pm/ (down)
 - REMOVED Useful Websites : https://lamule.eu/ (down)
 - REMOVED Useful Websites : https://combolist.io/ (down)
