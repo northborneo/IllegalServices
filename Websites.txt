@@ -179,6 +179,7 @@ animedao.to
 kissanimefree.to
 www1.7anime.io
 twist.moe
+allanime.site
 runnel.ir
 time4tv.stream
 live94today.com
@@ -194,7 +195,6 @@ wvw.hds.lc
 papystreaming-vf.com
 fcine.me
 wwv.films-streams.com
-www.filmstreaminglol.com
 streaming-films.net
 vfstreamiz.com
 wwv.streamfilm.cc
@@ -206,6 +206,7 @@ www.cinezzz.org
 voirseries.tv
 streamcomplet.buzz
 comustream.fr
+voststream.com
 tratov.com
 voiranime.com
 neko-sama.fr
@@ -219,7 +220,7 @@ otakufr.co
 www.mavanimes.co
 vostanimez.com
 toonanime.cc
-www.jetanimes.co
+wvw.jetanimes.com
 vostfree.tv
 www.universanime.co
 daijoubu.si
@@ -278,6 +279,7 @@ www3.yggtorrent.nz
 www.sharewood.tv
 www.oxtorrent.sh
 torrent9.to
+filelisting.com
 bt4g.org
 xbit.pw
 bitsearch.to
@@ -463,6 +465,7 @@ apkfolks.com
 bluesmods.com
 www.whatsappmods.net
 vancedapp.com
+newpipe.net
 ;;YOUTUBEDOWNLOADER
 yt-dl.org
 download.microsoft.com
@@ -530,10 +533,12 @@ www.torproject.org
 quez.in
 instant-stresser.com
 freestresser.to
+anonboot.com
 www.ipstresser.com
 ipstress.in
 royalstresser.com
-anonboot.com
+downthem.in
+booter.sx
 eor-n.to
 str3ssed.co
 vtoxicity.net
@@ -743,8 +748,12 @@ www.mangatown.com
 www.mangahome.com
 manga47.net
 comix.top
-www.readlightnovel.me
 reaperscans.com
+www.readlightnovel.me
+www.rndnovels.com
+www.justlightnovels.com
+rektnovelcompilations.wordpress.com
+henkanepubs.wordpress.com
 reaperscans.fr
 scantrad.net
 kangaryu-team.fr
@@ -760,8 +769,8 @@ muxiv.net
 slider.kz
 downloads.khinsider.com
 www.vgmusic.com
-freshremix.ru
 hikarinoakari.com
+freshremix.ru
 www.slsknet.org
 deemix.app
 freezer.life
@@ -792,7 +801,7 @@ tapochek.net
 forum.repack.me
 planete-warez.net
 www.nulled.to
-rfmirror.com
+raidforums.com
 hackforums.net
 cracked.to
 payload.sh
