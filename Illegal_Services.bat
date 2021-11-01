@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 1. 4
-REM  Fileversion:  5. 9. 1. 4
+REM  Productversion:  5. 9. 1. 5
+REM  Fileversion:  5. 9. 1. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -84,7 +84,7 @@ if not "%%A"=="!BATUSED!" del /f /q /a "%%A"
 :LAUNCHER
 popd
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.1.4 - 31/10/2021
+set VERSION=v5.9.1.5 - 01/11/2021
 set "el=UNDERLINE=!\E![4m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -840,8 +840,8 @@ call :SCALE 128 37
 title !TITLE:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
-call :CLEAR 1 71
-set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ katzdownload.com/ `rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.cx/ downloadhub.cfd/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ psarips.top/ themoviesflix.com.co/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ www.ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1 70
+set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ `rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.cx/ downloadhub.cfd/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ psarips.top/ themoviesflix.com.co/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ www.ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
 
 :CONTINUEDDLEN
 call :SCALE 128 37
@@ -850,30 +850,30 @@ echo !\E![44C══════════════════════�
 echo !\E![43C// !RED!█!BGYELLOW!!BLACK! DIRECT DOWNLOAD LINK (DDL) [EN] !RED!█!BGBLACK!!CYAN! \\
 echo !\E![6C╔══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
 echo !\E![6C║                                                                                                                  ║
-echo !\E![6C║    !1!avxhm.is!CYAN!                     │  !25!dl4all.org!CYAN!            │   !49!themovieflix.co.in!CYAN!              ║
-echo !\E![6C║    !2!www.heroturko.net!CYAN!            │  !26!warezomen.com!CYAN!         │   !50!hevcbay.com!CYAN!                     ║
-echo !\E![6C║    !3!rmz.cr!CYAN!                       │  !27!www.scnsrc.me!CYAN!         │   !51!rarefilmm.com!CYAN!                   ║
-echo !\E![6C║    !4!softarchive.is!CYAN!               │  !28!win7dl.org!CYAN!            │   !52!1worldfree4u.trade!CYAN!              ║
-echo !\E![6C║    !5!www.downduck.com!CYAN!             │  !29!www.ddlvalley.me!CYAN!      │   !53!the-eye.eu!CYAN!                      ║
-echo !\E![6C║    !6!scnlog.me!CYAN!                    │  !30!downtr.cc!CYAN!             │   !54!jpddl.com !GREEN!(animes)!CYAN!              ║
-echo !\E![6C║    !7!www.creaxy.com!CYAN!               │  !31!releasehive.com!CYAN!       │   !55!animeshare.cf !GREEN!(animes)!CYAN!          ║
-echo !\E![6C║    !8!downturk.net!CYAN!                 │  !32!rlstop.net!CYAN!            │   !56!anidl.org !GREEN!(animes)!CYAN!              ║
-echo !\E![6C║    !9!downarchive.org!CYAN!              │  !33!uhdmv.org!CYAN!             │   !57!hi10anime.com !GREEN!(animes)!CYAN!          ║
-echo !\E![6C║   !10!0dayhome.net!CYAN!                 │  !34!tfpdl.to!CYAN!              │   !58!animekayo.com !GREEN!(animes)!CYAN!          ║
-echo !\E![6C║   !11!scene-rls.net!CYAN!                │  !35!softddl.org!CYAN!           │   !59!animekaizoku.com !GREEN!(animes)!CYAN!       ║
-echo !\E![6C║   !12!www.freshwap.us!CYAN!              │  !36!2ddl.it!CYAN!               │   !60!www.ssanime.ga !GREEN!(animes)!CYAN!         ║
-echo !\E![6C║   !13!www.apps4all.com!CYAN!             │  !37!katzddl.net!CYAN!           │   !61!animetosho.org !GREEN!(animes)!CYAN!         ║
-echo !\E![6C║   !14!dl4all.biz!CYAN!                   │  !38!warezbb.net!CYAN!           │   !62!cdromance.com !GREEN!(roms)!CYAN!            ║
-echo !\E![6C║   !15!worldsrc.net!CYAN!                 │  !39!www.300mbfilms.cx!CYAN!     │   !63!www.romnation.net !GREEN!(roms)!CYAN!        ║
-echo !\E![6C║   !16!movieparadise.org!CYAN!            │  !40!downloadhub.cfd!CYAN!       │   !64!vimm.net !GREEN!(roms)!CYAN!                 ║
-echo !\E![6C║   !17!release.movieparadise.org!CYAN!    │  !41!filmsofts.com!CYAN!         │   !65!nxmac.com !GREEN!(MAC)!CYAN!                 ║
-echo !\E![6C║   !18!hdencode.org!CYAN!                 │  !42!cgpersia.com!CYAN!          │   !66!macdrop.net !GREEN!(MAC)!CYAN!               ║
-echo !\E![6C║   !19!katzdownload.com!CYAN!             │  !43!rsload.net!CYAN!            │   !67!sheet-music.xyz !GREEN!(audio)!CYAN!         ║
-echo !\E![6C║   !20!rlsbb.ru!CYAN!                     │  !44!megaddl.co!CYAN!            │   !68!audioz.download !GREEN!(audio)!CYAN!         ║
-echo !\E![6C║   !21!oneddl.org!CYAN!                   │  !45!heroturko2.net!CYAN!        │   !69!audiobookbay.nl !GREEN!(audiobooks)!CYAN!    ║
-echo !\E![6C║   !22!apps-pack.com!CYAN!                │  !46!crazy4tv.com!CYAN!          │   !70!www.gfxtra31.com !GREEN!(GFX)!CYAN!          ║
-echo !\E![6C║   !23!www.rlslog.net!CYAN!               │  !47!psarips.top!CYAN!           │   !71!gfx-hub.cc !GREEN!(GFX)!CYAN!                ║
-echo !\E![6C║   !24!freshwap.cc!CYAN!                  │  !48!themoviesflix.com.co!CYAN!  │                                          ║
+echo !\E![6C║    !1!avxhm.is!CYAN!                     │  !25!warezomen.com!CYAN!         │   !49!hevcbay.com!CYAN!                     ║
+echo !\E![6C║    !2!www.heroturko.net!CYAN!            │  !26!www.scnsrc.me!CYAN!         │   !50!rarefilmm.com!CYAN!                   ║
+echo !\E![6C║    !3!rmz.cr!CYAN!                       │  !27!win7dl.org!CYAN!            │   !51!1worldfree4u.trade!CYAN!              ║
+echo !\E![6C║    !4!softarchive.is!CYAN!               │  !28!www.ddlvalley.me!CYAN!      │   !52!the-eye.eu!CYAN!                      ║
+echo !\E![6C║    !5!www.downduck.com!CYAN!             │  !29!downtr.cc!CYAN!             │   !53!jpddl.com !GREEN!(animes)!CYAN!              ║
+echo !\E![6C║    !6!scnlog.me!CYAN!                    │  !30!releasehive.com!CYAN!       │   !54!animeshare.cf !GREEN!(animes)!CYAN!          ║
+echo !\E![6C║    !7!www.creaxy.com!CYAN!               │  !31!rlstop.net!CYAN!            │   !55!anidl.org !GREEN!(animes)!CYAN!              ║
+echo !\E![6C║    !8!downturk.net!CYAN!                 │  !32!uhdmv.org!CYAN!             │   !56!hi10anime.com !GREEN!(animes)!CYAN!          ║
+echo !\E![6C║    !9!downarchive.org!CYAN!              │  !33!tfpdl.to!CYAN!              │   !57!animekayo.com !GREEN!(animes)!CYAN!          ║
+echo !\E![6C║   !10!0dayhome.net!CYAN!                 │  !34!softddl.org!CYAN!           │   !58!animekaizoku.com !GREEN!(animes)!CYAN!       ║
+echo !\E![6C║   !11!scene-rls.net!CYAN!                │  !35!2ddl.it!CYAN!               │   !59!www.ssanime.ga !GREEN!(animes)!CYAN!         ║
+echo !\E![6C║   !12!www.freshwap.us!CYAN!              │  !36!katzddl.net!CYAN!           │   !60!animetosho.org !GREEN!(animes)!CYAN!         ║
+echo !\E![6C║   !13!www.apps4all.com!CYAN!             │  !37!warezbb.net!CYAN!           │   !61!cdromance.com !GREEN!(roms)!CYAN!            ║
+echo !\E![6C║   !14!dl4all.biz!CYAN!                   │  !38!www.300mbfilms.cx!CYAN!     │   !62!www.romnation.net !GREEN!(roms)!CYAN!        ║
+echo !\E![6C║   !15!worldsrc.net!CYAN!                 │  !39!downloadhub.cfd!CYAN!       │   !63!vimm.net !GREEN!(roms)!CYAN!                 ║
+echo !\E![6C║   !16!movieparadise.org!CYAN!            │  !40!filmsofts.com!CYAN!         │   !64!nxmac.com !GREEN!(MAC)!CYAN!                 ║
+echo !\E![6C║   !17!release.movieparadise.org!CYAN!    │  !41!cgpersia.com!CYAN!          │   !65!macdrop.net !GREEN!(MAC)!CYAN!               ║
+echo !\E![6C║   !18!hdencode.org!CYAN!                 │  !42!rsload.net!CYAN!            │   !66!sheet-music.xyz !GREEN!(audio)!CYAN!         ║
+echo !\E![6C║   !19!rlsbb.ru!CYAN!                     │  !43!megaddl.co!CYAN!            │   !67!audioz.download !GREEN!(audio)!CYAN!         ║
+echo !\E![6C║   !20!oneddl.org!CYAN!                   │  !44!heroturko2.net!CYAN!        │   !68!audiobookbay.nl !GREEN!(audiobooks)!CYAN!    ║
+echo !\E![6C║   !21!apps-pack.com!CYAN!                │  !45!crazy4tv.com!CYAN!          │   !69!www.gfxtra31.com !GREEN!(GFX)!CYAN!          ║
+echo !\E![6C║   !22!www.rlslog.net!CYAN!               │  !46!psarips.top!CYAN!           │   !70!gfx-hub.cc !GREEN!(GFX)!CYAN!                ║
+echo !\E![6C║   !23!freshwap.cc!CYAN!                  │  !47!themoviesflix.com.co!CYAN!  │                                          ║
+echo !\E![6C║   !24!dl4all.org!CYAN!                   │  !48!themovieflix.co.in!CYAN!    │                                          ║
 echo !\E![6C║                                                                                                                  ║
 echo !\E![6C╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -936,11 +936,11 @@ goto :CONTINUEDDLFR
 title !TITLE:`=Streaming [%Language%]!
 if "!UntrustedWebsitesWarning!"=="1" (
 if "!Language!"=="EN" (
-call :SCALE 101 53
+call :SCALE 101 52
 set t="No payment / installation / registration is required to view the videos on the sites offered by Illegal Services. All sites are free so watch out for scam advertising.!\N!!\N!If the player is not visible, disable your ad blocker and click on the button to close the ad in the middle of the video then on the player's Play button to launch the video."
 )
 if "!Language!"=="FR" (
-call :SCALE 101 48
+call :SCALE 101 45
 set t="Aucun payment / installation / inscription n'est requis pour voir les videos sur les sites proposes par Illegal Services. Tous les sites sont gratuits donc faites attention aux publicites d'arnaques.!\N!!\N!Si le lecteur n'est pas visible, desactiver votre bloqueur de publicites et clique sur le bouton pour fermer la pub au milieu de la video puis sur le bouton Play du lecteur pour lancer la video."
 )
 call :MSGBOX 69680 "Illegal Services Checker"
@@ -949,61 +949,60 @@ call :ROSE Streaming
 for %%A in (EN FR) do if "!Language!"=="%%A" goto :STREAMING%%A
 
 :STREAMINGEN
-call :SCALE 101 53
+call :SCALE 101 52
 title !TITLE:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
-call :CLEAR 1 60
-set db=www.primewire.li/ losmovies.top/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ 123movies.jp/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/browse openloadfreetv.me/ allmoviesforyou.net/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ www.animerush.tv/ animepahe.com/ ww1.animesimple.com/ zoro.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ allanime.site/anime runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ apps.stream2watch.sx/ sportplus.live/ thehomesport.com/
+call :CLEAR 1 59
+set db=www.primewire.li/ losmovies.top/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/browse openloadfreetv.me/ allmoviesforyou.net/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ www.animerush.tv/ animepahe.com/ ww1.animesimple.com/ zoro.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ allanime.site/anime runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ apps.stream2watch.sx/ sportplus.live/ thehomesport.com/
 
 :CONTINUESTREAMINGEN
-call :SCALE 101 53
+call :SCALE 101 52
 echo !CYAN!
 echo !\E![40C══════════════════════
 echo !\E![39C// !RED!█!BGYELLOW!!BLACK! STREAMING [EN] !RED!█!BGBLACK!!CYAN! \\
 echo !\E![8C╔═══════════════════════════════════════════════════════════════════════════════════╗
 echo !\E![8C╠═══════════════════════════════════■█!BGYELLOW!!RED!█ FILMS █!BGBLACK!!CYAN!█■═══════════════════════════════════╣
 echo !\E![8C║                                                                                   ║
-echo !\E![8C║    !1!www.primewire.li!CYAN!               │   !17!lookmovie.io!CYAN!                   ║
-echo !\E![8C║    !2!losmovies.top!CYAN!                  │   !18!www2.solarmovie.to!CYAN!             ║
-echo !\E![8C║    !3!m4ufree.to!CYAN!                     │   !19!ww.123movies.sc!CYAN!                ║
-echo !\E![8C║    !4!gomovie.co!CYAN!                     │   !20!frenzymovies.net!CYAN!               ║
-echo !\E![8C║    !5!gomovies-online.cam!CYAN!            │   !21!supernova.to!CYAN!                   ║
-echo !\E![8C║    !6!123movies.jp!CYAN!                   │   !22!vumoo.to!CYAN!                       ║
-echo !\E![8C║    !7!www1.123movies.co!CYAN!              │   !23!hulu.sc!CYAN!                        ║
-echo !\E![8C║    !8!myflixertv.to!CYAN!                  │   !24!watchtvepisodes.me!CYAN!             ║
-echo !\E![8C║    !9!www4.yesmovies.so!CYAN!              │   !25!ww2.123movieshub.tc!CYAN!            ║
-echo !\E![8C║   !10!5movies.pw!CYAN!                     │   !26!0gomovies.so!CYAN!                   ║
-echo !\E![8C║   !11!www11.123movieshub.one!CYAN!         │   !27!soap2day.to!CYAN!                    ║
-echo !\E![8C║   !12!hollymoviehd.cc!CYAN!                │   !28!www1.movie4u.live!CYAN!              ║
-echo !\E![8C║   !13!watch-serieshd.cc!CYAN!              │   !29!cinehub.wtf!CYAN!                    ║
-echo !\E![8C║   !14!watchseriess.net!CYAN!               │   !30!openloadfreetv.me!CYAN!              ║
-echo !\E![8C║   !15!flixtor.to!CYAN!                     │   !31!allmoviesforyou.net!CYAN!            ║
-echo !\E![8C║   !16!fmovies.to!CYAN!                     │                                         ║
+echo !\E![8C║    !1!www.primewire.li!CYAN!               │   !16!lookmovie.io!CYAN!                   ║
+echo !\E![8C║    !2!losmovies.top!CYAN!                  │   !17!www2.solarmovie.to!CYAN!             ║
+echo !\E![8C║    !3!m4ufree.to!CYAN!                     │   !18!ww.123movies.sc!CYAN!                ║
+echo !\E![8C║    !4!gomovie.co!CYAN!                     │   !19!frenzymovies.net!CYAN!               ║
+echo !\E![8C║    !5!gomovies-online.cam!CYAN!            │   !20!supernova.to!CYAN!                   ║
+echo !\E![8C║    !6!www1.123movies.co!CYAN!              │   !21!vumoo.to!CYAN!                       ║
+echo !\E![8C║    !7!myflixertv.to!CYAN!                  │   !22!hulu.sc!CYAN!                        ║
+echo !\E![8C║    !8!www4.yesmovies.so!CYAN!              │   !23!watchtvepisodes.me!CYAN!             ║
+echo !\E![8C║    !9!5movies.pw!CYAN!                     │   !24!ww2.123movieshub.tc!CYAN!            ║
+echo !\E![8C║   !10!www11.123movieshub.one!CYAN!         │   !25!0gomovies.so!CYAN!                   ║
+echo !\E![8C║   !11!hollymoviehd.cc!CYAN!                │   !26!soap2day.to!CYAN!                    ║
+echo !\E![8C║   !12!watch-serieshd.cc!CYAN!              │   !27!www1.movie4u.live!CYAN!              ║
+echo !\E![8C║   !13!watchseriess.net!CYAN!               │   !28!cinehub.wtf!CYAN!                    ║
+echo !\E![8C║   !14!flixtor.to!CYAN!                     │   !29!openloadfreetv.me!CYAN!              ║
+echo !\E![8C║   !15!fmovies.to!CYAN!                     │   !30!allmoviesforyou.net!CYAN!            ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════■█!BGYELLOW!!RED!█ ANIMES █!BGBLACK!!CYAN!█■══════════════════════════════════╣
 echo !\E![8C║                                                                                   ║
-echo !\E![8C║   !32!kisscartoon.info!CYAN!               │   !43!animixplay.to!CYAN!                  ║
-echo !\E![8C║   !33!9anime.to!CYAN!                      │   !44!www2.kickassanime.ro!CYAN!           ║
-echo !\E![8C║   !34!animesuge.io!CYAN!                   │   !45!www.animerush.tv!CYAN!               ║
-echo !\E![8C║   !35!animeheaven.pro!CYAN!                │   !46!animepahe.com!CYAN!                  ║
-echo !\E![8C║   !36!animeowl.net!CYAN!                   │   !47!ww1.animesimple.com!CYAN!            ║
-echo !\E![8C║   !37!animeow.me!CYAN!                     │   !48!zoro.to!CYAN!                        ║
-echo !\E![8C║   !38!arrayanime.com!CYAN!                 │   !49!animedao.to!CYAN!                    ║
-echo !\E![8C║   !39!gogoanime.vc!CYAN!                   │   !50!kissanimefree.to!CYAN!               ║
-echo !\E![8C║   !40!animefrenzy.org!CYAN!                │   !51!www1.7anime.io!CYAN!                 ║
-echo !\E![8C║   !41!anime8.ru!CYAN!                      │   !52!twist.moe!CYAN!                      ║
-echo !\E![8C║   !42!animevibe.se!CYAN!                   │   !53!allanime.site!CYAN!                  ║
+echo !\E![8C║   !31!kisscartoon.info!CYAN!               │   !42!animixplay.to!CYAN!                  ║
+echo !\E![8C║   !32!9anime.to!CYAN!                      │   !43!www2.kickassanime.ro!CYAN!           ║
+echo !\E![8C║   !33!animesuge.io!CYAN!                   │   !44!www.animerush.tv!CYAN!               ║
+echo !\E![8C║   !34!animeheaven.pro!CYAN!                │   !45!animepahe.com!CYAN!                  ║
+echo !\E![8C║   !35!animeowl.net!CYAN!                   │   !46!ww1.animesimple.com!CYAN!            ║
+echo !\E![8C║   !36!animeow.me!CYAN!                     │   !47!zoro.to!CYAN!                        ║
+echo !\E![8C║   !37!arrayanime.com!CYAN!                 │   !48!animedao.to!CYAN!                    ║
+echo !\E![8C║   !38!gogoanime.vc!CYAN!                   │   !49!kissanimefree.to!CYAN!               ║
+echo !\E![8C║   !39!animefrenzy.org!CYAN!                │   !50!www1.7anime.io!CYAN!                 ║
+echo !\E![8C║   !40!anime8.ru!CYAN!                      │   !51!twist.moe!CYAN!                      ║
+echo !\E![8C║   !41!animevibe.se!CYAN!                   │   !52!allanime.site!CYAN!                  ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═════════════════════════════════■█!BGYELLOW!!RED!█ TELEVISION █!BGBLACK!!CYAN!█■════════════════════════════════╣
 echo !\E![8C║                                                                                   ║
-echo !\E![8C║   !54!runnel.ir!CYAN!                      │   !58!apps.stream2watch.sx !GREEN!(sport)!CYAN!   ║
-echo !\E![8C║   !55!time4tv.stream!CYAN!                 │   !59!sportplus.live !GREEN!(sport)!CYAN!         ║
-echo !\E![8C║   !56!live94today.com!CYAN!                │   !60!thehomesport.com !GREEN!(sport)!CYAN!       ║
-echo !\E![8C║   !57!livetv.sx !GREEN!(sport)!CYAN!              │                                         ║
+echo !\E![8C║   !53!runnel.ir!CYAN!                      │   !57!apps.stream2watch.sx !GREEN!(sport)!CYAN!   ║
+echo !\E![8C║   !54!time4tv.stream!CYAN!                 │   !58!sportplus.live !GREEN!(sport)!CYAN!         ║
+echo !\E![8C║   !55!live94today.com!CYAN!                │   !59!thehomesport.com !GREEN!(sport)!CYAN!       ║
+echo !\E![8C║   !56!livetv.sx !GREEN!(sport)!CYAN!              │                                         ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════════════════════════════════════════════╣
-call :DRAW_CENTER "!YELLOW!61!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
+call :DRAW_CENTER "!YELLOW!60!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1021,56 +1020,53 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGEN
 
 :STREAMINGFR
-call :SCALE 101 48
+call :SCALE 101 45
 title !TITLE:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 48
-set db=www.filmstoon.one/streaming10/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ papystreaming-vf.com/accueil/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ streaminz.me/ filmstreamingvf.org/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ streamcomplet.buzz/ comustream.fr/ voststream.com/ tratov.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ mavanimes.cc/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ sport-stream.live/ `streaming-sport.tv/
+call :CLEAR 1 45
+set db=www.filmstoon.one/streaming10/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ papystreaming-vf.com/accueil/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ streaminz.me/ filmstreamingvf.org/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ streamcomplet.buzz/ comustream.fr/ voststream.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
-call :SCALE 101 48
+call :SCALE 101 45
 echo !CYAN!
 echo !\E![40C══════════════════════
 echo !\E![39C// !RED!█!BGYELLOW!!BLACK! STREAMING [FR] !RED!█!BGBLACK!!CYAN! \\
 echo !\E![8C╔═══════════════════════════════════════════════════════════════════════════════════╗
 echo !\E![8C╠═══════════════════════════════════■█!BGYELLOW!!RED!█ FILMS █!BGBLACK!!CYAN!█■═══════════════════════════════════╣
 echo !\E![8C║                                                                                   ║
-echo !\E![8C║    !1!www.filmstoon.one!CYAN!              │   !12!vvw.streampourvous.ws!CYAN!          ║
-echo !\E![8C║    !2!www6.filmstreaming.to!CYAN!          │   !13!streaminz.me!CYAN!                   ║
-echo !\E![8C║    !3!french-stream.re!CYAN!               │   !14!filmstreamingvf.org!CYAN!            ║
-echo !\E![8C║    !4!wvw.hds.lc!CYAN!                     │   !15!www.illimitestreaming.co!CYAN!       ║
-echo !\E![8C║    !5!papystreaming-vf.com!CYAN!           │   !16!www.cinezzz.org!CYAN!                ║
-echo !\E![8C║    !6!fcine.me!CYAN!                       │   !17!voirseries.tv !GREEN!(series)!CYAN!         ║
-echo !\E![8C║    !7!wwv.films-streams.com!CYAN!          │   !18!streamcomplet.buzz!CYAN!             ║
-echo !\E![8C║    !8!libertyvf.bz!CYAN!                   │   !19!comustream.fr!CYAN!                  ║
-echo !\E![8C║    !9!streaming-films.net!CYAN!            │   !20!voststream.com!CYAN!                 ║
-echo !\E![8C║   !10!vfstreamiz.com!CYAN!                 │   !21!tratov.com!CYAN!                     ║
-echo !\E![8C║   !11!wwv.streamfilm.cc!CYAN!              │                                         ║
+echo !\E![8C║    !1!www.filmstoon.one!CYAN!              │   !11!wwv.streamfilm.cc!CYAN!              ║
+echo !\E![8C║    !2!www6.filmstreaming.to!CYAN!          │   !12!vvw.streampourvous.ws!CYAN!          ║
+echo !\E![8C║    !3!french-stream.re!CYAN!               │   !13!streaminz.me!CYAN!                   ║
+echo !\E![8C║    !4!wvw.hds.lc!CYAN!                     │   !14!filmstreamingvf.org!CYAN!            ║
+echo !\E![8C║    !5!papystreaming-vf.com!CYAN!           │   !15!www.illimitestreaming.co!CYAN!       ║
+echo !\E![8C║    !6!fcine.me!CYAN!                       │   !16!www.cinezzz.org!CYAN!                ║
+echo !\E![8C║    !7!wwv.films-streams.com!CYAN!          │   !17!voirseries.tv !GREEN!(series)!CYAN!         ║
+echo !\E![8C║    !8!libertyvf.bz!CYAN!                   │   !18!streamcomplet.buzz!CYAN!             ║
+echo !\E![8C║    !9!streaming-films.net!CYAN!            │   !19!comustream.fr!CYAN!                  ║
+echo !\E![8C║   !10!vfstreamiz.com!CYAN!                 │   !20!voststream.com!CYAN!                 ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════■█!BGYELLOW!!RED!█ ANIMES █!BGBLACK!!CYAN!█■══════════════════════════════════╣
 echo !\E![8C║                                                                                   ║
-echo !\E![8C║   !22!voiranime.com!CYAN!                  │   !33!toonanime.cc!CYAN!                   ║
-echo !\E![8C║   !23!neko-sama.fr!CYAN!                   │   !34!wvw.jetanimes.com!CYAN!               ║
-echo !\E![8C║   !24!french-manga.net!CYAN!               │   !35!vostfree.tv!CYAN!                    ║
-echo !\E![8C║   !25!www.adkami.com!CYAN!                 │   !36!www.universanime.co!CYAN!            ║
-echo !\E![8C║   !26!www.ianimes.org!CYAN!                │   !37!daijoubu.si!CYAN!                    ║
-echo !\E![8C║   !27!mavanimes.cc!CYAN!                   │   !38!animepourvous.com!CYAN!              ║
-echo !\E![8C║   !28!streaming-integrale.com!CYAN!        │   !39!animevostfr.tv!CYAN!                 ║
-echo !\E![8C║   !29!gum-gum-streaming.com!CYAN!          │   !40!animecomplet.me!CYAN!                ║
-echo !\E![8C║   !30!otakufr.co!CYAN!                     │   !41!www.anime-ultime.net!CYAN!           ║
-echo !\E![8C║   !31!www.mavanimes.co!CYAN!               │   !42!v5.anime-ultime.net!CYAN!            ║
-echo !\E![8C║   !32!vostanimez.com!CYAN!                 │                                         ║
+echo !\E![8C║   !21!voiranime.com!CYAN!                  │   !31!toonanime.cc!CYAN!                   ║
+echo !\E![8C║   !22!neko-sama.fr!CYAN!                   │   !32!wvw.jetanimes.com!CYAN!              ║
+echo !\E![8C║   !23!french-manga.net!CYAN!               │   !33!vostfree.tv!CYAN!                    ║
+echo !\E![8C║   !24!www.adkami.com!CYAN!                 │   !34!www.universanime.co!CYAN!            ║
+echo !\E![8C║   !25!www.ianimes.org!CYAN!                │   !35!daijoubu.si!CYAN!                    ║
+echo !\E![8C║   !26!streaming-integrale.com!CYAN!        │   !36!animepourvous.com!CYAN!              ║
+echo !\E![8C║   !27!gum-gum-streaming.com!CYAN!          │   !37!animevostfr.tv!CYAN!                 ║
+echo !\E![8C║   !28!otakufr.co!CYAN!                     │   !38!animecomplet.me!CYAN!                ║
+echo !\E![8C║   !29!www.mavanimes.co!CYAN!               │   !39!www.anime-ultime.net!CYAN!           ║
+echo !\E![8C║   !30!vostanimez.com!CYAN!                 │   !40!v5.anime-ultime.net!CYAN!            ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═════════════════════════════════■█!BGYELLOW!!RED!█ TELEVISION █!BGBLACK!!CYAN!█■════════════════════════════════╣
 echo !\E![8C║                                                                                   ║
-echo !\E![8C║   !43!channelstream.watch!CYAN!            │   !47!sport-stream.live !GREEN!(sport)!CYAN!      ║
-echo !\E![8C║   !44!www.myfree-tivi.com!CYAN!            │   !48!streaming-sport.tv !GREEN!(sport)!CYAN!     ║
-echo !\E![8C║   !45!livetv.sx !GREEN!(sport)!CYAN!              │                                         ║
-echo !\E![8C║   !46!fr4.sportplus.live !GREEN!(sport)!CYAN!     │                                         ║
+echo !\E![8C║   !41!channelstream.watch!CYAN!            │   !44!fr4.sportplus.live !GREEN!(sport)!CYAN!     ║
+echo !\E![8C║   !42!www.myfree-tivi.com!CYAN!            │   !45!streaming-sport.tv !GREEN!(sport)!CYAN!     ║
+echo !\E![8C║   !43!livetv.sx !GREEN!(sport)!CYAN!              │                                         ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════════════════════════════════════════════╣
-call :DRAW_CENTER "!YELLOW!49!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
+call :DRAW_CENTER "!YELLOW!46!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1079,7 +1075,7 @@ call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLAC
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGFR
-if "!x!"=="49" (set la=FR) & goto :STREAMINGAPPS
+if "!x!"=="46" (set la=FR) & goto :STREAMINGAPPS
 call :CHOOSE en && goto :STREAMINGEN
 call :CHOOSE search && (call :IS_SEARCH e49c0bfe5fd6d7fb6 & goto :CONTINUESTREAMINGFR)
 call :CHOOSE back && goto :MAINMENU
@@ -1088,16 +1084,16 @@ call :ERRORMESSAGE
 goto :CONTINUESTREAMINGFR
 
 :STREAMINGAPPS
-call :SCALE 109 33
+call :SCALE 109 32
 title !TITLE:`=Streaming Applications!
 call :ROSE "Streaming Applications"
 
 :CLEARSTREAMINGAPPS
-call :CLEAR 1 13
-set db=popcorn-time.tw/ www.stremio.com/ cinemaapk.com/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ beetvapk.me/ filmplus.app/ www.novatvapk.com/ animixplay.to/android/app tvmob.net/ www.livenettv.bz/
+call :CLEAR 1 12
+set db=popcorn-time.tw/ www.stremio.com/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ beetvapk.me/ filmplus.app/ www.novatvapk.com/ animixplay.to/android/app tvmob.net/ www.livenettv.bz/
 
 :CONTINUESTREAMINGAPPS
-call :SCALE 109 33
+call :SCALE 109 32
 echo !CYAN!
 echo !\E![40C══════════════════════════════
 echo !\E![39C// !RED!█!BGYELLOW!!BLACK! STREAMING APPLICATIONS !RED!█!BGBLACK!!CYAN! \\
@@ -1112,17 +1108,16 @@ echo !\E![6C╠════════════════■█!BGYELLOW!!
 echo !\E![6C║                                               ║                                               ║
 echo !\E![6C║        !1!popcorn-time.tw!CYAN!                  ║          !1!popcorn-time.tw!CYAN!                ║
 echo !\E![6C║        !2!www.stremio.com!CYAN!                  ║          !2!www.stremio.com!CYAN!                ║
-echo !\E![6C║        !3!cinemaapk.com!CYAN!                    ║          !6!mediaboxhd.net!CYAN!                 ║
-echo !\E![6C║        !4!teatv.net!CYAN!                        ║                                               ║
-echo !\E![6C║        !5!www.morpheustvbox.com!CYAN!            ║                                               ║
-echo !\E![6C║        !6!mediaboxhd.net!CYAN!                   ║                                               ║
-echo !\E![6C║        !7!www.vivatv.io!CYAN!                    ║                                               ║
-echo !\E![6C║        !8!beetvapk.me!CYAN!                      ║                                               ║
-echo !\E![6C║        !9!filmplus.app!CYAN!                     ║                                               ║
-echo !\E![6C║       !10!www.novatvapk.com!CYAN!                ║                                               ║
-echo !\E![6C║       !11!animixplay.to !GREEN!(animes)!CYAN!           ║                                               ║
-echo !\E![6C║       !12!tvmob.net !GREEN!(television)!CYAN!           ║                                               ║
-echo !\E![6C║       !13!www.livenettv.bz !GREEN!(television)!CYAN!    ║                                               ║
+echo !\E![6C║        !3!teatv.net!CYAN!                        ║          !5!mediaboxhd.net!CYAN!                 ║
+echo !\E![6C║        !4!www.morpheustvbox.com!CYAN!            ║                                               ║
+echo !\E![6C║        !5!mediaboxhd.net!CYAN!                   ║                                               ║
+echo !\E![6C║        !6!www.vivatv.io!CYAN!                    ║                                               ║
+echo !\E![6C║        !7!beetvapk.me!CYAN!                      ║                                               ║
+echo !\E![6C║        !8!filmplus.app!CYAN!                     ║                                               ║
+echo !\E![6C║        !9!www.novatvapk.com!CYAN!                ║                                               ║
+echo !\E![6C║       !10!animixplay.to !GREEN!(animes)!CYAN!           ║                                               ║
+echo !\E![6C║       !11!tvmob.net !GREEN!(television)!CYAN!           ║                                               ║
+echo !\E![6C║       !12!www.livenettv.bz !GREEN!(television)!CYAN!    ║                                               ║
 echo !\E![6C║                                               ║                                               ║
 echo !\E![6C╚═══════════════════════════════════════════════╩═══════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1143,8 +1138,8 @@ title !TITLE:`=Torrenting!
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 78
-set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.sh/homec.html torrent9.to/ filelisting.com/ bt4g.org/ xbit.pw/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ search.torrends.to/ proxy-bay.me/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.top/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+call :CLEAR 1 80
+set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.sh/homec.html torrent9.to/ filelisting.com/ bt4g.org/ xbit.pw/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ w41.torlook.info/ www.magnetdl.com/ search.torrends.to/ proxy-bay.me/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.top/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
 call :SCALE 133 56
@@ -1171,32 +1166,32 @@ echo !\E![8C║   !29!www.sharewood.tv!CYAN!           │   !31!torrent9.to!CYA
 echo !\E![8C║                                                                                                                   ║
 echo !\E![8C╠═════════════════════════════════════════════■█!BGYELLOW!!RED!█ Torrent Searching █!BGBLACK!!CYAN!█■═════════════════════════════════════════════╣
 echo !\E![8C║                                                                                                                   ║
-echo !\E![8C║   !32!filelisting.com!CYAN!            │   !41!btdig.com!CYAN!                │   !50!pirateiro.com!CYAN!
+echo !\E![8C║   !32!filelisting.com!CYAN!            │   !41!btdig.com!CYAN!                │   !50!pirateiro.com!CYAN!                  ║
 echo !\E![8C║   !33!bt4g.org!CYAN!                   │   !42!ext.to!CYAN!                   │   !51!torrentseeker.com!CYAN!              ║
 echo !\E![8C║   !34!xbit.pw!CYAN!                    │   !43!www.torlock.com!CYAN!          │   !52!otorrents.com!CYAN!                  ║
 echo !\E![8C║   !35!bitsearch.to!CYAN!               │   !44!ibit.to!CYAN!                  │   !53!vstorrent.org!CYAN!                  ║
 echo !\E![8C║   !36!www.7torrents.cc!CYAN!           │   !45!zooqle.com!CYAN!               │   !54!torrents-csv.ml!CYAN!                ║
 echo !\E![8C║   !37!bitcq.com!CYAN!                  │   !46!snowfl.com!CYAN!               │   !55!torrentz2eu.me!CYAN!                 ║
-echo !\E![8C║   !38!knaben.eu!CYAN!                  │   !47!idope.se!CYAN!                 │   !56!search.torrends.to!CYAN!             ║
-echo !\E![8C║   !39!torrentproject2.com!CYAN!        │   !48!isohunt.app!CYAN!              │                                         ║
-echo !\E![8C║   !40!torrent-paradise.ml!CYAN!        │   !49!extratorrents.it!CYAN!         │                                         ║
+echo !\E![8C║   !38!knaben.eu!CYAN!                  │   !47!idope.se!CYAN!                 │   !56!w41.torlook.info!CYAN!               ║
+echo !\E![8C║   !39!torrentproject2.com!CYAN!        │   !48!isohunt.app!CYAN!              │   !57!www.magnetdl.com!CYAN!               ║
+echo !\E![8C║   !40!torrent-paradise.ml!CYAN!        │   !49!extratorrents.it!CYAN!         │   !58!search.torrends.to!CYAN!             ║
 echo !\E![8C║                                                                                                                   ║
 echo !\E![8C╠══════════════════════════════════════════════■█!BGYELLOW!!RED!█ Torrent Proxys █!BGBLACK!!CYAN!█■═══════════════════════════════════════════════╣
 echo !\E![8C║                                                                                                                   ║
-echo !\E![8C║   !57!proxy-bay.me!CYAN!               │   !62!siteunblocked.info!CYAN!       │   !67!proxyninja.org!CYAN!                 ║
-echo !\E![8C║   !58!proxygalaxy.pw!CYAN!             │   !63!unblockproject.top!CYAN!       │   !68!knaben.info!CYAN!                    ║
-echo !\E![8C║   !59!yifystatus.com!CYAN!             │   !64!unblocksource.net!CYAN!        │   !69!unblocktorrent.com!CYAN!             ║
-echo !\E![8C║   !60!eztvstatus.com!CYAN!             │   !65!unblockit.kim!CYAN!            │   !70!torrends.to!CYAN!                    ║
-echo !\E![8C║   !61!ettvproxies.com!CYAN!            │   !66!torrentbay.to!CYAN!            │                                         ║
+echo !\E![8C║   !59!proxy-bay.me!CYAN!               │   !64!siteunblocked.info!CYAN!       │   !69!proxyninja.org!CYAN!                 ║
+echo !\E![8C║   !60!proxygalaxy.pw!CYAN!             │   !65!unblockproject.top!CYAN!       │   !70!knaben.info!CYAN!                    ║
+echo !\E![8C║   !61!yifystatus.com!CYAN!             │   !66!unblocksource.net!CYAN!        │   !71!unblocktorrent.com!CYAN!             ║
+echo !\E![8C║   !62!eztvstatus.com!CYAN!             │   !67!unblockit.kim!CYAN!            │   !72!torrends.to!CYAN!                    ║
+echo !\E![8C║   !63!ettvproxies.com!CYAN!            │   !68!torrentbay.to!CYAN!            │                                         ║
 echo !\E![8C║                                                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════■█!BGYELLOW!!RED!█ Torrent Applications █!BGBLACK!!CYAN!█■════════════════════════════════════════════╣
 echo !\E![8C║                                                                                                                   ║
-echo !\E![8C║   !71!Jackett!CYAN!                    │   !74!sonarr.tv!CYAN!                │   !77!DuckieTV!CYAN!                       ║
-echo !\E![8C║   !72!www.qbittorrent.org!CYAN!        │   !75!radarr.video!CYAN!             │   !78!couchpota.to!CYAN!                   ║
-echo !\E![8C║   !73!www.torrentrover.com!CYAN!       │   !76!lidarr.audio!CYAN!             │                                         ║
+echo !\E![8C║   !73!Jackett!CYAN!                    │   !76!sonarr.tv!CYAN!                │   !79!DuckieTV!CYAN!                       ║
+echo !\E![8C║   !74!www.qbittorrent.org!CYAN!        │   !77!radarr.video!CYAN!             │   !80!couchpota.to!CYAN!                   ║
+echo !\E![8C║   !75!www.torrentrover.com!CYAN!       │   !78!lidarr.audio!CYAN!             │                                         ║
 echo !\E![8C║                                                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-echo !\E![8C║                                             !YELLOW!79!CYAN!  ^>  !WHITE!Web Torrenting!CYAN!                                                 ║
+echo !\E![8C║                                             !YELLOW!81!CYAN!  ^>  !WHITE!Web Torrenting!CYAN!                                                 ║
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
@@ -1403,8 +1398,8 @@ title !TITLE:`=Cracked Windows apps!
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
-call :CLEAR 1 80
-set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ www.elamigos-games.com/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ skidrowrepacks.com/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ darckrepacks.com/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ patricktech-repacks.xyz/ e13.xatab-repack.com/ qoob.name/
+call :CLEAR 1 78
+set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ skidrowrepacks.com/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ patricktech-repacks.xyz/ e13.xatab-repack.com/ qoob.name/
 
 :CONTINUEWINDOWS
 call :SCALE 136 54
@@ -1436,24 +1431,24 @@ echo !\E![8C║   !36!!RED!portable4pc.com!CYAN!         │   !37!www.fcportabl
 echo !\E![8C║                                                                                                                      ║
 echo !\E![8C╠══════════════════════════════════════════════════■█!BGYELLOW!!RED!█ Videogames █!BGBLACK!!CYAN!█■══════════════════════════════════════════════════╣
 echo !\E![8C║                                                                                                                      ║
-echo !\E![8C║   !39!!RED!igg-games.com!CYAN!           │   !47!steamunlocked.net!CYAN!          │   !55!alltorrents.co!CYAN!                     ║
-echo !\E![8C║   !40!!RED!pcgamestorrents.com!CYAN!     │   !48!gog-games.com!CYAN!              │   !56!www.myabandonware.com !GREEN!(retro)!CYAN!      ║
-echo !\E![8C║   !41!!RED!www.skidrowcodex.net!CYAN!    │   !49!!RED!codex-games.com!CYAN!            │   !57!gamesnostalgia.com !GREEN!(retro)!CYAN!         ║
-echo !\E![8C║   !42!www.mrpcgamer.co!CYAN!        │   !50!getgamez.net!CYAN!               │   !58!cygames.fr !GREEN![FR]!CYAN!                    ║
-echo !\E![8C║   !43!www.game3rb.com!CYAN!         │   !51!www.elamigos-games.com!CYAN!     │   !59!telecharger-jeuxpc.fr !GREEN![FR]!CYAN!         ║
-echo !\E![8C║   !44!agfy.co!CYAN!                 │   !52!crackhub.site!CYAN!              │   !60!www.gamestorrents.fm !GREEN![ES]!CYAN!          ║
-echo !\E![8C║   !45!!RED!cracked-games.org!CYAN!       │   !53!freegameshub.co!CYAN!            │                                             ║
-echo !\E![8C║   !46!www.ovagames.com!CYAN!        │   !54!gogunlocked.com!CYAN!            │                                             ║
+echo !\E![8C║   !39!!RED!igg-games.com!CYAN!           │   !47!steamunlocked.net!CYAN!          │   !55!www.myabandonware.com !GREEN!(retro)!CYAN!      ║
+echo !\E![8C║   !40!!RED!pcgamestorrents.com!CYAN!     │   !48!gog-games.com!CYAN!              │   !56!gamesnostalgia.com !GREEN!(retro)!CYAN!         ║
+echo !\E![8C║   !41!!RED!www.skidrowcodex.net!CYAN!    │   !49!!RED!codex-games.com!CYAN!            │   !57!cygames.fr !GREEN![FR]!CYAN!                    ║
+echo !\E![8C║   !42!www.mrpcgamer.co!CYAN!        │   !50!getgamez.net!CYAN!               │   !58!telecharger-jeuxpc.fr !GREEN![FR]!CYAN!         ║
+echo !\E![8C║   !43!www.game3rb.com!CYAN!         │   !51!crackhub.site!CYAN!              │   !59!www.gamestorrents.fm !GREEN![ES]!CYAN!          ║
+echo !\E![8C║   !44!agfy.co!CYAN!                 │   !52!freegameshub.co!CYAN!            │                                             ║
+echo !\E![8C║   !45!!RED!cracked-games.org!CYAN!       │   !53!gogunlocked.com!CYAN!            │                                             ║
+echo !\E![8C║   !46!www.ovagames.com!CYAN!        │   !54!alltorrents.co!CYAN!             │                                             ║
 echo !\E![8C║                                                                                                                      ║
 echo !\E![8C╠══════════════════════════════════════════════■█!BGYELLOW!!RED!█ Videogame Repacks █!BGBLACK!!CYAN!█■═══════════════════════════════════════════════╣
 echo !\E![8C║                                                                                                                      ║
-echo !\E![8C║   !61!repack-games.com!CYAN!        │   !68!darckrepacks.com!CYAN!           │   !75!www.tiny-repacks.win!CYAN!               ║
-echo !\E![8C║   !62!www.game-repack.site!CYAN!    │   !69!dodi-repacks.site!CYAN!          │   !76!repack.info!CYAN!                        ║
-echo !\E![8C║   !63!elamigos.site!CYAN!           │   !70!www.blackboxrepack.com!CYAN!     │   !77!m4ckd0ge-repacks.me!CYAN!                ║
-echo !\E![8C║   !64!skidrowrepacks.com!CYAN!      │   !71!masquerade.site!CYAN!            │   !78!patricktech-repacks.xyz!CYAN!            ║
-echo !\E![8C║   !65!fitgirl-repacks.site!CYAN!    │   !72!scooter-repacks.site!CYAN!       │   !79!e13.xatab-repack.com !GREEN![RU]!CYAN!          ║
-echo !\E![8C║   !66!repack-mechanics.com!CYAN!    │   !73!www.gnarly-repacks.site!CYAN!    │   !80!qoob.name !GREEN![RU]!CYAN!                     ║
-echo !\E![8C║   !67!gamesdrive.net!CYAN!          │   !74!cpgrepacks.site!CYAN!            │                                             ║
+echo !\E![8C║   !60!repack-games.com!CYAN!        │   !67!dodi-repacks.site!CYAN!          │   !74!repack.info!CYAN!                        ║
+echo !\E![8C║   !61!www.game-repack.site!CYAN!    │   !68!www.blackboxrepack.com!CYAN!     │   !75!m4ckd0ge-repacks.me!CYAN!                ║
+echo !\E![8C║   !62!elamigos.site!CYAN!           │   !69!masquerade.site!CYAN!            │   !76!patricktech-repacks.xyz!CYAN!            ║
+echo !\E![8C║   !63!skidrowrepacks.com!CYAN!      │   !70!scooter-repacks.site!CYAN!       │   !77!e13.xatab-repack.com !GREEN![RU]!CYAN!          ║
+echo !\E![8C║   !64!fitgirl-repacks.site!CYAN!    │   !71!www.gnarly-repacks.site!CYAN!    │   !78!qoob.name !GREEN![RU]!CYAN!                     ║
+echo !\E![8C║   !65!repack-mechanics.com!CYAN!    │   !72!cpgrepacks.site!CYAN!            │                                             ║
+echo !\E![8C║   !66!gamesdrive.net!CYAN!          │   !73!www.tiny-repacks.win!CYAN!       │                                             ║
 echo !\E![8C║                                                                                                                      ║
 echo !\E![8C╚══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1475,44 +1470,49 @@ call :ERRORMESSAGE
 goto :CONTINUEWINDOWS
 
 :ANDROID
-call :SCALE 85 34
+call :SCALE 85 40
 title !TITLE:`=Cracked Android APK's!
 call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
-call :CLEAR 1 29
-set db=a2zapk.com/ android-zone.ws/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ bluesmods.com/ www.whatsappmods.net/ vancedapp.com/ newpipe.net/ github.com/xManager-v2/xManager-Spotify
+call :CLEAR 1 32
+set db=a2zapk.com/ android-zone.ws/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ www.revdl.com/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ vancedapp.com/ newpipe.net/ www.instamod.net/ thedise.me/instander/ www.whatsappmods.net/ bluesmods.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
-call :SCALE 85 34
+call :SCALE 85 40
 echo !CYAN!
 echo !\E![28C════════════════════════════
 echo !\E![27C// !RED!█!BGYELLOW!!BLACK! CRACKED ANDROID APPS !RED!█!BGBLACK!!CYAN! \\
 echo !\E![7C╔═════════════════════════════════════════════════════════════════════╗
 echo !\E![7C║                                                                     ║
-echo !\E![7C║    !1!a2zapk.com!CYAN!             │   !13!moddroid.co!CYAN!              ║
-echo !\E![7C║    !2!android-zone.ws!CYAN!        │   !14!apkmody.io!CYAN!               ║
-echo !\E![7C║    !3!apkhome.net!CYAN!            │   !15!inewkhushi.com!CYAN!           ║
-echo !\E![7C║    !4!apkmagic.com.ar!CYAN!        │   !16!proapk.in!CYAN!                ║
-echo !\E![7C║    !5!oceanofapk.com!CYAN!         │   !17!www.apps4download.com!CYAN!    ║
-echo !\E![7C║    !6!apkgod.net!CYAN!             │   !18!ihackedit.com!CYAN!            ║
-echo !\E![7C║    !7!5mod.ru!CYAN!                │   !19!iplayplus.org!CYAN!            ║
-echo !\E![7C║    !8!apkmb.com!CYAN!              │   !20!apk-house.com!CYAN!            ║
-echo !\E![7C║    !9!apk4free.org!CYAN!           │   !21!www.rockmods.net!CYAN!         ║
-echo !\E![7C║   !10!dlandroid.com!CYAN!          │   !22!www.ytricks.net!CYAN!          ║
-echo !\E![7C║   !11!apk4all.com!CYAN!            │   !23!www.apkheist.com!CYAN!         ║
-echo !\E![7C║   !12!rexdl.com!CYAN!              │   !24!apkfolks.com!CYAN!             ║
+echo !\E![7C║    !1!a2zapk.com!CYAN!             │   !14!moddroid.co!CYAN!              ║
+echo !\E![7C║    !2!android-zone.ws!CYAN!        │   !15!apkmody.io!CYAN!               ║
+echo !\E![7C║    !3!apkhome.net!CYAN!            │   !16!inewkhushi.com!CYAN!           ║
+echo !\E![7C║    !4!apkmagic.com.ar!CYAN!        │   !17!proapk.in!CYAN!                ║
+echo !\E![7C║    !5!oceanofapk.com!CYAN!         │   !18!www.apps4download.com!CYAN!    ║
+echo !\E![7C║    !6!apkgod.net!CYAN!             │   !19!ihackedit.com!CYAN!            ║
+echo !\E![7C║    !7!www.revdl.com!CYAN!          │   !20!iplayplus.org!CYAN!            ║
+echo !\E![7C║    !8!5mod.ru !GREEN![RU]!CYAN!           │   !21!apk-house.com!CYAN!            ║
+echo !\E![7C║    !9!apkmb.com!CYAN!              │   !22!www.rockmods.net!CYAN!         ║
+echo !\E![7C║   !10!apk4free.org!CYAN!           │   !23!www.ytricks.net!CYAN!          ║
+echo !\E![7C║   !11!dlandroid.com!CYAN!          │   !24!www.apkheist.com!CYAN!         ║
+echo !\E![7C║   !12!apk4all.com!CYAN!            │   !25!apkfolks.com!CYAN!             ║
+echo !\E![7C║   !13!rexdl.com!CYAN!              │                                   ║
 echo !\E![7C║                                                                     ║
-echo !\E![7C╠═════■█!BGYELLOW!!RED!█ Discord Modded █!BGBLACK!!CYAN!█■══════╦═════■█!BGYELLOW!!RED!█ Whats App Modded █!BGBLACK!!CYAN!█■══════╣
+echo !\E![7C╠═════■█!BGYELLOW!!RED!█ YouTube Modded █!BGBLACK!!CYAN!█■══════╦═════■█!BGYELLOW!!RED!█ Instagram Modded █!BGBLACK!!CYAN!█■══════╣
 echo !\E![7C║                                 ║                                   ║
-echo !\E![7C║   !25!bluesmods.com!CYAN!          ║   !26!www.whatsappmods.net!CYAN!     ║
+echo !\E![7C║   !26!vancedapp.com!CYAN!          ║   !28!www.instamod.net!CYAN!         ║
+echo !\E![7C║   !27!newpipe.net!CYAN!            ║   !29!thedise.me!CYAN!               ║
 echo !\E![7C║                                 ║                                   ║
-echo !\E![7C╠═════■█!BGYELLOW!!RED!█ YouTube Modded █!BGBLACK!!CYAN!█■══════╬══════■█!BGYELLOW!!RED!█ Spotify Modded █!BGBLACK!!CYAN!█■═══════╣
+echo !\E![7C╠════■█!BGYELLOW!!RED!█ Whats App Modded █!BGBLACK!!CYAN!█■═════╬══════■█!BGYELLOW!!RED!█ Discord Modded █!BGBLACK!!CYAN!█■═══════╣
 echo !\E![7C║                                 ║                                   ║
-echo !\E![7C║   !27!vancedapp.com!CYAN!          ║   !29!xManager-v2!CYAN!              ║
-echo !\E![7C║   !28!newpipe.net!CYAN!            ║                                   ║
-echo !\E![7C║                                 ║                                   ║
-echo !\E![7C╚═════════════════════════════════╩═══════════════════════════════════╝
+echo !\E![7C║   !30!www.whatsappmods.net!CYAN!   ║   !31!bluesmods.com!CYAN!            ║
+echo !\E![7C║                                                                     ║
+echo !\E![7C╠═══════════════════════■█!BGYELLOW!!RED!█ Spotify Modded █!BGBLACK!!CYAN!█■════════════════════════╣
+echo !\E![7C║                                                                     ║
+echo !\E![7C║                        !32!xManager-v2!CYAN!                           ║
+echo !\E![7C║                                                                     ║
+echo !\E![7C╚═════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -1730,16 +1730,16 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :USEFULWEBSITES
-call :SCALE 139 49
+call :SCALE 139 48
 title !TITLE:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-call :CLEAR 1 63
-set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ freevpn.me/ www.proxyscan.io/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.revshells.com/ www.torproject.org/
+call :CLEAR 1 62
+set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ www.proxyscan.io/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.revshells.com/ www.torproject.org/
 
 :CONTINUEUSEFULWEBSITES
-call :SCALE 139 49
+call :SCALE 139 48
 echo !CYAN!
 echo !\E![58C═══════════════════════
 echo !\E![57C// !RED!█!BGYELLOW!!BLACK! USEFUL WEBSITES !RED!█!BGBLACK!!CYAN! \\
@@ -1755,32 +1755,31 @@ echo !\E![8C║    !6!urlscan.io!CYAN!                  ║                     
 echo !\E![8C║                                      ║                                          ║                                     ║
 echo !\E![8C╠═════■█!BGYELLOW!!RED!█ Free VPNs and Proxys █!BGBLACK!!CYAN!█■═════╬══════════■█!BGYELLOW!!RED!█ Mails and SMS █!BGBLACK!!CYAN!█■═══════════╬════════■█!BGYELLOW!!RED!█ Web Resolvers █!BGBLACK!!CYAN!█■════════╣
 echo !\E![8C║                                      ║                                          ║                                     ║
-echo !\E![8C║   !17!protonvpn.com!CYAN!               ║   !29!protonmail.com!CYAN!                  ║    !37!webresolver.nl!CYAN!            ║
-echo !\E![8C║   !18!www.urban-vpn.com!CYAN!           ║   !30!www.startmail.com!CYAN!               ║    !38!www.vedbex.com!CYAN!            ║
-echo !\E![8C║   !19!courvix.com!CYAN!                 ║   !31!temp-mail.org!CYAN!                   ║    !39!wannabe1337.xyz!CYAN!           ║
-echo !\E![8C║   !20!www.freeopenvpn.org!CYAN!         ║   !32!dropmail.me!CYAN!                     ║    !40!mostwantedhf.info!CYAN!         ║
-echo !\E![8C║   !21!www.vpnbook.com!CYAN!             ║   !33!yopmail.com!CYAN!                     ║    !41!shadowcrypt.net!CYAN!           ║
-echo !\E![8C║   !22!freevpn.me!CYAN!                  ║   !34!generator.email!CYAN!                 ║    !42!xresolver.com!CYAN!             ║
-echo !\E![8C║   !23!www.proxyscan.io!CYAN!            ║   !35!temp-sms.org!CYAN!                    ║    !43!www.skypeipresolver.net!CYAN!   ║
-echo !\E![8C║   !24!free-proxy-list.net!CYAN!         ║   !36!cyber-hub.pw!CYAN!                    ║                                     ║
-echo !\E![8C║   !25!proxy-daily.com!CYAN!             ║                                          ║                                     ║
-echo !\E![8C║   !26!smallseotools.com!CYAN!           ║                                          ║                                     ║
-echo !\E![8C║   !27!cloudssh.net!CYAN!                ║                                          ║                                     ║
-echo !\E![8C║   !28!sshdropbear.net!CYAN!             ║                                          ║                                     ║
+echo !\E![8C║   !17!protonvpn.com!CYAN!               ║   !28!protonmail.com!CYAN!                  ║    !36!webresolver.nl!CYAN!            ║
+echo !\E![8C║   !18!www.urban-vpn.com!CYAN!           ║   !29!www.startmail.com!CYAN!               ║    !37!www.vedbex.com!CYAN!            ║
+echo !\E![8C║   !19!courvix.com!CYAN!                 ║   !30!temp-mail.org!CYAN!                   ║    !38!wannabe1337.xyz!CYAN!           ║
+echo !\E![8C║   !20!www.freeopenvpn.org!CYAN!         ║   !31!dropmail.me!CYAN!                     ║    !39!mostwantedhf.info!CYAN!         ║
+echo !\E![8C║   !21!www.vpnbook.com!CYAN!             ║   !32!yopmail.com!CYAN!                     ║    !40!shadowcrypt.net!CYAN!           ║
+echo !\E![8C║   !22!www.proxyscan.io!CYAN!            ║   !33!generator.email!CYAN!                 ║    !41!xresolver.com!CYAN!             ║
+echo !\E![8C║   !23!free-proxy-list.net!CYAN!         ║   !34!temp-sms.org!CYAN!                    ║    !42!www.skypeipresolver.net!CYAN!   ║
+echo !\E![8C║   !24!proxy-daily.com!CYAN!             ║   !35!cyber-hub.pw!CYAN!                    ║                                     ║
+echo !\E![8C║   !25!smallseotools.com!CYAN!           ║                                          ║                                     ║
+echo !\E![8C║   !26!cloudssh.net!CYAN!                ║                                          ║                                     ║
+echo !\E![8C║   !27!sshdropbear.net!CYAN!             ║                                          ║                                     ║
 echo !\E![8C║                                      ║                                          ║                                     ║
 echo !\E![8C╠═══════■█!BGYELLOW!!RED!█ Fake Generators █!BGBLACK!!CYAN!█■════════╬════════════■█!BGYELLOW!!RED!█ Warez News █!BGBLACK!!CYAN!█■════════════╬═══════■█!BGYELLOW!!RED!█ File Searching █!BGBLACK!!CYAN!█■════════╣
 echo !\E![8C║                                      ║                                          ║                                     ║
-echo !\E![8C║   !44!fakepersongenerator.com!CYAN!     ║   !48!torrentfreak.com!CYAN!                ║    !51!www.aiosearch.com!CYAN!         ║
-echo !\E![8C║   !45!www.fakeimess.com!CYAN!           ║   !49!nextwarez.com !GREEN![FR]!CYAN!              ║    !52!www.filechef.com!CYAN!          ║
-echo !\E![8C║   !46!fakeproof.xenot.pro!CYAN!         ║   !50!filepursuit.com!CYAN!                 ║                                     ║
-echo !\E![8C║   !47!www.vedbex.com!CYAN!              ║                                          ║                                     ║
+echo !\E![8C║   !43!fakepersongenerator.com!CYAN!     ║   !47!torrentfreak.com!CYAN!                ║    !50!www.aiosearch.com!CYAN!         ║
+echo !\E![8C║   !44!www.fakeimess.com!CYAN!           ║   !48!nextwarez.com !GREEN![FR]!CYAN!              ║    !51!www.filechef.com!CYAN!          ║
+echo !\E![8C║   !45!fakeproof.xenot.pro!CYAN!         ║   !49!filepursuit.com!CYAN!                 ║                                     ║
+echo !\E![8C║   !46!www.vedbex.com!CYAN!              ║                                          ║                                     ║
 echo !\E![8C║                                                                                 ║                                     ║
 echo !\E![8C╠═════════════════════════════■█!BGYELLOW!!RED!█ Combo Lists █!BGBLACK!!CYAN!█■═════════════════════════════════╬═══════════■█!BGYELLOW!!RED!█ Others █!BGBLACK!!CYAN!█■════════════╣
 echo !\E![8C║                                                                                 ║                                     ║
-echo !\E![8C║   !53!leak.sx!CYAN!                     │   !57!sinister.ly!CYAN!                     ║   !61!onehack.us!CYAN!                 ║
-echo !\E![8C║   !54!combo-list.com!CYAN!              │   !58!mailaccess.top!CYAN!                  ║   !62!www.revshells.com!CYAN!          ║
-echo !\E![8C║   !55!www.frecombo.com!CYAN!            │   !59!dailycombolist!CYAN!                  ║   !63!www.torproject.org!CYAN!         ║
-echo !\E![8C║   !56!combolist.top!CYAN!               │   !60!SteamAchievementManager!CYAN!         ║                                     ║
+echo !\E![8C║   !52!leak.sx!CYAN!                     │   !56!sinister.ly!CYAN!                     ║   !60!onehack.us!CYAN!                 ║
+echo !\E![8C║   !53!combo-list.com!CYAN!              │   !57!mailaccess.top!CYAN!                  ║   !61!www.revshells.com!CYAN!          ║
+echo !\E![8C║   !54!www.frecombo.com!CYAN!            │   !58!dailycombolist!CYAN!                  ║   !62!www.torproject.org!CYAN!         ║
+echo !\E![8C║   !55!combolist.top!CYAN!               │   !59!SteamAchievementManager!CYAN!         ║                                     ║
 echo !\E![8C║                                                                                 ║                                     ║
 echo !\E![8C╚═════════════════════════════════════════════════════════════════════════════════╩═════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1796,16 +1795,16 @@ call :ERRORMESSAGE
 goto :CONTINUEUSEFULWEBSITES
 
 :DDOS
-call :SCALE 82 32
+call :SCALE 82 31
 title !TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
-call :CLEAR 1 19
+call :CLEAR 1 18
 set db=quez.in/ instant-stresser.com/ freestresser.to/ anonboot.com/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ downthem.in/ booter.sx/ eor-n.to/ str3ssed.co/ wannabe1337.xyz/stresser vtoxicity.net/ str3sser.io/ databooter.to/ asylumstresser.to/ deltastress.com/ ddosforhire.net/
 
 :CONTINUEDDOS
-call :SCALE 82 32
+call :SCALE 82 31
 echo !CYAN!
 echo !\E![23C══════════════════════════════════════
 echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
@@ -1818,8 +1817,7 @@ echo !\E![8C║   !5!www.ipstresser.com!CYAN!     ║          [ 200/Mbps] [300/
 echo !\E![8C║   !6!ipstress.in!CYAN!            ║          [   ?/Gbps] [250/s]  ║
 echo !\E![8C║   !7!royalstresser.com!CYAN!      ║          [   ?/Gbps] [200/s]  ║
 echo !\E![8C║   !8!downthem.in!CYAN!            ║          [ 1,5/Gbps] [150/s]  ║
-echo !\E![8C║   !8!booter.sx!CYAN!              ║          [8-12/Gbps] [120/s]  ║
-echo !\E![8C║   !9!stresser.zone!CYAN!          ║          [   ?/Gbps] [120/s]  ║
+echo !\E![8C║   !9!booter.sx!CYAN!              ║          [8-12/Gbps] [120/s]  ║
 echo !\E![8C║  !10!eor-n.to!CYAN!               ║          [   ?/Gbps] [120/s]  ║
 echo !\E![8C║  !11!str3ssed.co!CYAN!            ║          [   1/Gbps] [120/s]  ║
 echo !\E![8C║  !12!wannabe1337.xyz!CYAN!        ║          [   ?/Gbps] [120/s]  ║
@@ -1830,11 +1828,11 @@ echo !\E![8C║  !16!asylumstresser.to!CYAN!      ║          [   1/Gbps] [ 60/
 echo !\E![8C║  !17!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩═══════════════════════════════╣
 if "!Language!"=="EN" (
-echo !\E![29C!BRIGHTMAGENTA!Last Updated: !WHITE!31/10/2021
+echo !\E![29C!BRIGHTMAGENTA!Last Updated: !WHITE!01/11/2021
 echo !\E![15C!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net
 )
 if "!Language!"=="FR" (
-echo !\E![28C!BRIGHTMAGENTA!Mise à jour le: !WHITE!31/10/2021
+echo !\E![28C!BRIGHTMAGENTA!Mise à jour le: !WHITE!01/11/2021
 echo !\E![11C!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════════════╝
@@ -2453,7 +2451,7 @@ if "!48!"=="!YELLOW!48 !CHECKED!" (
 if "!ARCH!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
 if "!ARCH!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4365/processhacker-build-bin.zip"
+if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4373/processhacker-3.0.4373-bin.zip"
 if "!50!"=="!YELLOW!50 !CHECKED!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!51!"=="!YELLOW!51 !CHECKED!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!52!"=="!YELLOW!52 !CHECKED!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
