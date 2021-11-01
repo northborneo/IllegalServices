@@ -61,7 +61,6 @@ worldsrc.net
 movieparadise.org
 release.movieparadise.org
 hdencode.org
-katzdownload.com
 rlsbb.ru
 apps-pack.com
 oneddl.org
@@ -132,7 +131,6 @@ losmovies.top
 m4ufree.to
 gomovie.co
 gomovies-online.cam
-123movies.jp
 www1.123movies.co
 myflixertv.to
 www4.yesmovies.so
@@ -207,13 +205,11 @@ voirseries.tv
 streamcomplet.buzz
 comustream.fr
 voststream.com
-tratov.com
 voiranime.com
 neko-sama.fr
 french-manga.net
 www.adkami.com
 www.ianimes.org
-mavanimes.cc
 streaming-integrale.com
 gum-gum-streaming.com
 otakufr.co
@@ -232,12 +228,10 @@ v5.anime-ultime.net
 channelstream.watch
 www.myfree-tivi.com
 fr4.sportplus.live
-sport-stream.live
 streaming-sport.tv
 ;;STREAMINGAPPS
 popcorn-time.tw
 www.stremio.com
-cinemaapk.com
 teatv.net
 www.morpheustvbox.com
 mediaboxhd.net
@@ -303,6 +297,8 @@ otorrents.com
 vstorrent.org
 torrents-csv.ml
 torrentz2eu.me
+w41.torlook.info
+www.magnetdl.com
 search.torrends.to
 proxy-bay.me
 proxygalaxy.pw
@@ -407,7 +403,6 @@ steamunlocked.net
 gog-games.com
 codex-games.com
 getgamez.net
-www.elamigos-games.com
 crackhub.site
 freegameshub.co
 gogunlocked.com
@@ -424,7 +419,6 @@ skidrowrepacks.com
 fitgirl-repacks.site
 repack-mechanics.com
 gamesdrive.net
-darckrepacks.com
 dodi-repacks.site
 www.blackboxrepack.com
 masquerade.site
@@ -444,6 +438,7 @@ apkhome.net
 apkmagic.com.ar
 oceanofapk.com
 apkgod.net
+www.revdl.com
 5mod.ru
 apkmb.com
 apk4free.org
@@ -462,10 +457,12 @@ www.rockmods.net
 www.ytricks.net
 www.apkheist.com
 apkfolks.com
-bluesmods.com
-www.whatsappmods.net
 vancedapp.com
 newpipe.net
+www.instamod.net
+thedise.me
+www.whatsappmods.net
+bluesmods.com
 ;;YOUTUBEDOWNLOADER
 yt-dl.org
 download.microsoft.com
@@ -491,7 +488,6 @@ www.urban-vpn.com
 courvix.com
 www.freeopenvpn.org
 www.vpnbook.com
-freevpn.me
 www.proxyscan.io
 free-proxy-list.net
 proxy-daily.com
