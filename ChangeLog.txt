@@ -8,10 +8,10 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.1.4 - 31/10/2021
-- FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
-- FIXED a bug where old Windows installing ansicon skipped update in the launcher.
+v5.9.1.5 - 01/11/2021
 - FIXED minor bugs.
+- FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
+- FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
 - IMPROVED Curl PATH algorithm. (thanks @Grub4K)
 - IMPROVED Launcher : Checking files integrity.
 - IMPROVED Launcher : Checking Windows version.
@@ -55,9 +55,14 @@ v5.9.1.4 - 31/10/2021
 + ADDED Streaming [FR] : https://animepourvous.com/
 + ADDED Torrenting : https://xbit.pw/
 + ADDED Torrenting : https://solidtorrents.net/
++ ADDED Torrenting : https://w41.torlook.info/
++ ADDED Torrenting : https://www.magnetdl.com/
 + ADDED Torrenting : Web Torrenting.
 + ADDED Cracked Android APK's : https://android-zone.ws/
++ ADDED Cracked Android APK's : https://www.revdl.com/
 + ADDED Cracked Android APK's : https://newpipe.net/
++ ADDED Cracked Android APK's : https://thedise.me/instander/
++ ADDED Cracked Android APK's : https://www.instamod.net/
 + ADDED Cracked Windows apps : https://skidrowrepacks.com/ (thanks @ayo)
 + ADDED Cracked Windows apps : https://patricktech-repacks.xyz/
 + ADDED Useful Websites : https://www.urban-vpn.com/
@@ -84,19 +89,29 @@ v5.9.1.4 - 31/10/2021
 + ADDED More Features Musics : https://allanime.site/music
 + ADDED More Features Musics : https://hikarinoakari.com/
 + ADDED More Features : Spoofing. (thanks @0x00)
+- REMOVED Direct Download Link [EN] : https://katzdownload.com/ (down)
 - REMOVED Direct Download Link [EN] : https://www.kokodown.com/ (down)
 - REMOVED Direct Download Link [EN] : https://snahp.it/ (down)
+- REMOVED Streaming [EN] : https://123movies.jp/ (down)
 - REMOVED Streaming [EN] : https://yesmovies.ag/ (down)
 - REMOVED Streaming [EN] : https://kiss-anime.asia/ (down)
 - REMOVED Streaming [EN] : https://www1.animeultima.to/ (down)
 - REMOVED Streaming [EN] : https://sportsbay.org/live-streams (down)
 - REMOVED Streaming [FR] : https://www.filmstreaminglol.com/ (down)
 - REMOVED Streaming [FR] : https://www.papystreaming.cc/ (down)
+- REMOVED Streaming [FR] : https://tratov.com/ (maintenance)
+- REMOVED Streaming [FR] : https://mavanimes.cc/ (down)
 - REMOVED Streaming [FR] : https://dbanimes.com/ (down)
+- REMOVED Streaming [FR] : https://sport-stream.live/ (down)
+- REMOVED Streaming Applications : https://cinemaapk.com/ (down)
 - REMOVED Streaming Applications : https://www.cinehub.app/ (down)
 - REMOVED Torrenting : https://torrentparadise.pm/ (down)
+- REMOVED Cracked Windows apps : https://www.elamigos-games.com/ (down)
+- REMOVED Cracked Windows apps : https://darckrepacks.com/ (down)
+- REMOVED Useful Websites : https://freevpn.me/ (down)
 - REMOVED Useful Websites : https://lamule.eu/ (down)
 - REMOVED Useful Websites : https://combolist.io/ (down)
+- REMOVED IP Denial of Services : https://stresser.zone/ (down)
 - REMOVED IP Denial of Services : https://xtremebooter.xyz/ (down)
 - REMOVED Doxing : https://checkuser.org/ (down)
 - REMOVED More Features Ebooks : https://unionmangas.to/ (IS does not include Portuguese websites.)
@@ -170,7 +185,7 @@ v5.9.0.0 - 19/09/2021
 + UPDATED Portable Apps : CPU-Z v1.97
 + UPDATED Portable Apps : DoNotSpy 10 v5.3.0.0
 + UPDATED Portable Apps : Everything v1.4.1.1009
-+ UPDATED Portable Apps : Process Hacker v3.0.4365
++ UPDATED Portable Apps : Process Hacker v3.0.4373
 + UPDATED Portable Apps : ISLC v1.0.2.5
 + UPDATED More Features Ebooks : https://ww2.bookys-ebooks.com/
 + UPDATED More Features Ebooks : https://www.readlightnovel.me/
