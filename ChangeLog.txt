@@ -59,7 +59,6 @@ v5.9.1.6 - 10/11/2021
 + ADDED Torrenting : https://solidtorrents.net/
 + ADDED Torrenting : https://w41.torlook.info/
 + ADDED Torrenting : https://www.magnetdl.com/
-+ ADDED Torrenting : https://ytsproxies.com/
 + ADDED Torrenting : Web Torrenting.
 + ADDED Cracked Android APK's : https://android-zone.ws/
 + ADDED Cracked Android APK's : https://www.revdl.com/
@@ -880,7 +879,6 @@ v5.1.0.0 - 18/02/2021
 + ADDED Cracked Android Apps : https://www.apps2app.com/
 + ADDED Cracked Windows Apps : https://w14.monkrus.ws/
 + ADDED Cracked Windows Apps : https://gog-games.com/
-+ ADDED Cracked Windows Apps : https://www.elamigos-games.com/
 + ADDED Cracked Windows Apps : https://masquerade.site/
 + ADDED Cracked Windows Apps : https://cpgrepacks.site/
 + ADDED Cracked Windows Apps : https://www.myabandonware.com/
@@ -1407,8 +1405,8 @@ v2.2.0.0 - 16/08/2020
 + UPDATED Main Menu HELP
 + UPDATED Tutorial.txt
 + UPDATED Setup Eula.
-+ UPDATED Settings : Background n�5
-+ UPDATED Settings : Background n�6
++ UPDATED Settings : Background n°5
++ UPDATED Settings : Background n°6
 + ADDED IS Source : Administrator manifest. (to fix Port Scanner "Access is denied.")
 + ADDED Main Menu : Portable Apps (for more Portable Applications)
 - REMOVED Ansicon for Windows 10. (for old Windows it will download it)
@@ -1419,8 +1417,8 @@ v2.1.0.0 - 14/08/2020
 - FIXED No error message displayed when nothing has been selected and the enter key on the keypad is pressed.
 - FIXED a bug when apps where creating they're files into Illegal Services folder.
 - FIXED Windows Privacy/Telemetry : "blackbird.exe"
-- FIXED Settings : Background n�5 not working.
-- FIXED Settings : Background n�4 missing.
+- FIXED Settings : Background n°5 not working.
+- FIXED Settings : Background n°4 missing.
 + UPDATED IP Port Scanning : Most Used Port Scan here (also now support x32 bits)
 + UPDATED Main Menu : View My Computer compenments
 + UPDATED Anti Viruses and Malwares : Rogue Killer
@@ -1625,7 +1623,7 @@ v1.6.0.0 - 08/07/2020
 + ADDED Streaming : https://wwv.papystreaming.is/
 + ADDED Streaming : https://papystreaming.net/
 + ADDED Streaming : https://www.papystreaming.cc/
-+ ADDED Torrenting : https://www.tirexo.com/ (Zone T�chargement v3)
++ ADDED Torrenting : https://www.tirexo.com/ (Zone Téléchargement v3)
 + ADDED Torrenting : https://torrent-paradise.ml/
 + ADDED Windows : https://www.mazterize.com/
 + ADDED Port Scanning : https://portforward.com/ports.htm
