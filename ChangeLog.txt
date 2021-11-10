@@ -8,10 +8,11 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.1.5 - 01/11/2021
+v5.9.1.6 - 10/11/2021
 - FIXED minor bugs.
 - FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
 - FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
+- IMRPOVED Code.
 - IMPROVED Curl PATH algorithm. (thanks @Grub4K)
 - IMPROVED Launcher : Checking files integrity.
 - IMPROVED Launcher : Checking Windows version.
@@ -42,6 +43,7 @@ v5.9.1.5 - 01/11/2021
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED Portable Apps : Radeon Software Slimmer v1.3.0
 + UPDATED More Features Forum Websites : https://fora.snahp.eu/
++ ADDED Multiple checkbox choices.
 + ADDED Streaming [EN] : https://m4ufree.to/
 + ADDED Streaming [EN] : https://www11.123movieshub.one/
 + ADDED Streaming [EN] : https://www.animerush.tv/
@@ -57,6 +59,7 @@ v5.9.1.5 - 01/11/2021
 + ADDED Torrenting : https://solidtorrents.net/
 + ADDED Torrenting : https://w41.torlook.info/
 + ADDED Torrenting : https://www.magnetdl.com/
++ ADDED Torrenting : https://ytsproxies.com/
 + ADDED Torrenting : Web Torrenting.
 + ADDED Cracked Android APK's : https://android-zone.ws/
 + ADDED Cracked Android APK's : https://www.revdl.com/
@@ -106,7 +109,6 @@ v5.9.1.5 - 01/11/2021
 - REMOVED Streaming Applications : https://cinemaapk.com/ (down)
 - REMOVED Streaming Applications : https://www.cinehub.app/ (down)
 - REMOVED Torrenting : https://torrentparadise.pm/ (down)
-- REMOVED Cracked Windows apps : https://www.elamigos-games.com/ (down)
 - REMOVED Cracked Windows apps : https://darckrepacks.com/ (down)
 - REMOVED Useful Websites : https://freevpn.me/ (down)
 - REMOVED Useful Websites : https://lamule.eu/ (down)
@@ -1405,8 +1407,8 @@ v2.2.0.0 - 16/08/2020
 + UPDATED Main Menu HELP
 + UPDATED Tutorial.txt
 + UPDATED Setup Eula.
-+ UPDATED Settings : Background n°5
-+ UPDATED Settings : Background n°6
++ UPDATED Settings : Background nï¿½5
++ UPDATED Settings : Background nï¿½6
 + ADDED IS Source : Administrator manifest. (to fix Port Scanner "Access is denied.")
 + ADDED Main Menu : Portable Apps (for more Portable Applications)
 - REMOVED Ansicon for Windows 10. (for old Windows it will download it)
@@ -1417,8 +1419,8 @@ v2.1.0.0 - 14/08/2020
 - FIXED No error message displayed when nothing has been selected and the enter key on the keypad is pressed.
 - FIXED a bug when apps where creating they're files into Illegal Services folder.
 - FIXED Windows Privacy/Telemetry : "blackbird.exe"
-- FIXED Settings : Background n°5 not working.
-- FIXED Settings : Background n°4 missing.
+- FIXED Settings : Background nï¿½5 not working.
+- FIXED Settings : Background nï¿½4 missing.
 + UPDATED IP Port Scanning : Most Used Port Scan here (also now support x32 bits)
 + UPDATED Main Menu : View My Computer compenments
 + UPDATED Anti Viruses and Malwares : Rogue Killer
@@ -1623,7 +1625,7 @@ v1.6.0.0 - 08/07/2020
 + ADDED Streaming : https://wwv.papystreaming.is/
 + ADDED Streaming : https://papystreaming.net/
 + ADDED Streaming : https://www.papystreaming.cc/
-+ ADDED Torrenting : https://www.tirexo.com/ (Zone Téchargement v3)
++ ADDED Torrenting : https://www.tirexo.com/ (Zone Tï¿½chargement v3)
 + ADDED Torrenting : https://torrent-paradise.ml/
 + ADDED Windows : https://www.mazterize.com/
 + ADDED Port Scanning : https://portforward.com/ports.htm
