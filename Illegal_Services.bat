@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 1. 5
-REM  Fileversion:  5. 9. 1. 5
+REM  Productversion:  5. 9. 1. 6
+REM  Fileversion:  5. 9. 1. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -20,16 +20,16 @@ cls
 >nul chcp 65001
 setlocal DisableDelayedExpansion
 pushd "%~dp0"
-for /f "delims=" %%A in ('set') do set "DUMP_IS=%DUMP_IS%`%%A"
-if defined DUMP_IS set "DUMP_IS=%DUMP_IS%`"
-(set \n=^
-%=leave unchanged=%
-)
-setlocal EnableDelayedExpansion
 for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo(0x1B"') do set "\E=%%A"
+setlocal EnableDelayedExpansion
 set "HIDECURSOR=<nul set /p=!\E![?25l"
 set "SHOWCURSOR=<nul set /p=!\E![?25h"
 %HIDECURSOR%
+for /f "delims=" %%A in ('set') do set "DUMP_IS=!DUMP_IS!`%%A"
+if defined DUMP_IS set "DUMP_IS=!DUMP_IS:~,-4!"
+(set \N=^
+%=leave unchanged=%
+)
 for %%A in (%*) do if "%%~A"=="--debug" set "DEBUG=[Debug] "
 if not "%~1"=="" if defined Language for %%A in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%A" (
 call :APPLY_SETTINGS
@@ -62,37 +62,42 @@ if "!Language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous l'e
 call :MSGBOX 69680 "Illegal Services Checker"
 exit
 )
-if /i "%~x0"==".exe" (set "IS_PROCESS=%~nx0") else set "IS_PROCESS=cmd.exe" & goto :LAUNCHER
-if "%~nx0"=="Illegal Services.exe" (
+set cn=
+if /i "%~x0"==".exe" (
+set "IS_PROCESS=%~nx0"
+set BAT_USED=
+if "%~n0"=="Illegal Services" (
 >nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
 >nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !DEBUG!) && exit
 )
-set cn=
-for /f %%A in ('tasklist /fo csv /fi "imagename eq %~nx0" ^| findstr /c:"%~nx0"') do set /a cn+=1
+for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS!" ^| findstr /c:"!IS_PROCESS!"') do set /a cn+=1
+) else (
+set IS_PROCESS=cmd.exe
+set "BAT_USED=%~nx0"
+)
 pushd "!TMPF!"
-set BATUSED=
-for /f %%A in ('dir "????????.bat" /a:-d /o:-d /b ^| findstr /rc:"........\.bat"') do (
-if not defined BATUSED (
-set "BATUSED=%%A"
-attrib -s -h "%%A"
-attrib +s +h +i "%%A"
+for /f %%A in ('2^>nul dir "????????.bat" /a:-d /o:-d /b ^| findstr /rc:"........\.bat"') do (
+if not defined BAT_USED if /i "%~x0"==".exe" (
+set "BAT_USED=%%A"
+attrib -s -h "!BAT_USED!"
+attrib +s +h +i "!BAT_USED!"
 )
-if !cn! gtr 1 goto :LAUNCHER
-if not "%%A"=="!BATUSED!" del /f /q /a "%%A"
+if !cn! gtr 1 popd & goto :LAUNCHER
+if not "%%A"=="!BAT_USED!" del /f /q /a "%%A"
 )
+popd
 
 :LAUNCHER
-popd
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.1.5 - 01/11/2021
-set "el=UNDERLINE=!\E![4m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
+set VERSION=v5.9.1.6 - 10/11/2021
+set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
 call :DRAW_LOGO
 echo:
 echo !\E![28C!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}!RED!
-if "!Language!"=="EN" call :DRAW_CENTER "♥   !YELLOW!Welcome [!RED!!IS_Username!!YELLOW!] to Illegal Services !VERSION:~,8!   !RED!♥" 20
-if "!Language!"=="FR" call :DRAW_CENTER "♥   !YELLOW!Bienvenue [!RED!!IS_Username!!YELLOW!] dans Illegal Services !VERSION:~,8!   !RED!♥" 20
+if "!Language!"=="EN" call :DRAW_CENTER "♥   !YELLOW!Welcome [!RED!!IS_Username!!YELLOW!] to Illegal Services !VERSION:~,8!   !RED!♥"
+if "!Language!"=="FR" call :DRAW_CENTER "♥   !YELLOW!Bienvenue [!RED!!IS_Username!!YELLOW!] dans Illegal Services !VERSION:~,8!   !RED!♥"
 echo !\E![28C!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
 for /f %%A in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%A"
 for %%A in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~A" del /f /q "%%~A"
@@ -106,8 +111,8 @@ if not "!PATH:~-9!"==";Curl\x!ARCH!" set "PATH=!PATH!;Curl\x!ARCH!"
 >nul 2>&1 where curl.exe || call :ERROR_FATAL !PATH:~-8!\curl.exe CURL
 
 :LAUNCHER_PROXY
-if "!Language!"=="EN" <nul set /p="!sp!Searching a proxy ^> "
-if "!Language!"=="FR" <nul set /p="!sp!Recherche d'un proxy ^> "
+if "!Language!"=="EN" <nul set /p="!sp!Searching a proxy > "
+if "!Language!"=="FR" <nul set /p="!sp!Recherche d'un proxy > "
 set GIT_LIST=github.com/Illegal-Services/Illegal_Services bitbucket.org/IllegalServices/illegal_services git.teknik.io/Illegal-Services/Illegal_Services gitee.com/Illegal-Services/illegal_services
 call :PROXY
 
@@ -116,8 +121,8 @@ if defined git for /f "delims=/" %%A in ("!git:*://=!") do if defined git_backup
 if "!Language!"=="EN" echo !RED![FAILED] . . .
 if "!Language!"=="FR" echo !RED![ECHEC] . . .
 ) else echo !GREEN![%%A] . . .
-if "!Language!"=="EN" <nul set /p="!sp!Searching for a new update ^> "
-if "!Language!"=="FR" <nul set /p="!sp!Recherche d'une nouvelle mise à jour ^> "
+if "!Language!"=="EN" <nul set /p="!sp!Searching for a new update > "
+if "!Language!"=="FR" <nul set /p="!sp!Recherche d'une nouvelle mise à jour > "
 call :CHECK_VOICEASSISTANT
 call :GET_VERSION
 if defined OLD_VERSION if defined OLD_LASTVERSION if "!OLD_VERSION!"=="!VERSION!" if "!OLD_LASTVERSION!"=="!LastVersion!" (
@@ -133,8 +138,8 @@ if "!errorlevel!"=="1" call :CHECKER_SETUP_FOUND
 if "!errorlevel!"=="2" call :CHECKER_BUILD_FOUND
 
 :CHECKERINTEGRITY
-if "!Language!"=="EN" <nul set /p="!sp!Checking files integrity ^> "
-if "!Language!"=="FR" <nul set /p="!sp!Vérification de l'intégrite des fichiers ^> "
+if "!Language!"=="EN" <nul set /p="!sp!Checking files integrity > "
+if "!Language!"=="FR" <nul set /p="!sp!Vérification de l'intégrite des fichiers > "
 set _el=
 for %%A in (7za\x64\7za.dll 7za\x64\7za.exe 7za\x64\7zxa.dll 7za\x86\7za.dll 7za\x86\7za.exe 7za\x86\7zxa.dll Ansicon\x64\ANSI32.dll Ansicon\x64\ANSI64.dll Ansicon\x64\ansicon.exe Ansicon\x86\ANSI32.dll Ansicon\x86\ansicon.exe Backgrounds\background-1.jpg Backgrounds\background-2.jpg Backgrounds\background-3.jpg Backgrounds\background-4.jpg Backgrounds\background-5.jpg Backgrounds\background-6.jpg Backgrounds\background-7.jpg Backgrounds\background-8.jpg Backgrounds\background-9.jpg Backgrounds\background-10.jpg Backgrounds\background-11.jpg Backgrounds\background-12.jpg ChangeLog.txt cmdbkg.exe cmdwiz.exe COPYING Curl\x64\curl.exe Curl\x86\curl.exe EULA.rtf Illegal_Services.exe OpenFileBox.exe SaveFileBox.exe Speak\EN.lang Speak\extd.exe Speak\FR.lang Speak\speak-x64.exe Speak\speak-x86.exe Tutorial.html) do if not exist %%A (
 set el=%%A
@@ -148,8 +153,8 @@ if "!Language!"=="FR" echo  !GREEN![PASSER] . . .
 )
 
 :CHECKERWINDOWS
-if "!Language!"=="EN" <nul set /p="!sp!Checking Windows version ^> "
-if "!Language!"=="FR" <nul set /p="!sp!Vérification de votre version de Windows ^> "
+if "!Language!"=="EN" <nul set /p="!sp!Checking Windows version > "
+if "!Language!"=="FR" <nul set /p="!sp!Vérification de votre version de Windows > "
 for /f "tokens=4-7delims=[.] " %%A in ('ver') do if /i "%%A"=="Version" (set "WINDOWS_VERSION=%%B.%%C") else set "WINDOWS_VERSION=%%A.%%B"
 for /f "tokens=2delims=:." %%A in ('chcp') do set /a "CP=%%A"
 for %%A in (WINDOWS_VERSION ARCH CP) do if not defined %%A set %%A=?
@@ -180,8 +185,8 @@ exit
 )
 
 :LAUNCHER_APPLY_SETTINGS
-if "!Language!"=="EN" <nul set /p="!sp!Applying your settings ^> "
-if "!Language!"=="FR" <nul set /p="!sp!Applique vos paramètres ^> "
+if "!Language!"=="EN" <nul set /p="!sp!Applying your settings > "
+if "!Language!"=="FR" <nul set /p="!sp!Applique vos paramètres > "
 call :APPLY_SETTINGS
 call :CHECK_UNTRUSTEDWEBSITESWARNING
 if "!Language!"=="EN" echo !GREEN![PASSED] . . .
@@ -189,11 +194,12 @@ if "!Language!"=="FR" echo !GREEN![PASSER] . . .
 
 :LAUNCHER_START
 call :ROSE "Welcome Back"
-if "!Language!"=="EN" <nul set /p="!sp!Starting Illegal Services ^> "
-if "!Language!"=="FR" <nul set /p="!sp!Démarrage d'Illegal Services ^> "
+if "!Language!"=="EN" <nul set /p="!sp!Starting Illegal Services > "
+if "!Language!"=="FR" <nul set /p="!sp!Démarrage d'Illegal Services > "
 for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set "IS_OUTPUTDIRECTORY=%%B\Illegal Services"
 set "CHECKED=!CYAN![!YELLOW!x!CYAN!]!WHITE! "
 set "UNCHECKED=!CYAN![ ]!WHITE! "
+set /a c1=0, c2=0
 call :CHECK_VOICEASSISTANTCHOICE
 if "!VoiceAssistantChoice!"=="1" call :ROSE_SETUP
 if "!Language!"=="EN" echo !GREEN![PASSED] . . .
@@ -218,7 +224,7 @@ echo !CYAN!
 echo !\E![19C╔═════════════════════════════════════════════════════════════════════════════════════╗
 <nul set /p=!BRIGHTRED!                                  !UNDERLINE!!VERSION:~,8!!UNDERLINEOFF!             !RED!█!BGYELLOW! MAIN MENU !BGBLACK!!RED!█!BGBLACK!!BRIGHTRED!
 if "!Language!"=="EN" (set t=Welcome) else set t=Bienvenue
-call :DRAW_CUSTOM_CENTER 37 "!UNDERLINE!!t! !IS_Username!!UNDERLINEOFF!!CYAN!" 14
+call :DRAW_CUSTOM_CENTER 37 "!UNDERLINE!!t! !IS_Username!!UNDERLINEOFF!!CYAN!"
 echo !\E![19C╠═════════════════════════════════════════════════════════════════════════════════════╣
 echo !\E![19C║    !YELLOW!1!CYAN!  ^>  !WHITE!Internet Protocol TV (IPTV)!CYAN!    █    !YELLOW!10!CYAN!  ^>  !WHITE!IP Denial of Services (DDoS)!CYAN!    ║
 echo !\E![19C║    !YELLOW!2!CYAN!  ^>  !WHITE!Direct Download Link (DDL)!CYAN!     █    !YELLOW!11!CYAN!  ^>  !WHITE!IP Address Lookup!CYAN!               ║
@@ -236,7 +242,7 @@ echo !\E![19C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!HELP!BRIGHTBLACK!" / "!YELLOW!FAQ!BRIGHTBLACK!" / "!YELLOW!CHANGELOG!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 40
+call :DRAW_CENTER "!t1! "!YELLOW!HELP!BRIGHTBLACK!" / "!YELLOW!FAQ!BRIGHTBLACK!" / "!YELLOW!CHANGELOG!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :CHECK_FIRSTLAUNCH
 if "!VERSION:~5,3!"=="0.0" if "!FirstLaunch!"=="1" (
@@ -280,7 +286,7 @@ if "!Language!"=="FR" set t=parametres
 call :CHOOSE !t! && goto :SETTINGS
 call :CHOOSE help && (start /max tutorial.html & goto :MAINMENU)
 call :CHOOSE changelog && (start /max changeLog.txt & goto :MAINMENU)
-call :CHOOSE faq && (call :SHOW_WINDOW "Frequently Asked Questions" || (start "" "%~0" FAQ) & goto :MAINMENU)
+call :CHOOSE faq && (call :SHOW_WINDOW "!IS_PROCESS!" "Frequently Asked Questions" || (start "" "%~0" FAQ) & goto :MAINMENU)
 if /i "!x!"=="--dump" (
 >LOG_DUMP.txt set
 start LOG_DUMP.txt
@@ -333,7 +339,7 @@ echo !\E![9C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" start https://www.robvanderwoude.com/dialogboxes.php
@@ -488,7 +494,7 @@ echo !\E![7C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for %%A in (8,9) do if "!x!"=="1%%A" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUESETTINGS)
@@ -499,7 +505,7 @@ if "!x!"=="15" goto :SETTING_BACKGROUND
 if "!x!"=="16" goto :SETTING_UNTRUSTEDWEBSITES
 if "!x!"=="17" goto :SETTING_ROSE
 if "!x!"=="18" goto :SETTING_DEVELOPERMODE
-if "!x!"=="19" call :SHOW_WINDOW "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
+if "!x!"=="19" call :SHOW_WINDOW "!IS_PROCESS!" "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
 if "!x!"=="20" goto :SETTING_VERSION
 if "!x!"=="21" goto :SETTING_USERNAME
 if "!x!"=="22" goto :SETTING_LANGUAGE
@@ -570,11 +576,11 @@ echo !CYAN!
 if "!Language!"=="EN" set t=Enter your developer license key
 if "!Language!"=="FR" set t=Entrez votre clé de licence développeur
 %SHOWCURSOR%
-set DeveloperKey=
-set /p "DeveloperKey=!t!: !YELLOW!"
+set x=
+set /p "x=!t!: !YELLOW!"
 %HIDECURSOR%
 echo:
-if defined DeveloperKey >nul 2>&1 reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d !DeveloperKey! /f
+if defined x >nul 2>&1 reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d !x! /f
 call :CHECK_DEVELOPERMODE
 if "!DeveloperMode!"=="1" (
 if "!Language!"=="EN" set t="Developer mode has been activated successfully. You can now extract the source code."
@@ -582,7 +588,7 @@ if "!Language!"=="FR" set t="Le mode développeur a été activé avec succès. 
 call :MSGBOX 69696 "Illegal Services Checker"
 goto :CLEARSETTINGS
 )
-if "!DeveloperMode!"=="0" call :ERRORMESSAGE DeveloperKey "une clé de license" "licence key"
+if "!DeveloperMode!"=="0" call :ERRORMESSAGE x "une clé de license" "licence key"
 goto :CLEARSETTINGS
 
 :SETTING_VERSION
@@ -694,14 +700,14 @@ if /i "!IS_PROCESS!"=="cmd.exe" (
 echo:
 if "!Language!"=="EN" set t=ERROR: Impossible to extract the source code if you are running the batch file
 if "!Language!"=="FR" set t=ERREUR: Impossible d'extraire le code source si vous exécutez le fichier batch
-echo !RED!!t! ^(%~nx0^).!YELLOW!
+echo !RED!!t! ^(!BAT_USED!^).!YELLOW!
 timeout /t 5
-) else if defined BATUSED (
-attrib -s -h -i "!TMP!\!BATUSED!"
->nul copy /y "!TMPF!\!BATUSED!" "Illegal_Services.bat"
-attrib +s +h +i "!TMP!\!BATUSED!"
+) else if defined BAT_USED (
+attrib -s -h -i "!TMP!\!BAT_USED!"
+>nul copy /y "!TMPF!\!BAT_USED!" "Illegal_Services.bat"
+attrib +s +h +i "!TMP!\!BAT_USED!"
 2>nul powershell Get-childitem $Illegal_Services.bat ^| ForEach-Object -process {if ^(^($_.attributes -band 0x100^) -eq 0x100^) {$_.attributes = ^($_.attributes -band 0xFEFF^)}}
-start /max explorer.exe "%~dp0"
+start /max "" "%~dp0"
 )
 goto :CONTINUESETTINGS
 
@@ -745,7 +751,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 50
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo !RED!
 >nul 2>&1 reg query "HKCR\.m3u8" || (
 if "!Language!"=="EN" echo !\E![17CERROR: To be able to use !YELLOW!IPTV!RED!, first you need to choose: !YELLOW![INSTALL]
@@ -823,7 +829,7 @@ echo !\E![4C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" call :INSTALL_FILE VLC & goto :CONTINUEIPTVTUTORIAL
@@ -879,7 +885,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!FR!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 40
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!FR!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDLEN
@@ -921,7 +927,7 @@ echo !\E![9C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!EN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 40
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!EN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDLFR
@@ -953,7 +959,7 @@ call :SCALE 101 52
 title !TITLE:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
-call :CLEAR 1 59
+call :CLEAR 1 59 1
 set db=www.primewire.li/ losmovies.top/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/browse openloadfreetv.me/ allmoviesforyou.net/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ www.animerush.tv/ animepahe.com/ ww1.animesimple.com/ zoro.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ allanime.site/anime runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ apps.stream2watch.sx/ sportplus.live/ thehomesport.com/
 
 :CONTINUESTREAMINGEN
@@ -1002,16 +1008,16 @@ echo !\E![8C║   !55!live94today.com!CYAN!                │   !59!thehomespor
 echo !\E![8C║   !56!livetv.sx !GREEN!(sport)!CYAN!              │                                         ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════════════════════════════════════════════╣
-call :DRAW_CENTER "!YELLOW!60!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
+call :DRAW_CENTER "!YELLOW!!c3!!CYAN!  >  !WHITE!Streaming Applications!CYAN!"
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!FR!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 40
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!FR!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGEN
-if "!x!"=="60" (set la=EN) & goto :STREAMINGAPPS
+if "!x!"=="!c3!" (set la=EN) & goto :CLEARSTREAMINGAPPS
 call :CHOOSE fr && goto :STREAMINGFR
 call :CHOOSE search && (call :IS_SEARCH ef3978005ffa01b49 & goto :CONTINUESTREAMINGEN)
 call :CHOOSE back && goto :MAINMENU
@@ -1024,7 +1030,7 @@ call :SCALE 101 45
 title !TITLE:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 45
+call :CLEAR 1 45 1
 set db=www.filmstoon.one/streaming10/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ papystreaming-vf.com/accueil/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ streaminz.me/ filmstreamingvf.org/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ streamcomplet.buzz/ comustream.fr/ voststream.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ `streaming-sport.tv/
 
 :CONTINUESTREAMINGFR
@@ -1066,16 +1072,16 @@ echo !\E![8C║   !42!www.myfree-tivi.com!CYAN!            │   !45!streaming-s
 echo !\E![8C║   !43!livetv.sx !GREEN!(sport)!CYAN!              │                                         ║
 echo !\E![8C║                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════════════════════════════════════════════╣
-call :DRAW_CENTER "!YELLOW!46!CYAN!  >  !WHITE!Streaming Applications!CYAN!" 20
+call :DRAW_CENTER "!YELLOW!!c3!!CYAN!  >  !WHITE!Streaming Applications!CYAN!"
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!EN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 40
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!EN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGFR
-if "!x!"=="46" (set la=FR) & goto :STREAMINGAPPS
+if "!x!"=="!c3!" (set la=FR) & goto :CLEARSTREAMINGAPPS
 call :CHOOSE en && goto :STREAMINGEN
 call :CHOOSE search && (call :IS_SEARCH e49c0bfe5fd6d7fb6 & goto :CONTINUESTREAMINGFR)
 call :CHOOSE back && goto :MAINMENU
@@ -1123,7 +1129,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESTREAMINGAPPS
@@ -1138,7 +1144,7 @@ title !TITLE:`=Torrenting!
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 80
+call :CLEAR 1 80 1
 set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.sh/homec.html torrent9.to/ filelisting.com/ bt4g.org/ xbit.pw/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ w41.torlook.info/ www.magnetdl.com/ search.torrends.to/ proxy-bay.me/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.top/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
 
 :CONTINUETORRENTING
@@ -1191,20 +1197,20 @@ echo !\E![8C║   !74!www.qbittorrent.org!CYAN!        │   !77!radarr.video!CY
 echo !\E![8C║   !75!www.torrentrover.com!CYAN!       │   !78!lidarr.audio!CYAN!             │                                         ║
 echo !\E![8C║                                                                                                                   ║
 echo !\E![8C╠═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
-echo !\E![8C║                                             !YELLOW!81!CYAN!  ^>  !WHITE!Web Torrenting!CYAN!                                                 ║
+call :DRAW_CENTER "!YELLOW!!c3!!CYAN!  >  !WHITE!Web Torrenting!CYAN!"
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!ADD!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 60
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / "!YELLOW!ADD!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo !RED!
 >nul 2>&1 reg query "HKCR\.torrent" || (
-if "!Language!"=="EN" call :DRAW_CENTER "ERROR: To be able to use !YELLOW!TORRENTING!RED!, first you need to choose: !YELLOW![INSTALL]" 15
-if "!Language!"=="FR" call :DRAW_CENTER "ERREUR: Pour pouvoir utiliser !YELLOW!TORRENTING!RED!, vous devez d'abord choisir: !YELLOW![INSTALL]" 15
+if "!Language!"=="EN" call :DRAW_CENTER "ERROR: To be able to use !YELLOW!TORRENTING!RED!, first you need to choose: !YELLOW![INSTALL]"
+if "!Language!"=="FR" call :DRAW_CENTER "ERREUR: Pour pouvoir utiliser !YELLOW!TORRENTING!RED!, vous devez d'abord choisir: !YELLOW![INSTALL]"
 echo:
 )
 call :PROMPT
-if "!x!"=="75" goto :WEBTORRENTING
+if "!x!"=="!c3!" goto :CLEARWEBTORRENTING
 if "!UntrustedWebsitesWarning!"=="1" for %%A in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
 if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted* website. Be careful using it." "*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
 if "!Language!"=="FR" set t="Vous avez sélectionné '%%C' qui est signalé comme un site web non fiable*. Soyez prudent en l'utilisant.!\N!!\N!*Les sites web non fiables sont connus de la communauté warez pour indexer du contenu malveillant ou suspect ainsi que légitime."
@@ -1247,7 +1253,7 @@ echo !\E![9C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWEBTORRENTING
@@ -1292,7 +1298,7 @@ echo !\E![4C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" call :INSTALL_FILE qBittorent & goto :CONTINUETORRENTTUTORIAL
@@ -1382,7 +1388,7 @@ echo !\E![9C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESUBTITLES
@@ -1454,7 +1460,7 @@ echo !\E![8C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!UntrustedWebsitesWarning!"=="1" for %%A in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 19`izofile.com 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 40`pcgamestorrents.com 41`www.skidrowcodex.net 45`cracked-games.org 49`codex-games.com) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
@@ -1470,7 +1476,7 @@ call :ERRORMESSAGE
 goto :CONTINUEWINDOWS
 
 :ANDROID
-call :SCALE 85 40
+call :SCALE 85 39
 title !TITLE:`=Cracked Android APK's!
 call :ROSE "Cracked Android APK"
 
@@ -1479,7 +1485,7 @@ call :CLEAR 1 32
 set db=a2zapk.com/ android-zone.ws/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ www.revdl.com/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ vancedapp.com/ newpipe.net/ www.instamod.net/ thedise.me/instander/ www.whatsappmods.net/ bluesmods.com/ github.com/xManager-v2/xManager-Spotify
 
 :CONTINUEANDROID
-call :SCALE 85 40
+call :SCALE 85 39
 echo !CYAN!
 echo !\E![28C════════════════════════════
 echo !\E![27C// !RED!█!BGYELLOW!!BLACK! CRACKED ANDROID APPS !RED!█!BGBLACK!!CYAN! \\
@@ -1516,7 +1522,7 @@ echo !\E![7C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / !YELLOW!SEARCH!BRIGHTBLACK! !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / !YELLOW!SEARCH!BRIGHTBLACK! !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEANDROID
@@ -1595,7 +1601,7 @@ echo !\E![8C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 50
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (1,1,14) do if "!x!"=="%%A" call :CHECK_INTERNET && goto :GOYOUTUBEDL || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
@@ -1688,7 +1694,7 @@ if not exist "Portable_Apps\YouTube-DL\ffmpeg.exe" call :CURL "Portable_Apps\You
 if "!youtube_dl!"=="youtube-dl" if not exist "Portable_Apps\YouTube-DL\youtube-dl.exe" call :CURL "Portable_Apps\YouTube-DL\youtube-dl.exe" "https://yt-dl.org/downloads/latest/youtube-dl.exe" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
 if "!youtube_dl!"=="yt-dlp" if not exist "Portable_Apps\YouTube-DL\yt-dlp.exe" call :CURL "Portable_Apps\YouTube-DL\yt-dlp.exe" "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_x86.exe" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
 pushd "Portable_Apps\YouTube-DL"
-2>nul !youtube_dl!.exe -U | findstr /vic:"!youtube_dl! is up" /c:"Current Build Hash"
+2>nul !youtube_dl!.exe -U --no-check-certificate | findstr /vic:"!youtube_dl! is up" /c:"Current Build Hash"
 :YOUTUBEDL_UPDATER
 for %%A in (*.new *updater.bat *updater.cmd) do if exist "%%A" goto :YOUTUBEDL_UPDATER
 popd
@@ -1785,7 +1791,7 @@ echo !\E![8C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEUSEFULWEBSITES
@@ -1828,18 +1834,18 @@ echo !\E![8C║  !16!asylumstresser.to!CYAN!      ║          [   1/Gbps] [ 60/
 echo !\E![8C║  !17!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩═══════════════════════════════╣
 if "!Language!"=="EN" (
-echo !\E![29C!BRIGHTMAGENTA!Last Updated: !WHITE!01/11/2021
-echo !\E![15C!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!01/11/2021"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net"
 )
 if "!Language!"=="FR" (
-echo !\E![28C!BRIGHTMAGENTA!Mise à jour le: !WHITE!01/11/2021
-echo !\E![11C!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!01/11/2021"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDOS
@@ -1890,7 +1896,7 @@ echo !\E![17C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 40
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for %%A in (1 2 3) do if "%%A"=="!x!" call :CHECK_INTERNET && set "_el=!x!" || (call :ERROR_INTERNET & goto :CLEARIPLOOKUP)
@@ -1925,7 +1931,7 @@ type "!TMPF!\IS_Log.txt"
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" set t=Do you want to
 if "!Language!"=="FR" set t=Voulez vous
-call :DRAW_CENTER "!t! Save (!YELLOW!S!BRIGHTBLACK!) / Read (!YELLOW!R!BRIGHTBLACK!) / Delete (!YELLOW!D!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?" 40
+call :DRAW_CENTER "!t! Save (!YELLOW!S!BRIGHTBLACK!) / Read (!YELLOW!R!BRIGHTBLACK!) / Delete (!YELLOW!D!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
 
 :CHOICE_IPLOOKUP
 >nul choice /n /c SRDB
@@ -1953,7 +1959,7 @@ if "!errorlevel!"=="0" (
 if "!Language!"=="EN" set t="IP Lookup successfully saved at:!\N!!\N!'!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Do you want to open it now ?"
 if "!Language!"=="FR" set t="IP Lookup enregistrés avec succès à:!\N!!\N!'!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Voulez-vous l'ouvrir maintenant ?"
 call :MSGBOX_LEVEL 69668 "Illegal Services Checker"
-if "!el!"=="6" start /max explorer.exe "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
+if "!el!"=="6" start /max "" "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
 ) else (
 if "!Language!"=="EN" set t="An unexpected error has occurred."
 if "!Language!"=="FR" set t="Une erreur inattendue est survenue."
@@ -2013,13 +2019,13 @@ echo !\E![8C║                            !11!portforward.com!CYAN!            
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo:
 >nul 2>&1 sc query npcap || (
-if "!Language!"=="EN" call :DRAW_CENTER "!RED!ERROR: !BRIGHTBLACK!To use NMAP, you must first choose: "!YELLOW!INSTALL!BRIGHTBLACK!"" 20
-if "!Language!"=="FR" call :DRAW_CENTER "!RED!ERREUR: !BRIGHTBLACK!Pour utiliser NMAP, vous devez d'abord choisir: "!YELLOW!INSTALL!BRIGHTBLACK!"" 20
+if "!Language!"=="EN" call :DRAW_CENTER "!RED!ERROR: !BRIGHTBLACK!To use NMAP, you must first choose: "!YELLOW!INSTALL!BRIGHTBLACK!""
+if "!Language!"=="FR" call :DRAW_CENTER "!RED!ERREUR: !BRIGHTBLACK!Pour utiliser NMAP, vous devez d'abord choisir: "!YELLOW!INSTALL!BRIGHTBLACK!""
 echo:
 )
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!BRIGHTBLACK!!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 45
+call :DRAW_CENTER "!BRIGHTBLACK!!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (1,1,7) do if "!x!"=="%%A" call :CHECK_INTERNET && goto :GOPORTSCANNING || (call :ERROR_INTERNET & goto :CONTINUEPORT)
@@ -2190,7 +2196,7 @@ echo !\E![16C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEIPLOGGERS
@@ -2260,7 +2266,7 @@ echo !\E![8C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDOXING
@@ -2275,7 +2281,7 @@ title !TITLE:`=Portable Apps!
 call :ROSE "Portable Apps"
 
 :CLEARPORTABLEAPPS
-call :CLEAR 1 56
+call :CLEAR 1 56 1
 set db="Winaero Tweaker" "Ultimate Windows Tweaker" SophiApp "Sophia Script" "TCP Optimizer" "DNS Jumper" Autoruns SpeedyFox "CCleaner + CCEnhancer" BleachBit Dism++ "Glary Utilities" "Revo Uninstaller" "Windows Repair AIO" "Windows Repair Toolbox" FixWin "Patch My PC" "UCheck" "Windows Update MiniTool" "WSUS Offline Update" DriversCloud "Snappy Driver Installer" "Driver Store Explorer" "Device Cleanup Tool" "Display Driver Uninstaller" "Radeon Software Slimmer" NVSlimmer NVCleanstall "MSI Util v3" CPU-Z "OOSU10 (Win 10)" "Ashampoo AntiSpy (Win 10)" "DoNotSpy 10" "Windows Privacy Dashboard" "Windows 10 Privacy" "Windows Spy Blocker" "Destroy Windows 10 Spying" Blackbird "ADW Cleaner" "ZHP Cleaner" "Rogue Killer" "No Bot" "Kaspersky KVRT" "Kaspersky TDSSKiller" "Microsoft Safety Scanner" "Spybot - Search and Destroy" "Batch Antivirus" Everything "Process Hacker" CrystalDiskInfo "Defender Control" "Edge Blocker" "Mem Reduct" GiveMePower RegScanner ISLC
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
@@ -2320,16 +2326,16 @@ echo !\E![8C║   !38!BLACKbird!CYAN!                     ║   !46!Spybot - Sea
 echo !\E![8C║                                        ║   !47!Batch Antivirus!CYAN!                ║                                     ║
 echo !\E![8C║                                        ║                                         ║                                     ║
 echo !\E![8C╠════════════════════════════════════════╩═════════════════════════════════════════╩═════════════════════════════════════╣
-echo !\E![8C║                                             !YELLOW!57!CYAN!  ^>  !WHITE!Windows and Office Cracks!CYAN!                                           ║
+call :DRAW_CENTER "!YELLOW!57!CYAN!  >  !WHITE!Windows and Office Cracks!CYAN!"
 echo !\E![8C╚════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (!c1!,1,!c2!) do if "!x!"=="%%A" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUEPORTABLEAPPS)
-if "!x!"=="57" goto :WINDOWSANDOFFICE
+if "!x!"=="!c3!" goto :WINDOWSANDOFFICE
 call :WEBSITECHECK && goto :CONTINUEPORTABLEAPPS
 call :CHOOSE open && (call :OPEN_FOLDER Portable_Apps & goto :CONTINUEPORTABLEAPPS)
 call :CHOOSE back && goto :MAINMENU
@@ -2470,7 +2476,7 @@ del /f /q "!TMPF!\IS_Log.txt"
 echo !YELLOW!
 pause
 )
-if defined Start_Folder start /max explorer.exe "Portable_Apps"
+if defined Start_Folder start /max "" "Portable_Apps"
 goto :CLEARPORTABLEAPPS
 
 :WINDOWSANDOFFICE
@@ -2515,7 +2521,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWINDOWSANDOFFICE
@@ -2552,7 +2558,7 @@ echo !\E![11C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 set cn=
@@ -2595,7 +2601,7 @@ echo !\E![5C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWAREZCONTENTCREATOR
@@ -2658,7 +2664,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEWAREZWIKIS
@@ -2698,7 +2704,7 @@ echo !\E![12C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUERELEASELOGS
@@ -2779,7 +2785,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEEBOOKS
@@ -2826,7 +2832,7 @@ echo !\E![8C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 30
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" / !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEMUSICS
@@ -2882,7 +2888,7 @@ echo !\E![7C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEFORUMWEBSITES
@@ -2922,7 +2928,7 @@ echo !\E![16C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" start cmd /c sfc /ScanNow ^& pause ^& exit
@@ -3056,11 +3062,11 @@ goto :WINDOWSREPAIR
 :WINDOWSGAMEBOOSTER
 echo !CYAN!
 if "!Language!"=="EN" (
-call :DRAW_CENTER "Do you want to [!YELLOW!E!CYAN!]nable, [!YELLOW!D!CYAN!]isable or [!YELLOW!B!CYAN!]ack ?" 30
+call :DRAW_CENTER "Do you want to [!YELLOW!E!CYAN!]nable, [!YELLOW!D!CYAN!]isable or [!YELLOW!B!CYAN!]ack ?"
 >nul choice /n /c EDB
 )
 if "!Language!"=="FR" (
-call :DRAW_CENTER "Voulez-vous [!YELLOW!A!CYAN!]ctiver, [!YELLOW!D!CYAN!]ésactiver ou [!YELLOW!R!CYAN!]etour ?" 30
+call :DRAW_CENTER "Voulez-vous [!YELLOW!A!CYAN!]ctiver, [!YELLOW!D!CYAN!]ésactiver ou [!YELLOW!R!CYAN!]etour ?"
 >nul choice /n /c ADR
 )
 if "!errorlevel!"=="1" call :_WINDOWSGAMEBOOSTER Enabling normal disabled enabled
@@ -3115,7 +3121,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (1,1,7) do if "!x!"=="%%A" (
@@ -3270,7 +3276,7 @@ echo !\E![11C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!Language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!." 20
+call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUESPOOFING
@@ -3280,8 +3286,8 @@ call :ERRORMESSAGE
 goto :CONTINUESPOOFING
 
 :CHECKER_SETUP_FOUND
-if "!Language!"=="EN" set t="New version found. Do you want to update ?!\n!!\n!Current version: !VERSION!!\n!Latest version   : !LastVersion!"
-if "!Language!"=="FR" set t="Nouvelle version trouvée. Voulez-vous mettre à jour ?!\n!!\n!Version actuelle  : !VERSION!!\n!Dernière version : !LastVersion!"
+if "!Language!"=="EN" set t="New version found. Do you want to update ?!\N!!\N!Current version: !VERSION!!\N!Latest version   : !LastVersion!"
+if "!Language!"=="FR" set t="Nouvelle version trouvée. Voulez-vous mettre à jour ?!\N!!\N!Version actuelle  : !VERSION!!\N!Dernière version : !LastVersion!"
 call :MSGBOX_LEVEL 69668 "Illegal Services Updater"
 if "!el!"=="7" exit /b
 :L2
@@ -3318,7 +3324,7 @@ call :ROSE FAQ
 echo !CYAN!
 if "!Language!"=="EN" set "t=Here is a list of frequently asked questions about Illegal Services:"
 if "!Language!"=="FR" set "t=Voici une liste questions de questions fréquemment posées à propos d'Illegal Services:"
-call :DRAW_CENTER "■█!BGYELLOW!!RED!█ !BLACK!!t!!RED! █!BGBLACK!!CYAN!█■" 30
+call :DRAW_CENTER "■█!BGYELLOW!!RED!█ !BLACK!!t!!RED! █!BGBLACK!!CYAN!█■"
 echo:
 echo !CYAN!
 if "!Language!"=="EN" (
@@ -3422,7 +3428,7 @@ echo:
 echo !CYAN!
 if "!Language!"=="EN" set "t=Press !YELLOW!{ANY KEY}!CYAN! to exit"
 if "!Language!"=="FR" set "t=Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter"
-call :DRAW_CENTER "!t!..." 10 1
+call :DRAW_CENTER "!t!..." 1
 %SHOWCURSOR%
 >nul pause
 exit
@@ -3523,16 +3529,14 @@ echo !\E![7C♦ Une erreur s'est produite et n'a pas pu técharger le fichier.
 )
 %SHOWCURSOR%
 >nul pause
-if "!el!"=="0" start /max explorer.exe "!YouTubeDLOutputDirectory!"
+if "!el!"=="0" start /max "" "!YouTubeDLOutputDirectory!"
 exit
 
 :PROCESS_NMAP
 call :CHECK_PORTPRIORITY
 title !DEBUG!NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !PortPriority:~1!^| - Illegal Services
 >nul 2>&1 net start npcap
->nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "MaxUserPort" /t REG_DWORD /d 64534 /f
->nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "TcpTimedWaitDelay" /t REG_DWORD /d 30 /f
->nul 2>&1 reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "StrictTimeWaitSeqCheck" /t REG_DWORD /d 1 /f
+for %%A in (MaxUserPort`64534 TcpTimedWaitDelay`30 StrictTimeWaitSeqCheck`1) do for /f "tokens=1,2delims=`" %%B in ("%%~A") do >nul reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "%%B" /t REG_DWORD /d %%C /f
 echo !BRIGHTBLACK!
 echo !\E![7C#################################################################
 if "!Language!"=="EN" echo !\E![7C#       !BRIGHTRED!♥   !CYAN!Welcome in the best Port Scanner by NMAP   !BRIGHTRED!♥!BRIGHTBLACK!        #
@@ -3893,7 +3897,7 @@ exit /b 0
 
 :CHECKBETWEEN0AND255
 if "%~1"=="" exit /b 1
-for /f "delims=1234567890" %%A in ("%~1") do exit /b 1
+for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
 if %~1 lss 0 exit /b 1
 if %~1 gtr 255 exit /b 1
 exit /b 0
@@ -4137,16 +4141,13 @@ if defined el (
 2>nul set /a "DeveloperKey=el"
 if defined DeveloperKey if !el! neq !DeveloperKey! set "DeveloperKey=!el!"
 )
-2>nul set /a c1=DeveloperKey%%12312
-if "!c1!"=="826" (
-2>nul set /a c2=DeveloperKey%%17
-if "!c2!"=="6" set DeveloperMode=1
-)
+2>nul set /a x1=DeveloperKey%%12312, x2=DeveloperKey%%17
+if "!x1!"=="826" if "!x2!"=="6" set DeveloperMode=1
 if not "!DeveloperMode!"=="1" (
 >nul reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d 0 /f
 set DeveloperMode=0
 )
-for %%A in (DeveloperKey c1 c2) do set %%A=
+for %%A in (DeveloperKey x1 x2) do set %%A=
 if not "!DeveloperMode!"=="0" if not "!DeveloperMode!"=="1" (
 call :ERROR_REGEDIT DeveloperMode DeveloperMode
 >nul reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d 0 /f
@@ -4170,7 +4171,12 @@ set /a width=%1, height=%2
 exit /b
 
 :CLEAR
-set /a c1=%1, c2=%2
+for /l %%A in (!c1!,1,!c2!) do set %%A=
+2>nul set /a c1=%1, c2=%2, x1=%2+1, x2=%2+%3, cn=2
+for /l %%A in (!x1!,1,!x2!) do (
+set /a cn+=1
+set c!cn!=%%A
+)
 for /l %%A in (!c1!,1,!c2!) do set "%%A=!YELLOW!%%A !UNCHECKED!"
 exit /b
 
@@ -4191,14 +4197,68 @@ exit /b 1
 
 :WEBSITECHECK
 if not defined x exit /b 1
-for /l %%A in (!c1!,1,!c2!) do if "!x!"=="%%A" if "!%%A!"=="!YELLOW!%%A !UNCHECKED!" (
-set "%%A=!YELLOW!%%A !CHECKED!"
-exit /b 0
-) else (
-set "%%A=!YELLOW!%%A !UNCHECKED!"
-exit /b 0
+for /f "delims=0123456789-," %%A in ("!x!") do exit /b 1
+set _el=1
+if not "!x:,=!"=="!x!" (
+if "!x:-=!"=="!x!" set el=,
+) else if not "!x:-=!"=="!x!" (
+if "!x:,=!"=="!x!" set el=-
+) else if "!x:-=!"=="!x!" (
+if "!x:,=!"=="!x!" set el=
 )
-exit /b 1
+if not defined el (
+for /l %%A in (!c1!,1,!c2!) do if "!x!"=="%%A" (
+if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
+set "%%A=!YELLOW!%%A !UNCHECKED!"
+set _el=0
+) else (
+set "%%A=!YELLOW!%%A !CHECKED!"
+set _el=0
+)
+)
+) else if "!el!"=="," (
+for %%A in (!x!) do (
+set "el=%%~A"
+if not "!el:~,1!"=="0" call :CHECKNUMBER "%%~A" && if %%A geq !c1! if %%A leq !c2! if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
+set "%%A=!YELLOW!%%A !UNCHECKED!"
+set _el=0
+) else (
+set "%%A=!YELLOW!%%A !CHECKED!"
+set _el=0
+)
+)
+) else if "!el!"=="-" (
+set "el=!x!"
+call :STRLEN el
+set x1=!len!
+set "el=!el:-=!"
+call :STRLEN el
+set x2=!len!
+set /a el=x1-x2
+if not "!el!"=="1" exit /b 1
+for /f "tokens=1,2delims=-" %%A in ("!x!") do (
+for %%C in ("%%~A" "%%~B") do (
+if "%%~C"=="" exit /b 1
+if "%%~C"=="0" exit /b 1
+set "el=%%~C"
+if "!el:~,1!"=="0" exit /b 1
+call :CHECKNUMBER "%%~C" || exit /b 1
+)
+if %%A leq %%B if %%A geq !c1! if %%A leq !c2! if %%B geq !c1! if %%B leq !c2! for /l %%D in (%%A,1,%%B) do if "!%%D!"=="!YELLOW!%%D !CHECKED!" (
+set "%%D=!YELLOW!%%D !UNCHECKED!"
+set _el=0
+) else (
+set "%%D=!YELLOW!%%D !CHECKED!"
+set _el=0
+)
+)
+)
+exit /b !_el!
+
+:CHECKNUMBER
+if "%~1"=="" exit /b 1
+for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
+exit /b 0
 
 :WEBSITESTART
 if defined x exit /b 1
@@ -4234,7 +4294,7 @@ if "!Language!"=="EN" set "t=ERROR: !BRIGHTBLACK!"!YELLOW!!%1!!BRIGHTBLACK!" is 
 if "!Language!"=="FR" set "t=ERREUR: !BRIGHTBLACK!"!YELLOW!!%1!!BRIGHTBLACK!" n'est pas %~2 valide"
 )
 set t=!RED!!t!...
-call :DRAW_CENTER_ERROR t 20
+call :DRAW_CENTER_ERROR t
 >nul timeout /t 3
 exit /b
 
@@ -4298,33 +4358,48 @@ echo     ██║███████╗███████╗████�
 echo     ╚═╝╚══════╝╚══════╝╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝    ╚══════╝╚══════╝╚═╝  ╚═╝  ╚═══╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
 exit /b
 
-:DRAW_CENTER_ERROR
-call :STRLEN "!%1!"
-if not "%2"=="" set /a "len-=%2"
-if !len! lss !width! (set /a "_sp=(width-len)/2") else set _sp=
-<nul set /p="!\E![!_sp!C!%1!"
-if not "%3"=="1" echo:
-exit /b
-
 :DRAW_CENTER
-call :STRLEN "%~1"
-if not "%2"=="" set /a "len-=%2"
+set "el=%~1"
+call :STRLEN el
+set x1=!len!
+set "el=!el:%\E%=!"
+call :STRLEN el
+set x2=!len!
+set /a el=(x1-x2)*4, len-=el
 if !len! lss !width! (set /a "_sp=(width-len)/2") else set _sp=
 <nul set /p="!\E![!_sp!C%~1"
-if not "%3"=="1" echo:
+if not "%2"=="1" echo:
 exit /b
 
 :DRAW_CUSTOM_CENTER
-call :STRLEN "%~2"
-if not "%3"=="" set /a "len-=%3"
+set "el=%~2"
+call :STRLEN el
+set x1=!len!
+set "el=!el:%\E%=!"
+call :STRLEN el
+set x2=!len!
+set /a el=(x1-x2)*4, len-=el
 set /a "_sp=(%1-len)/2"
 <nul set /p="!\E![!_sp!C%~2"
 echo:
 exit /b
 
+:DRAW_CENTER_ERROR
+set "el=!%1!"
+call :STRLEN el
+set x1=!len!
+set "el=!el:%\E%=!"
+call :STRLEN el
+set x2=!len!
+set /a el=(x1-x2)*4, len-=el
+if !len! lss !width! (set /a "_sp=(width-len)/2") else set _sp=
+<nul set /p="!\E![!_sp!C!%1!"
+if not "%2"=="1" echo:
+exit /b
+
 :STRLEN
 ::https://www.dostips.com/DtTipsStringOperations.php#Function.strLen
-set "str=a%~1"
+set "str=a!%1!"
 set len=0
 for /l %%A in (12,-1,0) do (
 set /a "len|=1<<%%A"
@@ -4459,11 +4534,11 @@ popd
 exit /b
 
 :SHOW_WINDOW
-for /f "tokens=2delims=," %%A in ('tasklist /v /fo csv /fi "imagename eq !IS_PROCESS!" ^| findstr /ic:"%~1"') do (
-set el=%%A
-set el=!el:"=!
-cmdwiz.exe showwindow value:1 /p:!el:"=!
-cmdwiz.exe showwindow top /p:!el:"=!
+for /f "tokens=2delims=," %%A in ('tasklist /v /fo csv /fi "imagename eq %~1" ^| findstr /ic:"%~2"') do (
+set "el=%%A"
+set "el=!el:"=!"
+cmdwiz.exe showwindow value:1 /p:"!el:"=!"
+cmdwiz.exe showwindow top /p:"!el:"=!"
 exit /b 0
 )
 exit /b 1
@@ -4489,7 +4564,7 @@ set el=2
 ) else (
 if "!errorlevel!"=="1" (
 if "!Language!"=="EN" set "t=!t!!\N!!\N!You must activate Internet and try again."
-if "!Language!"=="FR" set "t=!t!!\N!!\N!You must activate Internet and try again."
+if "!Language!"=="FR" set "t=!t!!\N!!\N!Veuillez activer Internet et réessayer."
 )
 if "!errorlevel!"=="2" (
 if "!Language!"=="EN" set "t=!t!!\N!!\N!IS Git proxy: '!git!' appears to be offline. For more updates visit our Telegram."
