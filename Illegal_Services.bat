@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 1. 7
-REM  Fileversion:  5. 9. 1. 7
+REM  Productversion:  5. 9. 1. 8
+REM  Fileversion:  5. 9. 1. 8
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -19,17 +19,29 @@ REM  QBFC Project Options End
 cls
 >nul chcp 65001
 setlocal DisableDelayedExpansion
+set "x1=%~nx0"
+setlocal EnableDelayedExpansion
+set "x2=%~nx0"
+set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
+(set \N=^
+%=leave unchanged=%
+)
+if not "!x1!"=="!x2!" (
+call :CHECK_LANGUAGE
+if "!Language!"=="EN" set t="Invalid characters detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
+if "!Language!"=="FR" set t="Caractères invalides détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
+call :MSGBOX 69648 "Illegal Services Checker"
+exit
+)
+setlocal DisableDelayedExpansion
 pushd "%~dp0"
-for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo(0x1B"') do set "\E=%%A"
+for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo:0x1B"') do set "\E=%%A"
 setlocal EnableDelayedExpansion
 set "HIDECURSOR=<nul set /p=!\E![?25l"
 set "SHOWCURSOR=<nul set /p=!\E![?25h"
 %HIDECURSOR%
-for /f "delims=" %%A in ('set') do set "DUMP_IS=!DUMP_IS!`%%A"
-if defined DUMP_IS set "DUMP_IS=!DUMP_IS:~,-4!"
-(set \N=^
-%=leave unchanged=%
-)
+for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="IS_REG" if not "%%A"=="\N" if not "%%A"=="\E" if not "%%A"=="SHOWCURSOR" if not "%%A"=="HIDECURSOR" set "DUMP_IS=!DUMP_IS!`%%A"
+if defined DUMP_IS set "DUMP_IS=!DUMP_IS!`"
 for %%A in (%*) do if "%%~A"=="--debug" set "DEBUG=[Debug] "
 if not "%~1"=="" if defined Language for %%A in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER) do if "%~1"=="%%A" (
 call :APPLY_SETTINGS
@@ -38,7 +50,6 @@ goto :PROCESS_%%A
 )
 call :SCALE 125 19
 if exist "cmdwiz.exe" cmdwiz.exe setquickedit 0
-set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
 call :CHECK_USERNAME
 set TITLE=!DEBUG!` - Illegal Services
@@ -89,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.1.7 - 11/11/2021
+set VERSION=v5.9.1.8 - 14/11/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -168,9 +179,14 @@ if "!Language!"=="FR" set t="ERREUR: Votre ordinateur n'atteint pas la version m
 call :MSGBOX 69648 "Illegal Services Checker"
 exit
 )
+if not "!CP!"=="65001" (
 if "!CP!"=="?" (
 if "!Language!"=="EN" set t="Illegal Services could not determine your CHCP number.!\N!!\N!Please report this bug on the Illegal Services Telegram forum in order to correct this bug in a future release."
 if "!Language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre numéro CHCP.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+) else (
+if "!Language!"=="EN" set t="Illegal Services could not set your CHCP number to 65001.!\N!!\N!Please report this bug on the Illegal Services Telegram forum in order to correct this bug in a future release."
+if "!Language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro CHCP sur 65001.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+)
 call :MSGBOX 69648 "Illegal Services Checker"
 start https://t.me/illegal_services_forum
 exit
@@ -294,7 +310,7 @@ goto :MAINMENU
 )
 if /i "!x!"=="--dump-IS" (
 if exist LOG_DUMP.txt del /f /q LOG_DUMP.txt
-for /f "delims=" %%A in ('set') do if "!DUMP_IS:`%%A`=!"=="!DUMP_IS!" >>LOG_DUMP.txt echo %%A
+for /f "tokens=1,*delims==" %%A in ('set') do if "!DUMP_IS:`%%A`=!"=="!DUMP_IS!" >>LOG_DUMP.txt echo %%A=%%B
 start LOG_DUMP.txt
 goto :MAINMENU
 )
@@ -615,10 +631,10 @@ echo       2. Le nom d'utilisateur ne peut pas dépasser 20 caractères.
 echo       3. N'utiliser les caractères suivants: "^! %% ^^".
 )
 :L4
-if "!Language!"=="EN" set t=Enter your new username
-if "!Language!"=="FR" set t=Entrez votre nouveau nom d'utilisateur
+if "!Language!"=="EN" set t="Enter your new username: "
+if "!Language!"=="FR" set t="Entrez votre nouveau nom d'utilisateur: "
 setlocal DisableDelayedExpansion
-call :INPUTBOX "%t%: "
+call :INPUTBOX
 setlocal EnableDelayedExpansion
 if defined ID (
 set "ID=!ID:%%=%%%%!"
@@ -1212,7 +1228,7 @@ echo:
 call :PROMPT
 if "!x!"=="!c3!" goto :CLEARWEBTORRENTING
 if "!UntrustedWebsitesWarning!"=="1" for %%A in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
-if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted* website. Be careful using it." "*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
+if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted* website. Be careful using it.!\N!!\N!*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
 if "!Language!"=="FR" set t="Vous avez sélectionné '%%C' qui est signalé comme un site web non fiable*. Soyez prudent en l'utilisant.!\N!!\N!*Les sites web non fiables sont connus de la communauté warez pour indexer du contenu malveillant ou suspect ainsi que légitime."
 call :MSGBOX 69680 "Illegal Services Checker"
 )
@@ -1899,7 +1915,13 @@ if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) &
 call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
-for %%A in (1 2 3) do if "%%A"=="!x!" call :CHECK_INTERNET && set "_el=!x!" || (call :ERROR_INTERNET & goto :CLEARIPLOOKUP)
+for %%A in (1 2 3) do if "%%A"=="!x!" call :CHECK_INTERNET && (
+set "_el=!x!"
+set /a width=68, height=4
+) || (
+call :ERROR_INTERNET
+goto :CLEARIPLOOKUP
+)
 if "!x!"=="1" goto :IPLOOKUP_RESPONSE
 if "!x!"=="2" call :ENTER_LOOKUP IP && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
 if "!x!"=="3" call :ENTER_LOOKUP IP/URL && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
@@ -1917,54 +1939,48 @@ if "!x!"=="1" (
 title !TITLE:`=Looking up ^> ...!
 for /f %%A in ('curl.exe -fkLs "https://api.ipify.org"') do set x=%%A
 )
->nul chcp 65001
-for %%A in (1 2) do if "!_el!"=="%%A" (
 title !TITLE:`=Looking up ^> %x%!
-call :IP_DETECTOR
-)
+for %%A in (1 2) do if "!_el!"=="%%A" call :IP_DETECTOR
 if "!_el!"=="3" call :URL_DETECTOR
 call :PROXY_DETECTOR
 call :VPN_DETECTOR
-echo !CYAN!
-type "!TMPF!\IS_Log.txt"
->nul chcp !CP!
+echo:
+for /f "usebackqtokens=1,*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo     !BRIGHTRED!%%A:!CYAN!%%B
 echo !BRIGHTBLACK!
-if "!Language!"=="EN" set t=Do you want to
-if "!Language!"=="FR" set t=Voulez vous
-call :DRAW_CENTER "!t! Save (!YELLOW!S!BRIGHTBLACK!) / Read (!YELLOW!R!BRIGHTBLACK!) / Delete (!YELLOW!D!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
+if "!Language!"=="EN" (
+set t1=Do you want to
+set t2=or
+)
+if "!Language!"=="FR" (
+set t1=Voulez-vous
+set t2=ou
+)
+call :DRAW_CENTER "!t1! Save (!YELLOW!S!BRIGHTBLACK!) !t2! Back (!YELLOW!B!BRIGHTBLACK!) ?"
 
 :CHOICE_IPLOOKUP
->nul choice /n /c SRDB
+>nul choice /n /c SB
 if "!errorlevel!"=="1" goto :IPLOOKUP_SAVE
-if "!errorlevel!"=="2" call :READ_IPLOOKUP
-if "!errorlevel!"=="3" call :DELETE_IPLOOKUP
-if "!errorlevel!"=="4" goto :CLEARIPLOOKUP
+if "!errorlevel!"=="2" goto :CLEARIPLOOKUP
 goto :CHOICE_IPLOOKUP
 
 :IPLOOKUP_SAVE
-if "!Language!"=="EN" set t=Enter victim's name
-if "!Language!"=="FR" set t=Entrez le nom de la victime
-call :INPUTBOX "!t!: "
+if "!Language!"=="EN" set t="Enter victim's name: "
+if "!Language!"=="FR" set t="Entrez le nom de la victime: "
+call :INPUTBOX
 if not exist "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
 if not exist "!IS_OUTPUTDIRECTORY!\" md "!IS_OUTPUTDIRECTORY!"
-echo =============================================>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
+>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" echo =============================================
 )
->nul chcp 1252
-echo   Name: !ID!>>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
->nul chcp !CP!
-echo =============================================>>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
-type "!TMPF!\IS_Log.txt">>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
-echo =============================================>>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
-if "!errorlevel!"=="0" (
+>>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
+echo   Name: !ID!
+echo =============================================
+type "!TMPF!\IS_Log.txt"
+echo =============================================
+)
 if "!Language!"=="EN" set t="IP Lookup successfully saved at:!\N!!\N!'!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Do you want to open it now ?"
 if "!Language!"=="FR" set t="IP Lookup enregistrés avec succès à:!\N!!\N!'!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Voulez-vous l'ouvrir maintenant ?"
 call :MSGBOX_LEVEL 69668 "Illegal Services Checker"
 if "!el!"=="6" start /max "" "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
-) else (
-if "!Language!"=="EN" set t="An unexpected error has occurred."
-if "!Language!"=="FR" set t="Une erreur inattendue est survenue."
-call :MSGBOX 69648 "Illegal Services Checker"
-)
 goto :CLEARIPLOOKUP
 
 :PORT
@@ -2423,7 +2439,7 @@ call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_netcoreapp31.zip" "https:/
 if "!27!"=="!YELLOW!27 !CHECKED!" call :CURL "Portable_Apps\NVSlimmer.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/nvslimmer/%%%%5BGuru3D.com%%%%5D-NVSlimmer.zip"
 if "!28!"=="!YELLOW!28 !CHECKED!" call :CURL "Portable_Apps\NVCleanstall_1.10.0.exe" "https://www.techspot.com/downloads/downloadnow/7246/?evp=99dc9f075f5dc723cda250985ad614d8&file=9654"
 if "!29!"=="!YELLOW!29 !CHECKED!" call :CURL "Portable_Apps\MSI_util_v3.exe" "`git_raw_downloads`/MSI_util_v3.exe"
-if "!30!"=="!YELLOW!30 !CHECKED!" call :CURL "Portable_Apps\CPU-Z.zip" "https://download.cpuid.com/cpu-z/cpu-z_1.97-en.zip"
+if "!30!"=="!YELLOW!30 !CHECKED!" call :CURL "Portable_Apps\CPU-Z.zip" "https://download.cpuid.com/cpu-z/cpu-z_1.98-en.zip"
 if "!31!"=="!YELLOW!31 !CHECKED!" call :CURL "Portable_Apps\OOSU10\OOSU10.exe" "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe"
 if "!32!"=="!YELLOW!32 !CHECKED!" call :CURL "Portable_Apps\Ashampoo_AntiSpy\Ashampoo_AntiSpy.exe" "https://cdn1.ashampoo.net/public/ashf/1004/Ashampoo_AntiSpy.exe"
 if "!33!"=="!YELLOW!33 !CHECKED!" call :CURL "Portable_Apps\DoNotSpy10.7z" "`git_raw_downloads`/DoNotSpy10.7z"
@@ -2873,7 +2889,7 @@ echo !\E![7C║   !11!pirates-forum.org      !GREEN!Torrenting [EN]!CYAN!    │
 echo !\E![7C║   !12!eztv.re                !GREEN!Torrenting [EN]!CYAN!    │   !27!forum.telecharger-jeuxpc.fr !GREEN!Cracking   [FR]!CYAN!    ║
 echo !\E![7C║   !13!forums.glodls.to       !GREEN!Torrenting [EN]!CYAN!    │   !28!tapochek.net                !GREEN!Cracking   [RU]!CYAN!    ║
 echo !\E![7C║   !14!torrentgalaxy.to       !GREEN!Torrenting [EN]!CYAN!    │   !29!forum.repack.me             !GREEN!Cracking   [RU]!CYAN!    ║
-echo !\E![7C║   !15!www.ettvcentral.com    !green!Torrenting [EN]!cyan!    │   !30!planete-warez.net           !GREEN!Warez      [FR]!CYAN!    ║
+echo !\E![7C║   !15!www.ettvcentral.com    !green!Torrenting [EN]!CYAN!    │   !30!planete-warez.net           !GREEN!Warez      [FR]!CYAN!    ║
 echo !\E![7C║                                                                                                              ║
 echo !\E![7C╠══════════════════■█!BGYELLOW!!RED!█ Hacking █!BGBLACK!!CYAN!█■═══════════════════╦═════════════════════■█!BGYELLOW!!RED!█ Others █!BGBLACK!!CYAN!█■══════════════════════╣
 echo !\E![7C║                                                    ║                                                         ║
@@ -3506,10 +3522,8 @@ echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!x!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
->nul chcp 65001
 start /b /w !YouTubeDLPriority! Portable_Apps\YouTube-DL\!youtube_dl!.exe --ffmpeg-location "Portable_Apps\YouTube-DL" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
 set el=!errorlevel!
->nul chcp !CP!
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !CYAN!
@@ -3660,7 +3674,7 @@ del /f /q "!TMPF!\msgbox.vbs"
 exit /b
 
 :INPUTBOX
->"%TMPF%\msgbox.vbs" echo WScript.Echo InputBox^("%~1"^)
+>"%TMPF%\msgbox.vbs" echo WScript.Echo InputBox^(%t%^)
 set ID=
 for /f "delims=" %%A in ('cscript //nologo "%TMPF%\msgbox.vbs"') do set "ID=%%A"
 del /f /q "%TMPF%\msgbox.vbs"
@@ -3706,7 +3720,11 @@ if "!Language!"=="EN" set t=Downloading
 if "!Language!"=="FR" set t=Téléchargement
 <nul set /p="!CYAN!!t!: !YELLOW!!url!!CYAN!"
 echo:
-curl.exe --create-dirs -f#kLo "%~1" "!url!" || if not "!url:%git%=!"=="!url!" call :CURL_PROXYS "%~1" "!url!" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4)
+curl.exe --create-dirs -f#kLo "%~1" "!url!" || (
+if not "!url:%git%=!"=="!url!" (call :CURL_PROXYS "%~1" "!url!" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4))
+call :ERROR_CURL "%~f1" "!url!"
+exit /b 2
+)
 if exist "%~f1" for %%A in (7z zip) do if "%~x1"==".%%A" if "%~nx1"=="ffmpeg.7z" (7za\x!ARCH!\7za.exe x -aoa -bso0 -o"%~dp1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4) & del /f /q "%~f1") else (7za\x!ARCH!\7za.exe x -aoa -bso0 -o"%~dpn1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4) & del /f /q "%~f1")
 set Start_Folder=1
 exit /b 0
@@ -3720,32 +3738,29 @@ if "%%B"=="github.com/Illegal-Services/Illegal_Services" set el=%%B/raw
 if "%%B"=="bitbucket.org/IllegalServices/illegal_services" set el=%%B/raw
 if "%%B"=="git.teknik.io/Illegal-Services/Illegal_Services" set el=%%B/raw/branch
 if "%%B"=="gitee.com/Illegal-Services/illegal_services" set el=%%B/raw
-if "!Language!"=="EN" set t=Downloading
-if "!Language!"=="FR" set t=Téléchargement
+if "!Language!"=="EN" set "t=Downloading: "
+if "!Language!"=="FR" set "t=Téléchargement: "
 cmd /c rem
-<nul set /p="!CYAN!!t!: !YELLOW!https://!el!!cn!%~nx2!CYAN!"
+<nul set /p="!CYAN!!t!!YELLOW!https://!el!!cn!%~nx2!CYAN!"
 echo:
 curl.exe --create-dirs -f#kLo "%~1" "https://!el!!cn!%~nx2" && exit /b 0
 )
 exit /b 1
 
 :ERROR_CURL
-if defined IS_Log (
-if "!Language!"=="EN" >>"!TMPF!\IS_Log.txt" echo ERROR WHILE DOWNLOADING: "%~2"
-if "!Language!"=="FR" >>"!TMPF!\IS_Log.txt" echo ERREURE PENDANT LE TELECHARGEMENT DE: "%~2"
-)
-if "!Language!"=="EN" set t=ERROR WHILE DOWNLOADING
-if "!Language!"=="FR" set t=ERREURE PENDANT LE TELECHARGEMENT DE
-echo !RED!!t!: !YELLOW!"%~2"
+if "!Language!"=="EN" set "t=ERROR WHILE DOWNLOADING: "
+if "!Language!"=="FR" set "t=ERREURE PENDANT LE TELECHARGEMENT DE: "
+if defined IS_Log >>"!TMPF!\IS_Log.txt" echo !t!"%~2"
+echo !RED!!t!!YELLOW!"%~2"
 if exist "%~f1" del /f /q "%~f1"
 exit /b
 
 :ENTER_LOOKUP
-if "!Language!"=="EN" set t=Enter the %1 to track
-if "!Language!"=="FR" set t=Entrer l'%1 à tracker
+if "!Language!"=="EN" set "t=Enter the %1 to track: "
+if "!Language!"=="FR" set "t=Entrer l'%1 à tracker: "
 %SHOWCURSOR%
 set x=
-set /p "x=!BRIGHTBLACK!!t!: !YELLOW!"
+set /p "x=!BRIGHTBLACK!!t!!YELLOW!"
 %HIDECURSOR%
 if "%1"=="IP" (call :CHECK_IP x || exit /b 1) else call :CHECK_URL x IP/URL || exit /b 1
 if "!4!"=="!YELLOW!4 !CHECKED!" start "" "https://check-host.net/ip-info?host=!x!" && cmdwiz.exe delay 1500
@@ -3756,10 +3771,7 @@ if "!8!"=="!YELLOW!8 !CHECKED!" start "" "https://whatismyipaddress.com/ip/!x!"
 exit /b 0
 
 :IP_DETECTOR
-set height=4
 for /f "tokens=1,2delims=: " %%A in ('curl.exe -fkLs "https://ipinfo.io/!x!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
-set /a height+=1
-mode 68,!height!
 set "data=%%A:%%B"
 set "data=!data:"=!"
 set "data=!data:ip:=IPv4      : !"
@@ -3776,24 +3788,26 @@ set "data=!data:bogon:=Bogon     : !"
 set "data=!data:true=True!"
 set "data=!data:false=False!"
 if "!data:~-1!"=="," set "data=!data:~,-1!"
-echo     !data!
-)>>"!TMPF!\IS_Log.txt"
+for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !data!
+)
+)
 exit /b
 
 :URL_DETECTOR
 for /f "delims=/" %%A in ("!x:*://=!") do set "x=%%A"
-title !TITLE:`=Looking up ^> %x%!
-set height=4
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192"') do (
-set /a height+=1
-mode 68,!height!
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192"') do if not "%%~A"=="" (
 set "data=%%A"
 set "data=!data:query>=IP v4/v6  : !"
-echo     !data!
-)>>"!TMPF!\IS_Log.txt"
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161"') do (
+for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
 set /a height+=1
-mode 68,!height!
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !data!
+)
+)
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161"') do if not "%%~A"=="" (
 set "data=%%A"
 set "data=!data:"=!"
 set "data=!data:continent>=Continent : !"
@@ -3808,14 +3822,16 @@ set "data=!data:org>=ORG       : !"
 set "data=!data:as>=AS        : !"
 set "data=!data:asname>=ASName    : !"
 set "data=!data:reverse>=Reverse   : !"
-echo     !data!
-)>>"!TMPF!\IS_Log.txt"
+for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !data!
+)
+)
 exit /b
 
 :PROXY_DETECTOR
-for /f "tokens=1,2delims=: " %%A in ('curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
-set /a height+=1
-mode 68,!height!
+for /f "tokens=1,*delims=: " %%A in ('curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
 set "data=%%A:%%B"
 set "data=!data:"=!"
 set "data=!data:type:=Type      : !"
@@ -3823,22 +3839,28 @@ set "data=!data:proxy:=Proxy     : !"
 set "data=!data:no=False!"
 set "data=!data:yes=True!"
 if "!data:~-1!"=="," set "data=!data:~,-1!"
-echo     !data!
-)>>"!TMPF!\IS_Log.txt"
+for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !data!
+)
+)
 exit /b
 
 :VPN_DETECTOR
 for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=16973824"') do (
-set /a height+=1
-mode 68,!height!
 set "data=%%A"
 set "data=!data:mobile>=Mobile (cellular) connection      : !"
 set "data=!data:proxy>=Proxy, VPN or Tor exit address    : !"
 set "data=!data:hosting>=Hosting, colocated or data center : !"
 set "data=!data:true=True!"
 set "data=!data:false=False!"
-echo     !data!
-)>>"!TMPF!\IS_Log.txt"
+for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !data!
+)
+)
 exit /b
 
 :IS_SEARCH
@@ -4190,9 +4212,9 @@ exit /b
 
 :CHOOSE
 if not defined x exit /b 1
-set "c=%1"
-if /i "!c:~,1!"=="!x!" exit /b 0
-if /i "!c:~,2!"=="!x:~,2!" exit /b 0
+set "x1=%1"
+if /i "!x1:~,1!"=="!x!" exit /b 0
+if /i "!x1:~,2!"=="!x:~,2!" exit /b 0
 exit /b 1
 
 :WEBSITECHECK
