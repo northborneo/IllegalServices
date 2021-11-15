@@ -394,8 +394,8 @@ call :MSGBOX 69696 "Grub4K"
 start https://github.com/Grub4K
 )
 if "!x!"=="16" (
-if "!Language!"=="EN" set t="Helping testing alpha versions.!\N!!\N!Helping to find existing bugs.!\N!!\N!Gave me a lot of motivation and encouragement.!\N!!\N!                                            *Notice you the shine ?"
-if "!Language!"=="FR" set t="A aidé à tester les versions alpha.!\N!!\N!A aidé à trouver les bugs existants.!\N!!\N!M'a donné beaucoup de motivation et d'encouragement.!\N!!\N!                                                           *Notice you the shine ?"
+if "!Language!"=="EN" set t="Helping testing alpha versions.!\N!!\N!Helping to find existing bugs.!\N!!\N!Advised me in updating the CLI.!\N!!\N!Gave me a lot of motivation and encouragement.!\N!!\N!                                            *Notice you the shine ?"
+if "!Language!"=="FR" set t="A aidé à tester les versions alpha.!\N!!\N!A aidé à trouver les bugs existants.!\N!!\N!M'a conseillé dans la mise à jour de la CLI.!\N!!\N!M'a donné beaucoup de motivation et d'encouragement.!\N!!\N!                                                           *Notice you the shine ?"
 call :MSGBOX 69696 "Rosalyn 'Shine brightest'"
 )
 if "!x!"=="17" (
@@ -1227,12 +1227,7 @@ echo:
 )
 call :PROMPT
 if "!x!"=="!c3!" goto :CLEARWEBTORRENTING
-if "!UntrustedWebsitesWarning!"=="1" for %%A in (11`thepiratebay.org) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
-if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted* website. Be careful using it.!\N!!\N!*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
-if "!Language!"=="FR" set t="Vous avez sélectionné '%%C' qui est signalé comme un site web non fiable*. Soyez prudent en l'utilisant.!\N!!\N!*Les sites web non fiables sont connus de la communauté warez pour indexer du contenu malveillant ou suspect ainsi que légitime."
-call :MSGBOX 69680 "Illegal Services Checker"
-)
-call :WEBSITECHECK && goto :CONTINUETORRENTING
+call :WEBSITECHECK "11`thepiratebay.org" && goto :CONTINUETORRENTING
 call :CHOOSE install && (call :INSTALL_FILE qBittorent & goto :CONTINUETORRENTING)
 call :CHOOSE search && (call :IS_SEARCH 4d5e330a21ba32b26 & goto :CONTINUETORRENTING)
 call :CHOOSE add && goto :ADDTORRENT
@@ -1479,12 +1474,7 @@ if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) &
 call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!SEARCH!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
-if "!UntrustedWebsitesWarning!"=="1" for %%A in (1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 19`izofile.com 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 40`pcgamestorrents.com 41`www.skidrowcodex.net 45`cracked-games.org 49`codex-games.com) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "!x!"=="%%B" if "!%%B!"=="!YELLOW!%%B !UNCHECKED!" (
-if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted* website. Be careful using it." "*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
-if "!Language!"=="FR" set t="Vous avez sélectionné '%%C' qui est signalé comme un site web non fiable*. Soyez prudent en l'utilisant.!\N!!\N!*Les sites web non fiables sont connus de la communauté warez pour indexer du contenu malveillant ou suspect ainsi que légitime."
-call :MSGBOX 69680 "Illegal Services Checker"
-)
-call :WEBSITECHECK && goto :CONTINUEWINDOWS
+call :WEBSITECHECK "1`getintopc.com 2`crackingpatching.com 3`karanpc.com 5`s0ft4pc.com 6`kolompc.com 10`www.sadeempc.com 15`haxnode.net 19`izofile.com 20`crackshash.com 21`www.cybermania.ws 36`portable4pc.com 39`igg-games.com 40`pcgamestorrents.com 41`www.skidrowcodex.net 45`cracked-games.org 49`codex-games.com" && goto :CONTINUEWINDOWS
 call :CHOOSE search && (call :IS_SEARCH c63a5dfcf766495b0 & goto :CONTINUEWINDOWS)
 call :CHOOSE back && goto :MAINMENU
 call :WEBSITESTART && goto :CLEARWINDOWS
@@ -1798,10 +1788,10 @@ echo !\E![8C║   !46!www.vedbex.com!CYAN!              ║                     
 echo !\E![8C║                                                                                 ║                                     ║
 echo !\E![8C╠═════════════════════════════■█!BGYELLOW!!RED!█ Combo Lists █!BGBLACK!!CYAN!█■═════════════════════════════════╬═══════════■█!BGYELLOW!!RED!█ Others █!BGBLACK!!CYAN!█■════════════╣
 echo !\E![8C║                                                                                 ║                                     ║
-echo !\E![8C║   !52!leak.sx!CYAN!                     │   !56!sinister.ly!CYAN!                     ║   !60!onehack.us!CYAN!                 ║
-echo !\E![8C║   !53!combo-list.com!CYAN!              │   !57!mailaccess.top!CYAN!                  ║   !61!www.revshells.com!CYAN!          ║
-echo !\E![8C║   !54!www.frecombo.com!CYAN!            │   !58!dailycombolist!CYAN!                  ║   !62!www.torproject.org!CYAN!         ║
-echo !\E![8C║   !55!combolist.top!CYAN!               │   !59!SteamAchievementManager!CYAN!         ║                                     ║
+echo !\E![8C║   !52!leak.sx!CYAN!                     │   !56!sinister.ly!CYAN!                     ║   !59!SteamAchievementManager!CYAN!    ║
+echo !\E![8C║   !53!combo-list.com!CYAN!              │   !57!mailaccess.top!CYAN!                  ║   !60!onehack.us!CYAN!                 ║
+echo !\E![8C║   !54!www.frecombo.com!CYAN!            │   !58!dailycombolist!CYAN!                  ║   !61!www.revshells.com!CYAN!          ║
+echo !\E![8C║   !55!combolist.top!CYAN!               │                                          ║   !62!www.torproject.org!CYAN!         ║
 echo !\E![8C║                                                                                 ║                                     ║
 echo !\E![8C╚═════════════════════════════════════════════════════════════════════════════════╩═════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -3676,7 +3666,9 @@ exit /b
 :INPUTBOX
 >"%TMPF%\msgbox.vbs" echo WScript.Echo InputBox^(%t%^)
 set ID=
+>nul chcp 850
 for /f "delims=" %%A in ('cscript //nologo "%TMPF%\msgbox.vbs"') do set "ID=%%A"
+>nul chcp !CP!
 del /f /q "%TMPF%\msgbox.vbs"
 exit /b
 
@@ -4219,14 +4211,16 @@ exit /b 1
 
 :WEBSITECHECK
 if not defined x exit /b 1
-for /f "delims=0123456789-," %%A in ("!x!") do exit /b 1
+for /f "delims=0123456789-,*" %%A in ("!x!") do exit /b 1
+set x1=
+for /f "tokens=1,*delims=*" %%A in ("!x!") do if "%%A*%%B"=="!x!" set x1=*
 set _el=1
 if not "!x:,=!"=="!x!" (
-if "!x:-=!"=="!x!" set el=,
+if not defined x1 if "!x:-=!"=="!x!" if "!x:,,=!"=="!x!" set el=,
 ) else if not "!x:-=!"=="!x!" (
 if "!x:,=!"=="!x!" set el=-
-) else if "!x:-=!"=="!x!" (
-if "!x:,=!"=="!x!" set el=
+) else if not defined x1 if "!x:-=!"=="!x!" if "!x:,=!"=="!x!" (
+set el=
 )
 if not defined el (
 for /l %%A in (!c1!,1,!c2!) do if "!x!"=="%%A" (
@@ -4234,6 +4228,7 @@ if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
 set "%%A=!YELLOW!%%A !UNCHECKED!"
 set _el=0
 ) else (
+call :UNTRUSTED_WEBSITES_WARNING %1 %%A
 set "%%A=!YELLOW!%%A !CHECKED!"
 set _el=0
 )
@@ -4245,6 +4240,7 @@ if not "!el:~,1!"=="0" call :CHECKNUMBER "%%~A" && if %%A geq !c1! if %%A leq !c
 set "%%A=!YELLOW!%%A !UNCHECKED!"
 set _el=0
 ) else (
+call :UNTRUSTED_WEBSITES_WARNING %1 %%A
 set "%%A=!YELLOW!%%A !CHECKED!"
 set _el=0
 )
@@ -4259,9 +4255,46 @@ set x2=!len!
 set /a el=x1-x2
 if not "!el!"=="1" exit /b 1
 for /f "tokens=1,2delims=-" %%A in ("!x!") do (
+if "%%A"=="*" if "%%B"=="*" (
+for /l %%C in (!c1!,1,!c2!) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
+set "%%C=!YELLOW!%%C !UNCHECKED!"
+set _el=0
+) else (
+call :UNTRUSTED_WEBSITES_WARNING %1 %%C
+set "%%C=!YELLOW!%%C !CHECKED!"
+set _el=0
+)
+exit /b !_el!
+)
+if "%%A"=="*" if not "%%B"=="*" (
+set "el=%%B"
+if "!el:~,1!"=="0" exit /b 1
+call :CHECKNUMBER "%%B" || exit /b 1
+for /l %%C in (!c1!,1,%%B) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
+set "%%C=!YELLOW!%%C !UNCHECKED!"
+set _el=0
+) else (
+call :UNTRUSTED_WEBSITES_WARNING %1 %%C
+set "%%C=!YELLOW!%%C !CHECKED!"
+set _el=0
+)
+exit /b !_el!
+)
+if "%%B"=="*" if not "%%A"=="*" (
+set "el=%%A"
+if "!el:~,1!"=="0" exit /b 1
+call :CHECKNUMBER "%%A" || exit /b 1
+for /l %%C in (%%A,1,!c2!) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
+set "%%C=!YELLOW!%%C !UNCHECKED!"
+set _el=0
+) else (
+call :UNTRUSTED_WEBSITES_WARNING %1 %%C
+set "%%C=!YELLOW!%%C !CHECKED!"
+set _el=0
+)
+exit /b !_el!
+)
 for %%C in ("%%~A" "%%~B") do (
-if "%%~C"=="" exit /b 1
-if "%%~C"=="0" exit /b 1
 set "el=%%~C"
 if "!el:~,1!"=="0" exit /b 1
 call :CHECKNUMBER "%%~C" || exit /b 1
@@ -4270,12 +4303,21 @@ if %%A leq %%B if %%A geq !c1! if %%A leq !c2! if %%B geq !c1! if %%B leq !c2! f
 set "%%D=!YELLOW!%%D !UNCHECKED!"
 set _el=0
 ) else (
+call :UNTRUSTED_WEBSITES_WARNING %1 %%D
 set "%%D=!YELLOW!%%D !CHECKED!"
 set _el=0
 )
 )
 )
 exit /b !_el!
+
+:UNTRUSTED_WEBSITES_WARNING
+if "!UntrustedWebsitesWarning!"=="1" if not "%2"=="" for %%A in (%~1) do for /f "tokens=1,2delims=`" %%B in ("%%A") do if "%2"=="%%B" (
+if "!Language!"=="EN" set t="You have selected '%%C' which is flagged as an untrusted* website. Be careful using it.!\N!!\N!*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
+if "!Language!"=="FR" set t="Vous avez sélectionné '%%C' qui est signalé comme un site web non fiable*. Soyez prudent en l'utilisant.!\N!!\N!*Les sites web non fiables sont connus de la communauté warez pour indexer du contenu malveillant ou suspect ainsi que légitime."
+call :MSGBOX 69680 "Illegal Services Checker"
+)
+exit /b
 
 :CHECKNUMBER
 if "%~1"=="" exit /b 1
