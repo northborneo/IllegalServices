@@ -8,15 +8,15 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.1.8 - 14/11/2021
-- FIXED minor bugs.
-- FIXED a bug when Illegal Services executable have been renamed with invalid characters.
-- FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
-- FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
-- IMRPOVED Code.
-- IMPROVED Curl PATH algorithm. (thanks @Grub4K)
-- IMPROVED Launcher : Checking files integrity.
-- IMPROVED Launcher : Checking Windows version.
+v5.9.1.9 - 15/11/2021
+* FIXED minor bugs.
+* FIXED a bug when Illegal Services executable have been renamed with invalid characters.
+* FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
+* FIXED Portable Apps : Windows Update MiniTool not working. (thanks @0x00)
+* IMPROVED Code.
+* IMPROVED Curl PATH algorithm. (thanks @Grub4K)
+* IMPROVED Launcher : Checking files integrity.
+* IMPROVED Launcher : Checking Windows version.
 + UPDATED Main Menu Credits.
 + UPDATED Main Menu Our Social Networks.
 + UPDATED Main Menu FAQ.
@@ -41,6 +41,7 @@ v5.9.1.8 - 14/11/2021
 + UPDATED Torrenting : https://unblockproject.top/
 + UPDATED Torrenting : https://unblockit.kim/
 + UPDATED Cracked Android APK's : https://iplayplus.org/
++ UPDATED IP Address Lookup. (thanks @Rosalyn)
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED Portable Apps : Radeon Software Slimmer v1.3.0
 + UPDATED Portable Apps : CPU-Z v1.97
@@ -124,18 +125,18 @@ v5.9.1.8 - 14/11/2021
 
 v5.9.0.0 - 19/09/2021
 - REDUCED Code. (~12 ko)
-- IMPROVED code.
-- IMPROVED flagging of untrusted website.
-- FIXED Settings : Bugs related to user input in Regedit. (thanks @anic17 and @sintrode)
-- FIXED Minimum version of illegal services is now set to Windows 7.
-- FIXED a bug with antivirus conflicting with the updater.
-- FIXED a bug with an infinite build update loop when "Illegal_Services.exe" does not have the correct build number assigned.
-- FIXED a bug when HTTPS was always chosen to start websites.
-- FIXED a bug with YouTube DL "change output location" not changing "download location" strings.
-- FIXED a bug when the "&" character was entered in the URL checker.
-- FIXED minor bugs.
-- MOVED Useful Websites : https://doxbin.org/ in Doxing.
-- MOVED Useful Websites : https://freezer.life/ in More Features Musics.
+* IMPROVED code.
+* IMPROVED flagging of untrusted website.
+* FIXED Settings : Bugs related to user input in Regedit. (thanks @anic17 and @sintrode)
+* FIXED Minimum version of illegal services is now set to Windows 7.
+* FIXED a bug with antivirus conflicting with the updater.
+* FIXED a bug with an infinite build update loop when "Illegal_Services.exe" does not have the correct build number assigned.
+* FIXED a bug when HTTPS was always chosen to start websites.
+* FIXED a bug with YouTube DL "change output location" not changing "download location" strings.
+* FIXED a bug when the "&" character was entered in the URL checker.
+* FIXED minor bugs.
+* MOVED Useful Websites : https://doxbin.org/ in Doxing.
+* MOVED Useful Websites : https://freezer.life/ in More Features Musics.
 + UPDATED IS Source : curl.exe v7.79.0
 + UPDATED IS Source : EULA.rtf
 + UPDATED IS Source : Tutorial.html (thanks @anic17)
@@ -314,9 +315,9 @@ v5.9.0.0 - 19/09/2021
 - REMOVED More Features Forum Websites : https://batch.xoo.it/index.php (Has nothing to do near or far with warez content or Illegal Services.)
 
 v5.8.0.0 - 21/07/2021
-- IMPROVED code.
-- FIXED "ControlSet001" to "CurrentControlSet" (thanks @AMIT)
-- FIXED minor bugs.
+* IMPROVED code.
+* FIXED "ControlSet001" to "CurrentControlSet" (thanks @AMIT)
+* FIXED minor bugs.
 + UPDATED IS Source : curl.exe v7.78.0
 + UPDATED Internet Protocol Television : VLC media player v3.0.15
 + UPDATED Direct Download Link [EN] : https://downloadhub.red/
@@ -415,13 +416,13 @@ v5.8.0.0 - 21/07/2021
 
 v5.7.0.0 - 12/06/2021
 - REDUCED Code. (~6 ko thanks @Grub4K and @anic17)
-- IMPROVED code.
-- IMPROVED UI choices. (thanks @Saltyy)
-- IMPROVED UI centered text code. (thanks @Grub4K)
-- IMPROVED String lenght limit detection. (thanks @Grub4K)
-- IMPROVED Settings : Change username. (thanks @sintrode and @Grub4K)
-- FIXED a bug about curl downloads when Illegal Services PATH contain special characters.
-- FIXED minor bugs.
+* IMPROVED code.
+* IMPROVED UI choices. (thanks @Saltyy)
+* IMPROVED UI centered text code. (thanks @Grub4K)
+* IMPROVED String lenght limit detection. (thanks @Grub4K)
+* IMPROVED Settings : Change username. (thanks @sintrode and @Grub4K)
+* FIXED a bug about curl downloads when Illegal Services PATH contain special characters.
+* FIXED minor bugs.
 + UPDATED Main Menu Our Social Networks.
 + UPDATED Main Menu FAQ.
 + UPDATED Direct Download Link [EN] : https://softarchive.is/
@@ -485,9 +486,9 @@ v5.7.0.0 - 12/06/2021
 
 v5.6.0.0 - 27/05/2021
 - REDUCED Code.
-- IMPROVED code.
-- IMPROVED UI centered text code. (thanks @Grub4K)
-- FIXED minor bugs.
+* IMPROVED code.
+* IMPROVED UI centered text code. (thanks @Grub4K)
+* FIXED minor bugs.
 + UPDATED IS Source : cmdwiz.exe v1.7.0.0
 + UPDATED Direct Download Link [EN] : https://downloadhub.ninja/
 + UPDATED Direct Download Link [FR] : https://www2.tirexo.club/
@@ -555,12 +556,12 @@ v5.6.0.0 - 27/05/2021
 
 v5.5.0.0 - 07/05/2021
 - REDUCED Code.
-- IMPROVED IS Launcher : Searching a proxy. (thanks @Grub4K)
-- IMPROVED IS Launcher.
-- IMPROVED IP Address Lookup.
-- IMPROVED More Features Windows Repair.
-- IMPROVED Settings.
-- FIXED minor bugs.
+* IMPROVED IS Launcher : Searching a proxy. (thanks @Grub4K)
+* IMPROVED IS Launcher.
+* IMPROVED IP Address Lookup.
+* IMPROVED More Features Windows Repair.
+* IMPROVED Settings.
+* FIXED minor bugs.
 + UPDATED Internet Protocol Television : https://www.iptvm3ufree.com/
 + UPDATED Portable Apps : Driver Store Explorer v0.11.72
 + UPDATED Portable Apps : Windows Repair AIO v4.11.3
@@ -603,15 +604,15 @@ v5.5.0.0 - 07/05/2021
 
 v5.4.0.0 - 02/05/2021
 - REDUCED Code. (~33 ko)
-- IMPROVED Code.
-- IMPROVED Error Messages.
-- FIXED various minor bugs.
-- FIXED a bug with the stack memory overflow causing IS to crash. (thanks @Grub4K)
-- FIXED YouTube Downloader : Encoding bug with output location. (still buggy but it's better than before.)
-- FIXED IP Port Scanning : Encoding bug. (still buggy but it's better than before.)
-- FIXED IP Address Lookup : "," characters were deleted by mistake.
-- FIXED Settings : Scan down or changed domain websites. (Removed http false results. Also improved and reduced it's code.)
-- FIXED Settings : Scan down or changed domain websites seconds timer bug. (thanks @Grub4K)
+* IMPROVED Code.
+* IMPROVED Error Messages.
+* FIXED various minor bugs.
+* FIXED a bug with the stack memory overflow causing IS to crash. (thanks @Grub4K)
+* FIXED YouTube Downloader : Encoding bug with output location. (still buggy but it's better than before.)
+* FIXED IP Port Scanning : Encoding bug. (still buggy but it's better than before.)
+* FIXED IP Address Lookup : "," characters were deleted by mistake.
+* FIXED Settings : Scan down or changed domain websites. (Removed http false results. Also improved and reduced it's code.)
+* FIXED Settings : Scan down or changed domain websites seconds timer bug. (thanks @Grub4K)
 + UPDATED IS Source : Backgrounds .bkg to .jpg
 + UPDATED IS Source : curl.exe v7.76.1
 + UPDATED IS Source : cmdbkg.exe v2.1.0.0
@@ -679,7 +680,7 @@ v5.4.0.0 - 02/05/2021
 - REMOVED Portable Apps : SpeedTest
 
 v5.3.0.0 - 18/03/2021
-- IMPROVED Code.
+* IMPROVED Code.
 + UPDATED Setup Eula.
 + UPDATED Direct Download Link [EN] : https://hdencode.org/
 + UPDATED Streaming [EN] : https://1movies.best/
@@ -706,7 +707,7 @@ v5.3.0.0 - 18/03/2021
 - REMOVED IP Denial of Services : https://stresser.net/ (down)
 
 v5.2.0.0 - 08/03/2021
-- IMPROVED Code.
+* IMPROVED Code.
 - REDUCED code (~135 ko ; thanks @anic17)
 + UPDATED IS Source : ffmpeg.exe v2021-02-23-git-78d5e1c653-essentials_build-www.gyan.dev
 + UPDATED Direct Download Link [FR] : https://www2.tirexo.ai/
@@ -801,10 +802,10 @@ v5.2.0.0 - 08/03/2021
 
 v5.1.0.0 - 18/02/2021
 - REDUCED Code.
-- FIXED some display bugs.
-- FIXED Settings : Developer Mode empty choice making IS unuseable.
-- MOVED Main Menu : Download Subtitles
-- MOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ in Portable Apps Windows and Office Cracks.
+* FIXED some display bugs.
+* FIXED Settings : Developer Mode empty choice making IS unuseable.
+* MOVED Main Menu : Download Subtitles
+* MOVED Direct Download Link [EN] : https://tb.rg-adguard.net/ in Portable Apps Windows and Office Cracks.
 + UPDATED Setup Eula.
 + UPDATED IS Source : curl.exe : v7.75.0
 + UPDATED IS Source : YouTube DL v2021.02.10
@@ -917,9 +918,9 @@ v5.1.0.0 - 18/02/2021
 - REMOVED Doxing : Illegal Services Search Engine - [Doxing] (pointless)
 
 v5.0.0.0 - 02/01/2021
-- IMPROVED Setup.
-- FIXED a bug in the settings. (Borders transparency not working)
-- FIXED a bug with wrong choices. (thanks @Vincent and @anic17)
+* IMPROVED Setup.
+* FIXED a bug in the settings. (Borders transparency not working)
+* FIXED a bug with wrong choices. (thanks @Vincent and @anic17)
 + UPDATED Setup : Now install Illegal Services to %AppData%. (No more administrator for installation requiered. Other's user wont see Illegal Services as installed in the computer.)
 + UPDATED IS Source : YouTube DL v2020.12.22
 + UPDATED Credits : Speak by Fatih Kodak
@@ -973,8 +974,8 @@ v5.0.0.0 - 02/01/2021
 - REMOVED Direct Download Link [FR] : https://www.mamega.com/ (down)
 
 v4.2.0.0 - 12/12/2020
-- FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
-- IMPROVED IS Source : Portable Apps downloads now moved to : https://github.com/Illegal-Services/Illegal_Services/tree/downloads
+* FIXED major issues from v4.1.0.0 (Settings.ini not working on old Windows and other source bugs)
+* IMPROVED IS Source : Portable Apps downloads now moved to : https://github.com/Illegal-Services/Illegal_Services/tree/downloads
 + UPDATED IS Source : YouTube DL v2020.12.12
 + UPDATED Portable Apps : CCleaner v575
 + UPDATED Portable Apps : Windows Repair AIO v4.10.2
@@ -1035,8 +1036,8 @@ v4.1.0.0 - 09/12/2020
 
 v4.0.0.0 - 30/11/2020
 - REDUCED Code. (~17 ko ; thanks @anic17)
-- IMPROVED Setup Installer.
-- FIXED a bug where Rose was executing minimized in another processus.
+* IMPROVED Setup Installer.
+* FIXED a bug where Rose was executing minimized in another processus.
 + UPDATED IS Icon. (Copyright from owner of the old logo)
 + UPDATED IS Source : YouTube DL v2020.11.29
 + UPDATED Direct Download Link [FR] : https://www.tirexo.lol/
@@ -1051,8 +1052,8 @@ v4.0.0.0 - 30/11/2020
 - REMOVED Settings : 2 backgrounds.
 
 v3.9.0.0 - 18/11/2020
-- FIXED Launcher : Bug that where not displaying latest release date.
-- FIXED IP Address Lookup : Rose voice assistant where not saying the sentence again.
+* FIXED Launcher : Bug that where not displaying latest release date.
+* FIXED IP Address Lookup : Rose voice assistant where not saying the sentence again.
 + UPDATED IS Source : YouTube DL v2020.11.18
 + UPDATED IS Source : YouTube DLC v2020.11.11-4
 + UPDATED Direct Download Link [FR] : https://www.tirexo.cc/
@@ -1084,8 +1085,8 @@ v3.9.0.0 - 18/11/2020
 
 v3.8.0.0 - 12/11/2020
 - REDUCED Code.
-- IMPROVED Code.
-- FIXED More Features Windows Repair : Re-Register Store Apps not working.
+* IMPROVED Code.
+* FIXED More Features Windows Repair : Re-Register Store Apps not working.
 + UPDATED IP Address Lookup : Type and Proxy informations.
 + UPDATED Portable Apps : CCleaner v574
 + UPDATED Portable Apps : Blacbird v1.0.80.2:
@@ -1109,10 +1110,10 @@ v3.8.0.0 - 12/11/2020
 - REMOVED Streaming [FR] : https://streamings-vf.net/ (scam)
 
 v3.7.0.0 - 09/11/2020
-- IMPROVED Code.
-- FIXED Launcher : Rose was not launching at first startup.
-- FIXED Torrenting : Some bugs.
-- FIXED IP Address Lookup : Lookup an other URL not working.
+* IMPROVED Code.
+* FIXED Launcher : Rose was not launching at first startup.
+* FIXED Torrenting : Some bugs.
+* FIXED IP Address Lookup : Lookup an other URL not working.
 + ADDED Doxing : Dox Tool V2 Error Message.
 + ADDED IP Denial of Services : https://downed.io/
 + ADDED IP Denial of Services : https://stresslab/
@@ -1120,7 +1121,7 @@ v3.7.0.0 - 09/11/2020
 
 v3.6.0.0 - 07/11/2020
 - REDUCED Code.
-- FIXED a bug with Rose who was talking in a French-English.
+* FIXED a bug with Rose who was talking in a French-English.
 + UPDATED IS Source : YouTube DL v2020.11.01.1
 + UPDATED IS Source : nmap.exe v7.91.0.0
 + UPDATED now open explorer in maximised.
@@ -1140,14 +1141,14 @@ v3.6.0.0 - 07/11/2020
 - REMOVED Torenting : . (Still present in Torrenting)
 
 v3.5.0.0 - 01/11/2020
-- FIXED Code.
+* FIXED Code.
 + ADDED choice verification. (IP Adress Lookup) (thank you so much @sintrode for the big help)
 + ADDED Settings : Change language to English/French.
 
 v3.4.0.0 - 31/10/2020
-- IMPROVED Code.
+* IMPROVED Code.
 - REDUCED Code.
-- FIXED Launcher : Bug that where looping updating.
+* FIXED Launcher : Bug that where looping updating.
 - REDUCED Code. (a thank to @anic17 and Artanis for the help)
 + UPDATED Rose voice assistant.
 + UPDATED Portable Apps : DnsJumper (.ini file)
@@ -1161,16 +1162,16 @@ v3.4.0.0 - 31/10/2020
 
 v3.3.0.0 - 24/10/2020
 - REDUCED Code.
-- FIXED IS Source : Speak\speak-en.exe detected by Windows Defender.
-- FIXED YouTube DL : A bug that couldn't change download location.
+* FIXED IS Source : Speak\speak-en.exe detected by Windows Defender.
+* FIXED YouTube DL : A bug that couldn't change download location.
 + ADDED IS Source : Speak\extd.exe
 - REMOVED IS Source : Speak\speak-en.exe
 
 v3.2.0.0 - 24/10/2020
-- FIXED bugs. (Setup, Youtube DL, Port Scanning)
+* FIXED bugs. (Setup, Youtube DL, Port Scanning)
 
 v3.1.0.0 - 23/10/2020
-- IMPROVED Code.
+* IMPROVED Code.
 - REDUCED Code. (~75 ko) (a thank to @sintrode for the help)
 + UPDATED Torrenting : https://rarbg.to/
 + ADDED Rose voice assistant. (thank you so much <Tim> and also a thank to @sintrode for the help)
@@ -1182,19 +1183,19 @@ v3.1.0.0 - 23/10/2020
 - REMOVED Torrenting : https://horriblesubs.info/ (down)
 
 v3.0.0.0 - 19/10/2020
-- IMPROVED Code.
+* IMPROVED Code.
 + ADDED IS Source : Curl x64
 + ADDED IS Source : 7za
 + ADDED Now all compressed Portable Apps downloads will automatically be extracted.
 + ADDED Launcher : If missing files, if you have internet it will download them instead of exiting.
 
 v2.9.0.0 - 17/10/2020
-- IMPROVED Code.
+* IMPROVED Code.
 - REDUCED Code.
-- FIXED code.
-- FIXED a bug that where causing internet problem when you launched multiple Illegal Services instances in the same time.
-- FIXED IP Address Lookup : " / characters glitch removed.
-- FIXED IP Address Lookup : https://www.iplocation.net/ not working.
+* FIXED code.
+* FIXED a bug that where causing internet problem when you launched multiple Illegal Services instances in the same time.
+* FIXED IP Address Lookup : " / characters glitch removed.
+* FIXED IP Address Lookup : https://www.iplocation.net/ not working.
 + UPDATED IS Source : curl.exe v7.73.0
 + UPDATED Direct Download Link : www.zt-za.com
 + UPDATED IP Denial of Services : stresser.net
@@ -1212,12 +1213,12 @@ v2.9.0.0 - 17/10/2020
 - REMOVED IP Denial of Services : https://venomstress.nl
 
 v2.8.0.0 - 13/10/2020
-- IMPROVED Code.
-- FIXED a bug with the setup that where creating temporary files without deleting them. (a thank to @anic17)
-- FIXED a bug that where deleting all .exe and .zip from Illegal Services install folder.
-- FIXED Launcher : Auto Updater not working.
-- FIXED IP Adress Lookup : Problem when city's where not fully displayed.
-- FIXED More Features : FreeBooter not working.
+* IMPROVED Code.
+* FIXED a bug with the setup that where creating temporary files without deleting them. (a thank to @anic17)
+* FIXED a bug that where deleting all .exe and .zip from Illegal Services install folder.
+* FIXED Launcher : Auto Updater not working.
+* FIXED IP Adress Lookup : Problem when city's where not fully displayed.
+* FIXED More Features : FreeBooter not working.
 + UPDATED Portable Apps : Windows Update MiniTool
 + UPDATED Portable Apps : Windows Privacy Dashboard
 + UPDATED Portable Apps : Microsoft Safety Scanner
@@ -1225,14 +1226,14 @@ v2.8.0.0 - 13/10/2020
 + ADDED Portable Apps Windows and Office Cracks : AAct
 
 v2.7.0.0 - 09/10/2020
-- IMPROVED Code. (a thank to @sintrode)
+* IMPROVED Code. (a thank to @sintrode)
 - REDUCED Code.
-- FIXED a bug that where creating temporary files without deleting them. (thank you so much @anic17 for the big help)
-- FIXED Torrenting : https://1337x.to/ not working.
-- FIXED IP Port Scanning : https://www.adminsub.net/ not working.
-- FIXED IP Adress Lookup not working. (thank you so much @anic17 for the big help)
-- FIXED Portable Apps : Windows Privacy Dashboard not working. (a thank to Rose who reminded me)
-- FIXED some error messages.
+* FIXED a bug that where creating temporary files without deleting them. (thank you so much @anic17 for the big help)
+* FIXED Torrenting : https://1337x.to/ not working.
+* FIXED IP Port Scanning : https://www.adminsub.net/ not working.
+* FIXED IP Adress Lookup not working. (thank you so much @anic17 for the big help)
+* FIXED Portable Apps : Windows Privacy Dashboard not working. (a thank to Rose who reminded me)
+* FIXED some error messages.
 + UPDATED Compiler Version.
 + UPDATED IS Source : YouTube DL v2020.09.20
 + UPDATED Main Menu Credits.
@@ -1262,8 +1263,8 @@ v2.7.0.0 - 09/10/2020
 - REMOVED Launcher : Checking your internet connection . . . (Code still present in "Searching for a new update . . .")
 
 v2.6.0.0 - 18/09/2020
-- IMPROVED Code. (All file deletion are now folder sensitive)
-- IMPROVED Code. (All .txt logs behave more smart now)
+* IMPROVED Code. (All file deletion are now folder sensitive)
+* IMPROVED Code. (All .txt logs behave more smart now)
 + UPDATED IS Source : YouTub DL v2020.09.14
 + UPDATED Direct Download Link : https://www.annuaire--telechargement.com/
 + UPDATED Streaming [EN] : https://www.uwatchfree.mx/
@@ -1292,12 +1293,12 @@ v2.6.0.0 - 18/09/2020
 - REMOVED Cracked Android APK's : https://bitapk.com/
 
 v2.5.0.0 - 13/09/2020
-- IMPROVED and REDUCED code. (thank you so much @anic17 and @sintrode for the big help)
-- IMPROVED time for Launcher. (thank you so much @anic17 for the big help)
-- FIXED a bug with the display of the arrows. (changed the arrow style)
-- FIXED all bugs in Portable Apps.
-- FIXED YouTube DL : .webm not working.
-- FIXED IP Port Scanning : NMAP now only show opened ports. (before it was also showing CLOSED one's)
+* IMPROVED and REDUCED code. (thank you so much @anic17 and @sintrode for the big help)
+* IMPROVED time for Launcher. (thank you so much @anic17 for the big help)
+* FIXED a bug with the display of the arrows. (changed the arrow style)
+* FIXED all bugs in Portable Apps.
+* FIXED YouTube DL : .webm not working.
+* FIXED IP Port Scanning : NMAP now only show opened ports. (before it was also showing CLOSED one's)
 + UPDATED Main Menu.
 + UPDATED Streaming [EN] : https://animedao.to/
 + UPDATED Streaming [EN] : https://www.uwatchfree.ag/
@@ -1331,10 +1332,10 @@ v2.5.0.0 - 13/09/2020
 
 v2.4.0.0 - 25/08/2020
 - REDUCED Code.
-- IMPROVED code : Launcher updater. (thank you so much <Tim> and @anic17 for the big help)
-- FIXED Change background transparency : Now have error messages if not a correct value.
-- FIXED Doxing : Dox Tool v2 not working.
-- FIXED HELP (Main Menu) : English language was missing some line return's.
+* IMPROVED code : Launcher updater. (thank you so much <Tim> and @anic17 for the big help)
+* FIXED Change background transparency : Now have error messages if not a correct value.
+* FIXED Doxing : Dox Tool v2 not working.
+* FIXED HELP (Main Menu) : English language was missing some line return's.
 + UPDATED Setup Eula.
 + UPDATED Streaming [FR] : https://animecomplet.co
 + UPDATED Torrenting : https://proxybay.gdn/
@@ -1379,15 +1380,15 @@ v2.4.0.0 - 25/08/2020
 - REMOVED "batbox.exe" from IS Source.
 
 v2.3.0.0 - 19/08/2020
-- IMPROVED Code.
-- IMPROVED time for Launcher down websites scan.
-- IMPROVED code of YouTube DL.
-- FIXED YouTube DL that does not open the output folder once the download is complete. (thank you so much Nick_Z for solving that problem)
-- FIXED YouTube DL : At the first launch, the output folder was not working.
-- FIXED YouTube DL : .FLV and .avi not working.
-- FIXED Main Menu : The username was deplacing a special character from the UI.
-- FIXED Main Menu : When wrong choice, it was creating a file called "nu".
-- FIXED code of Architecture detection.
+* IMPROVED Code.
+* IMPROVED time for Launcher down websites scan.
+* IMPROVED code of YouTube DL.
+* FIXED YouTube DL that does not open the output folder once the download is complete. (thank you so much Nick_Z for solving that problem)
+* FIXED YouTube DL : At the first launch, the output folder was not working.
+* FIXED YouTube DL : .FLV and .avi not working.
+* FIXED Main Menu : The username was deplacing a special character from the UI.
+* FIXED Main Menu : When wrong choice, it was creating a file called "nu".
+* FIXED code of Architecture detection.
 + UPDATED IS Source : ffmpeg.exe
 + UPDATED Torrenting : https://www.oxtorrent.cc/
 + UPDATED Torrenting : https://www.torrent9.gg/
@@ -1401,10 +1402,10 @@ v2.3.0.0 - 19/08/2020
 - REMOVED Torrenting : http://www.toorgle.net (scam)
 
 v2.2.0.0 - 16/08/2020
-- FIXED IP Port Scanning not working. (sorry, it was my fault)
-- FIXED "Access is denied." in NMAP IP Port Scanning. (when my application was not working as an administrator, there was an error if the UAC was enabled)
-- FIXED a bug in the Main Menu where it said you were using v2.0
-- FIXED a bug in the Setup that was Removing Portable_Apps after an reinstall or upgrade.
+* FIXED IP Port Scanning not working. (sorry, it was my fault)
+* FIXED "Access is denied." in NMAP IP Port Scanning. (when my application was not working as an administrator, there was an error if the UAC was enabled)
+* FIXED a bug in the Main Menu where it said you were using v2.0
+* FIXED a bug in the Setup that was Removing Portable_Apps after an reinstall or upgrade.
 + UPDATED Main Menu : Miscellaneous (for more Portable Applications)
 + UPDATED Main Menu HELP
 + UPDATED Tutorial.txt
@@ -1417,12 +1418,12 @@ v2.2.0.0 - 16/08/2020
 
 v2.1.0.0 - 14/08/2020
 - REDUCED some code.
-- IMPROVED code of Architecture detection.
-- FIXED No error message displayed when nothing has been selected and the enter key on the keypad is pressed.
-- FIXED a bug when apps where creating they're files into Illegal Services folder.
-- FIXED Windows Privacy/Telemetry : "blackbird.exe"
-- FIXED Settings : Background n°5 not working.
-- FIXED Settings : Background n°4 missing.
+* IMPROVED code of Architecture detection.
+* FIXED No error message displayed when nothing has been selected and the enter key on the keypad is pressed.
+* FIXED a bug when apps where creating they're files into Illegal Services folder.
+* FIXED Windows Privacy/Telemetry : "blackbird.exe"
+* FIXED Settings : Background n°5 not working.
+* FIXED Settings : Background n°4 missing.
 + UPDATED IP Port Scanning : Most Used Port Scan here (also now support x32 bits)
 + UPDATED Main Menu : View My Computer compenments
 + UPDATED Anti Viruses and Malwares : Rogue Killer
@@ -1476,20 +1477,20 @@ v2.1.0.0 - 14/08/2020
 - REMOVED "Pscan.exe". (NMAP replaced it because Pscan wath not compatible with x32 bits)
 
 v2.0.0.0 - 04/08/2020
-- IMPROVED Code of Illegal Services.
-- IMPROVED Code of the launcher.
-- IMPROVED Code of the IP Pinger.
+* IMPROVED Code of Illegal Services.
+* IMPROVED Code of the launcher.
+* IMPROVED Code of the IP Pinger.
 - REDUCED the time for error messages display.
-- FIXED a bug in the setup that was using old "Launcher.exe" for the setup icon.
-- FIXED A bug when the colors are still displayed after changing submenu in Windows 2000, XP, Vista, 7, 8, 8.1 versions.
-- FIXED Rescaling the window moves automatically the choice to the left.
-- FIXED error messages display that could be skipped.
-- FIXED Some error messages.
-- FIXED Doxing problems. (thanks @Rosalyn)
-- FIXED IP Pinger not working.
-- FIXED IP Address Lookup not working.
-- FIXED Windows Privacy/Telemetry : BlackBird.exe Windows Defender false positive detection.
-- FIXED Windows Privacy/Telemetry : BlackBird.exe x86 not working.
+* FIXED a bug in the setup that was using old "Launcher.exe" for the setup icon.
+* FIXED A bug when the colors are still displayed after changing submenu in Windows 2000, XP, Vista, 7, 8, 8.1 versions.
+* FIXED Rescaling the window moves automatically the choice to the left.
+* FIXED error messages display that could be skipped.
+* FIXED Some error messages.
+* FIXED Doxing problems. (thanks @Rosalyn)
+* FIXED IP Pinger not working.
+* FIXED IP Address Lookup not working.
+* FIXED Windows Privacy/Telemetry : BlackBird.exe Windows Defender false positive detection.
+* FIXED Windows Privacy/Telemetry : BlackBird.exe x86 not working.
 + UPDATED all Windows UI and support.
 + UPDATED all link Addresses.
 + ADDED more French translations.
@@ -1535,9 +1536,9 @@ v2.0.0.0 - 04/08/2020
 - REMOVED Streaming : https://hdss.to/ (scam)
 
 v1.9.0.0 - 22/07/2020
-- FIXED An issue advertising at false positive downed websites in the Launcher.
-- IMPROVED Code. (Language detection)
-- IMPROVED Code. (Launcher errors)
+* FIXED An issue advertising at false positive downed websites in the Launcher.
+* IMPROVED Code. (Language detection)
+* IMPROVED Code. (Launcher errors)
 + ADDED Launcher Internet detection (Skip WebSites detection error messages if u don't have internet)
 + ADDED IP Denial of Services : https://str3ssed.co/
 + ADDED IP Denial of Services : https://instress.me/
@@ -1560,11 +1561,11 @@ v1.9.0.0 - 22/07/2020
 + ADDED Doxing : https://knowem.com/
 
 v1.8.0.0 - 21/07/2020
-- IMPROVED How websites and applications opens.
-- FIXED : IP Tracker (WebSite) error who redirected on Port Scanner.
-- FIXED : IP Tracker (Here) error.
-- FIXED Windows Defender false positive detection.
-- FIXED Setup "uninstall"  button.
+* IMPROVED How websites and applications opens.
+* FIXED : IP Tracker (WebSite) error who redirected on Port Scanner.
+* FIXED : IP Tracker (Here) error.
+* FIXED Windows Defender false positive detection.
+* FIXED Setup "uninstall"  button.
 + UPDATED IP Pinger.
 + ADDED cecho.exe
 + ADDED Downed WebSites detection to Launcher.
@@ -1589,8 +1590,8 @@ v1.8.0.0 - 21/07/2020
 
 v1.7.0.0 - 14/07/2020
 - CUSTOMIZED Main Menu.
-- FIXED : Windows Smart Screen "Unknown Publisher" message at opening.
-- FIXED : Windows Defender false positive virus detection for "IS Setup.exe" .
+* FIXED : Windows Smart Screen "Unknown Publisher" message at opening.
+* FIXED : Windows Defender false positive virus detection for "IS Setup.exe" .
 + UPDATED all link Addresses.
 + ADDED IS Source : Signed all my executables.
 + ADDED an Setup to install or uninstall Illegal Services.
@@ -1643,7 +1644,7 @@ v1.6.0.0 - 08/07/2020
 - REMOVED IP Denial of Services : https://anonboot.pw/ (down)
 
 v1.5.0.0 - 22/06/2020
-- IMPROVED Code.
+* IMPROVED Code.
 + UPDATED .py files for a better design.
 + UPDATED a Launcher (Make the support for Windows 7,8,8.1 ; Also he check files to prevent any errors.)
 + UPDATED a new Port Scanner.
@@ -1658,17 +1659,17 @@ v1.5.0.0 - 22/06/2020
 
 v1.4.0.0 - 25/05/2020
 - CUSTOMIZED Main Menu.
-- IMPROVED Code.
-- FIXED a display bug when you enlarge and then shrink the window.
-- FIXED "exit" & "back" command can now be writted with caps.
+* IMPROVED Code.
+* FIXED a display bug when you enlarge and then shrink the window.
+* FIXED "exit" & "back" command can now be writted with caps.
 + ADDED Main Menu is now auto adjusted for a good window size.
 + ADDED IP Adress Lookup websites.
 + ADDED executable extension.
 
 v1.3.0.0 - 23/05/2020
 - CUSTOMIZED Main Menu.
-- FIXED when clicking any number it will do a random action in the actual page.
-- IMPROVED Code.
+* FIXED when clicking any number it will do a random action in the actual page.
+* IMPROVED Code.
 + ADDED Wrong choice messages.
 
 v1.2.0.0 - 23/05/2020
