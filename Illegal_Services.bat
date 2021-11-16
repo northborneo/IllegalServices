@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 1
-REM  Fileversion:  5. 9. 2. 1
+REM  Productversion:  5. 9. 2. 2
+REM  Fileversion:  5. 9. 2. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -100,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.1 - 15/11/2021
+set VERSION=v5.9.2.2 - 16/11/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -733,8 +733,8 @@ title !TITLE:`=Internet Protocol Television (IPTV)!
 call :ROSE "Internet Protocol Television"
 
 :CLEARIPTV
-call :CLEAR 1 38
 set db=iptvcat.com/home_11 `pro.allkaicerteam.com/ www.iptvm3ulist.com/ip-tv-free/ www.iptvm3ufree.com/ iptvmate.net/m3u_iptv/ www.links-iptv.com/ iptvforpcwindows.com/ www.techtoreview.com/top-picks/m3u-playlist-url.html www.iptv4free.com/ m3u.pktelcos.com/ freem3uhd.blogspot.com/ dailym3uiptv.com/links-m3u/ www.iptv1.org/ telechargeriptv.com/ www.5kplayer.com/video-music-player/free-iptv-playlist-m3u-links.htm github.com/iptv-org/iptv github.com/monetareq/iptv1 github.com/cbn88/cbn88.github.io github.com/Free-IPTV/Countries github.com/coodertv/IPTVM3U8 github.com/Sumon2021/Sumon-IPTV github.com/mancinibig55/45125623 github.com/firojshahriyarmasud/IPTV github.com/duyminh215/iptv-list github.com/riqueenz/iptv github.com/imDazui/Tvlist-awesome-m3u-m3u8 github.com/tvheadend/tvheadend github.com/Cigaras/IPTV.bundle github.com/lucifersun/China-Telecom-ShangHai-IPTV-list github.com/notanewbie/LegalStream github.com/Fleker/CumulusTV github.com/lylehust/Chinese-IPTV github.com/AlexanderSofronov/iptv.example github.com/chwlibre/iptv github.com/myIPTVChannels/lists github.com/free-greek-iptv/greek-iptv github.com/iptv-ch/iptv-ch.github.io github.com/iptv-restream/iptv-channels
+call :CLEAR 1
 
 :CONTINUEIPTV
 call :SCALE 108 32
@@ -862,8 +862,8 @@ call :SCALE 128 37
 title !TITLE:`=Direct Download Link (DDL) [EN]!
 
 :CLEARDDLEN
-call :CLEAR 1 70
 set db=avxhm.is/ www.heroturko.net/ rmz.cr/ softarchive.is/ www.downduck.com/ scnlog.me/ www.creaxy.com/ downturk.net/ downarchive.org/ 0dayhome.net/ scene-rls.net/ www.freshwap.us/ www.apps4all.com/ dl4all.biz/ worldsrc.net/ movieparadise.org/ release.movieparadise.org/ hdencode.org/ `rlsbb.ru/ apps-pack.com/ oneddl.org/ `www.rlslog.net/ freshwap.cc/ dl4all.org/ warezomen.com/ www.scnsrc.me/ win7dl.org/ www.ddlvalley.me/ downtr.cc/ releasehive.com/ rlstop.net/ uhdmv.org/ tfpdl.to/ softddl.org/ 2ddl.it/ katzddl.net/ warezbb.net/ www.300mbfilms.cx/ downloadhub.cfd/ filmsofts.com/ cgpersia.com/ rsload.net/ megaddl.co/ heroturko2.net/ crazy4tv.com/ psarips.top/ themoviesflix.com.co/ themovieflix.co.in/ hevcbay.com/ rarefilmm.com/ 1worldfree4u.trade/ the-eye.eu/ jpddl.com/ animeshare.cf/ anidl.org/ hi10anime.com/ animekayo.com/ animekaizoku.com/ www.ssanime.ga/ animetosho.org/ cdromance.com/ www.romnation.net/ vimm.net/ nxmac.com/ macdrop.net/ sheet-music.xyz/ audioz.download/ `audiobookbay.nl/ www.gfxtra31.com/ gfx-hub.cc/
+call :CLEAR 1
 
 :CONTINUEDDLEN
 call :SCALE 128 37
@@ -917,8 +917,8 @@ call :SCALE 71 24
 title !TITLE:`=Direct Download Link (DDL) [FR]!
 
 :CLEARDDLFR
-call :CLEAR 1 11
 set db=www.tirexo.work/ free-telecharger.net/ libertyvf.bz/ www.extreme-down.plus/home.html zone-telechargement.cam/ www.wawacity.work/ ww2.jeddl.com/ www.zone-mania.com/ www.zone-down.com/ nandesuka.moe/ 9docu.org/
+call :CLEAR 1
 
 :CONTINUEDDLFR
 call :SCALE 71 24
@@ -975,8 +975,8 @@ call :SCALE 101 52
 title !TITLE:`=Streaming [EN]!
 
 :CLEARSTREAMINGEN
-call :CLEAR 1 59 1
 set db=www.primewire.li/ losmovies.top/ m4ufree.to/ gomovie.co/ gomovies-online.cam/ www1.123movies.co/ myflixertv.to/ www4.yesmovies.so/ 5movies.pw/ www11.123movieshub.one/ hollymoviehd.cc/home/ watch-serieshd.cc/ watchseriess.net/ flixtor.to/ fmovies.to/ lookmovie.io/ www2.solarmovie.to/ ww.123movies.sc/ frenzymovies.net/ supernova.to/ vumoo.to/ hulu.sc/ watchtvepisodes.me/ ww2.123movieshub.tc/ 0gomovies.so/ soap2day.to/ www1.movie4u.live/ cinehub.wtf/browse openloadfreetv.me/ allmoviesforyou.net/ kisscartoon.info/ 9anime.to/ animesuge.io/ animeheaven.pro/ animeowl.net/ animeow.me/ arrayanime.com/ gogoanime.vc/ animefrenzy.org/ anime8.ru/ animevibe.se/ animixplay.to/ www2.kickassanime.ro/ www.animerush.tv/ animepahe.com/ ww1.animesimple.com/ zoro.to/ animedao.to/ kissanimefree.to/ www1.7anime.io/ twist.moe/ allanime.site/anime runnel.ir/ time4tv.stream/ `live94today.com/ `livetv.sx/ apps.stream2watch.sx/ sportplus.live/ thehomesport.com/
+call :CLEAR 1 1
 
 :CONTINUESTREAMINGEN
 call :SCALE 101 52
@@ -1046,8 +1046,8 @@ call :SCALE 101 45
 title !TITLE:`=Streaming [FR]!
 
 :CLEARSTREAMINGFR
-call :CLEAR 1 45 1
 set db=www.filmstoon.one/streaming10/ www6.filmstreaming.to/ french-stream.re/ wvw.hds.lc/ papystreaming-vf.com/accueil/ fcine.me/ wwv.films-streams.com/ libertyvf.bz/ streaming-films.net/ vfstreamiz.com/ wwv.streamfilm.cc/ vvw.streampourvous.ws/ streaminz.me/ filmstreamingvf.org/ www.illimitestreaming.co/ www.cinezzz.org/ voirseries.tv/ streamcomplet.buzz/ comustream.fr/ voststream.com/ voiranime.com/ neko-sama.fr/ french-manga.net/ www.adkami.com/ www.ianimes.org/ streaming-integrale.com/ gum-gum-streaming.com/ otakufr.co/ www.mavanimes.co/ vostanimez.com/ toonanime.cc/ wvw.jetanimes.com/ vostfree.tv/ www.universanime.co/ daijoubu.si/ animepourvous.com/ animevostfr.tv/ animecomplet.me/ `www.anime-ultime.net/ v5.anime-ultime.net/ channelstream.watch/ www.myfree-tivi.com/ `livetv.sx/frx/ fr4.sportplus.live/ `streaming-sport.tv/
+call :CLEAR 1 1
 
 :CONTINUESTREAMINGFR
 call :SCALE 101 45
@@ -1111,8 +1111,8 @@ title !TITLE:`=Streaming Applications!
 call :ROSE "Streaming Applications"
 
 :CLEARSTREAMINGAPPS
-call :CLEAR 1 12
 set db=popcorn-time.tw/ www.stremio.com/ teatv.net/ www.morpheustvbox.com/ mediaboxhd.net/ www.vivatv.io/ beetvapk.me/ filmplus.app/ www.novatvapk.com/ animixplay.to/android/app tvmob.net/ www.livenettv.bz/
+call :CLEAR 1
 
 :CONTINUESTREAMINGAPPS
 call :SCALE 109 32
@@ -1160,8 +1160,8 @@ title !TITLE:`=Torrenting!
 call :ROSE Torrenting
 
 :CLEARTORRENTING
-call :CLEAR 1 80 1
 set db=solidtorrents.net/ www.limetorrents.pro/ www.torrentfunk.com/ www.toros.co/ www.gtdb.to/ www.torrentdownloads.pro/ 1337x.to/ rarbg.to/index80.php www.ettvcentral.com/ torrentz2k.xyz/ thepiratebay.org/index.html prostylex.org/ torrentgalaxy.to/ yourbittorrent.com/ anidex.info/ www.demonoid.is/ angietorrents.cc/ www.torrentdownload.info/ badasstorrents.com/ concen.org/torrents nyaa.si/ www.anirena.com/ subsplease.org/ mac-torrent-download.net/ mac-torrents.io/ yts.mx/ eztv.re/ www3.yggtorrent.nz/ www.sharewood.tv/ www.oxtorrent.sh/homec.html torrent9.to/ filelisting.com/ bt4g.org/ xbit.pw/ bitsearch.to/ www.7torrents.cc/ bitcq.com/ knaben.eu/ torrentproject2.com/ torrent-paradise.ml/ btdig.com/ ext.to/ www.torlock.com/ ibit.to/ zooqle.com/ snowfl.com/ idope.se/ isohunt.app/ extratorrents.it/ pirateiro.com/ torrentseeker.com/ otorrents.com/ vstorrent.org/ torrents-csv.ml/ torrentz2eu.me/ w41.torlook.info/ www.magnetdl.com/ search.torrends.to/ proxy-bay.me/ proxygalaxy.pw/ yifystatus.com/ eztvstatus.com/ ettvproxies.com/ siteunblocked.info/ unblockproject.top/ unblocksource.net/ unblockit.kim/ torrentbay.to/ proxyninja.org/ knaben.info/ unblocktorrent.com/ torrends.to/ github.com/Jackett/Jackett www.qbittorrent.org/ www.torrentrover.com/ sonarr.tv/ radarr.video/ lidarr.audio/ github.com/SchizoDuckie/DuckieTV couchpota.to/
+call :CLEAR 1 1
 
 :CONTINUETORRENTING
 call :SCALE 133 56
@@ -1243,8 +1243,8 @@ title !TITLE:`=Web Torrenting!
 call :ROSE "Web Torrenting"
 
 :CLEARWEBTORRENTING
-call :CLEAR 1 6
 set db=webtorrent.io/ webtor.io/#/ instant.io/ btorrent.xyz/ www.torrentsafe.com/ zbigz.com/
+call :CLEAR 1
 
 :CONTINUEWEBTORRENTING
 call :SCALE 53 19
@@ -1362,8 +1362,8 @@ title !TITLE:`=Subtitles!
 call :ROSE Subtitles
 
 :CLEARSUBTITLES
-call :CLEAR 1 23
 set db=subscene.com/ www.opensubtitles.com/ www.opensubtitles.org/ opensubtitle.info/ ytsubtitles.com/ yifysubtitles.org/ yts-subs.com/ subs.dog/ www.subs4free.info/ www.subtitledb.org/ www.addic7ed.com/ isubtitles.org/ subdl.com/ `www.moviesubtitles.net/ www.podnapisi.net/ tvsubs.net/ www.tvsubtitles.net/ www.subdivx.com/ www.subtitlecat.com/ www.sous-titres.eu/ www.u-sub.net/ www.kitsunekko.net/ subs.nandesuka.workers.dev/
+call :CLEAR 1
 
 :CONTINUESUBTITLES
 call :SCALE 72 35
@@ -1415,8 +1415,8 @@ title !TITLE:`=Cracked Windows apps!
 call :ROSE "Cracked Windows apps"
 
 :CLEARWINDOWS
-call :CLEAR 1 78
 set db=getintopc.com/ crackingpatching.com/ karanpc.com/ filecr.com/en/ s0ft4pc.com/ kolompc.com/ www.mazterize.com/ gigapurbalingga.net/ appnee.com/ www.sadeempc.com/ shareappscrack.com/ free4pc.org/ appload.club/ www.4download.net/ haxnode.net/ www.novahax.com/ lostvayne.com/ filewomen.com/ izofile.com/ crackshash.com/ www.cybermania.ws/ cracksurl.com/ fileriver.net/ piratepc.me/ ftuapps.dev/ starcrack.net/ startcrack.net/ keygenninja.net/ fileash.com/ www.trucnet.com/ w14.monkrus.ws/ `www.intercambiosvirtuales.org/ diakov.net/ lrepacks.net/ repack.me/ portable4pc.com/ www.fcportables.com/ portableappz.blogspot.com/ igg-games.com/ pcgamestorrents.com/ www.skidrowcodex.net/ www.mrpcgamer.co/ www.game3rb.com/ agfy.co/ cracked-games.org/ www.ovagames.com/ steamunlocked.net/ gog-games.com/ codex-games.com/ getgamez.net/ crackhub.site/ freegameshub.co/ gogunlocked.com/ alltorrents.co/ www.myabandonware.com/ gamesnostalgia.com/ cygames.fr/ telecharger-jeuxpc.fr/ www.gamestorrents.fm/ repack-games.com/ www.game-repack.site/ elamigos.site/ skidrowrepacks.com/ fitgirl-repacks.site/ repack-mechanics.com/ gamesdrive.net/ dodi-repacks.site/ www.blackboxrepack.com/ masquerade.site/ scooter-repacks.site/ www.gnarly-repacks.site/ cpgrepacks.site/ www.tiny-repacks.win/ repack.info/ m4ckd0ge-repacks.me/ patricktech-repacks.xyz/ e13.xatab-repack.com/ qoob.name/
+call :CLEAR 1
 
 :CONTINUEWINDOWS
 call :SCALE 136 54
@@ -1487,8 +1487,8 @@ title !TITLE:`=Cracked Android APK's!
 call :ROSE "Cracked Android APK"
 
 :CLEARANDROID
-call :CLEAR 1 32
 set db=a2zapk.com/ android-zone.ws/ apkhome.net/ apkmagic.com.ar/ oceanofapk.com/ apkgod.net/ www.revdl.com/ 5mod.ru/ apkmb.com/ apk4free.org/ dlandroid.com/ apk4all.com/ rexdl.com/ moddroid.co/ apkmody.io/ inewkhushi.com/ proapk.in/mod-apk/ www.apps4download.com/ ihackedit.com/ iplayplus.org/ apk-house.com/ www.rockmods.net/ www.ytricks.net/ www.apkheist.com/ apkfolks.com/ vancedapp.com/ newpipe.net/ www.instamod.net/ thedise.me/instander/ www.whatsappmods.net/ bluesmods.com/ github.com/xManager-v2/xManager-Spotify
+call :CLEAR 1
 
 :CONTINUEANDROID
 call :SCALE 85 39
@@ -1747,8 +1747,8 @@ title !TITLE:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-call :CLEAR 1 62
 set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ www.proxyscan.io/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.revshells.com/ www.torproject.org/
+call :CLEAR 1
 
 :CONTINUEUSEFULWEBSITES
 call :SCALE 139 48
@@ -1812,8 +1812,8 @@ title !TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
-call :CLEAR 1 18
-set db=quez.in/ instant-stresser.com/ freestresser.to/ anonboot.com/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ downthem.in/ booter.sx/ eor-n.to/ str3ssed.co/ wannabe1337.xyz/stresser vtoxicity.net/ str3sser.io/ databooter.to/ asylumstresser.to/ deltastress.com/ ddosforhire.net/
+set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ anonboot.com/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ eor-n.to/ wannabe1337.xyz/stresser vtoxicity.net/ deltastress.com/ str3sser.io/ databooter.to/ asylumstresser.to/ ddosforhire.net/
+call :CLEAR 1
 
 :CONTINUEDDOS
 call :SCALE 82 31
@@ -1821,31 +1821,32 @@ echo !CYAN!
 echo !\E![23C══════════════════════════════════════
 echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
 echo !\E![8C╔════════════════════════════════╦═══════════════════════════════╗
-echo !\E![8C║   !1!quez.in!CYAN!                ║  [BEST]  [   5/Gbps] [300/s]  ║
-echo !\E![8C║   !2!instant-stresser.com!CYAN!   ║  [BEST]  [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !3!freestresser.to!CYAN!        ║          [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !4!anonboot.com!CYAN!           ║          [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !5!www.ipstresser.com!CYAN!     ║          [ 200/Mbps] [300/s]  ║
-echo !\E![8C║   !6!ipstress.in!CYAN!            ║          [   ?/Gbps] [250/s]  ║
-echo !\E![8C║   !7!royalstresser.com!CYAN!      ║          [   ?/Gbps] [200/s]  ║
-echo !\E![8C║   !8!downthem.in!CYAN!            ║          [ 1,5/Gbps] [150/s]  ║
-echo !\E![8C║   !9!booter.sx!CYAN!              ║          [8-12/Gbps] [120/s]  ║
+echo !\E![8C║   !1!redstresser.cc!CYAN!         ║  [BEST]  [  10/Gbps] [350/s]  ║
+echo !\E![8C║   !2!quez.in!CYAN!                ║  [BEST]  [   5/Gbps] [300/s]  ║
+echo !\E![8C║   !3!instant-stresser.com!CYAN!   ║  [BEST]  [   1/Gbps] [300/s]  ║
+echo !\E![8C║   !4!freestresser.to!CYAN!        ║  [BEST]  [   1/Gbps] [300/s]  ║
+echo !\E![8C║   !5!anonboot.com!CYAN!           ║  [BEST]  [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !6!str3ssed.co!CYAN!            ║  [BEST]  [7-13/Gbps] [300/s]  ║
+echo !\E![8C║   !7!www.ipstresser.com!CYAN!     ║          [ 200/Mbps] [300/s]  ║
+echo !\E![8C║   !8!ipstress.in!CYAN!            ║          [   ?/Gbps] [250/s]  ║
+echo !\E![8C║   !9!royalstresser.com!CYAN!      ║          [   ?/Gbps] [200/s]  ║
 echo !\E![8C║  !10!eor-n.to!CYAN!               ║          [   ?/Gbps] [120/s]  ║
-echo !\E![8C║  !11!str3ssed.co!CYAN!            ║          [   1/Gbps] [120/s]  ║
-echo !\E![8C║  !12!wannabe1337.xyz!CYAN!        ║          [   ?/Gbps] [120/s]  ║
-echo !\E![8C║  !13!vtoxicity.net!CYAN!          ║          [ 100/Mbps] [120/s]  ║
+echo !\E![8C║  !11!wannabe1337.xyz!CYAN!        ║          [   ?/Gbps] [120/s]  ║
+echo !\E![8C║  !12!vtoxicity.net!CYAN!          ║          [ 100/Mbps] [120/s]  ║
+echo !\E![8C║  !13!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
 echo !\E![8C║  !14!str3sser.io!CYAN!            ║          [   1/Gbps] [ 60/s]  ║
 echo !\E![8C║  !15!databooter.to!CYAN!          ║          [   1/Gbps] [ 60/s]  ║
 echo !\E![8C║  !16!asylumstresser.to!CYAN!      ║          [   1/Gbps] [ 60/s]  ║
-echo !\E![8C║  !17!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩═══════════════════════════════╣
 if "!Language!"=="EN" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!01/11/2021"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index only stressers in layer 4."
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!16/11/2021"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !17!ddosforhire.net"
 )
 if "!Language!"=="FR" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!01/11/2021"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index seulement les stresseurs en layer 4."
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!16/11/2021"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !17!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1866,8 +1867,8 @@ title !TITLE:`=IP Address Lookup!
 call :ROSE "IP Address Lookup"
 
 :CLEARIPLOOKUP
-call :CLEAR 1 8
 set db=check-host.net/ dnschecker.org/ www.iplocation.net/ www.ip-tracker.org/ whatismyipaddress.com/
+call :CLEAR 1
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEIPLOOKUP
@@ -1979,8 +1980,8 @@ title !TITLE:`=IP Port Scanning!
 call :ROSE "IP Port Scanning"
 
 :CLEARPORT
-call :CLEAR 8 11
 set db=www.adminsub.net/tcp-udp-port-finder www.speedguide.net/ports.php www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml portforward.com/ports.htm
+call :CLEAR 8
 
 :CONTINUEPORT
 call :SCALE 101 33
@@ -2174,8 +2175,8 @@ call :ROSE "IP Loggers"
 goto :CLEARIPLOGGERS
 
 :CLEARIPLOGGERS
-call :CLEAR 1 10
 set db=iplogger.org/ grabify.link/ blasze.com/ webresolver.nl/tools/iplogger lstu.fr/ kutt.it/ www.shorturl.at/ shorturl.com/ tiny.cc/ bitly.com/
+call :CLEAR 1
 
 :CONTINUEIPLOGGERS
 call :SCALE 65 26
@@ -2217,8 +2218,8 @@ title !TITLE:`=Doxing!
 call :ROSE Doxing
 
 :CLEARDOXING
-call :CLEAR 1 38
 set db=pimeyes.com/ tineye.com/ yandex.com/images images.google.com/ www.bing.com/?scope=images image.baidu.com/ pic.sogou.com/ ascii2d.net/ trace.moe/ saucenao.com/ iqdb.org/ www.pic2map.com/ onlineexifviewer.com/ www.metadata2go.com/ searx.neocities.org/ www.etools.ch/ search.carrot2.org/ www.excite.co.jp/ www.infospace.com/ biznar.com/ metager.org/ www.entireweb.com/ www.delta-search.com/ www.startpage.com/do/advanced-search www.google.com/advanced_search www.google.com/advanced_image_search "Dox Tool v2" knowem.com/ checkusernames.com/ instantusername.com/#/ analyzeid.com/username/ namechk.com/ www.namecheckr.com/ usersearch.org/index.php www.toolsbug.com/youtube-video-tag-extractor.php online-free-tools.com/en/youtube_video_tags_extract_url ytubetool.com/ doxbin.org/
+call :CLEAR 1
 
 :CONTINUEDOXING
 call :SCALE 104 53
@@ -2287,8 +2288,8 @@ title !TITLE:`=Portable Apps!
 call :ROSE "Portable Apps"
 
 :CLEARPORTABLEAPPS
-call :CLEAR 1 56 1
 set db="Winaero Tweaker" "Ultimate Windows Tweaker" SophiApp "Sophia Script" "TCP Optimizer" "DNS Jumper" Autoruns SpeedyFox "CCleaner + CCEnhancer" BleachBit Dism++ "Glary Utilities" "Revo Uninstaller" "Windows Repair AIO" "Windows Repair Toolbox" FixWin "Patch My PC" "UCheck" "Windows Update MiniTool" "WSUS Offline Update" DriversCloud "Snappy Driver Installer" "Driver Store Explorer" "Device Cleanup Tool" "Display Driver Uninstaller" "Radeon Software Slimmer" NVSlimmer NVCleanstall "MSI Util v3" CPU-Z "OOSU10 (Win 10)" "Ashampoo AntiSpy (Win 10)" "DoNotSpy 10" "Windows Privacy Dashboard" "Windows 10 Privacy" "Windows Spy Blocker" "Destroy Windows 10 Spying" Blackbird "ADW Cleaner" "ZHP Cleaner" "Rogue Killer" "No Bot" "Kaspersky KVRT" "Kaspersky TDSSKiller" "Microsoft Safety Scanner" "Spybot - Search and Destroy" "Batch Antivirus" Everything "Process Hacker" CrystalDiskInfo "Defender Control" "Edge Blocker" "Mem Reduct" GiveMePower RegScanner ISLC
+call :CLEAR 1 1
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEPORTABLEAPPS
@@ -2491,8 +2492,8 @@ title !TITLE:`=Windows and Office Cracks!
 call :ROSE "Windows and Office Cracks"
 
 :CLEARWINDOWSANDOFFICE
-call :CLEAR 1 20
 set db=free.appnee.com/consoleact/ free.appnee.com/aact/ free.appnee.com/ra1n-act1vat0r/ free.appnee.com/re-loader-activator/ free.appnee.com/windows-loader/ free.appnee.com/hwid-gen/ free.appnee.com/w10-digital-license-c-sharp/ free.appnee.com/kmsauto-lite/ free.appnee.com/kmsauto-net/ free.appnee.com/kmsoffline/ free.appnee.com/kmsonline/ github.com/massgravel/Microsoft-Activation-Scripts free.appnee.com/kmsauto-helper/ `www.solidfiles.com/v/QnQeqgqKa3jev `www.solidfiles.com/v/kXqVBML2mmBDA free.appnee.com/msact/ "Windows ISO Downloader" the-eye.eu/public/MSDN/Windows%%207/ tb.rg-adguard.net/public.php free.appnee.com/office-2013-2021-c2r-install/
+call :CLEAR 1
 
 :CONTINUEWINDOWSANDOFFICE
 call :SCALE 99 34
@@ -2583,8 +2584,8 @@ title !TITLE:`=Warez Content Creator!
 call :ROSE "Warez Content Creator"
 
 :CLEARWAREZCONTENTCREATOR
-call :CLEAR 1 9
 set db="Mkv Tool Nix" FFmpeg LosslessCut HandBrake "Subtitle !DEBUG!Editor" CCExtractor "VLC Media Player" MediaInfo "Open Broadcaster Software"
+call :CLEAR 1
 
 :CONTINUEWAREZCONTENTCREATOR
 call :SCALE 69 22
@@ -2634,8 +2635,8 @@ title !TITLE:`=Warez Wikis!
 call :ROSE "Warez Wikis"
 
 :CLEARWAREZWIKIS
-call :CLEAR 1 21
 set db=weboas.is/ dirtywarez.org/ link-base.org/warez p2pfr.com/ www.mega-p2p.net/ lewebde.com/ `machicoulis.over-blog.com/2019/11/les-bons-liens-pour-telecharger.html www.reddit.com/r/Piracy/wiki/megathread www.reddit.com/r/FREEMEDIAHECKYEAH/wiki/index rentry.org/SoftwarePirates-Megathread rentry.org/pgames-mega-thread github.com/Igglybuff/awesome-piracy/blob/master/readme.md github.com/nbats/FMHY/blob/main/fmhy.md github.com/Rekulous/FMHY/blob/main/fmhy.md github.com/Rekulous/The-Piratez-List/blob/main/The%%20Safe%%20Shores/Software.md github.com/taskylizard/piratedgames-megathread/blob/main/README.md github.com/Rekulous/PiratedGames/blob/main/README.md darknetlive.com/onions/ dark.fail/ ddosforhire.net/ piracy.moe/
+call :CLEAR 1
 
 :CONTINUEWAREZWIKIS
 call :SCALE 76 34
@@ -2685,8 +2686,8 @@ title !TITLE:`=Release Logs!
 call :ROSE "Release Logs"
 
 :CLEARRELEASELOGS
-call :CLEAR 1 10
 set db=predb.ovh/ predb.me/ corrupt-net.org/ m2v.ru/ www.xrel.to/ forum.squawkr.io/ upawg.ca/ nzbindex.com/ binsearch.info/ www.reddit.com/r/CrackWatch/
+call :CLEAR 1
 
 :CONTINUERELEASELOGS
 call :SCALE 66 23
@@ -2726,8 +2727,8 @@ title !TITLE:`=Ebooks!
 call :ROSE Ebooks
 
 :CLEAREBOOKS
-call :CLEAR 1 81
 set db=z-lib.org/ www.pdfdrive.com/ english-bookys.com/ `bookddl.com/ zone-ebook.com/ ww2.bookys-ebooks.com/ `ebook-planete.org/ planete-bd.org/ dbfree.me/ pdf.1001ebooks.com/ www.pdf-ebookys.com/ downmagaz.net/ magazinelib.com/ telecharge-magazines.com/ fr.downmagaz.net/ allanime.site/manga mangaowl.net/ mangareader.to/ www.mangago.me/ mangadex.org/ manganato.com/ mangaplus.shueisha.co.jp/updates fascans.com/ mangakatana.com/ manga4life.com/ bato.to/ mangapark.net/ www.mangahere.cc/ fanfox.net/ wuxiaworld.site/ hatigarmscanz.net/home leviatanscans.com/cd/ the-nonames.com/home lynxscans.com/home skscans.com/ zeroscans.com/home reader.deathtollscans.net/ reader.kireicake.com/ sensescans.com/ manhuaplus.com/ readm.org/ mangasee123.com/ www.asurascans.com/ naniscans.com/ merakiscans.com/ mangajar.com/ toonily.net/ www.nonstopscans.com/ guya.moe/ mangahub.io/ comick.fun/ www.japanread.cc/ catmanga.org/ mangasushi.net/ arangscans.com/ hunlight-scans.info/home tritinia.com/ readmanhua.net/manga/ flamescans.org/ immortalupdates.com/ manga347.com/ www.bilibilicomics.com/ www.mangatown.com/ www.mangahome.com/ manga47.net/ comix.top/ reaperscans.com/ www.readlightnovel.me/ www.rndnovels.com/ www.justlightnovels.com/ rektnovelcompilations.wordpress.com/ henkanepubs.wordpress.com/ reaperscans.fr/ scantrad.net/ kangaryu-team.fr/ www.japscan.ws/ www.scan-fr.cc/ lelscan-vf.co/ mangas.heoo.workers.dev/0:/ lectortmo.com/ github.com/MALSync/MALSync/blob/master/pages.md
+call :CLEAR 1
 
 :CONTINUEEBOOKS
 call :SCALE 103 62
@@ -2807,8 +2808,8 @@ title !TITLE:`=Musics!
 call :ROSE Musics
 
 :CLEARMUSICS
-call :CLEAR 1 13
 set db=flacmusic.info/ losslessma.net/ muxiv.net/ slider.kz/ www.reddit.com/r/riprequests/ downloads.khinsider.com/ www.vgmusic.com/ allanime.site/music hikarinoakari.com/ freshremix.ru/ www.slsknet.org/news/ deemix.app/ freezer.life/
+call :CLEAR 1
 
 :CONTINUEMUSICS
 call :SCALE 68 29
@@ -2854,8 +2855,8 @@ title !TITLE:`=Forum Websites!
 call :ROSE "Forum Websites"
 
 :CLEARFORUMWEBSITES
-call :CLEAR 1 38
 set db=www.adit-hd.com/ forum.ddlvalley.me/ www.warezheaven.com/index.php fora.snahp.eu/ www.mywarez.org/ ddlbase.net/ forumpoint.org/ wawa-rammstein.de/index.php starwarez-sharing.name/Fofo/ `forum.anime-ultime.net/phpBB3/index.php pirates-forum.org/ eztv.re/forum/ forums.glodls.to/ torrentgalaxy.to/forums.php www.ettvcentral.com/forums.php forums.anidex.moe/ prostylex.org/forums.php/ angietorrents.cc/forum/index.php forum.p2pfr.com/ www.tigers-dl.net/ www.forumzt.com/ www.frboard.com/ rutracker.org/forum/index.php forum.mobilism.me/ forum.release-apk.com/ platinmods.com/ forum.telecharger-jeuxpc.fr/ tapochek.net/ forum.repack.me/ planete-warez.net/ www.nulled.to/ raidforums.com/ hackforums.net/ cracked.to/ payload.sh/ mailaccess.top/ teamos-hkrg.com/ forum.ru-board.com/
+call :CLEAR 1
 
 :CONTINUEFORUMWEBSITES
 call :SCALE 126 38
@@ -3264,8 +3265,8 @@ title !TITLE:`=Spoofing!
 call :ROSE Spoofing
 
 :CLEARSPOOFING
-call :CLEAR 1 3
 set db=technitium.com/tmac/ docs.microsoft.com/en-us/sysinternals/downloads/volumeid github.com/vektort13/AntiOS
+call :CLEAR 1
 
 :CONTINUESPOOFING
 call :SCALE 53 16
@@ -4186,12 +4187,16 @@ exit /b
 
 :CLEAR
 for /l %%A in (!c1!,1,!c2!) do set %%A=
-2>nul set /a c1=%1, c2=%2, x1=%2+1, x2=%2+%3, cn=2
+set /a c1=%1, c2=0, c2+=%1-1
+for %%A in (!db!) do set /a c2+=1
+for /l %%A in (!c1!,1,!c2!) do set "%%A=!YELLOW!%%A !UNCHECKED!"
+if not "%2"=="" (
+set /a x1=c2+1, x2=c2+%2, cn=2
 for /l %%A in (!x1!,1,!x2!) do (
 set /a cn+=1
 set c!cn!=%%A
 )
-for /l %%A in (!c1!,1,!c2!) do set "%%A=!YELLOW!%%A !UNCHECKED!"
+)
 exit /b
 
 :PROMPT
