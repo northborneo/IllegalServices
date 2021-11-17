@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 2
-REM  Fileversion:  5. 9. 2. 2
+REM  Productversion:  5. 9. 2. 3
+REM  Fileversion:  5. 9. 2. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -100,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.2 - 16/11/2021
+set VERSION=v5.9.2.3 - 17/11/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2377,7 +2377,7 @@ if "!6!"=="!YELLOW!6 !CHECKED!" call :CURL "Portable_Apps\DnsJumper.7z" "`git_ra
 if "!7!"=="!YELLOW!7 !CHECKED!" call :CURL "Portable_Apps\Speedyfox.zip" "https://crystalidea.com/downloads/speedyfox.zip"
 if "!8!"=="!YELLOW!8 !CHECKED!" call :CURL "Portable_Apps\Autoruns.zip" "https://download.sysinternals.com/files/Autoruns.zip"
 if "!9!"=="!YELLOW!9 !CHECKED!" (
-call :CURL "Portable_Apps\CCleaner.zip" "https://download.ccleaner.com/portable/ccsetup585.zip"
+call :CURL "Portable_Apps\CCleaner.zip" "https://download.ccleaner.com/portable/ccsetup587.zip"
 call :CURL "Portable_Apps\CCEnhancer Multilingual.zip" "https://singularlabs.com/download/10320/"
 )
 if "!10!"=="!YELLOW!10 !CHECKED!" call :CURL "Portable_Apps\BleachBit.zip" "https://download.bleachbit.org/BleachBit-4.2.0-portable.zip"
