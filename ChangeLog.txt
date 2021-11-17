@@ -8,7 +8,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.2.2 - 16/11/2021
+v5.9.2.3 - 17/11/2021
 * FIXED minor bugs.
 * FIXED a bug when Illegal Services executable have been renamed with invalid characters.
 * FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
@@ -42,6 +42,7 @@ v5.9.2.2 - 16/11/2021
 + UPDATED Torrenting : https://unblockit.kim/
 + UPDATED Cracked Android APK's : https://iplayplus.org/
 + UPDATED IP Address Lookup. (thanks @Rosalyn)
++ UPDATED Portable Apps : CCleaner v587
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED Portable Apps : Radeon Software Slimmer v1.3.0
 + UPDATED Portable Apps : CPU-Z v1.97
