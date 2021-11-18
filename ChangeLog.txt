@@ -8,7 +8,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.2.3 - 17/11/2021
+v5.9.2.4 - 18/11/2021
 * FIXED minor bugs.
 * FIXED a bug when Illegal Services executable have been renamed with invalid characters.
 * FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
