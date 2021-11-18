@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 3
-REM  Fileversion:  5. 9. 2. 3
+REM  Productversion:  5. 9. 2. 4
+REM  Fileversion:  5. 9. 2. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -100,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.3 - 17/11/2021
+set VERSION=v5.9.2.4 - 18/11/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -592,11 +592,11 @@ echo !CYAN!
 if "!Language!"=="EN" set t=Enter your developer license key
 if "!Language!"=="FR" set t=Entrez votre clé de licence développeur
 %SHOWCURSOR%
-set x=
-set /p "x=!t!: !YELLOW!"
+set _el=
+set /p "_el=!t!: !YELLOW!"
 %HIDECURSOR%
 echo:
-if defined x >nul 2>&1 reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d !x! /f
+if defined _el >nul 2>&1 reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d !_el! /f
 call :CHECK_DEVELOPERMODE
 if "!DeveloperMode!"=="1" (
 if "!Language!"=="EN" set t="Developer mode has been activated successfully. You can now extract the source code."
@@ -604,7 +604,7 @@ if "!Language!"=="FR" set t="Le mode développeur a été activé avec succès. 
 call :MSGBOX 69696 "Illegal Services Checker"
 goto :CLEARSETTINGS
 )
-if "!DeveloperMode!"=="0" call :ERRORMESSAGE x "une clé de license" "licence key"
+if "!DeveloperMode!"=="0" call :ERRORMESSAGE _el "une clé de license" "licence key"
 goto :CLEARSETTINGS
 
 :SETTING_VERSION
@@ -1332,13 +1332,13 @@ echo !CYAN!
 if "!Language!"=="EN" set t=Type the torrent's HASH
 if "!Language!"=="FR" set t=Entrez le HASH du torrent
 %SHOWCURSOR%
-set x=
-set /p "x=!t!: !YELLOW!"
+set el=
+set /p "el=!t!: !YELLOW!"
 %HIDECURSOR%
 call :CHOOSE back && goto :CONTINUETORRENTING
-if defined x if "!x:~39!"=="!x:~-1!" start "" "magnet:?xt=urn:btih:!x!" && goto :CONTINUETORRENTING || goto :ERROR_ADDTORRENT
-echo !CYAN!
-call :ERRORMESSAGE
+if defined el if "!el:~39!"=="!el:~-1!" start "" "magnet:?xt=urn:btih:!el!" && goto :CONTINUETORRENTING || goto :ERROR_ADDTORRENT
+echo:
+call :ERRORMESSAGE el "un HASH" HASH
 goto :CONTINUETORRENTING
 
 :ERROR_ADDTORRENT
@@ -1690,11 +1690,11 @@ echo !BRIGHTBLACK!
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %SHOWCURSOR%
-set x=
-set /p "x=!t!URL: !YELLOW!"
+set url=
+set /p "url=!t!URL: !YELLOW!"
 %HIDECURSOR%
-call :CHECK_URL x URL || goto :CONTINUEYOUTUBEDL
-set a=--add-metadata !a! "!x!"
+call :CHECK_URL url URL || goto :CONTINUEYOUTUBEDL
+set a=--add-metadata !a! "!url!"
 echo:
 if not exist "Portable_Apps\YouTube-DL\ffmpeg.exe" call :CURL "Portable_Apps\YouTube-DL\ffmpeg.7z" "`git_raw_downloads`/ffmpeg.7z" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
 if "!youtube_dl!"=="youtube-dl" if not exist "Portable_Apps\YouTube-DL\youtube-dl.exe" call :CURL "Portable_Apps\YouTube-DL\youtube-dl.exe" "https://yt-dl.org/downloads/latest/youtube-dl.exe" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
@@ -1720,13 +1720,13 @@ echo:
 if "!Language!"=="EN" set t=Enter new download location
 if "!Language!"=="FR" set t=Entrer le nouvel emplacement de téléchargement
 %SHOWCURSOR%
-set x=
-set /p "x=!BRIGHTBLACK!!t!: !YELLOW!"
+set el=
+set /p "el=!BRIGHTBLACK!!t!: !YELLOW!"
 %HIDECURSOR%
 if defined x (
-set "x=!x:"=!"
-if "!x:~-1!"=="\" set "x=!x:~,-1!"
-for %%A in ("!x!") do >nul reg add "!IS_REG!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%~fA" /f
+set "el=!el:"=!"
+if "!el:~-1!"=="\" set "el=!el:~,-1!"
+for %%A in ("!el!") do >nul reg add "!IS_REG!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%~fA" /f
 ) else >nul 2>&1 reg delete "!IS_REG!" /v "YouTubeDLOutputDirectory" /f
 call :CHECK_YOUTUBEDLOUTPUTDIRECTORY
 goto :CONTINUEYOUTUBEDL
@@ -1868,7 +1868,7 @@ call :ROSE "IP Address Lookup"
 
 :CLEARIPLOOKUP
 set db=check-host.net/ dnschecker.org/ www.iplocation.net/ www.ip-tracker.org/ whatismyipaddress.com/
-call :CLEAR 1
+call :CLEAR 4
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEIPLOOKUP
@@ -1895,7 +1895,7 @@ echo !\E![17C║    !5!dnschecker.org!CYAN!             ║
 echo !\E![17C║    !6!www.iplocation.net!CYAN!         ║
 echo !\E![17C║    !7!www.ip-tracker.org!CYAN!         ║
 echo !\E![17C║                                     ║
-if "!Language!"=="EN" echo !\E![17C╠══■█!BGYELLOW!!RED!█  IP Dynamic or Static ? █!BGBLACK!!CYAN!█■════╣
+if "!Language!"=="EN" echo !\E![17C╠═══■█!BGYELLOW!!RED!█  IP Dynamic or Static ? █!BGBLACK!!CYAN!█■═══╣
 if "!Language!"=="FR" echo !\E![17C╠═■█!BGYELLOW!!RED!█  IP Dynamique ou Satique ? █!BGBLACK!!CYAN!█■══╣
 echo !\E![17C║                                     ║
 echo !\E![17C║    !8!whatismyipaddress.com!CYAN!      ║
@@ -1906,53 +1906,50 @@ if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) &
 call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
-for %%A in (1 2 3) do if "%%A"=="!x!" call :CHECK_INTERNET && (
-set "_el=!x!"
-set /a width=68, height=4
-) || (
+for %%A in (1 2 3) do if "!x!"=="%%A" call :CHECK_INTERNET || (
 call :ERROR_INTERNET
 goto :CLEARIPLOOKUP
 )
-if "!x!"=="1" goto :IPLOOKUP_RESPONSE
-if "!x!"=="2" call :ENTER_LOOKUP IP && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
-if "!x!"=="3" call :ENTER_LOOKUP IP/URL && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
+if "!x!"=="1" (
+title !TITLE:`=Looking up ^> ...!
+for /f %%A in ('curl.exe -fkLs "https://api.ipify.org"') do set "url=%%A"
+call :CHECK_IP url && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
+)
+if "!x!"=="2" call :IPLOOKUP_ENTER IP && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
+if "!x!"=="3" call :IPLOOKUP_ENTER IP/URL && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
 call :WEBSITECHECK && goto :CONTINUEIPLOOKUP
 call :CHOOSE back && goto :MAINMENU
 call :CHOOSE read && (call :READ_IPLOOKUP & goto :CLEARIPLOOKUP)
 call :CHOOSE delete && (call :DELETE_IPLOOKUP & goto :CLEARIPLOOKUP)
-if not defined x for /l %%A in (!c1!,1,!c2!) do if "!%%A!"=="!YELLOW!%%A !CHECKED!" call :ENTER_LOOKUP IP/URL && goto :CLEARIPLOOKUP || goto :CONTINUEIPLOOKUP
+if not defined x for /l %%A in (!c1!,1,!c2!) do if "!%%A!"=="!YELLOW!%%A !CHECKED!" call :IPLOOKUP_ENTER IP/URL && goto :CLEARIPLOOKUP || goto :CONTINUEIPLOOKUP
 call :ERRORMESSAGE
 goto :CONTINUEIPLOOKUP
 
 :IPLOOKUP_RESPONSE
+set /a width=68, height=4
+if not "!x!"=="3" set "fixed_url=!url!"
+title !TITLE:`=Looking up ^> %fixed_url%!
 cls
-if "!x!"=="1" (
-title !TITLE:`=Looking up ^> ...!
-for /f %%A in ('curl.exe -fkLs "https://api.ipify.org"') do set x=%%A
-)
-title !TITLE:`=Looking up ^> %x%!
-for %%A in (1 2) do if "!_el!"=="%%A" call :IP_DETECTOR
-if "!_el!"=="3" call :URL_DETECTOR
-call :PROXY_DETECTOR
-call :VPN_DETECTOR
+for %%A in (1 2) do if "!x!"=="%%A" call :IPLOOKUP_IP
+if "!x!"=="3" call :IPLOOKUP_URL
+set /a height+=1
+mode !width!,!height!
+>nul ping -n 1 -l 0 !fixed_url! && (>>"!TMPF!\IS_Log.txt" echo Pinging   : True) || (>>"!TMPF!\IS_Log.txt" echo Pinging   : False)
+call :IPLOOKUP_PROXY
+call :IPLOOKUP_VPN
 echo:
 for /f "usebackqtokens=1,*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo     !BRIGHTRED!%%A:!CYAN!%%B
 echo !BRIGHTBLACK!
-if "!Language!"=="EN" (
-set t1=Do you want to
-set t2=or
-)
-if "!Language!"=="FR" (
-set t1=Voulez-vous
-set t2=ou
-)
-call :DRAW_CENTER "!t1! Save (!YELLOW!S!BRIGHTBLACK!) !t2! Back (!YELLOW!B!BRIGHTBLACK!) ?"
+if "!Language!"=="EN" set t=Do you want to
+if "!Language!"=="FR" set t=Voulez-vous
+call :DRAW_CENTER "!t! Save (!YELLOW!S!BRIGHTBLACK!) / Ping (!YELLOW!P!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
 
-:CHOICE_IPLOOKUP
->nul choice /n /c SB
+:IPLOOKUP_CHOICE
+>nul choice /n /c SPB
 if "!errorlevel!"=="1" goto :IPLOOKUP_SAVE
-if "!errorlevel!"=="2" goto :CLEARIPLOOKUP
-goto :CHOICE_IPLOOKUP
+if "!errorlevel!"=="2" start "" "%~f0" PINGER
+if "!errorlevel!"=="3" goto :CLEARIPLOOKUP
+goto :IPLOOKUP_CHOICE
 
 :IPLOOKUP_SAVE
 if "!Language!"=="EN" set t="Enter victim's name: "
@@ -1963,7 +1960,7 @@ if not exist "!IS_OUTPUTDIRECTORY!\" md "!IS_OUTPUTDIRECTORY!"
 >"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" echo =============================================
 )
 >>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
-echo   Name: !ID!
+echo   Name: !ID! [!url!]
 echo =============================================
 type "!TMPF!\IS_Log.txt"
 echo =============================================
@@ -2096,18 +2093,18 @@ set o2=Unknow.
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %SHOWCURSOR%
-set x=
-set /p "x=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
-call :CHECK_URL x IP/URL || goto :CLEARPORT
+set url=
+set /p "url=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
+call :CHECK_URL url IP/URL || goto :CLEARPORT
 if not defined o1 (
 if not exist "TCP_Port_Scanner.exe" call :CURL "Portable_Apps\TCP_Port_Scanner.exe" "`git_raw_downloads`/TCP_Port_Scanner.exe" || (call :ERROR_INTERNET & goto :CLEARPORT)
 pushd "Portable_Apps"
 call :CHECK_PORTPRIORITY
-start !PortPriority! TCP_Port_Scanner.exe "!x!"
+start !PortPriority! TCP_Port_Scanner.exe "!fixed_url!"
 popd
 goto :CLEARPORT
 )
-set a=-T5 --open !a! "!x!"
+set a=-T5 --open !a! "!fixed_url!"
 set a=!a:  = !
 if not exist "Portable_Apps\NMAP\nmap.exe" call :CURL "Portable_Apps\NMAP.7z" "`git_raw_downloads`/NMAP.7z" || (call :ERROR_INTERNET & goto :CLEARPORT)
 start "" "%~f0" NMAP
@@ -2135,10 +2132,10 @@ call :ROSE "IP Port Pinger"
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %SHOWCURSOR%
-set x=
-set /p "x=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
+set url=
+set /p "url=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
 %HIDECURSOR%
-call :CHECK_URL x IP/URL || goto :MAINMENU
+call :CHECK_URL url IP/URL || goto :MAINMENU
 if "!Language!"=="EN" set t=Enter Port
 if "!Language!"=="FR" set t=Entrer le Port
 %SHOWCURSOR%
@@ -2148,7 +2145,7 @@ set /p "p1=!BRIGHTBLACK!!t!: !YELLOW!"
 call :CHECK_PORT p1 || goto :MAINMENU
 if not exist "Portable_Apps\paping.exe" call :CURL "Portable_Apps\paping.exe" "`git_raw_downloads`/paping.exe" || (call :ERROR_INTERNET & goto :MAINMENU)
 pushd "Portable_Apps"
-start paping.exe !x! -p !p1!
+start paping.exe !fixed_url! -p !p1!
 popd
 goto :MAINMENU
 
@@ -2158,10 +2155,10 @@ call :ROSE "IP Pinger"
 if "!Language!"=="EN" set "t=Enter "
 if "!Language!"=="FR" set t=Entrer l'
 %SHOWCURSOR%
-set x=
-set /p "x=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
+set url=
+set /p "url=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
 %HIDECURSOR%
-call :CHECK_URL x IP/URL || goto :MAINMENU
+call :CHECK_URL url IP/URL || goto :MAINMENU
 start "" "%~f0" PINGER
 goto :MAINMENU
 
@@ -2477,8 +2474,8 @@ if "!ARCH!"=="86" call :CURL "Portable_Apps\regscanner.zip" "https://www.nirsoft
 if "!56!"=="!YELLOW!56 !CHECKED!" call :CURL "Portable_Apps\ISLC v1.0.2.5.exe" "https://www.wagnardsoft.com/ISLC/ISLC%%%%20v1.0.2.5.exe"
 set IS_Log=
 if exist "!TMPF!\IS_Log.txt" (
-echo !RED!
-type "!TMPF!\IS_Log.txt"
+echo:
+for /f "usebackqtokens=1,*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo !RED!%%A:!YELLOW!%%B
 del /f /q "!TMPF!\IS_Log.txt"
 echo !YELLOW!
 pause
@@ -3479,7 +3476,7 @@ echo !RED!!o1!: !YELLOW!%%A !RED!seems to be down for everyone ^^!
 )
 for /f "tokens=1,*delims=-" %%B in ('curl.exe -Iksw "%%{response_code}-%%{redirect_url}" "https://%%A/"') do if "%%B"=="301" for /f "tokens=2delims=/" %%D in ("%%C") do if not "%%D"=="%%A" if not "%%D"=="github.com" if not "%%D"=="www.microsoft.com" if not "%%D"=="discord.com" if not "%%D"=="danse-musique.org" (
 set /a result+=1
-for /f "delims=//" %%E in ("%%C") do echo !RED!!o2!: !YELLOW!https://%%A/ !GREEN!^> !YELLOW!%%E//%%D/
+for /f "delims=/" %%E in ("%%C") do echo !RED!!o2!: !YELLOW!https://%%A/ !GREEN!^> !YELLOW!%%E//%%D/
 )
 )
 echo !CYAN!
@@ -3509,7 +3506,7 @@ set t1=Choix
 set t2=Veuillez patienter pendant le téléchargement de
 )
 echo !\E![7C♦ !CYAN!!t1!: !YELLOW!!o1!!BRIGHTBLACK!
-echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!x!!CYAN! . . .
+echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
@@ -3558,7 +3555,7 @@ set t2=Veuillez patienter pendant le scan de
 )
 echo !\E![7C♦ !CYAN!Scan: !YELLOW!!o1!!BRIGHTBLACK!
 echo !\E![7C♦ !CYAN!!t1!: !YELLOW!!o2!!BRIGHTBLACK!
-echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!x!!CYAN! . . .
+echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
@@ -3588,7 +3585,7 @@ echo !\E![7C♦ Une erreur s'est produite et n'a pas pu scanner.
 exit
 
 :PROCESS_PINGER
-title !TITLE:`=IP Pinger  ^|  Pinging %x%!
+title !TITLE:`=IP Pinger  ^|  Pinging %fixed_url%!
 :_PING
 cls
 echo !CYAN!
@@ -3612,7 +3609,7 @@ echo !BRIGHTBLACK!
 if "!Language!"=="EN" echo                       ** PRESS !YELLOW![CTRL + C]!BRIGHTBLACK! ^> !YELLOW![N]!BRIGHTBLACK! ^> !YELLOW![ENTER]!BRIGHTBLACK! to view result and restart. **
 if "!Language!"=="FR" echo               ** Presser !YELLOW![CTRL + C]!BRIGHTBLACK! ^> !YELLOW![N]!BRIGHTBLACK! ^> !YELLOW![ENTRER]!BRIGHTBLACK! pour afficher le résultat et recommencer. **
 echo !WHITE!
-ping -t -l 0 !x!
+ping -t -l 0 !fixed_url!
 goto :_PING
 
 :DONE_REGVALUE
@@ -3702,30 +3699,30 @@ exit /b
 
 :CURL
 call :CHECK_INTERNET || exit /b 1
-set "url=%~2"
-if not "!url:`=!"=="!url!" (
+set "curl_url=%~2"
+if not "!curl_url:`=!"=="!curl_url!" (
 if "!git!"=="404 Git proxy not found" call :PROXY || if "!git!"=="404 Git proxy not found" exit /b 2
-for /f "tokens=1-3delims=`" %%A in ("[!url!]") do set "url=%%A!%%B!%%C"
-set "url=!url:~1,-1!"
+for /f "tokens=1-3delims=`" %%A in ("[!curl_url!]") do set "curl_url=%%A!%%B!%%C"
+set "curl_url=!curl_url:~1,-1!"
 )
-if defined git_backup if not "!url:%git%=!"=="!url!" if not "%3"=="UPDATER" exit /b 3
+if defined git_backup if not "!curl_url:%git%=!"=="!curl_url!" if not "%3"=="UPDATER" exit /b 3
 if "!Language!"=="EN" set t=Downloading
 if "!Language!"=="FR" set t=Téléchargement
-<nul set /p="!CYAN!!t!: !YELLOW!!url!!CYAN!"
+<nul set /p="!CYAN!!t!: !YELLOW!!curl_url!!CYAN!"
 echo:
-curl.exe --create-dirs -f#kLo "%~1" "!url!" || (
-if not "!url:%git%=!"=="!url!" (call :CURL_PROXYS "%~1" "!url!" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4))
-call :ERROR_CURL "%~f1" "!url!"
+curl.exe --create-dirs -f#kLo "%~1" "!curl_url!" || (
+if not "!curl_url:%git%=!"=="!curl_url!" (call :CURL_PROXYS "%~1" "!curl_url!" || (call :ERROR_CURL "%~f1" & exit /b 4))
+call :ERROR_CURL "%~f1"
 exit /b 2
 )
-if exist "%~f1" for %%A in (7z zip) do if "%~x1"==".%%A" if "%~nx1"=="ffmpeg.7z" (7za\x!ARCH!\7za.exe x -aoa -bso0 -o"%~dp1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4) & del /f /q "%~f1") else (7za\x!ARCH!\7za.exe x -aoa -bso0 -o"%~dpn1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" "!url!" & exit /b 4) & del /f /q "%~f1")
+if exist "%~f1" for %%A in (7z zip) do if "%~x1"==".%%A" if "%~nx1"=="ffmpeg.7z" (7za\x!ARCH!\7za.exe x -aoa -bso0 -o"%~dp1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" & exit /b 4) & del /f /q "%~f1") else (7za\x!ARCH!\7za.exe x -aoa -bso0 -o"%~dpn1" -spe -y "%~f1" || (call :ERROR_CURL "%~f1" & exit /b 4) & del /f /q "%~f1")
 set Start_Folder=1
 exit /b 0
 
 :CURL_PROXYS
 set el=
 set cn=
-for %%A in (main downloads source) do if not "!url:/%%A/=!"=="!url!" set cn=/%%A/
+for %%A in (main downloads source) do if not "!curl_url:/%%A/=!"=="!curl_url!" set cn=/%%A/
 for %%B in (!GIT_LIST!) do if not "%%B"=="!git:*://=!" (
 if "%%B"=="github.com/Illegal-Services/Illegal_Services" set el=%%B/raw
 if "%%B"=="bitbucket.org/IllegalServices/illegal_services" set el=%%B/raw
@@ -3743,115 +3740,114 @@ exit /b 1
 :ERROR_CURL
 if "!Language!"=="EN" set "t=ERROR WHILE DOWNLOADING: "
 if "!Language!"=="FR" set "t=ERREURE PENDANT LE TELECHARGEMENT DE: "
-if defined IS_Log >>"!TMPF!\IS_Log.txt" echo !t!"%~2"
-echo !RED!!t!!YELLOW!"%~2"
+if defined IS_Log >>"!TMPF!\IS_Log.txt" echo !t!"!curl_url!"
+echo !RED!!t!!YELLOW!"!curl_url!"
 if exist "%~f1" del /f /q "%~f1"
 exit /b
 
-:ENTER_LOOKUP
+:IPLOOKUP_ENTER
 if "!Language!"=="EN" set "t=Enter the %1 to track: "
 if "!Language!"=="FR" set "t=Entrer l'%1 à tracker: "
 %SHOWCURSOR%
-set x=
-set /p "x=!BRIGHTBLACK!!t!!YELLOW!"
+set url=
+set /p "url=!BRIGHTBLACK!!t!!YELLOW!"
 %HIDECURSOR%
-if "%1"=="IP" (call :CHECK_IP x || exit /b 1) else call :CHECK_URL x IP/URL || exit /b 1
-if "!4!"=="!YELLOW!4 !CHECKED!" start "" "https://check-host.net/ip-info?host=!x!" && cmdwiz.exe delay 1500
-if "!5!"=="!YELLOW!5 !CHECKED!" start "" "https://dnschecker.org/ip-location.php?ip=!x!" && cmdwiz.exe delay 1500
+if "%1"=="IP" (call :CHECK_IP url || exit /b 1) else call :CHECK_URL url IP/URL || exit /b 1
+if "!4!"=="!YELLOW!4 !CHECKED!" start "" "https://check-host.net/ip-info?host=!fixed_url!" && cmdwiz.exe delay 1500
+if "!5!"=="!YELLOW!5 !CHECKED!" start "" "https://dnschecker.org/ip-location.php?ip=!fixed_url!" && cmdwiz.exe delay 1500
 if "!6!"=="!YELLOW!6 !CHECKED!" start "" "https://www.iplocation.net/ip-lookup" && cmdwiz.exe delay 1500
-if "!7!"=="!YELLOW!7 !CHECKED!" start "" "https://www.ip-tracker.org/locator/ip-lookup.php?ip=!x!" && cmdwiz.exe delay 1500
-if "!8!"=="!YELLOW!8 !CHECKED!" start "" "https://whatismyipaddress.com/ip/!x!"
+if "!7!"=="!YELLOW!7 !CHECKED!" start "" "https://www.ip-tracker.org/locator/ip-lookup.php?ip=!fixed_url!" && cmdwiz.exe delay 1500
+if "!8!"=="!YELLOW!8 !CHECKED!" start "" "https://whatismyipaddress.com/ip/!fixed_url!"
 exit /b 0
 
-:IP_DETECTOR
-for /f "tokens=1,2delims=: " %%A in ('curl.exe -fkLs "https://ipinfo.io/!x!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
-set "data=%%A:%%B"
-set "data=!data:"=!"
-set "data=!data:ip:=IPv4      : !"
-set "data=!data:hostname:=Hostname  : !"
-set "data=!data:anycast:=Anycast   : !"
-set "data=!data:city:=City      : !"
-set "data=!data:region:=Region    : !"
-set "data=!data:country:=Country   : !"
-set "data=!data:loc:=Location  : !"
-set "data=!data:org:=ORG       : !"
-set "data=!data:postal:=Postal    : !"
-set "data=!data:timezone:=Timezone  : !"
-set "data=!data:bogon:=Bogon     : !"
-set "data=!data:true=True!"
-set "data=!data:false=False!"
-if "!data:~-1!"=="," set "data=!data:~,-1!"
-for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+:IPLOOKUP_IP
+for /f "tokens=1,2delims=: " %%A in ('curl.exe -fkLs "https://ipinfo.io/!fixed_url!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
+set "el=%%A:%%B"
+set "el=!el:"=!"
+set "el=!el:ip:=IPv4      : !"
+set "el=!el:hostname:=Hostname  : !"
+set "el=!el:anycast:=Anycast   : !"
+set "el=!el:city:=City      : !"
+set "el=!el:region:=Region    : !"
+set "el=!el:country:=Country   : !"
+set "el=!el:loc:=Location  : !"
+set "el=!el:org:=ORG       : !"
+set "el=!el:postal:=Postal    : !"
+set "el=!el:timezone:=Timezone  : !"
+set "el=!el:bogon:=Bogon     : !"
+set "el=!el:true=True!"
+set "el=!el:false=False!"
+if "!el:~-1!"=="," set "el=!el:~,-1!"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
 set /a height+=1
 mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !data!
+>>"!TMPF!\IS_Log.txt" echo !el!
 )
 )
 exit /b
 
-:URL_DETECTOR
-for /f "delims=/" %%A in ("!x:*://=!") do set "x=%%A"
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=8192"') do if not "%%~A"=="" (
-set "data=%%A"
-set "data=!data:query>=IP v4/v6  : !"
-for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+:IPLOOKUP_URL
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=8192"') do if not "%%~A"=="" (
+set "el=%%A"
+set "el=!el:query>=IP v4/v6  : !"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
 set /a height+=1
 mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !data!
+>>"!TMPF!\IS_Log.txt" echo !el!
 )
 )
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=5775161"') do if not "%%~A"=="" (
-set "data=%%A"
-set "data=!data:"=!"
-set "data=!data:continent>=Continent : !"
-set "data=!data:country>=Country   : !"
-set "data=!data:regionName>=Region    : !"
-set "data=!data:city>=City      : !"
-set "data=!data:district>=District  : !"
-set "data=!data:zip>=Zip       : !"
-set "data=!data:timezone>=Timezone  : !"
-set "data=!data:isp>=ISP       : !"
-set "data=!data:org>=ORG       : !"
-set "data=!data:as>=AS        : !"
-set "data=!data:asname>=ASName    : !"
-set "data=!data:reverse>=Reverse   : !"
-for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=5775161"') do if not "%%~A"=="" (
+set "el=%%A"
+set "el=!el:"=!"
+set "el=!el:continent>=Continent : !"
+set "el=!el:country>=Country   : !"
+set "el=!el:regionName>=Region    : !"
+set "el=!el:city>=City      : !"
+set "el=!el:district>=District  : !"
+set "el=!el:zip>=Zip       : !"
+set "el=!el:timezone>=Timezone  : !"
+set "el=!el:isp>=ISP       : !"
+set "el=!el:org>=ORG       : !"
+set "el=!el:as>=AS        : !"
+set "el=!el:asname>=ASName    : !"
+set "el=!el:reverse>=Reverse   : !"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
 set /a height+=1
 mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !data!
+>>"!TMPF!\IS_Log.txt" echo !el!
 )
 )
 exit /b
 
-:PROXY_DETECTOR
-for /f "tokens=1,*delims=: " %%A in ('curl.exe -fkLs "https://proxycheck.io/v2/!x!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
-set "data=%%A:%%B"
-set "data=!data:"=!"
-set "data=!data:type:=Type      : !"
-set "data=!data:proxy:=Proxy     : !"
-set "data=!data:no=False!"
-set "data=!data:yes=True!"
-if "!data:~-1!"=="," set "data=!data:~,-1!"
-for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+:IPLOOKUP_PROXY
+for /f "tokens=1,*delims=: " %%A in ('curl.exe -fkLs "https://proxycheck.io/v2/!fixed_url!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
+set "el=%%A:%%B"
+set "el=!el:"=!"
+set "el=!el:type:=Type      : !"
+set "el=!el:proxy:=Proxy     : !"
+set "el=!el:no=False!"
+set "el=!el:yes=True!"
+if "!el:~-1!"=="," set "el=!el:~,-1!"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
 set /a height+=1
 mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !data!
+>>"!TMPF!\IS_Log.txt" echo !el!
 )
 )
 exit /b
 
-:VPN_DETECTOR
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!x!?fields=16973824"') do (
-set "data=%%A"
-set "data=!data:mobile>=Mobile (cellular) connection      : !"
-set "data=!data:proxy>=Proxy, VPN or Tor exit address    : !"
-set "data=!data:hosting>=Hosting, colocated or data center : !"
-set "data=!data:true=True!"
-set "data=!data:false=False!"
-for /f "tokens=2delims=:" %%B in ("!data!") do if not "%%B"==" " (
+:IPLOOKUP_VPN
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=16973824"') do (
+set "el=%%A"
+set "el=!el:mobile>=Mobile (cellular) connection      : !"
+set "el=!el:proxy>=Proxy, VPN or Tor exit address    : !"
+set "el=!el:hosting>=Hosting, colocated or data center : !"
+set "el=!el:true=True!"
+set "el=!el:false=False!"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
 set /a height+=1
 mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !data!
+>>"!TMPF!\IS_Log.txt" echo !el!
 )
 )
 exit /b
@@ -3861,13 +3857,13 @@ echo !CYAN!
 if "!Language!"=="EN" set t=What do you want to search for
 if "!Language!"=="FR" set t=Que voulez-vous rechercher
 %SHOWCURSOR%
-set x=
-set /p "x=!t! ? !YELLOW!"
+set el=
+set /p "el=!t! ? !YELLOW!"
 %HIDECURSOR%
 call :CHOOSE back && exit /b
-if defined x start "" "https://cse.google.com/cse?q=!x!&cx=%1" && exit /b
-echo !CYAN!
-call :ERRORMESSAGE
+if defined el start "" "https://cse.google.com/cse?q=!el!&cx=%1" && exit /b
+echo:
+call :ERRORMESSAGE el "une recherche" search
 exit /b
 
 :INSTALL_FILE
@@ -3889,8 +3885,9 @@ call :_CHECK_URL %1 || (call :ERRORMESSAGE %1 "une URL" URL & exit /b 1)
 exit /b 0
 
 :_CHECK_URL
-<nul set /p="!%1!" | >nul findstr [A-Z0-9] || exit /b 1
-if defined %1 if not "!%1:~,1!"=="." if not "!%1:~-1!"=="." if not "!%1!"=="!%1:~,3!" if not "!%1!"=="!%1:.=!" if "!%1!"=="!%1:..=!" exit /b 0
+for /f "delims=/" %%A in ("!%1:*://=!") do set "fixed_%1=%%A"
+<nul set /p="!fixed_%1!" | >nul findstr [A-Z0-9] || exit /b 1
+if defined %1 if not "!fixed_%1:~,1!"=="." if not "!fixed_%1:~-1!"=="." if not "!fixed_%1!"=="!fixed_%1:~,3!" if not "!fixed_%1!"=="!fixed_%1:.=!" if "!fixed_%1!"=="!fixed_%1:..=!" exit /b 0
 exit /b 1
 
 :CHECK_IP
@@ -4209,9 +4206,9 @@ exit /b
 
 :CHOOSE
 if not defined x exit /b 1
-set "x1=%1"
-if /i "!x1:~,1!"=="!x!" exit /b 0
-if /i "!x1:~,2!"=="!x:~,2!" exit /b 0
+set "el=%1"
+if /i "!el:~,1!"=="!x!" exit /b 0
+if /i "!el:~,2!"=="!x:~,2!" exit /b 0
 exit /b 1
 
 :WEBSITECHECK
@@ -4239,7 +4236,7 @@ set _el=0
 )
 )
 ) else if "!el!"=="," (
-for %%A in (!x!) do (
+if not "!x:~,1!"=="," if not "!x:~-1!"=="," for %%A in (!x!) do (
 set "el=%%~A"
 if not "!el:~,1!"=="0" call :CHECKNUMBER "%%~A" && if %%A geq !c1! if %%A leq !c2! if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
 set "%%A=!YELLOW!%%A !UNCHECKED!"
@@ -4251,10 +4248,9 @@ set _el=0
 )
 )
 ) else if "!el!"=="-" (
-set "el=!x!"
-call :STRLEN el
+call :STRLEN x
 set x1=!len!
-set "el=!el:-=!"
+set "el=!x:-=!"
 call :STRLEN el
 set x2=!len!
 set /a el=x1-x2
@@ -4506,18 +4502,18 @@ if "!Language!"=="FR" set t="Votre accès Internet semble ˆtre hors ligne.!\N!!
 )
 if "!errorlevel!"=="2" (
 call :ROSE "Error Remote Host"
-if "!Language!"=="EN" set t="The remote host appears to be offline.!\N!!\N!Downloading '!url!' impossible."
-if "!Language!"=="FR" set t="L'h“te distant semble ˆtre hors ligne.!\N!!\N!Téléchargement de '!url!' impossible."
+if "!Language!"=="EN" set t="The remote host appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible."
+if "!Language!"=="FR" set t="L'h“te distant semble ˆtre hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible."
 )
 if "!errorlevel!"=="3" (
 call :ROSE "Error Git Proxy Backup"
-if "!Language!"=="EN" set t="The Git proxy backup server is running. You cannot download external files from it.!\N!!\N!Downloading '!url!' impossible."
-if "!Language!"=="FR" set t="Le serveur proxy Git de secours est en marche. Vous ne pouvez pas télécharger de fichiers externes à partir de celui-ci.!\N!!\N!Téléchargement de '!url!' impossible."
+if "!Language!"=="EN" set t="The Git proxy backup server is running. You cannot download external files from it.!\N!!\N!Downloading '!curl_url!' impossible."
+if "!Language!"=="FR" set t="Le serveur proxy Git de secours est en marche. Vous ne pouvez pas télécharger de fichiers externes à partir de celui-ci.!\N!!\N!Téléchargement de '!curl_url!' impossible."
 )
 if "!errorlevel!"=="4" (
 call :ROSE "Error Git Proxy"
-if "!Language!"=="EN" set t="IS Git proxy: '!git!' appears to be offline.!\N!!\N!Downloading '!url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
-if "!Language!"=="FR" set t="IS Git proxy: '!git!' semble ˆtre hors ligne.!\N!!\N!Téléchargement de '!url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
+if "!Language!"=="EN" set t="IS Git proxy: '!git!' appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
+if "!Language!"=="FR" set t="IS Git proxy: '!git!' semble ˆtre hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
 )
 call :MSGBOX 69680 "Illegal Services Checker"
 exit /b
