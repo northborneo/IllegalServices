@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 5
-REM  Fileversion:  5. 9. 2. 5
+REM  Productversion:  5. 9. 2. 6
+REM  Fileversion:  5. 9. 2. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -100,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.5 - 19/11/2021
+set VERSION=v5.9.2.6 - 22/11/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -1812,7 +1812,7 @@ title !TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
-set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ anonboot.com/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ eor-n.to/ wannabe1337.xyz/stresser vtoxicity.net/ deltastress.com/ str3sser.io/ databooter.to/ asylumstresser.to/ ddosforhire.net/
+set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ anonboot.com/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresser.zone/ wannabe1337.xyz/stresser vtoxicity.net/ deltastress.com/ str3sser.io/ databooter.to/ asylumstresser.to/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
@@ -1830,7 +1830,7 @@ echo !\E![8C║   !6!str3ssed.co!CYAN!            ║  [BEST]  [7-13/Gbps] [300/
 echo !\E![8C║   !7!www.ipstresser.com!CYAN!     ║          [ 200/Mbps] [300/s]  ║
 echo !\E![8C║   !8!ipstress.in!CYAN!            ║          [   ?/Gbps] [250/s]  ║
 echo !\E![8C║   !9!royalstresser.com!CYAN!      ║          [   ?/Gbps] [200/s]  ║
-echo !\E![8C║  !10!eor-n.to!CYAN!               ║          [   ?/Gbps] [120/s]  ║
+echo !\E![8C║  !10!stresser.zone!CYAN!          ║          [5-15/Gbps] [120/s]  ║
 echo !\E![8C║  !11!wannabe1337.xyz!CYAN!        ║          [   ?/Gbps] [120/s]  ║
 echo !\E![8C║  !12!vtoxicity.net!CYAN!          ║          [ 100/Mbps] [120/s]  ║
 echo !\E![8C║  !13!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
@@ -1930,19 +1930,133 @@ set /a width=68, height=4
 if not "!x!"=="3" set "fixed_url=!url!"
 title !TITLE:`=Looking up ^> %fixed_url%!
 cls
-for %%A in (1 2) do if "!x!"=="%%A" call :IPLOOKUP_IP
-if "!x!"=="3" call :IPLOOKUP_URL
+for %%A in (1 2) do if "!x!"=="%%A" (
+for /f "tokens=1,2delims=: " %%A in ('curl.exe -fkLs "https://ipinfo.io/!fixed_url!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
+set "el=%%A:%%B"
+set "el=!el:"=!"
+set "el=!el:ip:=IPv4      : !"
+set "el=!el:hostname:=Hostname  : !"
+set "el=!el:anycast:=Anycast   : !"
+set "el=!el:city:=City      : !"
+set "el=!el:region:=Region    : !"
+set "el=!el:country:=Country   : !"
+set "el=!el:loc:=Location  : !"
+set "el=!el:org:=ORG       : !"
+set "el=!el:postal:=Postal    : !"
+set "el=!el:timezone:=Timezone  : !"
+set "el=!el:bogon:=Bogon     : !"
+set "el=!el:true=True!"
+set "el=!el:false=False!"
+if "!el:~-1!"=="," set "el=!el:~,-1!"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
 set /a height+=1
 mode !width!,!height!
->nul ping -n 1 -l 0 !fixed_url! && (>>"!TMPF!\IS_Log.txt" echo Pinging   : True) || (>>"!TMPF!\IS_Log.txt" echo Pinging   : False)
-call :IPLOOKUP_PROXY
-call :IPLOOKUP_VPN
+>>"!TMPF!\IS_Log.txt" echo !el!
+)
+)
+)
+if "!x!"=="3" (
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=8192"') do if not "%%~A"=="" (
+set "el=%%A"
+set "el=!el:query>=IP v4/v6  : !"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !el!
+)
+)
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=5775161"') do if not "%%~A"=="" (
+set "el=%%A"
+set "el=!el:"=!"
+set "el=!el:continent>=Continent : !"
+set "el=!el:country>=Country   : !"
+set "el=!el:regionName>=Region    : !"
+set "el=!el:city>=City      : !"
+set "el=!el:district>=District  : !"
+set "el=!el:zip>=Zip       : !"
+set "el=!el:timezone>=Timezone  : !"
+set "el=!el:isp>=ISP       : !"
+set "el=!el:org>=ORG       : !"
+set "el=!el:as>=AS        : !"
+set "el=!el:asname>=ASName    : !"
+set "el=!el:reverse>=Reverse   : !"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !el!
+)
+)
+)
+for /f "tokens=1,*delims=: " %%A in ('curl.exe -fkLs "https://proxycheck.io/v2/!fixed_url!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
+set "el=%%A:%%B"
+set "el=!el:"=!"
+set "el=!el:type:=Type      : !"
+set "el=!el:proxy:=Proxy     : !"
+set "el=!el:no=False!"
+set "el=!el:yes=True!"
+if "!el:~-1!"=="," set "el=!el:~,-1!"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !el!
+)
+)
+for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=16973824"') do (
+set "el=%%A"
+set "el=!el:mobile>=Mobile (cellular) connection      : !"
+set "el=!el:proxy>=Proxy, VPN or Tor exit address    : !"
+set "el=!el:hosting>=Hosting, colocated or data center : !"
+set "el=!el:true=True!"
+set "el=!el:false=False!"
+for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo !el!
+)
+)
 echo:
 for /f "usebackqtokens=1,*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo     !BRIGHTRED!%%A:!CYAN!%%B
-echo !BRIGHTBLACK!
+set _el=
+for /f "delims=" %%A in ('curl.exe -fkLs -H "Accept: application/json" "https://check-host.net/check-ping?host=!fixed_url!"') do (
+set "_el=%%A"
+if defined _el (
+set "_el=!_el:*"request_id":=!"
+set "_el=!_el:"=!"
+set "_el=!_el:}=!"
+)
+)
+:_IPLOOKUP_RESPONSE
+if defined _el for /f "delims=" %%A in ('curl.exe -fkLs -H "Accept: application/json" "https://check-host.net/check-result/!_el!"') do (
+set "el=%%A"
+if defined el (
+if not "!el:["OK",=!"=="!el!" (
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo Pinging   : True
+goto :__IPLOOKUP_RESPONSE
+)
+if not "!el::null=!"=="!el!" goto :_IPLOOKUP_RESPONSE
+set /a height+=1
+mode !width!,!height!
+>>"!TMPF!\IS_Log.txt" echo Pinging   : False
+)
+)
+:__IPLOOKUP_RESPONSE
+set /a height+=1
+mode !width!,!height!
+cls
+set el=
+echo:
+for /f "usebackqtokens=1,*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo     !BRIGHTRED!%%A:!CYAN!%%B
+if exist "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" >nul find /i "!fixed_url!" "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" && (
+set el=True
+)
+if not defined el set el=False
+echo     !BRIGHTRED!Saved     : !CYAN!!el!
+echo:
 if "!Language!"=="EN" set t=Do you want to
 if "!Language!"=="FR" set t=Voulez-vous
-call :DRAW_CENTER "!t! Save (!YELLOW!S!BRIGHTBLACK!) / Ping (!YELLOW!P!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
+call :DRAW_CENTER "!BRIGHTBLACK!!t! Save (!YELLOW!S!BRIGHTBLACK!) / Ping (!YELLOW!P!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
 
 :IPLOOKUP_CHOICE
 >nul choice /n /c SPB
@@ -3759,98 +3873,6 @@ if "!6!"=="!YELLOW!6 !CHECKED!" start "" "https://www.iplocation.net/ip-lookup" 
 if "!7!"=="!YELLOW!7 !CHECKED!" start "" "https://www.ip-tracker.org/locator/ip-lookup.php?ip=!fixed_url!" && cmdwiz.exe delay 1500
 if "!8!"=="!YELLOW!8 !CHECKED!" start "" "https://whatismyipaddress.com/ip/!fixed_url!"
 exit /b 0
-
-:IPLOOKUP_IP
-for /f "tokens=1,2delims=: " %%A in ('curl.exe -fkLs "https://ipinfo.io/!fixed_url!/json" ^| findstr /vc:"{" /c:"}" /c:"ipinfo.io/missingauth"') do (
-set "el=%%A:%%B"
-set "el=!el:"=!"
-set "el=!el:ip:=IPv4      : !"
-set "el=!el:hostname:=Hostname  : !"
-set "el=!el:anycast:=Anycast   : !"
-set "el=!el:city:=City      : !"
-set "el=!el:region:=Region    : !"
-set "el=!el:country:=Country   : !"
-set "el=!el:loc:=Location  : !"
-set "el=!el:org:=ORG       : !"
-set "el=!el:postal:=Postal    : !"
-set "el=!el:timezone:=Timezone  : !"
-set "el=!el:bogon:=Bogon     : !"
-set "el=!el:true=True!"
-set "el=!el:false=False!"
-if "!el:~-1!"=="," set "el=!el:~,-1!"
-for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
-set /a height+=1
-mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !el!
-)
-)
-exit /b
-
-:IPLOOKUP_URL
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=8192"') do if not "%%~A"=="" (
-set "el=%%A"
-set "el=!el:query>=IP v4/v6  : !"
-for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
-set /a height+=1
-mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !el!
-)
-)
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=5775161"') do if not "%%~A"=="" (
-set "el=%%A"
-set "el=!el:"=!"
-set "el=!el:continent>=Continent : !"
-set "el=!el:country>=Country   : !"
-set "el=!el:regionName>=Region    : !"
-set "el=!el:city>=City      : !"
-set "el=!el:district>=District  : !"
-set "el=!el:zip>=Zip       : !"
-set "el=!el:timezone>=Timezone  : !"
-set "el=!el:isp>=ISP       : !"
-set "el=!el:org>=ORG       : !"
-set "el=!el:as>=AS        : !"
-set "el=!el:asname>=ASName    : !"
-set "el=!el:reverse>=Reverse   : !"
-for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
-set /a height+=1
-mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !el!
-)
-)
-exit /b
-
-:IPLOOKUP_PROXY
-for /f "tokens=1,*delims=: " %%A in ('curl.exe -fkLs "https://proxycheck.io/v2/!fixed_url!?vpn=1&port=1" ^| findstr /ic:"type" /c:"proxy"') do (
-set "el=%%A:%%B"
-set "el=!el:"=!"
-set "el=!el:type:=Type      : !"
-set "el=!el:proxy:=Proxy     : !"
-set "el=!el:no=False!"
-set "el=!el:yes=True!"
-if "!el:~-1!"=="," set "el=!el:~,-1!"
-for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
-set /a height+=1
-mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !el!
-)
-)
-exit /b
-
-:IPLOOKUP_VPN
-for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=16973824"') do (
-set "el=%%A"
-set "el=!el:mobile>=Mobile (cellular) connection      : !"
-set "el=!el:proxy>=Proxy, VPN or Tor exit address    : !"
-set "el=!el:hosting>=Hosting, colocated or data center : !"
-set "el=!el:true=True!"
-set "el=!el:false=False!"
-for /f "tokens=2delims=:" %%B in ("!el!") do if not "%%B"==" " (
-set /a height+=1
-mode !width!,!height!
->>"!TMPF!\IS_Log.txt" echo !el!
-)
-)
-exit /b
 
 :IS_SEARCH
 echo !CYAN!
