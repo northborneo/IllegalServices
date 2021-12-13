@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 6
-REM  Fileversion:  5. 9. 2. 6
+REM  Productversion:  5. 9. 2. 7
+REM  Fileversion:  5. 9. 2. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -100,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.6 - 22/11/2021
+set VERSION=v5.9.2.7 - 13/12/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -370,8 +370,8 @@ if "!x!"=="9" start https://curl.se/
 if "!x!"=="10" start https://discord.com/invite/eCMBHUB
 if "!x!"=="11" start https://discord.com/invite/eXjp7PQ
 if "!x!"=="12" (
-if "!Language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped fixing a bug that where creating temporary files without deleting them.!\N!!\N!Helped improving IP Lookup API's.!\N!!\N!Helped adding launcher updater.Helping to find existing bugs and vulnerabilities.!\N!!\N!Helped to fix bugs related to user input in Regedit."
-if "!Language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à la correction d'un bug qui entraînait la création de fichiers temporaires sans les supprimer.!\N!!\N!A aidé à améliorer l'API de l'IP Lookup.!\N!!\N!A aidé à l'ajout des mises à jour du launcher.A aidé à trouver les bugs et vulnérabilitées existantes.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit."
+if "!Language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped fixing a bug that where creating temporary files without deleting them.!\N!!\N!Helped improving IP Address Lookup API's.!\N!!\N!Helped adding launcher updater.Helping to find existing bugs and vulnerabilities.!\N!!\N!Helped to fix bugs related to user input in Regedit."
+if "!Language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à la correction d'un bug qui entraînait la création de fichiers temporaires sans les supprimer.!\N!!\N!A aidé à améliorer l'API de l'IP Address Lookup.!\N!!\N!A aidé à l'ajout des mises à jour du launcher.A aidé à trouver les bugs et vulnérabilitées existantes.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit."
 call :MSGBOX 69696 "anic17 'Task failed successfully'"
 start https://github.com/anic17
 )
@@ -1807,16 +1807,16 @@ call :ERRORMESSAGE
 goto :CONTINUEUSEFULWEBSITES
 
 :DDOS
-call :SCALE 82 31
+call :SCALE 82 36
 title !TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 
 :CLEARDDOS
-set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ anonboot.com/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresser.zone/ wannabe1337.xyz/stresser vtoxicity.net/ deltastress.com/ str3sser.io/ databooter.to/ asylumstresser.to/ ddosforhire.net/
+set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresslab.sx/ stresser.zone/ wannabe1337.xyz/stresser vtoxicity.net/ deltastress.com/ stresser.gg/ str3sser.io/ databooter.to/ asylumstresser.to/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 82 31
+call :SCALE 82 36
 echo !CYAN!
 echo !\E![23C══════════════════════════════════════
 echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
@@ -1825,28 +1825,33 @@ echo !\E![8C║   !1!redstresser.cc!CYAN!         ║  [BEST]  [  10/Gbps] [350/
 echo !\E![8C║   !2!quez.in!CYAN!                ║  [BEST]  [   5/Gbps] [300/s]  ║
 echo !\E![8C║   !3!instant-stresser.com!CYAN!   ║  [BEST]  [   1/Gbps] [300/s]  ║
 echo !\E![8C║   !4!freestresser.to!CYAN!        ║  [BEST]  [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !5!anonboot.com!CYAN!           ║  [BEST]  [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !6!str3ssed.co!CYAN!            ║  [BEST]  [7-13/Gbps] [300/s]  ║
-echo !\E![8C║   !7!www.ipstresser.com!CYAN!     ║          [ 200/Mbps] [300/s]  ║
-echo !\E![8C║   !8!ipstress.in!CYAN!            ║          [   ?/Gbps] [250/s]  ║
-echo !\E![8C║   !9!royalstresser.com!CYAN!      ║          [   ?/Gbps] [200/s]  ║
-echo !\E![8C║  !10!stresser.zone!CYAN!          ║          [5-15/Gbps] [120/s]  ║
-echo !\E![8C║  !11!wannabe1337.xyz!CYAN!        ║          [   ?/Gbps] [120/s]  ║
-echo !\E![8C║  !12!vtoxicity.net!CYAN!          ║          [ 100/Mbps] [120/s]  ║
-echo !\E![8C║  !13!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
-echo !\E![8C║  !14!str3sser.io!CYAN!            ║          [   1/Gbps] [ 60/s]  ║
-echo !\E![8C║  !15!databooter.to!CYAN!          ║          [   1/Gbps] [ 60/s]  ║
-echo !\E![8C║  !16!asylumstresser.to!CYAN!      ║          [   1/Gbps] [ 60/s]  ║
+echo !\E![8C║   !5!stresser.ai!CYAN!            ║  [BEST]  [   1/Gbps] [300/s]  ║
+echo !\E![8C║   !6!anonboot.com!CYAN!           ║  [BEST]  [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !7!cryptostresser.com!CYAN!     ║  [BEST]  [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !8!stressing.ninja!CYAN!        ║  [BEST]  [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !9!str3ssed.co!CYAN!            ║  [BEST]  [7-13/Gbps] [300/s]  ║
+echo !\E![8C║   !10!www.ipstresser.com!CYAN!    ║          [ 200/Mbps] [300/s]  ║
+echo !\E![8C║  !11!ipstress.in!CYAN!            ║          [   ?/Gbps] [250/s]  ║
+echo !\E![8C║  !12!royalstresser.com!CYAN!      ║          [   ?/Gbps] [200/s]  ║
+echo !\E![8C║  !13!stresslab.sx!CYAN!           ║          [8-20/Gbps] [120/s]  ║
+echo !\E![8C║  !14!stresser.zone!CYAN!          ║          [5-15/Gbps] [120/s]  ║
+echo !\E![8C║  !15!wannabe1337.xyz!CYAN!        ║          [   ?/Gbps] [120/s]  ║
+echo !\E![8C║  !16!vtoxicity.net!CYAN!          ║          [ 100/Mbps] [120/s]  ║
+echo !\E![8C║  !17!deltastress.com!CYAN!        ║          [   ?/Gbps] [ 60/s]  ║
+echo !\E![8C║  !18!stresser.gg!CYAN!            ║          [   ?/Gbps] [ 60/s]  ║
+echo !\E![8C║  !19!str3sser.io!CYAN!            ║          [   1/Gbps] [ 60/s]  ║
+echo !\E![8C║  !20!databooter.to!CYAN!          ║          [   1/Gbps] [ 60/s]  ║
+echo !\E![8C║  !21!asylumstresser.to!CYAN!      ║          [   1/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩═══════════════════════════════╣
 if "!Language!"=="EN" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index only stressers in layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!16/11/2021"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !17!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!12/12/2021"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !22!ddosforhire.net"
 )
 if "!Language!"=="FR" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index seulement les stresseurs en layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!16/11/2021"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !17!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!12/12/2021"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !22!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1875,8 +1880,8 @@ if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 call :SCALE 73 27
 title !TITLE:`=IP Address Lookup!
 echo !CYAN!
-echo !\E![28C═════════════════
-echo !\E![27C// !RED!█!BGYELLOW!!BLACK! IP LOOKUP !RED!█!BGBLACK!!CYAN! \\
+echo !\E![24C═════════════════════════
+echo !\E![23C// !RED!█!BGYELLOW!!BLACK! IP ADDRESS LOOKUP !RED!█!BGBLACK!!CYAN! \\
 echo !\E![17C╔═════════════════════════════════════╗
 echo !\E![17C╠═■█!BGYELLOW!!RED!█  Illegal Services IP Lookup █!BGBLACK!!CYAN!█■═╣
 echo !\E![17C║                                     ║
@@ -1967,7 +1972,6 @@ mode !width!,!height!
 )
 for /f "tokens=2delims=</" %%A in ('curl.exe -fkLs "http://ip-api.com/xml/!fixed_url!?fields=5775161"') do if not "%%~A"=="" (
 set "el=%%A"
-set "el=!el:"=!"
 set "el=!el:continent>=Continent : !"
 set "el=!el:country>=Country   : !"
 set "el=!el:regionName>=Region    : !"
@@ -2218,7 +2222,7 @@ start !PortPriority! TCP_Port_Scanner.exe "!fixed_url!"
 popd
 goto :CLEARPORT
 )
-set a=-T5 --open !a! "!fixed_url!"
+set a=-Pn -T5 --open !a! "!fixed_url!"
 set a=!a:  = !
 if not exist "Portable_Apps\NMAP\nmap.exe" call :CURL "Portable_Apps\NMAP.7z" "`git_raw_downloads`/NMAP.7z" || (call :ERROR_INTERNET & goto :CLEARPORT)
 start "" "%~f0" NMAP
@@ -2227,8 +2231,8 @@ goto :CLEARPORT
 :NMAPINSTALL
 call :CURL "!TMPF!\vcredist_x86.exe" "https://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x86.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
 call :START_DOWNLOADED_FILE vcredist_x86.exe
-call :CURL "!TMPF!\npcap-1.31.exe" "https://nmap.org/npcap/dist/npcap-1.55.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
-call :START_DOWNLOADED_FILE npcap-1.31.exe
+call :CURL "!TMPF!\npcap-1.60.exe" "https://nmap.org/npcap/dist/npcap-1.60.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
+call :START_DOWNLOADED_FILE npcap-1.60.exe
 goto :CONTINUEPORT
 
 :PORT_PRIORITY
@@ -2534,9 +2538,8 @@ if "!23!"=="!YELLOW!23 !CHECKED!" call :CURL "Portable_Apps\Driver Store Explore
 if "!24!"=="!YELLOW!24 !CHECKED!" call :CURL "Portable_Apps\DeviceCleanup.zip" "https://www.uwe-sieber.de/files/DeviceCleanup.zip"
 if "!25!"=="!YELLOW!25 !CHECKED!" call :CURL "Portable_Apps\DDU.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/ddu/%%%%5BGuru3D.com%%%%5D-DDU.zip"
 if "!26!"=="!YELLOW!26 !CHECKED!" (
-call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_net48.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.3.0/RadeonSoftwareSlimmer_1.3.0_net48.zip"
-call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_net50.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.3.0/RadeonSoftwareSlimmer_1.3.0_net50.zip"
-call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.3.0_netcoreapp31.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.3.0/RadeonSoftwareSlimmer_1.3.0_netcoreapp31.zip"
+call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.4.0_net48.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.4.0/RadeonSoftwareSlimmer_1.4.0_net48.zip"
+call :CURL "Portable_Apps\RadeonSoftwareSlimmer_1.4.0_net60.zip" "https://github.com/GSDragoon/RadeonSoftwareSlimmer/releases/download/1.4.0/RadeonSoftwareSlimmer_1.4.0_net60.zip"
 )
 if "!27!"=="!YELLOW!27 !CHECKED!" call :CURL "Portable_Apps\NVSlimmer.zip" "https://ftp.nluug.nl/pub/games/PC/guru3d/nvslimmer/%%%%5BGuru3D.com%%%%5D-NVSlimmer.zip"
 if "!28!"=="!YELLOW!28 !CHECKED!" call :CURL "Portable_Apps\NVCleanstall_1.10.0.exe" "https://www.techspot.com/downloads/downloadnow/7246/?evp=99dc9f075f5dc723cda250985ad614d8&file=9654"
@@ -2575,7 +2578,7 @@ if "!48!"=="!YELLOW!48 !CHECKED!" (
 if "!ARCH!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x64.zip"
 if "!ARCH!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1009.x86.zip"
 )
-if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://ci.appveyor.com/api/buildjobs/57bvdicbvxgj0xwq/artifacts/processhacker-3.0.4399-bin.zip"
+if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4399/processhacker-3.0.4399-bin.zip"
 if "!50!"=="!YELLOW!50 !CHECKED!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!51!"=="!YELLOW!51 !CHECKED!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!52!"=="!YELLOW!52 !CHECKED!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
@@ -3922,10 +3925,10 @@ if "!%1!"=="!%1:~,6!" exit /b 1
 if not "!%1!"=="!%1:..=!" exit /b 1
 for /f "tokens=1-5delims=." %%A in ("!%1!") do (
 if not "%%E"=="" exit /b 1
-call :CHECKBETWEEN0AND255 %%A || exit /b 1
-call :CHECKBETWEEN0AND255 %%B || exit /b 1
-call :CHECKBETWEEN0AND255 %%C || exit /b 1
-call :CHECKBETWEEN0AND255 %%D || exit /b 1
+call :CHECKBETWEEN0AND255 "%%~A" || exit /b 1
+call :CHECKBETWEEN0AND255 "%%~B" || exit /b 1
+call :CHECKBETWEEN0AND255 "%%~C" || exit /b 1
+call :CHECKBETWEEN0AND255 "%%~D" || exit /b 1
 )
 exit /b 0
 
