@@ -8,7 +8,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.2.6 - 22/11/2021
+v5.9.2.7 - 13/12/2021
 * FIXED minor bugs.
 * FIXED a bug when Illegal Services executable have been renamed with invalid characters.
 * FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
@@ -44,7 +44,7 @@ v5.9.2.6 - 22/11/2021
 + UPDATED IP Address Lookup. (thanks @Rosalyn)
 + UPDATED Portable Apps : CCleaner v587
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
-+ UPDATED Portable Apps : Radeon Software Slimmer v1.3.0
++ UPDATED Portable Apps : Radeon Software Slimmer v1.4.0
 + UPDATED Portable Apps : CPU-Z v1.97
 + UPDATED Portable Apps : Process Hacker v3.0.4399
 + UPDATED Portable Apps : Windows Repair AIO v4.12.0
@@ -77,7 +77,14 @@ v5.9.2.6 - 22/11/2021
 + ADDED Useful Websites : https://www.proxyscan.io/
 + ADDED Useful Websites : https://github.com/gibbed/SteamAchievementManager (thanks @0x00)
 + ADDED Useful Websites : https://www.revshells.com/ (thanks @0x00)
++ ADDED IP Denial of Services : https://stresser.ai/
++ ADDED IP Denial of Services : https://cryptostresser.com/
 + ADDED IP Denial of Services : https://redstresser.cc/welcome/index
++ ADDED IP Denial of Services : https://stresser.ai/
++ ADDED IP Denial of Services : https://cryptostresser.com/
++ ADDED IP Denial of Services : https://stressing.ninja/
++ ADDED IP Denial of Services : https://stresslab.sx/
++ ADDED IP Denial of Services : https://stresser.gg/
 + ADDED Portable Apps : SophiApp (thanks @0x00)
 + ADDED Portable Apps : Sophia-Script-for-Windows (thanks @0x00)
 + ADDED Portable Apps : NVCleanstall
@@ -419,7 +426,7 @@ v5.7.0.0 - 12/06/2021
 * IMPROVED code.
 * IMPROVED UI choices. (thanks @Saltyy)
 * IMPROVED UI centered text code. (thanks @Grub4K)
-* IMPROVED String lenght limit detection. (thanks @Grub4K)
+* IMPROVED String length limit detection. (thanks @Grub4K)
 * IMPROVED Settings : Change username. (thanks @sintrode and @Grub4K)
 * FIXED a bug about curl downloads when Illegal Services PATH contain special characters.
 * FIXED minor bugs.
@@ -1142,7 +1149,7 @@ v3.6.0.0 - 07/11/2020
 
 v3.5.0.0 - 01/11/2020
 * FIXED Code.
-+ ADDED choice verification. (IP Adress Lookup) (thank you so much @sintrode for the big help)
++ ADDED choice verification. (IP Address Lookup) (thank you so much @sintrode for the big help)
 + ADDED Settings : Change language to English/French.
 
 v3.4.0.0 - 31/10/2020
@@ -1217,7 +1224,7 @@ v2.8.0.0 - 13/10/2020
 * FIXED a bug with the setup that where creating temporary files without deleting them. (a thank to @anic17)
 * FIXED a bug that where deleting all .exe and .zip from Illegal Services install folder.
 * FIXED Launcher : Auto Updater not working.
-* FIXED IP Adress Lookup : Problem when city's where not fully displayed.
+* FIXED IP Address Lookup : Problem when city's where not fully displayed.
 * FIXED More Features : FreeBooter not working.
 + UPDATED Portable Apps : Windows Update MiniTool
 + UPDATED Portable Apps : Windows Privacy Dashboard
@@ -1231,7 +1238,7 @@ v2.7.0.0 - 09/10/2020
 * FIXED a bug that where creating temporary files without deleting them. (thank you so much @anic17 for the big help)
 * FIXED Torrenting : https://1337x.to/ not working.
 * FIXED IP Port Scanning : https://www.adminsub.net/ not working.
-* FIXED IP Adress Lookup not working. (thank you so much @anic17 for the big help)
+* FIXED IP Address Lookup not working. (thank you so much @anic17 for the big help)
 * FIXED Portable Apps : Windows Privacy Dashboard not working. (a thank to Rose who reminded me)
 * FIXED some error messages.
 + UPDATED Compiler Version.
@@ -1240,9 +1247,9 @@ v2.7.0.0 - 09/10/2020
 + UPDATED Streaming [FR] : https://libertyvf.bz/
 + UPDATED Streaming [FR] : https://wwv.streamfilm.cc/
 + UPDATED Streaming [FR] : https://animecomplet.com/
-+ UPDATED IP Adress Lookup : Mobile (cellular) connection (thank you so much @anic17 for the big help)
-+ UPDATED IP Adress Lookup : Proxy, VPN or Tor exit address (thank you so much @anic17 for the big help)
-+ UPDATED IP Adress Lookup : Hosting, colocated or data center (thank you so much @anic17 for the big help)
++ UPDATED IP Address Lookup : Mobile (cellular) connection (thank you so much @anic17 for the big help)
++ UPDATED IP Address Lookup : Proxy, VPN or Tor exit address (thank you so much @anic17 for the big help)
++ UPDATED IP Address Lookup : Hosting, colocated or data center (thank you so much @anic17 for the big help)
 + UPDATED Portable Apps : Ccleaner v572
 + UPDATED Portable Apps : Driver Store Explorer v0.11.42
 + UPDATED Portable Apps : MSI Util v3
@@ -1652,7 +1659,7 @@ v1.5.0.0 - 22/06/2020
 + UPDATED IP Pinger TCP.
 + UPDATED links for Streaming VF.
 + UPDATED Version Title.
-+ UPDATED How IP Adress Lookups links works.
++ UPDATED How IP Address Lookups links works.
 + ADDED SpeedTest.
 + ADDED Internet DNS Changer.
 + ADDED Internet Optimizer.
@@ -1663,7 +1670,7 @@ v1.4.0.0 - 25/05/2020
 * FIXED a display bug when you enlarge and then shrink the window.
 * FIXED "exit" & "back" command can now be writted with caps.
 + ADDED Main Menu is now auto adjusted for a good window size.
-+ ADDED IP Adress Lookup websites.
++ ADDED IP Address Lookup websites.
 + ADDED executable extension.
 
 v1.3.0.0 - 23/05/2020
