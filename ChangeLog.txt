@@ -8,7 +8,7 @@ https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 https://twitter.com/illegalservices
 
-v5.9.2.7 - 13/12/2021
+v5.9.2.8 - 17/12/2021
 * FIXED minor bugs.
 * FIXED a bug when Illegal Services executable have been renamed with invalid characters.
 * FIXED Launcher : A bug where old Windows installing ansicon skipped update in the launcher.
@@ -42,11 +42,11 @@ v5.9.2.7 - 13/12/2021
 + UPDATED Torrenting : https://unblockit.kim/
 + UPDATED Cracked Android APK's : https://iplayplus.org/
 + UPDATED IP Address Lookup. (thanks @Rosalyn)
-+ UPDATED Portable Apps : CCleaner v587
++ UPDATED Portable Apps : CCleaner v588
 + UPDATED Portable Apps : Glary Utilities (thanks @0x00)
 + UPDATED Portable Apps : Radeon Software Slimmer v1.4.0
 + UPDATED Portable Apps : CPU-Z v1.97
-+ UPDATED Portable Apps : Process Hacker v3.0.4399
++ UPDATED Portable Apps : Process Hacker v3.0.4444
 + UPDATED Portable Apps : Windows Repair AIO v4.12.0
 + UPDATED More Features Forum Websites : https://fora.snahp.eu/
 + ADDED Multiple checkbox choices.
@@ -197,7 +197,7 @@ v5.9.0.0 - 19/09/2021
 + UPDATED Portable Apps : Snappy Driver Installer v2102
 + UPDATED Portable Apps : CPU-Z v1.97
 + UPDATED Portable Apps : DoNotSpy 10 v5.3.0.0
-+ UPDATED Portable Apps : Everything v1.4.1.1009
++ UPDATED Portable Apps : Everything v1.4.1.1015
 + UPDATED Portable Apps : Process Hacker v3.0.4373
 + UPDATED Portable Apps : ISLC v1.0.2.5
 + UPDATED More Features Ebooks : https://ww2.bookys-ebooks.com/
