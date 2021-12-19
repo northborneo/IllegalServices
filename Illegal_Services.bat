@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 8
-REM  Fileversion:  5. 9. 2. 8
+REM  Productversion:  5. 9. 2. 9
+REM  Fileversion:  5. 9. 2. 9
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -100,7 +100,7 @@ popd
 
 :LAUNCHER
 for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.8 - 17/12/2021
+set VERSION=v5.9.2.9 - 19/12/2021
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2444,7 +2444,7 @@ echo !\E![8C║   !34!Windows Privacy Dashboard!CYAN!     ║   !42!No Bot!CYAN!
 echo !\E![8C║   !35!Windows 10 Privacy!CYAN!            ║   !43!Kaspersky KVRT!CYAN!                 ║                                     ║
 echo !\E![8C║   !36!Windows Spy Blocker!CYAN!           ║   !44!Kaspersky TDSSKiller!CYAN!           ║                                     ║
 echo !\E![8C║   !37!Destroy Windows 10 Spying!CYAN!     ║   !45!Microsoft Safety Scanner!CYAN!       ║                                     ║
-echo !\E![8C║   !38!BLACKbird!CYAN!                     ║   !46!Spybot - Search and Destroy!CYAN!    ║                                     ║
+echo !\E![8C║   !38!Blackbird!CYAN!                     ║   !46!Spybot - Search and Destroy!CYAN!    ║                                     ║
 echo !\E![8C║                                        ║   !47!Batch Antivirus!CYAN!                ║                                     ║
 echo !\E![8C║                                        ║                                         ║                                     ║
 echo !\E![8C╠════════════════════════════════════════╩═════════════════════════════════════════╩═════════════════════════════════════╣
@@ -2578,7 +2578,7 @@ if "!48!"=="!YELLOW!48 !CHECKED!" (
 if "!ARCH!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1015.x64.zip"
 if "!ARCH!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1015.x86.zip"
 )
-if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4444/processhacker-3.0.4444-bin.zip"
+if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4447/processhacker-3.0.4447-bin.zip"
 if "!50!"=="!YELLOW!50 !CHECKED!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!51!"=="!YELLOW!51 !CHECKED!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!52!"=="!YELLOW!52 !CHECKED!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
@@ -3470,7 +3470,7 @@ echo !\E![3C■█!BGWHITE!!RED!█ ♦ Illegal Services est-il illégal ? █!B
 echo !\E![6C!GREEN!Illegal Services est légal, mais les services fournis à l'intérieur sont principalement illégaux.
 echo !\E![6C!GREEN!Illegal Services ne stocke aucun fichier sous copyright localement ou sur son serveur.
 echo !\E![6C!GREEN!Tous les contenus sont fournis par des tiers non affiliés.
-echo !\E![6C!GREEN!Vous ˆtes tenu comme seul responsable de leur utilisation à vos propres risques.
+echo !\E![6C!GREEN!Vous êtes tenu comme seul responsable de leur utilisation à vos propres risques.
 )
 echo !CYAN!
 if "!Language!"=="EN" (
@@ -4523,12 +4523,12 @@ exit /b
 if "!errorlevel!"=="1" (
 call :ROSE "Error Internet"
 if "!Language!"=="EN" set t="Your Internet access appears to be offline.!\N!!\N!You must activate Internet and try again."
-if "!Language!"=="FR" set t="Votre accès Internet semble ˆtre hors ligne.!\N!!\N!Veuillez activer Internet et réessayer."
+if "!Language!"=="FR" set t="Votre accès Internet semble être hors ligne.!\N!!\N!Veuillez activer Internet et réessayer."
 )
 if "!errorlevel!"=="2" (
 call :ROSE "Error Remote Host"
 if "!Language!"=="EN" set t="The remote host appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible."
-if "!Language!"=="FR" set t="L'h“te distant semble ˆtre hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible."
+if "!Language!"=="FR" set t="L'h“te distant semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible."
 )
 if "!errorlevel!"=="3" (
 call :ROSE "Error Git Proxy Backup"
@@ -4538,7 +4538,7 @@ if "!Language!"=="FR" set t="Le serveur proxy Git de secours est en marche. Vous
 if "!errorlevel!"=="4" (
 call :ROSE "Error Git Proxy"
 if "!Language!"=="EN" set t="IS Git proxy: '!git!' appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
-if "!Language!"=="FR" set t="IS Git proxy: '!git!' semble ˆtre hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
+if "!Language!"=="FR" set t="IS Git proxy: '!git!' semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
 )
 call :MSGBOX 69680 "Illegal Services Checker"
 exit /b
@@ -4556,7 +4556,7 @@ call :CURL_RAW urudZjdg git_build
 call :CURL_RAW c5nbugAf git_changelog
 call :CURL_RAW ThrdeC97 git_release
 if "!Language!"=="EN" set t="Illegal Services cannot connect to its Git proxy server.!\N!!\N!The Git proxy backup server is running and only updates for Illegal Services can be performed."
-if "!Language!"=="FR" set t="Illegal Services ne peut pas se connecter à son serveur proxy Git.!\N!!\N!Le serveur proxy Git de secours est en marche et seules les mises à jour d'Illegal Services peuvent ˆtre effectuées."
+if "!Language!"=="FR" set t="Illegal Services ne peut pas se connecter à son serveur proxy Git.!\N!!\N!Le serveur proxy Git de secours est en marche et seules les mises à jour d'Illegal Services peuvent être effectuées."
 call :MSGBOX 69648 "Illegal Services Checker"
 exit /b 2
 
@@ -4615,7 +4615,7 @@ exit /b
 :START_DOWNLOADED_FILE
 pushd "!TMPF!"
 if "!Language!"=="EN" echo Please complete "!YELLOW!%1!CYAN!" installation in the window that appeared...
-if "!Language!"=="FR" echo Veuillez terminer l'installation de "!YELLOW!%1!CYAN!" dans la fenˆtre qui est apparue...
+if "!Language!"=="FR" echo Veuillez terminer l'installation de "!YELLOW!%1!CYAN!" dans la fenêtre qui est apparue...
 echo:
 start /w %1
 >nul timeout /t 0 /nobreak
@@ -4658,7 +4658,7 @@ if "!Language!"=="FR" set "t=!t!!\N!!\N!Veuillez activer Internet et réessayer.
 )
 if "!errorlevel!"=="2" (
 if "!Language!"=="EN" set "t=!t!!\N!!\N!IS Git proxy: '!git!' appears to be offline. For more updates visit our Telegram."
-if "!Language!"=="FR" set "t=!t!!\N!!\N!IS Git proxy: '!git!' semble ˆtre hors ligne. Pour plus de mises à jour, visitez notre Telegram."
+if "!Language!"=="FR" set "t=!t!!\N!!\N!IS Git proxy: '!git!' semble être hors ligne. Pour plus de mises à jour, visitez notre Telegram."
 set el=1
 )
 )
