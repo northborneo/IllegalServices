@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  5. 9. 2. 9
-REM  Fileversion:  5. 9. 2. 9
+REM  Productversion:  5. 9. 3. 0
+REM  Fileversion:  5. 9. 3. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -31,7 +31,7 @@ call :CHECK_LANGUAGE
 if "!Language!"=="EN" set t="Invalid characters detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
 if "!Language!"=="FR" set t="Caractères invalides détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
 call :MSGBOX 69648 "Illegal Services Checker"
-exit
+exit 0
 )
 setlocal DisableDelayedExpansion
 pushd "%~dp0"
@@ -49,7 +49,20 @@ for /f "tokens=6" %%A in ('cmdwiz.exe getconsoledim') do if %%A lss 120 call :SC
 goto :PROCESS_%%A
 )
 call :SCALE 125 19
+if defined WINDOWS_TERMINAL set WINDOWS_TERMINAL=
+if defined WT_SESSION (
+set WINDOWS_TERMINAL=1
+goto :SKIP_WINDOWS_TERMINAL
+)
+set WINDOWS_TERMINAL=1
+2>nul reg query "HKEY_CURRENT_USER\Console\%%%%Startup" /v "DelegationTerminal" | >nul find "{00000000-0000-0000-0000-000000000000}" && set WINDOWS_TERMINAL=
+:SKIP_WINDOWS_TERMINAL
+if defined WINDOWS_TERMINAL tasklist /v /fo csv /fi "imagename eq WindowsTerminal.exe" | >nul find "WindowsTerminal.exe" && (
+tasklist /v /fo csv /fi "imagename eq OpenConsole.exe" | >nul find "OpenConsole.exe" || set WINDOWS_TERMINAL=
+) || set WINDOWS_TERMINAL=
+if not defined WINDOWS_TERMINAL (
 if exist "cmdwiz.exe" cmdwiz.exe setquickedit 0
+)
 call :CHECK_LANGUAGE
 call :CHECK_USERNAME
 set TITLE=!DEBUG!` - Illegal Services
@@ -65,13 +78,13 @@ set "t2=Veuillez réparer l'une d'entre elles et réessayer."
 )
 mshta vbscript:Execute^("msgbox ""!t1!"" & Chr(10) & Chr(10) & ""!t2!"",69648,""Illegal Services Checker"":close"^)
 start https://t.me/illegal_services_forum
-exit
+exit 0
 )
 if not exist "Curl" <nul set /p="%~dp0" | >nul findstr /c:"!TEMP!" /c:"!TMP!" && (
 if "!Language!"=="EN" set t="Illegal Services cannot start because you are running it from an archive. Reopen it once the archive is extracted."
 if "!Language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous l'exécutez à partir d'une archive. Rouvrez-le une fois l'archive extraite."
 call :MSGBOX 69680 "Illegal Services Checker"
-exit
+exit 0
 )
 set cn=
 if /i "%~x0"==".exe" (
@@ -79,9 +92,9 @@ set "IS_PROCESS=%~nx0"
 set BAT_USED=
 if "%~n0"=="Illegal Services" (
 >nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
->nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !DEBUG!) && exit
+>nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !DEBUG!) && exit 0
 )
-for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS!" ^| findstr /c:"!IS_PROCESS!"') do set /a cn+=1
+for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS!" ^| find "!IS_PROCESS!"') do set /a cn+=1
 ) else (
 set IS_PROCESS=cmd.exe
 set "BAT_USED=%~nx0"
@@ -99,8 +112,9 @@ if not "%%A"=="!BAT_USED!" del /f /q /a "%%A"
 popd
 
 :LAUNCHER
-for %%A in (VERSION LastVersion) do if defined %%A set old_%%A=!%%A!
-set VERSION=v5.9.2.9 - 19/12/2021
+if defined VERSION set OLD_VERSION=!VERSION!
+if defined LastVersion set OLD_LASTVERSION=!LastVersion!
+set VERSION=v5.9.3.0 - 14/01/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -166,7 +180,7 @@ if "!Language!"=="FR" echo  !GREEN![PASSER] . . .
 :CHECKERWINDOWS
 if "!Language!"=="EN" <nul set /p="!sp!Checking Windows version > "
 if "!Language!"=="FR" <nul set /p="!sp!Vérification de votre version de Windows > "
-for /f "tokens=4-7delims=[.] " %%A in ('ver') do if /i "%%A"=="Version" (set "WINDOWS_VERSION=%%B.%%C") else set "WINDOWS_VERSION=%%A.%%B"
+for /f "tokens=4-7delims=[.] " %%A in ('ver') do if /i "%%A"=="version" (set "WINDOWS_VERSION=%%B.%%C") else set "WINDOWS_VERSION=%%A.%%B"
 for /f "tokens=2delims=:." %%A in ('chcp') do set /a "CP=%%A"
 for %%A in (WINDOWS_VERSION ARCH CP) do if not defined %%A set %%A=?
 if "!WINDOWS_VERSION!"=="?" (<nul set /p="!RED![!WINDOWS_VERSION!], ") else <nul set /p="!GREEN![!WINDOWS_VERSION!], "
@@ -177,7 +191,7 @@ if not "!WINDOWS_VERSION!"=="10.0" if not "!WINDOWS_VERSION!"=="6.3" if not "!WI
 if "!Language!"=="EN" set t="ERROR: Your computer does not reach the minimum Windows version compatible with Illegal Services.!\N!!\N!You need Windows 7 or higher."
 if "!Language!"=="FR" set t="ERREUR: Votre ordinateur n'atteint pas la version minimale de Windows compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 7 ou supérieur."
 call :MSGBOX 69648 "Illegal Services Checker"
-exit
+exit 0
 )
 if not "!CP!"=="65001" (
 if "!CP!"=="?" (
@@ -189,7 +203,7 @@ if "!Language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro 
 )
 call :MSGBOX 69648 "Illegal Services Checker"
 start https://t.me/illegal_services_forum
-exit
+exit 0
 )
 if not "!WINDOWS_VERSION!"=="10.0" if not defined ANSICON_VER (
 pushd "Ansicon\x!ARCH!"
@@ -197,7 +211,7 @@ ansicon.exe -i
 popd
 endlocal
 start "" "%~f0"
-exit
+exit 0
 )
 
 :LAUNCHER_APPLY_SETTINGS
@@ -302,7 +316,7 @@ if "!Language!"=="FR" set t=parametres
 call :CHOOSE !t! && goto :SETTINGS
 call :CHOOSE help && (start /max tutorial.html & goto :MAINMENU)
 call :CHOOSE changelog && (start /max changeLog.txt & goto :MAINMENU)
-call :CHOOSE faq && (call :SHOW_WINDOW "!IS_PROCESS!" "Frequently Asked Questions" || (start "" "%~0" FAQ) & goto :MAINMENU)
+call :CHOOSE faq && (call :SHOW_WINDOW "Frequently Asked Questions" || (start "" "%~f0" FAQ) & goto :MAINMENU)
 if /i "!x!"=="--dump" (
 >LOG_DUMP.txt set
 start LOG_DUMP.txt
@@ -382,14 +396,14 @@ call :MSGBOX 69696 "<Tim>"
 start https://tim-greller.de/home/
 )
 if "!x!"=="14" (
-if "!Language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped using curl for IS source.!\N!!\N!Helped adding Rose voice assistant.!\N!!\N!Helped adding choice verification.!\N!!\N!Helped adding Automatic proxy switcher.!\N!!\N!Helped to fix bugs related to user input in Regedit."
-if "!Language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit."
+if "!Language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped using curl for IS source.!\N!!\N!Helped adding Rose voice assistant.!\N!!\N!Helped adding choice verification.!\N!!\N!Helped adding Automatic proxy switcher.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped implementing the Windows 11 support."
+if "!Language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à implémenter le support de Windows 11."
 call :MSGBOX 69696 "sintrode"
 start https://github.com/sintrode
 )
 if "!x!"=="15" (
-if "!Language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing Curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding."
-if "!Language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8."
+if "!Language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing Curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding.!\N!!\N!Helped implementing the Windows 11 support."
+if "!Language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8.!\N!!\N!A aidé à implémenter le support de Windows 11."
 call :MSGBOX 69696 "Grub4K"
 start https://github.com/Grub4K
 )
@@ -514,14 +528,19 @@ call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!
 echo:
 call :PROMPT
 for %%A in (8,9) do if "!x!"=="1%%A" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUESETTINGS)
-for /l %%A in (1,1,12) do if "!x!"=="%%A" goto :SETTING_BACKGROUND_WALLPAPER
+for /l %%A in (1,1,12) do if "!x!"=="%%A" if defined WINDOWS_TERMINAL (
+if "!Language!"=="EN" set t="You can not access the background settings because you are using 'Windows Terminal'."
+if "!Language!"=="FR" set t="Vous ne pouvez pas accéder aux paramètres d'arrière-plan car vous utilisez 'Windows Terminal'."
+call :MSGBOX 69680 "Illegal Services Checker"
+goto :CONTINUESETTINGS
+) else goto :SETTING_BACKGROUND_WALLPAPER
 if "!x!"=="13" goto :SETTING_BACKGROUND_TRANSPARENCY
 if "!x!"=="14" goto :SETTING_BACKGROUND_BORDER_TRANSPARENCY
 if "!x!"=="15" goto :SETTING_BACKGROUND
 if "!x!"=="16" goto :SETTING_UNTRUSTEDWEBSITES
 if "!x!"=="17" goto :SETTING_ROSE
 if "!x!"=="18" goto :SETTING_DEVELOPERMODE
-if "!x!"=="19" call :SHOW_WINDOW "!IS_PROCESS!" "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
+if "!x!"=="19" call :SHOW_WINDOW "websites indexed" || (start "" "%~f0" SCANWEBSITES) & goto :CONTINUESETTINGS
 if "!x!"=="20" goto :SETTING_VERSION
 if "!x!"=="21" goto :SETTING_USERNAME
 if "!x!"=="22" goto :SETTING_LANGUAGE
@@ -669,6 +688,7 @@ if "!Language!"=="FR" echo Voulez-vous [!YELLOW!E!CYAN!]xporter ou [!YELLOW!I!CY
 >nul choice /n /c EI
 if "!errorlevel!"=="1" goto :SETTING_EXPORT
 if "!errorlevel!"=="2" goto :SETTING_IMPORT
+goto :CONTINUESETTINGS
 
 :SETTING_EXPORT
 if "!Language!"=="EN" (
@@ -679,13 +699,16 @@ if "!Language!"=="FR" (
 set t1=Fichiers d'enregistrements
 set t2=Enregistrer sous
 )
-for /f "delims=" %%A in ('SaveFileBox.exe IS_Settings.reg "!t1! (*.reg)|*.reg" "!IS_OUTPUTDIRECTORY!" "!t2!" /f') do set "el=%%A"
+set el=
+for /f "delims=" %%A in ('SaveFileBox.exe IS_Settings.reg "!t1! (*.reg)|*.reg" "!IS_OUTPUTDIRECTORY!" "!t2!" /f') do set "el=%%~A"
+if not defined el goto :CONTINUESETTINGS
 >nul 2>&1 reg export "!IS_REG!" "!el!" /y && (
 if "!Language!"=="EN" set t="Settings exported successfully.!\N!You can now import them using the generated file at:!\N!!\N!'!el!'"
 if "!Language!"=="FR" set t="Paramètres exportés avec succès.!\N!Vous pouvez maintenant les importer à l'aide du fichier généré à:!\N!!\N!'!el!'"
 call :MSGBOX 69696 "Illegal Services Checker"
-)
 goto :CONTINUESETTINGS
+)
+goto :SETTING_EXPORT
 
 :SETTING_IMPORT
 if "!Language!"=="EN" (
@@ -696,20 +719,21 @@ if "!Language!"=="FR" (
 set t1=Fichiers d'enregistrements
 set t2=Ouvrir
 )
-for /f "delims=" %%A in ('OpenFileBox.exe "!t1! (*.reg)|*.reg" "!IS_OUTPUTDIRECTORY!" "!t2!"') do set "_el=%%A"
-for %%A in (!_el!) do if /i "%%~xA"==".reg" >nul 2>&1 find /i "[HKEY_CURRENT_USER\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services]" "!_el!" && >nul 2>&1 reg import "!_el!" && (
-for %%A in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS DEVELOPERMODE) do call :CHECK_%%A
+set _el=
+for /f "delims=" %%A in ('OpenFileBox.exe "!t1! (*.reg)|*.reg" "!IS_OUTPUTDIRECTORY!" "!t2!"') do set "_el=%%~A"
+if not defined _el goto :CONTINUESETTINGS
+for %%A in ("!_el!") do if /i "%%~xA"==".reg" >nul 2>&1 find /i "[HKEY_CURRENT_USER\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services]" "!_el!" && >nul 2>&1 reg import "!_el!" && (
+for %%B in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS DEVELOPERMODE) do call :CHECK_%%B
 call :APPLY_SETTINGS
 if "!Language!"=="EN" set t="Settings imported successfully from:!\N!!\N!'!_el!'"
 if "!Language!"=="FR" set t="Paramètres importés avec succès à partir de:!\N!!\N!'!_el!'"
 call :MSGBOX 69696 "Illegal Services Checker"
-)
-if not "!errorlevel!"=="0" (
-if "!Language!"=="EN" set t="File '!_el!' invalid.!\N!!\N!You need to import a '*.reg' file."
-if "!Language!"=="FR" set t="Le fichier '!_el!' est invalide.!\N!!\N!Vous devez importer un fichier '*.reg'."
-call :MSGBOX 69680 "Illegal Services Checker"
-)
 goto :CLEARSETTINGS
+)
+if "!Language!"=="EN" set t="File '!_el!' invalid.!\N!!\N!You need to import a '*.reg' file exported from Illegal Services."
+if "!Language!"=="FR" set t="Le fichier '!_el!' est invalide.!\N!!\N!Vous devez importer un fichier '*.reg' exporté par Illegal Services."
+call :MSGBOX 69680 "Illegal Services Checker"
+goto :SETTING_IMPORT
 
 :SETTING_EXTRACT_SOURCE
 if /i "!IS_PROCESS!"=="cmd.exe" (
@@ -1747,7 +1771,7 @@ title !TITLE:`=Useful Websites!
 call :ROSE "Useful Websites"
 
 :CLEARUSEFULWEBSITES
-set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ www.proxyscan.io/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ leak.sx/combolist.php combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.revshells.com/ www.torproject.org/
+set db=www.virustotal.com/gui/ www.hybrid-analysis.com/ metadefender.opswat.com/ antiscan.me/ virusscan.jotti.org/ urlscan.io/ www.security.org/how-secure-is-my-password/ breachalarm.com/ haveibeenpwned.com/ monitor.firefox.com/ cybernews.com/personal-data-leak-check/ leakedsource.ru/ dehashed.com/ leak-lookup.com/search webresolver.nl/tools/leaked_database weleakinfo.to/ protonvpn.com/ www.urban-vpn.com/ courvix.com/ www.freeopenvpn.org/ www.vpnbook.com/ www.proxyscan.io/ free-proxy-list.net/ proxy-daily.com/ smallseotools.com/free-proxy-list/ cloudssh.net/ sshdropbear.net/ protonmail.com/ www.startmail.com/ temp-mail.org/ dropmail.me/ yopmail.com/ generator.email/blog/gmail-generator temp-sms.org/ cyber-hub.pw/ webresolver.nl/ www.vedbex.com/tools/home wannabe1337.xyz/ mostwantedhf.info/ shadowcrypt.net/tools/ xresolver.com/ www.skypeipresolver.net/ fakepersongenerator.com/ www.fakeimess.com/generator/ fakeproof.xenot.pro/ www.vedbex.com/tools/fake_proof torrentfreak.com/ `nextwarez.com/ filepursuit.com/ www.aiosearch.com/ www.filechef.com/ combo-list.com/ www.frecombo.com/search/label/Combo-List combolist.top/ sinister.ly/Forum-Combo-Lists mailaccess.top/forums/combolists.13/ t.me/s/dailycombolist github.com/gibbed/SteamAchievementManager onehack.us/ www.revshells.com/ www.torproject.org/
 call :CLEAR 1
 
 :CONTINUEUSEFULWEBSITES
@@ -1788,10 +1812,10 @@ echo !\E![8C║   !46!www.vedbex.com!CYAN!              ║                     
 echo !\E![8C║                                                                                 ║                                     ║
 echo !\E![8C╠═════════════════════════════■█!BGYELLOW!!RED!█ Combo Lists █!BGBLACK!!CYAN!█■═════════════════════════════════╬═══════════■█!BGYELLOW!!RED!█ Others █!BGBLACK!!CYAN!█■════════════╣
 echo !\E![8C║                                                                                 ║                                     ║
-echo !\E![8C║   !52!leak.sx!CYAN!                     │   !56!sinister.ly!CYAN!                     ║   !59!SteamAchievementManager!CYAN!    ║
-echo !\E![8C║   !53!combo-list.com!CYAN!              │   !57!mailaccess.top!CYAN!                  ║   !60!onehack.us!CYAN!                 ║
-echo !\E![8C║   !54!www.frecombo.com!CYAN!            │   !58!dailycombolist!CYAN!                  ║   !61!www.revshells.com!CYAN!          ║
-echo !\E![8C║   !55!combolist.top!CYAN!               │                                          ║   !62!www.torproject.org!CYAN!         ║
+echo !\E![8C║   !52!combo-list.com!CYAN!              │   !56!mailaccess.top!CYAN!                  ║   !58!SteamAchievementManager!CYAN!    ║
+echo !\E![8C║   !53!www.frecombo.com!CYAN!            │   !57!dailycombolist!CYAN!                  ║   !59!onehack.us!CYAN!                 ║
+echo !\E![8C║   !54!combolist.top!CYAN!               │                                          ║   !60!www.revshells.com!CYAN!          ║
+echo !\E![8C║   !55!sinister.ly!CYAN!                 │                                          ║   !61!www.torproject.org!CYAN!         ║
 echo !\E![8C║                                                                                 ║                                     ║
 echo !\E![8C╚═════════════════════════════════════════════════════════════════════════════════╩═════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -2066,8 +2090,7 @@ call :DRAW_CENTER "!BRIGHTBLACK!!t! Save (!YELLOW!S!BRIGHTBLACK!) / Ping (!YELLO
 >nul choice /n /c SPB
 if "!errorlevel!"=="1" goto :IPLOOKUP_SAVE
 if "!errorlevel!"=="2" start "" "%~f0" PINGER
-if "!errorlevel!"=="3" goto :CLEARIPLOOKUP
-goto :IPLOOKUP_CHOICE
+goto :CLEARIPLOOKUP
 
 :IPLOOKUP_SAVE
 if "!Language!"=="EN" set t="Enter victim's name: "
@@ -2578,7 +2601,7 @@ if "!48!"=="!YELLOW!48 !CHECKED!" (
 if "!ARCH!"=="64" call :CURL "Portable_Apps\Everything-x64.zip" "https://www.voidtools.com/Everything-1.4.1.1015.x64.zip"
 if "!ARCH!"=="86" call :CURL "Portable_Apps\Everything-x86.zip" "https://www.voidtools.com/Everything-1.4.1.1015.x86.zip"
 )
-if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4447/processhacker-3.0.4447-bin.zip"
+if "!49!"=="!YELLOW!49 !CHECKED!" call :CURL "Portable_Apps\Process Hacker.zip" "https://github.com/ProcessHackerRepoTool/nightly-builds-mirror/releases/download/v3.0.4517/processhacker-3.0.4517-bin.zip"
 if "!50!"=="!YELLOW!50 !CHECKED!" call :CURL "Portable_Apps\CrystalDiskInfo.zip" "https://crystalmark.info/redirect.php?product=CrystalDiskInfo"
 if "!51!"=="!YELLOW!51 !CHECKED!" call :CURL "Portable_Apps\DefenderControl.zip" "https://www.sordum.org/files/download/d-control/dControl.zip"
 if "!52!"=="!YELLOW!52 !CHECKED!" call :CURL "Portable_Apps\EdgeBlocker.zip" "https://www.sordum.org/files/download/edge-blocker/EdgeBlock.zip"
@@ -3052,9 +3075,9 @@ if "!Language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) &
 call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
-if "!x!"=="1" start cmd /c sfc /ScanNow ^& pause ^& exit
-if "!x!"=="2" start cmd /c Dism /Online /Cleanup-Image /RestoreHealth ^& pause ^& exit
-if "!x!"=="3" start cmd /c chkdsk !SystemDrive! /F /R ^& pause ^& exit
+if "!x!"=="1" start cmd /c sfc /ScanNow ^& pause ^& exit 0
+if "!x!"=="2" start cmd /c Dism /Online /Cleanup-Image /RestoreHealth ^& pause ^& exit 0
+if "!x!"=="3" start cmd /c chkdsk !SystemDrive! /F /R ^& pause ^& exit 0
 if "!x!"=="4" for %%A in (10.0 6.3) do if "!WINDOWS_VERSION!"=="%%A" (2>nul powershell -ExecutionPolicy Unrestricted Get-AppXPackage -AllUsers ^| Foreach {Add-AppxPackage -DisableDevelopmentMode -Register \"$($_.InstallLocation)\AppXManifest.xml\"} & goto :CONTINUEWINDOWSREPAIR) else (call :ERROR_WINDOWS_VERSION & goto :CONTINUEWINDOWSREPAIR)
 if "!x!"=="5" for %%A in (10.0 6.3) do if "!WINDOWS_VERSION!"=="%%A" (goto :REPAIR_WINDOWS_STORE) else (call :ERROR_WINDOWS_VERSION & goto :CONTINUEWINDOWSREPAIR)
 if "!x!"=="6" if "!WINDOWS_VERSION!"=="10.0" (goto :REPAIR_XBOX_GAME) else call :ERROR_WINDOWS_VERSION
@@ -3423,7 +3446,7 @@ popd
 goto :L2
 )
 popd
-exit
+exit 0
 
 :CHECKER_BUILD_FOUND
 :L3
@@ -3435,7 +3458,7 @@ if "!Language!"=="FR" set t="ERREUR: Désactivez votre antivirus et réessayez..
 call :MSGBOX 69680 "Illegal Services Checker"
 goto :L3
 )
-exit
+exit 0
 
 :PROCESS_FAQ
 if "!Language!"=="EN" call :SCALE 105 49
@@ -3527,7 +3550,7 @@ echo !\E![6C!GREEN!Ce sont les 2 premiers chiffres de la version ^(v [x.x].x.x^)
 echo !CYAN!
 if "!Language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ With which operating systems is Illegal Services compatible ? █!BGBLACK!!CYAN!█■
 if "!Language!"=="FR" echo !\E![3C■█!BGWHITE!!RED!█ ♦ Avec qu'elle système d'exploitation Illegal Services est-t'il compatible ? █!BGBLACK!!CYAN!█■
-echo !\E![6C!GREEN!Windows 7, 8, 8.1, 10 (x86/x64).
+echo !\E![6C!GREEN!Windows 7, 8, 8.1, 10, 11 (x86/x64).
 echo !CYAN!
 if "!Language!"=="EN" (
 echo !\E![3C■█!BGWHITE!!RED!█ ♦ Can you make Illegal Services compatible with more operating system ? █!BGBLACK!!CYAN!█■
@@ -3552,7 +3575,7 @@ if "!Language!"=="FR" set "t=Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter
 call :DRAW_CENTER "!t!..." 1
 %SHOWCURSOR%
 >nul pause
-exit
+exit 0
 
 :PROCESS_SCANWEBSITES
 if "!Language!"=="EN" set t=Establishing connection to websites database
@@ -3603,7 +3626,7 @@ if "!Language!"=="EN" echo Scan completed with !result! result!s! found from !in
 if "!Language!"=="FR" echo L'analyse s'est terminée avec !result! résultats trouvés à partir de !index! sites web indexés en !seconds! secondes.
 echo:
 pause
-exit
+exit 0
 
 :PROCESS_YOUTUBEDL
 call :CHECK_YOUTUBEDLPRIORITY
@@ -3649,7 +3672,7 @@ echo !\E![7C♦ Une erreur s'est produite et n'a pas pu técharger le fichier.
 %SHOWCURSOR%
 >nul pause
 if "!el!"=="0" start /max "" "!YouTubeDLOutputDirectory!"
-exit
+exit 0
 
 :PROCESS_NMAP
 call :CHECK_PORTPRIORITY
@@ -3699,7 +3722,7 @@ echo !\E![7C♦ Une erreur s'est produite et n'a pas pu scanner.
 )
 %SHOWCURSOR%
 >nul pause
-exit
+exit 0
 
 :PROCESS_PINGER
 title !TITLE:`=IP Pinger  ^|  Pinging %fixed_url%!
@@ -3760,7 +3783,7 @@ exit /b 1
 
 :MSGBOX
 >"!TMPF!\msgbox.vbs" echo MsgBox WScript.Arguments(0),WScript.Arguments(1),WScript.Arguments(2)
-cscript //nologo "!TMPF!\msgbox.vbs" !t! %1 "%~2"
+%~3cscript //nologo "!TMPF!\msgbox.vbs" !t! %1 "%~2"
 del /f /q "!TMPF!\msgbox.vbs"
 exit /b
 
@@ -3945,6 +3968,7 @@ exit /b
 
 :APPLY_SETTINGS
 for %%A in (BACKGROUNDBORDERTRANSPARENCY BACKGROUNDDISABLED BACKGROUNDTRANSPARENCY BACKGROUNDWALLPAPER) do call :CHECK_%%A
+if defined WINDOWS_TERMINAL exit /b
 if "!BackgroundDisabled!"=="0" if defined BackgroundWallpaper cmdbkg.exe Backgrounds\background-!BackgroundWallpaper!.jpg!BackgroundBorderTransparency!
 if "!BackgroundDisabled!"=="1" cmdbkg.exe
 cmdwiz.exe delay 500
@@ -4624,11 +4648,11 @@ popd
 exit /b
 
 :SHOW_WINDOW
-for /f "tokens=2delims=," %%A in ('tasklist /v /fo csv /fi "imagename eq %~1" ^| findstr /ic:"%~2"') do (
-set "el=%%A"
-set "el=!el:"=!"
-cmdwiz.exe showwindow value:1 /p:"!el:"=!"
-cmdwiz.exe showwindow top /p:"!el:"=!"
+if defined WT_SESSION (set el=cmd.exe) else if defined WINDOWS_TERMINAL (set el=WindowsTerminal.exe) else set "el=!IS_PROCESS!"
+for /f "tokens=2delims=," %%A in ('tasklist /v /fo csv /fi "imagename eq !el!" ^| find "%~1"') do (
+cmdwiz.exe showwindow minimize /p:"%%~A"
+cmdwiz.exe showwindow restore /p:"%%~A"
+cmdwiz.exe showwindow top /p:"%%~A"
 exit /b 0
 )
 exit /b 1
@@ -4666,4 +4690,4 @@ set t="!t!"
 call :MSGBOX 69648 "Illegal Services Checker"
 if "!el!"=="1" start https://t.me/illegal_services_forum
 if "!el!"=="2" start https://t.me/illegal_services
-exit
+exit 0
