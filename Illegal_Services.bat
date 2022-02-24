@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 0. 0. 0
-REM  Fileversion:  6. 0. 0. 0
+REM  Productversion:  6. 1. 0. 0
+REM  Fileversion:  6. 1. 0. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -59,13 +59,26 @@ set cmdbkg.exe=lib\cmdbkg.exe
 set cmdwiz.exe=lib\cmdwiz.exe
 set OpenFileBox.exe=lib\OpenFileBox.exe
 set SaveFileBox.exe=lib\SaveFileBox.exe
-for %%A in (%*) do if "%%~A"=="--debug" set "DEBUG=[Debug] "
-if not "%~1"=="" if defined language for %%A in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER IS_BOOKMARKS_PARSER) do if "%~1"=="%%A" (
-call :APPLY_BACKGROUND_SETTINGS
-for /f "tokens=6" %%A in ('!cmdwiz.exe! getconsoledim') do if %%A lss 120 call :SCALE 120 30
-goto :PROCESS_%%A
+for %%A in (%*) do (
+    if "%%~A"=="--debug" (
+        set "DEBUG=[Debug] "
+    )
 )
-call :SCALE 125 19
+if not "%~1"=="" (
+    if defined language (
+        for %%A in (FAQ SCANWEBSITES NMAP YOUTUBEDL PINGER IS_BOOKMARKS_PARSER) do (
+            if "%~1"=="%%A" (
+                call :APPLY_BACKGROUND_SETTINGS
+                for /f "tokens=6" %%A in ('!cmdwiz.exe! getconsoledim') do (
+                    if %%A lss 120 (
+                        call :SCALE 120 30
+                    )
+                )
+                goto :PROCESS_%%A
+            )
+        )
+    )
+)
 if defined WINDOWS_TERMINAL (
     set WINDOWS_TERMINAL=
 )
@@ -86,9 +99,11 @@ if defined WINDOWS_TERMINAL (
     ) || (
         set WINDOWS_TERMINAL=
     )
-    call :SCALE 125 19
-    if not defined WINDOWS_TERMINAL (
-        if exist "!cmdwiz.exe!" !cmdwiz.exe! setquickedit 0
+)
+call :SCALE 125 19
+if not defined WINDOWS_TERMINAL (
+    if exist "!cmdwiz.exe!" (
+        !cmdwiz.exe! setquickedit 0
     )
 )
 call :CHECK_USERNAME
@@ -133,7 +148,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.0.0.0 - 17/02/2022
+set VERSION=v6.1.0.0 - 24/02/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -829,11 +844,17 @@ if "!YouTubeDLGeoBypass!"=="0" set "YouTubeDLGeoBypassInfo=Contournement de la r
 if "!YouTubeDLGeoBypass!"=="1" set "YouTubeDLGeoBypassInfo=Contournement de la restriction géographique !CYAN!(!GREEN!ON!!CYAN!)          ║"
 )
 if "!YouTubeDLP!"=="0" (
-set youtube_dl=youtube-dl
+set youtube_dl_type=youtube-dl
+set youtube_dl_executable=youtube-dl.exe
 set "YouTubeDLPInfo=YouTube DLP !CYAN!(!RED!OFF!!CYAN!)                                          ║"
 )
 if "!YouTubeDLP!"=="1" (
-set youtube_dl=yt-dlp
+set youtube_dl_type=yt-dlp
+if "!ARCH!"=="64" (
+    set youtube_dl_executable=yt-dlp.exe
+) else (
+    set youtube_dl_executable=yt-dlp_x86.exe
+)
 set "YouTubeDLPInfo=YouTube DLP !CYAN!(!GREEN!ON!!CYAN!)                                           ║"
 )
 if not exist "Portable_Apps\YouTube-DL\" md "Portable_Apps\YouTube-DL"
@@ -968,14 +989,49 @@ set /p "url=!t!URL: !YELLOW!"
 %@HIDECURSOR%
 call :CHECK_URL url URL || goto :CONTINUEYOUTUBEDL
 set a=--add-metadata !a! "!url!"
-echo:
-if not exist "Portable_Apps\YouTube-DL\ffmpeg.exe" call :CURL "Portable_Apps\YouTube-DL\ffmpeg.7z" "`git_raw_downloads`/ffmpeg.7z" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
-if "!youtube_dl!"=="youtube-dl" if not exist "Portable_Apps\YouTube-DL\youtube-dl.exe" call :CURL "Portable_Apps\YouTube-DL\youtube-dl.exe" "https://yt-dl.org/downloads/latest/youtube-dl.exe" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
-if "!youtube_dl!"=="yt-dlp" if not exist "Portable_Apps\YouTube-DL\yt-dlp.exe" call :CURL "Portable_Apps\YouTube-DL\yt-dlp.exe" "https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp_x86.exe" || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
+echo !CYAN!
+if not exist "Portable_Apps\YouTube-DL\ffmpeg.exe" (
+    call :CURL "Portable_Apps\YouTube-DL\ffmpeg.7z" "`git_raw_downloads`/ffmpeg.7z" || (
+        call :ERROR_INTERNET
+        goto :CONTINUEYOUTUBEDL
+    )
+)
+if not exist "Portable_Apps\YouTube-DL\!youtube_dl_executable!" (
+    if "!youtube_dl_type!"=="youtube-dl" (
+        call :CURL "Portable_Apps\YouTube-DL\!youtube_dl_executable!" "https://yt-dl.org/downloads/latest/!youtube_dl_executable!" || (
+            call :ERROR_INTERNET
+            goto :CONTINUEYOUTUBEDL
+        )
+    ) else if "!youtube_dl_type!"=="yt-dlp" (
+        call :CURL "Portable_Apps\YouTube-DL\!youtube_dl_executable!" "https://github.com/yt-dlp/yt-dlp/releases/latest/download/!youtube_dl_executable!" || (
+            call :ERROR_INTERNET
+            goto :CONTINUEYOUTUBEDL
+        )
+    )
+)
 pushd "Portable_Apps\YouTube-DL"
-2>nul !youtube_dl!.exe -U --no-check-certificate | findstr /vic:"!youtube_dl! is up" /c:"Current Build Hash"
+if "!youtube_dl_type!"=="youtube-dl" (
+    for %%A in (youtube-dl.exe.new youtube-dl-updater.bat) do (
+        if exist "%%A" (
+            del /f /q "%%~A"
+        )
+    )
+)
+if "!youtube_dl_type!"=="youtube-dl" (
+    2>nul !youtube_dl_executable! -U --no-check-certificate | find /v /i "!youtube_dl_type! is up-to-date ("
+) else if "!youtube_dl_type!"=="yt-dlp" (
+    2>nul !youtube_dl_executable! -U --no-check-certificate | find /v /i "Latest version: " | find /v /i "!youtube_dl_type! is up to date (" | find /v /i "Current Build Hash"
+)
 :YOUTUBEDL_UPDATER
-for %%A in (*.new *updater.bat *updater.cmd) do if exist "%%A" goto :YOUTUBEDL_UPDATER
+if "!youtube_dl_type!"=="youtube-dl" (
+    if exist "youtube-dl-updater.bat" (
+        goto :YOUTUBEDL_UPDATER
+    )
+    if exist "youtube-dl.exe.new" (
+        del /f /q "youtube-dl.exe"
+        ren "youtube-dl.exe.new" "youtube-dl.exe"
+    )
+)
 popd
 start "" "%~f0" YOUTUBEDL
 goto :CONTINUEYOUTUBEDL
@@ -1015,7 +1071,7 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 89 36
+call :SCALE 89 35
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1023,16 +1079,16 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresslab.sx/ stresser.zone/ wannabe1337.xyz/stresser vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ databooter.to/ asylumstresser.to/ ddosforhire.net/
+set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresslab.sx/ stresser.zone/ wannabe1337.xyz/stresser vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 89 37
+call :SCALE 89 35
 echo !CYAN!
 echo !\E![23C══════════════════════════════════════
 echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
 echo !\E![8C╔════════════════════════════════╦══════════════════════════════════════╗
-echo !\E![8C║   !1!!GREEN!redstresser.cc!CYAN!         ║  [RECOMMENDED]  [  10/Gbps] [350/s]  ║
+echo !\E![8C║   !1!redstresser.cc!CYAN!         ║  [BEST]         [  10/Gbps] [350/s]  ║
 echo !\E![8C║   !2!quez.in!CYAN!                ║  [BEST]         [   5/Gbps] [300/s]  ║
 echo !\E![8C║   !3!instant-stresser.com!CYAN!   ║  [BEST]         [   1/Gbps] [300/s]  ║
 echo !\E![8C║   !4!freestresser.to!CYAN!        ║  [BEST]         [   1/Gbps] [300/s]  ║
@@ -1052,29 +1108,19 @@ echo !\E![8C║  !17!stresser.gg!CYAN!            ║                 [ 3-5/Gbps
 echo !\E![8C║  !18!ipstresser.io!CYAN!          ║                 [   2/Gbps] [ 60/s]  ║
 echo !\E![8C║  !19!deltastress.com!CYAN!        ║                 [   ?/Gbps] [ 60/s]  ║
 echo !\E![8C║  !20!str3sser.io!CYAN!            ║                 [   1/Gbps] [ 60/s]  ║
-echo !\E![8C║  !21!databooter.to!CYAN!          ║                 [   1/Gbps] [ 60/s]  ║
-echo !\E![8C║  !22!asylumstresser.to!CYAN!      ║                 [   1/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩══════════════════════════════════════╣
 if "!language!"=="EN" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index only stressers in layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!29/01/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !23!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!24/02/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !21!ddosforhire.net"
 )
 if "!language!"=="FR" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index seulement les stresseurs en layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!29/01/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !23!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!24/02/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !21!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚═══════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
-if "!1!"=="!YELLOW!1 !CHECKED!" (
-    if not defined DDOS (
-        if "!language!"=="EN" set t="RedStresser: 10%% off purchase on all available plans.!\N!!\N!Coupon code: illegalservices"
-        if "!language!"=="FR" set t="RedStresser: 10%% de réduction à l'achat sur tous les plans disponible.!\N!!\N!Code promo: illegalservices"
-        call :MSGBOX 69696 "Illegal Services"
-        set DDOS=1
-    )
-)
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
 call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
@@ -2126,6 +2172,7 @@ if "!language!"=="FR" (
     set o5=Site Internet Changé d'Addresse
     set o6=Site Internet Changé de Domaine
 )
+call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "IS.bookmarks.html"') do (
     set /a index+=1
     title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^|  [...] - Illegal Services
@@ -2142,19 +2189,27 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "IS.bookmarks.html"') do
     )
     set "src_url=%%A"
     for /f "delims=/" %%B in ("!src_url:*://=!") do (
-        <nul set /p="!\E!]0;!DEBUG![!results! result!s! found from !counter!/!index! websites indexed]  ^|  [!percentage!/100%%]  ^|  [!src_url!] - Illegal Services!\E!\"
+        <nul set /p="!\E!]0;!DEBUG![!results! result!s! found from !counter!/!index! websites indexed]  |  [!percentage!/100%%]  |  [!src_url!] - Illegal Services!\E!\"
         if not defined website_[%%A] (
             set website_[%%A]=1
-            >nul ping -w 1000 -n 1 "%%B" || >nul curl.exe -IkLs -X GET "!src_url!" || (
-                if !errorlevel!==6 (
-                    set /a results+=1
-                    echo !RED!!o1!: !YELLOW!!src_url! !RED!!o3! ^^!
-                ) else (
-                    set /a results+=1
-                    echo !RED!!o2!: !YELLOW!!src_url! !RED!!o3! ^^!
-                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+            >nul ping -w 1000 -n 1 "%%B" || (
+                >nul curl.exe -IkLs -X GET "!src_url!" || (
+                    if !errorlevel!==6 (
                         set /a results+=1
-                        echo !RED!!o2!: !YELLOW!!src_url! !RED!!o4! ^^!
+                        echo !RED!!o1!: !YELLOW!!src_url! !RED!!o3! ^^!
+                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                            set /a results+=1
+                            echo !RED!!o2!: !YELLOW!!src_url! !RED!!o4! ^^!
+                        )
+                    ) else (
+                        call :PROTECTED_WEBSITE_DETECTION src_url || (
+                            set /a results+=1
+                            echo !RED!!o2!: !YELLOW!!src_url! !RED!!o3! ^^!
+                            curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                set /a results+=1
+                                echo !RED!!o2!: !YELLOW!!src_url! !RED!!o4! ^^!
+                            )
+                        )
                     )
                 )
             )
@@ -2190,9 +2245,71 @@ echo:
 pause
 exit 0
 
+:PROTECTED_WEBSITE_DETECTION
+if not defined %1 (
+    exit /b 1
+)
+if defined cn (
+    set cn=
+)
+for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" ^| findstr /ric:"^^Connection: keep-alive$" /c:"^^Server: ddos-guard$"') do (
+    if /i "%%A: %%B"=="Connection: keep-alive" (
+        set /a cn+=1
+    ) else if /i "%%A: %%B"=="Server: ddos-guard" (
+        set /a cn+=1
+    )
+)
+if defined cn (
+    if !cn!==2 (
+        goto :PROTECTED_WEBSITE_DETECTED
+    )
+)
+for %%A in (cn http_code) do (
+    if defined %%A (
+        set %%A=
+    )
+)
+for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" -w "%%{response_code}" ^| findstr /ric:"^^Connection: close$" /c:"^^Server: cloudflare$" /c:"^^CF-RAY: [a-z0-9]*-[A-Z]*$" /c:"^^[0-9]*$"') do (
+    if /i "%%A: %%B"=="Connection: close" (
+        set /a cn+=1
+    ) else if /i "%%A: %%B"=="Server: cloudflare" (
+        set /a cn+=1
+    ) else if /i "%%A: "=="CF-RAY: " (
+        set /a cn+=1
+    ) else (
+        set "x=%%A"
+        call :CHECK_NUMBER x && (
+            set /a cn+=1
+            set "http_code=%%A"
+        )
+    )
+)
+if defined cn (
+    if defined http_code (
+        if !cn!==4 (
+            if not "!http_code!"=="403" (
+                if not "!http_code!"=="503" (
+                    set http_code=
+                )
+            )
+            if defined http_code (
+                goto :PROTECTED_WEBSITE_DETECTED
+            )
+        )
+    )
+)
+for %%A in (cn http_code) do (
+    if defined %%A (
+        set %%A=
+    )
+)
+exit /b 0
+:PROTECTED_WEBSITE_DETECTED
+exit /b 1
+
 :PROCESS_YOUTUBEDL
 call :CHECK_YOUTUBEDLPRIORITY
-title !DEBUG!YouTube DL    ^|!youtube_dl!.exe !a!^|    ^|!o1!^|    ^|Priority: !YouTubeDLPriority:~1!^| - Illegal Services
+<nul set /p="!\E!]0;!DEBUG!YouTube DL    |!youtube_dl_executable! !a!|    |!o1!|    |Priority: !YouTubeDLPriority:~1!| - Illegal Services!\E!\"
 echo !BRIGHTBLACK!
 echo !\E![7C##############################################
 if "!language!"=="EN" echo !\E![7C#       !BRIGHTRED!♥   !CYAN!Welcome in YouTube DL   !BRIGHTRED!♥!BRIGHTBLACK!        #
@@ -2212,7 +2329,7 @@ echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
-start /b /w !YouTubeDLPriority! Portable_Apps\YouTube-DL\!youtube_dl!.exe --ffmpeg-location "Portable_Apps\YouTube-DL" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
+start /b /w !YouTubeDLPriority! Portable_Apps\YouTube-DL\!youtube_dl_executable! --ffmpeg-location "Portable_Apps\YouTube-DL" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
 set el=!errorlevel!
 echo !BRIGHTBLACK!
 echo =========================================================================================================
@@ -2238,7 +2355,7 @@ exit 0
 
 :PROCESS_NMAP
 call :CHECK_PORTPRIORITY
-title !DEBUG!NMAP    ^|nmap.exe !a!^|    ^|!o1!^|    ^|!o2!^|    ^|Priority: !PortPriority:~1!^| - Illegal Services
+<nul set /p="!\E!]0;!DEBUG!NMAP    |nmap.exe !a!|    |!o1!|    |!o2!|    |Priority: !PortPriority:~1!| - Illegal Services!\E!\"
 >nul 2>&1 net start npcap
 for %%A in (MaxUserPort`64534 TcpTimedWaitDelay`30 StrictTimeWaitSeqCheck`1) do for /f "tokens=1,2delims=`" %%B in ("%%~A") do >nul reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "%%B" /t REG_DWORD /d %%C /f
 echo !BRIGHTBLACK!
@@ -2354,6 +2471,92 @@ for %%A in (1.1.1.1 8.8.8.8) do (
     )
 )
 exit /b 1
+
+:CHECK_FILE_SIGNATURE
+if not exist "%~f1" (
+    exit /b 1
+)
+if "%~2"=="" (
+    exit /b 1
+)
+>nul 2>&1 !binread.exe! "!binread.exe!" 0
+if !errorlevel!==9020 (
+    del /f /q "!binread.exe!"
+    exit /b 1
+)
+if defined file_signature (
+    set file_signature=
+)
+for /f %%A in ('!binread.exe! "%~f1" %2') do (
+    set "file_signature=!file_signature!%%A"
+)
+if defined file_signature (
+    if "%~3"=="IS_BOOKMARKS_PARSER" (
+        if "!file_signature:~0,70!"=="3C21444F4354595045204E455453434150452D426F6F6B6D61726B2D66696C652D313E" (
+            exit /b 0
+        ) else (
+            exit /b 4
+        )
+    ) else (
+        if "%~2"=="8" (
+            if "%~x1"==".exe" (
+                if "!file_signature:~0,4!"=="4D5A" (
+                    exit /b 0
+                )
+            ) else if "%~x1"==".zip" (
+                if "!file_signature:~0,8!"=="504B0304" (
+                    exit /b 0
+                ) else if "!file_signature:~0,4!"=="504B0506" (
+                    exit /b 0
+                ) else if "!file_signature:~0,4!"=="504B0708" (
+                    exit /b 0
+                )
+            ) else if "%~x1"==".7z" (
+                if "!file_signature:~0,12!"=="377ABCAF271C" (
+                    exit /b 0
+                )
+            ) else (
+                exit /b 0
+            )
+        )
+    )
+)
+exit /b 1
+
+
+:CHECK_NUMBER
+if "%~1"=="" exit /b 1
+for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
+exit /b 0
+
+
+:CHECK_FILE_NEWLINE
+if not exist "!%1!" (
+    exit /b 0
+)
+if defined write_newline (
+    set write_newline=
+)
+<"!%1!" >nul (
+    for %%A in ("!%1!") do (
+        for /l %%. in (2 1 %%~zA) do (
+            pause
+        )
+        set /p write_newline=
+    )
+)
+if defined write_newline (
+    set write_newline=
+    exit /b 1
+)
+exit /b 0
+
+:CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
+>nul 2>&1 !bookmarks_parser.exe! -h
+if not !errorlevel!==0 (
+    call :ERROR_FATAL ERRORLEVEL !bookmarks_parser.exe!
+)
+exit /b
 
 :MSGBOX
 >"!TMPF!\msgbox.vbs" echo MsgBox WScript.Arguments(0),WScript.Arguments(1),WScript.Arguments(2)
@@ -2557,57 +2760,6 @@ for %%A in (main downloads source) do (
 )
 call :ERROR_CURL "%~f1"
 exit /b 4
-
-:CHECK_FILE_SIGNATURE
-if not exist "%~f1" (
-    exit /b 1
-)
-if "%~2"=="" (
-    exit /b 1
-)
->nul 2>&1 !binread.exe! "!binread.exe!" 0
-if !errorlevel!==9020 (
-    del /f /q "!binread.exe!"
-    exit /b 1
-)
-if defined file_signature (
-    set file_signature=
-)
-for /f %%A in ('!binread.exe! "%~f1" %2') do (
-    set "file_signature=!file_signature!%%A"
-)
-if defined file_signature (
-    if "%~3"=="IS_BOOKMARKS_PARSER" (
-        if "!file_signature:~0,70!"=="3C21444F4354595045204E455453434150452D426F6F6B6D61726B2D66696C652D313E" (
-            exit /b 0
-        ) else (
-            exit /b 4
-        )
-    ) else (
-        if "%~2"=="8" (
-            if "%~x1"==".exe" (
-                if "!file_signature:~0,4!"=="4D5A" (
-                    exit /b 0
-                )
-            ) else if "%~x1"==".zip" (
-                if "!file_signature:~0,8!"=="504B0304" (
-                    exit /b 0
-                ) else if "!file_signature:~0,4!"=="504B0506" (
-                    exit /b 0
-                ) else if "!file_signature:~0,4!"=="504B0708" (
-                    exit /b 0
-                )
-            ) else if "%~x1"==".7z" (
-                if "!file_signature:~0,12!"=="377ABCAF271C" (
-                    exit /b 0
-                )
-            ) else (
-                exit /b 0
-            )
-        )
-    )
-)
-exit /b 1
 
 :ERROR_CURL
 if "!language!"=="EN" set "t=ERROR WHILE DOWNLOADING: "
@@ -2862,56 +3014,15 @@ if defined DBLastDownload (
     if "!DBLastDownload!"=="N/A" (
         exit /b
     )
-    for /f "tokens=1-5delims=- " %%A in ("!DBLastDownload!") do (
-        call :CHECKNUMBER "%%A" && (
-            if "%%B"=="01" (
-                set y1=31
-            ) else if "%%B"=="02" (
-                set "years=%%A"
-                call :IS_LEAP_YEAR_OR_NOT
-                if !leap!==1 (
-                    set y1=29
-                ) else (
-                    set y1=28
-                )
-            ) else if "%%B"=="03" (
-                set y1=31
-            ) else if "%%B"=="04" (
-                set y1=30
-            ) else if "%%B"=="05" (
-                set y1=31
-            ) else if "%%B"=="06" (
-                set y1=30
-            ) else if "%%B"=="07" (
-                set y1=31
-            ) else if "%%B"=="08" (
-                set y1=31
-            ) else if "%%B"=="09" (
-                set y1=30
-            ) else if "%%B"=="10" (
-                set y1=31
-            ) else if "%%B"=="11" (
-                set y1=30
-            ) else if "%%B"=="12" (
-                set y1=31
-            )
-            if defined y1 (
-                call :CHECKNUMBERBETWEENCUSTOM "%%C" 01-!y1! && (
-                    call :CHECKNUMBERBETWEENCUSTOM "%%D" 00-24 && (
-                        call :CHECKNUMBERBETWEENCUSTOM "%%E" 00-59 && (
-                            exit /b
-                        )
-                    )
-                )
-            )
-        )
+    call :CHECK_IS_BOOKMARKS_DATE_TIME DBLastDownload && (
+        exit /b
     )
 )
 call :ERROR_REGEDIT DBLastDownload DBLastDownload
 >nul reg add "!IS_REG!" /v "DBLastDownload" /t REG_SZ /d "N/A" /f
 goto :CHECK_DBLASTDOWNLOAD
 
-:CHECKNUMBERBETWEENCUSTOM
+:CHECK_NUMBER_BETWEEN_CUSTOM
 if "%~1"=="" exit /b 1
 for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
 for /f "tokens=1,2delims=-" %%A in ("%~2") do (
@@ -3108,7 +3219,7 @@ set #el=0
 ) else if "!el!"=="," (
 if not "!x:~0,1!"=="," if not "!x:~-1!"=="," for %%A in (!x!) do (
 set "el=%%~A"
-if not "!el:~0,1!"=="0" call :CHECKNUMBER "%%~A" && if %%A geq !c1! if %%A leq !c2! if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
+if not "!el:~0,1!"=="0" call :CHECK_NUMBER "%%~A" && if %%A geq !c1! if %%A leq !c2! if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
 set "%%A=!YELLOW!%%A !UNCHECKED!"
 set #el=0
 ) else (
@@ -3140,7 +3251,7 @@ exit /b !#el!
 if "%%A"=="*" if not "%%B"=="*" (
 set "el=%%B"
 if "!el:~0,1!"=="0" exit /b 1
-call :CHECKNUMBER "%%B" || exit /b 1
+call :CHECK_NUMBER "%%B" || exit /b 1
 for /l %%C in (!c1!,1,%%B) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
 set "%%C=!YELLOW!%%C !UNCHECKED!"
 set #el=0
@@ -3154,7 +3265,7 @@ exit /b !#el!
 if "%%B"=="*" if not "%%A"=="*" (
 set "el=%%A"
 if "!el:~0,1!"=="0" exit /b 1
-call :CHECKNUMBER "%%A" || exit /b 1
+call :CHECK_NUMBER "%%A" || exit /b 1
 for /l %%C in (%%A,1,!c2!) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
 set "%%C=!YELLOW!%%C !UNCHECKED!"
 set #el=0
@@ -3168,7 +3279,7 @@ exit /b !#el!
 for %%C in ("%%~A" "%%~B") do (
 set "el=%%~C"
 if "!el:~0,1!"=="0" exit /b 1
-call :CHECKNUMBER "%%~C" || exit /b 1
+call :CHECK_NUMBER "%%~C" || exit /b 1
 )
 if %%A leq %%B if %%A geq !c1! if %%A leq !c2! if %%B geq !c1! if %%B leq !c2! for /l %%D in (%%A,1,%%B) do if "!%%D!"=="!YELLOW!%%D !CHECKED!" (
 set "%%D=!YELLOW!%%D !UNCHECKED!"
@@ -3196,11 +3307,6 @@ for /l %%A in (1,1,!untrusted_website_index!) do (
     )
 )
 exit /b
-
-:CHECKNUMBER
-if "%~1"=="" exit /b 1
-for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
-exit /b 0
 
 :WEBSITESTART
 if defined x exit /b 1
@@ -3259,13 +3365,13 @@ popd
 exit /b
 
 :START_WINDOWSISODOWNLOADER
-if not exist "Portable_Apps\Windows-ISO-Downloader.exe" (
-    call :CURL "Portable_Apps\Windows-ISO-Downloader.exe" "https://heidoc.net/php/Windows-ISO-Downloader.exe" || (
+if not exist "Portable_Apps\Windows-ISO-Downloader\Windows-ISO-Downloader.exe" (
+    call :CURL "Portable_Apps\Windows-ISO-Downloader\Windows-ISO-Downloader.exe" "https://heidoc.net/php/Windows-ISO-Downloader.exe" || (
         call :ERROR_INTERNET
         exit /b
     )
 )
-pushd "Portable_Apps"
+pushd "Portable_Apps\Windows-ISO-Downloader"
 start "" "Windows-ISO-Downloader.exe"
 popd
 exit /b
@@ -3526,27 +3632,6 @@ exit /b 0
 )
 exit /b 1
 
-:CHECK_FILE_NEWLINE
-if not exist "!%1!" (
-    exit /b 0
-)
-if defined write_newline (
-    set write_newline=
-)
-<"!%1!" >nul (
-    for %%A in ("!%1!") do (
-        for /l %%. in (2 1 %%~zA) do (
-            pause
-        )
-        set /p write_newline=
-    )
-)
-if defined write_newline (
-    set write_newline=
-    exit /b 1
-)
-exit /b 0
-
 :MISSING_FILE
 if not defined x1 (
 if "!language!"=="EN" echo !RED![FAILED: missing file^(s^)] . . .
@@ -3564,61 +3649,74 @@ for %%A in (x1 x2) do (
     )
 )
 if "%1"=="UNICODE" (
-if "!language!"=="EN" set t="Illegal Services cannot start because Unicode characters cannot be displayed correctly.!\N!!\N!If you receive this error message, then you are probably experiencing this bug issue: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!For more information, contact us on our Telegram forum."
-if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car les caractères Unicode ne peuvent pas être affichés correctement.!\N!!\N!Si vous recevez ce message d'erreur, vous rencontrez probablement l'issue de ce bug: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!Pour plus d'informations, contactez-nous sur le forum Telegram d'Illegal Services."
-set x2=1
+    if "!language!"=="EN" set t="Illegal Services cannot start because Unicode characters cannot be displayed correctly.!\N!!\N!If you receive this error message, then you are probably experiencing this bug issue: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!For more information, contact us on our Telegram forum."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car les caractères Unicode ne peuvent pas être affichés correctement.!\N!!\N!Si vous recevez ce message d'erreur, vous rencontrez probablement l'issue de ce bug: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!Pour plus d'informations, contactez-nous sur le forum Telegram d'Illegal Services."
+    set x2=1
 ) else if "%1"=="NAME" (
-if "!language!"=="EN" set t="Invalid characters detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
-if "!language!"=="FR" set t="Caractères invalides détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
+    if "!language!"=="EN" set t="Invalid characters detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
+    if "!language!"=="FR" set t="Caractères invalides détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
 ) else if "%1"=="WINDOWS_VERSION" (
-if "!language!"=="EN" set t="ERROR: Your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
-if "!language!"=="FR" set t="ERREUR: Votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
+    if "!language!"=="EN" set t="ERROR: Your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
+    if "!language!"=="FR" set t="ERREUR: Votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
 ) else if "%1"=="CHCP1" (
-if "!language!"=="EN" set t="Illegal Services could not determine your CHCP number.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
-if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre numéro CHCP.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
-set x2=1
+    if "!language!"=="EN" set t="Illegal Services could not determine your CHCP number.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre numéro CHCP.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
 ) else if "%1"=="CHCP2" (
-if "!language!"=="EN" set t="Illegal Services could not set your CHCP number to 65001.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
-if "!language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro CHCP sur 65001.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
-set x2=1
+    if "!language!"=="EN" set t="Illegal Services could not set your CHCP number to 65001.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro CHCP sur 65001.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
 ) else if "%1"=="TMP" (
-if "!language!"=="EN" (
-set t1="Your 'TEMP' and 'TMP' environment variables do not exist."
-set t2="Please fix one of them and try again."
-)
-if "!language!"=="FR" (
-set t1="Vos variables d'environnement 'TEMP' et 'TMP' n'existent pas."
-set t2="Veuillez réparer l'une d'entre elles et réessayer."
-)
-set /a x1=1, x2=1
+    if "!language!"=="EN" (
+        set t1="Your 'TEMP' and 'TMP' environment variables do not exist."
+        set t2="Please fix one of them and try again."
+    )
+    if "!language!"=="FR" (
+        set t1="Vos variables d'environnement 'TEMP' et 'TMP' n'existent pas."
+        set t2="Veuillez réparer l'une d'entre elles et réessayer."
+    )
+    set /a x1=1, x2=1
+) else if "%1"=="ERRORLEVEL" (
+    if !errorlevel!==5 (
+        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services folder in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
+        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
+    ) else (
+        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be impossible.!\N!!\N!Please report this bug: '!errorlevel!' on our Telegram forum in order to correct this bug in a future release."
+        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!errorlevel!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+        set x2=1
+    )
 ) else (
-if "!language!"=="EN" set "t=Illegal Services can't start because '!IS_DIR!%1' is missing."
-if "!language!"=="FR" set "t=Illegal Services ne peut pas démarrer car '!IS_DIR!%1' est manquant."
-if "%2"=="CURL" (
-if "!language!"=="EN" set "t=!t!!\N!!\N!Please reinstall Illegal Services and try again."
-if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez réinstaller Illegal Services et réessayer."
-set x2=2
-) else (
-if !errorlevel!==1 (
-if "!language!"=="EN" set "t=!t!!\N!!\N!You must activate Internet and try again."
-if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez activer Internet et réessayer."
-)
-if !errorlevel!==2 (
-if "!language!"=="EN" set "t=!t!!\N!!\N!IS Git proxy: '!git!' appears to be offline. For more updates visit our Telegram."
-if "!language!"=="FR" set "t=!t!!\N!!\N!IS Git proxy: '!git!' semble être hors ligne. Pour plus de mises à jour, visitez notre Telegram."
-set x2=1
-)
-)
-set t="!t!"
+    if "!language!"=="EN" set "t=Illegal Services can't start because '!IS_DIR!%1' is missing."
+    if "!language!"=="FR" set "t=Illegal Services ne peut pas démarrer car '!IS_DIR!%1' est manquant."
+    if "%2"=="CURL" (
+        if "!language!"=="EN" set "t=!t!!\N!!\N!Please reinstall Illegal Services and try again."
+        if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez réinstaller Illegal Services et réessayer."
+        set x2=2
+    ) else (
+        if !errorlevel!==1 (
+            if "!language!"=="EN" set "t=!t!!\N!!\N!You must activate Internet and try again."
+            if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez activer Internet et réessayer."
+        ) else if !errorlevel!==2 (
+            if "!language!"=="EN" set "t=!t!!\N!!\N!IS Git proxy: '!git!' appears to be offline. For more updates visit our Telegram."
+            if "!language!"=="FR" set "t=!t!!\N!!\N!IS Git proxy: '!git!' semble être hors ligne. Pour plus de mises à jour, visitez notre Telegram."
+            set x2=1
+        )
+    )
+    set t="!t!"
 )
 if defined x1 (
-mshta vbscript:Execute^("msgbox "!t1!" & Chr(10) & Chr(10) & "!t2!",69648,""Illegal Services"":close"^)
+    mshta vbscript:Execute^("msgbox "!t1!" & Chr(10) & Chr(10) & "!t2!",69648,""Illegal Services"":close"^)
 ) else (
-call :MSGBOX 69648 "Illegal Services"
+    call :MSGBOX 69648 "Illegal Services"
 )
-if "!x2!"=="1" start "" "https://t.me/illegal_services_forum"
-if "!x2!"=="2" start "" "https://t.me/illegal_services"
->LOG_DUMP.txt set
+if "!x2!"=="1" (
+    start "" "https://t.me/illegal_services_forum"
+) else if "!x2!"=="2" (
+    start "" "https://t.me/illegal_services"
+)
+>LOG_DUMP.txt (
+    set
+)
 exit 0
 
 :PROCESS_IS_BOOKMARKS_PARSER
@@ -3641,6 +3739,7 @@ for %%A in (x warning_streaming warning_ip_loggers) do (
 )
 set LOOKUP_folders=`
 set /a search_root_folder=1, root_folder_length=0
+call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "IS.bookmarks.html"') do (
     if defined search_root_folder (
         if "%%A"=="1" (
@@ -4077,7 +4176,7 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\Sophia Script`Sophia.Script.v5.12.3.zip"
             "Illegal Services\Portable Apps\Sophia Script Windows 11`Sophia.Script.Windows.11.v6.0.4.zip"
             "Illegal Services\Portable Apps\Sophia Script Wrapper`Sophia.Script.Wrapper.v2.4.zip"
-            "Illegal Services\Portable Apps\TCP Optimizer`TCPOptimizer.exe"
+            "Illegal Services\Portable Apps\TCP Optimizer`TCPOptimizer\TCPOptimizer.exe"
             "Illegal Services\Portable Apps\DNS Jumper`DnsJumper.7z"
             "Illegal Services\Portable Apps\SpeedyFox`Speedyfox.zip"
             "Illegal Services\Portable Apps\Autoruns`Autoruns.zip"
@@ -4085,7 +4184,7 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\CCEnhancer`CCEnhancer Multilingual.zip"
             "Illegal Services\Portable Apps\BleachBit`BleachBit.zip"
             "Illegal Services\Portable Apps\Dism++`Dism++.zip"
-            "Illegal Services\Portable Apps\Glary Utilities`GlaryUtilities.exe"
+            "Illegal Services\Portable Apps\Glary Utilities`GlaryUtilities\GlaryUtilities.exe"
             "Illegal Services\Portable Apps\Revo Uninstaller`RevoUninstaller.zip"
             "Illegal Services\Portable Apps\Czkawka`windows_czkawka_gui.zip"
             "Illegal Services\Portable Apps\Windows Repair AIO`Tweaking.com - Windows Repair.7z"
@@ -4093,9 +4192,9 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\FixWin 10`FixWin10.zip"
             "Illegal Services\Portable Apps\FixWin 2`fixwin2.zip"
             "Illegal Services\Portable Apps\FixWin`FixWin.zip"
-            "Illegal Services\Portable Apps\Patch My PC`PatchMyPC.exe"
-            "Illegal Services\Portable Apps\UCheck x64`UCheck_portable64.exe"
-            "Illegal Services\Portable Apps\UCheck x86`UCheck_portable32.exe"
+            "Illegal Services\Portable Apps\Patch My PC`PatchMyPC\PatchMyPC.exe"
+            "Illegal Services\Portable Apps\UCheck x64`UCheck_portable64\UCheck_portable64.exe"
+            "Illegal Services\Portable Apps\UCheck x86`UCheck_portable32\UCheck_portable32.exe"
             "Illegal Services\Portable Apps\Windows Update MiniTool x64`Windows_Update_MiniTool.7z"
             "Illegal Services\Portable Apps\WSUS Offline Update`WSUS Offline Update.zip"
             "Illegal Services\Portable Apps\DriversCloud x64`DriversCloud.zip"
@@ -4107,29 +4206,29 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\Radeon Software Slimmer net60`RadeonSoftwareSlimmer_1.4.0_net48.zip"
             "Illegal Services\Portable Apps\Radeon Software Slimmer net48`RadeonSoftwareSlimmer_1.4.0_net60.zip"
             "Illegal Services\Portable Apps\NVSlimmer`NVSlimmer.zip"
-            "Illegal Services\Portable Apps\NVCleanstall`NVCleanstall_1.10.0.exe"
-            "Illegal Services\Portable Apps\MSI Util v3`MSI_util_v3.exe"
+            "Illegal Services\Portable Apps\NVCleanstall`NVCleanstall\NVCleanstall.exe"
+            "Illegal Services\Portable Apps\MSI Util v3`MSI_util_v3\MSI_util_v3.exe"
             "Illegal Services\Portable Apps\CPU-Z`CPU-Z.zip"
-            "Illegal Services\Portable Apps\OOSU10 (Win 10)`OOSU10.exe"
-            "Illegal Services\Portable Apps\Ashampoo AntiSpy (Win 10)`Ashampoo_AntiSpy.exe"
+            "Illegal Services\Portable Apps\OOSU10 (Win 10)`OOSU10\OOSU10.exe"
+            "Illegal Services\Portable Apps\Ashampoo AntiSpy (Win 10)`Ashampoo_AntiSpy\Ashampoo_AntiSpy.exe"
             "Illegal Services\Portable Apps\DoNotSpy 10`DoNotSpy10.7z"
             "Illegal Services\Portable Apps\Windows Privacy Dashboard`Windows Privacy Dashboard.zip"
             "Illegal Services\Portable Apps\Windows 10 Privacy`W10Privacy.zip"
-            "Illegal Services\Portable Apps\Windows Spy Blocker`WindowsSpyBlocker.exe"
+            "Illegal Services\Portable Apps\Windows Spy Blocker`WindowsSpyBlocker\WindowsSpyBlocker.exe"
             "Illegal Services\Portable Apps\Destroy Windows 10 Spying`Destroy Windows 10 Spying.zip"
             "Illegal Services\Portable Apps\Destroy Windows 10 Spying RE`Destroy Windows 10 Spying RE.zip"
             "Illegal Services\Portable Apps\Blackbird x64`Blackbird.zip"
             "Illegal Services\Portable Apps\Blackbird x32`Blackbird.zip"
-            "Illegal Services\Portable Apps\ADW Cleaner`AdwCleaner.exe"
-            "Illegal Services\Portable Apps\ZHP Cleaner`ZHPCleaner.exe"
-            "Illegal Services\Portable Apps\Rogue Killer x64`RogueKiller_portable64.exe"
-            "Illegal Services\Portable Apps\Rogue Killer x86`RogueKiller_portable86.exe"
-            "Illegal Services\Portable Apps\No Bot`NoBot.exe"
-            "Illegal Services\Portable Apps\Kaspersky KVRT`KVRT.exe"
-            "Illegal Services\Portable Apps\Kaspersky TDSSKiller`tdsskiller.exe"
-            "Illegal Services\Portable Apps\Microsoft Safety Scanner x64`MSERT.exe"
-            "Illegal Services\Portable Apps\Microsoft Safety Scanner x86`MSERT.exe"
-            "Illegal Services\Portable Apps\Spybot - Search and Destroy`SpybotPortable_2.7.64-2020-02.paf.exe"
+            "Illegal Services\Portable Apps\ADW Cleaner`AdwCleaner\AdwCleaner.exe"
+            "Illegal Services\Portable Apps\ZHP Cleaner`ZHPCleaner\ZHPCleaner.exe"
+            "Illegal Services\Portable Apps\Rogue Killer x64`RogueKiller_portable64\RogueKiller_portable64.exe"
+            "Illegal Services\Portable Apps\Rogue Killer x86`RogueKiller_portable86\RogueKiller_portable86.exe"
+            "Illegal Services\Portable Apps\No Bot`NoBot\NoBot.exe"
+            "Illegal Services\Portable Apps\Kaspersky KVRT`KVRT\KVRT.exe"
+            "Illegal Services\Portable Apps\Kaspersky TDSSKiller`tdsskiller\tdsskiller.exe"
+            "Illegal Services\Portable Apps\Microsoft Safety Scanner x64`MSERT\MSERT.exe"
+            "Illegal Services\Portable Apps\Microsoft Safety Scanner x86`MSERT\MSERT.exe"
+            "Illegal Services\Portable Apps\Spybot - Search and Destroy`SpybotPortable\SpybotPortable_2.7.64-2020-02.paf.exe"
             "Illegal Services\Portable Apps\Batch Antivirus`Batch Antivirus.zip"
             "Illegal Services\Portable Apps\Everything x64`Everything-x64.zip"
             "Illegal Services\Portable Apps\Everything x86`Everything-x86.zip"
@@ -4138,11 +4237,11 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\Defender Control`DefenderControl.zip"
             "Illegal Services\Portable Apps\Edge Blocker`EdgeBlocker.zip"
             "Illegal Services\Portable Apps\Mem Reduct`memreduct-3.4-bin.zip"
-            "Illegal Services\Portable Apps\GiveMePower`GiveMePower v2.1.0.0.exe"
+            "Illegal Services\Portable Apps\GiveMePower`GiveMePower\GiveMePower v2.1.0.0.exe"
             "Illegal Services\Portable Apps\RegScanner x64`regscanner-x64.zip"
             "Illegal Services\Portable Apps\RegScanner x86`regscanner.zip"
-            "Illegal Services\Portable Apps\ISLC`ISLC v1.0.2.5.exe"
-            "Illegal Services\Portable Apps\Windows ISO Downloader`Windows-ISO-Downloader.exe"
+            "Illegal Services\Portable Apps\ISLC`ISLC\ISLC v1.0.2.5.exe"
+            "Illegal Services\Portable Apps\Windows ISO Downloader`Windows-ISO-Downloader\Windows-ISO-Downloader.exe"
         ) do (
             for /f "tokens=1*delims=`" %%C in ("%%~B") do (
                 if "!path_%%A!\!category_folder!\!name_%%A!"=="%%C" (
@@ -4150,8 +4249,6 @@ for /l %%A in (!c1!,1,!c2!) do (
                     call :CURL "Portable_Apps\%%D" "!url_%%A:%%=%%%%!" && (
                         if "%%C"=="Illegal Services\Doxing\Dox Tool v2" (
                             call :START_DOXTOOLV2
-                        ) else if "%%C"=="Illegal Services\Portable Apps\Windows ISO Downloader" (
-                            call :START_WINDOWSISODOWNLOADER
                         )
                     )
                 )
@@ -4270,23 +4367,23 @@ if defined current_folder (
 exit /b 1
 
 :IS_BOOKMARKS_COMPARE_NEW_DATE
-call :IS_BOOKMARKS_GET_NEW_DATE
+call :IS_BOOKMARKS_GET_NEW_DATE_TIME
 if "!DBLastDownload!"=="N/A" (
     set #el=1
     goto :1_IS_BOOKMARKS_COMPARE_NEW_DATE
 )
-set "old_date=!DBLastDownload!"
-for %%A in (old_date new_date) do (
+set "old_date_time=!DBLastDownload!"
+for %%A in (old_date_time new_date_time) do (
     call :2_IS_BOOKMARKS_COMPARE_NEW_DATE %%A
 )
-set /a "t1=new_date_t1-old_date_t1"
+set /a "t1=new_date_time_t1-old_date_time_t1"
 if !t1! gtr 1440 (
     set #el=1
 ) else (
     set #el=0
 )
 :1_IS_BOOKMARKS_COMPARE_NEW_DATE
-for %%A in (old_date years months days hours minutes leap leap_year leap_month old_date_t1 new_date_t1 t1) do (
+for %%A in (old_date_time years months days hours minutes leap leap_year leap_month old_date_time_t1 new_date_time_t1 t1) do (
     if defined %%A (
         set %%A=
     )
@@ -4294,7 +4391,7 @@ for %%A in (old_date years months days hours minutes leap leap_year leap_month o
 exit /b !#el!
 
 :2_IS_BOOKMARKS_COMPARE_NEW_DATE
-for /f "tokens=1-5delims=- " %%A in ("!%1!") do (
+for /f "tokens=1-5delims=:- " %%A in ("!%1!") do (
     set "years=%%A"
     set "months=%%B"
     set "days=%%C"
@@ -4347,12 +4444,21 @@ set /a "years*=leap_year, months*=leap_month, days*=1440, hours*=60, minutes*=1"
 set /a "%1_t1=years+months+days+hours+minutes"
 exit /b
 
-:IS_BOOKMARKS_GET_NEW_DATE
-for /f "tokens=2delims==." %%A in ('wmic os get Localdatetime /value') do (
-    set "new_date=%%~A"
-    set "new_date=!new_date:~0,-10!-!new_date:~-10,2!-!new_date:~-8,2! !new_date:~-6,2!-!new_date:~-4,2!"
+:IS_BOOKMARKS_GET_NEW_DATE_TIME
+for /f "tokens=2delims==." %%A in ('2^>nul wmic os get Localdatetime /value') do (
+    set "new_date_time=%%A"
+    set "new_date_time=!new_date_time:~0,-10!-!new_date_time:~-10,2!-!new_date_time:~-8,2! !new_date_time:~-6,2!:!new_date_time:~-4,2!"
 )
-exit /b
+call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
+    exit /b 0
+)
+for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}"') do (
+    set "new_date_time=%%A"
+)
+call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
+    exit /b 0
+)
+exit /b 1
 
 :DOWNLOAD_IS_BOOKMARKS_DB
 call :CHECK_FILE_SIGNATURE "IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER && (
@@ -4388,11 +4494,73 @@ call :CURL "IS.bookmarks.html" "`git_raw_downloads`/IS.bookmarks.html" || (
 call :CHECK_FILE_SIGNATURE_IS_BOOKMARKS_DB || (
     exit /b 1
 )
-call :IS_BOOKMARKS_GET_NEW_DATE
->nul reg add "!IS_REG!" /v "DBLastDownload" /t REG_SZ /d "!new_date!" /f
-set new_date=
+call :IS_BOOKMARKS_GET_NEW_DATE_TIME
+>nul reg add "!IS_REG!" /v "DBLastDownload" /t REG_SZ /d "!new_date_time!" /f
+set new_date_time=
 call :CHECK_DBLASTDOWNLOAD
 exit /b 0
+
+:CHECK_IS_BOOKMARKS_DATE_TIME
+if not defined %1 (
+    exit /b 1
+)
+if not "!%1:~4,1!"=="-" (
+    exit /b 1
+)
+if not "!%1:~7,1!"=="-" (
+    exit /b 1
+)
+if not "!%1:~10,1!"==" " (
+    exit /b 1
+)
+if not "!%1:~13,1!"==":" (
+    exit /b 1
+)
+for /f "tokens=1-5delims=:- " %%A in ("!%1!") do (
+    call :CHECK_NUMBER "%%A" && (
+        if "%%B"=="01" (
+            set y1=31
+        ) else if "%%B"=="02" (
+            set "years=%%A"
+            call :IS_LEAP_YEAR_OR_NOT
+            if !leap!==1 (
+                set y1=29
+            ) else (
+                set y1=28
+            )
+        ) else if "%%B"=="03" (
+            set y1=31
+        ) else if "%%B"=="04" (
+            set y1=30
+        ) else if "%%B"=="05" (
+            set y1=31
+        ) else if "%%B"=="06" (
+            set y1=30
+        ) else if "%%B"=="07" (
+            set y1=31
+        ) else if "%%B"=="08" (
+            set y1=31
+        ) else if "%%B"=="09" (
+            set y1=30
+        ) else if "%%B"=="10" (
+            set y1=31
+        ) else if "%%B"=="11" (
+            set y1=30
+        ) else if "%%B"=="12" (
+            set y1=31
+        )
+        if defined y1 (
+            call :CHECK_NUMBER_BETWEEN_CUSTOM "%%C" 01-!y1! && (
+                call :CHECK_NUMBER_BETWEEN_CUSTOM "%%D" 00-24 && (
+                    call :CHECK_NUMBER_BETWEEN_CUSTOM "%%E" 00-59 && (
+                        exit /b 0
+                    )
+                )
+            )
+        )
+    )
+)
+exit /b 1
 
 :CHECK_FILE_SIGNATURE_IS_BOOKMARKS_DB
 if not exist "IS.bookmarks.html" (
