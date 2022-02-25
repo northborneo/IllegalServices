@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 0. 1
-REM  Fileversion:  6. 1. 0. 1
+REM  Productversion:  6. 1. 0. 2
+REM  Fileversion:  6. 1. 0. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -157,7 +157,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.0.1 - 25/02/2022
+set VERSION=v6.1.0.2 - 25/02/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -286,10 +286,15 @@ call :ROSE "Welcome Back"
 if "!language!"=="EN" <nul set /p="!sp!Starting Illegal Services > "
 if "!language!"=="FR" <nul set /p="!sp!Démarrage d'Illegal Services > "
 for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
-    set "IS_OUTPUT_DIRECTORY=%%B\Illegal Services"
+    set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
 )
 call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
-    call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+    md "!IS_OUTPUT_DIRECTORY!"
+    if exist "!IS_OUTPUT_DIRECTORY!\" (
+        rd "!IS_OUTPUT_DIRECTORY!"
+    ) else (
+        call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+    )
 )
 set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
 set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
@@ -950,59 +955,69 @@ call :ERRORMESSAGE
 goto :CONTINUEYOUTUBEDL
 
 :GOYOUTUBEDL
-if "!x!"=="1" (
+if !x! geq 1 (
+    if !x! leq 6 (
+        set youtube_dl_format=video
+    )
+)
+if !x! geq 7 (
+    if !x! leq 14 (
+        set youtube_dl_format=audio
+    )
+)
+if !x!==1 (
 set o1=Convert to BEST
 set a=--format bestvideo[ext=best]+bestaudio[ext=best]/best
 )
-if "!x!"=="2" (
+if !x!==2 (
 set o1=Convert to .mp4
 set a=--merge-output-format mp4 --recode-video mp4
 )
-if "!x!"=="3" (
+if !x!==3 (
 set o1=Convert to .webm
 set a=--format bestvideo[ext=best]+bestaudio[ext=best]/best --recode-video webm
 )
-if "!x!"=="4" (
+if !x!==4 (
 set o1=Convert to .flv
 set a=--recode-video flv
 )
-if "!x!"=="5" (
+if !x!==5 (
 set o1=Convert to .mkv
 set a=--merge-output-format mkv --recode-video mkv
 )
-if "!x!"=="6" (
+if !x!==6 (
 set o1=Convert to .avi
 set a=--recode-video avi
 )
-if "!x!"=="7" (
+if !x!==7 (
 set o1=Convert to BEST
 set a=--extract-audio --format bestaudio[ext=best]/best --audio-quality 0
 )
-if "!x!"=="8" (
+if !x!==8 (
 set o1=Convert to .mp3
 set a=--extract-audio --audio-format mp3 --audio-quality 0
 )
-if "!x!"=="9" (
+if !x!==9 (
 set o1=Convert to .m4a
 set a=--extract-audio --audio-format m4a --audio-quality 0
 )
-if "!x!"=="10" (
+if !x!==10 (
 set o1=Convert to .flac
 set a=--extract-audio --audio-format flac --audio-quality 0
 )
-if "!x!"=="11" (
+if !x!==11 (
 set o1=Convert to .aac
 set a=--extract-audio --audio-format aac --audio-quality 0
 )
-if "!x!"=="12" (
+if !x!==12 (
 set o1=Convert to .opus
 set a=--extract-audio --audio-format opus --audio-quality 0
 )
-if "!x!"=="13" (
+if !x!==13 (
 set o1=Convert to .ogg
 set a=--merge-output-format ogg --extract-audio --audio-format vorbis --audio-quality 0
 )
-if "!x!"=="14" (
+if !x!==14 (
 set o1=Convert to .wav
 set a=--extract-audio --audio-format wav --audio-quality 0
 )
@@ -2342,8 +2357,8 @@ call :CHECK_YOUTUBEDLPRIORITY
 <nul set /p="!\E!]0;!DEBUG!YouTube Downloader    |!youtube_dl_executable! !a!|    |!o1!|    |Priority: !YouTubeDLPriority:~1!| - Illegal Services!\E!\"
 echo !BRIGHTBLACK!
 echo !\E![7C##############################################
-if "!language!"=="EN" echo !\E![7C#       !BRIGHTRED!♥   !CYAN!Welcome in YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!        #
-if "!language!"=="FR" echo !\E![7C#      !BRIGHTRED!♥   !CYAN!Bievenue dans YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!      #
+if "!language!"=="EN" echo !\E![7C#   !BRIGHTRED!♥   !CYAN!Welcome in YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!    #
+if "!language!"=="FR" echo !\E![7C#  !BRIGHTRED!♥   !CYAN!Bievenue dans YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!  #
 echo !\E![7C##############################################
 echo:
 if "!language!"=="EN" (
@@ -2359,7 +2374,7 @@ echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
-start /b /w !YouTubeDLPriority! "" "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\!youtube_dl_executable!" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
+start /b /w !YouTubeDLPriority! "" "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\!youtube_dl_executable!" --output "!YouTubeDLOutputDirectory!\!youtube_dl_format!\%%(title)s.%%(ext)s" !a!
 set el=!errorlevel!
 echo !BRIGHTBLACK!
 echo =========================================================================================================
@@ -2380,7 +2395,7 @@ echo !\E![7C♦ Une erreur s'est produite et n'a pas pu técharger le fichier.
 )
 %@SHOWCURSOR%
 >nul pause
-if "!el!"=="0" start /max "" "!YouTubeDLOutputDirectory!"
+if "!el!"=="0" start /max "" "!YouTubeDLOutputDirectory!\!youtube_dl_format!"
 exit 0
 
 :PROCESS_NMAP
