@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 0. 0
-REM  Fileversion:  6. 1. 0. 0
+REM  Productversion:  6. 1. 0. 1
+REM  Fileversion:  6. 1. 0. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -49,7 +49,16 @@ if defined DUMP_IS set "DUMP_IS=!DUMP_IS!`"
 set "@SHOWCURSOR=<nul set /p=!\E![?25h"
 set "@HIDECURSOR=<nul set /p=!\E![?25l"
 %@HIDECURSOR%
-if defined ProgramFiles(x86) (set ARCH=64) else set ARCH=86
+if defined ProgramFiles(x86) (
+    set ARCH=64
+) else (
+    set ARCH=86
+)
+if not "!ARCH!"=="64" (
+    if not "!ARCH!"=="86" (
+        call :ERROR_FATAL ARCH
+    )
+)
 set 7za.exe=lib\7za\x!ARCH!\7za.exe
 set binread.exe=lib\binread\x!ARCH!\binread.exe
 set extd.exe=lib\speak\extd.exe
@@ -148,7 +157,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.0.0 - 24/02/2022
+set VERSION=v6.1.0.1 - 25/02/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -244,13 +253,25 @@ if "!language!"=="FR" echo  !GREEN![PASSER] . . .
 :CHECKERWINDOWS
 if "!language!"=="EN" <nul set /p="!sp!Checking Windows version > "
 if "!language!"=="FR" <nul set /p="!sp!Vérification de votre version de Windows > "
-for /f "tokens=2delims=:." %%A in ('chcp') do set /a "CP=%%A"
-for %%A in (WINDOWS_VERSION ARCH CP) do if not defined %%A set %%A=?
-if "!WINDOWS_VERSION!"=="?" (<nul set /p="!RED![!WINDOWS_VERSION!], ") else <nul set /p="!GREEN![!WINDOWS_VERSION!], "
-if "!ARCH!"=="?" (<nul set /p="!RED![!ARCH!], ") else <nul set /p="!GREEN![x!ARCH!], "
-if "!CP!"=="?" (<nul set /p="!RED![!CP!] . . .") else <nul set /p="!GREEN![CHCP:!CP!] . . ."
+<nul set /p="!GREEN![!WINDOWS_VERSION!], [x!ARCH!], "
+if defined CP (
+    set CP=
+)
+for /f "tokens=2delims=:." %%A in ('chcp') do (
+    set /a "CP=%%A"
+)
+if not defined CP (
+    set CP=?
+)
+if "!CP!"=="65001" (
+    <nul set /p="!GREEN![CHCP:!CP!] . . ."
+) else (
+    <nul set /p="!RED![CHCP:!CP!] . . ."
+)
 echo:
-if not "!CP!"=="65001" if "!CP!"=="?" (call :ERROR_FATAL CHCP1) else call :ERROR_FATAL CHCP2
+if not "!CP!"=="65001" (
+    call :ERROR_FATAL CHCP
+)
 
 :LAUNCHER_APPLY_SETTINGS
 if "!language!"=="EN" <nul set /p="!sp!Applying your settings > "
@@ -264,7 +285,14 @@ if "!language!"=="FR" echo !GREEN![PASSER] . . .
 call :ROSE "Welcome Back"
 if "!language!"=="EN" <nul set /p="!sp!Starting Illegal Services > "
 if "!language!"=="FR" <nul set /p="!sp!Démarrage d'Illegal Services > "
-for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do set "IS_OUTPUTDIRECTORY=%%B\Illegal Services"
+for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
+    set "IS_OUTPUT_DIRECTORY=%%B\Illegal Services"
+)
+call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
+    call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+)
+set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
+set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
 set "CHECKED=!CYAN![!YELLOW!x!CYAN!]!WHITE! "
 set "UNCHECKED=!CYAN![ ]!WHITE! "
 set /a c1=0, c2=0, untrusted_website_index=0
@@ -529,7 +557,7 @@ if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Rose voice assistant !CYAN!(!
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Rose voice assistant !CYAN!(!RED!OFF!!CYAN!)               ║"
 if "!DeveloperMode!"=="1" (
 set "DeveloperModeInfo=Developer mode !CYAN!(!GREEN!ON!!CYAN!)                      ║"
-set "ExtractSourceInfo=!YELLOW!24!CYAN!  ^> !WHITE! Extract IS source code.!CYAN!                  ║"
+set "ExtractSourceInfo=!YELLOW!24!CYAN!  ^>  !WHITE!Extract IS source code.!CYAN!                  ║"
 )
 if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Developer mode !CYAN!(!RED!OFF!!CYAN!)                     ║"
@@ -619,7 +647,7 @@ if "!x!"=="21" goto :SETTING_USERNAME
 if "!x!"=="22" goto :SETTING_LANGUAGE
 if "!x!"=="23" goto :SETTING_EXPORTIMPORT
 if "!x!"=="24" if "!DeveloperMode!"=="1" goto :SETTING_EXTRACT_SOURCE
-call :CHOOSE OPEN && (call :OPEN_FOLDER "!IS_OUTPUTDIRECTORY!" & goto :CONTINUESETTINGS)
+call :CHOOSE OPEN && (call :OPEN_FOLDER "!IS_OUTPUT_DIRECTORY!" SETTINGS & goto :CONTINUESETTINGS)
 call :CHOOSE BACK && goto :MAINMENU
 call :ERRORMESSAGE
 goto :CONTINUESETTINGS
@@ -754,7 +782,6 @@ for %%A in (extd speak-x!ARCH!) do >nul 2>&1 taskkill /f /im "%%A.exe" /t
 goto :CLEARSETTINGS
 
 :SETTING_EXPORTIMPORT
-if not exist "!IS_OUTPUTDIRECTORY!\" md "!IS_OUTPUTDIRECTORY!"
 echo !CYAN!
 if "!language!"=="EN" echo Do you want to [!YELLOW!E!CYAN!]xport or [!YELLOW!I!CYAN!]mport your current settings ?
 if "!language!"=="FR" echo Voulez-vous [!YELLOW!E!CYAN!]xporter ou [!YELLOW!I!CYAN!]mporter vos paramètres actuels ?
@@ -773,7 +800,7 @@ set t1=Fichiers d'enregistrements
 set t2=Enregistrer sous
 )
 set el=
-for /f "delims=" %%A in ('!SaveFileBox.exe! IS_Settings.reg "!t1! (*.reg)|*.reg" "!IS_OUTPUTDIRECTORY!" "!t2!" /f') do set "el=%%~A"
+for /f "delims=" %%A in ('!SaveFileBox.exe! IS_Settings.reg "!t1! (*.reg)|*.reg" "!IS_OUTPUT_DIRECTORY!" "!t2!" /f') do set "el=%%~A"
 if not defined el goto :CONTINUESETTINGS
 >nul 2>&1 reg export "!IS_REG!" "!el!" /y && (
 if "!language!"=="EN" set t="Settings exported successfully.!\N!You can now import them using the generated file at:!\N!!\N!'!el!'"
@@ -793,7 +820,7 @@ set t1=Fichiers d'enregistrements
 set t2=Ouvrir
 )
 set _el=
-for /f "delims=" %%A in ('!OpenFileBox.exe! "!t1! (*.reg)|*.reg" "!IS_OUTPUTDIRECTORY!" "!t2!"') do set "_el=%%~A"
+for /f "delims=" %%A in ('!OpenFileBox.exe! "!t1! (*.reg)|*.reg" "!IS_OUTPUT_DIRECTORY!" "!t2!"') do set "_el=%%~A"
 if not defined _el goto :CONTINUESETTINGS
 for %%A in ("!_el!") do if /i "%%~xA"==".reg" >nul 2>&1 find /i "[HKEY_CURRENT_USER\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services]" "!_el!" && >nul 2>&1 reg import "!_el!" && (
 for %%B in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS DEVELOPERMODE) do call :CHECK_%%B
@@ -857,7 +884,6 @@ if "!ARCH!"=="64" (
 )
 set "YouTubeDLPInfo=YouTube DLP !CYAN!(!GREEN!ON!!CYAN!)                                           ║"
 )
-if not exist "Portable_Apps\YouTube-DL\" md "Portable_Apps\YouTube-DL"
 
 :CONTINUEYOUTUBEDL
 call :SCALE 104 32
@@ -916,7 +942,7 @@ if "!YouTubeDLGeoBypass!"=="0" >nul reg add "!IS_REG!" /v "YouTubeDLGeoBypass" /
 if "!YouTubeDLGeoBypass!"=="1" >nul reg add "!IS_REG!" /v "YouTubeDLGeoBypass" /t REG_DWORD /d 0 /f
 goto :CLEARYOUTUBEDL
 )
-call :CHOOSE OPEN && (call :OPEN_FOLDER "!YouTubeDLOutputDirectory!" & goto :CONTINUEYOUTUBEDL)
+call :CHOOSE OPEN && (call :OPEN_FOLDER "!YouTubeDLOutputDirectory!" YOUTUBEDL & goto :CONTINUEYOUTUBEDL)
 call :CHOOSE PRIORITY && goto :YOUTUBEDL_PRIORITY
 call :CHOOSE INSTALL && goto :YOUTUBEDLINSTALL
 call :CHOOSE BACK && goto :MAINMENU
@@ -990,26 +1016,26 @@ set /p "url=!t!URL: !YELLOW!"
 call :CHECK_URL url URL || goto :CONTINUEYOUTUBEDL
 set a=--add-metadata !a! "!url!"
 echo !CYAN!
-if not exist "Portable_Apps\YouTube-DL\ffmpeg.exe" (
-    call :CURL "Portable_Apps\YouTube-DL\ffmpeg.7z" "`git_raw_downloads`/ffmpeg.7z" || (
+if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\ffmpeg.exe" (
+    call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\ffmpeg.7z" "`git_raw_downloads`/ffmpeg.7z" || (
         call :ERROR_INTERNET
         goto :CONTINUEYOUTUBEDL
     )
 )
-if not exist "Portable_Apps\YouTube-DL\!youtube_dl_executable!" (
+if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\!youtube_dl_executable!" (
     if "!youtube_dl_type!"=="youtube-dl" (
-        call :CURL "Portable_Apps\YouTube-DL\!youtube_dl_executable!" "https://yt-dl.org/downloads/latest/!youtube_dl_executable!" || (
+        call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\!youtube_dl_executable!" "https://yt-dl.org/downloads/latest/!youtube_dl_executable!" || (
             call :ERROR_INTERNET
             goto :CONTINUEYOUTUBEDL
         )
     ) else if "!youtube_dl_type!"=="yt-dlp" (
-        call :CURL "Portable_Apps\YouTube-DL\!youtube_dl_executable!" "https://github.com/yt-dlp/yt-dlp/releases/latest/download/!youtube_dl_executable!" || (
+        call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\!youtube_dl_executable!" "https://github.com/yt-dlp/yt-dlp/releases/latest/download/!youtube_dl_executable!" || (
             call :ERROR_INTERNET
             goto :CONTINUEYOUTUBEDL
         )
     )
 )
-pushd "Portable_Apps\YouTube-DL"
+pushd "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl"
 if "!youtube_dl_type!"=="youtube-dl" (
     for %%A in (youtube-dl.exe.new youtube-dl-updater.bat) do (
         if exist "%%A" (
@@ -1052,7 +1078,7 @@ if "!language!"=="FR" set t=Entrer le nouvel emplacement de téléchargement
 set el=
 set /p "el=!BRIGHTBLACK!!t!: !YELLOW!"
 %@HIDECURSOR%
-if defined x (
+if defined el (
 set "el=!el:"=!"
 if "!el:~-1!"=="\" set "el=!el:~0,-1!"
 for %%A in ("!el!") do >nul reg add "!IS_REG!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%~fA" /f
@@ -1063,8 +1089,8 @@ goto :CONTINUEYOUTUBEDL
 :YOUTUBEDL_PRIORITY
 call :PRIORITY_PROCESS YouTubeDLPriority
 >nul reg add "!IS_REG!" /v "YouTubeDLPriority" /t REG_SZ /d !YouTubeDLPriority! /f && (
-if "!language!"=="EN" set t="YouTube DL priority has been replaced to: '!YouTubeDLPriority!'"
-if "!language!"=="FR" set t="La priorité de YouTube DL a bien été remplacée par: '!YouTubeDLPriority!'"
+if "!language!"=="EN" set t="YouTube Downloader priority has been replaced to: '!YouTubeDLPriority!'"
+if "!language!"=="FR" set t="La priorité de YouTube Downloader a bien été remplacée par: '!YouTubeDLPriority!'"
 call :MSGBOX 69696 "Illegal Services"
 )
 call :CHECK_YOUTUBEDLPRIORITY
@@ -1334,7 +1360,7 @@ cls
 set el=
 echo:
 for /f "usebackqtokens=1,*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo     !BRIGHTRED!%%A:!CYAN!%%B
-if exist "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" >nul find /i "!fixed_url!" "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" && (
+if exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" >nul find /i "!fixed_url!" "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" && (
 set el=True
 )
 if not defined el set el=False
@@ -1354,27 +1380,31 @@ goto :CLEARIPLOOKUP
 if "!language!"=="EN" set t="Enter victim's name: "
 if "!language!"=="FR" set t="Entrez le nom de la victime: "
 call :INPUTBOX
-if not exist "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
-if not exist "!IS_OUTPUTDIRECTORY!\" md "!IS_OUTPUTDIRECTORY!"
->"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" echo =============================================
+if not exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (
+    if not exist "!IS_OUTPUT_DIRECTORY!\" (
+        md "!IS_OUTPUT_DIRECTORY!"
+    )
+    >"!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (
+        echo =============================================
+    )
 )
-set "write_newline_file_path=!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
+set "write_newline_file_path=!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt"
 call :CHECK_FILE_NEWLINE write_newline_file_path || (
-    >>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
+    >>"!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (
         echo:
     )
 )
 set write_newline_file_path=
->>"!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
-echo   Name: !ID! [!url!]
-echo =============================================
-type "!TMPF!\IS_Log.txt"
-echo =============================================
+>>"!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (
+    echo   Name: !ID! [!url!]
+    echo =============================================
+    type "!TMPF!\IS_Log.txt"
+    echo =============================================
 )
-if "!language!"=="EN" set t="IP Lookup successfully saved at:!\N!!\N!'!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Do you want to open it now ?"
-if "!language!"=="FR" set t="IP Lookup enregistrés avec succès à:!\N!!\N!'!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Voulez-vous l'ouvrir maintenant ?"
+if "!language!"=="EN" set t="IP Lookup successfully saved at:!\N!!\N!'!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Do you want to open it now ?"
+if "!language!"=="FR" set t="IP Lookup enregistrés avec succès à:!\N!!\N!'!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt'!\N!!\N!Voulez-vous l'ouvrir maintenant ?"
 call :MSGBOX_LEVEL 69668 "Illegal Services"
-if "!el!"=="6" start /max "" "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt"
+if "!el!"=="6" start /max "" "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt"
 goto :CLEARIPLOOKUP
 
 :PORT
@@ -1503,8 +1533,8 @@ set url=
 set /p "url=!BRIGHTBLACK!!t!IP/URL: !YELLOW!"
 call :CHECK_URL url IP/URL || goto :CLEARPORT
 if not defined o1 (
-if not exist "Portable_Apps\TCP_Port_Scanner.exe" call :CURL "Portable_Apps\TCP_Port_Scanner.exe" "`git_raw_downloads`/TCP_Port_Scanner.exe" || (call :ERROR_INTERNET & goto :CLEARPORT)
-pushd "Portable_Apps"
+if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\TCP_Port_Scanner.exe" call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\TCP_Port_Scanner.exe" "`git_raw_downloads`/TCP_Port_Scanner.exe" || (call :ERROR_INTERNET & goto :CLEARPORT)
+pushd "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!"
 call :CHECK_PORTPRIORITY
 start !PortPriority! TCP_Port_Scanner.exe "!fixed_url!"
 popd
@@ -1512,7 +1542,7 @@ goto :CLEARPORT
 )
 set a=-Pn -T5 --open !a! "!fixed_url!"
 set a=!a:  = !
-if not exist "Portable_Apps\NMAP\nmap.exe" call :CURL "Portable_Apps\NMAP.7z" "`git_raw_downloads`/NMAP.7z" || (call :ERROR_INTERNET & goto :CLEARPORT)
+if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\NMAP\nmap.exe" call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\NMAP.7z" "`git_raw_downloads`/NMAP.7z" || (call :ERROR_INTERNET & goto :CLEARPORT)
 start "" "%~f0" NMAP
 goto :CLEARPORT
 
@@ -1549,8 +1579,8 @@ set p1=
 set /p "p1=!BRIGHTBLACK!!t!: !YELLOW!"
 %@HIDECURSOR%
 call :CHECK_PORT p1 || goto :MAINMENU
-if not exist "Portable_Apps\paping.exe" call :CURL "Portable_Apps\paping.exe" "`git_raw_downloads`/paping.exe" || (call :ERROR_INTERNET & goto :MAINMENU)
-pushd "Portable_Apps"
+if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\paping.exe" call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\paping.exe" "`git_raw_downloads`/paping.exe" || (call :ERROR_INTERNET & goto :MAINMENU)
+pushd "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!"
 start paping.exe !fixed_url! -p !p1!
 popd
 goto :MAINMENU
@@ -2309,11 +2339,11 @@ exit /b 1
 
 :PROCESS_YOUTUBEDL
 call :CHECK_YOUTUBEDLPRIORITY
-<nul set /p="!\E!]0;!DEBUG!YouTube DL    |!youtube_dl_executable! !a!|    |!o1!|    |Priority: !YouTubeDLPriority:~1!| - Illegal Services!\E!\"
+<nul set /p="!\E!]0;!DEBUG!YouTube Downloader    |!youtube_dl_executable! !a!|    |!o1!|    |Priority: !YouTubeDLPriority:~1!| - Illegal Services!\E!\"
 echo !BRIGHTBLACK!
 echo !\E![7C##############################################
-if "!language!"=="EN" echo !\E![7C#       !BRIGHTRED!♥   !CYAN!Welcome in YouTube DL   !BRIGHTRED!♥!BRIGHTBLACK!        #
-if "!language!"=="FR" echo !\E![7C#      !BRIGHTRED!♥   !CYAN!Bievenue dans YouTube DL   !BRIGHTRED!♥!BRIGHTBLACK!      #
+if "!language!"=="EN" echo !\E![7C#       !BRIGHTRED!♥   !CYAN!Welcome in YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!        #
+if "!language!"=="FR" echo !\E![7C#      !BRIGHTRED!♥   !CYAN!Bievenue dans YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!      #
 echo !\E![7C##############################################
 echo:
 if "!language!"=="EN" (
@@ -2329,7 +2359,7 @@ echo !\E![7C♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
-start /b /w !YouTubeDLPriority! Portable_Apps\YouTube-DL\!youtube_dl_executable! --ffmpeg-location "Portable_Apps\YouTube-DL" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
+start /b /w !YouTubeDLPriority! "" "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\youtube-dl\!youtube_dl_executable!" --output "!YouTubeDLOutputDirectory!\%%(title)s.%%(ext)s" !a!
 set el=!errorlevel!
 echo !BRIGHTBLACK!
 echo =========================================================================================================
@@ -2379,7 +2409,7 @@ echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
 >nul chcp 65000
-start /b /w !PortPriority! Portable_Apps\NMAP\nmap.exe !a!
+start /b /w !PortPriority! "" "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\NMAP\nmap.exe" !a!
 set el=!errorlevel!
 >nul chcp 65001
 echo !BRIGHTBLACK!
@@ -2529,6 +2559,27 @@ if "%~1"=="" exit /b 1
 for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
 exit /b 0
 
+:CHECK_PATH
+if not defined %1 exit /b 1
+set "%1=!%1:"=!"
+set "%1=!%1:/=\!"
+:CHECK_PATH_STRIP_WHITE_SPACES
+if "!%1:~0,1!"==" " (
+set "%1=!%1:~1!"
+goto :CHECK_PATH_STRIP_WHITE_SPACES
+)
+:_CHECK_PATH_STRIP_WHITE_SPACES
+if "!%1:~-1!"==" " (
+set "%1=!%1:~0,-1!"
+goto :_CHECK_PATH_STRIP_WHITE_SPACES
+)
+:CHECK_PATH_STRIP_SLASHES
+if "!%1:~-2!"=="\\" (
+set "%1=!%1:~0,-1!"
+goto :CHECK_PATH_STRIP_SLASHES
+)
+if exist "!%1!" exit /b 0
+exit /b 1
 
 :CHECK_FILE_NEWLINE
 if not exist "!%1!" (
@@ -3071,7 +3122,7 @@ set YouTubeDLOutputDirectory=
 for /f "tokens=2*" %%A in ('2^>nul reg query "!IS_REG!" /v "YouTubeDLOutputDirectory"') do set "YouTubeDLOutputDirectory=%%~fB"
 if defined YouTubeDLOutputDirectory exit /b
 call :ERROR_REGEDIT YouTubeDLOutputDirectory YouTubeDLOutputDirectory
-for /f "tokens=3*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "My Music"') do >nul reg add "!IS_REG!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "%%B\YouTube Downloader" /f
+>nul reg add "!IS_REG!" /v "YouTubeDLOutputDirectory" /t REG_SZ /d "!IS_OUTPUT_DIRECTORY_YOUTUBE_DL!" /f
 goto :CHECK_YOUTUBEDLOUTPUTDIRECTORY
 
 :CHECK_YOUTUBEDLGEOBYPASS
@@ -3348,14 +3399,14 @@ exit /b
 
 :START_DOXTOOLV2
 for %%A in (Newtonsoft.Json.dll "Dox Tool V2.exe") do (
-    if not exist "Portable_Apps\Dox Tool V2\%%~A" (
-        call :CURL "Portable_Apps\Dox Tool V2.7z" "`git_raw_downloads`/DoxToolV2.7z" || (
+    if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\Dox Tool V2\%%~A" (
+        call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\Dox Tool V2.7z" "`git_raw_downloads`/DoxToolV2.7z" || (
             call :ERROR_INTERNET
             exit /b
         )
     )
 )
-pushd "Portable_Apps\Dox Tool V2"
+pushd "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\Dox Tool V2"
 start "" "Dox Tool V2.exe" && (
     if "!language!"=="EN" set t="Only 'Username Search' & 'Extra Tools' are working.!\N!!\N!The tool has not been updated since 05-02-2016."
     if "!language!"=="FR" set t="Seules 'Username Search' & 'Extra Tools' fonctionnent.!\N!!\N!L'outil n'a pas été mis à jour depuis le 05-02-2016."
@@ -3365,13 +3416,13 @@ popd
 exit /b
 
 :START_WINDOWSISODOWNLOADER
-if not exist "Portable_Apps\Windows-ISO-Downloader\Windows-ISO-Downloader.exe" (
-    call :CURL "Portable_Apps\Windows-ISO-Downloader\Windows-ISO-Downloader.exe" "https://heidoc.net/php/Windows-ISO-Downloader.exe" || (
+if not exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\Windows-ISO-Downloader\Windows-ISO-Downloader.exe" (
+    call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\Windows-ISO-Downloader\Windows-ISO-Downloader.exe" "https://heidoc.net/php/Windows-ISO-Downloader.exe" || (
         call :ERROR_INTERNET
         exit /b
     )
 )
-pushd "Portable_Apps\Windows-ISO-Downloader"
+pushd "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\Windows-ISO-Downloader"
 start "" "Windows-ISO-Downloader.exe"
 popd
 exit /b
@@ -3481,7 +3532,7 @@ for /l %%A in (12,-1,0) do (
 exit /b !len!
 
 :READ_IPLOOKUP
-if exist "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (start "" "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt") else (
+if exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (start "" "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt") else (
 if "!language!"=="EN" set t="IP Lookup list not found.!\N!!\N!You must first save a Lookup to be able to read it."
 if "!language!"=="FR" set t="Liste d'IP Lookup non trouvée.!\N!!\N!Vous devez d'abord enregistrer une Lookup pour pouvoir la lire."
 call :MSGBOX 69680 "Illegal Services"
@@ -3489,36 +3540,41 @@ call :MSGBOX 69680 "Illegal Services"
 exit /b
 
 :DELETE_IPLOOKUP
-if exist "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" (
-del /f /q "!IS_OUTPUTDIRECTORY!\IP Lookup Saved.txt" && (
-if "!language!"=="EN" set t="IP Lookup list successfully deleted."
-if "!language!"=="FR" set t="La liste d'IP Lookup a bien été supprimée."
-call :MSGBOX 69696 "Illegal Services"
-)
+if exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (
+    del /f /q "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt"
+    if exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (
+        if "!language!"=="EN" set t="IP Lookup list could not be deleted."
+        if "!language!"=="FR" set t="La liste d'IP Lookup n'a pas pu être supprimée."
+        call :MSGBOX 69680 "Illegal Services"
+    ) else (
+        if "!language!"=="EN" set t="IP Lookup list successfully deleted."
+        if "!language!"=="FR" set t="La liste d'IP Lookup a bien été supprimée."
+        call :MSGBOX 69696 "Illegal Services"
+    )
 ) else (
-if "!language!"=="EN" set t="IP Lookup list not found.!\N!!\N!You must first save a Lookup to be able to delete it."
-if "!language!"=="FR" set t="Liste d'IP Lookup non trouvée.!\N!!\N!Vous devez d'abord enregistrer une Lookup pour pouvoir la supprimer."
-call :MSGBOX 69680 "Illegal Services"
+    if "!language!"=="EN" set t="IP Lookup list not found.!\N!!\N!You must first save a Lookup to be able to delete it."
+    if "!language!"=="FR" set t="Liste d'IP Lookup non trouvée.!\N!!\N!Vous devez d'abord enregistrer une Lookup pour pouvoir la supprimer."
+    call :MSGBOX 69680 "Illegal Services"
 )
 exit /b
 
 :ERROR_INTERNET
 if !errorlevel!==1 (
-call :ROSE "Error Internet"
-if "!language!"=="EN" set t="Your Internet access appears to be offline.!\N!!\N!You must activate Internet and try again."
-if "!language!"=="FR" set t="Votre accès Internet semble être hors ligne.!\N!!\N!Veuillez activer Internet et réessayer."
+    call :ROSE "Error Internet"
+    if "!language!"=="EN" set t="Your Internet access appears to be offline.!\N!!\N!You must activate Internet and try again."
+    if "!language!"=="FR" set t="Votre accès Internet semble être hors ligne.!\N!!\N!Veuillez activer Internet et réessayer."
 ) else if !errorlevel!==2 (
-call :ROSE "Error Remote Host"
-if "!language!"=="EN" set t="The remote host appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible."
-if "!language!"=="FR" set t="L'h“te distant semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible."
+    call :ROSE "Error Remote Host"
+    if "!language!"=="EN" set t="The remote host appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible."
+    if "!language!"=="FR" set t="L'hôte distant semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible."
 ) else if !errorlevel!==3 (
-call :ROSE "Error Git Proxy Backup"
-if "!language!"=="EN" set t="The Git proxy backup server is running. You cannot download external files from it.!\N!!\N!Downloading '!curl_url!' impossible."
-if "!language!"=="FR" set t="Le serveur proxy Git de secours est en marche. Vous ne pouvez pas télécharger de fichiers externes à partir de celui-ci.!\N!!\N!Téléchargement de '!curl_url!' impossible."
+    call :ROSE "Error Git Proxy Backup"
+    if "!language!"=="EN" set t="The Git proxy backup server is running. You cannot download external files from it.!\N!!\N!Downloading '!curl_url!' impossible."
+    if "!language!"=="FR" set t="Le serveur proxy Git de secours est en marche. Vous ne pouvez pas télécharger de fichiers externes à partir de celui-ci.!\N!!\N!Téléchargement de '!curl_url!' impossible."
 ) else if !errorlevel!==4 (
-call :ROSE "Error Git Proxy"
-if "!language!"=="EN" set t="IS Git proxy: '!git!' appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
-if "!language!"=="FR" set t="IS Git proxy: '!git!' semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
+    call :ROSE "Error Git Proxy"
+    if "!language!"=="EN" set t="IS Git proxy: '!git!' appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
+    if "!language!"=="FR" set t="IS Git proxy: '!git!' semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
 )
 call :MSGBOX 69680 "Illegal Services"
 exit /b
@@ -3597,8 +3653,18 @@ exit /b
 if exist "%~1" (
     start "" "%~1"
 ) else (
-    if "!language!"=="EN" set t="Folder '%~1' not found.!\N!!\N!You must first download an item to be able to open it."
-    if "!language!"=="FR" set t="Dossier '%~1' non trouvée.!\N!!\N!Vous devez d'abord télécharger un élément pour pouvoir ouvrir le dossier."
+    if "!language!"=="EN" set "t=Folder '%~1' not found.!\N!!\N!"
+    if "!language!"=="FR" set "t=Dossier '%~1' non trouvée.!\N!!\N!"
+    if "%2"=="SETTINGS" (
+        if "!language!"=="EN" set t="!t!You must first 'Extract IS source code.' or 'Export settings' to be able to open it."
+        if "!language!"=="FR" set t="!t!Vous devez d'abord 'Extraire le code source d'IS' ou 'Exporter les paramètres' pour pouvoir ouvrir le dossier."
+    ) else if "%2"=="YOUTUBEDL" (
+        if "!language!"=="EN" set t="!t!You must first download an item to be able to open it."
+        if "!language!"=="FR" set t="!t!Vous devez d'abord télécharger un élément pour pouvoir ouvrir le dossier."
+    ) else if "%2"=="IS_BOOKMARKS" (
+        if "!language!"=="EN" set t="!t!You must first download an item to be able to open it."
+        if "!language!"=="FR" set t="!t!Vous devez d'abord télécharger un élément pour pouvoir ouvrir le dossier."
+    )
     call :MSGBOX 69680 "Illegal Services"
 )
 exit /b
@@ -3648,23 +3714,19 @@ for %%A in (x1 x2) do (
         set %%A=
     )
 )
-if "%1"=="UNICODE" (
+if "%1"=="WINDOWS_VERSION" (
+    if "!language!"=="EN" set t="ERROR: Your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
+    if "!language!"=="FR" set t="ERREUR: Votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
+) else if "%1"=="UNICODE" (
     if "!language!"=="EN" set t="Illegal Services cannot start because Unicode characters cannot be displayed correctly.!\N!!\N!If you receive this error message, then you are probably experiencing this bug issue: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!For more information, contact us on our Telegram forum."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car les caractères Unicode ne peuvent pas être affichés correctement.!\N!!\N!Si vous recevez ce message d'erreur, vous rencontrez probablement l'issue de ce bug: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!Pour plus d'informations, contactez-nous sur le forum Telegram d'Illegal Services."
     set x2=1
 ) else if "%1"=="NAME" (
     if "!language!"=="EN" set t="Invalid characters detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
     if "!language!"=="FR" set t="Caractères invalides détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
-) else if "%1"=="WINDOWS_VERSION" (
-    if "!language!"=="EN" set t="ERROR: Your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
-    if "!language!"=="FR" set t="ERREUR: Votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
-) else if "%1"=="CHCP1" (
-    if "!language!"=="EN" set t="Illegal Services could not determine your CHCP number.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre numéro CHCP.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
-    set x2=1
-) else if "%1"=="CHCP2" (
-    if "!language!"=="EN" set t="Illegal Services could not set your CHCP number to 65001.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro CHCP sur 65001.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+) else if "%1"=="ARCH" (
+    if "!language!"=="EN" set t="Illegal Services could not determine your Windows architecture.!\N!!\N!Please report this bug: '!ARCH!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre architecture Windows.!\N!!\N!Veuillez signaler ce bug: '!ARCH!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="TMP" (
     if "!language!"=="EN" (
@@ -3676,6 +3738,14 @@ if "%1"=="UNICODE" (
         set t2="Veuillez réparer l'une d'entre elles et réessayer."
     )
     set /a x1=1, x2=1
+) else if "%1"=="CHCP" (
+    if "!language!"=="EN" set t="Illegal Services could not set your code page number to 65001.!\N!!\N!Please report this bug: '!CP!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro de page de code sur 65001.!\N!!\N!Veuillez signaler ce bug: '!CP!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
+) else if "%1"=="IS_OUTPUT_DIRECTORY" (
+    if "!language!"=="EN" set t="Illegal Services could not determine its output directory.!\N!!\N!Please report this bug: '!IS_OUTPUT_DIRECTORY!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer son répertoire de sortie.!\N!!\N!Veuillez signaler ce bug: '!IS_OUTPUT_DIRECTORY!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
 ) else if "%1"=="ERRORLEVEL" (
     if !errorlevel!==5 (
         if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services folder in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
@@ -4122,7 +4192,7 @@ call :CHOOSE UPDATE && (
 )
 if defined open_folder_statut (
     call :CHOOSE OPEN && (
-        call :OPEN_FOLDER Portable_Apps
+        call :OPEN_FOLDER "!IS_OUTPUT_DIRECTORY!\Portable Apps" IS_BOOKMARKS
         goto :CONTINUE_IS_BOOKMARKS_PARSER
     )
 )
@@ -4246,7 +4316,7 @@ for /l %%A in (!c1!,1,!c2!) do (
             for /f "tokens=1*delims=`" %%C in ("%%~B") do (
                 if "!path_%%A!\!category_folder!\!name_%%A!"=="%%C" (
                     set started=1
-                    call :CURL "Portable_Apps\%%D" "!url_%%A:%%=%%%%!" && (
+                    call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\%%D" "!url_%%A:%%=%%%%!" && (
                         if "%%C"=="Illegal Services\Doxing\Dox Tool v2" (
                             call :START_DOXTOOLV2
                         )
@@ -4275,7 +4345,7 @@ if exist "!TMPF!\IS_Log.txt" (
     >nul pause
 )
 if defined start_folder (
-    start /max "" "Portable_Apps"
+    start /max "" "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!"
 )
 exit /b !#el!
 
