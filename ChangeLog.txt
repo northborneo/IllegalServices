@@ -7,10 +7,11 @@ https://t.me/illegal_services
 https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 
-v6.1.0.3 - 25/02/2022
+v6.1.0.4 - 25/02/2022
 * FIXED IS Setup : Support for Windows 11.
 * FIXED IS Source : Minor bugs.
 * IMPROVED IS Source : Support for Windows 11.
++ IMPROVED IS Source : Moved "Portable_Apps", "YouTube DL" and "IS.bookmarks.html" folders and files to "Illegal Services" user documents.
 + IMPROVED IS Source : Moved both "Portable_Apps" and "YouTube DL" folders to "Illegal Services" user documents.
 * IMPROVED IS Source : Error Messages.
 + ADDED IS Source : more error messages.
