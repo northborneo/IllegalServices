@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 0. 3
-REM  Fileversion:  6. 1. 0. 3
+REM  Productversion:  6. 1. 0. 4
+REM  Fileversion:  6. 1. 0. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -157,7 +157,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.0.3 - 25/02/2022
+set VERSION=v6.1.0.4 - 25/02/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2219,7 +2219,7 @@ if "!language!"=="FR" (
     set o6=Site Internet Changé de Domaine
 )
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
-for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "IS.bookmarks.html"') do (
+for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
     title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^|  [...] - Illegal Services
 )
@@ -2228,7 +2228,7 @@ if "!language!"=="EN" echo Scan of the !index! indexed websites has started. You
 if "!language!"=="FR" echo Le scan des !index! sites web indexés a commencé. Vous serez notifié si l'un d'entre eux est mort ou a changé de d'addresse.
 echo:
 for /f "tokens=1-4delims=:.," %%A in ("!time: =0!") do set /a "t1=(((1%%A*60)+1%%B)*60+1%%C)*100+1%%D-36610100"
-for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "IS.bookmarks.html"') do (
+for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a counter+=1, percentage=counter*100/index
     if !results! gtr 1 (
         set s=s
@@ -3830,7 +3830,7 @@ for %%A in (x warning_streaming warning_ip_loggers) do (
 set LOOKUP_folders=`
 set /a search_root_folder=1, root_folder_length=0
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
-for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "IS.bookmarks.html"') do (
+for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     if defined search_root_folder (
         if "%%A"=="1" (
             set search_root_folder=
@@ -3841,7 +3841,7 @@ for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "IS.bookmarks.html
     set "memory_folder_%%A=%%C"
     set "LOOKUP_folders=!LOOKUP_folders!%%C`"
 )
-for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "IS.bookmarks.html"') do (
+for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set "memory_path_%%A=%%C"
     if not "!memory_path_%%A!"=="!root_folder!" (
         for %%D in ("!memory_folder_%%A!") do (
@@ -3900,7 +3900,7 @@ for %%A in (previous_action previous_depth current_depth) do (
     )
 )
 set /a c1=1, c2=0
-for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --folder-all "!category_folder!" "IS.bookmarks.html"') do (
+for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --folder-all "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     if "%%A"=="PATH" (
         set previous_action=PATH
         if "!memory_folder_%%B!"=="!category_folder!" (
@@ -4551,7 +4551,7 @@ call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
 exit /b 1
 
 :DOWNLOAD_IS_BOOKMARKS_DB
-call :CHECK_FILE_SIGNATURE "IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER && (
+call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER && (
     if not "%1"=="UPDATE" (
         call :CHECK_DBLASTDOWNLOAD
         call :IS_BOOKMARKS_COMPARE_NEW_DATE && (
@@ -4564,12 +4564,12 @@ if "%1"=="SCANWEBSITES" (
     if "!language!"=="FR" set t=Téléchargement de la base de données des sites internet
     title !DEBUG!!t!: '!git_raw_downloads!/IS.bookmarks.html'. - Illegal Services
 )
-call :CURL "IS.bookmarks.html" "`git_raw_downloads`/IS.bookmarks.html" || (
+call :CURL "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" "`git_raw_downloads`/IS.bookmarks.html" || (
     if "%1"=="UPDATE" (
         call :ERROR_INTERNET
         exit /b 1
     )
-    if not exist "IS.bookmarks.html" (
+    if not exist "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" (
         call :ERROR_INTERNET
         exit /b 1
     )
@@ -4653,17 +4653,17 @@ for /f "tokens=1-5delims=:- " %%A in ("!%1!") do (
 exit /b 1
 
 :CHECK_FILE_SIGNATURE_IS_BOOKMARKS_DB
-if not exist "IS.bookmarks.html" (
+if not exist "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" (
     >nul reg add "!IS_REG!" /v "DBLastDownload" /t REG_SZ /d "N/A" /f
-    if "!language!"=="EN" set t="ERROR: Your copy of the file database 'IS.bookmarks.html' does not exist."
-    if "!language!"=="FR" set t="ERREUR: Votre copie de la base de données du fichier 'IS.bookmarks.html' n'existe pas."
+    if "!language!"=="EN" set t="ERROR: Your copy of the file database '!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html' does not exist."
+    if "!language!"=="FR" set t="ERREUR: Votre copie de la base de données du fichier '!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html' n'existe pas."
     call :MSGBOX 69648 "Illegal Services"
     exit /b 1
 )
-call :CHECK_FILE_SIGNATURE "IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER || (
+call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER || (
     >nul reg add "!IS_REG!" /v "DBLastDownload" /t REG_SZ /d "N/A" /f
-    if "!language!"=="EN" set t="ERROR: Your 'IS.bookmarks.html' database file copy is broken."
-    if "!language!"=="FR" set t="ERREUR: Votre copie de la base de données 'IS.bookmarks.html' est cassée."
+    if "!language!"=="EN" set t="ERROR: Your '!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html' database file copy is broken."
+    if "!language!"=="FR" set t="ERREUR: Votre copie de la base de données '!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html' est cassée."
     call :MSGBOX 69648 "Illegal Services"
     exit /b 1
 )
