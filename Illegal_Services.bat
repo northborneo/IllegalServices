@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 0. 2
-REM  Fileversion:  6. 1. 0. 2
+REM  Productversion:  6. 1. 0. 3
+REM  Fileversion:  6. 1. 0. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -157,7 +157,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.0.2 - 25/02/2022
+set VERSION=v6.1.0.3 - 25/02/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -755,7 +755,7 @@ echo NOTE: 1. Laisser vide remplacera le nom d'utilisateur d'origine.
 echo       2. Le nom d'utilisateur ne peut pas dépasser 20 caractères.
 echo       3. N'utiliser les caractères suivants: "^! %% ^^".
 )
-:L4
+:L3
 if "!language!"=="EN" set t="Enter your new username: "
 if "!language!"=="FR" set t="Entrez votre nouveau nom d'utilisateur: "
 setlocal DisableDelayedExpansion
@@ -777,7 +777,7 @@ goto :CONTINUESETTINGS
 :ERROR_USERNAME
 echo:
 call :ERRORMESSAGE ID "un nom d'utilisateur" username
-goto :L4
+goto :L3
 
 :SETTING_LANGUAGE
 if "!language!"=="EN" set t=FR
@@ -2060,16 +2060,17 @@ goto :L2
 exit 0
 
 :CHECKER_BUILD_FOUND
-:L3
 call :CURL "Illegal Services.exe" "`git_build`" UPDATER || (call :ERROR_INTERNET & exit /b)
 call :CURL "ChangeLog.txt" "`git_changelog`" UPDATER || (call :ERROR_INTERNET & exit /b)
-if exist "Illegal Services.exe" (start "" "Illegal Services.exe") else (
-if "!language!"=="EN" set t="ERROR: Disable your antivirus and try again..."
-if "!language!"=="FR" set t="ERREUR: Désactivez votre antivirus et réessayez..."
-call :MSGBOX 69680 "Illegal Services"
-goto :L3
+if exist "Illegal Services.exe" (
+    start "" "Illegal Services.exe" && (
+        exit 0
+    )
 )
-exit 0
+if "!language!"=="EN" set t="Illegal Services cannot continue running 'Illegal Services.exe' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
+if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter 'Illegal Services.exe' car son accès semble être refusé.!\N!Cette erreur: '!errorlevel!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (%~dp0) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
+call :MSGBOX 69680 "Illegal Services"
+goto :CHECKER_BUILD_FOUND
 
 :PROCESS_FAQ
 if "!language!"=="EN" call :SCALE 105 49
@@ -2799,23 +2800,22 @@ exit /b 0
 if not defined LOOKUP_curl_proxy_url_tries (
     exit /b 2
 )
-for /f "tokens=1*delims=/" %%A in ("%~2") do (
-    set "x2=%%B"
-)
-for %%A in (main downloads source) do (
-    if not "!curl_url:/%%A/=!"=="!curl_url!" (
-        for %%B in (!GIT_LIST!) do (
-            for /f "tokens=1,2delims=`" %%C in ("%%B") do (
-                for %%E in ("https://%%C/%%D/%%A/!x2!") do (
-                    if "!LOOKUP_curl_proxy_url_tries:`%%~E`=!"=="!LOOKUP_curl_proxy_url_tries!" (
-                        set "LOOKUP_curl_proxy_url_tries=!LOOKUP_curl_proxy_url_tries!%%~E`"
-                        if "!language!"=="EN" set "t=Downloading: "
-                        if "!language!"=="FR" set "t=Téléchargement: "
-                        <nul set /p="!CYAN!!t!!YELLOW!%%~E!CYAN!"
-                        echo:
-                        >nul curl.exe --create-dirs -f#kLo "%~1" "%%~E" && (
-                            call :CHECK_FILE_SIGNATURE "%~f1" 8 && (
-                                goto :CURL_CONTINUE
+for %%A in ("%~2") do (
+    for %%B in (main downloads source) do (
+        if not "!curl_url:/%%B/=!"=="!curl_url!" (
+            for %%C in (!GIT_LIST!) do (
+                for /f "tokens=1,2delims=`" %%D in ("%%C") do (
+                    for %%F in ("https://%%D/%%E/%%B/%%~nxA") do (
+                        if "!LOOKUP_curl_proxy_url_tries:`%%~F`=!"=="!LOOKUP_curl_proxy_url_tries!" (
+                            set "LOOKUP_curl_proxy_url_tries=!LOOKUP_curl_proxy_url_tries!%%~F`"
+                            if "!language!"=="EN" set "t=Downloading: "
+                            if "!language!"=="FR" set "t=Téléchargement: "
+                            <nul set /p="!CYAN!!t!!YELLOW!%%~F!CYAN!"
+                            echo:
+                            >nul curl.exe --create-dirs -f#kLo "%~1" "%%~F" && (
+                                call :CHECK_FILE_SIGNATURE "%~f1" 8 && (
+                                    goto :CURL_CONTINUE
+                                )
                             )
                         )
                     )
@@ -2825,7 +2825,7 @@ for %%A in (main downloads source) do (
     )
 )
 call :ERROR_CURL "%~f1"
-exit /b 4
+exit /b 5
 
 :ERROR_CURL
 if "!language!"=="EN" set "t=ERROR WHILE DOWNLOADING: "
@@ -3590,6 +3590,10 @@ if !errorlevel!==1 (
     call :ROSE "Error Git Proxy"
     if "!language!"=="EN" set t="IS Git proxy: '!git!' appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
     if "!language!"=="FR" set t="IS Git proxy: '!git!' semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
+) else if !errorlevel!==5 (
+    call :ROSE "Error all Git Proxys"
+    if "!language!"=="EN" set t="All IS Git proxys appears to be offline.!\N!!\N!Downloading '!curl_url!' impossible.!\N!!\N!Try to restart Illegal Services or join our Telegram groups for more updates."
+    if "!language!"=="FR" set t="All IS Git proxys semble être hors ligne.!\N!!\N!Téléchargement de '!curl_url!' impossible.!\N!!\N!Essayez de redémarrer Illegal Services ou rejoignez nos groupes Telegram pour plus de mises à jour."
 )
 call :MSGBOX 69680 "Illegal Services"
 exit /b
@@ -3763,8 +3767,8 @@ if "%1"=="WINDOWS_VERSION" (
     set x2=1
 ) else if "%1"=="ERRORLEVEL" (
     if !errorlevel!==5 (
-        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services folder in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
-        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
+        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
+        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur: '!errorlevel!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (%~dp0) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
     ) else (
         if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be impossible.!\N!!\N!Please report this bug: '!errorlevel!' on our Telegram forum in order to correct this bug in a future release."
         if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!errorlevel!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
@@ -3789,6 +3793,10 @@ if "%1"=="WINDOWS_VERSION" (
     )
     set t="!t!"
 )
+>LOG_DUMP.txt (
+    echo errorlevel=%errorlevel%
+    set
+)
 if defined x1 (
     mshta vbscript:Execute^("msgbox "!t1!" & Chr(10) & Chr(10) & "!t2!",69648,""Illegal Services"":close"^)
 ) else (
@@ -3798,9 +3806,6 @@ if "!x2!"=="1" (
     start "" "https://t.me/illegal_services_forum"
 ) else if "!x2!"=="2" (
     start "" "https://t.me/illegal_services"
-)
->LOG_DUMP.txt (
-    set
 )
 exit 0
 
