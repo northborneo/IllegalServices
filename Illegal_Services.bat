@@ -2569,7 +2569,6 @@ if defined file_signature (
 )
 exit /b 1
 
-
 :CHECK_NUMBER
 if "%~1"=="" exit /b 1
 for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
