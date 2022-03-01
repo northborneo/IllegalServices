@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 0. 7
-REM  Fileversion:  6. 1. 0. 7
+REM  Productversion:  6. 1. 0. 8
+REM  Fileversion:  6. 1. 0. 8
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -157,7 +157,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.0.7 - 27/02/2022
+set VERSION=v6.1.0.8 - 01/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -344,8 +344,8 @@ echo !\E![19C║    !YELLOW!2!CYAN!  ^>  !WHITE!Direct Download Link (DDL)!CYAN!
 echo !\E![19C║    !YELLOW!3!CYAN!  ^>  !WHITE!Streaming!CYAN!                      █    !YELLOW!12!CYAN!  ^>  !WHITE!IP Port Scanning!CYAN!                ║
 echo !\E![19C║    !YELLOW!4!CYAN!  ^>  !WHITE!Torrenting!CYAN!                     █    !YELLOW!13!CYAN!  ^>  !WHITE!IP Port Pinger!CYAN!                  ║
 echo !\E![19C║    !YELLOW!5!CYAN!  ^>  !WHITE!Subtitles!CYAN!                      █    !YELLOW!14!CYAN!  ^>  !WHITE!IP Pinger!CYAN!                       ║
-echo !\E![19C║    !YELLOW!6!CYAN!  ^>  !WHITE!Cracked Windows apps!CYAN!           █    !YELLOW!15!CYAN!  ^>  !WHITE!IP Loggers!CYAN!                      ║
-echo !\E![19C║    !YELLOW!7!CYAN!  ^>  !WHITE!Cracked Android APK's!CYAN!          █    !YELLOW!16!CYAN!  ^>  !WHITE!Doxing!CYAN!                          ║
+echo !\E![19C║    !YELLOW!6!CYAN!  ^>  !WHITE!Cracked Windows apps/games!CYAN!     █    !YELLOW!15!CYAN!  ^>  !WHITE!IP Loggers!CYAN!                      ║
+echo !\E![19C║    !YELLOW!7!CYAN!  ^>  !WHITE!Cracked Android apps/games!CYAN!     █    !YELLOW!16!CYAN!  ^>  !WHITE!Doxing!CYAN!                          ║
 echo !\E![19C║    !YELLOW!8!CYAN!  ^>  !WHITE!YouTube Downloader!CYAN!             █    !YELLOW!17!CYAN!  ^>  !WHITE!Portable Apps!CYAN!                   ║
 echo !\E![19C║    !YELLOW!9!CYAN!  ^>  !WHITE!Useful Websites!CYAN!                █    !YELLOW!18!CYAN!  ^>  !WHITE!More Features!CYAN!                   ║
 echo !\E![19C╠═════════════════════════════════════════════════════════════════════════════════════╣
@@ -4533,12 +4533,18 @@ set /a "%1_t1=years+months+days+hours+minutes"
 exit /b
 
 :IS_BOOKMARKS_GET_NEW_DATE_TIME
+if defined new_date_time (
+    set new_date_time=
+)
 for /f "tokens=2delims==." %%A in ('2^>nul wmic os get Localdatetime /value') do (
     set "new_date_time=%%A"
     set "new_date_time=!new_date_time:~0,-10!-!new_date_time:~-10,2!-!new_date_time:~-8,2! !new_date_time:~-6,2!:!new_date_time:~-4,2!"
 )
 call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
     exit /b 0
+)
+if defined new_date_time (
+    set new_date_time=
 )
 for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}"') do (
     set "new_date_time=%%A"
