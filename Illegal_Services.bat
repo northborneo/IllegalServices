@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2020 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 0. 9
-REM  Fileversion:  6. 1. 0. 9
+REM  Productversion:  6. 1. 1. 0
+REM  Fileversion:  6. 1. 1. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -157,7 +157,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.0.9 - 01/03/2022
+set VERSION=v6.1.1.0 - 01/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -562,13 +562,10 @@ if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Rose voice assistant !CYAN!(!
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Rose voice assistant !CYAN!(!RED!OFF!!CYAN!)               ║"
 if "!DeveloperMode!"=="1" (
 set "DeveloperModeInfo=Developer mode !CYAN!(!GREEN!ON!!CYAN!)                      ║"
-set "ExtractSourceInfo=!YELLOW!24!CYAN!  ^>  !WHITE!Extract IS source code.!CYAN!                  ║"
 )
 if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Developer mode !CYAN!(!RED!OFF!!CYAN!)                     ║"
-set "ExtractSourceInfo=                                                ║"
 )
-set "ScanWebsitesInfo=Scan down or changed domain websites.!CYAN!    ║"
 )
 if "!language!"=="FR" (
 set "BackgroundTransparencyInfo=Changer background transparence !CYAN!(!YELLOW!!BackgroundTransparency!!CYAN!)!CYAN!     !el!║"
@@ -582,13 +579,10 @@ if "!VoiceAssistant!"=="1" set "VoiceAssistantInfo=Assistance vocal Rose !CYAN!(
 if "!VoiceAssistant!"=="0" set "VoiceAssistantInfo=Assistance vocal Rose !CYAN!(!RED!OFF!!CYAN!)              ║"
 if "!DeveloperMode!"=="1" (
 set "DeveloperModeInfo=Mode développeur !CYAN!(!GREEN!ON!!CYAN!)                    ║"
-set "ExtractSourceInfo=!YELLOW!24!CYAN!  ^>  !WHITE!Extraire le code source d'IS.!CYAN!            ║"
 )
 if "!DeveloperMode!"=="0" (
 set "DeveloperModeInfo=Mode développeur !CYAN!(!RED!OFF!!CYAN!)                   ║"
-set "ExtractSourceInfo=                                                ║"
 )
-set "ScanWebsitesInfo=Scan les sites internet indexés.!CYAN!         ║"
 )
 
 :CONTINUESETTINGS
@@ -613,8 +607,8 @@ echo !\E![7C║    !YELLOW!3!CYAN!  ^>  !WHITE!Kirito 3!CYAN!                   
 echo !\E![7C║    !YELLOW!4!CYAN!  ^>  !WHITE!Kirito 4!CYAN!                           ║   !YELLOW!16!CYAN!  ^>  !WHITE!!UntrustedWebsitesWarningInfo!
 echo !\E![7C║    !YELLOW!5!CYAN!  ^>  !WHITE!49206C6F766520796F75204C697361!CYAN!     ║   !YELLOW!17!CYAN!  ^>  !WHITE!!VoiceAssistantInfo!
 echo !\E![7C║    !YELLOW!6!CYAN!  ^>  !WHITE!Even Roses are colorless !CYAN!          ║   !YELLOW!18!CYAN!  ^>  !WHITE!!DeveloperModeInfo!
-if "!language!"=="EN" echo !\E![7C║    !YELLOW!7!CYAN!  ^>  !WHITE!Tree!CYAN!                               ║   !YELLOW!19!CYAN!  ^>  !WHITE!!ScanWebsitesInfo!
-if "!language!"=="FR" echo !\E![7C║    !YELLOW!7!CYAN!  ^>  !WHITE!Arbre!CYAN!                              ║   !YELLOW!19!CYAN!  ^>  !WHITE!!ScanWebsitesInfo!
+if "!language!"=="EN" echo !\E![7C║    !YELLOW!7!CYAN!  ^>  !WHITE!Tree!CYAN!                               ║   !YELLOW!19!CYAN!  ^>  !WHITE!Scan down or changed domain websites.!CYAN!    ║
+if "!language!"=="FR" echo !\E![7C║    !YELLOW!7!CYAN!  ^>  !WHITE!Arbre!CYAN!                              ║   !YELLOW!19!CYAN!  ^>  !WHITE!Scan les sites internet indexés.!CYAN!         ║
 if "!language!"=="EN" echo !\E![7C║    !YELLOW!8!CYAN!  ^>  !WHITE!Dark Guy!CYAN!                           ║   !YELLOW!20!CYAN!  ^>  !WHITE!Check for updates.!CYAN!                       ║
 if "!language!"=="FR" echo !\E![7C║    !YELLOW!8!CYAN!  ^>  !WHITE!Homme sombre!CYAN!                       ║   !YELLOW!20!CYAN!  ^>  !WHITE!Vérifiez les mises à jour.!CYAN!               ║
 if "!language!"=="EN" echo !\E![7C║    !YELLOW!9!CYAN!  ^>  !WHITE!Girl eyes!CYAN!                          ║   !YELLOW!21!CYAN!  ^>  !WHITE!Change username.!CYAN!                         ║
@@ -623,8 +617,8 @@ if "!language!"=="EN" echo !\E![7C║   !YELLOW!10!CYAN!  ^>  !WHITE!World map (
 if "!language!"=="FR" echo !\E![7C║   !YELLOW!10!CYAN!  ^>  !WHITE!Carte du monde (bytes)!CYAN!             ║   !YELLOW!22!CYAN!  ^>  !WHITE!Changer la langue en Anglais.!CYAN!            ║
 if "!language!"=="EN" echo !\E![7C║   !YELLOW!11!CYAN!  ^>  !WHITE!World map (Corona Virus)!CYAN!           ║   !YELLOW!23!CYAN!  ^>  !WHITE!Export/Import settings.!CYAN!                  ║
 if "!language!"=="FR" echo !\E![7C║   !YELLOW!11!CYAN!  ^>  !WHITE!Carte du monde (Corona Virus)!CYAN!      ║   !YELLOW!23!CYAN!  ^>  !WHITE!Exporter/Importer les paramètres.!CYAN!        ║
-if "!language!"=="EN" echo !\E![7C║   !YELLOW!12!CYAN!  ^>  !WHITE!World map (cool)!CYAN!                   ║   !ExtractSourceInfo!
-if "!language!"=="FR" echo !\E![7C║   !YELLOW!12!CYAN!  ^>  !WHITE!Carte du monde (cool)!CYAN!              ║   !ExtractSourceInfo!
+if "!language!"=="EN" echo !\E![7C║   !YELLOW!12!CYAN!  ^>  !WHITE!World map (cool)!CYAN!                   ║   !YELLOW!24!CYAN!  ^>  !WHITE!Extract IS source code.!CYAN!                  ║
+if "!language!"=="FR" echo !\E![7C║   !YELLOW!12!CYAN!  ^>  !WHITE!Carte du monde (cool)!CYAN!              ║   !YELLOW!24!CYAN!  ^>  !WHITE!Extraire le code source d'IS.!CYAN!            ║
 echo !\E![7C║                                             ║                                                   ║
 echo !\E![7C╚═════════════════════════════════════════════╩═══════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -651,7 +645,7 @@ if "!x!"=="20" goto :SETTING_VERSION
 if "!x!"=="21" goto :SETTING_USERNAME
 if "!x!"=="22" goto :SETTING_LANGUAGE
 if "!x!"=="23" goto :SETTING_EXPORTIMPORT
-if "!x!"=="24" if "!DeveloperMode!"=="1" goto :SETTING_EXTRACT_SOURCE
+if "!x!"=="24" goto :SETTING_EXTRACT_SOURCE
 call :CHOOSE OPEN && (call :OPEN_FOLDER "!IS_OUTPUT_DIRECTORY!" SETTINGS & goto :CONTINUESETTINGS)
 call :CHOOSE BACK && goto :MAINMENU
 call :ERRORMESSAGE
@@ -724,8 +718,8 @@ echo:
 if defined _el >nul 2>&1 reg add "!IS_REG!" /v "DeveloperMode" /t REG_DWORD /d !_el! /f
 call :CHECK_DEVELOPERMODE
 if "!DeveloperMode!"=="1" (
-if "!language!"=="EN" set t="Developer mode has been activated successfully. You can now extract the source code."
-if "!language!"=="FR" set t="Le mode développeur a été activé avec succès. Vous pouvez maintenant extraire le code source."
+if "!language!"=="EN" set t="Developer mode has been activated successfully."
+if "!language!"=="FR" set t="Le mode développeur a été activé avec succès."
 call :MSGBOX 69696 "Illegal Services"
 goto :CLEARSETTINGS
 )
@@ -842,21 +836,31 @@ goto :SETTING_IMPORT
 
 :SETTING_EXTRACT_SOURCE
 if /i "!IS_PROCESS!"=="cmd.exe" (
-echo:
-if "!language!"=="EN" set t=ERROR: Impossible to extract the source code if you are running the batch file
-if "!language!"=="FR" set t=ERREUR: Impossible d'extraire le code source si vous exécutez le fichier batch
-echo !RED!!t! ^(!BAT_USED!^).!YELLOW!
-timeout /t 5
-) else if defined BAT_USED (
-attrib -s -h -i "!TMPF!\!BAT_USED!"
->nul copy /y "!TMPF!\!BAT_USED!" "Illegal_Services.bat"
-attrib +s +h +i "!TMPF!\!BAT_USED!"
->nul chcp 437
-2>nul powershell Get-childitem $Illegal_Services.bat ^| ForEach-Object -process {if ^(^($_.attributes -band 0x100^) -eq 0x100^) {$_.attributes = ^($_.attributes -band 0xFEFF^)}}
->nul chcp 65001
-start /max "" "%~dp0"
+    echo:
+    if "!language!"=="EN" set t=ERROR: Impossible to extract the source code if you are running the batch file
+    if "!language!"=="FR" set t=ERREUR: Impossible d'extraire le code source si vous exécutez le fichier batch
+    echo !RED!!t! ^(!BAT_USED!^).!YELLOW!
+    timeout /t 5
+) else (
+    if defined BAT_USED (
+        >nul Robocopy "!TMPF!" "!IS_OUTPUT_DIRECTORY!" "!BAT_USED!" /A-:SHTN /IS /IT /IM
+        if !errorlevel!==1 (
+            if exist "!IS_OUTPUT_DIRECTORY!\!BAT_USED!" (
+                >nul move "!IS_OUTPUT_DIRECTORY!\!BAT_USED!" "!IS_OUTPUT_DIRECTORY!\Illegal_Services.bat" && (
+                    if exist "!IS_OUTPUT_DIRECTORY!\Illegal_Services.bat" (
+                        cmd /c start "" "!IS_OUTPUT_DIRECTORY!"
+                        goto :CONTINUESETTINGS
+                    )
+                )
+            )
+        )
+    )
+    if "!language!"=="EN" set t="Something went wrong and couldn't extract the source code."
+    if "!language!"=="FR" set t="Une erreur s'est produite et n'a pas pu extraire le code source"
+    call :MSGBOX 69680 "Illegal Services"
 )
 goto :CONTINUESETTINGS
+
 
 :YOUTUBEDL
 call :SCALE 104 32
@@ -1112,7 +1116,7 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 89 35
+call :SCALE 89 34
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1120,11 +1124,11 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresslab.sx/ stresser.zone/ wannabe1337.xyz/stresser vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ ddosforhire.net/
+set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresslab.sx/ stresser.zone/ vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 89 35
+call :SCALE 89 34
 echo !CYAN!
 echo !\E![23C══════════════════════════════════════
 echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
@@ -1143,22 +1147,21 @@ echo !\E![8C║  !11!ipstress.in!CYAN!            ║                 [   ?/Gbps
 echo !\E![8C║  !12!royalstresser.com!CYAN!      ║                 [   ?/Gbps] [200/s]  ║
 echo !\E![8C║  !13!stresslab.sx!CYAN!           ║                 [8-20/Gbps] [120/s]  ║
 echo !\E![8C║  !14!stresser.zone!CYAN!          ║                 [5-15/Gbps] [120/s]  ║
-echo !\E![8C║  !15!wannabe1337.xyz!CYAN!        ║                 [   ?/Gbps] [120/s]  ║
-echo !\E![8C║  !16!vtoxicity.net!CYAN!          ║                 [ 100/Mbps] [120/s]  ║
-echo !\E![8C║  !17!stresser.gg!CYAN!            ║                 [ 3-5/Gbps] [ 60/s]  ║
-echo !\E![8C║  !18!ipstresser.io!CYAN!          ║                 [   2/Gbps] [ 60/s]  ║
-echo !\E![8C║  !19!deltastress.com!CYAN!        ║                 [   ?/Gbps] [ 60/s]  ║
-echo !\E![8C║  !20!str3sser.io!CYAN!            ║                 [   1/Gbps] [ 60/s]  ║
+echo !\E![8C║  !15!vtoxicity.net!CYAN!          ║                 [ 100/Mbps] [120/s]  ║
+echo !\E![8C║  !16!stresser.gg!CYAN!            ║                 [ 3-5/Gbps] [ 60/s]  ║
+echo !\E![8C║  !17!ipstresser.io!CYAN!          ║                 [   2/Gbps] [ 60/s]  ║
+echo !\E![8C║  !18!deltastress.com!CYAN!        ║                 [   ?/Gbps] [ 60/s]  ║
+echo !\E![8C║  !19!str3sser.io!CYAN!            ║                 [   1/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩══════════════════════════════════════╣
 if "!language!"=="EN" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index only stressers in layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!24/02/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !21!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!01/03/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !20!ddosforhire.net"
 )
 if "!language!"=="FR" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index seulement les stresseurs en layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!24/02/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !21!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!01/03/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !20!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚═══════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -3826,25 +3829,38 @@ for %%A in (x warning_streaming warning_ip_loggers) do (
     )
 )
 set LOOKUP_folders=`
-set /a search_root_folder=1, root_folder_length=0
+set root_folder_length=0
+if defined root_folder (
+    set root_folder=
+)
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
-    if defined search_root_folder (
-        if "%%A"=="1" (
-            set search_root_folder=
-            set "root_folder=%%C"
-            call :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
+    set "x=%%C"
+    if defined x (
+        set "x=!x:\/=/!"
+        if defined x (
+            if not defined root_folder (
+                if "%%A"=="1" (
+                    set "root_folder=!x!"
+                    call :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
+                )
+            )
+            set "memory_folder_%%A=!x!"
+            set "LOOKUP_folders=!LOOKUP_folders!!x!`"
         )
     )
-    set "memory_folder_%%A=%%C"
-    set "LOOKUP_folders=!LOOKUP_folders!%%C`"
+)
+if defined x (
+    set x=
 )
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set "memory_path_%%A=%%C"
-    if not "!memory_path_%%A!"=="!root_folder!" (
-        for %%D in ("!memory_folder_%%A!") do (
-            set "memory_path_%%A=!memory_path_%%A:~%root_folder_length%!"
-            set "memory_path_%%A=!memory_path_%%A:/%%~D=!"
+    if defined memory_path_%%A (
+        if not "!memory_path_%%A!"=="!root_folder!" (
+            for %%D in ("!memory_folder_%%A!") do (
+                set "memory_path_%%A=!memory_path_%%A:~%root_folder_length%!"
+                set "memory_path_%%A=!memory_path_%%A:/%%~D=!"
+            )
         )
     )
 )
@@ -3914,7 +3930,7 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
             )
         )
         echo:
-        echo !"! !YELLOW!^>!CYAN! ■█!BGYELLOW!!RED!█ !memory_folder_%%B:\/=/! █!BGBLACK!!CYAN!█■!"!
+        echo !"! !YELLOW!^>!CYAN! ■█!BGYELLOW!!RED!█ !memory_folder_%%B! █!BGBLACK!!CYAN!█■!"!
     ) else if "%%A"=="LINK" (
         set "current_depth=%%C"
         if "!previous_action!"=="LINK" (
@@ -4546,9 +4562,11 @@ call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
 if defined new_date_time (
     set new_date_time=
 )
+>nul chcp 437
 for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}"') do (
     set "new_date_time=%%A"
 )
+>nul chcp 65001
 call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
     exit /b 0
 )
