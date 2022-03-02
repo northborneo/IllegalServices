@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 1. 2
-REM  Fileversion:  6. 1. 1. 2
+REM  Productversion:  6. 1. 1. 3
+REM  Fileversion:  6. 1. 1. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -23,6 +23,12 @@ pushd "%~dp0"
 for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo 0x1B"') do set "\E=%%A"
 set "x1=%~nx0"
 setlocal EnableDelayedExpansion
+for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="\E" (
+    set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`%%A"
+)
+if defined LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES (
+    set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`"
+)
 set "x2=%~nx0"
 set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
@@ -58,8 +64,6 @@ if not !errorlevel!==1 (
     call :ERROR_FATAL UNICODE
 )
 if not "!x1!"=="!x2!" call :ERROR_FATAL NAME
-for /f "delims==" %%A in ('set') do if not "%%A"=="_el" if not "%%A"=="\E" if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="IS_REG" if not "%%A"=="Language" if not "%%A"=="SPEECH_FR" if not "%%A"=="\N" if not "%%A"=="IS_OUTPUT_DIRECTORY" if not "%%A"=="IS_OUTPUT_DIRECTORY_LOGS" if not "%%A"=="IS_OUTPUT_DIRECTORY_YOUTUBE_DL" if not "%%A"=="IS_OUTPUT_DIRECTORY_PORTABLE_APPS" if not "%%A"=="WINDOWS_VERSION" set "DUMP_IS=!DUMP_IS!`%%A"
-if defined DUMP_IS set "DUMP_IS=!DUMP_IS!`"
 set "@SHOWCURSOR=<nul set /p=!\E![?25h"
 set "@HIDECURSOR=<nul set /p=!\E![?25l"
 %@HIDECURSOR%
@@ -171,7 +175,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.1.2 - 02/03/2022
+set VERSION=v6.1.1.3 - 02/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -441,7 +445,7 @@ if /i "!x!"=="--dump" (
         del /f /q "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP_IS.log"
     )
     for /f "tokens=1*delims==" %%A in ('set') do (
-        if "!DUMP_IS:`%%A`=!"=="!DUMP_IS!" (
+        if "!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES:`%%A`=!"=="!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!" (
             >>"!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP_IS.log" (
                 echo !"!%%A=%%B!"!
             )
