@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 1. 1
-REM  Fileversion:  6. 1. 1. 1
+REM  Productversion:  6. 1. 1. 2
+REM  Fileversion:  6. 1. 1. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -29,6 +29,20 @@ call :CHECK_LANGUAGE
 (set \N=^
 %=leave unchanged=%
 )
+for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
+    set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
+)
+call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
+    md "!IS_OUTPUT_DIRECTORY!"
+    if exist "!IS_OUTPUT_DIRECTORY!\" (
+        rd "!IS_OUTPUT_DIRECTORY!"
+    ) else (
+        call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+    )
+)
+set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
+set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
+set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
 for /f "tokens=4-7delims=[.] " %%A in ('ver') do (
     if /i "%%A"=="version" (
         set "WINDOWS_VERSION=%%B.%%C"
@@ -44,7 +58,7 @@ if not !errorlevel!==1 (
     call :ERROR_FATAL UNICODE
 )
 if not "!x1!"=="!x2!" call :ERROR_FATAL NAME
-for /f "delims==" %%A in ('set') do if not "%%A"=="_el" if not "%%A"=="\E" if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="IS_REG" if not "%%A"=="Language" if not "%%A"=="SPEECH_FR" if not "%%A"=="\N" set "DUMP_IS=!DUMP_IS!`%%A"
+for /f "delims==" %%A in ('set') do if not "%%A"=="_el" if not "%%A"=="\E" if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="IS_REG" if not "%%A"=="Language" if not "%%A"=="SPEECH_FR" if not "%%A"=="\N" if not "%%A"=="IS_OUTPUT_DIRECTORY" if not "%%A"=="IS_OUTPUT_DIRECTORY_LOGS" if not "%%A"=="IS_OUTPUT_DIRECTORY_YOUTUBE_DL" if not "%%A"=="IS_OUTPUT_DIRECTORY_PORTABLE_APPS" if not "%%A"=="WINDOWS_VERSION" set "DUMP_IS=!DUMP_IS!`%%A"
 if defined DUMP_IS set "DUMP_IS=!DUMP_IS!`"
 set "@SHOWCURSOR=<nul set /p=!\E![?25h"
 set "@HIDECURSOR=<nul set /p=!\E![?25l"
@@ -157,7 +171,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.1.1 - 01/03/2022
+set VERSION=v6.1.1.2 - 02/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -285,19 +299,6 @@ if "!language!"=="FR" echo !GREEN![PASSER] . . .
 call :ROSE "Welcome Back"
 if "!language!"=="EN" <nul set /p="!sp!Starting Illegal Services > "
 if "!language!"=="FR" <nul set /p="!sp!Démarrage d'Illegal Services > "
-for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
-    set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
-)
-call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
-    md "!IS_OUTPUT_DIRECTORY!"
-    if exist "!IS_OUTPUT_DIRECTORY!\" (
-        rd "!IS_OUTPUT_DIRECTORY!"
-    ) else (
-        call :ERROR_FATAL IS_OUTPUT_DIRECTORY
-    )
-)
-set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
-set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
 set "CHECKED=!CYAN![!YELLOW!x!CYAN!]!WHITE! "
 set "UNCHECKED=!CYAN![ ]!WHITE! "
 set /a c1=0, c2=0, untrusted_website_index=0
@@ -422,15 +423,32 @@ call :CHOOSE HELP && (start /max "" "tutorial.html" & goto :MAINMENU)
 call :CHOOSE CHANGELOG && (start /max "" "changeLog.txt" & goto :MAINMENU)
 call :CHOOSE FAQ && (call :SHOW_WINDOW "Frequently Asked Questions" || (start "" "%~f0" FAQ) & goto :MAINMENU)
 if /i "!x!"=="--dump" (
->LOG_DUMP.txt set
-start LOG_DUMP.txt
-goto :MAINMENU
-)
-if /i "!x!"=="--dump-IS" (
-if exist LOG_DUMP.txt del /f /q LOG_DUMP.txt
-for /f "tokens=1,*delims==" %%A in ('set') do if "!DUMP_IS:`%%A`=!"=="!DUMP_IS!" >>LOG_DUMP.txt echo %%A=%%B
-start LOG_DUMP.txt
-goto :MAINMENU
+    call :LOGGING_GET_DATE_TIME
+    if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\" (
+        md "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\"
+    )
+    >"!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP.log" (
+        echo errorlevel=%errorlevel%
+        set "
+    )
+    start "" "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!"
+    goto :MAINMENU
+) else if /i "!x!"=="--dump-IS" (
+    call :LOGGING_GET_DATE_TIME
+    if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\" (
+        md "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\"
+    ) else if exist "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP_IS.log" (
+        del /f /q "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP_IS.log"
+    )
+    for /f "tokens=1*delims==" %%A in ('set') do (
+        if "!DUMP_IS:`%%A`=!"=="!DUMP_IS!" (
+            >>"!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP_IS.log" (
+                echo !"!%%A=%%B!"!
+            )
+        )
+    )
+    start "" "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!"
+    goto :MAINMENU
 )
 call :ERRORMESSAGE
 goto :MAINMENU
@@ -527,13 +545,13 @@ if "!x!"=="19" (
 if "!language!"=="EN" (
 set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing."
 call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 16 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website."
+set t="@blacktario - Added 21 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
 set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 16 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet."
+set t="@blacktario - A ajouté 21 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 )
 )
@@ -894,9 +912,12 @@ if /i "!IS_PROCESS!"=="cmd.exe" (
                                     )
                                     if exist "Illegal_Services.bat" (
                                         cmd /c start "" "!IS_OUTPUT_DIRECTORY!"
-                                        if "!language!"=="EN" set t="Successfully extracted source code under 'Illegal_Services.bat' name.!\N!!\N!That said, it is not a true copy of the original one.!\N!!\N!To find an original copy of it, please visit this link: https://github.com/Illegal-Services/Illegal_Services/tree/source"
-                                        if "!language!"=="FR" set t="Source successfully extracted. "
+                                        if "!language!"=="EN" set t="Successfully extracted source code under 'Illegal_Services.bat' name.!\N!!\N!That said, it is not a true copy of the original one.!\N!!\N!To find an original copy of it, please visit this link: !git_source!"
+                                        if "!language!"=="FR" set t="Code source extrait avec succès sous le nom de 'Illegal_services.bat'.!\N!!\N!Cela dit, ce n'est pas une vraie copie de l'original.!\N!!\N!Pour en trouver une copie originale, veuillez visiter ce lien: !git_source!"
                                         call :MSGBOX 69696 "Illegal Services"
+                                        if "!language!"=="EN" set t="This is not a true copy of the Illegal Services source code.!\N!!\N!Do not run Illegal Services under this 'Illegal_Services.bat' batch file, it will break an important feature of Illegal Services.!\N!!\N!Use this one: !git_source! instead."
+                                        if "!language!"=="FR" set t="Ce n'est pas une copie vraie du code source d'Illegal Services.!\N!!\N!N'utilisez pas Illegal Services avec ce fichier batch 'Illegal_Services.bat', cela cassera une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci:!git_source!"
+                                        call :MSGBOX 69680 "Illegal Services"
                                         goto :JUMP_EXIT_SETTING_EXTRACT_SOURCE
                                     )
                                 )
@@ -3533,6 +3554,33 @@ call :MSGBOX 69680 "Illegal Services"
 )
 exit /b 3
 
+:LOGGING_GET_DATE_TIME
+if defined date_time (
+    set date_time=
+)
+for /f "tokens=2delims==." %%A in ('2^>nul wmic os get Localdatetime /value') do (
+    set "date_time=%%A"
+    set "date_time=!date_time:~0,-10!-!date_time:~-10,2!-!date_time:~-8,2!_!date_time:~-6,2!-!date_time:~-4,2!-!date_time:~-2,2!"
+)
+call :CHECK_LOGGING_DATE_TIME date_time && (
+    exit /b 0
+)
+if defined date_time (
+    set date_time=
+)
+>nul chcp 437
+for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd_HH-mm-ss}"') do (
+    set "date_time=%%A"
+)
+>nul chcp 65001
+call :CHECK_LOGGING_DATE_TIME date_time && (
+    exit /b 0
+)
+if "%1"=="ERROR_FATAL" (
+    exit /b 1
+)
+call :ERROR_FATAL DATE_TIME
+
 :DRAW_LOGO
 echo     ██╗██╗     ██╗     ███████╗ ██████╗  █████╗ ██╗         ███████╗███████╗██████╗ ██╗   ██╗██╗ ██████╗███████╗███████╗
 echo     ██║██║     ██║     ██╔════╝██╔════╝ ██╔══██╗██║         ██╔════╝██╔════╝██╔══██╗██║   ██║██║██╔════╝██╔════╝██╔════╝
@@ -3823,6 +3871,10 @@ if "%1"=="WINDOWS_VERSION" (
     if "!language!"=="EN" set t="Illegal Services could not determine its output directory.!\N!!\N!Please report this bug: '!IS_OUTPUT_DIRECTORY!' on our Telegram forum in order to correct this bug in a future release."
     if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer son répertoire de sortie.!\N!!\N!Veuillez signaler ce bug: '!IS_OUTPUT_DIRECTORY!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
+) else if "%1"=="DATE_TIME" (
+    if "!language!"=="EN" set t="Illegal Services could not determine the current date and time.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer la date et l'heure actuelles.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
 ) else if "%1"=="ERRORLEVEL" (
     if !errorlevel!==5 (
         if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
@@ -3851,9 +3903,17 @@ if "%1"=="WINDOWS_VERSION" (
     )
     set t="!t!"
 )
->LOG_DUMP.txt (
-    echo errorlevel=%errorlevel%
-    set
+if not "%1"=="IS_OUTPUT_DIRECTORY" (
+    if not "%1"=="DATE_TIME" (
+        call :LOGGING_GET_DATE_TIME
+        if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\" (
+            md "!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\"
+        )
+        >"!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\DUMP.log" (
+            echo errorlevel=%errorlevel%
+            set "
+        )
+    )
 )
 if defined x1 (
     mshta vbscript:Execute^("msgbox "!t1!" & Chr(10) & Chr(10) & "!t2!",69648,""Illegal Services"":close"^)
@@ -4552,7 +4612,7 @@ for %%A in (old_date_time years months days hours minutes leap leap_year leap_mo
 exit /b !#el!
 
 :2_IS_BOOKMARKS_COMPARE_NEW_DATE
-for /f "tokens=1-5delims=:- " %%A in ("!%1!") do (
+for /f "tokens=1-5delims=-: " %%A in ("!%1!") do (
     set "years=%%A"
     set "months=%%B"
     set "days=%%C"
@@ -4627,7 +4687,7 @@ for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}
 call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
     exit /b 0
 )
-exit /b 1
+call :ERROR_FATAL DATE_TIME
 
 :DOWNLOAD_IS_BOOKMARKS_DB
 call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER && (
@@ -4669,23 +4729,29 @@ set new_date_time=
 call :CHECK_DBLASTDOWNLOAD
 exit /b 0
 
-:CHECK_IS_BOOKMARKS_DATE_TIME
+:CHECK_LOGGING_DATE_TIME
 if not defined %1 (
     exit /b 1
 )
-if not "!%1:~4,1!"=="-" (
+if not "!%1:~-15,1!"=="-" (
     exit /b 1
 )
-if not "!%1:~7,1!"=="-" (
+if not "!%1:~-12,1!"=="-" (
     exit /b 1
 )
-if not "!%1:~10,1!"==" " (
+if not "!%1:~-9,1!"=="_" (
     exit /b 1
 )
-if not "!%1:~13,1!"==":" (
+if not "!%1:~-6,1!"=="-" (
     exit /b 1
 )
-for /f "tokens=1-5delims=:- " %%A in ("!%1!") do (
+if not "!%1:~-3,1!"=="-" (
+    exit /b 1
+)
+for /f "delims=0123456789-_" %%A in ("!%1!") do (
+    exit /b 1
+)
+for /f "tokens=1-6delims=-_" %%A in ("!%1!") do (
     call :CHECK_NUMBER "%%A" && (
         if "%%B"=="01" (
             set y1=31
@@ -4720,7 +4786,74 @@ for /f "tokens=1-5delims=:- " %%A in ("!%1!") do (
         )
         if defined y1 (
             call :CHECK_NUMBER_BETWEEN_CUSTOM "%%C" 01-!y1! && (
-                call :CHECK_NUMBER_BETWEEN_CUSTOM "%%D" 00-24 && (
+                call :CHECK_NUMBER_BETWEEN_CUSTOM "%%D" 00-23 && (
+                    call :CHECK_NUMBER_BETWEEN_CUSTOM "%%E" 00-59 && (
+                        call :CHECK_NUMBER_BETWEEN_CUSTOM "%%F" 00-59 && (
+                            exit /b 0
+                        )
+                    )
+                )
+            )
+        )
+    )
+)
+exit /b 1
+
+:CHECK_IS_BOOKMARKS_DATE_TIME
+if not defined %1 (
+    exit /b 1
+)
+if not "!%1:~4,1!"=="-" (
+    exit /b 1
+)
+if not "!%1:~7,1!"=="-" (
+    exit /b 1
+)
+if not "!%1:~10,1!"==" " (
+    exit /b 1
+)
+if not "!%1:~13,1!"==":" (
+    exit /b 1
+)
+for /f "delims=0123456789-: " %%A in ("!%1!") do (
+    exit /b 1
+)
+for /f "tokens=1-5delims=-: " %%A in ("!%1!") do (
+    call :CHECK_NUMBER "%%A" && (
+        if "%%B"=="01" (
+            set y1=31
+        ) else if "%%B"=="02" (
+            set "years=%%A"
+            call :IS_LEAP_YEAR_OR_NOT
+            if !leap!==1 (
+                set y1=29
+            ) else (
+                set y1=28
+            )
+        ) else if "%%B"=="03" (
+            set y1=31
+        ) else if "%%B"=="04" (
+            set y1=30
+        ) else if "%%B"=="05" (
+            set y1=31
+        ) else if "%%B"=="06" (
+            set y1=30
+        ) else if "%%B"=="07" (
+            set y1=31
+        ) else if "%%B"=="08" (
+            set y1=31
+        ) else if "%%B"=="09" (
+            set y1=30
+        ) else if "%%B"=="10" (
+            set y1=31
+        ) else if "%%B"=="11" (
+            set y1=30
+        ) else if "%%B"=="12" (
+            set y1=31
+        )
+        if defined y1 (
+            call :CHECK_NUMBER_BETWEEN_CUSTOM "%%C" 01-!y1! && (
+                call :CHECK_NUMBER_BETWEEN_CUSTOM "%%D" 00-23 && (
                     call :CHECK_NUMBER_BETWEEN_CUSTOM "%%E" 00-59 && (
                         exit /b 0
                     )
