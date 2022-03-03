@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 1. 3
-REM  Fileversion:  6. 1. 1. 3
+REM  Productversion:  6. 1. 1. 4
+REM  Fileversion:  6. 1. 1. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -86,6 +86,11 @@ set cmdbkg.exe=lib\cmdbkg.exe
 set cmdwiz.exe=lib\cmdwiz.exe
 set OpenFileBox.exe=lib\OpenFileBox.exe
 set SaveFileBox.exe=lib\SaveFileBox.exe
+if /i not "%~x0"==".exe" (
+    >nul findstr /bec:"for %%%%A in (%%cmdln%%) do (" "%~0" && (
+        call :ERROR_FATAL CMDLN
+    )
+)
 for %%A in (%*) do (
     if "%%~A"=="--debug" (
         set "DEBUG=[Debug] "
@@ -147,35 +152,50 @@ if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous l'e
 call :MSGBOX 69680 "Illegal Services"
 exit 0
 )
-set cn=
+set cn=0
 if /i "%~x0"==".exe" (
-set "IS_PROCESS=%~nx0"
-set BAT_USED=
-if "%~n0"=="Illegal Services" (
->nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
->nul move /y "%~nx0" "Illegal_Services.exe" && (start Illegal_Services.exe !DEBUG!) && exit 0
-)
-for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS!" ^| find "!IS_PROCESS!"') do set /a cn+=1
+    set "IS_PROCESS=%~nx0"
+    if defined BAT_USED (
+        set BAT_USED=
+    )
+    if "%~n0"=="Illegal Services" (
+        >nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
+        >nul move /y "%~nx0" "Illegal_Services.exe" && (
+            start Illegal_Services.exe !DEBUG! && (
+                exit 0
+            )
+        )
+    )
+    for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS!" ^| find "!IS_PROCESS!"') do (
+        set /a cn+=1
+    )
 ) else (
-set IS_PROCESS=cmd.exe
-set "BAT_USED=%~nx0"
+    set IS_PROCESS=cmd.exe
+    set "BAT_USED=%~nx0"
 )
 pushd "!TMPF!"
 for /f %%A in ('2^>nul dir "????????.bat" /a:-d /o:-d /b ^| findstr /rc:"........\.bat"') do (
-if not defined BAT_USED if /i "%~x0"==".exe" (
-set "BAT_USED=%%A"
-attrib -s -h "!BAT_USED!"
-attrib +s +h +i "!BAT_USED!"
-)
-if !cn! gtr 1 popd & goto :LAUNCHER
-if not "%%A"=="!BAT_USED!" del /f /q /a "%%A"
+    if not defined BAT_USED (
+        if /i "%~x0"==".exe" (
+            set "BAT_USED=%%A"
+            attrib -s -h "!BAT_USED!"
+            attrib +s +h +i "!BAT_USED!"
+        )
+    )
+    if !cn! gtr 1 (
+        popd
+        goto :LAUNCHER
+    )
+    if not "%%A"=="!BAT_USED!" (
+        del /f /q /a "%%A"
+    )
 )
 popd
 
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.1.3 - 02/03/2022
+set VERSION=v6.1.1.4 - 03/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -211,7 +231,7 @@ if defined git (
         if defined git_backup (
             echo !GREEN![!RED!Git backup server: !GREEN!%%A] . . .
         ) else (
-            if "!git!"=="404 Git proxy not found" (
+            if "!git!"=="[404 Git proxy not found]" (
                 if "!language!"=="EN" echo !RED![FAILED] . . .
                 if "!language!"=="FR" echo !RED![ECHEC] . . .
             ) else (
@@ -916,11 +936,11 @@ if /i "!IS_PROCESS!"=="cmd.exe" (
                                     )
                                     if exist "Illegal_Services.bat" (
                                         cmd /c start "" "!IS_OUTPUT_DIRECTORY!"
-                                        if "!language!"=="EN" set t="Successfully extracted source code under 'Illegal_Services.bat' name.!\N!!\N!That said, it is not a true copy of the original one.!\N!!\N!To find an original copy of it, please visit this link: !git_source!"
-                                        if "!language!"=="FR" set t="Code source extrait avec succès sous le nom de 'Illegal_services.bat'.!\N!!\N!Cela dit, ce n'est pas une vraie copie de l'original.!\N!!\N!Pour en trouver une copie originale, veuillez visiter ce lien: !git_source!"
+                                        if "!language!"=="EN" set t="Successfully extracted source code under 'Illegal_Services.bat' name."
+                                        if "!language!"=="FR" set t="Code source extrait avec succès sous le nom de 'Illegal_services.bat'."
                                         call :MSGBOX 69696 "Illegal Services"
-                                        if "!language!"=="EN" set t="This is not a true copy of the Illegal Services source code.!\N!!\N!Do not run Illegal Services under this 'Illegal_Services.bat' batch file, it will break an important feature of Illegal Services.!\N!!\N!Use this one: !git_source! instead."
-                                        if "!language!"=="FR" set t="Ce n'est pas une copie vraie du code source d'Illegal Services.!\N!!\N!N'utilisez pas Illegal Services avec ce fichier batch 'Illegal_Services.bat', cela cassera une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci:!git_source!"
+                                        if "!language!"=="EN" set t="That said, this is not an authentic copy from the original Illegal Services source code.!\N!!\N!Do not run Illegal Services under this 'Illegal_Services.bat' batch file, it will break an important feature of Illegal Services.!\N!!\N!Use this one instead: !git_source:[404 Git proxy not found]=[404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source!"
+                                        if "!language!"=="FR" set t="Cela dit, ce n'est pas une copie authentique du code source original d'Illegal Services.!\N!!\N!N'utilisez pas Illegal Services avec ce fichier batch 'Illegal_Services.bat', cela cassera une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci à la place: !git_source:[404 Git proxy not found]=[404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source!"
                                         call :MSGBOX 69680 "Illegal Services"
                                         goto :JUMP_EXIT_SETTING_EXTRACT_SOURCE
                                     )
@@ -2176,7 +2196,7 @@ if "!language!"=="FR" (
 echo !\E![3C■█!BGWHITE!!RED!█ ♦ Est-ce qu'Illegal Services est Open Source ? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!Oui, sous la General Public License v3.0 ^(GNU GPLv3^).
 )
-echo !\E![6C!GREEN!!UNDERLINE!!git_source!!UNDERLINEOFF!
+echo !\E![6C!GREEN!!UNDERLINE!!git_source:[404 Git proxy not found]=[404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source!!UNDERLINEOFF!
 echo !CYAN!
 if "!language!"=="EN" (
 echo !\E![3C■█!BGWHITE!!RED!█ ♦ Is Illegal Services illegal ? █!BGBLACK!!CYAN!█■
@@ -2826,9 +2846,9 @@ if "!curl_url:`=!"=="!curl_url!" (
         set LOOKUP_curl_proxy_url_tries=
     )
 ) else (
-    if "!git!"=="404 Git proxy not found" (
+    if "!git!"=="[404 Git proxy not found]" (
         call :PROXY || (
-            if "!git!"=="404 Git proxy not found" (
+            if "!git!"=="[404 Git proxy not found]" (
                 exit /b 2
             )
         )
@@ -3765,7 +3785,7 @@ git_build
 git_changelog
 git_release
 git_source
-) do set %%A=404 Git proxy not found
+) do set %%A=[404 Git proxy not found]
 exit /b
 
 :CURL_RAW
@@ -3857,6 +3877,9 @@ if "%1"=="WINDOWS_VERSION" (
     if "!language!"=="EN" set t="Illegal Services could not determine your Windows architecture.!\N!!\N!Please report this bug: '!ARCH!' on our Telegram forum in order to correct this bug in a future release."
     if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre architecture Windows.!\N!!\N!Veuillez signaler ce bug: '!ARCH!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
+) else if "%1"=="CMDLN" (
+    if "!language!"=="EN" set t="You are running the extracted source code from 'Illegal_Services.exe'.!\N!!\N!That said, this is not an authentic copy from the original Illegal Services source code.!\N!!\N!This extracted source code break an important feature of Illegal Services.!\N!!\N!Use this one instead: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
+    if "!language!"=="FR" set t="Vous exécutez le code source extrait de 'Illegal_services.exe'.!\N!!\N!Cela dit, ce n'est pas une copie authentique du code source original d'Illegal Services.!\N!!\N!Ce code source extrait casse une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci à la place: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
 ) else if "%1"=="TMP" (
     if "!language!"=="EN" (
         set t1="Your 'TEMP' and 'TMP' environment variables do not exist."
