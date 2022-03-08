@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 1. 8
-REM  Fileversion:  6. 1. 1. 8
+REM  Productversion:  6. 1. 1. 9
+REM  Fileversion:  6. 1. 1. 9
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -198,7 +198,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.1.8 - 07/03/2022
+set VERSION=v6.1.1.9 - 08/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -216,7 +216,9 @@ echo !BRIGHTBLACK!
 set "IS_DIR=%~dp0Illegal Services\"
 set "IS_DIR=!IS_DIR:Illegal Services\Illegal Services\=Illegal Services\!"
 if not "!PATH:~-13!"==";lib\curl\x!ARCH!" set "PATH=!PATH!;lib\curl\x!ARCH!"
-set "GIT_LIST=github.com/Illegal-Services/Illegal_Services`raw`tree/source bitbucket.org/IllegalServices/illegal_services`raw`src/source/ git.teknik.io/Illegal-Services/Illegal_Services`raw/branch`src/branch/source gitee.com/Illegal-Services/illegal_services`raw`tree/source/"
+:: https://dev.azure.com/Illegal-Services/ffc14ecb-bedd-4220-bb60-091d2b356bd0/_apis/git/repositories/492fa534-7ba9-4019-bee0-0203fcf0158c/items?path=/ChangeLog.txt&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=main     &resolveLfs=true&%24format=octetStream&api-version=5.0&download=true
+:: https://dev.azure.com/Illegal-Services/ffc14ecb-bedd-4220-bb60-091d2b356bd0/_apis/git/repositories/492fa534-7ba9-4019-bee0-0203fcf0158c/items?path=/IS.Setup.exe &versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=downloads&resolveLfs=true&%24format=octetStream&api-version=5.0&download=true
+set "GIT_LIST=github.com/Illegal-Services/Illegal_Services`raw`tree/source bitbucket.org/IllegalServices/illegal_services`raw`src/source/ git.teknik.io/Illegal-Services/Illegal_Services`raw/branch`src/branch/source gitee.com/Illegal-Services/illegal_services`raw`tree/source/ notabug.org/Illegal-Services/Illegal_Services`raw`src/source"
 >nul 2>&1 where curl.exe || (
     call :DOWNLOAD_CURL || (
         call :ERROR_FATAL lib\curl\x!ARCH!\curl.exe CURL
@@ -572,13 +574,13 @@ if "!x!"=="19" (
 if "!language!"=="EN" (
 set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing."
 call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 22 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website."
+set t="@blacktario - Added 23 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
 set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 22 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet."
+set t="@blacktario - A ajouté 23 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 )
 )
