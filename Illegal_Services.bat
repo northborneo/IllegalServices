@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 1. 9
-REM  Fileversion:  6. 1. 1. 9
+REM  Productversion:  6. 1. 2. 0
+REM  Fileversion:  6. 1. 2. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -77,6 +77,11 @@ if not "!ARCH!"=="64" (
         call :ERROR_FATAL ARCH
     )
 )
+for %%A in (%*) do (
+    if "%%~A"=="--debug" (
+        set "DEBUG=[Debug] "
+    )
+)
 set 7za.exe=lib\7za\x!ARCH!\7za.exe
 set binread.exe=lib\binread\x!ARCH!\binread.exe
 set extd.exe=lib\speak\extd.exe
@@ -89,11 +94,6 @@ set SaveFileBox.exe=lib\SaveFileBox.exe
 if /i not "%~x0"==".exe" (
     >nul findstr /bec:"for %%%%A in (%%cmdln%%) do (" "%~0" && (
         call :ERROR_FATAL CMDLN
-    )
-)
-for %%A in (%*) do (
-    if "%%~A"=="--debug" (
-        set "DEBUG=[Debug] "
     )
 )
 if not "%~1"=="" (
@@ -198,7 +198,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.1.9 - 08/03/2022
+set VERSION=v6.1.2.0 - 09/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -213,11 +213,21 @@ for %%A in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setu
 for %%A in ("!CD:~0,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~A" 2>nul rd /s /q "%%~A"
 set "sp=!\E![28C!YELLOW!{$} !BRIGHTBLACK!"
 echo !BRIGHTBLACK!
-set "IS_DIR=%~dp0Illegal Services\"
-set "IS_DIR=!IS_DIR:Illegal Services\Illegal Services\=Illegal Services\!"
+set "IS_DIR=%~dp0"
 if not "!PATH:~-13!"==";lib\curl\x!ARCH!" set "PATH=!PATH!;lib\curl\x!ARCH!"
-:: https://dev.azure.com/Illegal-Services/ffc14ecb-bedd-4220-bb60-091d2b356bd0/_apis/git/repositories/492fa534-7ba9-4019-bee0-0203fcf0158c/items?path=/ChangeLog.txt&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=main     &resolveLfs=true&%24format=octetStream&api-version=5.0&download=true
-:: https://dev.azure.com/Illegal-Services/ffc14ecb-bedd-4220-bb60-091d2b356bd0/_apis/git/repositories/492fa534-7ba9-4019-bee0-0203fcf0158c/items?path=/IS.Setup.exe &versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=downloads&resolveLfs=true&%24format=octetStream&api-version=5.0&download=true
+:: set "git_raw_github=https://github.com/Illegal-Services/Illegal_Services/raw/!git_item_branch!/!git_item_path!"
+:: set "git_raw_bitbucket=https://bitbucket.org/IllegalServices/illegal_services/raw/!git_item_branch!/!git_item_path!"
+:: set "git_raw_teknik=https://git.teknik.io/Illegal-Services/Illegal_Services/raw/branch/!git_item_branch!/!git_item_path!"
+:: set "git_raw_devops=https://dev.azure.com/Illegal-Services/ffc14ecb-bedd-4220-bb60-091d2b356bd0/_apis/git/repositories/492fa534-7ba9-4019-bee0-0203fcf0158c/items?path=/!git_item_path!&versionDescriptor%%5BversionOptions%%5D=0&versionDescriptor%%5BversionType%%5D=0&versionDescriptor%%5Bversion%%5D=!git_item_branch!&resolveLfs=true&%%24format=octetStream&api-version=5.0&download=true"
+:: set "git_raw_gitee=https://gitee.com/Illegal-Services/illegal_services/raw/!git_item_branch!/!git_item_path!"
+:: set "git_raw_notabug=https://notabug.org/Illegal-Services/Illegal_Services/raw/!git_item_branch!/!git_item_path!"
+:: set "git_source_github=https://github.com/Illegal-Services/Illegal_Services/tree/source"
+:: set "git_source_bitbucket=https://bitbucket.org/IllegalServices/illegal_services/src/source/"
+:: set "git_source_teknik=https://git.teknik.io/Illegal-Services/Illegal_Services/src/branch/source"
+:: set "git_source_devops=https://dev.azure.com/Illegal-Services/_git/Illegal_Services?path=%%2F&version=GBsource&_a=contents"
+:: set "git_source_gitee=https://gitee.com/Illegal-Services/illegal_services/tree/source/"
+:: set "git_source_notabug=https://notabug.org/Illegal-Services/Illegal_Services/src/source"
+:: set "GIT_LIST=github bitbucket teknik devops gitee notabug"
 set "GIT_LIST=github.com/Illegal-Services/Illegal_Services`raw`tree/source bitbucket.org/IllegalServices/illegal_services`raw`src/source/ git.teknik.io/Illegal-Services/Illegal_Services`raw/branch`src/branch/source gitee.com/Illegal-Services/illegal_services`raw`tree/source/ notabug.org/Illegal-Services/Illegal_Services`raw`src/source"
 >nul 2>&1 where curl.exe || (
     call :DOWNLOAD_CURL || (
@@ -279,7 +289,7 @@ if defined lastversion (
 if "!language!"=="EN" <nul set /p="!sp!Checking files integrity > "
 if "!language!"=="FR" <nul set /p="!sp!Vérification de l'intégrite des fichiers > "
 set x1=
-for %%A in (ChangeLog.txt COPYING EULA.rtf Illegal_Services.exe Tutorial.html lib\7za\x64\7za.dll lib\7za\x64\7za.exe lib\7za\x64\7zxa.dll lib\7za\x86\7za.dll lib\7za\x86\7za.exe lib\7za\x86\7zxa.dll lib\backgrounds\background-1.jpg lib\backgrounds\background-2.jpg lib\backgrounds\background-3.jpg lib\backgrounds\background-4.jpg lib\backgrounds\background-5.jpg lib\backgrounds\background-6.jpg lib\backgrounds\background-7.jpg lib\backgrounds\background-8.jpg lib\backgrounds\background-9.jpg lib\backgrounds\background-10.jpg lib\backgrounds\background-11.jpg lib\backgrounds\background-12.jpg lib\binread\x64\binread.exe lib\binread\x86\binread.exe lib\curl\x64\curl.exe lib\curl\x86\curl.exe lib\speak\extd.exe lib\speak\EN.lang lib\speak\FR.lang lib\speak\x64\speak-x64.exe lib\speak\x86\speak-x86.exe lib\bookmarks_parser.exe lib\cmdbkg.exe lib\cmdwiz.exe lib\OpenFileBox.exe lib\SaveFileBox.exe) do (
+for %%A in (lib\binread\x!ARCH!\binread.exe ChangeLog.txt COPYING EULA.rtf Illegal_Services.exe Tutorial.html lib\7za\x64\7za.dll lib\7za\x64\7za.exe lib\7za\x64\7zxa.dll lib\7za\x86\7za.dll lib\7za\x86\7za.exe lib\7za\x86\7zxa.dll lib\backgrounds\background-1.jpg lib\backgrounds\background-2.jpg lib\backgrounds\background-3.jpg lib\backgrounds\background-4.jpg lib\backgrounds\background-5.jpg lib\backgrounds\background-6.jpg lib\backgrounds\background-7.jpg lib\backgrounds\background-8.jpg lib\backgrounds\background-9.jpg lib\backgrounds\background-10.jpg lib\backgrounds\background-11.jpg lib\backgrounds\background-12.jpg lib\binread\x64\binread.exe lib\binread\x86\binread.exe lib\curl\x64\curl.exe lib\curl\x86\curl.exe lib\speak\extd.exe lib\speak\EN.lang lib\speak\FR.lang lib\speak\x64\speak-x64.exe lib\speak\x86\speak-x86.exe lib\bookmarks_parser.exe lib\cmdbkg.exe lib\cmdwiz.exe lib\OpenFileBox.exe lib\SaveFileBox.exe) do (
     if not exist %%A (
         call :MISSING_FILE %%A
         set "x2=%%A"
@@ -537,8 +547,8 @@ if "!x!"=="10" start "" "https://www.dostips.com/forum/viewtopic.php?t=7402"
 if "!x!"=="11" start "" "https://discord.com/invite/eCMBHUB"
 if "!x!"=="12" start "" "https://discord.com/invite/eXjp7PQ"
 if "!x!"=="13" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped fixing a bug that where creating temporary files without deleting them.!\N!!\N!Helped improving IP Address Lookup API's.!\N!!\N!Helped adding launcher updater.!\N!!\N!Helping to find existing bugs and vulnerabilities.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped to find algorithm to download new database of 'IS.bookmarks.html' every day."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à la correction d'un bug qui entraînait la création de fichiers temporaires sans les supprimer.!\N!!\N!A aidé à améliorer l'API de l'IP Address Lookup.!\N!!\N!A aidé à l'ajout des mises à jour du launcher.A aidé à trouver les bugs et vulnérabilitées existantes.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à trouver l'algorithme permettant de télécharger la nouvelle database de 'IS.bookmarks.html' tous les jours."
+if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped fixing a bug that where creating temporary files without deleting them.!\N!!\N!Helped improving IP Address Lookup API's.!\N!!\N!Helped adding launcher updater.!\N!!\N!Helping to find existing bugs and vulnerabilities.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped to find algorithm to download new database of 'IS.bookmarks.html' every day.!\N!!\N!Creator of 'binread.exe' source executable."
+if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à la correction d'un bug qui entraînait la création de fichiers temporaires sans les supprimer.!\N!!\N!A aidé à améliorer l'API de l'IP Address Lookup.!\N!!\N!A aidé à l'ajout des mises à jour du launcher.A aidé à trouver les bugs et vulnérabilitées existantes.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à trouver l'algorithme permettant de télécharger la nouvelle database de 'IS.bookmarks.html' tous les jours.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html!\N!!\N!Créateur de l'exécutable 'binread.exe' dans la source."
 call :MSGBOX 69696 "anic17 'Task failed successfully'"
 start "" "https://github.com/anic17"
 )
@@ -550,13 +560,13 @@ start "" "https://tim-greller.de/home/"
 )
 if "!x!"=="15" (
 if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped using curl for IS source.!\N!!\N!Helped adding Rose voice assistant.!\N!!\N!Helped adding choice verification.!\N!!\N!Helped adding Automatic proxy switcher.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html"
+if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à implémenter le support de Windows 11."
 call :MSGBOX 69696 "sintrode"
 start "" "https://github.com/sintrode"
 )
 if "!x!"=="16" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Creator of 'binread.exe' source executable.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding.!\N!!\N!Helped fixing a bug when user edits 'IP Lookup Saved.txt' but forgets the ending newline.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Créateur de l'exécutable 'binread.exe' dans la source.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8.!\N!!\N!A aidé à corriger un bug lorsque l'utilisateur modifie 'IP Lookup Saved.txt' mais oublie la nouvelle ligne de fin.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html"
+if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Algorithm for checking a file signature.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding.!\N!!\N!Helped fixing a bug when user edits 'IP Lookup Saved.txt' but forgets the ending newline.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser."
+if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Algorithme de vérification de la signature d''un fichier.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8.!\N!!\N!A aidé à corriger un bug lorsque l'utilisateur modifie 'IP Lookup Saved.txt' mais oublie la nouvelle ligne de fin.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html"
 call :MSGBOX 69696 "Grub4K"
 start "" "https://github.com/Grub4K"
 )
@@ -2328,6 +2338,7 @@ if "!language!"=="FR" (
     set o5=Site Internet Changé d'Addresse
     set o6=Site Internet Changé de Domaine
 )
+call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
@@ -2632,12 +2643,14 @@ exit /b 1
 if not exist "%~f1" (
     exit /b 1
 )
-if "%~2"=="" (
-    exit /b 1
+if "%~f1"=="!IS_DIR!lib\binread\x!ARCH!\binread.exe" (
+    exit /b 0
 )
 >nul 2>&1 !binread.exe! "!binread.exe!" 0
-if !errorlevel!==9020 (
-    del /f /q "!binread.exe!"
+if not !errorlevel!==0 (
+    if !errorlevel!==9020 (
+        del /f /q "!binread.exe!"
+    )
     exit /b 1
 )
 if defined file_signature (
@@ -2909,19 +2922,19 @@ exit /b 0
 if not defined LOOKUP_curl_proxy_url_tries (
     exit /b 2
 )
-for %%A in ("!curl_url!") do (
-    for %%B in (main downloads source) do (
-        if not "!curl_url:/%%B/=!"=="!curl_url!" (
-            for %%C in (!GIT_LIST!) do (
-                for /f "tokens=1,2delims=`" %%D in ("%%C") do (
-                    for %%F in ("https://%%D/%%E/%%B/%%~nxA") do (
-                        if "!LOOKUP_curl_proxy_url_tries:`%%~F`=!"=="!LOOKUP_curl_proxy_url_tries!" (
-                            set "LOOKUP_curl_proxy_url_tries=!LOOKUP_curl_proxy_url_tries!%%~F`"
+for /f "tokens=1*delims=/" %%A in ("%~2") do (
+    for %%C in (main downloads source) do (
+        if not "!curl_url:/%%C/=!"=="!curl_url!" (
+            for %%D in (!GIT_LIST!) do (
+                for /f "tokens=1,2delims=`" %%E in ("%%D") do (
+                    for %%G in ("https://%%E/%%F/%%C/%%~B") do (
+                        if "!LOOKUP_curl_proxy_url_tries:`%%~G`=!"=="!LOOKUP_curl_proxy_url_tries!" (
+                            set "LOOKUP_curl_proxy_url_tries=!LOOKUP_curl_proxy_url_tries!%%~G`"
                             if "!language!"=="EN" set "t=Downloading: "
                             if "!language!"=="FR" set "t=Téléchargement: "
-                            <nul set /p="!CYAN!!t!!YELLOW!%%~F!CYAN!"
+                            <nul set /p="!CYAN!!t!!YELLOW!%%~G!CYAN!"
                             echo:
-                            >nul curl.exe --create-dirs -f#kLo "%~1" "%%~F" && (
+                            >nul curl.exe --create-dirs -f#kLo "%~1" "%%~G" && (
                                 call :CHECK_FILE_SIGNATURE "%~f1" 8 && (
                                     goto :CURL_CONTINUE
                                 )
@@ -2967,7 +2980,7 @@ call :CURL "!TMPF!\!filename!" "!url!" || (call :ERROR_INTERNET & exit /b)
 call :START_DOWNLOADED_FILE !filename!
 exit /b
 
-:CHECK_TORRENT_HASH
+:CHECK_HASH_SHA1
 if not defined %1 (
     exit /b 1
 )
@@ -3583,6 +3596,17 @@ call :MSGBOX 69680 "Illegal Services"
 )
 exit /b 3
 
+:GET_FILE_HASH
+for /f %%A in ('CertUtil -hashfile "%1" SHA1 ^| findstr /ber "[a-f0-9]*"') do (
+    set "file_hash=%%A"
+    goto :_GET_FILE_HASH
+)
+:_GET_FILE_HASH
+call :CHECK_HASH_SHA1 file_hash && (
+    exit /b 0
+)
+exit /b 1
+
 :LOGGING_GET_DATE_TIME
 if defined date_time (
     set date_time=
@@ -3907,6 +3931,10 @@ if "%1"=="WINDOWS_VERSION" (
     if "!language!"=="EN" set t="Illegal Services could not determine the current date and time.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
     if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer la date et l'heure actuelles.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
+) else if "%1"=="HASH" (
+    if "!language!"=="EN" set t="Illegal Services could not determine the HASH of the file '%~2'.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer le HASH du fichier '%~2'.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
 ) else if "%1"=="ERRORLEVEL" (
     if !errorlevel!==5 (
         if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
@@ -3916,6 +3944,7 @@ if "%1"=="WINDOWS_VERSION" (
         if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!errorlevel!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
         set x2=1
     )
+)
 ) else (
     if "!language!"=="EN" set "t=Illegal Services can't start because '!IS_DIR!%1' is missing."
     if "!language!"=="FR" set "t=Illegal Services ne peut pas démarrer car '!IS_DIR!%1' est manquant."
@@ -3982,31 +4011,28 @@ set root_folder_length=0
 if defined root_folder (
     set root_folder=
 )
+call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
-    set "x=%%C"
-    if defined x (
-        set "x=!x:\/=/!"
-        if defined x (
-            if not defined root_folder (
-                if "%%A"=="1" (
-                    set "root_folder=!x!"
-                    call :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
-                )
-            )
-            set "memory_folder_%%A=!x!"
-            set "LOOKUP_folders=!LOOKUP_folders!!x!`"
+    if not defined root_folder (
+        if "%%A"=="1" (
+            set "root_folder=%%C"
         )
     )
+    set "memory_folder_%%A=%%C"
+    set "LOOKUP_folders=!LOOKUP_folders!%%C`"
 )
-if defined x (
-    set x=
+if defined root_folder (
+    call :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
+    set root_folder=
 )
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set "memory_path_%%A=%%C"
     if defined memory_path_%%A (
-        if not "!memory_path_%%A!"=="!root_folder!" (
-            for %%D in ("!memory_folder_%%A!") do (
+        if not "!memory_path_%%A!"=="!memory_path_1!" (
+            for /f "delims=`" %%D in ("`!memory_folder_%%A!`") do (
+                set "memory_path_%%A=!memory_path_%%A:\\=\!"
+                set "memory_path_%%A=!memory_path_%%A:\/=/!"
                 set "memory_path_%%A=!memory_path_%%A:~%root_folder_length%!"
                 set "memory_path_%%A=!memory_path_%%A:/%%~D=!"
             )
@@ -4075,7 +4101,7 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
             if %%B lss 3 (
                 echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: / █!BGBLACK!!CYAN!█!"!
             ) else (
-                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_path_%%B:\/=/! █!BGBLACK!!CYAN!█!"!
+                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_path_%%B! █!BGBLACK!!CYAN!█!"!
             )
         )
         echo:
@@ -4296,7 +4322,7 @@ if "!language!"=="FR" set t=Entrez le HASH du torrent
 set x=
 set /p "x=!t!: !YELLOW!"
 %@HIDECURSOR%
-call :CHECK_TORRENT_HASH x && (
+call :CHECK_HASH_SHA1 x && (
     start "" "magnet:?xt=urn:btih:!x!"
     goto :CONTINUE_IS_BOOKMARKS_PARSER
 )
@@ -4912,3 +4938,14 @@ call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKM
     exit /b 1
 )
 exit /b 0
+
+:CHECK_PATCH_BOOKMARKS_PARSER
+call :GET_FILE_HASH "!bookmarks_parser.exe!" || (
+    call :ERROR_FATAL HASH "!bookmarks_parser.exe!"
+)
+if "!file_hash!"=="6a77663344031f214658941882d6dc39150b64ef" (
+    call :CURL "!bookmarks_parser.exe!" "`git_raw_main`/!bookmarks_parser.exe:\=/!" || (
+        call :ERROR_FATAL !bookmarks_parser.exe!
+    )
+)
+exit /b
