@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 2. 0
-REM  Fileversion:  6. 1. 2. 0
+REM  Productversion:  6. 1. 2. 1
+REM  Fileversion:  6. 1. 2. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -198,7 +198,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.2.0 - 09/03/2022
+set VERSION=v6.1.2.1 - 09/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -4030,7 +4030,7 @@ for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!I
     set "memory_path_%%A=%%C"
     if defined memory_path_%%A (
         if not "!memory_path_%%A!"=="!memory_path_1!" (
-            for /f "delims=`" %%D in ("`!memory_folder_%%A!`") do (
+            for /f "delims=" %%D in ("!memory_folder_%%A!") do (
                 set "memory_path_%%A=!memory_path_%%A:\\=\!"
                 set "memory_path_%%A=!memory_path_%%A:\/=/!"
                 set "memory_path_%%A=!memory_path_%%A:~%root_folder_length%!"
