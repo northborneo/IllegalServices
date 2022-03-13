@@ -7,7 +7,7 @@ https://t.me/illegal_services
 https://discord.gg/rU2w2E83KF
 https://github.com/Illegal-Services/Illegal_Services
 
-v6.1.2.5 - 13/03/2022
+v6.1.2.6 - 13/03/2022
 * FIXED IS Setup : Support for Windows 11.
 * FIXED IS Source : Minor bugs.
 * IMPROVED IS Source : Support for Windows 11.
