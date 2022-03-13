@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 2. 2
-REM  Fileversion:  6. 1. 2. 2
+REM  Productversion:  6. 1. 2. 3
+REM  Fileversion:  6. 1. 2. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -198,7 +198,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.2.2 - 09/03/2022
+set VERSION=v6.1.2.3 - 13/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -584,13 +584,13 @@ if "!x!"=="19" (
 if "!language!"=="EN" (
 set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing."
 call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 23 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website."
+set t="@blacktario - Added 23 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website.!\N!@sakuranatsumigg - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
 set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 23 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet."
+set t="@blacktario - A ajouté 23 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 )
 )
@@ -1233,7 +1233,7 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 89 34
+call :SCALE 89 32
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1241,44 +1241,42 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=redstresser.cc/welcome/index quez.in/ instant-stresser.com/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ royalstresser.com/ stresslab.sx/ stresser.zone/ vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ ddosforhire.net/
+set db=redstresser.cc/welcome/index quez.in/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ stresser.zone/ vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 89 34
+call :SCALE 89 32
 echo !CYAN!
 echo !\E![23C══════════════════════════════════════
 echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
 echo !\E![8C╔════════════════════════════════╦══════════════════════════════════════╗
 echo !\E![8C║   !1!redstresser.cc!CYAN!         ║  [BEST]         [  10/Gbps] [350/s]  ║
 echo !\E![8C║   !2!quez.in!CYAN!                ║  [BEST]         [   5/Gbps] [300/s]  ║
-echo !\E![8C║   !3!instant-stresser.com!CYAN!   ║  [BEST]         [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !4!freestresser.to!CYAN!        ║  [BEST]         [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !5!stresser.ai!CYAN!            ║  [BEST]         [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !6!anonboot.com!CYAN!           ║  [BEST]         [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !7!cryptostresser.com!CYAN!     ║  [BEST]         [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !8!stressing.ninja!CYAN!        ║  [BEST]         [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !9!str3ssed.co!CYAN!            ║  [BEST]         [7-13/Gbps] [300/s]  ║
-echo !\E![8C║  !10!www.ipstresser.com!CYAN!     ║                 [ 200/Mbps] [300/s]  ║
-echo !\E![8C║  !11!ipstress.in!CYAN!            ║                 [   ?/Gbps] [250/s]  ║
-echo !\E![8C║  !12!royalstresser.com!CYAN!      ║                 [   ?/Gbps] [200/s]  ║
-echo !\E![8C║  !13!stresslab.sx!CYAN!           ║                 [8-20/Gbps] [120/s]  ║
-echo !\E![8C║  !14!stresser.zone!CYAN!          ║                 [5-15/Gbps] [120/s]  ║
-echo !\E![8C║  !15!vtoxicity.net!CYAN!          ║                 [ 100/Mbps] [120/s]  ║
-echo !\E![8C║  !16!stresser.gg!CYAN!            ║                 [ 3-5/Gbps] [ 60/s]  ║
-echo !\E![8C║  !17!ipstresser.io!CYAN!          ║                 [   2/Gbps] [ 60/s]  ║
-echo !\E![8C║  !18!deltastress.com!CYAN!        ║                 [   ?/Gbps] [ 60/s]  ║
-echo !\E![8C║  !19!str3sser.io!CYAN!            ║                 [   1/Gbps] [ 60/s]  ║
+echo !\E![8C║   !3!freestresser.to!CYAN!        ║  [BEST]         [   1/Gbps] [300/s]  ║
+echo !\E![8C║   !4!stresser.ai!CYAN!            ║  [BEST]         [   1/Gbps] [300/s]  ║
+echo !\E![8C║   !5!anonboot.com!CYAN!           ║  [BEST]         [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !6!cryptostresser.com!CYAN!     ║  [BEST]         [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !7!stressing.ninja!CYAN!        ║  [BEST]         [   ?/Gbps] [300/s]  ║
+echo !\E![8C║   !8!str3ssed.co!CYAN!            ║  [BEST]         [7-13/Gbps] [300/s]  ║
+echo !\E![8C║   !9!www.ipstresser.com!CYAN!     ║                 [ 200/Mbps] [300/s]  ║
+echo !\E![8C║  !10!ipstress.in!CYAN!            ║                 [   ?/Gbps] [250/s]  ║
+echo !\E![8C║  !11!stresslab.sx!CYAN!           ║                 [8-20/Gbps] [120/s]  ║
+echo !\E![8C║  !12!stresser.zone!CYAN!          ║                 [5-15/Gbps] [120/s]  ║
+echo !\E![8C║  !13!vtoxicity.net!CYAN!          ║                 [ 100/Mbps] [120/s]  ║
+echo !\E![8C║  !14!stresser.gg!CYAN!            ║                 [ 3-5/Gbps] [ 60/s]  ║
+echo !\E![8C║  !15!ipstresser.io!CYAN!          ║                 [   2/Gbps] [ 60/s]  ║
+echo !\E![8C║  !16!deltastress.com!CYAN!        ║                 [   ?/Gbps] [ 60/s]  ║
+echo !\E![8C║  !17!str3sser.io!CYAN!            ║                 [   1/Gbps] [ 60/s]  ║
 echo !\E![8C╠════════════════════════════════╩══════════════════════════════════════╣
 if "!language!"=="EN" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index only stressers in layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!05/03/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !20!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!11/03/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net"
 )
 if "!language!"=="FR" (
 call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index seulement les stresseurs en layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!05/03/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !20!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!11/03/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚═══════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -2356,43 +2354,45 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
     )
     set "src_url=%%A"
     for /f "delims=/" %%B in ("!src_url:*://=!") do (
-        <nul set /p="!\E!]0;!DEBUG![!results! result!s! found from !counter!/!index! websites indexed]  |  [!percentage!/100%%]  |  [!src_url!] - Illegal Services!\E!\"
-        if not defined website_[%%A] (
-            set website_[%%A]=1
-            >nul ping -w 1000 -n 1 "%%B" || (
-                >nul curl.exe -IkLs -X GET "!src_url!" || (
-                    if !errorlevel!==6 (
-                        set /a results+=1
-                        echo !RED!!o1!: !YELLOW!!src_url! !RED!!o3! ^^!
-                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+        if /i not "%%~nB"==".onion" (
+            <nul set /p="!\E!]0;!DEBUG![!results! result!s! found from !counter!/!index! websites indexed]  |  [!percentage!/100%%]  |  [!src_url!] - Illegal Services!\E!\"
+            if not defined website_[%%A] (
+                set website_[%%A]=1
+                >nul ping -n 1 -w 1000 "%%B" || (
+                    >nul curl.exe -IkLs -X GET "!src_url!" || (
+                        if !errorlevel!==6 (
                             set /a results+=1
-                            echo !RED!!o2!: !YELLOW!!src_url! !RED!!o4! ^^!
-                        )
-                    ) else (
-                        call :PROTECTED_WEBSITE_DETECTION src_url || (
-                            set /a results+=1
-                            echo !RED!!o2!: !YELLOW!!src_url! !RED!!o3! ^^!
+                            echo !RED!!o1!: !YELLOW!!src_url! !RED!!o3! ^^!
                             curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
                                 set /a results+=1
                                 echo !RED!!o2!: !YELLOW!!src_url! !RED!!o4! ^^!
                             )
+                        ) else (
+                            call :PROTECTED_WEBSITE_DETECTION src_url || (
+                                set /a results+=1
+                                echo !RED!!o2!: !YELLOW!!src_url! !RED!!o3! ^^!
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=1
+                                    echo !RED!!o2!: !YELLOW!!src_url! !RED!!o4! ^^!
+                                )
+                            )
                         )
                     )
                 )
-            )
-            for /f %%C in ('curl.exe -Iks -X GET -o NUL "!src_url!" -w "%%{redirect_url}"') do (
-                set "dst_url=%%C"
-                for /f "delims=/" %%D in ("!dst_url:*://=!") do (
-                    if not "!src_url!"=="!dst_url!" (
-                        if not "%%B_%%D"=="discord.gg_discord.com" (
-                            if not "%%B_%%D"=="github.com_raw.githubusercontent.com" (
-                                if not "%%B_%%D"=="github.com_objects.githubusercontent.com" (
-                                    if "%%B"=="%%D" (
-                                        set /a results+=1
-                                        echo !RED!!o5!: !YELLOW!!src_url! !GREEN!^> !YELLOW!!dst_url!
-                                    ) else (
-                                        set /a results+=1
-                                        echo !RED!!o6!: !YELLOW!!src_url! !GREEN!^> !YELLOW!!dst_url!
+                for /f %%C in ('curl.exe -Iks -X GET -o NUL "!src_url!" -w "%%{redirect_url}"') do (
+                    set "dst_url=%%C"
+                    for /f "delims=/" %%D in ("!dst_url:*://=!") do (
+                        if not "!src_url!"=="!dst_url!" (
+                            if not "%%B_%%D"=="discord.gg_discord.com" (
+                                if not "%%B_%%D"=="github.com_raw.githubusercontent.com" (
+                                    if not "%%B_%%D"=="github.com_objects.githubusercontent.com" (
+                                        if "%%B"=="%%D" (
+                                            set /a results+=1
+                                            echo !RED!!o5!: !YELLOW!!src_url! !GREEN!^> !YELLOW!!dst_url!
+                                        ) else (
+                                            set /a results+=1
+                                            echo !RED!!o6!: !YELLOW!!src_url! !GREEN!^> !YELLOW!!dst_url!
+                                        )
                                     )
                                 )
                             )
@@ -2404,10 +2404,21 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
     )
 )
 echo !CYAN!
-for /f "tokens=1-4delims=:.," %%A in ("!time: =0!") do set /a "t2=(((1%%A*60)+1%%B)*60+1%%C)*100+1%%D-36610100, tDiff=t2-t1, tDiff+=((~(tDiff&(1<<31))>>31)+1)*8640000, seconds=tDiff/100"
-title !DEBUG![!results! result!s! found from !index! websites indexed]  ^|  [Scan completed in !seconds! seconds.] - Illegal Services
-if "!language!"=="EN" echo Scan completed with !results! result!s! found from !index! websites indexed in !seconds! seconds.
-if "!language!"=="FR" echo L'analyse s'est terminée avec !results! résultats trouvés à partir de !index! sites web indexés en !seconds! secondes.
+for /f "tokens=1-4delims=:.," %%A in ("!time: =0!") do set /a "t2=(((1%%A*60)+1%%B)*60+1%%C)*100+1%%D-36610100, tDiff=t2-t1, tDiff+=((~(tDiff&(1<<31))>>31)+1)*8640000, seconds=tDiff/100, hours=seconds/3600, minutes=seconds/60%%60, seconds=seconds%%60"
+if defined @el (
+    set @el=
+)
+if !hours! gtr 0 (
+    set @el=!hours!h !minutes!m !seconds!s
+) else if !minutes! gtr 0 (
+    set @el=!minutes!m !seconds!s
+) else (
+    set @el=!seconds!s
+)
+title !DEBUG![!results! result!s! found from !index! websites indexed]  ^|  [Scan completed in !@el!.] - Illegal Services
+if "!language!"=="EN" echo Scan completed with !results! result!s! found from !index! websites indexed in !@el!.
+if "!language!"=="FR" echo L'analyse s'est terminée avec !results! résultats trouvés à partir de !index! sites web indexés en !@el!.
+set @el=
 echo:
 pause
 exit 0
@@ -4051,10 +4062,8 @@ if not "!LOOKUP_folders:`%category_folder%`=!"=="!LOOKUP_folders!" (
     )
 )
 for %%A in (category_path_ untrusted_website_ name_ url_) do (
-    >nul 2>&1 set %%A && (
-        for /f "delims==" %%B in ('set %%A') do (
-            set %%B=
-        )
+    for /f "delims==" %%B in ('2^>nul set %%A') do (
+        set %%B=
     )
 )
 if defined open_folder_statut (
