@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 2. 6
-REM  Fileversion:  6. 1. 2. 6
+REM  Productversion:  6. 1. 2. 7
+REM  Fileversion:  6. 1. 2. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -198,7 +198,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.2.6 - 13/03/2022
+set VERSION=v6.1.2.7 - 14/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2191,8 +2191,8 @@ call :MSGBOX 69680 "Illegal Services"
 goto :CHECKER_BUILD_FOUND
 
 :PROCESS_FAQ
-if "!language!"=="EN" call :SCALE 105 49
-if "!language!"=="FR" call :SCALE 114 49
+if "!language!"=="EN" call :SCALE 105 55
+if "!language!"=="FR" call :SCALE 124 55
 title !#TITLE:`=Frequently Asked Questions!
 call :ROSE FAQ
 echo !CYAN!
@@ -2202,7 +2202,7 @@ call :DRAW_CENTER "■█!BGYELLOW!!RED!█ !BLACK!!t!!RED! █!BGBLACK!!CYAN!�
 echo:
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ Is Illegal Services open source ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Is Illegal Services open source? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!Yes, under the General Public License v3.0 ^(GNU GPLv3^).
 )
 if "!language!"=="FR" (
@@ -2212,10 +2212,10 @@ echo !\E![6C!GREEN!Oui, sous la General Public License v3.0 ^(GNU GPLv3^).
 echo !\E![6C!GREEN!!UNDERLINE!!git_source:[404 Git proxy not found]=[404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source!!UNDERLINEOFF!
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ Is Illegal Services illegal ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Is Illegal Services illegal? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!Illegal Services is legal, but services provided inside are mostly illegal.
 echo !\E![6C!GREEN!Illegal Services does not store any copyrighted files locally or on its server.
-echo !\E![6C!GREEN!All contents are provided by non-affiliated third parties.
+echo !\E![6C!GREEN!All content are provided by non-affiliated third parties.
 echo !\E![6C!GREEN!You are solely responsible for their use at your own risk.
 )
 if "!language!"=="FR" (
@@ -2227,7 +2227,7 @@ echo !\E![6C!GREEN!Vous êtes tenu comme seul responsable de leur utilisation à
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why Illegal Services is detected by many antiviruses ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why is Illegal Services is detected by many antiviruses? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!The source code is converted from batch to executable using !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
 echo !\E![6C!GREEN!This conversion process leads to believe that it is a virus.
 )
@@ -2238,7 +2238,7 @@ echo !\E![6C!GREEN!Ce processus de conversion fait laisser croire qu'il en est u
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why Illegal Services keep telling me that a file is missing ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why does Illegal Services keep telling me that a file is missing? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!It must be your antivirus that quarantined the file^(s^).
 echo !\E![6C!GREEN!You must add this file^(s^) or Illegal Services PATH to its whitelist or deactivate it.
 )
@@ -2249,7 +2249,7 @@ echo !\E![6C!GREEN!Vous devez ajouter ce/ces fichier^(s^) ou le chemin d'Illegal
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why do Illegal Services ask for administrator privileges ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why does Illegal Services ask for administrator privileges? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!The administrator privileges are required for:
 echo !\E![6C!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks and Windows Game Booster.
 )
@@ -2260,7 +2260,22 @@ echo !\E![6C!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks et Windows G
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ What is the difference between build and release updates ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Why is Illegal Services x IS.bookmarks.html soooooo slow to start? █!BGBLACK!!CYAN!█■
+echo !\E![6C!GREEN!This is known to be Windows Defender or an other antivirus doing he's
+echo !\E![6C!GREEN!security scans on 'bookmarks_parser.exe' before to run it...
+echo !\E![6C!GREEN!We recommend whitelisting the Illegal Services folder in your antivirus software^(s^)
+echo !\E![6C!GREEN!to fix this issue and prevent a similar issue in the future.
+)
+if "!language!"=="FR" (
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services x IS.bookmarks.html est-il siiiiii lent à démarrer ? █!BGBLACK!!CYAN!█■
+echo !\E![6C!GREEN!Ceci est connu pour être Windows Defender ou un autre antivirus faisant ces
+echo !\E![6C!GREEN!scans de sécurité sur 'bookmarks_parser.exe' avant de l'exécuter...
+echo !\E![6C!GREEN!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos logiciels antivirus
+echo !\E![6C!GREEN!pour résoudre ce problème et éviter un problème similaire à l'avenir.
+)
+echo !CYAN!
+if "!language!"=="EN" (
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ What is the difference between build and release updates? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!Build updates are updates that do not require you to update the installer.
 echo !\E![6C!GREEN!They are mostly used to update "Illegal_Services.exe".
 echo !\E![6C!GREEN!These are the last 2 digits of the version number ^(vx.x.[x.x]^).
@@ -2278,12 +2293,12 @@ echo !\E![6C!GREEN!Ils ne sont utilisés que pour mettre à jour les dépendance
 echo !\E![6C!GREEN!Ce sont les 2 premiers chiffres de la version ^(v [x.x].x.x^).
 )
 echo !CYAN!
-if "!language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ With which operating systems is Illegal Services compatible ? █!BGBLACK!!CYAN!█■
+if "!language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ With which operating systems is Illegal Services compatible? █!BGBLACK!!CYAN!█■
 if "!language!"=="FR" echo !\E![3C■█!BGWHITE!!RED!█ ♦ Avec qu'elle système d'exploitation Illegal Services est-t'il compatible ? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!Windows 10 and 11 (x86/x64).
 echo !CYAN!
 if "!language!"=="EN" (
-echo !\E![3C■█!BGWHITE!!RED!█ ♦ Can you make Illegal Services compatible with more operating system ? █!BGBLACK!!CYAN!█■
+echo !\E![3C■█!BGWHITE!!RED!█ ♦ Can you make Illegal Services compatible with more operating system? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!No, but IS.bookmarks.html and IS Bookmarks web extension are.
 )
 if "!language!"=="FR" (
@@ -2291,11 +2306,11 @@ echo !\E![3C■█!BGWHITE!!RED!█ ♦ Pouvez-vous rendre Illegal Services comp
 echo !\E![6C!GREEN!Non. Mais IS.bookmarks.html et l'extension pour navigateur IS Bookmarks le sont.
 )
 echo !CYAN!
-if "!language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ In which languages is Illegal Services developed ? █!BGBLACK!!CYAN!█■
+if "!language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ In which languages is Illegal Services developed? █!BGBLACK!!CYAN!█■
 if "!language!"=="FR" echo !\E![3C■█!BGWHITE!!RED!█ ♦ En quels langages est développé Illegal Services ? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!98%% Batch, 1%% PowerShell, 1%% VBScript.
 echo !CYAN!
-if "!language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ When did you started Illegal Services project ? █!BGBLACK!!CYAN!█■
+if "!language!"=="EN" echo !\E![3C■█!BGWHITE!!RED!█ ♦ When did you start Illegal Services project? █!BGBLACK!!CYAN!█■
 if "!language!"=="FR" echo !\E![3C■█!BGWHITE!!RED!█ ♦ Quand est-ce que le projet d'Illegal Services à commencé ? █!BGBLACK!!CYAN!█■
 echo !\E![6C!GREEN!v1.0.0.0 - 22/05/2020
 echo:
