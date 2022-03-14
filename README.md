@@ -15,7 +15,7 @@ All this to say that if you like watching movies, crack applications or doing DD
 It is compatible with Windows 10 and 11 (x86/x64).
 
 [![Telegram](https://img.shields.io/badge/Telegram-Illegal%20Services-28a8e9?logo=telegram&labelColor=28a8e9)](https://t.me/illegal_services_forum)
-[![Discord](https://img.shields.io/badge/Discord-Illegal%20Services-7389D8?logo=discord&labelColor=6A7EC2)](https://discord.gg/eCMBHUB)
+[![Discord](https://img.shields.io/badge/Discord-Illegal%20Services-7389D8?logo=discord&labelColor=6A7EC2)](https://discord.gg/rU2w2E83KF)
 
 </div><hr>
 
