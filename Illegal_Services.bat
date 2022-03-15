@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 2. 7
-REM  Fileversion:  6. 1. 2. 7
+REM  Productversion:  6. 1. 2. 8
+REM  Fileversion:  6. 1. 2. 8
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -198,7 +198,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.2.7 - 14/03/2022
+set VERSION=v6.1.2.8 - 15/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -1233,7 +1233,7 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 89 32
+call :SCALE 74 35
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1241,44 +1241,46 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=redstresser.cc/welcome/index quez.in/ freestresser.to/ stresser.ai/ anonboot.com/ cryptostresser.com/ stressing.ninja/ str3ssed.co/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ stresser.zone/ vtoxicity.net/ stresser.gg/ ipstresser.io/ deltastress.com/ str3sser.io/ ddosforhire.net/
+set db=quez.in/ freestresser.to/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ stresser.zone/ deltastress.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ redstresser.cc/welcome/index ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 89 32
+call :SCALE 74 35
 echo !CYAN!
-echo !\E![23C══════════════════════════════════════
-echo !\E![22C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
-echo !\E![8C╔════════════════════════════════╦══════════════════════════════════════╗
-echo !\E![8C║   !1!redstresser.cc!CYAN!         ║  [BEST]         [  10/Gbps] [350/s]  ║
-echo !\E![8C║   !2!quez.in!CYAN!                ║  [BEST]         [   5/Gbps] [300/s]  ║
-echo !\E![8C║   !3!freestresser.to!CYAN!        ║  [BEST]         [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !4!stresser.ai!CYAN!            ║  [BEST]         [   1/Gbps] [300/s]  ║
-echo !\E![8C║   !5!anonboot.com!CYAN!           ║  [BEST]         [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !6!cryptostresser.com!CYAN!     ║  [BEST]         [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !7!stressing.ninja!CYAN!        ║  [BEST]         [   ?/Gbps] [300/s]  ║
-echo !\E![8C║   !8!str3ssed.co!CYAN!            ║  [BEST]         [7-13/Gbps] [300/s]  ║
-echo !\E![8C║   !9!www.ipstresser.com!CYAN!     ║                 [ 200/Mbps] [300/s]  ║
-echo !\E![8C║  !10!ipstress.in!CYAN!            ║                 [   ?/Gbps] [250/s]  ║
-echo !\E![8C║  !11!stresslab.sx!CYAN!           ║                 [8-20/Gbps] [120/s]  ║
-echo !\E![8C║  !12!stresser.zone!CYAN!          ║                 [5-15/Gbps] [120/s]  ║
-echo !\E![8C║  !13!vtoxicity.net!CYAN!          ║                 [ 100/Mbps] [120/s]  ║
-echo !\E![8C║  !14!stresser.gg!CYAN!            ║                 [ 3-5/Gbps] [ 60/s]  ║
-echo !\E![8C║  !15!ipstresser.io!CYAN!          ║                 [   2/Gbps] [ 60/s]  ║
-echo !\E![8C║  !16!deltastress.com!CYAN!        ║                 [   ?/Gbps] [ 60/s]  ║
-echo !\E![8C║  !17!str3sser.io!CYAN!            ║                 [   1/Gbps] [ 60/s]  ║
-echo !\E![8C╠════════════════════════════════╩══════════════════════════════════════╣
+echo !\E![18C══════════════════════════════════════
+echo !\E![17C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
+echo !\E![8C╔════════════════════════════════════════════════════════╗
+echo !\E![8C╠════════════════════■█!BGYELLOW!!RED!█ LAYER 4 █!BGBLACK!!CYAN!█■═════════════════════╣
+echo !\E![8C║                                                        ║
+echo !\E![8C║    !1!quez.in!CYAN!               │  [BEST]    [300/s]    ║
+echo !\E![8C║    !2!freestresser.to!CYAN!       │  [BEST]    [300/s]    ║
+echo !\E![8C║    !3!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║    !4!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║    !5!ipstress.in!CYAN!           │            [250/s]    ║
+echo !\E![8C║    !6!redstresser.cc!CYAN!        │            [150/s]    ║
+echo !\E![8C║    !7!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║    !8!stresser.zone!CYAN!         │            [120/s]    ║
+echo !\E![8C║    !9!deltastress.com!CYAN!       │            [ 60/s]    ║
+echo !\E![8C║                                                        ║
+echo !\E![8C╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
+echo !\E![8C║                                                        ║
+echo !\E![8C║   !10!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !11!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo !\E![8C║   !12!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !13!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║   !14!ipstress.in!CYAN!           │            [250/s]    ║
+echo !\E![8C║   !15!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║   !16!redstresser.cc!CYAN!        │            [ 60/s]    ║
+echo !\E![8C╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index only stressers in layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!11/03/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!15/03/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !16!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Illegal Services index seulement les stresseurs en layer 4."
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!11/03/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!15/03/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !16!ddosforhire.net"
 )
-echo !\E![8C!CYAN!╚═══════════════════════════════════════════════════════════════════════╝
+echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -2445,7 +2447,7 @@ if not defined %1 (
 if defined cn (
     set cn=
 )
-for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" ^| findstr /ric:"^^Connection: keep-alive$" /c:"^^Server: ddos-guard$"') do (
+for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" ^| findstr /ric:"Connection: keep-alive" /c:"Server: ddos-guard"') do (
     if /i "%%A: %%B"=="Connection: keep-alive" (
         set /a cn+=1
     ) else if /i "%%A: %%B"=="Server: ddos-guard" (
@@ -2462,7 +2464,7 @@ for %%A in (cn http_code) do (
         set %%A=
     )
 )
-for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" -w "%%{response_code}" ^| findstr /ric:"^^Connection: close$" /c:"^^Server: cloudflare$" /c:"^^CF-RAY: [a-z0-9]*-[A-Z]*$" /c:"^^[0-9]*$"') do (
+for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" -w "%%{response_code}" ^| findstr /beic:"Connection: close" /c:"Server: cloudflare" /c:"CF-RAY: [a-z0-9]*-[A-Z]*" /c:"[0-9]*"') do (
     if /i "%%A: %%B"=="Connection: close" (
         set /a cn+=1
     ) else if /i "%%A: %%B"=="Server: cloudflare" (
@@ -4176,7 +4178,7 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
 if defined first_scan (
     if defined path_index (
         for /l %%A in (1,1,!path_index!) do (
-            <nul set /p="!category_path_%%A!/!category_folder!" | >nul findstr /rc:"^Illegal Services/Doxing" /c:"^Illegal Services/Portable Apps" && (
+            <nul set /p="!category_path_%%A!/!category_folder!" | >nul findstr /bc:"Illegal Services/Doxing" /c:"Illegal Services/Portable Apps" && (
                 set open_folder_statut=1
             )
         )
@@ -4506,8 +4508,8 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\Driver Store Explorer`Driver Store Explorer.zip"
             "Illegal Services\Portable Apps\Device Cleanup Tool`DeviceCleanup.zip"
             "Illegal Services\Portable Apps\Display Driver Uninstaller`DDU.zip"
-            "Illegal Services\Portable Apps\Radeon Software Slimmer net60`RadeonSoftwareSlimmer_1.4.0_net48.zip"
-            "Illegal Services\Portable Apps\Radeon Software Slimmer net48`RadeonSoftwareSlimmer_1.4.0_net60.zip"
+            "Illegal Services\Portable Apps\Radeon Software Slimmer net60`RadeonSoftwareSlimmer_1.5.0_net48.zip"
+            "Illegal Services\Portable Apps\Radeon Software Slimmer net48`RadeonSoftwareSlimmer_1.5.0_net60.zip"
             "Illegal Services\Portable Apps\NVSlimmer`NVSlimmer.zip"
             "Illegal Services\Portable Apps\NVCleanstall`NVCleanstall\NVCleanstall.exe"
             "Illegal Services\Portable Apps\MSI Util v3`MSI_util_v3\MSI_util_v3.exe"
@@ -4547,6 +4549,8 @@ for /l %%A in (!c1!,1,!c2!) do (
             "Illegal Services\Portable Apps\Windows ISO Downloader`Windows-ISO-Downloader\Windows-ISO-Downloader.exe"
         ) do (
             for /f "tokens=1*delims=`" %%C in ("%%~B") do (
+                echo if "!path_%%A!\!category_folder!\!name_%%A!"=="%%C" ^(%%A^)
+                pause
                 if "!path_%%A!\!category_folder!\!name_%%A!"=="%%C" (
                     set started=1
                     call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\%%D" "!url_%%A:%%=%%%%!" && (
