@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 2. 8
-REM  Fileversion:  6. 1. 2. 8
+REM  Productversion:  6. 1. 2. 9
+REM  Fileversion:  6. 1. 2. 9
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -111,14 +111,10 @@ if not "%~1"=="" (
         )
     )
 )
-if defined WINDOWS_TERMINAL (
-    set WINDOWS_TERMINAL=
-)
+set WINDOWS_TERMINAL=1
 if defined WT_SESSION (
-    set WINDOWS_TERMINAL=1
     goto :SKIP_WINDOWS_TERMINAL
 )
-set WINDOWS_TERMINAL=1
 2>nul reg query "HKEY_CURRENT_USER\Console\%%%%Startup" /v "DelegationTerminal" | >nul find "{00000000-0000-0000-0000-000000000000}" && (
     set WINDOWS_TERMINAL=
 )
@@ -198,7 +194,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.2.8 - 15/03/2022
+set VERSION=v6.1.2.9 - 16/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -582,13 +578,13 @@ call :MSGBOX 69696 "Ms.CatFire"
 )
 if "!x!"=="19" (
 if "!language!"=="EN" (
-set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing."
+set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing.!\N!@Yeshi - Helped improving and reducing code."
 call :MSGBOX 69696 "All other contributors:"
 set t="@blacktario - Added 23 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website.!\N!@sakuranatsumigg - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
-set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing."
+set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing.!\N!@Yeshi - A aidé à améliorer et à réduire le code."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 set t="@blacktario - A ajouté 23 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
@@ -4459,132 +4455,13 @@ exit /b 1
 if defined x (
     exit /b 1
 )
-for %%A in (started start_folder) do (
-    if defined %%A (
-        set %%A=
-    )
-)
-set /a #el=1, IS_Log=1
 for /l %%A in (!c1!,1,!c2!) do (
     if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
-        set #el=0
-        for %%B in (
-            "Illegal Services\Doxing\Dox Tool v2`Dox Tool V2.7z"
-            "Illegal Services\Portable Apps\Winaero Tweaker`WinaeroTweaker.zip"
-            "Illegal Services\Portable Apps\Winaero Tweaker`WinaeroTweaker.zip"
-            "Illegal Services\Portable Apps\Ultimate Windows Tweaker 4`Ultimate Windows Tweaker 4.zip"
-            "Illegal Services\Portable Apps\Ultimate Windows Tweaker 3`Ultimate Windows Tweaker 3.zip"
-            "Illegal Services\Portable Apps\Ultimate Windows Tweaker`Ultimate Windows Tweaker.zip"
-            "Illegal Services\Portable Apps\SophiApp`SophiApp.zip"
-            "Illegal Services\Portable Apps\Sophia Script LTSC`Sophia.Script.LTSC.v5.2.14.zip"
-            "Illegal Services\Portable Apps\Sophia Script PowerShell 7`Sophia.Script.v5.12.3.PowerShell.7.zip"
-            "Illegal Services\Portable Apps\Sophia Script`Sophia.Script.v5.12.3.zip"
-            "Illegal Services\Portable Apps\Sophia Script Windows 11`Sophia.Script.Windows.11.v6.0.4.zip"
-            "Illegal Services\Portable Apps\Sophia Script Wrapper`Sophia.Script.Wrapper.v2.4.zip"
-            "Illegal Services\Portable Apps\TCP Optimizer`TCPOptimizer\TCPOptimizer.exe"
-            "Illegal Services\Portable Apps\DNS Jumper`DnsJumper.7z"
-            "Illegal Services\Portable Apps\SpeedyFox`Speedyfox.zip"
-            "Illegal Services\Portable Apps\Autoruns`Autoruns.zip"
-            "Illegal Services\Portable Apps\CCleaner`CCleaner.zip"
-            "Illegal Services\Portable Apps\CCEnhancer`CCEnhancer Multilingual.zip"
-            "Illegal Services\Portable Apps\BleachBit`BleachBit.zip"
-            "Illegal Services\Portable Apps\Dism++`Dism++.zip"
-            "Illegal Services\Portable Apps\Glary Utilities`GlaryUtilities\GlaryUtilities.exe"
-            "Illegal Services\Portable Apps\Revo Uninstaller`RevoUninstaller.zip"
-            "Illegal Services\Portable Apps\Czkawka`windows_czkawka_gui.zip"
-            "Illegal Services\Portable Apps\Windows Repair AIO`Tweaking.com - Windows Repair.7z"
-            "Illegal Services\Portable Apps\Windows Repair Toolbox`Windows Repair Toolbox.zip"
-            "Illegal Services\Portable Apps\FixWin 10`FixWin10.zip"
-            "Illegal Services\Portable Apps\FixWin 2`fixwin2.zip"
-            "Illegal Services\Portable Apps\FixWin`FixWin.zip"
-            "Illegal Services\Portable Apps\Patch My PC`PatchMyPC\PatchMyPC.exe"
-            "Illegal Services\Portable Apps\UCheck x64`UCheck_portable64\UCheck_portable64.exe"
-            "Illegal Services\Portable Apps\UCheck x86`UCheck_portable32\UCheck_portable32.exe"
-            "Illegal Services\Portable Apps\Windows Update MiniTool x64`Windows_Update_MiniTool.7z"
-            "Illegal Services\Portable Apps\WSUS Offline Update`WSUS Offline Update.zip"
-            "Illegal Services\Portable Apps\DriversCloud x64`DriversCloud.zip"
-            "Illegal Services\Portable Apps\DriversCloud x86`DriversCloud.zip"
-            "Illegal Services\Portable Apps\Snappy Driver Installer`Snappy Driver Installer.zip"
-            "Illegal Services\Portable Apps\Driver Store Explorer`Driver Store Explorer.zip"
-            "Illegal Services\Portable Apps\Device Cleanup Tool`DeviceCleanup.zip"
-            "Illegal Services\Portable Apps\Display Driver Uninstaller`DDU.zip"
-            "Illegal Services\Portable Apps\Radeon Software Slimmer net60`RadeonSoftwareSlimmer_1.5.0_net48.zip"
-            "Illegal Services\Portable Apps\Radeon Software Slimmer net48`RadeonSoftwareSlimmer_1.5.0_net60.zip"
-            "Illegal Services\Portable Apps\NVSlimmer`NVSlimmer.zip"
-            "Illegal Services\Portable Apps\NVCleanstall`NVCleanstall\NVCleanstall.exe"
-            "Illegal Services\Portable Apps\MSI Util v3`MSI_util_v3\MSI_util_v3.exe"
-            "Illegal Services\Portable Apps\CPU-Z`CPU-Z.zip"
-            "Illegal Services\Portable Apps\OOSU10 (Win 10)`OOSU10\OOSU10.exe"
-            "Illegal Services\Portable Apps\Ashampoo AntiSpy (Win 10)`Ashampoo_AntiSpy\Ashampoo_AntiSpy.exe"
-            "Illegal Services\Portable Apps\DoNotSpy 10`DoNotSpy10.7z"
-            "Illegal Services\Portable Apps\Windows Privacy Dashboard`Windows Privacy Dashboard.zip"
-            "Illegal Services\Portable Apps\Windows 10 Privacy`W10Privacy.zip"
-            "Illegal Services\Portable Apps\Windows Spy Blocker`WindowsSpyBlocker\WindowsSpyBlocker.exe"
-            "Illegal Services\Portable Apps\Destroy Windows 10 Spying`Destroy Windows 10 Spying.zip"
-            "Illegal Services\Portable Apps\Destroy Windows 10 Spying RE`Destroy Windows 10 Spying RE.zip"
-            "Illegal Services\Portable Apps\Blackbird x64`Blackbird.zip"
-            "Illegal Services\Portable Apps\Blackbird x32`Blackbird.zip"
-            "Illegal Services\Portable Apps\ADW Cleaner`AdwCleaner\AdwCleaner.exe"
-            "Illegal Services\Portable Apps\ZHP Cleaner`ZHPCleaner\ZHPCleaner.exe"
-            "Illegal Services\Portable Apps\Rogue Killer x64`RogueKiller_portable64\RogueKiller_portable64.exe"
-            "Illegal Services\Portable Apps\Rogue Killer x86`RogueKiller_portable86\RogueKiller_portable86.exe"
-            "Illegal Services\Portable Apps\No Bot`NoBot\NoBot.exe"
-            "Illegal Services\Portable Apps\Kaspersky KVRT`KVRT\KVRT.exe"
-            "Illegal Services\Portable Apps\Kaspersky TDSSKiller`tdsskiller\tdsskiller.exe"
-            "Illegal Services\Portable Apps\Microsoft Safety Scanner x64`MSERT\MSERT.exe"
-            "Illegal Services\Portable Apps\Microsoft Safety Scanner x86`MSERT\MSERT.exe"
-            "Illegal Services\Portable Apps\Spybot - Search and Destroy`SpybotPortable\SpybotPortable_2.7.64-2020-02.paf.exe"
-            "Illegal Services\Portable Apps\Batch Antivirus`Batch Antivirus.zip"
-            "Illegal Services\Portable Apps\Everything x64`Everything-x64.zip"
-            "Illegal Services\Portable Apps\Everything x86`Everything-x86.zip"
-            "Illegal Services\Portable Apps\Process Hacker`Process Hacker.zip"
-            "Illegal Services\Portable Apps\CrystalDiskInfo`CrystalDiskInfo.zip"
-            "Illegal Services\Portable Apps\Defender Control`DefenderControl.zip"
-            "Illegal Services\Portable Apps\Edge Blocker`EdgeBlocker.zip"
-            "Illegal Services\Portable Apps\Mem Reduct`memreduct-3.4-bin.zip"
-            "Illegal Services\Portable Apps\GiveMePower`GiveMePower\GiveMePower v2.1.0.0.exe"
-            "Illegal Services\Portable Apps\RegScanner x64`regscanner-x64.zip"
-            "Illegal Services\Portable Apps\RegScanner x86`regscanner.zip"
-            "Illegal Services\Portable Apps\ISLC`ISLC\ISLC v1.0.2.5.exe"
-            "Illegal Services\Portable Apps\Windows ISO Downloader`Windows-ISO-Downloader\Windows-ISO-Downloader.exe"
-        ) do (
-            for /f "tokens=1*delims=`" %%C in ("%%~B") do (
-                echo if "!path_%%A!\!category_folder!\!name_%%A!"=="%%C" ^(%%A^)
-                pause
-                if "!path_%%A!\!category_folder!\!name_%%A!"=="%%C" (
-                    set started=1
-                    call :CURL "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\%%D" "!url_%%A:%%=%%%%!" && (
-                        if "%%C"=="Illegal Services\Doxing\Dox Tool v2" (
-                            call :START_DOXTOOLV2
-                        )
-                    )
-                )
-            )
-        )
-        if not defined started (
-            start "" "!url_%%A!" && !cmdwiz.exe! delay 1500
-        ) else (
-            set started=
-        )
+        start "" "!url_%%A!" && !cmdwiz.exe! delay 1500
         set "%%A=!YELLOW!%%A !UNCHECKED!"
     )
 )
-set IS_Log=
-if exist "!TMPF!\IS_Log.txt" (
-    echo:
-    for /f "usebackqtokens=1*delims=:" %%A in ("!TMPF!\IS_Log.txt") do echo !RED!%%A:!YELLOW!%%B
-    del /f /q "!TMPF!\IS_Log.txt"
-    echo !CYAN!
-    if "!Language!"=="EN" set "t=Press !YELLOW!{ANY KEY}!CYAN! to continue..."
-    if "!Language!"=="FR" set "t=Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour continuer..."
-    call :DRAW_CENTER "!t!" 1
-    %@SHOWCURSOR%
-    >nul pause
-)
-if defined start_folder (
-    start /max "" "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!"
-)
-exit /b !#el!
+exit /b 0
 
 :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
 set root_folder_length=0
