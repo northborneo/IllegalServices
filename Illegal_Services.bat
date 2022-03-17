@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 3. 0
-REM  Fileversion:  6. 1. 3. 0
+REM  Productversion:  6. 1. 3. 1
+REM  Fileversion:  6. 1. 3. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -194,7 +194,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.3.0 - 17/03/2022
+set VERSION=v6.1.3.1 - 18/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -336,7 +336,7 @@ if "!language!"=="EN" <nul set /p="!sp!Starting Illegal Services > "
 if "!language!"=="FR" <nul set /p="!sp!Démarrage d'Illegal Services > "
 set "CHECKED=!CYAN![!YELLOW!x!CYAN!]!WHITE! "
 set "UNCHECKED=!CYAN![ ]!WHITE! "
-set /a c1=0, c2=0, untrusted_website_index=0
+set /a c1=0, c2=0, untrusted_website_[#]=0
 call :CHECK_VOICEASSISTANTCHOICE
 if "!VoiceAssistantChoice!"=="1" call :ROSE_SETUP
 if "!language!"=="EN" echo !GREEN![PASSED] . . .
@@ -3422,7 +3422,7 @@ if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
 set "%%A=!YELLOW!%%A !UNCHECKED!"
 set #el=0
 ) else (
-if !untrusted_website_index! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%A
+if !untrusted_website_[#]! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%A
 set "%%A=!YELLOW!%%A !CHECKED!"
 set #el=0
 )
@@ -3434,7 +3434,7 @@ if not "!el:~0,1!"=="0" call :CHECK_NUMBER "%%~A" && if %%A geq !c1! if %%A leq 
 set "%%A=!YELLOW!%%A !UNCHECKED!"
 set #el=0
 ) else (
-if !untrusted_website_index! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%A
+if !untrusted_website_[#]! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%A
 set "%%A=!YELLOW!%%A !CHECKED!"
 set #el=0
 )
@@ -3453,7 +3453,7 @@ for /l %%C in (!c1!,1,!c2!) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
 set "%%C=!YELLOW!%%C !UNCHECKED!"
 set #el=0
 ) else (
-if !untrusted_website_index! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%C
+if !untrusted_website_[#]! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%C
 set "%%C=!YELLOW!%%C !CHECKED!"
 set #el=0
 )
@@ -3467,7 +3467,7 @@ for /l %%C in (!c1!,1,%%B) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
 set "%%C=!YELLOW!%%C !UNCHECKED!"
 set #el=0
 ) else (
-if !untrusted_website_index! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%C
+if !untrusted_website_[#]! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%C
 set "%%C=!YELLOW!%%C !CHECKED!"
 set #el=0
 )
@@ -3481,7 +3481,7 @@ for /l %%C in (%%A,1,!c2!) do if "!%%C!"=="!YELLOW!%%C !CHECKED!" (
 set "%%C=!YELLOW!%%C !UNCHECKED!"
 set #el=0
 ) else (
-if !untrusted_website_index! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%C
+if !untrusted_website_[#]! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%C
 set "%%C=!YELLOW!%%C !CHECKED!"
 set #el=0
 )
@@ -3496,7 +3496,7 @@ if %%A leq %%B if %%A geq !c1! if %%A leq !c2! if %%B geq !c1! if %%B leq !c2! f
 set "%%D=!YELLOW!%%D !UNCHECKED!"
 set #el=0
 ) else (
-if !untrusted_website_index! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%D
+if !untrusted_website_[#]! gtr 0 call :UNTRUSTED_WEBSITES_WARNING %%D
 set "%%D=!YELLOW!%%D !CHECKED!"
 set #el=0
 )
@@ -3508,8 +3508,8 @@ exit /b !#el!
 if not "!UntrustedWebsitesWarning!"=="1" (
     exit /b
 )
-for /l %%A in (1,1,!untrusted_website_index!) do (
-    for /f "tokens=1*delims=`" %%B in ("!untrusted_website_%%A!") do (
+for /l %%A in (1,1,!untrusted_website_[#]!) do (
+    for /f "tokens=1*delims=`" %%B in ("!untrusted_website_[%%A]!") do (
         if "%%B"=="%1" (
             if "!language!"=="EN" set t="You have selected '%%B - %%C' which is flagged as an untrusted* website. Be careful using it.!\N!!\N!*Untrusted websites are known to the warez community to index malicious or suspicious as well as legitimate content."
             if "!language!"=="FR" set t="Vous avez sélectionné '%%B - %%C' qui est signalé comme un site web non fiable*. Soyez prudent en l'utilisant.!\N!!\N!*Les sites web non fiables sont connus de la communauté warez pour indexer du contenu malveillant ou suspect ainsi que légitime."
@@ -4044,7 +4044,7 @@ for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "!IS_OUTPUT_DIRECT
             set "root_folder=%%C"
         )
     )
-    set "memory_folder_%%A=%%C"
+    set "memory_folder_[%%A]=%%C"
     set "LOOKUP_folders=!LOOKUP_folders!%%C`"
 )
 if defined root_folder (
@@ -4052,14 +4052,14 @@ if defined root_folder (
     set root_folder=
 )
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
-    set "memory_path_%%A=%%C"
-    if defined memory_path_%%A (
-        if not "!memory_path_%%A!"=="!memory_path_1!" (
-            for /f "delims=" %%D in ("!memory_folder_%%A!") do (
-                set "memory_path_%%A=!memory_path_%%A:\\=\!"
-                set "memory_path_%%A=!memory_path_%%A:\/=/!"
-                set "memory_path_%%A=!memory_path_%%A:~%root_folder_length%!"
-                set "memory_path_%%A=!memory_path_%%A:/%%~D=!"
+    set "memory_path_[%%A]=%%C"
+    if defined memory_path_[%%A] (
+        if not "!memory_path_[%%A]!"=="!memory_path_[1]!" (
+            for /f "delims=" %%D in ("!memory_folder_[%%A]!") do (
+                set "memory_path_[%%A]=!memory_path_[%%A]:\\=\!"
+                set "memory_path_[%%A]=!memory_path_[%%A]:\/=/!"
+                set "memory_path_[%%A]=!memory_path_[%%A]:~%root_folder_length%!"
+                set "memory_path_[%%A]=!memory_path_[%%A]:/%%~D=!"
             )
         )
     )
@@ -4067,7 +4067,7 @@ for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!I
 
 :IS_BOOKMARKS_PARSER
 if not "!LOOKUP_folders:`%category_folder%`=!"=="!LOOKUP_folders!" (
-    for /f "tokens=1*delims==" %%A in ('set memory_folder_') do (
+    for /f "tokens=1*delims==" %%A in ('set memory_folder_[') do (
         if /i "%%B"=="!category_folder!" (
             if not "%%B"=="!category_folder!" (
                 set "category_folder=%%B"
@@ -4075,7 +4075,7 @@ if not "!LOOKUP_folders:`%category_folder%`=!"=="!LOOKUP_folders!" (
         )
     )
 )
-for %%A in (category_path_ untrusted_website_ name_ url_) do (
+for %%A in (category_path_[ untrusted_website_[ url_[) do (
     for /f "delims==" %%B in ('2^>nul set %%A') do (
         set %%B=
     )
@@ -4090,7 +4090,7 @@ if defined c1 (
         )
     )
 )
-set /a first_scan=1, path_index=0, untrusted_website_index=0
+set /a first_scan=1, path_[#]=0, untrusted_website_[#]=0
 
 :CONTINUE_IS_BOOKMARKS_PARSER
 title !#TITLE:`=%category_folder%!
@@ -4116,20 +4116,20 @@ set /a c1=1, c2=0
 for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --folder-all "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     if "%%A"=="PATH" (
         set previous_action=PATH
-        if "!memory_folder_%%B!"=="!category_folder!" (
+        if "!memory_folder_[%%B]!"=="!category_folder!" (
             if defined first_scan (
-                set /a path_index+=1
-                set "category_path_!path_index!=!memory_path_%%B!"
+                set /a path_[#]+=1
+                set "category_path_[!path_[#]!]=!memory_path_[%%B]!"
             )
             echo:
             if %%B lss 3 (
                 echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: / █!BGBLACK!!CYAN!█!"!
             ) else (
-                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_path_%%B! █!BGBLACK!!CYAN!█!"!
+                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_path_[%%B]! █!BGBLACK!!CYAN!█!"!
             )
         )
         echo:
-        echo !"! !YELLOW!^>!CYAN! ■█!BGYELLOW!!RED!█ !memory_folder_%%B! █!BGBLACK!!CYAN!█■!"!
+        echo !"! !YELLOW!^>!CYAN! ■█!BGYELLOW!!RED!█ !memory_folder_[%%B]! █!BGBLACK!!CYAN!█■!"!
     ) else if "%%A"=="LINK" (
         set "current_depth=%%C"
         if "!previous_action!"=="LINK" (
@@ -4138,15 +4138,13 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
             )
         )
         set previous_action=LINK
-        set "previous_depth=!current_depth!"
-        set /a c2+=1
-        set "url=%%D"
+        set /a previous_depth=current_depth, c2+=1
         set "name=%%E"
         if defined name (
             if "!name:~-14!"==" | (untrusted)" (
                 if defined first_scan (
-                    set /a untrusted_website_index+=1
-                    set "untrusted_website_!untrusted_website_index!=!c2!`!name: | (untrusted)=!"
+                    set /a untrusted_website_[#]+=1
+                    set "untrusted_website_[!untrusted_website_[#]!]=!c2!`!name:~0,-14!"
                 )
                 set "name=!RED!!name!!WHITE!"
             )
@@ -4159,29 +4157,26 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
             set display_padding=
         )
         if defined !c2! (
-            for %%F in ("!c2!") do (
-                echo !"! !display_padding!!%%~F!!name! (!BRIGHTMAGENTA!!url!!WHITE!)!"!
+            for %%F in (!c2!) do (
+                echo !"! !display_padding!!%%F!!name! (!BRIGHTMAGENTA!%%D!WHITE!)!"!
             )
         ) else (
-            for %%F in (!path_index!) do (
-                set "path_!c2!=!category_path_%%F!"
+            for %%F in (!path_[#]!) do (
+                set "path_[!c2!]=!category_path_[%%F]!"
             )
-            set "url_!c2!=!url!"
-            set "name_!c2!=!name!"
+            set "url_[!c2!]=%%D"
             set "!c2!=!YELLOW!!c2! !UNCHECKED!"
-            echo !"! !display_padding!!YELLOW!!c2! !UNCHECKED!!name! (!BRIGHTMAGENTA!!url!!WHITE!)!"!
+            echo !"! !display_padding!!YELLOW!!c2! !UNCHECKED!!name! (!BRIGHTMAGENTA!%%D!WHITE!)!"!
         )
     )
 )
 if defined first_scan (
-    if defined path_index (
-        for /l %%A in (1,1,!path_index!) do (
-            <nul set /p="!category_path_%%A!/!category_folder!" | >nul findstr /bc:"Illegal Services/Doxing" /c:"Illegal Services/Portable Apps" && (
-                set open_folder_statut=1
-            )
+    set first_scan=
+    for /l %%A in (1,1,!path_[#]!) do (
+        <nul set /p="!category_path_[%%A]!/!category_folder!" | >nul findstr /bc:"Illegal Services/Doxing" /c:"Illegal Services/Portable Apps" && (
+            set open_folder_statut=1
         )
     )
-    set first_scan=
 )
 echo !BRIGHTBLACK!
 if "!category_folder!"=="Internet Protocol Television (IPTV)" (
@@ -4457,13 +4452,15 @@ exit /b 1
 if defined x (
     exit /b 1
 )
+set #el=1
 for /l %%A in (!c1!,1,!c2!) do (
     if "!%%A!"=="!YELLOW!%%A !CHECKED!" (
-        start "" "!url_%%A!" && !cmdwiz.exe! delay 1500
+        start "" "!url_[%%A]!" && !cmdwiz.exe! delay 1500
         set "%%A=!YELLOW!%%A !UNCHECKED!"
+        set #el=0
     )
 )
-exit /b 0
+exit /b !#el!
 
 :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
 set root_folder_length=0
@@ -4479,24 +4476,24 @@ exit /b
 if "!category_folder!"=="Illegal Services" (
     exit /b 1
 )
-if "!category_path_1!"=="Illegal Services" (
+if "!category_path_[1]!"=="Illegal Services" (
     set "category_folder=Illegal Services"
     exit /b 0
 )
-if !path_index! gtr 1 (
-    for /l %%A in (1,1,!path_index!) do (
+if !path_[#]! gtr 1 (
+    for /l %%A in (1,1,!path_[#]!) do (
         if defined previous_folder (
-            if "!previous_folder!"=="!category_path_%%A!" (
+            if "!previous_folder!"=="!category_path_[%%A]!" (
                 set /a previous_folder_index+=1
             )
         )
-        if "!category_path_%%A!"=="Illegal Services" (
+        if "!category_path_[%%A]!"=="Illegal Services" (
             set "category_folder=Illegal Services"
             exit /b 0
         )
-        set "previous_folder=!category_path_%%A!"
+        set "previous_folder=!category_path_[%%A]!"
     )
-    if "!path_index!"=="!previous_folder_index!" (
+    if "!path_[#]!"=="!previous_folder_index!" (
         set previous_folder_index=
         set previous_folder=
         exit /b 1
@@ -4511,7 +4508,7 @@ for %%A in (current_folder common_folder) do (
         set %%A=
     )
 )
-set "_tmp=!category_path_1!"
+set "_tmp=!category_path_[1]!"
 set len=0
 for %%A in (4096,2048,1024,512,256,128,64,32,16,8,4,2,1) do (
     if "!_tmp:~%%A,1!" neq "" (
@@ -4521,7 +4518,7 @@ for %%A in (4096,2048,1024,512,256,128,64,32,16,8,4,2,1) do (
 )
 set _tmp=
 for /l %%A in (0,1,!len!) do (
-    set "char=!category_path_1:~%%A,1!"
+    set "char=!category_path_[1]:~%%A,1!"
     if not defined char (
         if defined current_folder (
             set "category_folder=!current_folder!"
@@ -4529,8 +4526,8 @@ for /l %%A in (0,1,!len!) do (
         )
         exit /b 1
     )
-    for /l %%B in (2,1,!path_index!) do (
-        if not "!category_path_%%B:~%%A,1!"=="!char!" (
+    for /l %%B in (2,1,!path_[#]!) do (
+        if not "!category_path_[%%B]:~%%A,1!"=="!char!" (
             set "category_folder=!common_folder!"
             exit /b 0
         )
