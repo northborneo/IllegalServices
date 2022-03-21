@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 3. 1
-REM  Fileversion:  6. 1. 3. 1
+REM  Productversion:  6. 1. 3. 2
+REM  Fileversion:  6. 1. 3. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -194,7 +194,7 @@ popd
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.3.1 - 18/03/2022
+set VERSION=v6.1.3.2 - 21/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -3394,13 +3394,17 @@ if not defined x (
 )
 set "choose_x=`%1"
 if /i "!choose_x:~1,1!"=="!x!" (
+    set choose_x=
     exit /b 0
 )
 if /i "!choose_x:~1,2!"=="!x:~0,2!" (
-    if /i not "!choose_x:`%x%=!"=="!choose_x!" (
+    set "choose_x=!choose_x:"=""!"
+    if not "!choose_x:`%x:"=""%=!"=="!choose_x!" (
+        set choose_x=
         exit /b 0
     )
 )
+set choose_x=
 exit /b 1
 
 :WEBSITECHECK
@@ -4052,14 +4056,14 @@ if defined root_folder (
     set root_folder=
 )
 for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
-    set "memory_path_[%%A]=%%C"
-    if defined memory_path_[%%A] (
-        if not "!memory_path_[%%A]!"=="!memory_path_[1]!" (
+    set "memory_category_path_[%%A]=%%C"
+    if defined memory_category_path_[%%A] (
+        if not "!memory_category_path_[%%A]!"=="!memory_category_path_[1]!" (
             for /f "delims=" %%D in ("!memory_folder_[%%A]!") do (
-                set "memory_path_[%%A]=!memory_path_[%%A]:\\=\!"
-                set "memory_path_[%%A]=!memory_path_[%%A]:\/=/!"
-                set "memory_path_[%%A]=!memory_path_[%%A]:~%root_folder_length%!"
-                set "memory_path_[%%A]=!memory_path_[%%A]:/%%~D=!"
+                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:\\=\!"
+                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:\/=/!"
+                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:~%root_folder_length%!"
+                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:/%%~D=!"
             )
         )
     )
@@ -4090,7 +4094,7 @@ if defined c1 (
         )
     )
 )
-set /a first_scan=1, path_[#]=0, untrusted_website_[#]=0
+set /a first_scan=1, category_path_[#]=0, untrusted_website_[#]=0
 
 :CONTINUE_IS_BOOKMARKS_PARSER
 title !#TITLE:`=%category_folder%!
@@ -4118,14 +4122,14 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
         set previous_action=PATH
         if "!memory_folder_[%%B]!"=="!category_folder!" (
             if defined first_scan (
-                set /a path_[#]+=1
-                set "category_path_[!path_[#]!]=!memory_path_[%%B]!"
+                set /a category_path_[#]+=1
+                set "category_path_[!category_path_[#]!]=!memory_category_path_[%%B]!"
             )
             echo:
             if %%B lss 3 (
                 echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: / █!BGBLACK!!CYAN!█!"!
             ) else (
-                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_path_[%%B]! █!BGBLACK!!CYAN!█!"!
+                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_category_path_[%%B]! █!BGBLACK!!CYAN!█!"!
             )
         )
         echo:
@@ -4161,8 +4165,8 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
                 echo !"! !display_padding!!%%F!!name! (!BRIGHTMAGENTA!%%D!WHITE!)!"!
             )
         ) else (
-            for %%F in (!path_[#]!) do (
-                set "path_[!c2!]=!category_path_[%%F]!"
+            for %%F in (!category_path_[#]!) do (
+                set "category_path_[!c2!]=!category_path_[%%F]!"
             )
             set "url_[!c2!]=%%D"
             set "!c2!=!YELLOW!!c2! !UNCHECKED!"
@@ -4172,7 +4176,7 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
 )
 if defined first_scan (
     set first_scan=
-    for /l %%A in (1,1,!path_[#]!) do (
+    for /l %%A in (1,1,!category_path_[#]!) do (
         <nul set /p="!category_path_[%%A]!/!category_folder!" | >nul findstr /bc:"Illegal Services/Doxing" /c:"Illegal Services/Portable Apps" && (
             set open_folder_statut=1
         )
@@ -4442,10 +4446,13 @@ if not "!category_folder!"=="Illegal Services" (
         exit /b 0
     )
 )
-if not "!LOOKUP_folders:`%x%`=!"=="!LOOKUP_folders!" (
+set "LOOKUP_folders=!LOOKUP_folders:"=""!"
+if not "!LOOKUP_folders:`%x:"=""%`=!"=="!LOOKUP_folders!" (
     set "category_folder=!x!"
+    set "LOOKUP_folders=!LOOKUP_folders:""="!"
     exit /b 0
 )
+set "LOOKUP_folders=!LOOKUP_folders:""="!"
 exit /b 1
 
 :IS_BOOKMARKS_WEBSITESTART
@@ -4480,8 +4487,8 @@ if "!category_path_[1]!"=="Illegal Services" (
     set "category_folder=Illegal Services"
     exit /b 0
 )
-if !path_[#]! gtr 1 (
-    for /l %%A in (1,1,!path_[#]!) do (
+if !category_path_[#]! gtr 1 (
+    for /l %%A in (1,1,!category_path_[#]!) do (
         if defined previous_folder (
             if "!previous_folder!"=="!category_path_[%%A]!" (
                 set /a previous_folder_index+=1
@@ -4493,7 +4500,7 @@ if !path_[#]! gtr 1 (
         )
         set "previous_folder=!category_path_[%%A]!"
     )
-    if "!path_[#]!"=="!previous_folder_index!" (
+    if "!category_path_[#]!"=="!previous_folder_index!" (
         set previous_folder_index=
         set previous_folder=
         exit /b 1
@@ -4526,7 +4533,7 @@ for /l %%A in (0,1,!len!) do (
         )
         exit /b 1
     )
-    for /l %%B in (2,1,!path_[#]!) do (
+    for /l %%B in (2,1,!category_path_[#]!) do (
         if not "!category_path_[%%B]:~%%A,1!"=="!char!" (
             set "category_folder=!common_folder!"
             exit /b 0
