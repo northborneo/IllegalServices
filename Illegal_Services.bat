@@ -8,47 +8,32 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 3. 2
-REM  Fileversion:  6. 1. 3. 2
+REM  Productversion:  6. 1. 3. 3
+REM  Fileversion:  6. 1. 3. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
 REM  QBFC Project Options End
 @ECHO ON
+:: This batch file should always be started using UTF-8 encoding and CRLF file ending.
 @echo off
 cls
->nul chcp 65001
 setlocal DisableDelayedExpansion
+set "IS_PATH_PROCESS_USED=%~f0"
+call :GET_IS_BAT_USED
+>nul chcp 65001
 pushd "%~dp0"
 for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo 0x1B"') do set "\E=%%A"
 set "x1=%~nx0"
 setlocal EnableDelayedExpansion
-for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="\E" (
+set "x2=%~nx0"
+for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="\E" (
     set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`%%A"
 )
 if defined LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES (
     set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`"
 )
-set "x2=%~nx0"
-set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
-call :CHECK_LANGUAGE
-(set \N=^
-%=leave unchanged=%
-)
-for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
-    set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
-)
-call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
-    md "!IS_OUTPUT_DIRECTORY!"
-    if exist "!IS_OUTPUT_DIRECTORY!\" (
-        rd "!IS_OUTPUT_DIRECTORY!"
-    ) else (
-        call :ERROR_FATAL IS_OUTPUT_DIRECTORY
-    )
-)
-set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
-set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
-set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
+call :SETUP_LAUNCHER
 for /f "tokens=4-7delims=[.] " %%A in ('ver') do (
     if /i "%%A"=="version" (
         set "WINDOWS_VERSION=%%B.%%C"
@@ -92,7 +77,7 @@ set cmdwiz.exe=lib\cmdwiz.exe
 set OpenFileBox.exe=lib\OpenFileBox.exe
 set SaveFileBox.exe=lib\SaveFileBox.exe
 if /i not "%~x0"==".exe" (
-    >nul findstr /bec:"for %%%%A in (%%cmdln%%) do (" "%~0" && (
+    >nul findstr /xc:"for %%%%A in (%%cmdln%%) do (" "%~0" && (
         call :ERROR_FATAL CMDLN
     )
 )
@@ -148,12 +133,8 @@ if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous l'e
 call :MSGBOX 69680 "Illegal Services"
 exit 0
 )
-set cn=0
 if /i "%~x0"==".exe" (
-    set "IS_PROCESS=%~nx0"
-    if defined BAT_USED (
-        set BAT_USED=
-    )
+    set "IS_PROCESS_USED=%~nx0"
     if "%~n0"=="Illegal Services" (
         >nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
         >nul move /y "%~nx0" "Illegal_Services.exe" && (
@@ -162,39 +143,29 @@ if /i "%~x0"==".exe" (
             )
         )
     )
-    for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS!" ^| find "!IS_PROCESS!"') do (
+    set cn=0
+    for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS_USED!" ^| find "!IS_PROCESS_USED!"') do (
         set /a cn+=1
-    )
-) else (
-    set IS_PROCESS=cmd.exe
-    set "BAT_USED=%~nx0"
-)
-for /f %%A in ('tasklist /fo csv /fi "imagename eq Illegal_Services.exe" ^| find "Illegal_Services.exe"') do (
-    set /a cn+=1
-)
-pushd "!TMPF!"
-for /f %%A in ('2^>nul dir "????????.bat" /a:-d /o:-d /b ^| findstr /rc:"........\.bat"') do (
-    if not defined BAT_USED (
-        if /i "%~x0"==".exe" (
-            set "BAT_USED=%%A"
-            attrib -s -h "!BAT_USED!"
-            attrib +s +h +i "!BAT_USED!"
+        if !cn! gtr 1 (
+            goto :LAUNCHER
         )
     )
-    if !cn! gtr 1 (
-        popd
+) else (
+    set IS_PROCESS_USED=cmd.exe
+    for /f %%A in ('tasklist /fo csv /fi "imagename eq Illegal_Services.exe" ^| find "Illegal_Services.exe"') do (
         goto :LAUNCHER
     )
-    if not "%%A"=="!BAT_USED!" (
-        del /f /q /a "%%A"
+)
+for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:"........\.bat"') do (
+    if not "%%A"=="!IS_BAT_USED!" (
+        del /f /q /a "!TMPF!\%%A"
     )
 )
-popd
 
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.3.2 - 21/03/2022
+set VERSION=v6.1.3.3 - 22/03/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -888,23 +859,23 @@ call :MSGBOX 69680 "Illegal Services"
 goto :SETTING_IMPORT
 
 :SETTING_EXTRACT_SOURCE
-if /i "!IS_PROCESS!"=="cmd.exe" (
+if /i "!IS_PROCESS_USED!"=="cmd.exe" (
     echo:
     if "!language!"=="EN" set t=ERROR: Impossible to extract the source code if you are running the batch file
     if "!language!"=="FR" set t=ERREUR: Impossible d'extraire le code source si vous exécutez le fichier batch
-    echo !RED!!t! ^(!BAT_USED!^).!YELLOW!
+    echo !RED!!t! ^(!IS_BAT_USED!^).!YELLOW!
     timeout /t 5
 ) else (
     if defined temp_pushd (
         set temp_pushd=
     )
-    if defined BAT_USED (
-        >nul Robocopy "!TMPF!" "!IS_OUTPUT_DIRECTORY!" "!BAT_USED!" /A-:SHTN /IS /IT /IM
+    if defined IS_BAT_USED (
+        >nul Robocopy "!TMPF!" "!IS_OUTPUT_DIRECTORY!" "!IS_BAT_USED!" /A-:SHTN /IS /IT /IM
         if !errorlevel!==1 (
             pushd "!IS_OUTPUT_DIRECTORY!" && (
                 set temp_pushd=1
-                if exist "!BAT_USED!" (
-                    >nul move "!BAT_USED!" "Illegal_Services.bat.part1" && (
+                if exist "!IS_BAT_USED!" (
+                    >nul move "!IS_BAT_USED!" "Illegal_Services.bat.part1" && (
                         if exist "Illegal_Services.bat.part1" (
                             set "temp_VERSION=!VERSION:~1,7!"
                             if defined temp_VERSION (
@@ -934,7 +905,7 @@ if /i "!IS_PROCESS!"=="cmd.exe" (
                                     set temp_VERSION=
                                 )
                                 >"Illegal_Services.bat.part2" (
-                                    findstr /bevc:"@shift" "Illegal_Services.bat.part1"
+                                    findstr /xvc:"@shift" "Illegal_Services.bat.part1"
                                 )
                                 if exist "Illegal_Services.bat.part2" (
                                     >nul copy /b "Illegal_Services.bat.part0"+"Illegal_Services.bat.part2" "Illegal_Services.bat"
@@ -2443,7 +2414,7 @@ if not defined %1 (
 if defined cn (
     set cn=
 )
-for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" ^| findstr /ric:"Connection: keep-alive" /c:"Server: ddos-guard"') do (
+for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" ^| findstr /xic:"Connection: keep-alive" /c:"Server: ddos-guard"') do (
     if /i "%%A: %%B"=="Connection: keep-alive" (
         set /a cn+=1
     ) else if /i "%%A: %%B"=="Server: ddos-guard" (
@@ -2460,7 +2431,7 @@ for %%A in (cn http_code) do (
         set %%A=
     )
 )
-for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" -w "%%{response_code}" ^| findstr /beic:"Connection: close" /c:"Server: cloudflare" /c:"CF-RAY: [a-z0-9]*-[A-Z]*" /c:"[0-9]*"') do (
+for /f "tokens=1*delims=: " %%A in ('curl.exe -Iks -X GET "!%1!" -w "%%{response_code}" ^| findstr /rixc:"Connection: close" /c:"Server: cloudflare" /c:"CF-RAY: [a-z0-9]*-[A-Z]*" /c:"[0-9]*"') do (
     if /i "%%A: %%B"=="Connection: close" (
         set /a cn+=1
     ) else if /i "%%A: %%B"=="Server: cloudflare" (
@@ -3056,6 +3027,28 @@ if %~1 lss 0 exit /b 1
 if %~1 gtr 255 exit /b 1
 exit /b 0
 
+:SETUP_LAUNCHER
+(set \N=^
+%=leave unchanged=%
+)
+set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
+call :CHECK_LANGUAGE
+for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
+    set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
+)
+call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
+    md "!IS_OUTPUT_DIRECTORY!"
+    if exist "!IS_OUTPUT_DIRECTORY!\" (
+        rd "!IS_OUTPUT_DIRECTORY!"
+    ) else (
+        call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+    )
+)
+set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
+set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
+set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
+exit /b
+
 :CHECK_SETTINGS
 for %%A in (LANGUAGE USERNAME BACKGROUNDBORDERTRANSPARENCY BACKGROUNDDISABLED BACKGROUNDTRANSPARENCY BACKGROUNDWALLPAPER VOICEASSISTANT VOICEASSISTANTCHOICE FIRSTLAUNCH DBLASTDOWNLOAD UNTRUSTEDWEBSITESWARNING YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS PORTPRIORITY YOUTUBEDLPRIORITY DEVELOPERMODE) do call :CHECK_%%A
 exit /b
@@ -3392,14 +3385,14 @@ exit /b
 if not defined x (
     exit /b 1
 )
-set "choose_x=`%1"
-if /i "!choose_x:~1,1!"=="!x!" (
+set "choose_x=%1"
+if /i "!choose_x:~0,1!"=="!x!" (
     set choose_x=
     exit /b 0
 )
-if /i "!choose_x:~1,2!"=="!x:~0,2!" (
+if /i "!choose_x:~0,2!"=="!x:~0,2!" (
     set "choose_x=!choose_x:"=""!"
-    if not "!choose_x:`%x:"=""%=!"=="!choose_x!" (
+    if not "!choose_x:%x:"=""%=!"=="!choose_x!" (
         set choose_x=
         exit /b 0
     )
@@ -3610,6 +3603,33 @@ if !errorlevel!==5 set %1=BELOWNORMAL
 if !errorlevel!==6 set %1=LOW
 exit /b
 
+:GET_IS_BAT_USED
+for %%A in ("%IS_PATH_PROCESS_USED%") do (
+    if exist "%%~fA" (
+        if /i "%%~xA"==".exe" (
+            set "IS_BAT_USED=%~nx0"
+            set "IS_PATH_BAT_USED=%~f0"
+            attrib -s -h "%~f0"
+            attrib +s +h +i "%~f0"
+        ) else (
+            set "IS_BAT_USED=%%~nxA"
+            set "IS_PATH_BAT_USED=%%~fA"
+        )
+    ) else (
+        call :ERROR_FATAL IS_PATH_PROCESS_USED
+    )
+)
+if not exist "%IS_PATH_BAT_USED%" (
+    call :ERROR_FATAL IS_PATH_BAT_USED
+)
+>nul findstr /c:":: This batch file should always be started using UTF-8 encoding and CRLF file ending." "%IS_PATH_BAT_USED%" || (
+    call :ERROR_FATAL IS_PATH_BAT_USED_LINE_NOT_FOUND
+)
+>nul findstr /xc:":: This batch file should always be started using UTF-8 encoding and CRLF file ending." "%IS_PATH_BAT_USED%" || (
+    call :ERROR_FATAL LINE_ENDING
+)
+exit /b
+
 :GET_VERSION
 call :CURL_RAW JB0xvJRG lastversion
 if defined lastversion (
@@ -3625,7 +3645,7 @@ call :MSGBOX 69680 "Illegal Services"
 exit /b 3
 
 :GET_FILE_HASH
-for /f %%A in ('CertUtil -hashfile "%1" SHA1 ^| findstr /ber "[a-f0-9]*"') do (
+for /f %%A in ('CertUtil -hashfile "%1" SHA1 ^| findstr /rx "[a-f0-9]*"') do (
     set "file_hash=%%A"
     goto :_GET_FILE_HASH
 )
@@ -3893,7 +3913,7 @@ if defined WT_SESSION (
     if defined WINDOWS_TERMINAL (
         set el=WindowsTerminal.exe
     ) else (
-        set "el=!IS_PROCESS!"
+        set "el=!IS_PROCESS_USED!"
     )
 )
 for /f "tokens=2delims=," %%A in ('tasklist /v /fo csv /fi "imagename eq !el!" ^| find "%~1"') do (
@@ -3915,45 +3935,60 @@ if "!language!"=="FR" echo !CYAN!Le fichier !RED!"!IS_DIR!%1"!CYAN! est manquant
 exit /b
 
 :ERROR_FATAL
+set #el_fatal=%errorlevel%
+2>nul !! || (
+    setlocal EnableDelayedExpansion
+    call :SETUP_LAUNCHER
+)
 for %%A in (x1 x2) do (
     if defined %%A (
         set %%A=
     )
 )
-if "%1"=="WINDOWS_VERSION" (
-    if "!language!"=="EN" set t="ERROR: Your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
-    if "!language!"=="FR" set t="ERREUR: Votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
+if "%1"=="IS_PATH_BAT_USED" (
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not found it's batch script path.!\N!!\N!This error is known to be special characters not yet interpreted as code page number 65001.!\N!!\N!Please report this bug: '!IS_PATH_BAT_USED!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas trouvé le chemin du script batch.!\N!!\N!Cette erreur est connue pour être des caractères spéciaux qui ne sont pas encore interprétés comme le numéro de page de code 65001.!\N!!\N!Veuillez signaler ce bug: '!IS_PATH_BAT_USED!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+) else if "%1"=="IS_PATH_BAT_USED_LINE_NOT_FOUND" (
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not find the line used to determine the CRLF/LF status of the line endings.!\N!!\N!Please reinstall Illegal Services and try again."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu trouver la ligne utilisée pour déterminer l'état CRLF/LF des fins de ligne.!\N!!\N!Veuillez réinstaller Illegal Services et réessayer."
+    set x2=1
+) else if "%1"=="LINE_ENDING" (
+    if "!language!"=="EN" set t="Illegal Services cannot start because it detected line endings as LF.!\N!!\N!This error is known to be the user or the Git proxy saving te file 'Illegal_Services.bat' with LF line endings.!\N!!\N!Please use a text editor (ex: Notepad++) to convert this file back to CRLF line ending and restart Illegal Services."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il a détecter les fins de ligne comme étant LF.!\N!!\N!Cette erreur est connue pour être l'utilisateur ou le proxy Git qui enregistre le fichier 'Illegal_Services.bat' avec la fin de ligne LF.!\N!!\N!Veuillez utiliser un éditeur de texte (ex: Notepad++) pour reconvertir ce fichier en fin de ligne CRLF et redémarrer Illegal Services."
+) else if "%1"=="WINDOWS_VERSION" (
+    if "!language!"=="EN" set t="Illegal Services cannot start because your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
 ) else if "%1"=="UNICODE" (
     if "!language!"=="EN" set t="Illegal Services cannot start because Unicode characters cannot be displayed correctly.!\N!!\N!If you receive this error message, then you are probably experiencing this bug issue: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!For more information, contact us on our Telegram forum."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car les caractères Unicode ne peuvent pas être affichés correctement.!\N!!\N!Si vous recevez ce message d'erreur, vous rencontrez probablement l'issue de ce bug: https://github.com/Illegal-Services/Illegal_Services/issues/10!\N!!\N!Pour plus d'informations, contactez-nous sur le forum Telegram d'Illegal Services."
     set x2=1
 ) else if "%1"=="NAME" (
-    if "!language!"=="EN" set t="Invalid characters detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
-    if "!language!"=="FR" set t="Caractères invalides détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
+    if "!language!"=="EN" set t="Illegal Services cannot start because invalid characters are detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car des caractères invalides sont détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
 ) else if "%1"=="ARCH" (
-    if "!language!"=="EN" set t="Illegal Services could not determine your Windows architecture.!\N!!\N!Please report this bug: '!ARCH!' on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer votre architecture Windows.!\N!!\N!Veuillez signaler ce bug: '!ARCH!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not determine your Windows architecture.!\N!!\N!Please report this bug: '!ARCH!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu déterminer votre architecture Windows.!\N!!\N!Veuillez signaler ce bug: '!ARCH!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="CMDLN" (
-    if "!language!"=="EN" set t="You are running the extracted source code from 'Illegal_Services.exe'.!\N!!\N!That said, this is not an authentic copy from the original Illegal Services source code.!\N!!\N!This extracted source code break an important feature of Illegal Services.!\N!!\N!Use this one instead: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
-    if "!language!"=="FR" set t="Vous exécutez le code source extrait de 'Illegal_services.exe'.!\N!!\N!Cela dit, ce n'est pas une copie authentique du code source original d'Illegal Services.!\N!!\N!Ce code source extrait casse une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci à la place: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
+    if "!language!"=="EN" set t="Illegal Services cannot start because you are running the extracted source code from 'Illegal_Services.exe'.!\N!!\N!That said, this is not an authentic copy from the original Illegal Services source code.!\N!!\N!This extracted source code break an important feature of Illegal Services.!\N!!\N!Use this one instead: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous exécutez le code source extrait de 'Illegal_services.exe'.!\N!!\N!Cela dit, ce n'est pas une copie authentique du code source original d'Illegal Services.!\N!!\N!Ce code source extrait casse une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci à la place: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
 ) else if "%1"=="TMP" (
     if "!language!"=="EN" (
-        set t1="Your 'TEMP' and 'TMP' environment variables do not exist."
+        set t1="Illegal Services cannot start because your 'TEMP' and 'TMP' Windows environment variables do not exist."
         set t2="Please fix one of them and try again."
     )
     if "!language!"=="FR" (
-        set t1="Vos variables d'environnement 'TEMP' et 'TMP' n'existent pas."
+        set t1="Illegal Services ne peut pas démarrer car vos variables d'environnement Windows 'TEMP' et 'TMP' n'existent pas."
         set t2="Veuillez réparer l'une d'entre elles et réessayer."
     )
     set /a x1=1, x2=1
 ) else if "%1"=="CHCP" (
-    if "!language!"=="EN" set t="Illegal Services could not set your code page number to 65001.!\N!!\N!Please report this bug: '!CP!' on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services n'a pas pu définir votre numéro de page de code sur 65001.!\N!!\N!Veuillez signaler ce bug: '!CP!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not set your code page number to 65001.!\N!!\N!Please report this bug: '!CP!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu définir votre numéro de page de code sur 65001.!\N!!\N!Veuillez signaler ce bug: '!CP!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="IS_OUTPUT_DIRECTORY" (
-    if "!language!"=="EN" set t="Illegal Services could not determine its output directory.!\N!!\N!Please report this bug: '!IS_OUTPUT_DIRECTORY!' on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer son répertoire de sortie.!\N!!\N!Veuillez signaler ce bug: '!IS_OUTPUT_DIRECTORY!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not determine its output directory.!\N!!\N!Please report this bug: '!IS_OUTPUT_DIRECTORY!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu  déterminer son répertoire de sortie.!\N!!\N!Veuillez signaler ce bug: '!IS_OUTPUT_DIRECTORY!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="DATE_TIME" (
     if "!language!"=="EN" set t="Illegal Services could not determine the current date and time.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
@@ -3964,27 +3999,26 @@ if "%1"=="WINDOWS_VERSION" (
     if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer le HASH du fichier '%~2'.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="ERRORLEVEL" (
-    if !errorlevel!==5 (
-        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
-        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur: '!errorlevel!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (%~dp0) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
+    if !#el_fatal!==5 (
+        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!#el_fatal!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
+        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur: '!#el_fatal!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (%~dp0) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
     ) else (
-        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be impossible.!\N!!\N!Please report this bug: '!errorlevel!' on our Telegram forum in order to correct this bug in a future release."
-        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!errorlevel!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be impossible.!\N!!\N!Please report this bug: '!#el_fatal!' on our Telegram forum in order to correct this bug in a future release."
+        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!#el_fatal!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
         set x2=1
     )
-)
 ) else (
-    if "!language!"=="EN" set "t=Illegal Services can't start because '!IS_DIR!%1' is missing."
+    if "!language!"=="EN" set "t=Illegal Services cannot start because '!IS_DIR!%1' is missing."
     if "!language!"=="FR" set "t=Illegal Services ne peut pas démarrer car '!IS_DIR!%1' est manquant."
     if "%2"=="CURL" (
         if "!language!"=="EN" set "t=!t!!\N!!\N!Please reinstall Illegal Services and try again."
         if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez réinstaller Illegal Services et réessayer."
         set x2=2
     ) else (
-        if !errorlevel!==1 (
+        if !#el_fatal!==1 (
             if "!language!"=="EN" set "t=!t!!\N!!\N!You must activate Internet and try again."
             if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez activer Internet et réessayer."
-        ) else if !errorlevel!==2 (
+        ) else if !#el_fatal!==2 (
             if "!language!"=="EN" set "t=!t!!\N!!\N!IS Git proxy: '!git!' appears to be offline. For more updates visit our Telegram."
             if "!language!"=="FR" set "t=!t!!\N!!\N!IS Git proxy: '!git!' semble être hors ligne. Pour plus de mises à jour, visitez notre Telegram."
             set x2=1
@@ -3992,14 +4026,14 @@ if "%1"=="WINDOWS_VERSION" (
     )
     set t="!t!"
 )
-if not "%1"=="IS_OUTPUT_DIRECTORY" (
-    if not "%1"=="DATE_TIME" (
+if not "%1"=="DATE_TIME" (
+    if defined IS_OUTPUT_DIRECTORY (
         call :LOGGING_GET_DATE_TIME
         if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\" (
             md "!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\"
         )
         >"!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\DUMP.log" (
-            echo errorlevel=%errorlevel%
+            echo errorlevel=!#el_fatal!
             set "
         )
     )
@@ -4070,7 +4104,14 @@ for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!I
 )
 
 :IS_BOOKMARKS_PARSER
-if not "!LOOKUP_folders:`%category_folder%`=!"=="!LOOKUP_folders!" (
+if not defined category_folder (
+    goto :SKIP_FIND_IS_BOOKMARKS_PARSER
+)
+if not defined LOOKUP_folders (
+    goto :SKIP_FIND_IS_BOOKMARKS_PARSER
+)
+set "LOOKUP_folders=!LOOKUP_folders:"=""!"
+if not "!LOOKUP_folders:`%category_folder:"=""%`=!"=="!LOOKUP_folders!" (
     for /f "tokens=1*delims==" %%A in ('set memory_folder_[') do (
         if /i "%%B"=="!category_folder!" (
             if not "%%B"=="!category_folder!" (
@@ -4079,6 +4120,8 @@ if not "!LOOKUP_folders:`%category_folder%`=!"=="!LOOKUP_folders!" (
         )
     )
 )
+set "LOOKUP_folders=!LOOKUP_folders:""="!"
+:SKIP_FIND_IS_BOOKMARKS_PARSER
 for %%A in (category_path_[ untrusted_website_[ url_[) do (
     for /f "delims==" %%B in ('2^>nul set %%A') do (
         set %%B=
@@ -4446,6 +4489,12 @@ if not "!category_folder!"=="Illegal Services" (
         exit /b 0
     )
 )
+if not defined x (
+    goto :SKIP_FIND_IS_BOOKMARKS_NAVIGATOR
+)
+if not defined LOOKUP_folders (
+    goto :SKIP_FIND_IS_BOOKMARKS_NAVIGATOR
+)
 set "LOOKUP_folders=!LOOKUP_folders:"=""!"
 if not "!LOOKUP_folders:`%x:"=""%`=!"=="!LOOKUP_folders!" (
     set "category_folder=!x!"
@@ -4453,6 +4502,7 @@ if not "!LOOKUP_folders:`%x:"=""%`=!"=="!LOOKUP_folders!" (
     exit /b 0
 )
 set "LOOKUP_folders=!LOOKUP_folders:""="!"
+:SKIP_FIND_IS_BOOKMARKS_NAVIGATOR
 exit /b 1
 
 :IS_BOOKMARKS_WEBSITESTART
