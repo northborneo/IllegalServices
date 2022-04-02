@@ -8,19 +8,24 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 3. 5
-REM  Fileversion:  6. 1. 3. 5
+REM  Productversion:  6. 1. 3. 6
+REM  Fileversion:  6. 1. 3. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
 REM  QBFC Project Options End
 @ECHO ON
-:: This batch file should always be started using UTF-8 encoding and CRLF file ending.
 @echo off
 cls
 setlocal DisableDelayedExpansion
 set "IS_PATH_PROCESS_USED=%~f0"
 call :GET_IS_BAT_USED
+if not exist "%IS_PATH_BAT_USED%" (
+    call :ERROR_FATAL IS_PATH_BAT_USED
+)
+>nul 2>&1 findstr /rxc:".*" "%IS_PATH_BAT_USED%" || (
+    call :ERROR_FATAL LINE_ENDING
+)
 >nul chcp 65001
 pushd "%~dp0"
 for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo 0x1B"') do set "\E=%%A"
@@ -80,6 +85,9 @@ if /i not "%~x0"==".exe" (
     >nul findstr /xc:"for %%%%A in (%%cmdln%%) do (" "%~0" && (
         call :ERROR_FATAL CMDLN
     )
+)
+>nul 2>&1 where mode.com || (
+    call :ERROR_FATAL PATH_NOT_FOUND mode.com
 )
 if not "%~1"=="" (
     if defined language (
@@ -165,7 +173,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.3.5 - 22/03/2022
+set VERSION=v6.1.3.6 - 02/04/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -276,6 +284,9 @@ if "!language!"=="FR" <nul set /p="!sp!Vérification de votre version de Windows
 <nul set /p="!GREEN![!WINDOWS_VERSION!], [x!ARCH!], "
 if defined CP (
     set CP=
+)
+>nul 2>&1 where chcp.com || (
+    call :ERROR_FATAL PATH_NOT_FOUND chcp.com
 )
 for /f "tokens=2delims=:." %%A in ('chcp') do (
     set /a "CP=%%A"
@@ -551,13 +562,13 @@ if "!x!"=="19" (
 if "!language!"=="EN" (
 set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing.!\N!@Yeshi - Helped improving and reducing code."
 call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 23 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@Lubomira - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
+set t="@blacktario - Added 51 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Trident Security - Added 2 websites.!\N!@Grub4K - Added 2 websites.!\N!@Lubomira - Added 2 website.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
 set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing.!\N!@Yeshi - A aidé à améliorer et à réduire le code."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 23 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@Lubomira - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
+set t="@blacktario - A ajouté 51 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Grub4K - A ajouté 2 sites internet.!\N!@Lubomira - A ajouté 2 site internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 )
 )
@@ -1836,7 +1847,7 @@ if "!WINDOWS_VERSION!"=="6.3" (
 for %%A in (wuauserv BITS DcomLaunch InstallService wlidsvc WaaSMedicSvc UnistoreSvc StorSvc) do >nul 2>&1 net stop "%%A"
 for %%A in (wuauserv BITS DcomLaunch) do >nul 2>&1 sc config "%%A" start=auto && echo service "%%A" successfully set to demand. || echo service "%%A" does not exist or an error happend.
 for %%A in (InstallService wlidsvc WaaSMedicSvc UnistoreSvc StorSvc) do >nul 2>&1 sc config "%%A" start=demand && echo service "%%A" successfully set to demand. || echo service "%%A" does not exist or an error happend.
-for /f "delims=" %%A in ('2^>nul where "wsreset.exe"') do start "" "%%~fA"
+for /f "delims=" %%A in ('2^>nul where wsreset.exe') do start "" "%%~fA"
 <nul set /p=!YELLOW!
 timeout /t 5
 goto :WINDOWSREPAIRS
@@ -3619,15 +3630,6 @@ for %%A in ("%IS_PATH_PROCESS_USED%") do (
         call :ERROR_FATAL IS_PATH_PROCESS_USED
     )
 )
-if not exist "%IS_PATH_BAT_USED%" (
-    call :ERROR_FATAL IS_PATH_BAT_USED
-)
->nul findstr /bc:":: This batch file should always be started using UTF-8 encoding and CRLF file ending." "%IS_PATH_BAT_USED%" || (
-    call :ERROR_FATAL IS_PATH_BAT_USED_LINE_NOT_FOUND
-)
->nul findstr /xc:":: This batch file should always be started using UTF-8 encoding and CRLF file ending." "%IS_PATH_BAT_USED%" || (
-    call :ERROR_FATAL LINE_ENDING
-)
 exit /b
 
 :GET_VERSION
@@ -3644,12 +3646,18 @@ call :MSGBOX 69680 "Illegal Services"
 )
 exit /b 3
 
-:GET_FILE_HASH
-for /f %%A in ('CertUtil -hashfile "%1" SHA1 ^| findstr /rx "[a-f0-9]*"') do (
-    set "file_hash=%%A"
-    goto :_GET_FILE_HASH
+:GET_FILE_HASH_SHA1
+if defined file_hash (
+    set file_hash=
 )
-:_GET_FILE_HASH
+for /f "skip=1delims=" %%A in ('2^>nul CertUtil -hashfile "%1" SHA1') do (
+    set "file_hash=%%A"
+    goto :_GET_FILE_HASH_SHA1
+)
+:_GET_FILE_HASH_SHA1
+if defined file_hash (
+    set "file_hash=!file_hash: =!"
+)
 call :CHECK_HASH_SHA1 file_hash && (
     exit /b 0
 )
@@ -3946,12 +3954,8 @@ for %%A in (x1 x2) do (
     )
 )
 if "%1"=="IS_PATH_BAT_USED" (
-    if "!language!"=="EN" set t="Illegal Services cannot start because it could not found it's batch script path.!\N!!\N!This error is known to be special characters not yet interpreted as code page number 65001.!\N!!\N!Please report this bug: '!IS_PATH_BAT_USED!' on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas trouvé le chemin du script batch.!\N!!\N!Cette erreur est connue pour être des caractères spéciaux qui ne sont pas encore interprétés comme le numéro de page de code 65001.!\N!!\N!Veuillez signaler ce bug: '!IS_PATH_BAT_USED!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
-) else if "%1"=="IS_PATH_BAT_USED_LINE_NOT_FOUND" (
-    if "!language!"=="EN" set t="Illegal Services cannot start because it could not find the line used to determine the CRLF/LF status of the line endings.!\N!!\N!Please reinstall Illegal Services and try again."
-    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu trouver la ligne utilisée pour déterminer l'état CRLF/LF des fins de ligne.!\N!!\N!Veuillez réinstaller Illegal Services et réessayer."
-    set x2=1
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not found it's batch script PATH.!\N!!\N!This error is known to be special characters not yet interpreted as code page number 65001.!\N!!\N!Please report this bug: '!IS_PATH_BAT_USED!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas trouvé la PATH du script batch.!\N!!\N!Cette erreur est connue pour être des caractères spéciaux qui ne sont pas encore interprétés comme le numéro de page de code 65001.!\N!!\N!Veuillez signaler ce bug: '!IS_PATH_BAT_USED!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
 ) else if "%1"=="LINE_ENDING" (
     if "!language!"=="EN" set t="Illegal Services cannot start because it detected line endings as LF.!\N!!\N!This error is known to be the user or the Git proxy saving te file 'Illegal_Services.bat' with LF line endings.!\N!!\N!Please use a text editor (ex: Notepad++) to convert this file back to CRLF line ending and restart Illegal Services."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il a détecter les fins de ligne comme étant LF.!\N!!\N!Cette erreur est connue pour être l'utilisateur ou le proxy Git qui enregistre le fichier 'Illegal_Services.bat' avec la fin de ligne LF.!\N!!\N!Veuillez utiliser un éditeur de texte (ex: Notepad++) pour reconvertir ce fichier en fin de ligne CRLF et redémarrer Illegal Services."
@@ -3972,6 +3976,10 @@ if "%1"=="IS_PATH_BAT_USED" (
 ) else if "%1"=="CMDLN" (
     if "!language!"=="EN" set t="Illegal Services cannot start because you are running the extracted source code from 'Illegal_Services.exe'.!\N!!\N!That said, this is not an authentic copy from the original Illegal Services source code.!\N!!\N!This extracted source code break an important feature of Illegal Services.!\N!!\N!Use this one instead: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous exécutez le code source extrait de 'Illegal_services.exe'.!\N!!\N!Cela dit, ce n'est pas une copie authentique du code source original d'Illegal Services.!\N!!\N!Ce code source extrait casse une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci à la place: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
+) else if "%1"=="PATH_NOT_FOUND" (
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not find '%~2' in your system PATH.!\N!!\N!For additional support for this problem, contact us on our Telegram forum."
+    if "!language!"=="FR" set t="Illegal Services  ne peut pas démarrer car il n'a pas pu trouver '%~2' dans votre système PATH.!\N!!\N!Pour un soutien supplémentaire à ce problème, contactez-nous sur le forum Telegram d'Illegal Services."
+    set x2=1
 ) else if "%1"=="TMP" (
     if "!language!"=="EN" (
         set t1="Illegal Services cannot start because your 'TEMP' and 'TMP' Windows environment variables do not exist."
@@ -4043,9 +4051,9 @@ if defined x1 (
 ) else (
     call :MSGBOX 69648 "Illegal Services"
 )
-if "!x2!"=="1" (
+if !x2!==1 (
     start "" "https://t.me/illegal_services_forum"
-) else if "!x2!"=="2" (
+) else if !x2!==2 (
     start "" "https://t.me/illegal_services"
 )
 exit 0
@@ -4112,7 +4120,7 @@ if not defined LOOKUP_folders (
 )
 set "LOOKUP_folders=!LOOKUP_folders:"=""!"
 if not "!LOOKUP_folders:`%category_folder:"=""%`=!"=="!LOOKUP_folders!" (
-    for /f "tokens=1*delims==" %%A in ('set memory_folder_[') do (
+    for /f "tokens=1*delims==" %%A in ('2^>nul set memory_folder_[') do (
         if /i "%%B"=="!category_folder!" (
             if not "%%B"=="!category_folder!" (
                 set "category_folder=%%B"
@@ -4901,7 +4909,7 @@ call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKM
 exit /b 0
 
 :CHECK_PATCH_BOOKMARKS_PARSER
-call :GET_FILE_HASH "!bookmarks_parser.exe!" || (
+call :GET_FILE_HASH_SHA1 "!bookmarks_parser.exe!" || (
     call :ERROR_FATAL HASH "!bookmarks_parser.exe!"
 )
 if "!file_hash!"=="9fb3994687a0117c1c0290a2b9b038abe250d7af" (
