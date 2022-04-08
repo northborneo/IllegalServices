@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 3. 6
-REM  Fileversion:  6. 1. 3. 6
+REM  Productversion:  6. 1. 3. 7
+REM  Fileversion:  6. 1. 3. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -173,7 +173,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.3.6 - 02/04/2022
+set VERSION=v6.1.3.7 - 08/04/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -1211,7 +1211,7 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 74 35
+call :SCALE 74 36
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1219,11 +1219,11 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=quez.in/ freestresser.to/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ stresser.zone/ deltastress.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ redstresser.cc/welcome/index ddosforhire.net/
+set db=quez.in/ freestresser.to/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ redstresser.cc/welcome/index ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 74 35
+call :SCALE 74 36
 echo !CYAN!
 echo !\E![18C══════════════════════════════════════
 echo !\E![17C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
@@ -1239,24 +1239,25 @@ echo !\E![8C║    !6!redstresser.cc!CYAN!        │            [150/s]    ║
 echo !\E![8C║    !7!stresslab.sx!CYAN!          │            [120/s]    ║
 echo !\E![8C║    !8!stresser.zone!CYAN!         │            [120/s]    ║
 echo !\E![8C║    !9!deltastress.com!CYAN!       │            [ 60/s]    ║
+echo !\E![8C║   !10!stresser.gg!CYAN!           │            [ 60/s]    ║
 echo !\E![8C║                                                        ║
 echo !\E![8C╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
 echo !\E![8C║                                                        ║
-echo !\E![8C║   !10!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !11!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo !\E![8C║   !12!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !13!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo !\E![8C║   !14!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║   !15!stresslab.sx!CYAN!          │            [120/s]    ║
-echo !\E![8C║   !16!redstresser.cc!CYAN!        │            [ 60/s]    ║
+echo !\E![8C║   !11!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !12!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo !\E![8C║   !13!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !14!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║   !15!ipstress.in!CYAN!           │            [250/s]    ║
+echo !\E![8C║   !16!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║   !17!redstresser.cc!CYAN!        │            [ 60/s]    ║
 echo !\E![8C╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!15/03/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !16!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!08/04/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!15/03/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !16!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!08/04/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -2703,24 +2704,25 @@ if "%~1"=="" exit /b 1
 for /f "delims=0123456789" %%A in ("%~1") do exit /b 1
 exit /b 0
 
-:CHECK_PATH
+:CHECK_PATH_EXIST
 if not defined %1 exit /b 1
 set "%1=!%1:"=!"
+if not defined %1 exit /b 1
 set "%1=!%1:/=\!"
-:CHECK_PATH_STRIP_WHITE_SPACES
+:CHECK_PATH_EXIST_STRIP_WHITE_SPACES
 if "!%1:~0,1!"==" " (
 set "%1=!%1:~1!"
-goto :CHECK_PATH_STRIP_WHITE_SPACES
+goto :CHECK_PATH_EXIST_STRIP_WHITE_SPACES
 )
 :_CHECK_PATH_STRIP_WHITE_SPACES
 if "!%1:~-1!"==" " (
 set "%1=!%1:~0,-1!"
 goto :_CHECK_PATH_STRIP_WHITE_SPACES
 )
-:CHECK_PATH_STRIP_SLASHES
+:CHECK_PATH_EXIST_STRIP_SLASHES
 if "!%1:~-2!"=="\\" (
 set "%1=!%1:~0,-1!"
-goto :CHECK_PATH_STRIP_SLASHES
+goto :CHECK_PATH_EXIST_STRIP_SLASHES
 )
 if exist "!%1!" exit /b 0
 exit /b 1
@@ -2826,14 +2828,24 @@ for %%A in (!GIT_LIST!) do (
             <nul set /p="!CYAN!!t!!YELLOW!%%~E!CYAN!"
             echo:
             >nul chcp 437
-            powershell Invoke-WebRequest -Uri "%%~E" -OutFile "%~dp0curl.exe"
+            powershell Invoke-WebRequest -Uri "'%%~E'" -OutFile "'%~dp0curl.exe'"
             >nul chcp 65001
-            call :_DOWNLOAD_CURL && (
-                exit /b 0
+            if !errorlevel!==0 (
+                call :_DOWNLOAD_CURL && (
+                    exit /b 0
+                )
             )
-            bitsadmin /transfer someDownload /download /priority normal "%%~E" "%~dp0curl.exe"
-            call :_DOWNLOAD_CURL && (
-                exit /b 0
+            certutil -urlcache -split -f "%url%" "%filename%"
+            if !errorlevel!==0 (
+                call :_DOWNLOAD_CURL && (
+                    exit /b 0
+                )
+            )
+            bitsadmin /transfer someDownload /download /priority high "%%~E" "%~dp0curl.exe"
+            if !errorlevel!==0 (
+                call :_DOWNLOAD_CURL && (
+                    exit /b 0
+                )
             )
         )
     )
@@ -3047,7 +3059,7 @@ call :CHECK_LANGUAGE
 for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
     set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
 )
-call :CHECK_PATH IS_OUTPUT_DIRECTORY || (
+call :CHECK_PATH_EXIST IS_OUTPUT_DIRECTORY || (
     md "!IS_OUTPUT_DIRECTORY!"
     if exist "!IS_OUTPUT_DIRECTORY!\" (
         rd "!IS_OUTPUT_DIRECTORY!"
@@ -3650,7 +3662,7 @@ exit /b 3
 if defined file_hash (
     set file_hash=
 )
-for /f "skip=1delims=" %%A in ('2^>nul CertUtil -hashfile "%1" SHA1') do (
+for /f "skip=1delims=" %%A in ('2^>nul certutil -hashfile "%1" SHA1') do (
     set "file_hash=%%A"
     goto :_GET_FILE_HASH_SHA1
 )
