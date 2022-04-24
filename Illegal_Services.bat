@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 4. 4
-REM  Fileversion:  6. 1. 4. 4
+REM  Productversion:  6. 1. 4. 5
+REM  Fileversion:  6. 1. 4. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -171,7 +171,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.4.4 - 24/04/2022
+set VERSION=v6.1.4.5 - 24/04/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -332,7 +332,10 @@ for %%A in (extd speak-x!ARCH!) do (
 if "!VoiceAssistant!"=="0" (
     >nul timeout /t 1 /nobreak
 )
-call :SCALE 125 29
+if not defined scale[mainmenu] (
+    set scale[mainmenu]=125 29
+)
+call :SCALE !scale[mainmenu]!
 if "!language!"=="EN" (
     set el=Main Menu
     set t2=9
@@ -354,7 +357,7 @@ if "!language!"=="EN" (
 )
 title !#TITLE:`=%t% ^|Git %git_backup%proxy: %git%^|!
 call :ROSE "Main Menu"
-call :SCALE
+call :SCALE !scale[mainmenu]!
 echo !BRIGHTBLACK!
 call :DRAW_LOGO
 echo !CYAN!
@@ -477,12 +480,15 @@ call :ERRORMESSAGE
 goto :MAINMENU
 
 :CREDITS
-call :SCALE 94 35
+if not defined scale[credits] (
+    set scale[credits]=94 35
+)
+call :SCALE !scale[credits]!
 title !#TITLE:`=Credits!
 call :ROSE Credits
 
 :CONTINUECREDITS
-call :SCALE
+call :SCALE !scale[credits]!
 echo !CYAN!
 echo !\E![39C═══════════════
 echo !\E![38C// !RED!█!BGYELLOW!!BLACK! CREDITS !RED!█!BGBLACK!!CYAN! \\
@@ -584,7 +590,10 @@ call :ERRORMESSAGE
 goto :CONTINUECREDITS
 
 :SETTINGS
-call :SCALE 113 26
+if not defined scale[settings] (
+    set scale[settings]=113 26
+)
+call :SCALE !scale[settings]!
 title !#TITLE:`=Settings!
 call :ROSE Settings
 
@@ -627,7 +636,7 @@ set "DeveloperModeInfo=Mode développeur !CYAN!(!RED!OFF!!CYAN!)                
 )
 
 :CONTINUESETTINGS
-call :SCALE
+call :SCALE !scale[settings]!
 title !#TITLE:`=Settings!
 echo !CYAN!
 if "!language!"=="EN" (
@@ -964,7 +973,10 @@ goto :CONTINUESETTINGS
 
 
 :YOUTUBEDL
-call :SCALE 104 32
+if not defined scale[youtubedl] (
+    set scale[youtubedl]=104 32
+)
+call :SCALE !scale[youtubedl]!
 title !#TITLE:`=YouTube Downloader!
 call :ROSE "YouTube Downloader"
 
@@ -996,7 +1008,7 @@ set "YouTubeDLPInfo=YouTube DLP !CYAN!(!GREEN!ON!!CYAN!)                        
 )
 
 :CONTINUEYOUTUBEDL
-call :SCALE
+call :SCALE !scale[youtubedl]!
 echo !CYAN!
 echo !\E![39C══════════════════════════
 echo !\E![38C// !RED!█!BGYELLOW!!BLACK! YOUTUBE DOWNLOADER !RED!█!BGBLACK!!CYAN! \\
@@ -1217,7 +1229,10 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 74 38
+if not defined scale[ddos] (
+    set scale[ddos]=74 38
+)
+call :SCALE !scale[ddos]!
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1229,7 +1244,7 @@ set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstres
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE
+call :SCALE !scale[ddos]!
 echo !CYAN!
 echo !\E![18C══════════════════════════════════════
 echo !\E![17C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
@@ -1281,7 +1296,10 @@ call :ERRORMESSAGE
 goto :CONTINUEDDOS
 
 :IPLOOKUP
-call :SCALE 73 27 memory_scale
+if not defined scale[iplookup] (
+    set scale[iplookup]=73 27
+)
+call :SCALE !scale[iplookup]!
 title !#TITLE:`=IP Address Lookup!
 call :ROSE "IP Address Lookup"
 
@@ -1291,7 +1309,7 @@ call :CLEAR 4
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEIPLOOKUP
-call :SCALE memory_scale
+call :SCALE !scale[iplookup]!
 title !#TITLE:`=IP Address Lookup!
 echo !CYAN!
 echo !\E![24C═════════════════════════
@@ -1530,7 +1548,10 @@ if "!el!"=="6" start /max "" "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt"
 goto :CLEARIPLOOKUP
 
 :PORT
-call :SCALE 101 33
+if not defined scale[port] (
+    set scale[port]=73 27
+)
+call :SCALE !scale[port]!
 title !#TITLE:`=IP Port Scanning!
 call :ROSE "IP Port Scanning"
 
@@ -1539,7 +1560,7 @@ set db=www.adminsub.net/tcp-udp-port-finder www.speedguide.net/ports.php www.ian
 call :CLEAR 8
 
 :CONTINUEPORT
-call :SCALE
+call :SCALE !scale[port]!
 echo !CYAN!
 echo !\E![37C════════════════════════════
 echo !\E![36C// !RED!█!BGYELLOW!!BLACK! IP TCP PORT SCANNING !RED!█!BGBLACK!!CYAN! \\
@@ -1721,12 +1742,15 @@ start "" "%~f0" PINGER
 goto :MAINMENU
 
 :MOREFEATURES
-call :SCALE 62 23
+if not defined scale[morefeatures] (
+    set scale[morefeatures]=62 23
+)
+call :SCALE !scale[morefeatures]!
 title !#TITLE:`=More Features!
 call :ROSE "More Features"
 
 :CONTINUEMOREFEATURES
-call :SCALE
+call :SCALE !scale[morefeatures]!
 echo !CYAN!
 echo !\E![20C═════════════════════
 echo !\E![19C// !RED!█!BGYELLOW!!BLACK! MORE FEATURES !RED!█!BGBLACK!!CYAN! \\
@@ -1779,12 +1803,15 @@ call :ERRORMESSAGE
 goto :CONTINUEMOREFEATURES
 
 :WINDOWSREPAIRS
-call :SCALE 70 26
+if not defined scale[windowsrepairs] (
+    set scale[windowsrepairs]=70 26
+)
+call :SCALE !scale[windowsrepairs]!
 title !#TITLE:`=Windows Repairs!
 call :ROSE "Windows Repairs"
 
 :CONTINUEWINDOWSREPAIRS
-call :SCALE
+call :SCALE !scale[windowsrepairs]!
 title !#TITLE:`=Windows Repairs!
 echo !CYAN!
 echo !\E![26C══════════════════════
@@ -2003,12 +2030,15 @@ timeout /t 5
 exit /b
 
 :WINDOWSTWEAKS
-call :SCALE 74 23
+if not defined scale[windowstweaks] (
+    set scale[windowstweaks]=74 23
+)
+call :SCALE !scale[windowstweaks]!
 title !#TITLE:`=Windows Tweaks!
 call :ROSE "Windows Tweaks"
 
 :CONTINUEWINDOWSTWEAKS
-call :SCALE
+call :SCALE !scale[windowstweaks]!
 title !#TITLE:`=Windows Tweaks!
 echo !CYAN!
 echo !\E![26C══════════════════════
@@ -3407,19 +3437,10 @@ exit /b
 
 :SCALE
 cls
-if "%~1"=="memory_scale" (
-    set /a width=width_memory_scale, height=height_memory_scale
-) else (
-    if not "%~1%~2"=="" (
-        set /a width=%1, height=%2
-    )
-    if "%~3"=="memory_scale" (
-        set /a width_memory_scale=width, height_memory_scale=height
-    )
-)
 if not defined WINDOWS_TERMINAL (
-    mode !width!,!height!
+    mode %1,%2
 )
+set /a width=%1, height=%2
 exit /b
 
 :CLEAR
@@ -3731,7 +3752,7 @@ if defined powershell (
         set date_time=
     )
     for /f "delims=" %%A in (
-        '^>nul chcp 437^& 2^>nul powershell get-date -format "{yyyy-MM-dd_HH-mm-ss}"^& ^>nul chcp 65001'
+        '^>nul chcp 437^& 2^>nul powershell get-date -format "yyyy-MM-dd_HH-mm-ss"^& ^>nul chcp 65001'
     ) do (
         set "date_time=%%A"
     )
