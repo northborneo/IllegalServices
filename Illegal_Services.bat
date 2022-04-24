@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 4. 2
-REM  Fileversion:  6. 1. 4. 2
+REM  Productversion:  6. 1. 4. 3
+REM  Fileversion:  6. 1. 4. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -23,6 +23,9 @@ call :GET_IS_BAT_USED
 if not exist "%IS_PATH_BAT_USED%" (
     call :ERROR_FATAL IS_PATH_BAT_USED
 )
+:: Big issue here, when the batch script is in LF line ending,
+:: and that the user need the chcp 65001, but that it's not loaded in the batch script.
+:: Imaginable workaround would be to use %tmp%/%temp% folder to do a batch script here, so that a CRLF is generated from this one LF batch script ...
 >nul 2>&1 findstr /rxc:".*" "%IS_PATH_BAT_USED%" || (
     call :ERROR_FATAL LINE_ENDING
 )
@@ -49,8 +52,8 @@ for /f "tokens=4-7delims=[.] " %%A in ('ver') do (
 if not "!WINDOWS_VERSION!"=="10.0" (
     call :ERROR_FATAL WINDOWS_VERSION
 )
->nul 2>&1 <nul set /p="╔╦╗╚╩╝╠╬╣║═█■"
-if not !errorlevel!==1 (
+>nul 2>&1 echo "╔╦╗╚╩╝╠╬╣║═█■"
+if not !errorlevel!==0 (
     call :ERROR_FATAL UNICODE
 )
 if not "!x1!"=="!x2!" call :ERROR_FATAL NAME
@@ -61,11 +64,6 @@ if defined ProgramFiles(x86) (
     set ARCH=64
 ) else (
     set ARCH=86
-)
-if not "!ARCH!"=="64" (
-    if not "!ARCH!"=="86" (
-        call :ERROR_FATAL ARCH
-    )
 )
 for %%A in (%*) do (
     if "%%~A"=="--debug" (
@@ -113,8 +111,8 @@ if defined WT_SESSION (
 )
 :SKIP_WINDOWS_TERMINAL
 if defined WINDOWS_TERMINAL (
-    tasklist /fo csv /fi "imagename eq WindowsTerminal.exe" | >nul find "WindowsTerminal.exe" && (
-        tasklist /fo csv /fi "imagename eq OpenConsole.exe" | >nul find "OpenConsole.exe" || (
+    2>nul tasklist /nh /fo csv /fi "imagename eq WindowsTerminal.exe" | >nul find """WindowsTerminal.exe""" && (
+        2>nul tasklist /nh /fo csv /fi "imagename eq OpenConsole.exe" | >nul find """OpenConsole.exe""" || (
             set WINDOWS_TERMINAL=
         )
     ) || (
@@ -146,13 +144,13 @@ if /i "%~x0"==".exe" (
     if "%~n0"=="Illegal Services" (
         >nul 2>&1 taskkill /f /im "Illegal_Services.exe" /t
         >nul move /y "%~nx0" "Illegal_Services.exe" && (
-            start Illegal_Services.exe !DEBUG! && (
+            start "" "Illegal_Services.exe" !DEBUG! && (
                 exit 0
             )
         )
     )
     set cn=0
-    for /f %%A in ('tasklist /fo csv /fi "imagename eq !IS_PROCESS_USED!" ^| find "!IS_PROCESS_USED!"') do (
+    for /f %%A in ('2^>nul tasklist /nh /fo csv /fi "imagename eq !IS_PROCESS_USED!" ^| find """!IS_PROCESS_USED!"""') do (
         set /a cn+=1
         if !cn! gtr 1 (
             goto :LAUNCHER
@@ -160,7 +158,7 @@ if /i "%~x0"==".exe" (
     )
 ) else (
     set IS_PROCESS_USED=cmd.exe
-    for /f %%A in ('tasklist /fo csv /fi "imagename eq Illegal_Services.exe" ^| find "Illegal_Services.exe"') do (
+    for /f %%A in ('2^>nul tasklist /nh /fo csv /fi "imagename eq Illegal_Services.exe" ^| find """Illegal_Services.exe"""') do (
         goto :LAUNCHER
     )
 )
@@ -173,7 +171,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.4.2 - 17/04/2022
+set VERSION=v6.1.4.3 - 24/04/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -320,12 +318,20 @@ set "CHECKED=!CYAN![!YELLOW!x!CYAN!]!WHITE! "
 set "UNCHECKED=!CYAN![ ]!WHITE! "
 set /a c1=0, c2=0, untrusted_website_[#]=0
 call :CHECK_VOICEASSISTANTCHOICE
-if "!VoiceAssistantChoice!"=="1" call :ROSE_SETUP
+if "!VoiceAssistantChoice!"=="1" (
+    call :ROSE_SETUP
+)
 if "!language!"=="EN" echo !GREEN![PASSED] . . .
 if "!language!"=="FR" echo !GREEN![PASSER] . . .
 :L1
-for %%A in (extd speak-x!ARCH!) do tasklist /fo csv /fi "imagename eq %%A.exe" | >nul findstr /c:"%%A.exe" && goto :L1
-if "!VoiceAssistant!"=="0" >nul timeout /t 1 /nobreak
+for %%A in (extd speak-x!ARCH!) do (
+    2>nul tasklist /nh /fo csv /fi "imagename eq %%A.exe" | >nul find """%%A.exe""" && (
+        goto :L1
+    )
+)
+if "!VoiceAssistant!"=="0" (
+    >nul timeout /t 1 /nobreak
+)
 call :SCALE 125 29
 if "!language!"=="EN" (
     set el=Main Menu
@@ -348,7 +354,7 @@ if "!language!"=="EN" (
 )
 title !#TITLE:`=%t% ^|Git %git_backup%proxy: %git%^|!
 call :ROSE "Main Menu"
-call :SCALE 125 29
+call :SCALE
 echo !BRIGHTBLACK!
 call :DRAW_LOGO
 echo !CYAN!
@@ -471,12 +477,12 @@ call :ERRORMESSAGE
 goto :MAINMENU
 
 :CREDITS
-call :SCALE 99 35
+call :SCALE 94 35
 title !#TITLE:`=Credits!
 call :ROSE Credits
 
 :CONTINUECREDITS
-call :SCALE 94 35
+call :SCALE
 echo !CYAN!
 echo !\E![39C═══════════════
 echo !\E![38C// !RED!█!BGYELLOW!!BLACK! CREDITS !RED!█!BGBLACK!!CYAN! \\
@@ -621,7 +627,7 @@ set "DeveloperModeInfo=Mode développeur !CYAN!(!RED!OFF!!CYAN!)                
 )
 
 :CONTINUESETTINGS
-call :SCALE 113 26
+call :SCALE
 title !#TITLE:`=Settings!
 echo !CYAN!
 if "!language!"=="EN" (
@@ -990,7 +996,7 @@ set "YouTubeDLPInfo=YouTube DLP !CYAN!(!GREEN!ON!!CYAN!)                        
 )
 
 :CONTINUEYOUTUBEDL
-call :SCALE 104 32
+call :SCALE
 echo !CYAN!
 echo !\E![39C══════════════════════════
 echo !\E![38C// !RED!█!BGYELLOW!!BLACK! YOUTUBE DOWNLOADER !RED!█!BGBLACK!!CYAN! \\
@@ -1211,7 +1217,7 @@ call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
 
 :DDOS
-call :SCALE 74 36
+call :SCALE 74 38
 title !#TITLE:`=Denial Of Services (DDoS)!
 call :ROSE "IP Denial of Services"
 if defined DDOS (
@@ -1219,11 +1225,11 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=quez.in/ freestresser.to/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ redstresser.cc/welcome/index ddosforhire.net/
+set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ redstresser.cc/welcome/index ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
-call :SCALE 74 36
+call :SCALE
 echo !CYAN!
 echo !\E![18C══════════════════════════════════════
 echo !\E![17C// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
@@ -1232,32 +1238,34 @@ echo !\E![8C╠════════════════════■�
 echo !\E![8C║                                                        ║
 echo !\E![8C║    !1!quez.in!CYAN!               │  [BEST]    [300/s]    ║
 echo !\E![8C║    !2!freestresser.to!CYAN!       │  [BEST]    [300/s]    ║
-echo !\E![8C║    !3!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║    !4!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo !\E![8C║    !5!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║    !6!redstresser.cc!CYAN!        │            [150/s]    ║
-echo !\E![8C║    !7!stresslab.sx!CYAN!          │            [120/s]    ║
-echo !\E![8C║    !8!stresser.zone!CYAN!         │            [120/s]    ║
-echo !\E![8C║    !9!deltastress.com!CYAN!       │            [ 60/s]    ║
-echo !\E![8C║   !10!stresser.gg!CYAN!           │            [ 60/s]    ║
+echo !\E![8C║    !3!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo !\E![8C║    !4!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║    !5!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║    !6!ipstress.in!CYAN!           │            [250/s]    ║
+echo !\E![8C║    !7!redstresser.cc!CYAN!        │            [150/s]    ║
+echo !\E![8C║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║    !9!stresser.zone!CYAN!         │            [120/s]    ║
+echo !\E![8C║   !10!deltastress.com!CYAN!       │            [ 60/s]    ║
+echo !\E![8C║   !11!stresser.gg!CYAN!           │            [ 60/s]    ║
 echo !\E![8C║                                                        ║
 echo !\E![8C╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
 echo !\E![8C║                                                        ║
-echo !\E![8C║   !11!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !12!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo !\E![8C║   !13!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !14!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo !\E![8C║   !15!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║   !16!stresslab.sx!CYAN!          │            [120/s]    ║
-echo !\E![8C║   !17!redstresser.cc!CYAN!        │            [ 60/s]    ║
+echo !\E![8C║   !12!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo !\E![8C║   !13!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !14!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo !\E![8C║   !15!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !16!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║   !17!ipstress.in!CYAN!           │            [250/s]    ║
+echo !\E![8C║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║   !19!redstresser.cc!CYAN!        │            [ 60/s]    ║
 echo !\E![8C╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!08/04/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !18!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!24/04/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !20!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!08/04/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !18!ddosforhire.net"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!24/04/2022"
+call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !20!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1273,7 +1281,7 @@ call :ERRORMESSAGE
 goto :CONTINUEDDOS
 
 :IPLOOKUP
-call :SCALE 73 27
+call :SCALE 73 27 memory_scale
 title !#TITLE:`=IP Address Lookup!
 call :ROSE "IP Address Lookup"
 
@@ -1283,7 +1291,7 @@ call :CLEAR 4
 if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 
 :CONTINUEIPLOOKUP
-call :SCALE 73 27
+call :SCALE memory_scale
 title !#TITLE:`=IP Address Lookup!
 echo !CYAN!
 echo !\E![24C═════════════════════════
@@ -1531,7 +1539,7 @@ set db=www.adminsub.net/tcp-udp-port-finder www.speedguide.net/ports.php www.ian
 call :CLEAR 8
 
 :CONTINUEPORT
-call :SCALE 101 33
+call :SCALE
 echo !CYAN!
 echo !\E![37C════════════════════════════
 echo !\E![36C// !RED!█!BGYELLOW!!BLACK! IP TCP PORT SCANNING !RED!█!BGBLACK!!CYAN! \\
@@ -1718,7 +1726,7 @@ title !#TITLE:`=More Features!
 call :ROSE "More Features"
 
 :CONTINUEMOREFEATURES
-call :SCALE 62 23
+call :SCALE
 echo !CYAN!
 echo !\E![20C═════════════════════
 echo !\E![19C// !RED!█!BGYELLOW!!BLACK! MORE FEATURES !RED!█!BGBLACK!!CYAN! \\
@@ -1776,7 +1784,7 @@ title !#TITLE:`=Windows Repairs!
 call :ROSE "Windows Repairs"
 
 :CONTINUEWINDOWSREPAIRS
-call :SCALE 70 26
+call :SCALE
 title !#TITLE:`=Windows Repairs!
 echo !CYAN!
 echo !\E![26C══════════════════════
@@ -1807,12 +1815,18 @@ call :PROMPT
 if "!x!"=="1" start cmd /c sfc /ScanNow ^& pause ^& exit 0
 if "!x!"=="2" start cmd /c Dism /Online /Cleanup-Image /RestoreHealth ^& pause ^& exit 0
 if "!x!"=="3" start cmd /c chkdsk !SystemDrive! /F /R ^& pause ^& exit 0
-if "!x!"=="4" if "!WINDOWS_VERSION!"=="10.0" (
-    >nul chcp 437
-    2>nul powershell -ExecutionPolicy Unrestricted Get-AppXPackage -AllUsers ^| Foreach {Add-AppxPackage -DisableDevelopmentMode -Register \"$($_.InstallLocation)\AppXManifest.xml\"}
-    >nul chcp 65001
-) else (
-    call :ERROR_WINDOWS_VERSION
+if "!x!"=="4" (
+    if "!WINDOWS_VERSION!"=="10.0" (
+        if defined powershell (
+            >nul chcp 437
+            2>nul powershell -ExecutionPolicy Unrestricted Get-AppXPackage -AllUsers ^| Foreach {Add-AppxPackage -DisableDevelopmentMode -Register \"$($_.InstallLocation)\AppXManifest.xml\"}
+            >nul chcp 65001
+        ) else (
+            call :ERROR_POWERSHELL
+        )
+    ) else (
+        call :ERROR_WINDOWS_VERSION
+    )
 )
 if "!x!"=="5" if "!WINDOWS_VERSION!"=="10.0" (goto :REPAIR_WINDOWS_STORE) else call :ERROR_WINDOWS_VERSION
 if "!x!"=="6" if "!WINDOWS_VERSION!"=="10.0" (goto :REPAIR_XBOX_GAME) else call :ERROR_WINDOWS_VERSION
@@ -1835,15 +1849,17 @@ echo !\E![7C#################################################################
 echo:
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /f && echo reg value "RemoveWindowsStore" successfully removed. || echo reg value "RemoveWindowsStore" already removed.
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "DisableStoreApps" /f && echo reg value "DisableStoreApps" successfully removed. || echo reg value "DisableStoreApps" already removed.
-if "!WINDOWS_VERSION!"=="10.0" (
-    >nul chcp 437
-    2>nul powershell -ExecutionPolicy Unrestricted -Command "& {$manifest = (Get-AppxPackage *WindowsStore*).InstallLocation + '\AppxManifest.xml' ; Add-AppxPackage -DisableDevelopmentMode -Register $manifest}"
-    >nul chcp 65001
-)
-if "!WINDOWS_VERSION!"=="6.3" (
-    >nul chcp 437
-    2>nul powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode -Register $Env:SystemRoot\WinStore\AppxManifest.xml
-    >nul chcp 65001
+if defined powershell (
+    if "!WINDOWS_VERSION!"=="10.0" (
+        >nul chcp 437
+        2>nul powershell -ExecutionPolicy Unrestricted -Command "& {$manifest = (Get-AppxPackage *WindowsStore*).InstallLocation + '\AppxManifest.xml' ; Add-AppxPackage -DisableDevelopmentMode -Register $manifest}"
+        >nul chcp 65001
+    )
+    if "!WINDOWS_VERSION!"=="6.3" (
+        >nul chcp 437
+        2>nul powershell -ExecutionPolicy Unrestricted Add-AppxPackage -DisableDevelopmentMode -Register $Env:SystemRoot\WinStore\AppxManifest.xml
+        >nul chcp 65001
+    )
 )
 for %%A in (wuauserv BITS DcomLaunch InstallService wlidsvc WaaSMedicSvc UnistoreSvc StorSvc) do >nul 2>&1 net stop "%%A"
 for %%A in (wuauserv BITS DcomLaunch) do >nul 2>&1 sc config "%%A" start=auto && echo service "%%A" successfully set to demand. || echo service "%%A" does not exist or an error happend.
@@ -1861,10 +1877,12 @@ echo !\E![7C#################################################################
 echo !\E![7C#              . . . I'm repairing Xbox Game . . .              #
 echo !\E![7C#################################################################
 echo:
-for %%A in (XboxApp Microsoft.XboxGamingOverlay XboxOneSmartGlass) do (
-    >nul chcp 437
-    2>nul powershell -ExecutionPolicy Unrestricted -Command "& {$manifest = (Get-AppxPackage *%%A*).InstallLocation + '\AppxManifest.xml' ; Add-AppxPackage -DisableDevelopmentMode -Register $manifest}"
-    >nul chcp 65001
+if defined powershell (
+    for %%A in (XboxApp Microsoft.XboxGamingOverlay XboxOneSmartGlass) do (
+        >nul chcp 437
+        2>nul powershell -ExecutionPolicy Unrestricted -Command "& {$manifest = (Get-AppxPackage *%%A*).InstallLocation + '\AppxManifest.xml' ; Add-AppxPackage -DisableDevelopmentMode -Register $manifest}"
+        >nul chcp 65001
+    )
 )
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\GameDVR" /v "AllowgameDVR" /f && echo reg value "AllowgameDVR" successfully removed. || echo reg value "AllowgameDVR" already removed.
 >nul reg add "HKCU\Software\Microsoft\Windows\CurrentVersion\GameDVR" /v "AppCaptureEnabled" /t REG_DWORD /d 1 /f && echo reg value "AppCaptureEnabled" successfully added. || echo reg value "AppCaptureEnabled" could not be added.
@@ -1990,7 +2008,7 @@ title !#TITLE:`=Windows Tweaks!
 call :ROSE "Windows Tweaks"
 
 :CONTINUEWINDOWSTWEAKS
-call :SCALE 74 23
+call :SCALE
 title !#TITLE:`=Windows Tweaks!
 echo !CYAN!
 echo !\E![26C══════════════════════
@@ -2827,11 +2845,13 @@ for %%A in (!GIT_LIST!) do (
             if "!language!"=="FR" set "t=Téléchargement: "
             <nul set /p="!CYAN!!t!!YELLOW!%%~E!CYAN!"
             echo:
-            >nul chcp 437
-            powershell Invoke-WebRequest -Uri "'%%~E'" -OutFile "'curl.exe'"
-            >nul chcp 65001
-            call :_DOWNLOAD_CURL && (
-                exit /b 0
+            if defined powershell (
+                >nul chcp 437
+                powershell Invoke-WebRequest -Uri "'%%~E'" -OutFile "'curl.exe'"
+                >nul chcp 65001
+                call :_DOWNLOAD_CURL && (
+                    exit /b 0
+                )
             )
             certutil -urlcache -split -f "%%~E" "curl.exe"
             call :_DOWNLOAD_CURL && (
@@ -3071,6 +3091,14 @@ call :CHECK_PATH_EXIST IS_OUTPUT_DIRECTORY || (
 set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
 set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
 set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
+>nul 2>&1 powershell /?
+if !errorlevel!==0 (
+    set powershell=1
+) else (
+    if defined powershell (
+        set powershell=
+    )
+)
 exit /b
 
 :CHECK_SETTINGS
@@ -3377,10 +3405,19 @@ exit /b
 
 :SCALE
 cls
-if not defined WINDOWS_TERMINAL (
-    mode %1,%2
+if "%~1"=="memory_scale" (
+    set /a width=width_memory_scale, height=height_memory_scale
+) else (
+    if not "%~1%~2"=="" (
+        set /a width=%1, height=%2
+    )
+    if "%~3"=="memory_scale" (
+        set /a width_memory_scale=width, height_memory_scale=height
+    )
 )
-set /a width=%1, height=%2
+if not defined WINDOWS_TERMINAL (
+    mode !width!,!height!
+)
 exit /b
 
 :CLEAR
@@ -3687,16 +3724,18 @@ for /f "tokens=2delims==." %%A in ('2^>nul wmic os get Localdatetime /value') do
 call :CHECK_LOGGING_DATE_TIME date_time && (
     exit /b 0
 )
-if defined date_time (
-    set date_time=
-)
->nul chcp 437
-for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd_HH-mm-ss}"') do (
-    set "date_time=%%A"
-)
->nul chcp 65001
-call :CHECK_LOGGING_DATE_TIME date_time && (
-    exit /b 0
+if defined powershell (
+    if defined date_time (
+        set date_time=
+    )
+    for /f "delims=" %%A in (
+        '^>nul chcp 437^& 2^>nul powershell get-date -format "{yyyy-MM-dd_HH-mm-ss}"^& ^>nul chcp 65001'
+    ) do (
+        set "date_time=%%A"
+    )
+    call :CHECK_LOGGING_DATE_TIME date_time && (
+        exit /b 0
+    )
 )
 call :ERROR_FATAL DATE_TIME
 
@@ -3893,6 +3932,12 @@ if "!language!"=="FR" set t="Votre version de Windows n'est pas compatible avec 
 call :MSGBOX 69648 "Illegal Services"
 exit /b
 
+:ERROR_POWERSHELL
+if "!language!"=="EN" set t="PowerShell is missing from your system PATH. You cannot run this feature."
+if "!language!"=="FR" set t="PowerShell est manquant dans votre système PATH. Vous ne pouvez pas exécuter cette fonctionnalité."
+call :MSGBOX 69648 "Illegal Services"
+exit /b
+
 :OPEN_FOLDER
 if exist "%~1" (
     start "" "%~1"
@@ -3934,11 +3979,11 @@ if defined WT_SESSION (
         set "el=!IS_PROCESS_USED!"
     )
 )
-for /f "tokens=2delims=," %%A in ('tasklist /v /fo csv /fi "imagename eq !el!" ^| find "%~1"') do (
-!cmdwiz.exe! showwindow minimize /p:"%%~A"
-!cmdwiz.exe! showwindow restore /p:"%%~A"
-!cmdwiz.exe! showwindow top /p:"%%~A"
-exit /b 0
+for /f "tokens=2delims=," %%A in ('2^>nul tasklist /v /nh /fo csv /fi "imagename eq !el!" ^| find """%~1"""') do (
+    !cmdwiz.exe! showwindow minimize /p:"%%~A"
+    !cmdwiz.exe! showwindow restore /p:"%%~A"
+    !cmdwiz.exe! showwindow top /p:"%%~A"
+    exit /b 0
 )
 exit /b 1
 
@@ -3979,10 +4024,6 @@ if "%1"=="IS_PATH_BAT_USED" (
 ) else if "%1"=="NAME" (
     if "!language!"=="EN" set t="Illegal Services cannot start because invalid characters are detected in your executable name.!\N!!\N!Illegal Services should be named 'Illegal_Services.exe'.!\N!!\N!Please rename Illegal Services and try again."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car des caractères invalides sont détectés dans votre nom d'exécutable.!\N!!\N!Illegal Services devrais être nommés 'Illegal_Services.exe'.!\N!!\N!Veuillez renommer Illegal Services et réessayer."
-) else if "%1"=="ARCH" (
-    if "!language!"=="EN" set t="Illegal Services cannot start because it could not determine your Windows architecture.!\N!!\N!Please report this bug: '!ARCH!' on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu déterminer votre architecture Windows.!\N!!\N!Veuillez signaler ce bug: '!ARCH!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
-    set x2=1
 ) else if "%1"=="CMDLN" (
     if "!language!"=="EN" set t="Illegal Services cannot start because you are running the extracted source code from 'Illegal_Services.exe'.!\N!!\N!That said, this is not an authentic copy from the original Illegal Services source code.!\N!!\N!This extracted source code break an important feature of Illegal Services.!\N!!\N!Use this one instead: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous exécutez le code source extrait de 'Illegal_services.exe'.!\N!!\N!Cela dit, ce n'est pas une copie authentique du code source original d'Illegal Services.!\N!!\N!Ce code source extrait casse une fonctionnalité importante d'Illegal Services.!\N!!\N!Utilisez celui-ci à la place: [404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source"
@@ -4713,16 +4754,18 @@ for /f "tokens=2delims==." %%A in ('2^>nul wmic os get Localdatetime /value') do
 call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
     exit /b 0
 )
-if defined new_date_time (
-    set new_date_time=
-)
->nul chcp 437
-for /f "delims=" %%A in ('2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}"') do (
-    set "new_date_time=%%A"
-)
->nul chcp 65001
-call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
-    exit /b 0
+if defined powershell (
+    if defined new_date_time (
+        set new_date_time=
+    )
+    for /f "delims=" %%A in (
+        '^>nul chcp 437^& 2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}"^& ^>nul chcp 65001'
+    ) do (
+        set "new_date_time=%%A"
+    )
+    call :CHECK_IS_BOOKMARKS_DATE_TIME new_date_time && (
+        exit /b 0
+    )
 )
 call :ERROR_FATAL DATE_TIME
 
