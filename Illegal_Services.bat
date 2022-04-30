@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 4. 5
-REM  Fileversion:  6. 1. 4. 5
+REM  Productversion:  6. 1. 4. 6
+REM  Fileversion:  6. 1. 4. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -23,11 +23,32 @@ call :GET_IS_BAT_USED
 if not exist "%IS_PATH_BAT_USED%" (
     call :ERROR_FATAL IS_PATH_BAT_USED
 )
-:: Big issue here, when the batch script is in LF line ending,
-:: and that the user need the chcp 65001, but that it's not loaded in the batch script.
-:: Imaginable workaround would be to use %tmp%/%temp% folder to do a batch script here, so that a CRLF is generated from this one LF batch script ...
->nul 2>&1 findstr /rxc:".*" "%IS_PATH_BAT_USED%" || (
-    call :ERROR_FATAL LINE_ENDING
+>nul findstr /v "$" "%IS_PATH_BAT_USED%" && (
+    type "%IS_PATH_BAT_USED%" | >"crlf.bat" find /v ""
+    2>nul NUL
+    2>nul NUL
+    >nul move /y "crlf.bat" "%IS_PATH_BAT_USED%"
+    2>nul NUL
+    2>nul NUL
+)
+>nul findstr /v "$" "%IS_PATH_BAT_USED%" && (
+    echo [EN]:
+    echo Illegal Services cannot start because it detected line endings as LF.
+    echo This error is known to be the user or the Git proxy saving te file 'Illegal_Services.bat' with LF line endings.
+    echo Please use a text editor ^(ex: Notepad++^) to convert this file back to CRLF line ending and restart Illegal Services.
+    echo:
+    echo Press {ANY KEY} to exit
+    echo:
+    echo:
+    echo [FR]:
+    echo Illegal Services ne peut pas demarrer car il a detecter les fins de ligne comme etant LF.
+    echo Cette erreur est connue pour etre l'utilisateur ou le proxy Git qui enregistre le fichier 'Illegal_Services.bat' avec la fin de ligne LF.
+    echo Veuillez utiliser un editeur de texte ^(ex: Notepad++^) pour reconvertir ce fichier en fin de ligne CRLF et redemarrer Illegal Services.
+    echo:
+    echo Appuyez sur {UNE TOUCHE} pour quitter
+    echo:
+    >nul pause
+    exit /b 0
 )
 >nul chcp 65001
 pushd "%~dp0"
@@ -171,7 +192,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.4.5 - 24/04/2022
+set VERSION=v6.1.4.6 - 30/04/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -4034,9 +4055,6 @@ for %%A in (x1 x2) do (
 if "%1"=="IS_PATH_BAT_USED" (
     if "!language!"=="EN" set t="Illegal Services cannot start because it could not found it's batch script PATH.!\N!!\N!This error is known to be special characters not yet interpreted as code page number 65001.!\N!!\N!Please report this bug: '!IS_PATH_BAT_USED!' on our Telegram forum in order to correct this bug in a future release."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas trouvé la PATH du script batch.!\N!!\N!Cette erreur est connue pour être des caractères spéciaux qui ne sont pas encore interprétés comme le numéro de page de code 65001.!\N!!\N!Veuillez signaler ce bug: '!IS_PATH_BAT_USED!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
-) else if "%1"=="LINE_ENDING" (
-    if "!language!"=="EN" set t="Illegal Services cannot start because it detected line endings as LF.!\N!!\N!This error is known to be the user or the Git proxy saving te file 'Illegal_Services.bat' with LF line endings.!\N!!\N!Please use a text editor (ex: Notepad++) to convert this file back to CRLF line ending and restart Illegal Services."
-    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il a détecter les fins de ligne comme étant LF.!\N!!\N!Cette erreur est connue pour être l'utilisateur ou le proxy Git qui enregistre le fichier 'Illegal_Services.bat' avec la fin de ligne LF.!\N!!\N!Veuillez utiliser un éditeur de texte (ex: Notepad++) pour reconvertir ce fichier en fin de ligne CRLF et redémarrer Illegal Services."
 ) else if "%1"=="WINDOWS_VERSION" (
     if "!language!"=="EN" set t="Illegal Services cannot start because your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
