@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 4. 6
-REM  Fileversion:  6. 1. 4. 6
+REM  Productversion:  6. 1. 4. 7
+REM  Fileversion:  6. 1. 4. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -37,7 +37,7 @@ if not exist "%IS_PATH_BAT_USED%" (
     echo This error is known to be the user or the Git proxy saving te file 'Illegal_Services.bat' with LF line endings.
     echo Please use a text editor ^(ex: Notepad++^) to convert this file back to CRLF line ending and restart Illegal Services.
     echo:
-    echo Press {ANY KEY} to exit
+    echo Press {ANY KEY} to exit ...
     echo:
     echo:
     echo [FR]:
@@ -45,7 +45,7 @@ if not exist "%IS_PATH_BAT_USED%" (
     echo Cette erreur est connue pour etre l'utilisateur ou le proxy Git qui enregistre le fichier 'Illegal_Services.bat' avec la fin de ligne LF.
     echo Veuillez utiliser un editeur de texte ^(ex: Notepad++^) pour reconvertir ce fichier en fin de ligne CRLF et redemarrer Illegal Services.
     echo:
-    echo Appuyez sur {UNE TOUCHE} pour quitter
+    echo Appuyez sur {UNE TOUCHE} pour quitter ...
     echo:
     >nul pause
     exit /b 0
@@ -192,15 +192,15 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.4.6 - 30/04/2022
+set VERSION=v6.1.4.7 - 30/04/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
 call :DRAW_LOGO
 echo:
 echo !\E![28C!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
-if "!language!"=="EN" call :DRAW_CENTER "!RED!♥   !YELLOW!Welcome [!RED!!IS_Username!!YELLOW!] to Illegal Services !VERSION:~0,8!   !RED!♥"
-if "!language!"=="FR" call :DRAW_CENTER "!RED!♥   !YELLOW!Bienvenue [!RED!!IS_Username!!YELLOW!] dans Illegal Services !VERSION:~0,8!   !RED!♥"
+if "!language!"=="EN" call :DRAW_CENTER text newline "!RED!♥   !YELLOW!Welcome [!RED!!IS_Username!!YELLOW!] to Illegal Services !VERSION:~0,8!   !RED!♥"
+if "!language!"=="FR" call :DRAW_CENTER text newline "!RED!♥   !YELLOW!Bienvenue [!RED!!IS_Username!!YELLOW!] dans Illegal Services !VERSION:~0,8!   !RED!♥"
 echo !\E![28C!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
 for /f %%A in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%A"
 for %%A in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~A" del /f /q "%%~A"
@@ -385,7 +385,7 @@ echo !CYAN!
 echo !\E![19C╔═════════════════════════════════════════════════════════════════════════════════════╗
 <nul set /p=!BRIGHTRED!                                  !UNDERLINE!!VERSION:~0,8!!UNDERLINEOFF!             !RED!█!BGYELLOW! MAIN MENU !BGBLACK!!RED!█!BGBLACK!!BRIGHTRED!
 if "!language!"=="EN" (set t=Welcome) else set t=Bienvenue
-call :DRAW_CUSTOM_CENTER 37 "!UNDERLINE!!t! !IS_Username!!UNDERLINEOFF!!CYAN!"
+call :DRAW_CENTER text newline "!UNDERLINE!!t! !IS_Username!!UNDERLINEOFF!!CYAN!" 37
 echo !\E![19C╠═════════════════════════════════════════════════════════════════════════════════════╣
 echo !\E![19C║    !YELLOW!1!CYAN!  ^>  !WHITE!Internet Protocol TV (IPTV)!CYAN!    █    !YELLOW!10!CYAN!  ^>  !WHITE!IP Denial of Services (DDoS)!CYAN!    ║
 echo !\E![19C║    !YELLOW!2!CYAN!  ^>  !WHITE!Direct Download Link (DDL)!CYAN!     █    !YELLOW!11!CYAN!  ^>  !WHITE!IP Address Lookup!CYAN!               ║
@@ -417,7 +417,7 @@ if "!FirstLaunch!"=="1" (
 )
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!HELP!BRIGHTBLACK!" / "!YELLOW!FAQ!BRIGHTBLACK!" / "!YELLOW!CHANGELOG!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!HELP!BRIGHTBLACK!" / "!YELLOW!FAQ!BRIGHTBLACK!" / "!YELLOW!CHANGELOG!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for %%A in (3 4) do if "!x!"=="1%%A" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :MAINMENU)
@@ -542,7 +542,7 @@ echo !\E![9C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" start "" "https://www.advancedinstaller.com/"
@@ -695,7 +695,7 @@ echo !\E![7C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for %%A in (8,9) do if "!x!"=="1%%A" call :CHECK_INTERNET || (call :ERROR_INTERNET & goto :CONTINUESETTINGS)
@@ -1070,7 +1070,7 @@ echo !\E![8C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (1,1,14) do if "!x!"=="%%A" call :CHECK_INTERNET && goto :GOYOUTUBEDL || (call :ERROR_INTERNET & goto :CONTINUEYOUTUBEDL)
@@ -1296,18 +1296,18 @@ echo !\E![8C║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
 echo !\E![8C║   !19!redstresser.cc!CYAN!        │            [ 60/s]    ║
 echo !\E![8C╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Last Updated: !WHITE!24/04/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternatively you can visit: !20!ddosforhire.net"
+call :DRAW_CENTER text newline "!BRIGHTMAGENTA!Last Updated: !WHITE!24/04/2022"
+call :DRAW_CENTER text newline "!BRIGHTMAGENTA!Alternatively you can visit: !20!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER "!BRIGHTMAGENTA!Mise à jour le: !WHITE!24/04/2022"
-call :DRAW_CENTER "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !20!ddosforhire.net"
+call :DRAW_CENTER text newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!24/04/2022"
+call :DRAW_CENTER text newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !20!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 call :WEBSITECHECK && goto :CONTINUEDDOS
@@ -1361,7 +1361,7 @@ echo !\E![17C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for %%A in (1 2 3) do if "!x!"=="%%A" call :CHECK_INTERNET || (
@@ -1529,7 +1529,7 @@ echo     !BRIGHTRED!Saved     : !CYAN!!el!
 echo:
 if "!language!"=="EN" set t=Do you want to
 if "!language!"=="FR" set t=Voulez-vous
-call :DRAW_CENTER "!BRIGHTBLACK!!t! Save (!YELLOW!S!BRIGHTBLACK!) / Ping (!YELLOW!P!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
+call :DRAW_CENTER text newline "!BRIGHTBLACK!!t! Save (!YELLOW!S!BRIGHTBLACK!) / Ping (!YELLOW!P!BRIGHTBLACK!) / Back (!YELLOW!B!BRIGHTBLACK!) ?"
 
 :IPLOOKUP_CHOICE
 >nul choice /n /c SPB
@@ -1623,13 +1623,13 @@ echo !\E![8C║                            !11!portforward.com!CYAN!            
 echo !\E![8C╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo:
 >nul 2>&1 sc query npcap || (
-if "!language!"=="EN" call :DRAW_CENTER "!RED!ERROR: !BRIGHTBLACK!To use NMAP, you must first choose: "!YELLOW!INSTALL!BRIGHTBLACK!""
-if "!language!"=="FR" call :DRAW_CENTER "!RED!ERREUR: !BRIGHTBLACK!Pour utiliser NMAP, vous devez d'abord choisir: "!YELLOW!INSTALL!BRIGHTBLACK!""
+if "!language!"=="EN" call :DRAW_CENTER text newline "!RED!ERROR: !BRIGHTBLACK!To use NMAP, you must first choose: "!YELLOW!INSTALL!BRIGHTBLACK!""
+if "!language!"=="FR" call :DRAW_CENTER text newline "!RED!ERREUR: !BRIGHTBLACK!Pour utiliser NMAP, vous devez d'abord choisir: "!YELLOW!INSTALL!BRIGHTBLACK!""
 echo:
 )
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!BRIGHTBLACK!!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!BRIGHTBLACK!!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!PRIORITY!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (1,1,7) do if "!x!"=="%%A" call :CHECK_INTERNET && goto :GOPORTSCANNING || (call :ERROR_INTERNET & goto :CONTINUEPORT)
@@ -1792,7 +1792,7 @@ echo !\E![11C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for %%A in (
@@ -1857,7 +1857,7 @@ echo !\E![16C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" start cmd /c sfc /ScanNow ^& pause ^& exit 0
@@ -2019,11 +2019,11 @@ goto :WINDOWSREPAIRS
 :WINDOWSGAMEBOOSTER
 echo !CYAN!
 if "!language!"=="EN" (
-call :DRAW_CENTER "Do you want to [!YELLOW!E!CYAN!]nable, [!YELLOW!D!CYAN!]isable or [!YELLOW!B!CYAN!]ack ?"
+call :DRAW_CENTER text newline "Do you want to [!YELLOW!E!CYAN!]nable, [!YELLOW!D!CYAN!]isable or [!YELLOW!B!CYAN!]ack ?"
 >nul choice /n /c EDB
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER "Voulez-vous [!YELLOW!A!CYAN!]ctiver, [!YELLOW!D!CYAN!]ésactiver ou [!YELLOW!R!CYAN!]etour ?"
+call :DRAW_CENTER text newline "Voulez-vous [!YELLOW!A!CYAN!]ctiver, [!YELLOW!D!CYAN!]ésactiver ou [!YELLOW!R!CYAN!]etour ?"
 >nul choice /n /c ADR
 )
 if !errorlevel!==1 call :_WINDOWSGAMEBOOSTER Enabling normal disabled enabled
@@ -2081,7 +2081,7 @@ echo !\E![6C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 for /l %%A in (1,1,7) do if "!x!"=="%%A" (
@@ -2248,7 +2248,7 @@ call :ROSE FAQ
 echo !CYAN!
 if "!language!"=="EN" set "t=Here is a list of frequently asked questions about Illegal Services:"
 if "!language!"=="FR" set "t=Voici une liste questions de questions fréquemment posées à propos d'Illegal Services:"
-call :DRAW_CENTER "■█!BGYELLOW!!RED!█ !BLACK!!t!!RED! █!BGBLACK!!CYAN!█■"
+call :DRAW_CENTER text newline "■█!BGYELLOW!!RED!█ !BLACK!!t!!RED! █!BGBLACK!!CYAN!█■"
 echo:
 echo !CYAN!
 if "!language!"=="EN" (
@@ -2365,9 +2365,9 @@ if "!language!"=="FR" echo !\E![3C■█!BGWHITE!!RED!█ ♦ Quand est-ce que l
 echo !\E![6C!GREEN!v1.0.0.0 - 22/05/2020
 echo:
 echo !CYAN!
-if "!language!"=="EN" set "t=Press !YELLOW!{ANY KEY}!CYAN! to exit"
-if "!language!"=="FR" set "t=Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter"
-call :DRAW_CENTER "!t!..." 1
+if "!language!"=="EN" set "t=Press !YELLOW!{ANY KEY}!CYAN! to exit ..."
+if "!language!"=="FR" set "t=Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter ..."
+call :DRAW_CENTER variable no_newline t
 %@SHOWCURSOR%
 >nul pause
 exit 0
@@ -3654,8 +3654,8 @@ if "!language!"=="FR" set "t=ERREUR: !BRIGHTBLACK!"!YELLOW!!x!!BRIGHTBLACK!" n'e
 if "!language!"=="EN" set "t=ERROR: !BRIGHTBLACK!"!YELLOW!!%1!!BRIGHTBLACK!" is not a valid %~3"
 if "!language!"=="FR" set "t=ERREUR: !BRIGHTBLACK!"!YELLOW!!%1!!BRIGHTBLACK!" n'est pas %~2 valide"
 )
-set t=!RED!!t!...
-call :DRAW_CENTER_ERROR t
+set "t=!RED!!t!..."
+call :DRAW_CENTER variable newline t
 >nul timeout /t 3
 exit /b
 
@@ -3793,42 +3793,39 @@ echo     ╚═╝╚══════╝╚══════╝╚═══�
 exit /b
 
 :DRAW_CENTER
-set "el=%~1"
+if %1==text (
+    set "el=%~3"
+) else (
+    set "el=!%3!"
+)
 call :STRLEN el
 set x1=!errorlevel!
 set "el=!el:%\E%=!"
 call :STRLEN el
 set x2=!errorlevel!
 set /a el=(x1-x2)*4, len=x2-el
-if !len! lss !width! (set /a "_sp=(width-len)/2") else set _sp=0
-<nul set /p="!\E![!_sp!C%~1"
-if not "%2"=="1" echo:
-exit /b
-
-:DRAW_CUSTOM_CENTER
-set "el=%~2"
-call :STRLEN el
-set x1=!errorlevel!
-set "el=!el:%\E%=!"
-call :STRLEN el
-set x2=!errorlevel!
-set /a el=(x1-x2)*4, len=x2-el
-set /a "_sp=(%1-len)/2"
-<nul set /p="!\E![!_sp!C%~2"
-echo:
-exit /b
-
-:DRAW_CENTER_ERROR
-set "el=!%1!"
-call :STRLEN el
-set x1=!errorlevel!
-set "el=!el:%\E%=!"
-call :STRLEN el
-set x2=!errorlevel!
-set /a el=(x1-x2)*4, len=x2-el
-if !len! lss !width! (set /a "_sp=(width-len)/2") else set _sp=0
-<nul set /p="!\E![!_sp!C!%1!"
-if not "%2"=="1" echo:
+if "%~4"=="" (
+    if !len! lss !width! (
+        set /a "_sp=(width-len)/2"
+    ) else (
+        set _sp=0
+    )
+) else (
+    set /a "_sp=(%4-len)/2"
+)
+if "%2"=="newline" (
+    if %1==text (
+        echo !\E![!_sp!C%~3
+    ) else (
+        echo !\E![!_sp!C!%3!
+    )
+) else (
+    if %1==text (
+        <nul set /p="!\E![!_sp!C%~3"
+    ) else (
+        <nul set /p="!\E![!_sp!C!%3!"
+    )
+)
 exit /b
 
 :STRLEN
@@ -4336,11 +4333,11 @@ goto :IS_BOOKMARKS_CHOICES_OTHER
 :IS_BOOKMARKS_CHOICES_IPTV
 if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!UPDATE!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!UPDATE!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 >nul 2>&1 reg query "HKCR\.m3u8" || (
     echo:
-    if "!language!"=="EN" call :DRAW_CENTER "!RED!ERROR: To be able to use !YELLOW!IPTV!RED!, first you need to choose: !YELLOW![INSTALL]"
-    if "!language!"=="FR" call :DRAW_CENTER "!RED!ERREUR: Pour pouvoir utiliser !YELLOW!IPTV!RED!, vous devez d'abord choisir: !YELLOW![INSTALL]"
+    if "!language!"=="EN" call :DRAW_CENTER text newline "!RED!ERROR: To be able to use !YELLOW!IPTV!RED!, first you need to choose: !YELLOW![INSTALL]"
+    if "!language!"=="FR" call :DRAW_CENTER text newline "!RED!ERREUR: Pour pouvoir utiliser !YELLOW!IPTV!RED!, vous devez d'abord choisir: !YELLOW![INSTALL]"
 )
 goto :IS_BOOKMARKS_PROMPT
 
@@ -4404,7 +4401,7 @@ echo !\E![4C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" (
@@ -4418,11 +4415,11 @@ goto :CONTINUE_IS_BOOKMARKS_IPTV_TUTORIAL
 :IS_BOOKMARKS_CHOICES_TORRENTING
 if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!UPDATE!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!ADD!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!UPDATE!BRIGHTBLACK!" / "!YELLOW!INSTALL!BRIGHTBLACK!" / "!YELLOW!ADD!BRIGHTBLACK!" / "!YELLOW!HELP!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 >nul 2>&1 reg query "HKCR\.torrent" || (
     echo:
-    if "!language!"=="EN" call :DRAW_CENTER "!RED!ERROR: To be able to use !YELLOW!TORRENTING!RED!, first you need to choose: !YELLOW![INSTALL]"
-    if "!language!"=="FR" call :DRAW_CENTER "!RED!ERREUR: Pour pouvoir utiliser !YELLOW!TORRENTING!RED!, vous devez d'abord choisir: !YELLOW![INSTALL]"
+    if "!language!"=="EN" call :DRAW_CENTER text newline "!RED!ERROR: To be able to use !YELLOW!TORRENTING!RED!, first you need to choose: !YELLOW![INSTALL]"
+    if "!language!"=="FR" call :DRAW_CENTER text newline "!RED!ERREUR: Pour pouvoir utiliser !YELLOW!TORRENTING!RED!, vous devez d'abord choisir: !YELLOW![INSTALL]"
 )
 goto :IS_BOOKMARKS_PROMPT
 
@@ -4462,7 +4459,7 @@ echo !\E![4C╚═════════════════════�
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
 if "!x!"=="1" call :INSTALL_FILE qBittorent & goto :CONTINUETORRENTTUTORIAL
@@ -4515,15 +4512,15 @@ goto :CONTINUE_IS_BOOKMARKS_PARSER
 if "!category_folder!"=="Illegal Services" (
     if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
     if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
-    call :DRAW_CENTER "!t1! "!YELLOW!UPDATE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+    call :DRAW_CENTER text newline "!t1! "!YELLOW!UPDATE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 ) else if defined open_folder_statut (
         if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
         if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
-        call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+        call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 ) else (
     if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
     if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
-    call :DRAW_CENTER "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!UPDATE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+    call :DRAW_CENTER text newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!UPDATE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 )
 :IS_BOOKMARKS_PROMPT
 echo:
