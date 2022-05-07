@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 4. 8
-REM  Fileversion:  6. 1. 4. 8
+REM  Productversion:  6. 1. 4. 9
+REM  Fileversion:  6. 1. 4. 9
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -192,7 +192,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.4.8 - 03/05/2022
+set VERSION=v6.1.4.9 - 07/05/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2386,20 +2386,20 @@ if defined s (
     set s=
 )
 if "!language!"=="EN" (
-    set o1=Domain Dead
-    set o2=Website Down
+    set "o1=Domain Dead ^(%%D_%%E^)"
+    set "o2=Website Down ^(%%D_%%E^)"
     set o3=seems to be down for you
     set o4=seems to be down for everyone
-    set o5=Website Changed Address
-    set o6=Website Changed Domain
+    set "o5=Website Changed Address ^(%%D_%%E^)"
+    set "o6=Website Changed Domain ^(%%D_%%E^)"
 )
 if "!language!"=="FR" (
-    set o1=Domaine mort
-    set o2=Site Internet Mort
+    set "o1=Domaine mort ^(%%D_%%E^)"
+    set "o2=Site Internet Mort ^(%%D_%%E^)"
     set o3=semble être mort pour toi
     set o4=semble être mort pour tout le monde
-    set o5=Site Internet Changé d'Addresse
-    set o6=Site Internet Changé de Domaine
+    set "o5=Site Internet Changé d'Addresse ^(%%D_%%E^)"
+    set "o6=Site Internet Changé de Domaine ^(%%D_%%E^)"
 )
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
@@ -2454,48 +2454,93 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
                     >nul curl.exe -fIks -X GET -A "!user_agent!" "!url_scheme!://%%B.moe/%%C" || (
                         set /a results+=1
                         if !errorlevel!==6 (
-                            echo !RED!!o1!: !YELLOW!!url_src! !RED!!o4! ^^!
+                            echo !RED!%o1%: !YELLOW!!url_src! !RED!!o4! ^^!
                         ) else (
-                            echo !RED!!o2!: !YELLOW!!url_src! !RED!!o4! ^^!
+                            echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
                         )
                     )
                 )
             ) else (
-                for /f "tokens=1*delims=`" %%D in ('curl.exe -Iks -X GET -A "!user_agent!" -o NUL "!url_src!" -w "%%{exitcode}`%%{redirect_url}"') do (
-                    if "%%D`"=="0`" (
-                        if not "%%E"=="" (
-                            set "url_dst=%%E"
-                            if /i not "!url_src!"=="!url_dst!" (
-                                for /f "delims=/" %%F in ("!url_dst:*://=!") do (
-                                    if /i not "%%B_%%F"=="discord.gg_discord.com" (
-                                        if /i not "%%B_%%F"=="github.com_raw.githubusercontent.com" (
-                                            if /i not "%%B_%%F"=="github.com_objects.githubusercontent.com" (
+                for /f "tokens=1-3delims=`" %%D in ('curl.exe -Iks -X GET -A "!user_agent!" -o NUL "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
+                    if "%%F"=="" (
+                        if "%%D"=="0" (
+                            if not "%%E"=="200" (
+                                if not "%%E"=="403" (
+                                    if "%%E"=="503" (
+                                        call :PROTECTED_WEBSITE_DETECTION url_src && (
                                             set /a results+=1
-                                                if /i "%%B"=="%%F" (
-                                                    echo !RED!!o5!: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
-                                                ) else (
-                                                    echo !RED!!o6!: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
-                                                )
+                                            echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                            curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                set /a results+=1
+                                                echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
                                             )
+                                        )
+                                    ) else (
+                                        set /a results+=1
+                                        echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                            set /a results+=1
+                                            echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
                                         )
                                     )
                                 )
                             )
-                        )
-                    ) else if "%%D`%%E"=="6`" (
-                        set /a results+=1
-                        echo !RED!!o1!: !YELLOW!!url_src! !RED!!o3! ^^!
-                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                            set /a results+=1
-                            echo !RED!!o2!: !YELLOW!!url_src! !RED!!o4! ^^!
-                        )
-                    ) else if "`%%E"=="`" (
-                        call :PROTECTED_WEBSITE_DETECTION url_src && (
-                            set /a results+=1
-                            echo !RED!!o2!: !YELLOW!!url_src! !RED!!o3! ^^!
-                            curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                        ) else (
+                            if "%%D"=="6" (
                                 set /a results+=1
-                                echo !RED!!o2!: !YELLOW!!url_src! !RED!!o4! ^^!
+                                echo !RED!%o1%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=1
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                                )
+                            ) else if "%%D"=="7" (
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=2
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                                )
+                            ) else if "%%D"=="28" (
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=2
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                                )
+                            ) else if "%%D"=="35" (
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=1
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                                )
+                            ) else if "%%D"=="56" (
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=2
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                                )
+                            ) else (
+                                set /a results+=1
+                                echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
+                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                    set /a results+=1
+                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                                )
+                            )
+                        )
+                    ) else (
+                        set "url_dst=%%F"
+                        if /i not "!url_src!"=="!url_dst!" (
+                            for /f "delims=/" %%G in ("!url_dst:*://=!") do (
+                                if /i not "%%B_%%G"=="discord.gg_discord.com" (
+                                    if /i not "%%B_%%G"=="github.com_raw.githubusercontent.com" (
+                                        if /i not "%%B_%%G"=="github.com_objects.githubusercontent.com" (
+                                        set /a results+=1
+                                            if /i "%%B"=="%%G" (
+                                                echo !RED!%o5%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
+                                            ) else (
+                                                echo !RED!%o6%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
+                                            )
+                                        )
+                                    )
+                                )
                             )
                         )
                     )
@@ -2786,28 +2831,30 @@ if not defined data exit /b 1
 for /f "delims=0123456789" %%A in ("!data!") do exit /b 1
 exit /b 0
 
-:CHECK_PATH_EXIST
+:CHECK_PATH
 if not defined %1 exit /b 1
 set "%1=!%1:"=!"
 if not defined %1 exit /b 1
 set "%1=!%1:/=\!"
-:CHECK_PATH_EXIST_STRIP_WHITE_SPACES
+:CHECK_PATH_STRIP_WHITE_SPACES
 if "!%1:~0,1!"==" " (
 set "%1=!%1:~1!"
-goto :CHECK_PATH_EXIST_STRIP_WHITE_SPACES
+if not defined %1 exit /b 1
+goto :CHECK_PATH_STRIP_WHITE_SPACES
 )
 :_CHECK_PATH_STRIP_WHITE_SPACES
 if "!%1:~-1!"==" " (
 set "%1=!%1:~0,-1!"
+if not defined %1 exit /b 1
 goto :_CHECK_PATH_STRIP_WHITE_SPACES
 )
-:CHECK_PATH_EXIST_STRIP_SLASHES
-if "!%1:~-2!"=="\\" (
-set "%1=!%1:~0,-1!"
-goto :CHECK_PATH_EXIST_STRIP_SLASHES
+:CHECK_PATH_STRIP_SLASHES
+if not "!%1:\\=!"=="!%1!" (
+set "%1=!%1:\\=\!"
+if not defined %1 exit /b 1
+goto :CHECK_PATH_STRIP_SLASHES
 )
-if exist "!%1!" exit /b 0
-exit /b 1
+exit /b 0
 
 :CHECK_FILE_NEWLINE
 if not exist "!%1!" (
@@ -2818,7 +2865,7 @@ if defined write_newline (
 )
 <"!%1!" >nul (
     for %%A in ("!%1!") do (
-        for /l %%. in (2 1 %%~zA) do (
+        for /l %%. in (2,1,%%~zA) do (
             pause
         )
         set /p write_newline=
@@ -3141,17 +3188,31 @@ exit /b 0
 )
 set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
-for /f "tokens=2*" %%A in ('reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
-    set "IS_OUTPUT_DIRECTORY=%%~fB\Illegal Services"
+if defined IS_OUTPUT_DIRECTORY (
+    set IS_OUTPUT_DIRECTORY=
 )
-call :CHECK_PATH_EXIST IS_OUTPUT_DIRECTORY || (
-    md "!IS_OUTPUT_DIRECTORY!"
-    if exist "!IS_OUTPUT_DIRECTORY!\" (
-        rd "!IS_OUTPUT_DIRECTORY!"
-    ) else (
-        call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+for /f "tokens=2*" %%A in ('2^>nul reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
+    if not "%%B"=="" (
+        set "IS_OUTPUT_DIRECTORY=%%B\Illegal Services"
     )
 )
+call :CHECK_PATH IS_OUTPUT_DIRECTORY && (
+    if exist "!IS_OUTPUT_DIRECTORY!\" (
+        goto :SET_IS_OUTPUT_DIRECTORYS_SETUP_LAUNCHER
+    ) else (
+        md "!IS_OUTPUT_DIRECTORY!" && (
+            if exist "!IS_OUTPUT_DIRECTORY!\" (
+                rd "!IS_OUTPUT_DIRECTORY!" && (
+                    if not exist "!IS_OUTPUT_DIRECTORY!\" (
+                        goto :SET_IS_OUTPUT_DIRECTORYS_SETUP_LAUNCHER
+                    )
+                )
+            )
+        )
+    )
+)
+call :ERROR_FATAL IS_OUTPUT_DIRECTORY
+:SET_IS_OUTPUT_DIRECTORYS_SETUP_LAUNCHER
 set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
 set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
 set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
