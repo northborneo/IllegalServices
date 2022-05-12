@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 4. 9
-REM  Fileversion:  6. 1. 4. 9
+REM  Productversion:  6. 1. 5. 0
+REM  Fileversion:  6. 1. 5. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -192,7 +192,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.4.9 - 07/05/2022
+set VERSION=v6.1.5.0 - 12/05/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -595,13 +595,13 @@ if "!x!"=="19" (
 if "!language!"=="EN" (
 set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing.!\N!@Yeshi - Helped improving and reducing code."
 call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 51 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@Grub4K - Added 3 websites.!\N!@Trident Security - Added 2 websites.!\N!@Lubomira - Added 2 website.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
+set t="@blacktario - Added 51 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@craciu25_YT - Added 4 website.!\N!@Grub4K - Added 3 websites.!\N!@Trident Security - Added 2 websites.!\N!@Lubomira - Added 2 website.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
 set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing.!\N!@Yeshi - A aidé à améliorer et à réduire le code."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 51 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@Grub4K - A ajouté 3 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Lubomira - A ajouté 2 site internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
+set t="@blacktario - A ajouté 51 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@craciu25_YT - A ajouté 4 site internet.!\N!@Grub4K - A ajouté 3 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Lubomira - A ajouté 2 site internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 )
 )
@@ -1251,7 +1251,7 @@ goto :CONTINUEYOUTUBEDL
 
 :DDOS
 if not defined scale[ddos] (
-    set scale[ddos]=74 38
+    set scale[ddos]=74 39
 )
 call :SCALE !scale[ddos]!
 title !#TITLE:`=Denial Of Services (DDoS)!
@@ -1261,7 +1261,7 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ stresslab.sx/ redstresser.cc/welcome/index ddosforhire.net/
+set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresser.ai/ stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ instant-stresser.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
@@ -1278,30 +1278,31 @@ echo !\E![8C║    !3!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
 echo !\E![8C║    !4!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
 echo !\E![8C║    !5!www.ipstresser.com!CYAN!    │            [300/s]    ║
 echo !\E![8C║    !6!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║    !7!redstresser.cc!CYAN!        │            [150/s]    ║
-echo !\E![8C║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
-echo !\E![8C║    !9!stresser.zone!CYAN!         │            [120/s]    ║
-echo !\E![8C║   !10!deltastress.com!CYAN!       │            [ 60/s]    ║
-echo !\E![8C║   !11!stresser.gg!CYAN!           │            [ 60/s]    ║
+echo !\E![8C║    !7!redstresser.cc!CYAN!        │            [120/s]    ║
+echo !\E![8C║    !8!stresser.ai!CYAN!           │            [120/s]    ║
+echo !\E![8C║    !9!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║   !10!stresser.zone!CYAN!         │            [120/s]    ║
+echo !\E![8C║   !11!deltastress.com!CYAN!       │            [ 60/s]    ║
+echo !\E![8C║   !12!stresser.gg!CYAN!           │            [ 60/s]    ║
 echo !\E![8C║                                                        ║
 echo !\E![8C╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
 echo !\E![8C║                                                        ║
-echo !\E![8C║   !12!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo !\E![8C║   !13!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !14!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo !\E![8C║   !15!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !16!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo !\E![8C║   !17!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
-echo !\E![8C║   !19!redstresser.cc!CYAN!        │            [ 60/s]    ║
+echo !\E![8C║   !13!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo !\E![8C║   !14!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !15!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo !\E![8C║   !16!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !17!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║   !18!ipstress.in!CYAN!           │            [250/s]    ║
+echo !\E![8C║   !20!redstresser.cc!CYAN!        │            [120/s]    ║
+echo !\E![8C║   !19!stresslab.sx!CYAN!          │            [120/s]    ║
 echo !\E![8C╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!24/04/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !20!ddosforhire.net"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!12/05/2022"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !21!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!24/04/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !20!ddosforhire.net"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!12/05/2022"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !21!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
