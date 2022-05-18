@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 5. 1
-REM  Fileversion:  6. 1. 5. 1
+REM  Productversion:  6. 1. 5. 2
+REM  Fileversion:  6. 1. 5. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -24,11 +24,12 @@ if not exist "%IS_PATH_BAT_USED%" (
     call :ERROR_FATAL IS_PATH_BAT_USED
 )
 >nul findstr /v "$" "%IS_PATH_BAT_USED%" && (
-    >"crlf.bat" (
+    >"[CRLF]_Illegal_Services.bat" (
         <"%IS_PATH_BAT_USED%" find /v ""
     )
-    >nul move /y "crlf.bat" "%IS_PATH_BAT_USED%"
-    %= leave unchanged =%
+    (
+        >nul move /y "[CRLF]_Illegal_Services.bat" "%IS_PATH_BAT_USED%"
+    )
 )
 >nul findstr /v "$" "%IS_PATH_BAT_USED%" && (
     echo [EN]:
@@ -191,7 +192,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.5.1 - 13/05/2022
+set VERSION=v6.1.5.2 - 18/05/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -575,8 +576,8 @@ call :MSGBOX 69696 "sintrode"
 start "" "https://github.com/sintrode"
 )
 if "!x!"=="16" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Algorithm for checking a file signature.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding.!\N!!\N!Helped fixing a bug when user edits 'IP Lookup Saved.txt' but forgets the ending newline.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Algorithme de vérification de la signature d''un fichier.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8.!\N!!\N!A aidé à corriger un bug lorsque l'utilisateur modifie 'IP Lookup Saved.txt' mais oublie la nouvelle ligne de fin.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html"
+if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Algorithm for checking a file signature.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding.!\N!!\N!Helped fixing a bug when user edits 'IP Lookup Saved.txt' but forgets the ending newline.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser.!\N!!\N!Helped me implementing the CRLF line ending automatisation."
+if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Algorithme de vérification de la signature d''un fichier.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8.!\N!!\N!A aidé à corriger un bug lorsque l'utilisateur modifie 'IP Lookup Saved.txt' mais oublie la nouvelle ligne de fin.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html!\N!!\N!M'a aidé à implémenter l'automatisation de fin de ligne CRLF."
 call :MSGBOX 69696 "Grub4K"
 start "" "https://github.com/Grub4K"
 )
