@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 5. 6
-REM  Fileversion:  6. 1. 5. 6
+REM  Productversion:  6. 1. 5. 7
+REM  Fileversion:  6. 1. 5. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.5.6 - 26/05/2022
+set VERSION=v6.1.5.7 - 27/05/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2534,17 +2534,19 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
                             )
                         )
                     ) else (
-                        set "url_dst=%%F"
-                        if /i not "!url_src!"=="!url_dst!" (
-                            for /f "delims=/" %%G in ("!url_dst:*://=!") do (
-                                if /i not "%%B_%%G"=="discord.gg_discord.com" (
-                                    if /i not "%%B_%%G"=="github.com_raw.githubusercontent.com" (
-                                        if /i not "%%B_%%G"=="github.com_objects.githubusercontent.com" (
-                                        set /a results+=1
-                                            if /i "%%B"=="%%G" (
-                                                echo !RED!%o5%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
-                                            ) else (
-                                                echo !RED!%o6%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
+                        if not "%%E"=="302" (
+                            set "url_dst=%%F"
+                            if /i not "!url_src!"=="!url_dst!" (
+                                for /f "delims=/" %%G in ("!url_dst:*://=!") do (
+                                    if /i not "%%B_%%G"=="discord.gg_discord.com" (
+                                        if /i not "%%B_%%G"=="github.com_raw.githubusercontent.com" (
+                                            if /i not "%%B_%%G"=="github.com_objects.githubusercontent.com" (
+                                            set /a results+=1
+                                                if /i "%%B"=="%%G" (
+                                                    echo !RED!%o5%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
+                                                ) else (
+                                                    echo !RED!%o6%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
+                                                )
                                             )
                                         )
                                     )
@@ -3809,7 +3811,7 @@ for %%A in ("%IS_PATH_PROCESS_USED%") do (
 exit /b
 
 :GET_VERSION
-call :CURL_RAW JB0xvJRG lastversion
+call :CURL_RAW lastversion "https://pastebin.com/raw/JB0xvJRG https://rentry.co/6dhfq/raw https://rentry.org/6dhfq/raw"
 if defined lastversion (
 if "!VERSION:~1,7!" geq "!lastversion:~1,7!" exit /b 0
 if "!VERSION:~1,3!" lss "!lastversion:~1,3!" exit /b 1
@@ -3998,10 +4000,10 @@ for %%A in (!GIT_LIST!) do (
 if defined git_backup exit /b 3
 set "git_backup=backup "
 call :PROXY_DOWN
-call :CURL_RAW 1ARL0img git
-call :CURL_RAW urudZjdg git_build
-call :CURL_RAW c5nbugAf git_changelog
-call :CURL_RAW ThrdeC97 git_release
+call :CURL_RAW git "https://pastebin.com/raw/1ARL0img"
+call :CURL_RAW git_build "https://pastebin.com/raw/urudZjdg"
+call :CURL_RAW git_changelog "https://pastebin.com/raw/c5nbugAf"
+call :CURL_RAW git_release "https://pastebin.com/raw/ThrdeC97"
 if "!language!"=="EN" set t="Illegal Services cannot connect to its Git proxy server.!\N!!\N!The Git proxy backup server is running and only updates for Illegal Services can be performed."
 if "!language!"=="FR" set t="Illegal Services ne peut pas se connecter à son serveur proxy Git.!\N!!\N!Le serveur proxy Git de secours est en marche et seules les mises à jour d'Illegal Services peuvent être effectuées."
 call :MSGBOX 69648 "Illegal Services"
@@ -4038,8 +4040,21 @@ git_source
 exit /b
 
 :CURL_RAW
-for /f "delims=" %%A in ('curl.exe -fkLs "https://pastebin.com/raw/%1"') do set "%2=%%A"
-exit /b
+if defined first (
+    set first=
+)
+for %%A in (%~2) do (
+    for /f "delims=" %%B in ('curl.exe -fks "%%A"') do (
+        if not defined first (
+            set first=1
+            set "%1=%%B"
+            call :CHECK_VERSION_NUMBER %1 && (
+                exit /b 0
+            )
+        )
+    )
+)
+exit /b 1
 
 :ERROR_WINDOWS_VERSION
 if "!language!"=="EN" set t="Your Windows version is not compatible with that feature."
@@ -4920,6 +4935,18 @@ call :IS_BOOKMARKS_GET_NEW_DATE_TIME
 set new_date_time=
 call :CHECK_DBLASTDOWNLOAD
 exit /b 0
+
+:CHECK_VERSION_NUMBER
+if not defined %1 (
+    exit /b 1
+)
+if "!%1:~0,1!!%1:~2,1!!%1:~4,1!!%1:~6,1!!%1:~13,1!!%1:~16,1!!%1:~8,3!!%1:~21!"=="v...// - " (
+    set "x=!%1:~1,1!!%1:~3,1!!%1:~5,1!!%1:~7,1!!%1:~11,2!!%1:~14,2!!%1:~17,4!"
+    call :CHECK_NUMBER x && (
+        exit /b 0
+    )
+)
+exit /b 1
 
 :CHECK_LOGGING_DATE_TIME
 if not defined %1 (
