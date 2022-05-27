@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 5. 9
-REM  Fileversion:  6. 1. 5. 9
+REM  Productversion:  6. 1. 6. 0
+REM  Fileversion:  6. 1. 6. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.5.9 - 27/05/2022
+set VERSION=v6.1.6.0 - 27/05/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -4940,7 +4940,7 @@ exit /b 0
 if not defined %1 (
     exit /b 1
 )
-if "!%1:~0,1!!%1:~2,1!!%1:~4,1!!%1:~6,1!!%1:~13,1!!%1:~16,1!!%1:~8,3!!%1:~21!"=="v...// - " (
+if "!%1:~0,1!!%1:~2,1!!%1:~4,1!!%1:~6,1!!%1:~8,3!!%1:~13,1!!%1:~16,1!!%1:~21!"=="v... - //" (
     set "x=!%1:~1,1!!%1:~3,1!!%1:~5,1!!%1:~7,1!!%1:~11,2!!%1:~14,2!!%1:~17,4!"
     call :CHECK_NUMBER x && (
         exit /b 0
