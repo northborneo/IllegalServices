@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 0
-REM  Fileversion:  6. 1. 6. 0
+REM  Productversion:  6. 1. 6. 1
+REM  Fileversion:  6. 1. 6. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.0 - 27/05/2022
+set VERSION=v6.1.6.1 - 29/05/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -3811,7 +3811,7 @@ for %%A in ("%IS_PATH_PROCESS_USED%") do (
 exit /b
 
 :GET_VERSION
-call :CURL_RAW lastversion "https://pastebin.com/raw/JB0xvJRG https://rentry.co/6dhfq/raw https://rentry.org/6dhfq/raw"
+call :CURL_RAW lastversion "https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
 if defined lastversion (
 if "!VERSION:~1,7!" geq "!lastversion:~1,7!" exit /b 0
 if "!VERSION:~1,3!" lss "!lastversion:~1,3!" exit /b 1
@@ -4000,10 +4000,10 @@ for %%A in (!GIT_LIST!) do (
 if defined git_backup exit /b 3
 set "git_backup=backup "
 call :PROXY_DOWN
-call :CURL_RAW git "https://pastebin.com/raw/1ARL0img"
-call :CURL_RAW git_build "https://pastebin.com/raw/urudZjdg"
-call :CURL_RAW git_changelog "https://pastebin.com/raw/c5nbugAf"
-call :CURL_RAW git_release "https://pastebin.com/raw/ThrdeC97"
+call :CURL_RAW git "https://pastebin.com/raw/1ARL0img https://rentry.co/ack75/raw https://rentry.org/ack75/raw"
+call :CURL_RAW git_build "https://pastebin.com/raw/urudZjdg https://rentry.co/89ynh/raw https://rentry.org/89ynh/raw"
+call :CURL_RAW git_changelog "https://pastebin.com/raw/c5nbugAf https://rentry.co/fszuv/raw https://rentry.org/fszuv/raw"
+call :CURL_RAW git_release "https://pastebin.com/raw/ThrdeC97 https://rentry.co/5rzzc/raw https://rentry.org/5rzzc/raw"
 if "!language!"=="EN" set t="Illegal Services cannot connect to its Git proxy server.!\N!!\N!The Git proxy backup server is running and only updates for Illegal Services can be performed."
 if "!language!"=="FR" set t="Illegal Services ne peut pas se connecter à son serveur proxy Git.!\N!!\N!Le serveur proxy Git de secours est en marche et seules les mises à jour d'Illegal Services peuvent être effectuées."
 call :MSGBOX 69648 "Illegal Services"
@@ -4041,12 +4041,11 @@ exit /b
 
 :CURL_RAW
 for %%A in (%~2) do (
-    if defined first (
-        set first=
+    if defined %1 (
+        set %1=
     )
     for /f "delims=" %%B in ('curl.exe -fks "%%A"') do (
-        if not defined first (
-            set first=1
+        if not defined %1 (
             set "%1=%%B"
             call :CHECK_VERSION_NUMBER %1 && (
                 exit /b 0
