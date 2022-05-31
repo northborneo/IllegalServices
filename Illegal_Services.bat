@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 1
-REM  Fileversion:  6. 1. 6. 1
+REM  Productversion:  6. 1. 6. 2
+REM  Fileversion:  6. 1. 6. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.1 - 29/05/2022
+set VERSION=v6.1.6.2 - 01/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -3811,7 +3811,18 @@ for %%A in ("%IS_PATH_PROCESS_USED%") do (
 exit /b
 
 :GET_VERSION
-call :CURL_RAW lastversion "https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
+if defined @el (
+    set @el=
+)
+if defined git_raw_version (
+    if not "!git_raw_version!"=="[404 Git proxy not found]" (
+        set "@el=!git_raw_version!/version.txt "
+    )
+)
+call :CURL_RAW lastversion "!@el! https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
+if defined @el (
+    set @el=
+)
 if defined lastversion (
 if "!VERSION:~1,7!" geq "!lastversion:~1,7!" exit /b 0
 if "!VERSION:~1,3!" lss "!lastversion:~1,3!" exit /b 1
@@ -3828,16 +3839,17 @@ exit /b 3
 if defined file_hash (
     set file_hash=
 )
-for /f "skip=1delims=" %%A in ('2^>nul certutil -hashfile "%1" SHA1') do (
+for /f "skip=1delims=" %%A in ('2^>nul certutil -hashfile "%~1" SHA1') do (
     set "file_hash=%%A"
-    goto :_GET_FILE_HASH_SHA1
-)
-:_GET_FILE_HASH_SHA1
-if defined file_hash (
-    set "file_hash=!file_hash: =!"
-)
-call :CHECK_HASH_SHA1 file_hash && (
-    exit /b 0
+    if defined file_hash (
+        set "file_hash=!file_hash: =!"
+        if defined file_hash (
+            call :CHECK_HASH_SHA1 file_hash && (
+                exit /b 0
+            )
+        )
+    )
+    exit /b 1
 )
 exit /b 1
 
@@ -4016,6 +4028,7 @@ for /f %%A in ('curl.exe -fIks -X GET -o NUL "https://%1" -w "%%{response_code}"
         set "git_raw_main=!git!/%2/main"
         set "git_raw_downloads=!git!/%2/downloads"
         set "git_raw_source=!git!/%2/source"
+        set "git_raw_version=!git!/%2/version"
         set "git_build=!git_raw_main!/Illegal_Services.exe"
         set "git_changelog=!git_raw_main!/ChangeLog.txt"
         set "git_release=!git_raw_downloads!/IS.Setup.exe"
@@ -4032,6 +4045,7 @@ git
 git_raw_main
 git_raw_downloads
 git_raw_source
+git_raw_version
 git_build
 git_changelog
 git_release
@@ -4044,13 +4058,19 @@ for %%A in (%~2) do (
     if defined %1 (
         set %1=
     )
-    for /f "delims=" %%B in ('curl.exe -fks "%%A"') do (
+    if defined @el (
+        set @el=L
+    )
+    for /f "delims=" %%B in ('curl.exe -fk!@el!s "%%A"') do (
         if not defined %1 (
             set "%1=%%B"
             call :CHECK_VERSION_NUMBER %1 && (
                 exit /b 0
             )
         )
+    )
+    if defined @el (
+        set @el=
     )
 )
 exit /b 1
@@ -4902,8 +4922,17 @@ call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKM
         call :IS_BOOKMARKS_COMPARE_NEW_DATE && (
             exit /b 0
         )
+        for /f "delims=" %%A in ('curl -fks "!git_raw_version!/sha1_IS.bookmarks.html.dat"') do (
+            call :GET_FILE_HASH_SHA1 "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" && (
+                if "%%A"=="!file_hash!" (
+                    exit /b 0
+                )
+                goto :JUMP_DOWNLOAD_IS_BOOKMARKS_DB
+            )
+        )
     )
 )
+:JUMP_DOWNLOAD_IS_BOOKMARKS_DB
 if "%1"=="SCANWEBSITES" (
     if "!language!"=="EN" set t=Downloading the websites database from
     if "!language!"=="FR" set t=Téléchargement de la base de données des sites internet
