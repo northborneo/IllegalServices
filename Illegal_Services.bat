@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 4
-REM  Fileversion:  6. 1. 6. 4
+REM  Productversion:  6. 1. 6. 5
+REM  Fileversion:  6. 1. 6. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.4 - 01/06/2022
+set VERSION=v6.1.6.5 - 01/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -575,8 +575,8 @@ call :MSGBOX 69696 "<Tim>"
 start "" "https://tim-greller.de/home/"
 )
 if "!x!"=="15" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped using curl for IS source.!\N!!\N!Helped adding Rose voice assistant.!\N!!\N!Helped adding choice verification.!\N!!\N!Helped adding Automatic proxy switcher.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à implémenter le support de Windows 11."
+if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped using curl for IS source.!\N!!\N!Helped adding Rose voice assistant.!\N!!\N!Helped adding choice verification.!\N!!\N!Helped adding Automatic proxy switcher.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser.!\N!!\N!Helped me fixing a bug in my code that check if one day passed since the last time we have downloaded 'IS.bookmarks.html'"
+if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!M'a aidé à corriger un bug dans mon code qui vérifie si un jour s'est écoulé depuis la dernière fois que nous avons téléchargé 'IS.bookmarks.html'"
 call :MSGBOX 69696 "sintrode"
 start "" "https://github.com/sintrode"
 )
@@ -4850,7 +4850,7 @@ if "!leap!"=="1" (
     set leap_year=525600
 )
 if "!months!"=="01" (
-    set mins_to_add=0
+    set leap_month=0
 ) else if "!months!"=="02" (
     if "!leap!"=="1" (
         set leap_month=44640
