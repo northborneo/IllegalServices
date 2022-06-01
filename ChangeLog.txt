@@ -6,7 +6,7 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
-v6.1.6.3 - 01/06/2022
+v6.1.6.4 - 01/06/2022
 * FIXED IS Setup : Support for Windows 11.
 * FIXED IS Source : Minor bugs.
 * IMPROVED IS Source : Support for Windows 11.
@@ -15,6 +15,7 @@ v6.1.6.3 - 01/06/2022
 * IMPROVED IS Source : Error Messages.
 + ADDED IS Source : more error messages.
 + ADDED IS Source : Now logs are created in the "Illegal Services" user documents under the "logs" folder.
++ ADDED IS Source : Now before downloading IS.bookmarks.html, it checks that the online hash is different from the local one.
 + ADDED Settings : Extract IS source code (publicly)
 + UPDATED IS lib : EULA.rtf
 
