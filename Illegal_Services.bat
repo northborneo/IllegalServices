@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 3
-REM  Fileversion:  6. 1. 6. 3
+REM  Productversion:  6. 1. 6. 4
+REM  Fileversion:  6. 1. 6. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.3 - 01/06/2022
+set VERSION=v6.1.6.4 - 01/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -4850,43 +4850,83 @@ if "!leap!"=="1" (
     set leap_year=525600
 )
 if "!months!"=="01" (
-    set leap_month=44640
-) else if "!months!"=="03" (
-    set leap_month=44640
+    set mins_to_add=0
 ) else if "!months!"=="02" (
     if "!leap!"=="1" (
-        set leap_month=41760
+        set leap_month=44640
     ) else (
-        set leap_month=40320
+        set leap_month=44640
+    )
+) else if "!months!"=="03" (
+    if "!leap!"=="1" (
+        set leap_month=86400
+    ) else (
+        set leap_month=84960
     )
 ) else if "!months!"=="04" (
-    set leap_month=43200
+    if "!leap!"=="1" (
+        set leap_month=131040
+    ) else (
+        set leap_month=129600
+    )
 ) else if "!months!"=="05" (
-    set leap_month=44640
+    if "!leap!"=="1" (
+        set leap_month=174240
+    ) else (
+        set leap_month=172800
+    )
 ) else if "!months!"=="06" (
-    set leap_month=43200
+    if "!leap!"=="1" (
+        set leap_month=218880
+    ) else (
+        set leap_month=217440
+    )
 ) else if "!months!"=="07" (
-    set leap_month=44640
+    if "!leap!"=="1" (
+        set leap_month=262080
+    ) else (
+        set leap_month=260640
+    )
 ) else if "!months!"=="08" (
-    set leap_month=44640
+    if "!leap!"=="1" (
+        set leap_month=306720
+    ) else (
+        set leap_month=305280
+    )
 ) else if "!months!"=="09" (
-    set leap_month=43200
+    if "!leap!"=="1" (
+        set leap_month=351360
+    ) else (
+        set leap_month=349920
+    )
 ) else if "!months!"=="10" (
-    set leap_month=44640
+    if "!leap!"=="1" (
+        set leap_month=394560
+    ) else (
+        set leap_month=393120
+    )
 ) else if "!months!"=="11" (
-    set leap_month=43200
+    if "!leap!"=="1" (
+        set leap_month=439200
+    ) else (
+        set leap_month=437760
+    )
 ) else if "!months!"=="12" (
-    set leap_month=44640
+    if "!leap!"=="1" (
+        set leap_month=482400
+    ) else (
+        set leap_month=480960
+    )
 )
-for %%A in (months days hours minutes) do (
+for %%A in (days hours) do (
     if defined %%A (
         if "!%%A:~0,1!"=="0" (
             set "%%A=!%%A:~1!"
         )
     )
 )
-set /a "years*=leap_year, months*=leap_month, days*=1440, hours*=60, minutes*=1"
-set /a "%1_t1=years+months+days+hours+minutes"
+set /a "days*=1440, hours*=60"
+set /a "%1_t1=leap_year+leap_month+days+hours+minutes"
 exit /b
 
 :IS_BOOKMARKS_GET_NEW_DATE_TIME
