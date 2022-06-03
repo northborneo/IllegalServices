@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 5
-REM  Fileversion:  6. 1. 6. 5
+REM  Productversion:  6. 1. 6. 6
+REM  Fileversion:  6. 1. 6. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.5 - 01/06/2022
+set VERSION=v6.1.6.6 - 03/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2392,20 +2392,22 @@ if defined s (
     set s=
 )
 if "!language!"=="EN" (
-    set "o1=Domain Dead ^(%%D_%%E^)"
-    set "o2=Website Down ^(%%D_%%E^)"
+    set "o1=Domain Dead"
+    set "o2=Website Down"
     set o3=seems to be down for you
     set o4=seems to be down for everyone
-    set "o5=Website Changed Address ^(%%D_%%E^)"
-    set "o6=Website Changed Domain ^(%%D_%%E^)"
+    set "o5=Website Changed Domain"
+    set "o6=Website Changed Address"
+
 )
 if "!language!"=="FR" (
-    set "o1=Domaine mort ^(%%D_%%E^)"
-    set "o2=Site Internet Mort ^(%%D_%%E^)"
+    set "o1=Domaine mort"
+    set "o2=Site Internet Mort"
     set o3=semble être mort pour toi
     set o4=semble être mort pour tout le monde
-    set "o5=Site Internet Changé d'Addresse ^(%%D_%%E^)"
-    set "o6=Site Internet Changé de Domaine ^(%%D_%%E^)"
+    set "o5=Site Internet Changé de Domaine"
+    set "o6=Site Internet Changé d'Addresse"
+
 )
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
@@ -2422,13 +2424,13 @@ set "user_agent=Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91
 for /f "delims==" %%B in ('2^>nul set website_[') do (
     set %%B=
 )
-for %%A in (skip_dup onion_moe_is_down) do (
-    if defined %%A (
-        set %%A=
-    )
+if defined onion_moe_is_down (
+    set onion_moe_is_down=
 )
 >nul curl.exe -fIks -X GET -A "!user_agent!" "https://onion.moe/" || (
     set onion_moe_is_down=1
+    if "!language!"=="EN" echo Scan for ".onion" websites disabled for this session because "https://onion.moe/" !o3!.
+    if "!language!"=="FR" echo Scan des sites en ".onion" désactiver pour cette session car "https://onion.moe/" !o3!.
 )
 for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a counter+=1, percentage=counter*100/index
@@ -2451,101 +2453,88 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
         if not defined skip_dup (
             set "website_[!counter!]=!url_src!"
             if /i "%%~xB"==".onion" (
-                if not defined onion_moe_is_down (
-                    if /i "!url_src:~0,7!"=="http://" (
-                        set url_scheme=http
-                    ) else (
-                        set url_scheme=https
+                if defined onion_moe_is_down (
+                    set domain_is_still_onion=1
+                ) else (
+                    if defined domain_is_still_onion (
+                        set domain_is_still_onion=
                     )
-                    >nul curl.exe -fIks -X GET -A "!user_agent!" "!url_scheme!://%%B.moe/%%C" || (
-                        set /a results+=1
-                        if !errorlevel!==6 (
-                            echo !RED!%o1%: !YELLOW!!url_src! !RED!!o4! ^^!
-                        ) else (
-                            echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                        )
-                    )
+                    set "url_src=https://%%B.moe/%%C"
                 )
             ) else (
-                for /f "tokens=1-3delims=`" %%D in ('curl.exe -Iks -X GET -A "!user_agent!" -o NUL "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
+                if defined domain_is_still_onion (
+                    set domain_is_still_onion=
+                )
+            )
+            if not defined domain_is_still_onion (
+                for /f "tokens=1-3delims=`" %%D in ('curl.exe -fIks -X GET -A "!user_agent!" -o NUL "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
                     if "%%F"=="" (
-                        if "%%D"=="0" (
-                            if not "%%E"=="200" (
-                                if not "%%E"=="429" (
-                                    if not "%%E"=="403" (
-                                        if "%%E"=="503" (
-                                            call :PROTECTED_WEBSITE_DETECTION url_src && (
-                                                set /a results+=1
-                                                echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                                    set /a results+=1
-                                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
+                        if not "%%E"=="" (
+                            if not "%%D"=="0" (
+                                if "%%D"=="6" (
+                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o1!" "down_for_you" %%D %%E
+                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o1!" "down_for_everyone" %%D %%E
+                                    )
+                                ) else if "%%D"=="7" (
+                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you down_for_everyone" %%D %%E
+                                    )
+                                ) else if "%%D"=="28" (
+                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you down_for_everyone" %%D %%E
+                                    )
+                                ) else if "%%D"=="35" (
+                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                    )
+                                ) else if "%%D"=="56" (
+                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you down_for_everyone" %%D %%E
+                                    )
+                                ) else (
+                                    if not "%%E"=="200" (
+                                        if not "%%E"=="429" (
+                                            if not "%%E"=="403" (
+                                                if "%%E"=="503" (
+                                                    call :PROTECTED_WEBSITE_DETECTION url_src && (
+                                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                            call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                                        )
+                                                    )
+                                                ) else (
+                                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                                    )
                                                 )
-                                            )
-                                        ) else (
-                                            set /a results+=1
-                                            echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                            curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                                set /a results+=1
-                                                echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
                                             )
                                         )
                                     )
                                 )
                             )
-                        ) else (
-                            if "%%D"=="6" (
-                                set /a results+=1
-                                echo !RED!%o1%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                    set /a results+=1
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                                )
-                            ) else if "%%D"=="7" (
-                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                    set /a results+=2
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                                )
-                            ) else if "%%D"=="28" (
-                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                    set /a results+=2
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                                )
-                            ) else if "%%D"=="35" (
-                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                    set /a results+=1
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                                )
-                            ) else if "%%D"=="56" (
-                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                    set /a results+=2
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                                )
-                            ) else (
-                                set /a results+=1
-                                echo !RED!%o2%: !YELLOW!!url_src! !RED!!o3! ^^!
-                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                    set /a results+=1
-                                    echo !RED!%o2%: !YELLOW!!url_src! !RED!!o4! ^^!
-                                )
-                            )
                         )
                     ) else (
-                        if not "%%E"=="302" (
-                            set "url_dst=%%F"
-                            if /i not "!url_src!"=="!url_dst!" (
-                                for /f "delims=/" %%G in ("!url_dst:*://=!") do (
-                                    if /i not "%%B_%%G"=="discord.gg_discord.com" (
-                                        if /i not "%%B_%%G"=="github.com_raw.githubusercontent.com" (
-                                            if /i not "%%B_%%G"=="github.com_objects.githubusercontent.com" (
-                                            set /a results+=1
-                                                if /i "%%B"=="%%G" (
-                                                    echo !RED!%o5%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
-                                                ) else (
-                                                    echo !RED!%o6%: !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst!
+                        if not "%%E"=="" (
+                            if not "%%E"=="302" (
+                                if not "%%E"=="307" (
+                                    set "url_dst=%%F"
+                                    if /i not "!url_src!"=="!url_dst!" (
+                                        for /f "delims=/" %%G in ("!url_dst:*://=!") do (
+                                            if /i not "%%~xB"==".onion" (
+                                                if /i not "%%B_%%G"=="discord.gg_discord.com" (
+                                                    if /i not "%%B_%%G"=="github.com_raw.githubusercontent.com" (
+                                                        if /i not "%%B_%%G"=="github.com_objects.githubusercontent.com" (
+                                                            set "domain_src=%%B"
+                                                            set "domain_dst=%%G"
+                                                            if /i "!domain_src!"=="!domain_dst!" (
+                                                                call :PROCESS_SCANWEBSITES_[WEBSITE_CHANGED_ADDRESS] "!o6!" %%D %%E
+                                                            ) else (
+                                                                call :PROCESS_SCANWEBSITES_[WEBSITE_CHANGED_ADDRESS] "!o5!" %%D %%E
+                                                            )
+                                                        )
+                                                    )
                                                 )
                                             )
                                         )
@@ -2580,6 +2569,29 @@ set @el=
 echo:
 pause
 exit 0
+
+:PROCESS_SCANWEBSITES_[WEBSITE_DOWN]
+set "curl_code=%3"
+set "http_code=%4"
+>nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\blacklist_scan_websites.dat" || (
+    for %%A in (%~2) do (
+        set /a results+=1
+        if %%A==down_for_you (
+            echo !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o3! ^^!
+        ) else (
+            echo !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o4! ^^!
+        )
+    )
+)
+exit /b
+
+:PROCESS_SCANWEBSITES_[WEBSITE_CHANGED_ADDRESS]
+set /a "curl_code=%2, http_code=%3"
+>nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src! > !url_dst!" "!IS_OUTPUT_DIRECTORY!\blacklist_scan_websites.dat" || (
+    set /a results+=1
+    echo !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst! !RED!^^!
+)
+exit /b
 
 :PROTECTED_WEBSITE_DETECTION
 if not defined %1 (
