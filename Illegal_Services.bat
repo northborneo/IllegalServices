@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 6
-REM  Fileversion:  6. 1. 6. 6
+REM  Productversion:  6. 1. 6. 7
+REM  Fileversion:  6. 1. 6. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.6 - 03/06/2022
+set VERSION=v6.1.6.7 - 18/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2384,7 +2384,21 @@ if "!language!"=="EN" (
 ) else if "!language!"=="FR" (
     title !#TITLE:`=Initialisation!
 )
-call :DOWNLOAD_IS_BOOKMARKS_DB SCANWEBSITES || (
+if not exist "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
+    >"!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
+        echo ;;-----------------------------------------------------------------------------
+        echo ;; Lines starting with ";;" symbols are commented lines.
+        echo ;;
+        echo ;; Usage:
+        echo ;; CURL_ERROR_CODE_HTML_ERROR_CODE ^> SOURCE_URL ^> DESTINATION_URL
+        echo ;;
+        echo ;; Examples:
+        echo ;; 22_404 https://example.com/
+        echo ;; 0_301 https://example.com/ ^> https://example.net/
+        echo ;;-----------------------------------------------------------------------------
+    )
+)
+call :DOWNLOAD_IS_BOOKMARKS_DB SCANWEBSITES NO_DATE_CHECK || (
     exit 0
 )
 set /a index=0, counter=0, results=0
@@ -2411,7 +2425,7 @@ if "!language!"=="FR" (
 )
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
-for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
     title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^|  [...] - Illegal Services
 )
@@ -2427,12 +2441,12 @@ for /f "delims==" %%B in ('2^>nul set website_[') do (
 if defined onion_moe_is_down (
     set onion_moe_is_down=
 )
->nul curl.exe -fIks -X GET -A "!user_agent!" "https://onion.moe/" || (
+>nul curl.exe -fIks -X GET -A "!user_agent!" "https://onion.moe/" --connect-timeout 0 --max-time 60 || (
     set onion_moe_is_down=1
     if "!language!"=="EN" echo Scan for ".onion" websites disabled for this session because "https://onion.moe/" !o3!.
     if "!language!"=="FR" echo Scan des sites en ".onion" désactiver pour cette session car "https://onion.moe/" !o3!.
 )
-for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a counter+=1, percentage=counter*100/index
     if !results! gtr 1 (
         set s=s
@@ -2467,11 +2481,12 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
                 )
             )
             if not defined domain_is_still_onion (
-                for /f "tokens=1-3delims=`" %%D in ('curl.exe -fIks -X GET -A "!user_agent!" -o NUL "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
+                for /f "tokens=1-3delims=`" %%D in ('curl.exe -fIks -X GET -A "!user_agent!" "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
                     if "%%F"=="" (
                         if not "%%E"=="" (
                             if not "%%D"=="0" (
                                 if "%%D"=="6" (
+                                    rem Maybe consider using 'ping' command to confirm that the domain is really dead because I already seen [2] false positives!
                                     call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o1!" "down_for_you" %%D %%E
                                     curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
                                         call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o1!" "down_for_everyone" %%D %%E
@@ -2493,6 +2508,13 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
                                         call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you down_for_everyone" %%D %%E
                                     )
                                 ) else (
+                                    rem Those are false positives that might get ereased in a future build, but it's actually good to just use the whitelist for them.
+                                    rem [1/1]: 22_401 (http://free-proxy.cz/)
+                                    rem [4/5]: 22_502 (http://abcmoviesbd.com/allmovies.php?page=1&entries=64&Category=Bollywood&sort=DESC&w=grid), (https://www.subtitlecat.com/), (https://torrent9.to/)
+                                    rem [2/2]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/)
+                                    rem [1/1]: 22_520 (https://extratorrents.it/)
+                                    rem [2/2]: 22_521 (https://tsukimangas.com/), (https://snowfl.com/)
+                                    rem [1/1]: 22_522 (https://worldscinema.org/)
                                     if not "%%E"=="200" (
                                         if not "%%E"=="429" (
                                             if not "%%E"=="403" (
@@ -2517,9 +2539,16 @@ for /f "tokens=3" %%A in ('!bookmarks_parser.exe! -l -e "!IS_OUTPUT_DIRECTORY!\I
                         )
                     ) else (
                         if not "%%E"=="" (
-                            if not "%%E"=="302" (
-                                if not "%%E"=="307" (
-                                    set "url_dst=%%F"
+                            if not "%%E"=="307" (
+                                set "url_dst=%%F"
+                                if "%%E"=="302" (
+                                    if "!url_dst:~-26!"=="/cgi-sys/suspendedpage.cgi" (
+                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                            call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                        )
+                                    )
+                                ) else (
                                     if /i not "!url_src!"=="!url_dst!" (
                                         for /f "delims=/" %%G in ("!url_dst:*://=!") do (
                                             if /i not "%%~xB"==".onion" (
@@ -2567,19 +2596,41 @@ if "!language!"=="EN" echo Scan completed with !results! result!s! found from !i
 if "!language!"=="FR" echo L'analyse s'est terminée avec !results! résultats trouvés à partir de !index! sites web indexés en !@el!.
 set @el=
 echo:
-pause
-exit 0
+if defined choice (
+    set choice=
+)
+echo:
+:PROCESS_SCANWEBSITES_WHITELIST_RESULT
+rem make it not to cls but beautiful still, if possible maybe by moving cursor etc
+set /p "choice=Now if you want, you can whitelist some results so they wont appear in the next scans (1-!results!): !YELLOW!"
+set "write_newline_file_path=!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat"
+call :CHECK_FILE_NEWLINE write_newline_file_path || (
+    >>"!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
+        echo:
+    )
+)
+set write_newline_file_path=
+>>"!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
+    echo !choice!
+)
+goto :PROCESS_SCANWEBSITES_WHITELIST_RESULT
 
 :PROCESS_SCANWEBSITES_[WEBSITE_DOWN]
 set "curl_code=%3"
 set "http_code=%4"
->nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\blacklist_scan_websites.dat" || (
+>nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     for %%A in (%~2) do (
         set /a results+=1
         if %%A==down_for_you (
-            echo !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o3! ^^!
+            echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o3! ^^!
         ) else (
-            echo !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o4! ^^!
+            set "sp= (!curl_code!_!http_code!)"
+            call :STRLEN sp
+            set sp=
+            for /l %%B in (1,1,!len!) do (
+                set "sp=!sp! "
+            )
+            echo !YELLOW!!results!!CYAN!: !RED!%~1!sp!: !YELLOW!!url_src! !RED!!o4! ^^!
         )
     )
 )
@@ -2587,9 +2638,9 @@ exit /b
 
 :PROCESS_SCANWEBSITES_[WEBSITE_CHANGED_ADDRESS]
 set /a "curl_code=%2, http_code=%3"
->nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src! > !url_dst!" "!IS_OUTPUT_DIRECTORY!\blacklist_scan_websites.dat" || (
+>nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src! > !url_dst!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     set /a results+=1
-    echo !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst! !RED!^^!
+    echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst! !RED!^^!
 )
 exit /b
 
@@ -3639,10 +3690,10 @@ set #el=0
 )
 ) else if "!el!"=="-" (
 call :STRLEN x
-set x1=!errorlevel!
+set x1=!len!
 set "el=!x:-=!"
 call :STRLEN el
-set x2=!errorlevel!
+set x2=!len!
 set /a el=x1-x2
 if not "!el!"=="1" exit /b 1
 for /f "tokens=1,2delims=-" %%A in ("!x!") do (
@@ -3907,10 +3958,10 @@ set "el=%~2"
 ) else set "el=!%2!"
 set "memory_[el]=!el!"
 call :STRLEN el
-set x1=!errorlevel!
+set x1=!len!
 set "el=!el:%\E%=!"
 call :STRLEN el
-set x2=!errorlevel!
+set x2=!len!
 set /a el=(x1-x2)*4, len=x2-el
 if "%~3"=="" (
     if !len! lss !width! (
@@ -3930,26 +3981,20 @@ exit /b
 
 :STRLEN
 ::https://www.dostips.com/DtTipsStringOperations.php#Function.strLen
+set len=0
 if not defined %1 (
-    exit /b 0
+    exit /b
 )
 set "str=a!%1!"
-set len=0
 for /l %%A in (12,-1,0) do (
     2>nul set /a "len|=1<<%%A"
-    if not defined len (
-        exit /b 0
-    )
     for %%B in (!len!) do (
         if "!str:~%%B,1!"=="" (
             2>nul set /a "len&=~1<<%%A"
-            if not defined len (
-                exit /b 0
-            )
         )
     )
 )
-exit /b !len!
+exit /b
 
 :READ_IPLOOKUP
 if exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (start "" "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt") else (
@@ -4287,36 +4332,17 @@ for %%A in (x warning_streaming warning_ip_loggers) do (
     )
 )
 set LOOKUP_folders=`
-set root_folder_length=0
-if defined root_folder (
-    set root_folder=
-)
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
-for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
-    if not defined root_folder (
-        if "%%A"=="1" (
-            set "root_folder=%%C"
-        )
-    )
-    set "memory_folder_[%%A]=%%C"
-    set "LOOKUP_folders=!LOOKUP_folders!%%C`"
-)
-if defined root_folder (
-    call :IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
-    set root_folder=
-)
-for /f "tokens=2,3*" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
-    set "memory_category_path_[%%A]=%%C"
-    if defined memory_category_path_[%%A] (
-        if not "!memory_category_path_[%%A]!"=="!memory_category_path_[1]!" (
-            for /f "delims=" %%D in ("!memory_folder_[%%A]!") do (
-                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:\\=\!"
-                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:\/=/!"
-                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:~%root_folder_length%!"
-                set "memory_category_path_[%%A]=!memory_category_path_[%%A]:/%%~D=!"
-            )
-        )
+for /f "tokens=5,7,8,9delims='" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+    if "%%A"=="1" (
+        set "LOOKUP_folders=!LOOKUP_folders!%%C`"
+        set "memory_folder_[%%A]=%%C"
+        set "memory_folder_path_[%%A]=%%C"
+    ) else (
+        set "LOOKUP_folders=!LOOKUP_folders!%%D`"
+        set "memory_folder_[%%A]=%%D"
+        set "memory_folder_path_[%%A]=%%B"
     )
 )
 
@@ -4339,13 +4365,13 @@ if not "!LOOKUP_folders:`%category_folder:"=""%`=!"=="!LOOKUP_folders!" (
 )
 set "LOOKUP_folders=!LOOKUP_folders:""="!"
 :SKIP_FIND_IS_BOOKMARKS_PARSER
-for %%A in (category_path_[ untrusted_website_[ url_[) do (
+for %%A in (root_path_[ untrusted_website_[ url_[) do (
     for /f "delims==" %%B in ('2^>nul set %%A') do (
         set %%B=
     )
 )
-if defined open_folder_statut (
-    set open_folder_statut=
+if defined open_folder_status (
+    set open_folder_status=
 )
 if defined c1 (
     if defined c2 (
@@ -4354,7 +4380,7 @@ if defined c1 (
         )
     )
 )
-set /a first_scan=1, category_path_[#]=0, untrusted_website_[#]=0
+set /a first_scan=1, root_path_[#]=0, untrusted_website_[#]=0
 
 :CONTINUE_IS_BOOKMARKS_PARSER
 title !#TITLE:`=%category_folder%!
@@ -4377,25 +4403,21 @@ for %%A in (previous_action previous_depth current_depth) do (
     )
 )
 set /a c1=1, c2=0
-for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --folder-all "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=1,3,5,7,9,11delims='" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --quoting-style "'" --folders-all "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     if "%%A"=="PATH" (
         set previous_action=PATH
-        if "!memory_folder_[%%B]!"=="!category_folder!" (
+        if "!memory_folder_[%%C]!"=="!category_folder!" (
             if defined first_scan (
-                set /a category_path_[#]+=1
-                set "category_path_[!category_path_[#]!]=!memory_category_path_[%%B]!"
+                set /a root_path_[#]+=1
+                set "root_path_[!root_path_[#]!]=!memory_folder_path_[%%C]!"
             )
             echo:
-            if %%B lss 3 (
-                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: / █!BGBLACK!!CYAN!█!"!
-            ) else (
-                echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_category_path_[%%B]! █!BGBLACK!!CYAN!█!"!
-            )
+            echo !"!  !CYAN!█!BGYELLOW!!BLACK!█ ROOT PATH: !memory_folder_path_[%%C]! █!BGBLACK!!CYAN!█!"!
         )
         echo:
-        echo !"! !YELLOW!^>!CYAN! ■█!BGYELLOW!!RED!█ !memory_folder_[%%B]! █!BGBLACK!!CYAN!█■!"!
+        echo !"! !YELLOW!^>!CYAN! ■█!BGYELLOW!!RED!█ !memory_folder_[%%C]! █!BGBLACK!!CYAN!█■!"!
     ) else if "%%A"=="LINK" (
-        set "current_depth=%%C"
+        set "current_depth=%%B"
         if "!previous_action!"=="LINK" (
             if not "!previous_depth!"=="!current_depth!" (
                 echo:
@@ -4403,7 +4425,7 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
         )
         set previous_action=LINK
         set /a previous_depth=current_depth, c2+=1
-        set "name=%%E"
+        set "name=%%F"
         if defined name (
             if "!name:~-14!"==" | (untrusted)" (
                 if defined first_scan (
@@ -4421,27 +4443,40 @@ for /f "tokens=1-4*" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --fold
             set display_padding=
         )
         if defined !c2! (
-            for %%F in (!c2!) do (
-                echo !"! !display_padding!!%%F!!name! (!BRIGHTMAGENTA!%%D!WHITE!)!"!
+            for %%G in (!c2!) do (
+                echo !"! !display_padding!!%%G!!name! (!BRIGHTMAGENTA!%%E!WHITE!)!"!
             )
         ) else (
-            for %%F in (!category_path_[#]!) do (
-                set "category_path_[!c2!]=!category_path_[%%F]!"
-            )
-            set "url_[!c2!]=%%D"
+            set "url_[!c2!]=%%E"
             set "!c2!=!YELLOW!!c2! !UNCHECKED!"
-            echo !"! !display_padding!!YELLOW!!c2! !UNCHECKED!!name! (!BRIGHTMAGENTA!%%D!WHITE!)!"!
+            echo !"! !display_padding!!YELLOW!!c2! !UNCHECKED!!name! (!BRIGHTMAGENTA!%%E!WHITE!)!"!
         )
+    ) else if "%%A"=="HR" (
+        if defined @sp (
+            set @sp=
+        )
+        set "data=!display_padding!!c2!"
+        call :STRLEN data
+        for /l %%G in (1,1,!len!) do (
+            set "@sp=!@sp! "
+        )
+        echo       !@sp!--------------------
+        set @sp=
     )
 )
 if defined first_scan (
     set first_scan=
-    for /l %%A in (1,1,!category_path_[#]!) do (
-        <nul set /p="!category_path_[%%A]!/!category_folder!" | >nul findstr /bc:"Illegal Services/Doxing" /c:"Illegal Services/Portable Apps" && (
-            set open_folder_statut=1
+    for /l %%A in (1,1,!root_path_[#]!) do (
+        if "!root_path_[%%A]!/!category_folder!"=="Bookmarks Toolbar/Illegal Services/Doxing" (
+            set open_folder_status=1
+            goto :SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
+        ) else if "!root_path_[%%A]!/!category_folder!"=="Bookmarks Toolbar/Illegal Services/Portable Apps" (
+            set open_folder_status=1
+            goto :SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
         )
     )
 )
+:SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
 echo !BRIGHTBLACK!
 if "!category_folder!"=="Internet Protocol Television (IPTV)" (
     goto :IS_BOOKMARKS_CHOICES_IPTV
@@ -4633,7 +4668,7 @@ if "!category_folder!"=="Illegal Services" (
     if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
     if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
     call :DRAW_CENTER newline "!t1! "!YELLOW!UPDATE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
-) else if defined open_folder_statut (
+) else if defined open_folder_status (
         if "!language!"=="EN" (set t1=Write a number/category OR) & (set t2=AND press) & set t3=ENTER
         if "!language!"=="FR" (set t1=Ecrivez un numéro/catégorie OU) & (set t2=et appuyé sur) & set t3=ENTRER
         call :DRAW_CENTER newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
@@ -4679,10 +4714,10 @@ if "!category_folder!"=="Internet Protocol Television (IPTV)" (
     call :CHOOSE HELP && goto :TORRENTTUTORIAL
 )
 call :CHOOSE UPDATE && (
-    call :DOWNLOAD_IS_BOOKMARKS_DB UPDATE
+    call :DOWNLOAD_IS_BOOKMARKS_DB IS_BOOKMARKS_PARSER UPDATE
     goto :RESTART_IS_BOOKMARKS_PARSER
 )
-if defined open_folder_statut (
+if defined open_folder_status (
     call :CHOOSE OPEN && (
         call :OPEN_FOLDER "!IS_OUTPUT_DIRECTORY!\Portable Apps" IS_BOOKMARKS
         goto :CONTINUE_IS_BOOKMARKS_PARSER
@@ -4736,53 +4771,16 @@ for /l %%A in (!c1!,1,!c2!) do (
 )
 exit /b !#el!
 
-:IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
-set root_folder_length=0
-:_IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
-set /a root_folder_length+=1
-if not "!root_folder:~0,%root_folder_length%!"=="!root_folder!" (
-    goto :_IS_BOOKMARKS_SET_ROOT_FOLDER_LENGTH
-)
-set /a root_folder_length+=1
-exit /b
-
 :IS_BOOKMARKS_SET_BACK_FOLDER
 if "!category_folder!"=="Illegal Services" (
     exit /b 1
-)
-if "!category_path_[1]!"=="Illegal Services" (
-    set "category_folder=Illegal Services"
-    exit /b 0
-)
-if !category_path_[#]! gtr 1 (
-    for /l %%A in (1,1,!category_path_[#]!) do (
-        if defined previous_folder (
-            if "!previous_folder!"=="!category_path_[%%A]!" (
-                set /a previous_folder_index+=1
-            )
-        )
-        if "!category_path_[%%A]!"=="Illegal Services" (
-            set "category_folder=Illegal Services"
-            exit /b 0
-        )
-        set "previous_folder=!category_path_[%%A]!"
-    )
-    if "!category_path_[#]!"=="!previous_folder_index!" (
-        set previous_folder_index=
-        set previous_folder=
-        exit /b 1
-    )
-    if defined previous_folder_index (
-        set previous_folder_index=
-    )
-    set previous_folder=
 )
 for %%A in (current_folder common_folder) do (
     if defined %%A (
         set %%A=
     )
 )
-set "_tmp=!category_path_[1]!"
+set "_tmp=!root_path_[1]!"
 set len=0
 for %%A in (4096,2048,1024,512,256,128,64,32,16,8,4,2,1) do (
     if "!_tmp:~%%A,1!" neq "" (
@@ -4792,18 +4790,18 @@ for %%A in (4096,2048,1024,512,256,128,64,32,16,8,4,2,1) do (
 )
 set _tmp=
 for /l %%A in (0,1,!len!) do (
-    set "char=!category_path_[1]:~%%A,1!"
+    set "char=!root_path_[1]:~%%A,1!"
     if not defined char (
         if defined current_folder (
             set "category_folder=!current_folder!"
-            exit /b 0
+            goto :FORMAT_IS_BOOKMARKS_SET_BACK_FOLDER
         )
         exit /b 1
     )
-    for /l %%B in (2,1,!category_path_[#]!) do (
-        if not "!category_path_[%%B]:~%%A,1!"=="!char!" (
+    for /l %%B in (2,1,!root_path_[#]!) do (
+        if not "!root_path_[%%B]:~%%A,1!"=="!char!" (
             set "category_folder=!common_folder!"
-            exit /b 0
+            goto :FORMAT_IS_BOOKMARKS_SET_BACK_FOLDER
         )
     )
     if "!char!"=="/" (
@@ -4819,9 +4817,17 @@ for /l %%A in (0,1,!len!) do (
 )
 if defined current_folder (
     set "category_folder=!current_folder!"
-    exit /b 0
+    goto :FORMAT_IS_BOOKMARKS_SET_BACK_FOLDER
 )
 exit /b 1
+:FORMAT_IS_BOOKMARKS_SET_BACK_FOLDER
+if defined category_folder (
+    set "category_folder=!category_folder:\/=/!"
+    set "category_folder=!category_folder:\\=\!"
+    set "category_folder=!category_folder:&#39;='!"
+)
+exit /b 0
+
 
 :IS_BOOKMARKS_COMPARE_NEW_DATE
 call :IS_BOOKMARKS_GET_NEW_DATE_TIME
@@ -4969,10 +4975,12 @@ call :ERROR_FATAL DATE_TIME
 
 :DOWNLOAD_IS_BOOKMARKS_DB
 call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKMARKS_PARSER && (
-    if not "%1"=="UPDATE" (
-        call :CHECK_DBLASTDOWNLOAD
-        call :IS_BOOKMARKS_COMPARE_NEW_DATE && (
-            exit /b 0
+    if not "%2"=="UPDATE" (
+        if not "%2"=="NO_DATE_CHECK" (
+            call :CHECK_DBLASTDOWNLOAD
+            call :IS_BOOKMARKS_COMPARE_NEW_DATE && (
+                exit /b 0
+            )
         )
         for /f "delims=" %%A in ('curl -fkLs "!git_raw_version!/sha1_IS.bookmarks.html.dat"') do (
             call :GET_FILE_HASH_SHA1 "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" && (
@@ -4985,7 +4993,7 @@ call :CHECK_FILE_SIGNATURE "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" 35 IS_BOOKM
     )
 )
 :JUMP_DOWNLOAD_IS_BOOKMARKS_DB
-if "%1"=="SCANWEBSITES" (
+if "%2"=="SCANWEBSITES" (
     if "!language!"=="EN" set t=Downloading the websites database from
     if "!language!"=="FR" set t=Téléchargement de la base de données des sites internet
     title !DEBUG!!t!: '!git_raw_downloads!/IS.bookmarks.html'. - Illegal Services
@@ -5184,9 +5192,11 @@ exit /b 0
 call :GET_FILE_HASH_SHA1 "!bookmarks_parser.exe!" || (
     call :ERROR_FATAL HASH "!bookmarks_parser.exe!"
 )
-if "!file_hash!"=="9fb3994687a0117c1c0290a2b9b038abe250d7af" (
+set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`"
+if not "!lookup_patch_filehashes:`%file_hash%`=!"=="!lookup_patch_filehashes!" (
     call :CURL "!bookmarks_parser.exe!" "`git_raw_main`/!bookmarks_parser.exe:\=/!" || (
         call :ERROR_FATAL !bookmarks_parser.exe!
     )
 )
+set lookup_patch_filehashes=
 exit /b
