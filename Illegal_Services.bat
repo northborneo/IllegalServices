@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 6. 7
-REM  Fileversion:  6. 1. 6. 7
+REM  Productversion:  6. 1. 6. 8
+REM  Fileversion:  6. 1. 6. 8
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.6.7 - 18/06/2022
+set VERSION=v6.1.6.8 - 27/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2481,7 +2481,7 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
                 )
             )
             if not defined domain_is_still_onion (
-                for /f "tokens=1-3delims=`" %%D in ('curl.exe -fIks -X GET -A "!user_agent!" "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
+                for /f "tokens=1-3delims=`" %%D in ('curl.exe -fIks -o NUL -X GET -A "!user_agent!" "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
                     if "%%F"=="" (
                         if not "%%E"=="" (
                             if not "%%D"=="0" (
@@ -2511,10 +2511,10 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
                                     rem Those are false positives that might get ereased in a future build, but it's actually good to just use the whitelist for them.
                                     rem [1/1]: 22_401 (http://free-proxy.cz/)
                                     rem [4/5]: 22_502 (http://abcmoviesbd.com/allmovies.php?page=1&entries=64&Category=Bollywood&sort=DESC&w=grid), (https://www.subtitlecat.com/), (https://torrent9.to/)
-                                    rem [2/2]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/)
+                                    rem [3/4]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/), (https://getgamez.net/)
                                     rem [1/1]: 22_520 (https://extratorrents.it/)
                                     rem [2/2]: 22_521 (https://tsukimangas.com/), (https://snowfl.com/)
-                                    rem [1/1]: 22_522 (https://worldscinema.org/)
+                                    rem [2/2]: 22_522 (https://worldscinema.org/), (https://itorrent.ws/)
                                     if not "%%E"=="200" (
                                         if not "%%E"=="429" (
                                             if not "%%E"=="403" (
@@ -2621,16 +2621,17 @@ set "http_code=%4"
 >nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     for %%A in (%~2) do (
         set /a results+=1
+        set "choice[!result!]=!curl_code!_!http_code! !url_src!"
         if %%A==down_for_you (
             echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o3! ^^!
         ) else (
-            set "sp= (!curl_code!_!http_code!)"
+            set "sp=(!curl_code!_!http_code!)"
             call :STRLEN sp
             set sp=
             for /l %%B in (1,1,!len!) do (
                 set "sp=!sp! "
             )
-            echo !YELLOW!!results!!CYAN!: !RED!%~1!sp!: !YELLOW!!url_src! !RED!!o4! ^^!
+            echo !YELLOW!!results!!CYAN!: !RED!%~1 !sp!: !YELLOW!!url_src! !RED!!o4! ^^!
         )
     )
 )
@@ -2640,6 +2641,7 @@ exit /b
 set /a "curl_code=%2, http_code=%3"
 >nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src! > !url_dst!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     set /a results+=1
+    set "choice[!result!]=!curl_code!_!http_code! !url_src! !url_dst!"
     echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst! !RED!^^!
 )
 exit /b
@@ -5192,7 +5194,7 @@ exit /b 0
 call :GET_FILE_HASH_SHA1 "!bookmarks_parser.exe!" || (
     call :ERROR_FATAL HASH "!bookmarks_parser.exe!"
 )
-set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`"
+set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`587d3f95c9939235745f2f9c865f2635bc887883`"
 if not "!lookup_patch_filehashes:`%file_hash%`=!"=="!lookup_patch_filehashes!" (
     call :CURL "!bookmarks_parser.exe!" "`git_raw_main`/!bookmarks_parser.exe:\=/!" || (
         call :ERROR_FATAL !bookmarks_parser.exe!
