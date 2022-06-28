@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 0
-REM  Fileversion:  6. 1. 7. 0
+REM  Productversion:  6. 1. 7. 1
+REM  Fileversion:  6. 1. 7. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.0 - 28/06/2022
+set VERSION=v6.1.7.1 - 28/06/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -1719,8 +1719,8 @@ goto :CLEARPORT
 :NMAPINSTALL
 call :CURL "!TMPF!\vcredist_x86.exe" "https://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x86.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
 call :START_DOWNLOADED_FILE vcredist_x86.exe
-call :CURL "!TMPF!\npcap-1.60.exe" "https://nmap.org/npcap/dist/npcap-1.60.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
-call :START_DOWNLOADED_FILE npcap-1.60.exe
+call :CURL "!TMPF!\npcap-1.70.exe" "https://npcap.com/dist/npcap-1.70.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
+call :START_DOWNLOADED_FILE npcap-1.70.exe
 goto :CONTINUEPORT
 
 :PORT_PRIORITY
