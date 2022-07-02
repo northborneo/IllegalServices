@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 1
-REM  Fileversion:  6. 1. 7. 1
+REM  Productversion:  6. 1. 7. 2
+REM  Fileversion:  6. 1. 7. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.1 - 28/06/2022
+set VERSION=v6.1.7.2 - 03/07/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -475,7 +475,7 @@ call :CHOOSE HELP && (start /max "" "tutorial.html" & goto :MAINMENU)
 call :CHOOSE CHANGELOG && (start /max "" "changeLog.txt" & goto :MAINMENU)
 call :CHOOSE FAQ && (call :SHOW_WINDOW "Frequently Asked Questions" || (start "" "%~f0" FAQ) & goto :MAINMENU)
 if /i "!x!"=="--dump" (
-    call :LOGGING_GET_DATE_TIME
+    call :GET_DATE_TIME
     if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\" (
         md "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\"
     )
@@ -486,7 +486,7 @@ if /i "!x!"=="--dump" (
     start "" "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!"
     goto :MAINMENU
 ) else if /i "!x!"=="--dump-IS" (
-    call :LOGGING_GET_DATE_TIME
+    call :GET_DATE_TIME
     if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\" (
         md "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\"
     ) else if exist "!IS_OUTPUT_DIRECTORY_LOGS!\user\!date_time!\DUMP_IS.log" (
@@ -2510,11 +2510,13 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
                                 ) else (
                                     rem Those are false positives that might get ereased in a future build, but it's actually good to just use the whitelist for them.
                                     rem [1/1]: 22_401 (http://free-proxy.cz/)
-                                    rem [4/5]: 22_502 (http://abcmoviesbd.com/allmovies.php?page=1&entries=64&Category=Bollywood&sort=DESC&w=grid), (https://www.subtitlecat.com/), (https://torrent9.to/)
-                                    rem [3/4]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/), (https://getgamez.net/)
+                                    rem [1/1]: 22_504 (https://www.warezbook.org/)
+                                    rem [5/6]: 22_502 (http://abcmoviesbd.com/allmovies.php?page=1&entries=64&Category=Bollywood&sort=DESC&w=grid), (https://www.subtitlecat.com/), (https://torrent9.to/), (https://animedia.tv/s)
+                                    rem [4/5]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/), (https://getgamez.net/), (http://legendas.tv/)
                                     rem [1/1]: 22_520 (https://extratorrents.it/)
                                     rem [2/2]: 22_521 (https://tsukimangas.com/), (https://snowfl.com/)
                                     rem [2/2]: 22_522 (https://worldscinema.org/), (https://itorrent.ws/)
+                                    rem [2/2]: 35_000 (https://onion.re/), (https://up4pc.com/)
                                     if not "%%E"=="200" (
                                         if not "%%E"=="429" (
                                             if not "%%E"=="403" (
@@ -2592,19 +2594,43 @@ if !hours! gtr 0 (
     set @el=!seconds! seconds
 )
 title !DEBUG![!results! result!s! found from !index! websites indexed]  ^|  [Scan completed in !@el!.] - Illegal Services
-if "!language!"=="EN" echo Scan completed with !results! result!s! found from !index! websites indexed in !@el!.
-if "!language!"=="FR" echo L'analyse s'est terminée avec !results! résultats trouvés à partir de !index! sites web indexés en !@el!.
+call :GET_DATE_TIME
+if "!language!"=="EN" (
+    echo Scan completed with !results! result!s! found from !index! websites indexed.
+    echo Scan completed in !@el!.
+    echo Scan completed the !date_time:_= !.
+)
+if "!language!"=="FR" (
+    echo L'analyse s'est terminée avec !results! résultats trouvés à partir de !index! sites web indexés.
+    echo L'analyse s'est terminée en !@el!.
+    echo L'analyse s'est terminée le !date_time:_= !.
+)
 set @el=
 echo:
 if defined choice (
     set choice=
 )
+echo !RED!Here is a list of all dead websites that you will have to check manually on an internet browser:!YELLOW!
+if defined previous_result (
+    set previous_result=
+)
+for /l %%A in (1,1,!results!) do (
+    for /f "tokens=2,3" %%B in ("!result[%%A]!") do (
+        if "%%C"=="" (
+            if not "%%B"=="!previous_result!" (
+                set "previous_result=%%B"
+                echo %%B
+            )
+        )
+    )
+)
+set previous_result=
+echo:
 :PROCESS_SCANWEBSITES_WHITELIST_RESULT
-set /p "choice=!CYAN!Now if you want, you can whitelist some results so they wont appear in the next scans (!yellow!1-!yellow!!results!!cyan!): !YELLOW!"
-if not defined choice[!choice!] (
+set /p "choice=!CYAN!Now if you want, you can whitelist some results so they wont appear in the next scans (!YELLOW!1-!YELLOW!!results!!cyan!): !YELLOW!"
+if not defined result[!choice!] (
     goto :PROCESS_SCANWEBSITES_WHITELIST_RESULT
 )
-echo !GREEN![SUCCESS]!CYAN!
 set "write_newline_file_path=!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat"
 call :CHECK_FILE_NEWLINE write_newline_file_path || (
     >>"!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
@@ -2613,8 +2639,9 @@ call :CHECK_FILE_NEWLINE write_newline_file_path || (
 )
 set write_newline_file_path=
 >>"!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
-    echo !choice[%choice%]!
+    echo !result[%choice%]!
 )
+echo !GREEN![SUCCESS]!CYAN!
 goto :PROCESS_SCANWEBSITES_WHITELIST_RESULT
 
 :PROCESS_SCANWEBSITES_[WEBSITE_DOWN]
@@ -2623,7 +2650,7 @@ set "http_code=%4"
 >nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     for %%A in (%~2) do (
         set /a results+=1
-        set "choice[!results!]=!curl_code!_!http_code! !url_src!"
+        set "result[!results!]=!curl_code!_!http_code! !url_src!"
         if %%A==down_for_you (
             echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o3! ^^!
         ) else (
@@ -2643,7 +2670,7 @@ exit /b
 set /a "curl_code=%2, http_code=%3"
 >nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src! > !url_dst!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     set /a results+=1
-    set "choice[!results!]=!curl_code!_!http_code! !url_src! > !url_dst!"
+    set "result[!results!]=!curl_code!_!http_code! !url_src! > !url_dst!"
     echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !GREEN!^> !YELLOW!!url_dst! !RED!^^!
 )
 exit /b
@@ -3920,7 +3947,7 @@ for /f "skip=1delims=" %%A in ('2^>nul certutil -hashfile "%~1" SHA1') do (
 )
 exit /b 1
 
-:LOGGING_GET_DATE_TIME
+:GET_DATE_TIME
 if defined date_time (
     set date_time=
 )
@@ -3928,7 +3955,7 @@ for /f "tokens=2delims==." %%A in ('2^>nul wmic os get Localdatetime /value') do
     set "date_time=%%A"
     set "date_time=!date_time:~0,-10!-!date_time:~-10,2!-!date_time:~-8,2!_!date_time:~-6,2!-!date_time:~-4,2!-!date_time:~-2,2!"
 )
-call :CHECK_LOGGING_DATE_TIME date_time && (
+call :CHECK_DATE_TIME date_time && (
     exit /b 0
 )
 if defined powershell (
@@ -3940,7 +3967,7 @@ if defined powershell (
     ) do (
         set "date_time=%%A"
     )
-    call :CHECK_LOGGING_DATE_TIME date_time && (
+    call :CHECK_DATE_TIME date_time && (
         exit /b 0
     )
 )
@@ -4294,7 +4321,7 @@ if "%1"=="IS_PATH_BAT_USED" (
 )
 if not "%1"=="DATE_TIME" (
     if defined IS_OUTPUT_DIRECTORY (
-        call :LOGGING_GET_DATE_TIME
+        call :GET_DATE_TIME
         if not exist "!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\" (
             md "!IS_OUTPUT_DIRECTORY_LOGS!\crashes\!date_time!\"
         )
@@ -5040,7 +5067,7 @@ if "!%1:~0,1!!%1:~2,1!!%1:~4,1!!%1:~6,1!!%1:~8,3!!%1:~13,1!!%1:~16,1!!%1:~21!"==
 )
 exit /b 1
 
-:CHECK_LOGGING_DATE_TIME
+:CHECK_DATE_TIME
 if not defined %1 (
     exit /b 1
 )
