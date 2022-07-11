@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 3
-REM  Fileversion:  6. 1. 7. 3
+REM  Productversion:  6. 1. 7. 4
+REM  Fileversion:  6. 1. 7. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.3 - 03/07/2022
+set VERSION=v6.1.7.4 - 11/07/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -2402,8 +2402,10 @@ call :DOWNLOAD_IS_BOOKMARKS_DB SCANWEBSITES NO_DATE_CHECK || (
     exit 0
 )
 set /a index=0, counter=0, results=0
-if defined s (
-    set s=
+for %%A in (onion_moe_is_down previous_result s) do (
+    if defined %%A (
+        set %%A=
+    )
 )
 if "!language!"=="EN" (
     set "o1=Domain Dead"
@@ -2437,9 +2439,6 @@ for /f "tokens=1-4delims=:.," %%A in ("!time: =0!") do set /a "t1=(((1%%A*60)+1%
 set "user_agent=Mozilla/5.0 (Windows NT 10.0; rv:91.0) Gecko/20100101 Firefox/91.0"
 for /f "delims==" %%B in ('2^>nul set website_[') do (
     set %%B=
-)
-if defined onion_moe_is_down (
-    set onion_moe_is_down=
 )
 >nul curl.exe -fIks -X GET -A "!user_agent!" "https://onion.moe/" --connect-timeout 0 --max-time 60 || (
     set onion_moe_is_down=1
@@ -2508,30 +2507,37 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
                                         call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you down_for_everyone" %%D %%E
                                     )
                                 ) else (
-                                    rem Those are false positives that might get ereased in a future build, but it's actually good to just use the whitelist for them.
+                                    rem Database of error codes that can lead to false positives but that have been found at least one time as a real down:
+                                    rem [22_522]
+                                    rem Database of error codes that can lead to false positives, that might get ereased in a future build, but it's actually good to just use the whitelist for them:
                                     rem [1/1]: 22_401 (http://free-proxy.cz/)
                                     rem [1/1]: 22_504 (https://www.warezbook.org/)
                                     rem [5/6]: 22_502 (http://abcmoviesbd.com/allmovies.php?page=1&entries=64&Category=Bollywood&sort=DESC&w=grid), (https://www.subtitlecat.com/), (https://torrent9.to/), (https://animedia.tv/s)
                                     rem [4/5]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/), (https://getgamez.net/), (http://legendas.tv/)
                                     rem [1/1]: 22_520 (https://extratorrents.it/)
                                     rem [2/2]: 22_521 (https://tsukimangas.com/), (https://snowfl.com/)
-                                    rem [2/2]: 22_522 (https://worldscinema.org/), (https://itorrent.ws/)
+                                    rem  (https://worldscinema.org/), (https://itorrent.ws/)
                                     rem [2/2]: 35_000 (https://onion.re/), (https://up4pc.com/)
                                     if not "%%E"=="200" (
                                         if not "%%E"=="429" (
-                                            if not "%%E"=="403" (
-                                                if "%%E"=="503" (
-                                                    call :PROTECTED_WEBSITE_DETECTION url_src && (
-                                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
-                                                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                                            call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
-                                                        )
-                                                    )
-                                                ) else (
+                                            if "%%E"=="403" (
+                                                call :PROTECTED_WEBSITE_DETECTION url_src && (
                                                     call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
                                                     curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
                                                         call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
                                                     )
+                                                )
+                                            ) else if "%%E"=="503" (
+                                                call :PROTECTED_WEBSITE_DETECTION url_src && (
+                                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                                    )
+                                                )
+                                            ) else (
+                                                call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
                                                 )
                                             )
                                         )
@@ -2631,6 +2637,9 @@ for /l %%A in (1,1,!results!) do (
 set previous_result=
 echo:
 :PROCESS_SCANWEBSITES_WHITELIST_RESULT
+if defined choice (
+    set choice=
+)
 set /p "choice=!CYAN!Now if you want, you can whitelist some results so they wont appear in the next scans (!YELLOW!1-!YELLOW!!results!!CYAN!): !YELLOW!"
 if not defined result[!choice!] (
     goto :PROCESS_SCANWEBSITES_WHITELIST_RESULT
@@ -2644,16 +2653,21 @@ call :CHECK_FILE_NEWLINE write_newline_file_path || (
 set write_newline_file_path=
 >>"!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" (
     echo !result[%choice%]!
+) && (
+    echo !GREEN!Successfully whitelisted: [!YELLOW!!result[%choice%]!!GREEN!]!CYAN!
 )
-echo !GREEN![SUCCESS]!CYAN!
 goto :PROCESS_SCANWEBSITES_WHITELIST_RESULT
 
 :PROCESS_SCANWEBSITES_[WEBSITE_DOWN]
 set "curl_code=%3"
 set "http_code=%4"
 >nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
-    for %%A in (%~2) do (
+    if not "!url_src!"=="!previous_result!" (
         set /a results+=1
+        >nul start "" "!url_src!"
+    )
+    set "previous_result=!url_src!"
+    for %%A in (%~2) do (
         set "result[!results!]=!curl_code!_!http_code! !url_src!"
         if %%A==down_for_you (
             echo !YELLOW!!results!!CYAN!: !RED!%~1 ^(!curl_code!_!http_code!^): !YELLOW!!url_src! !RED!!o3! ^^!
