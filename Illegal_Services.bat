@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 4
-REM  Fileversion:  6. 1. 7. 4
+REM  Productversion:  6. 1. 7. 5
+REM  Fileversion:  6. 1. 7. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.4 - 11/07/2022
+set VERSION=v6.1.7.5 - 15/07/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -1256,7 +1256,7 @@ goto :CONTINUEYOUTUBEDL
 
 :DDOS
 if not defined scale[ddos] (
-    set scale[ddos]=74 39
+    set scale[ddos]=74 37
 )
 call :SCALE !scale[ddos]!
 title !#TITLE:`=Denial Of Services (DDoS)!
@@ -1266,7 +1266,7 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresser.ai/ stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ instant-stresser.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ ddosforhire.net/
+set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ redstresser.cc/welcome/index stresser.ai/ stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ instant-stresser.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
@@ -1282,32 +1282,30 @@ echo !\E![8C║    !2!freestresser.to!CYAN!       │  [BEST]    [300/s]    ║
 echo !\E![8C║    !3!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
 echo !\E![8C║    !4!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
 echo !\E![8C║    !5!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo !\E![8C║    !6!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║    !7!redstresser.cc!CYAN!        │            [120/s]    ║
-echo !\E![8C║    !8!stresser.ai!CYAN!           │            [120/s]    ║
-echo !\E![8C║    !9!stresslab.sx!CYAN!          │            [120/s]    ║
-echo !\E![8C║   !10!stresser.zone!CYAN!         │            [120/s]    ║
-echo !\E![8C║   !11!deltastress.com!CYAN!       │            [ 60/s]    ║
-echo !\E![8C║   !12!stresser.gg!CYAN!           │            [ 60/s]    ║
+echo !\E![8C║    !6!redstresser.cc!CYAN!        │            [120/s]    ║
+echo !\E![8C║    !7!stresser.ai!CYAN!           │            [120/s]    ║
+echo !\E![8C║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║    !9!stresser.zone!CYAN!         │            [120/s]    ║
+echo !\E![8C║   !10!deltastress.com!CYAN!       │            [ 60/s]    ║
+echo !\E![8C║   !11!stresser.gg!CYAN!           │            [ 60/s]    ║
 echo !\E![8C║                                                        ║
 echo !\E![8C╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
 echo !\E![8C║                                                        ║
-echo !\E![8C║   !13!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo !\E![8C║   !14!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !15!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo !\E![8C║   !16!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo !\E![8C║   !17!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo !\E![8C║   !18!ipstress.in!CYAN!           │            [250/s]    ║
-echo !\E![8C║   !20!redstresser.cc!CYAN!        │            [120/s]    ║
-echo !\E![8C║   !19!stresslab.sx!CYAN!          │            [120/s]    ║
+echo !\E![8C║   !12!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo !\E![8C║   !13!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !14!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo !\E![8C║   !15!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo !\E![8C║   !16!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo !\E![8C║   !17!redstresser.cc!CYAN!        │            [120/s]    ║
+echo !\E![8C║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
 echo !\E![8C╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!12/05/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !21!ddosforhire.net"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!12/07/2022"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !19!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!12/05/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !21!ddosforhire.net"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!12/07/2022"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !19!ddosforhire.net"
 )
 echo !\E![8C!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
@@ -1370,14 +1368,27 @@ if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) &
 call :DRAW_CENTER newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!READ!BRIGHTBLACK!" / "!YELLOW!DELETE!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
 echo:
 call :PROMPT
-for %%A in (1 2 3) do if "!x!"=="%%A" call :CHECK_INTERNET || (
-call :ERROR_INTERNET
-goto :CLEARIPLOOKUP
+for %%A in (1 2 3) do (
+    if "!x!"=="%%A" (
+        call :CHECK_INTERNET || (
+            call :ERROR_INTERNET
+            goto :CLEARIPLOOKUP
+        )
+    )
 )
 if "!x!"=="1" (
-title !#TITLE:`=Looking up ^> ...!
-for /f %%A in ('curl.exe -fkLs "https://api.ipify.org"') do set "url=%%A"
-call :CHECK_IP url && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
+    title !#TITLE:`=Looking up ^> ...!
+    if defined url (
+        set url=
+    )
+    for /f %%A in ('curl.exe -fkLs "https://api.ipify.org"') do (
+        set "url=%%A"
+    )
+    call :CHECK_IP url && (
+        goto :IPLOOKUP_RESPONSE
+    ) || (
+        goto :CLEARIPLOOKUP
+    )
 )
 if "!x!"=="2" call :IPLOOKUP_ENTER IP && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
 if "!x!"=="3" call :IPLOOKUP_ENTER IP/URL && goto :IPLOOKUP_RESPONSE || goto :CLEARIPLOOKUP
@@ -2402,7 +2413,7 @@ call :DOWNLOAD_IS_BOOKMARKS_DB SCANWEBSITES NO_DATE_CHECK || (
     exit 0
 )
 set /a index=0, counter=0, results=0
-for %%A in (onion_moe_is_down previous_result s) do (
+for %%A in (onion_moe_is_down previous_absolute_dst_domain previous_result s) do (
     if defined %%A (
         set %%A=
     )
@@ -2427,6 +2438,9 @@ if "!language!"=="FR" (
 )
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
+if defined DEBUG (
+    start python "D:\Bureau\Illegal Services\Ressources\scan_down_or_changed_domain_websites.py"
+)
 for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
     title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^|  [...] - Illegal Services
@@ -2482,6 +2496,15 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
             if not defined domain_is_still_onion (
                 for /f "tokens=1-3delims=`" %%D in ('curl.exe -fIks -o NUL -X GET -A "!user_agent!" "!url_src!" --connect-timeout 0 --max-time 60 -w "%%{exitcode}`%%{http_code}`%%{redirect_url}"') do (
                     if "%%F"=="" (
+                        set "absolute_dst_domain=%%B"
+                    ) else (
+                        set "absolute_dst_domain=%%F"
+                    )
+                    if /i "!absolute_dst_domain!"=="!previous_absolute_dst_domain!" (
+                        >nul timeout /t 3 /nobreak
+                    )
+                    set "previous_absolute_dst_domain=!absolute_dst_domain!"
+                    if "%%F"=="" (
                         if not "%%E"=="" (
                             if not "%%D"=="0" (
                                 if "%%D"=="6" (
@@ -2508,37 +2531,34 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
                                     )
                                 ) else (
                                     rem Database of error codes that can lead to false positives but that have been found at least one time as a real down:
-                                    rem [22_522]
+                                    rem [22_522, 22_502]
                                     rem Database of error codes that can lead to false positives, that might get ereased in a future build, but it's actually good to just use the whitelist for them:
                                     rem [1/1]: 22_401 (http://free-proxy.cz/)
                                     rem [1/1]: 22_504 (https://www.warezbook.org/)
-                                    rem [5/6]: 22_502 (http://abcmoviesbd.com/allmovies.php?page=1&entries=64&Category=Bollywood&sort=DESC&w=grid), (https://www.subtitlecat.com/), (https://torrent9.to/), (https://animedia.tv/s)
                                     rem [4/5]: 22_503 (https://www.nikse.dk/subtitleedit), (https://thepiratesociety.org/), (https://getgamez.net/), (http://legendas.tv/)
                                     rem [1/1]: 22_520 (https://extratorrents.it/)
                                     rem [2/2]: 22_521 (https://tsukimangas.com/), (https://snowfl.com/)
                                     rem  (https://worldscinema.org/), (https://itorrent.ws/)
                                     rem [2/2]: 35_000 (https://onion.re/), (https://up4pc.com/)
                                     if not "%%E"=="200" (
-                                        if not "%%E"=="429" (
-                                            if "%%E"=="403" (
-                                                call :PROTECTED_WEBSITE_DETECTION url_src && (
-                                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
-                                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
-                                                    )
-                                                )
-                                            ) else if "%%E"=="503" (
-                                                call :PROTECTED_WEBSITE_DETECTION url_src && (
-                                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
-                                                    curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
-                                                    )
-                                                )
-                                            ) else (
+                                        if "%%E"=="403" (
+                                            call :PROTECTED_WEBSITE_DETECTION url_src && (
                                                 call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
                                                 curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
                                                     call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
                                                 )
+                                            )
+                                        ) else if "%%E"=="503" (
+                                            call :PROTECTED_WEBSITE_DETECTION url_src && (
+                                                call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                                curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                    call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                                )
+                                            )
+                                        ) else (
+                                            call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                            curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
                                             )
                                         )
                                     )
@@ -2549,15 +2569,15 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
                         if not "%%E"=="" (
                             if not "%%E"=="307" (
                                 set "url_dst=%%F"
-                                if "%%E"=="302" (
-                                    if "!url_dst:~-26!"=="/cgi-sys/suspendedpage.cgi" (
-                                        call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
-                                        curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
-                                            call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                if /i not "!url_src!"=="!url_dst!" (
+                                    if "%%E"=="302" (
+                                        if "!url_dst:~-26!"=="/cgi-sys/suspendedpage.cgi" (
+                                            call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_you" %%D %%E
+                                            curl.exe -fkLs "https://isitup.org/%%B" | >nul find /i "Oh no %%B" && (
+                                                call :PROCESS_SCANWEBSITES_[WEBSITE_DOWN] "!o2!" "down_for_everyone" %%D %%E
+                                            )
                                         )
-                                    )
-                                ) else (
-                                    if /i not "!url_src!"=="!url_dst!" (
+                                    ) else (
                                         for /f "delims=/" %%G in ("!url_dst:*://=!") do (
                                             if /i not "%%~xB"==".onion" (
                                                 if /i not "%%B_%%G"=="discord.gg_discord.com" (
@@ -2664,7 +2684,9 @@ set "http_code=%4"
 >nul 2>&1 findstr /ixc:"!curl_code!_!http_code! !url_src!" "!IS_OUTPUT_DIRECTORY!\whitelist_scan_websites.dat" || (
     if not "!url_src!"=="!previous_result!" (
         set /a results+=1
-        >nul start "" "!url_src!"
+        if defined DEBUG (
+            >nul start "" "!url_src!"
+        )
     )
     set "previous_result=!url_src!"
     for %%A in (%~2) do (
