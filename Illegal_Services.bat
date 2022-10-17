@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 6
-REM  Fileversion:  6. 1. 7. 6
+REM  Productversion:  6. 1. 7. 7
+REM  Fileversion:  6. 1. 7. 7
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.6 - 17/10/2022
+set VERSION=v6.1.7.7 - 17/10/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -818,18 +818,18 @@ echo !CYAN!
 if "!language!"=="EN" (
 echo NOTE: 1. Leaving blank will replace the original username.
 echo       2. Username cannot exceed 20 characters.
-echo       3. To get the character "^!" then use "^^!".
+echo       3. Do not use the following characters: "^! %% ^^".
 )
 if "!language!"=="FR" (
 echo NOTE: 1. Laisser vide remplacera le nom d'utilisateur d'origine.
 echo       2. Le nom d'utilisateur ne peut pas dépasser 20 caractères.
-echo       3. Pour avoir le caractère: "^!" utiliser alors "^^!".
+echo       3. N'utiliser les caractères suivants: "^! %% ^^".
 )
 :L3
 if "!language!"=="EN" set t="Enter your new username: "
 if "!language!"=="FR" set t="Entrez votre nouveau nom d'utilisateur: "
 setlocal DisableDelayedExpansion
-    call :INPUTBOX
+call :INPUTBOX
 setlocal EnableDelayedExpansion
 if defined ID (
 set "ID=!ID:%%=%%%%!"
@@ -4172,7 +4172,7 @@ exit /b
 
 :CURL_RAW
 for %%A in (%~2) do (
-    set "curl_url=%~2"
+    set "curl_url=%%A"
     if not "!curl_url:`=!"=="!curl_url!" (
         for /f "tokens=1-3delims=`" %%B in ("$%%A$") do (
             set "curl_url=%%B!%%C!%%D"
@@ -5027,7 +5027,7 @@ if defined powershell (
         set new_date_time=
     )
     for /f "delims=" %%A in (
-        '^>nul chcp 437^& 2^>nul powershell get-date -format "{yyyy-MM-dd HH:mm}"^& ^>nul chcp 65001'
+        '^>nul chcp 437^& 2^>nul powershell get-date -format "'yyyy-MM-dd HH:mm'"^& ^>nul chcp 65001'
     ) do (
         set "new_date_time=%%A"
     )
