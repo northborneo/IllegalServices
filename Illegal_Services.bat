@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 5
-REM  Fileversion:  6. 1. 7. 5
+REM  Productversion:  6. 1. 7. 6
+REM  Fileversion:  6. 1. 7. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -39,7 +39,7 @@ if not exist "%IS_PATH_BAT_USED%" (
 >nul findstr /v "$" "%IS_PATH_BAT_USED%" && (
     echo [EN]:
     echo Illegal Services cannot start because it detected line endings as LF.
-    echo This error is known to be the user or the Git proxy saving te file 'Illegal_Services.bat' with LF line endings.
+    echo This error is known to be the user or the Git proxy saving the file 'Illegal_Services.bat' with LF line endings.
     echo Please use a text editor ^(ex: Notepad++^) to convert this file back to CRLF line ending and restart Illegal Services.
     echo:
     echo Press {ANY KEY} to exit ...
@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.5 - 15/07/2022
+set VERSION=v6.1.7.6 - 17/10/2022
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
@@ -818,18 +818,18 @@ echo !CYAN!
 if "!language!"=="EN" (
 echo NOTE: 1. Leaving blank will replace the original username.
 echo       2. Username cannot exceed 20 characters.
-echo       3. Do not use the following characters: "^! %% ^^".
+echo       3. To get the character "^!" then use "^^!".
 )
 if "!language!"=="FR" (
 echo NOTE: 1. Laisser vide remplacera le nom d'utilisateur d'origine.
 echo       2. Le nom d'utilisateur ne peut pas dépasser 20 caractères.
-echo       3. N'utiliser les caractères suivants: "^! %% ^^".
+echo       3. Pour avoir le caractère: "^!" utiliser alors "^^!".
 )
 :L3
 if "!language!"=="EN" set t="Enter your new username: "
 if "!language!"=="FR" set t="Entrez votre nouveau nom d'utilisateur: "
 setlocal DisableDelayedExpansion
-call :INPUTBOX
+    call :INPUTBOX
 setlocal EnableDelayedExpansion
 if defined ID (
 set "ID=!ID:%%=%%%%!"
@@ -3945,18 +3945,7 @@ for %%A in ("%IS_PATH_PROCESS_USED%") do (
 exit /b
 
 :GET_VERSION
-if defined @el (
-    set @el=
-)
-if defined git_raw_version (
-    if not "!git_raw_version!"=="[404 Git proxy not found]" (
-        set "@el=!git_raw_version!/version.txt "
-    )
-)
-call :CURL_RAW lastversion "!@el! https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
-if defined @el (
-    set @el=
-)
+call :CURL_RAW lastversion "`git_raw_version`/version.txt https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
 if defined lastversion (
 if "!VERSION:~1,7!" geq "!lastversion:~1,7!" exit /b 0
 if "!VERSION:~1,3!" lss "!lastversion:~1,3!" exit /b 1
@@ -4003,7 +3992,7 @@ if defined powershell (
         set date_time=
     )
     for /f "delims=" %%A in (
-        '^>nul chcp 437^& 2^>nul powershell get-date -format "yyyy-MM-dd_HH-mm-ss"^& ^>nul chcp 65001'
+        '^>nul chcp 437^& 2^>nul powershell get-date -format "'yyyy-MM-dd_HH-mm-ss'"^& ^>nul chcp 65001'
     ) do (
         set "date_time=%%A"
     )
@@ -4183,15 +4172,19 @@ exit /b
 
 :CURL_RAW
 for %%A in (%~2) do (
+    set "curl_url=%~2"
+    if not "!curl_url:`=!"=="!curl_url!" (
+        for /f "tokens=1-3delims=`" %%B in ("$%%A$") do (
+            set "curl_url=%%B!%%C!%%D"
+        )
+        set "curl_url=!curl_url:~1,-1!"
+    )
     if defined %1 (
         set %1=
     )
-    if defined @el (
-        set @el=L
-    )
-    for /f "delims=" %%B in ('curl.exe -fk!@el!s "%%A"') do (
+    for /f "delims=" %%E in ('curl.exe -fkLs "!curl_url!"') do (
         if not defined %1 (
-            set "%1=%%B"
+            set "%1=%%E"
             call :CHECK_VERSION_NUMBER %1 && (
                 exit /b 0
             )
