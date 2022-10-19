@@ -197,7 +197,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.8 - 18/10/2022
+set VERSION=v6.1.7.8 - 19/10/2022
 set "@move_right=!\E![xC"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -601,13 +601,13 @@ if "!x!"=="19" (
 if "!language!"=="EN" (
 set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing.!\N!@Yeshi - Helped improving and reducing code."
 call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 51 websites.!\N!@0x00 - Added 8 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@craciu25_YT - Added 4 website.!\N!@Grub4K - Added 3 websites.!\N!@Trident Security - Added 2 websites.!\N!@Lubomira - Added 2 website.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
+set t="@blacktario - Added 51 websites.!\N!@0x00 - Added 11 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@craciu25_YT - Added 4 website.!\N!@Grub4K - Added 3 websites.!\N!@Trident Security - Added 2 websites.!\N!@Lubomira - Added 2 website.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
 call :MSGBOX 69696 "All other contributors:"
 )
 if "!language!"=="FR" (
 set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing.!\N!@Yeshi - A aidé à améliorer et à réduire le code."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 51 sites internet.!\N!@0x00 - A ajouté 8 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@craciu25_YT - A ajouté 4 site internet.!\N!@Grub4K - A ajouté 3 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Lubomira - A ajouté 2 site internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
+set t="@blacktario - A ajouté 51 sites internet.!\N!@0x00 - A ajouté 11 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@craciu25_YT - A ajouté 4 site internet.!\N!@Grub4K - A ajouté 3 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Lubomira - A ajouté 2 site internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
 call :MSGBOX 69696 "Tous les autres contributeurs:"
 )
 )
@@ -3413,7 +3413,9 @@ call :ERROR_REGEDIT Username IS_Username
 goto :CHECK_USERNAME
 
 :CHECK_PROXY
-set Proxy=
+if defined Proxy (
+    set Proxy=
+)
 for /f "tokens=2*" %%A in ('2^>nul reg query "!IS_REG!" /v "Proxy"') do set "Proxy=%%~B"
 if defined Proxy (
     for %%A in (!GIT_LIST!) do (
@@ -3425,8 +3427,9 @@ if defined Proxy (
     )
 )
 call :ERROR_REGEDIT Proxy Proxy
+if defined Proxy (
+    set Proxy=
 )
-set proxy=
 >nul 2>&1 reg delete "!IS_REG!" /v "Proxy" /f
 exit /b
 
@@ -3946,7 +3949,12 @@ for %%A in ("%IS_PATH_PROCESS_USED%") do (
 exit /b
 
 :GET_VERSION
-call :CURL_RAW lastversion "`git_raw_version`/version.txt https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
+call :CURL_RAW lastversion var_clear "`git_raw_version`/version.txt https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
+if defined lastversion (
+    call :CHECK_VERSION_NUMBER lastversion || (
+        set lastversion=
+    )
+)
 if defined lastversion (
 if "!VERSION:~1,7!" geq "!lastversion:~1,7!" exit /b 0
 if "!VERSION:~1,3!" lss "!lastversion:~1,3!" exit /b 1
@@ -4110,12 +4118,26 @@ call :MSGBOX 69680 "Illegal Services"
 exit /b
 
 :PROXY
-call :CHECK_INTERNET || (call :PROXY_DOWN & exit /b 1)
+call :CHECK_INTERNET || (
+    call :PROXY_DOWN
+    exit /b 1
+)
 call :CHECK_PROXY
+if defined Proxy (
+    for %%A in (!GIT_LIST!) do (
+        for /f "tokens=1-3delims=`" %%B in ("%%A") do (
+            if "%%B"=="!Proxy:*://=!" (
+                call :APPLY_PROXY %%B %%C %%D && (
+                    exit /b 0
+                )
+            )
+        )
+    )
+)
 for %%A in (!GIT_LIST!) do (
     for /f "tokens=1-3delims=`" %%B in ("%%A") do (
         if defined Proxy (
-            if "%%B"=="!Proxy:*://=!" (
+            if not "%%B"=="!Proxy:*://=!" (
                 call :APPLY_PROXY %%B %%C %%D && (
                     exit /b 0
                 )
@@ -4127,17 +4149,31 @@ for %%A in (!GIT_LIST!) do (
         )
     )
 )
-if defined git_backup exit /b 3
+if defined git_backup (
+    exit /b 1
+)
 set "git_backup=backup "
 call :PROXY_DOWN
-call :CURL_RAW git "https://pastebin.com/raw/1ARL0img https://rentry.co/ack75/raw https://rentry.org/ack75/raw"
-call :CURL_RAW git_build "https://pastebin.com/raw/urudZjdg https://rentry.co/89ynh/raw https://rentry.org/89ynh/raw"
-call :CURL_RAW git_changelog "https://pastebin.com/raw/c5nbugAf https://rentry.co/fszuv/raw https://rentry.org/fszuv/raw"
-call :CURL_RAW git_release "https://pastebin.com/raw/ThrdeC97 https://rentry.co/5rzzc/raw https://rentry.org/5rzzc/raw"
-if "!language!"=="EN" set t="Illegal Services cannot connect to its Git proxy server.!\N!!\N!The Git proxy backup server is running and only updates for Illegal Services can be performed."
-if "!language!"=="FR" set t="Illegal Services ne peut pas se connecter à son serveur proxy Git.!\N!!\N!Le serveur proxy Git de secours est en marche et seules les mises à jour d'Illegal Services peuvent être effectuées."
+call :CURL_RAW git no_var_clear "https://pastebin.com/raw/1ARL0img https://rentry.co/ack75/raw https://rentry.org/ack75/raw"
+call :CURL_RAW git_build no_var_clear "https://pastebin.com/raw/urudZjdg https://rentry.co/89ynh/raw https://rentry.org/89ynh/raw"
+call :CURL_RAW git_changelog no_var_clear "https://pastebin.com/raw/c5nbugAf https://rentry.co/fszuv/raw https://rentry.org/fszuv/raw"
+call :CURL_RAW git_release no_var_clear "https://pastebin.com/raw/ThrdeC97 https://rentry.co/5rzzc/raw https://rentry.org/5rzzc/raw"
+if "!git!|!git_build!|!git_changelog!|!git_release!"=="[404 Git proxy not found]|[404 Git proxy not found]|[404 Git proxy not found]|[404 Git proxy not found]" (
+    if "!language!"=="EN" set t="Illegal services cannot connect to any of its Git proxy servers.!\N!The Git proxy backup server could not be reached.!\N!!\N!For now, updates for Illegal Services cannot be performed."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas se connecter à l'un de ces serveurs proxy Git.!\N!Le serveur proxy Git de secours n'a pas pu être atteint.!\N!!\N!Pour le moment, les mises à jour d'Illegal Services ne pourront pas être effectuées."
+    call :MSGBOX 69648 "Illegal Services"
+    exit /b 1
+)
+if not "!git!"=="[404 Git proxy not found]" if not "!git_build!"=="[404 Git proxy not found]" if not "!git_changelog!"=="[404 Git proxy not found]" if not "!git_release!"=="[404 Git proxy not found]" (
+    if "!language!"=="EN" set t="Illegal services cannot connect to any of its Git proxy servers.!\N!!\N!The Git proxy backup server is running and only updates for Illegal Services can eventually be performed."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas se connecter à l'un de ces serveurs proxy Git.!\N!!\N!Le serveur proxy Git de secours est en marche et seules les mises à jour d'Illegal Services peuvent éventuellement être effectuées."
+    call :MSGBOX 69648 "Illegal Services"
+    exit /b 1
+)
+if "!language!"=="EN" set t="Illegal services cannot connect to any of its Git proxy servers.!\N!The Git proxy backup server could barely be reached.!\N!!\N!For now, updates for Illegal Services can eventually be performed."
+if "!language!"=="FR" set t="Illegal Services ne peut pas se connecter à l'un de ces serveurs proxy Git.!\N!Le serveur proxy Git de secours a pas pu être à peine atteint.!\N!!\N!Pour le moment, les mises à jour d'Illegal Services peuvent éventuellement être effectuées."
 call :MSGBOX 69648 "Illegal Services"
-exit /b 2
+exit /b 1
 
 :APPLY_PROXY
 for /f %%A in ('curl.exe -fIks -X GET -o NUL "https://%1" -w "%%{response_code}"') do (
@@ -4159,22 +4195,26 @@ exit /b 1
 
 :PROXY_DOWN
 for %%A in (
-git
-git_raw_main
-git_raw_downloads
-git_raw_source
-git_raw_version
-git_build
-git_changelog
-git_release
-git_source
-) do set %%A=[404 Git proxy not found]
+    git
+    git_raw_main
+    git_raw_downloads
+    git_raw_source
+    git_raw_version
+    git_build
+    git_changelog
+    git_release
+    git_source
+) do (
+    set %%A=[404 Git proxy not found]
+)
 exit /b
 
 :CURL_RAW
-for %%A in (%~2) do (
-    if defined %1 (
-        set %1=
+for %%A in (%~3) do (
+    if "%2"=="var_clear" (
+        if defined %1 (
+            set %1=
+        )
     )
     set "curl_url=%%A"
     call :_CURL_RAW %1 && (
@@ -4203,12 +4243,8 @@ if not "!curl_url:`=!"=="!curl_url!" (
     )
 )
 for /f "delims=" %%A in ('curl.exe -fkLs "!curl_url!"') do (
-    if not defined %1 (
-        set "%1=%%A"
-        call :CHECK_VERSION_NUMBER %1 && (
-            exit /b 0
-        )
-    )
+    set "%1=%%A"
+    exit /b 0
 )
 exit /b 1
 
