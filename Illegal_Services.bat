@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 7. 9
-REM  Fileversion:  6. 1. 7. 9
+REM  Productversion:  6. 1. 8. 0
+REM  Fileversion:  6. 1. 8. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -57,11 +57,16 @@ if not exist "%IS_PATH_BAT_USED%" (
 )
 >nul chcp 65001
 pushd "%~dp0"
-for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo 0x1B"') do set "\E=%%A"
+for /f %%A in ('copy /z "%~nx0" nul') do (
+    set "\R=%%A"
+)
+for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo 0x1B"') do (
+    set "\E=%%A"
+)
 set "x1=%~nx0"
 setlocal EnableDelayedExpansion
 set "x2=%~nx0"
-for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="\E" (
+for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="\R" if not "%%A"=="\E" (
     set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`%%A"
 )
 if defined LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES (
@@ -197,21 +202,21 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.7.9 - 19/10/2022
-set "@move_right=!\E![xC"
+set VERSION=v6.1.8.0 - 21/10/2022
+set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
 echo !BGBLACK!!BRIGHTBLUE!
 call :DRAW_LOGO
 echo:
-echo %@move_right:x=28%!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
+echo %@move_right:?=28%!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
 if "!language!"=="EN" call :DRAW_CENTER newline "!RED!♥   !YELLOW!Welcome [!RED!!IS_Username!!YELLOW!] to Illegal Services !VERSION:~0,8!   !RED!♥"
 if "!language!"=="FR" call :DRAW_CENTER newline "!RED!♥   !YELLOW!Bienvenue [!RED!!IS_Username!!YELLOW!] dans Illegal Services !VERSION:~0,8!   !RED!♥"
-echo %@move_right:x=28%!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
+echo %@move_right:?=28%!CYAN!{!RED!+!CYAN!}---------------------------------------------------------------{!RED!+!CYAN!}
 for /f %%A in ('2^>nul dir "!TMPF!\URL????.url" /a:-d /b ^| findstr /rc:"URL....\.url"') do del /f /q "!TMPF!\%%A"
 for %%A in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setup.exe") do if exist "%%~A" del /f /q "%%~A"
 for %%A in ("!CD:~0,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~A" 2>nul rd /s /q "%%~A"
-set "sp=%@move_right:x=28%!YELLOW!{$} !BRIGHTBLACK!"
+set "sp=%@move_right:?=28%!YELLOW!{$} !BRIGHTBLACK!"
 echo !BRIGHTBLACK!
 set "IS_DIR=%~dp0"
 if not "!PATH:~-13!"==";lib\curl\x!ARCH!" set "PATH=!PATH!;lib\curl\x!ARCH!"
@@ -388,24 +393,24 @@ call :SCALE !scale[mainmenu]!
 echo !BRIGHTBLACK!
 call :DRAW_LOGO
 echo !CYAN!
-echo %@move_right:x=19%╔═════════════════════════════════════════════════════════════════════════════════════╗
+echo %@move_right:?=19%╔═════════════════════════════════════════════════════════════════════════════════════╗
 <nul set /p=!BRIGHTRED!                                  !UNDERLINE!!VERSION:~0,8!!UNDERLINEOFF!             !RED!█!BGYELLOW! MAIN MENU !BGBLACK!!RED!█!BGBLACK!!BRIGHTRED!
 if "!language!"=="EN" (set t=Welcome) else set t=Bienvenue
 call :DRAW_CENTER newline "!UNDERLINE!!t! !IS_Username!!UNDERLINEOFF!!CYAN!" 37
-echo %@move_right:x=19%╠═════════════════════════════════════════════════════════════════════════════════════╣
-echo %@move_right:x=19%║    !YELLOW!1!CYAN!  ^>  !WHITE!Internet Protocol TV (IPTV)!CYAN!    █    !YELLOW!10!CYAN!  ^>  !WHITE!IP Denial of Services (DDoS)!CYAN!    ║
-echo %@move_right:x=19%║    !YELLOW!2!CYAN!  ^>  !WHITE!Direct Download Link (DDL)!CYAN!     █    !YELLOW!11!CYAN!  ^>  !WHITE!IP Address Lookup!CYAN!               ║
-echo %@move_right:x=19%║    !YELLOW!3!CYAN!  ^>  !WHITE!Streaming!CYAN!                      █    !YELLOW!12!CYAN!  ^>  !WHITE!IP Port Scanning!CYAN!                ║
-echo %@move_right:x=19%║    !YELLOW!4!CYAN!  ^>  !WHITE!Torrenting!CYAN!                     █    !YELLOW!13!CYAN!  ^>  !WHITE!IP Port Pinger!CYAN!                  ║
-echo %@move_right:x=19%║    !YELLOW!5!CYAN!  ^>  !WHITE!Subtitles!CYAN!                      █    !YELLOW!14!CYAN!  ^>  !WHITE!IP Pinger!CYAN!                       ║
-echo %@move_right:x=19%║    !YELLOW!6!CYAN!  ^>  !WHITE!Cracked Windows apps/games!CYAN!     █    !YELLOW!15!CYAN!  ^>  !WHITE!IP Loggers!CYAN!                      ║
-echo %@move_right:x=19%║    !YELLOW!7!CYAN!  ^>  !WHITE!Modded Android apps/games!CYAN!      █    !YELLOW!16!CYAN!  ^>  !WHITE!Doxing!CYAN!                          ║
-echo %@move_right:x=19%║    !YELLOW!8!CYAN!  ^>  !WHITE!YouTube Downloader!CYAN!             █    !YELLOW!17!CYAN!  ^>  !WHITE!Portable Apps!CYAN!                   ║
-echo %@move_right:x=19%║    !YELLOW!9!CYAN!  ^>  !WHITE!Useful Websites!CYAN!                █    !YELLOW!18!CYAN!  ^>  !WHITE!More Features!CYAN!                   ║
-echo %@move_right:x=19%╠═════════════════════════════════════════════════════════════════════════════════════╣
-if "!language!"=="EN" echo %@move_right:x=19%║    !YELLOW!C!CYAN!  ^>  !WHITE!Credits!CYAN!!UNDERLINEOFF!     ║    !YELLOW!N!CYAN!  ^>  !BRIGHTRED!Our Social Networks!CYAN!    ║      !YELLOW!S!CYAN!  ^>  !WHITE!Settings!CYAN!!UNDERLINEOFF!        ║
-if "!language!"=="FR" echo %@move_right:x=19%║    !YELLOW!C!CYAN!  ^>  !WHITE!Crédits!CYAN!!UNDERLINEOFF!     ║    !YELLOW!R!CYAN!  ^>  !BRIGHTRED!Nos Réseaux Sociaux!CYAN!    ║      !YELLOW!P!CYAN!  ^>  !WHITE!Paramètres!CYAN!!UNDERLINEOFF!      ║
-echo %@move_right:x=19%╚═════════════════════════════════════════════════════════════════════════════════════╝
+echo %@move_right:?=19%╠═════════════════════════════════════════════════════════════════════════════════════╣
+echo %@move_right:?=19%║    !YELLOW!1!CYAN!  ^>  !WHITE!Internet Protocol TV (IPTV)!CYAN!    █    !YELLOW!10!CYAN!  ^>  !WHITE!IP Denial of Services (DDoS)!CYAN!    ║
+echo %@move_right:?=19%║    !YELLOW!2!CYAN!  ^>  !WHITE!Direct Download Link (DDL)!CYAN!     █    !YELLOW!11!CYAN!  ^>  !WHITE!IP Address Lookup!CYAN!               ║
+echo %@move_right:?=19%║    !YELLOW!3!CYAN!  ^>  !WHITE!Streaming!CYAN!                      █    !YELLOW!12!CYAN!  ^>  !WHITE!IP Port Scanning!CYAN!                ║
+echo %@move_right:?=19%║    !YELLOW!4!CYAN!  ^>  !WHITE!Torrenting!CYAN!                     █    !YELLOW!13!CYAN!  ^>  !WHITE!IP Port Pinger!CYAN!                  ║
+echo %@move_right:?=19%║    !YELLOW!5!CYAN!  ^>  !WHITE!Subtitles!CYAN!                      █    !YELLOW!14!CYAN!  ^>  !WHITE!IP Pinger!CYAN!                       ║
+echo %@move_right:?=19%║    !YELLOW!6!CYAN!  ^>  !WHITE!Cracked Windows apps/games!CYAN!     █    !YELLOW!15!CYAN!  ^>  !WHITE!IP Loggers!CYAN!                      ║
+echo %@move_right:?=19%║    !YELLOW!7!CYAN!  ^>  !WHITE!Modded Android apps/games!CYAN!      █    !YELLOW!16!CYAN!  ^>  !WHITE!Doxing!CYAN!                          ║
+echo %@move_right:?=19%║    !YELLOW!8!CYAN!  ^>  !WHITE!YouTube Downloader!CYAN!             █    !YELLOW!17!CYAN!  ^>  !WHITE!Portable Apps!CYAN!                   ║
+echo %@move_right:?=19%║    !YELLOW!9!CYAN!  ^>  !WHITE!Useful Websites!CYAN!                █    !YELLOW!18!CYAN!  ^>  !WHITE!More Features!CYAN!                   ║
+echo %@move_right:?=19%╠═════════════════════════════════════════════════════════════════════════════════════╣
+if "!language!"=="EN" echo %@move_right:?=19%║    !YELLOW!C!CYAN!  ^>  !WHITE!Credits!CYAN!!UNDERLINEOFF!     ║    !YELLOW!N!CYAN!  ^>  !BRIGHTRED!Our Social Networks!CYAN!    ║      !YELLOW!S!CYAN!  ^>  !WHITE!Settings!CYAN!!UNDERLINEOFF!        ║
+if "!language!"=="FR" echo %@move_right:?=19%║    !YELLOW!C!CYAN!  ^>  !WHITE!Crédits!CYAN!!UNDERLINEOFF!     ║    !YELLOW!R!CYAN!  ^>  !BRIGHTRED!Nos Réseaux Sociaux!CYAN!    ║      !YELLOW!P!CYAN!  ^>  !WHITE!Paramètres!CYAN!!UNDERLINEOFF!      ║
+echo %@move_right:?=19%╚═════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 call :CHECK_FIRSTLAUNCH
 if "!FirstLaunch!"=="1" (
@@ -517,34 +522,34 @@ call :ROSE Credits
 :CONTINUECREDITS
 call :SCALE !scale[credits]!
 echo !CYAN!
-echo %@move_right:x=39%═══════════════
-echo %@move_right:x=38%// !RED!█!BGYELLOW!!BLACK! CREDITS !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=9%╔══════════════════════════════════════════════════════════════════════════╗
-echo %@move_right:x=9%╠═══════════════════════════■█!BGYELLOW!!RED!█ DEPENDENCIES █!BGBLACK!!CYAN!█■═══════════════════════════╣
-echo %@move_right:x=9%║                                                                          ║
-echo %@move_right:x=9%║      !YELLOW!1!CYAN!  ^>  !WHITE!Advanced Installer   : 'Setup installer'!CYAN!                      ║
-echo %@move_right:x=9%║      !YELLOW!2!CYAN!  ^>  !WHITE!Speak by soyalk 2019 : 'Rose voice assistant'!CYAN!                 ║
-echo %@move_right:x=9%║      !YELLOW!3!CYAN!  ^>  !WHITE!Speak by Fatih Kodak : 'Rose voice assistant'!CYAN!                 ║
-echo %@move_right:x=9%║      !YELLOW!4!CYAN!  ^>  !WHITE!Open/SaveFileBox     : 'Open/Save file box dialog'!CYAN!            ║
-echo %@move_right:x=9%║      !YELLOW!5!CYAN!  ^>  !WHITE!Bookmarks Parser     : 'Parse IS bookmarks HTML file.'!CYAN!        ║
-echo %@move_right:x=9%║      !YELLOW!6!CYAN!  ^>  !WHITE!binread : 'Read files in hexadecimal format'!CYAN!                  ║
-echo %@move_right:x=9%║      !YELLOW!7!CYAN!  ^>  !WHITE!7za     : 'Decompressing tool'!CYAN!                                ║
-echo %@move_right:x=9%║      !YELLOW!8!CYAN!  ^>  !WHITE!curl    : 'Web requests'!CYAN!                                      ║
-echo %@move_right:x=9%║      !YELLOW!9!CYAN!  ^>  !WHITE!CmdBkg  : 'Background image'!CYAN!                                  ║
-echo %@move_right:x=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, Hide cursor, ...'!CYAN!         ║
-echo %@move_right:x=9%║                                                                          ║
-echo %@move_right:x=9%╠══════════════════════■█!BGYELLOW!!RED!█ DEVELOPERS and HELPERS █!BGBLACK!!CYAN!█■══════════════════════╣
-echo %@move_right:x=9%║                                                                          ║
-echo %@move_right:x=9%║                   !YELLOW!11!CYAN!  ^>  !WHITE!Program Dream Discord Server!CYAN!                    ║
-echo %@move_right:x=9%║                   !YELLOW!12!CYAN!  ^>  !WHITE!server.bat Discord Server!CYAN!                       ║
-echo %@move_right:x=9%║                   !YELLOW!13!CYAN!  ^>  !WHITE!@anic17!CYAN!                                         ║
-echo %@move_right:x=9%║                   !YELLOW!14!CYAN!  ^>  !WHITE!@^<Tim^>!CYAN!                                          ║
-echo %@move_right:x=9%║                   !YELLOW!15!CYAN!  ^>  !WHITE!@sintrode!CYAN!                                       ║
-echo %@move_right:x=9%║                   !YELLOW!16!CYAN!  ^>  !WHITE!@Grub4K!CYAN!                                         ║
-echo %@move_right:x=9%║                   !YELLOW!17!CYAN!  ^>  !WHITE!@Rosalyn!CYAN!                                        ║
-echo %@move_right:x=9%║                   !YELLOW!18!CYAN!  ^>  !WHITE!@Ms.CatFire!CYAN!                                     ║
-echo %@move_right:x=9%║                   !YELLOW!19!CYAN!  ^>  !WHITE!All other contributors!CYAN!                          ║
-echo %@move_right:x=9%╚══════════════════════════════════════════════════════════════════════════╝
+echo %@move_right:?=39%═══════════════
+echo %@move_right:?=38%// !RED!█!BGYELLOW!!BLACK! CREDITS !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=9%╔══════════════════════════════════════════════════════════════════════════╗
+echo %@move_right:?=9%╠═══════════════════════════■█!BGYELLOW!!RED!█ DEPENDENCIES █!BGBLACK!!CYAN!█■═══════════════════════════╣
+echo %@move_right:?=9%║                                                                          ║
+echo %@move_right:?=9%║      !YELLOW!1!CYAN!  ^>  !WHITE!Advanced Installer   : 'Setup installer'!CYAN!                      ║
+echo %@move_right:?=9%║      !YELLOW!2!CYAN!  ^>  !WHITE!Speak by soyalk 2019 : 'Rose voice assistant'!CYAN!                 ║
+echo %@move_right:?=9%║      !YELLOW!3!CYAN!  ^>  !WHITE!Speak by Fatih Kodak : 'Rose voice assistant'!CYAN!                 ║
+echo %@move_right:?=9%║      !YELLOW!4!CYAN!  ^>  !WHITE!Open/SaveFileBox     : 'Open/Save file box dialog'!CYAN!            ║
+echo %@move_right:?=9%║      !YELLOW!5!CYAN!  ^>  !WHITE!Bookmarks Parser     : 'Parse IS bookmarks HTML file.'!CYAN!        ║
+echo %@move_right:?=9%║      !YELLOW!6!CYAN!  ^>  !WHITE!binread : 'Read files in hexadecimal format'!CYAN!                  ║
+echo %@move_right:?=9%║      !YELLOW!7!CYAN!  ^>  !WHITE!7za     : 'Decompressing tool'!CYAN!                                ║
+echo %@move_right:?=9%║      !YELLOW!8!CYAN!  ^>  !WHITE!curl    : 'Web requests'!CYAN!                                      ║
+echo %@move_right:?=9%║      !YELLOW!9!CYAN!  ^>  !WHITE!CmdBkg  : 'Background image'!CYAN!                                  ║
+echo %@move_right:?=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, Hide cursor, ...'!CYAN!         ║
+echo %@move_right:?=9%║                                                                          ║
+echo %@move_right:?=9%╠══════════════════════■█!BGYELLOW!!RED!█ DEVELOPERS and HELPERS █!BGBLACK!!CYAN!█■══════════════════════╣
+echo %@move_right:?=9%║                                                                          ║
+echo %@move_right:?=9%║                   !YELLOW!11!CYAN!  ^>  !WHITE!Program Dream Discord Server!CYAN!                    ║
+echo %@move_right:?=9%║                   !YELLOW!12!CYAN!  ^>  !WHITE!server.bat Discord Server!CYAN!                       ║
+echo %@move_right:?=9%║                   !YELLOW!13!CYAN!  ^>  !WHITE!@anic17!CYAN!                                         ║
+echo %@move_right:?=9%║                   !YELLOW!14!CYAN!  ^>  !WHITE!@^<Tim^>!CYAN!                                          ║
+echo %@move_right:?=9%║                   !YELLOW!15!CYAN!  ^>  !WHITE!@sintrode!CYAN!                                       ║
+echo %@move_right:?=9%║                   !YELLOW!16!CYAN!  ^>  !WHITE!@Grub4K!CYAN!                                         ║
+echo %@move_right:?=9%║                   !YELLOW!17!CYAN!  ^>  !WHITE!@Rosalyn!CYAN!                                        ║
+echo %@move_right:?=9%║                   !YELLOW!18!CYAN!  ^>  !WHITE!@Ms.CatFire!CYAN!                                     ║
+echo %@move_right:?=9%║                   !YELLOW!19!CYAN!  ^>  !WHITE!All other contributors!CYAN!                          ║
+echo %@move_right:?=9%╚══════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -667,37 +672,37 @@ call :SCALE !scale[settings]!
 title !#TITLE:`=Settings!
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=47%════════════════
-echo %@move_right:x=46%// !RED!█!BGYELLOW!!BLACK! SETTINGS !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=47%════════════════
+echo %@move_right:?=46%// !RED!█!BGYELLOW!!BLACK! SETTINGS !RED!█!BGBLACK!!CYAN! \\
 )
 if "!language!"=="FR" (
-echo %@move_right:x=46%══════════════════
-echo %@move_right:x=45%// !RED!█!BGYELLOW!!BLACK! PARAMETRES !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=46%══════════════════
+echo %@move_right:?=45%// !RED!█!BGYELLOW!!BLACK! PARAMETRES !RED!█!BGBLACK!!CYAN! \\
 )
-echo %@move_right:x=7%╔═════════════════════════════════════════════╦═══════════════════════════════════════════════════╗
-if "!language!"=="EN" echo %@move_right:x=7%╠═════════════■█!BGYELLOW!!RED!█ WALLPAPERS █!BGBLACK!!CYAN!█■══════════════╬═════════════════■█!BGYELLOW!!RED!█ SETTINGS █!BGBLACK!!CYAN!█■══════════════════╣
-if "!language!"=="FR" echo %@move_right:x=7%╠════════════■█!BGYELLOW!!RED!█ FOND D'ECRANS █!BGBLACK!!CYAN!█■════════════╬════════════════■█!BGYELLOW!!RED!█ PARAMETRES █!BGBLACK!!CYAN!█■═════════════════╣
-echo %@move_right:x=7%║                                             ║                                                   ║
-echo %@move_right:x=7%║    !YELLOW!1!CYAN!  ^>  !WHITE!Kirito 1 (IS v1.4 icon)!CYAN!            ║   !YELLOW!13!CYAN!  ^>  !WHITE!!BackgroundTransparencyInfo!
-echo %@move_right:x=7%║    !YELLOW!2!CYAN!  ^>  !WHITE!Kirito 2!CYAN!                           ║   !YELLOW!14!CYAN!  ^>  !WHITE!!BackgroundBorderTransparencyInfo!
-echo %@move_right:x=7%║    !YELLOW!3!CYAN!  ^>  !WHITE!Kirito 3!CYAN!                           ║   !YELLOW!15!CYAN!  ^>  !WHITE!!BackgroundDisabledInfo!
-echo %@move_right:x=7%║    !YELLOW!4!CYAN!  ^>  !WHITE!Kirito 4!CYAN!                           ║   !YELLOW!16!CYAN!  ^>  !WHITE!!UntrustedWebsitesWarningInfo!
-echo %@move_right:x=7%║    !YELLOW!5!CYAN!  ^>  !WHITE!49206C6F766520796F75204C697361!CYAN!     ║   !YELLOW!17!CYAN!  ^>  !WHITE!!VoiceAssistantInfo!
-echo %@move_right:x=7%║    !YELLOW!6!CYAN!  ^>  !WHITE!Even Roses are colorless !CYAN!          ║   !YELLOW!18!CYAN!  ^>  !WHITE!!DeveloperModeInfo!
-if "!language!"=="EN" echo %@move_right:x=7%║    !YELLOW!7!CYAN!  ^>  !WHITE!Tree!CYAN!                               ║   !YELLOW!19!CYAN!  ^>  !WHITE!Scan down or changed domain websites.!CYAN!    ║
-if "!language!"=="FR" echo %@move_right:x=7%║    !YELLOW!7!CYAN!  ^>  !WHITE!Arbre!CYAN!                              ║   !YELLOW!19!CYAN!  ^>  !WHITE!Scan les sites internet indexés.!CYAN!         ║
-if "!language!"=="EN" echo %@move_right:x=7%║    !YELLOW!8!CYAN!  ^>  !WHITE!Dark Guy!CYAN!                           ║   !YELLOW!20!CYAN!  ^>  !WHITE!Check for updates.!CYAN!                       ║
-if "!language!"=="FR" echo %@move_right:x=7%║    !YELLOW!8!CYAN!  ^>  !WHITE!Homme sombre!CYAN!                       ║   !YELLOW!20!CYAN!  ^>  !WHITE!Vérifiez les mises à jour.!CYAN!               ║
-if "!language!"=="EN" echo %@move_right:x=7%║    !YELLOW!9!CYAN!  ^>  !WHITE!Girl eyes!CYAN!                          ║   !YELLOW!21!CYAN!  ^>  !WHITE!Change username.!CYAN!                         ║
-if "!language!"=="FR" echo %@move_right:x=7%║    !YELLOW!9!CYAN!  ^>  !WHITE!Yeux fille!CYAN!                         ║   !YELLOW!21!CYAN!  ^>  !WHITE!Changer le nom d'utilisateur.!CYAN!            ║
-if "!language!"=="EN" echo %@move_right:x=7%║   !YELLOW!10!CYAN!  ^>  !WHITE!World map (bytes)!CYAN!                  ║   !YELLOW!22!CYAN!  ^>  !WHITE!Change language to French.!CYAN!               ║
-if "!language!"=="FR" echo %@move_right:x=7%║   !YELLOW!10!CYAN!  ^>  !WHITE!Carte du monde (bytes)!CYAN!             ║   !YELLOW!22!CYAN!  ^>  !WHITE!Changer la langue en Anglais.!CYAN!            ║
-if "!language!"=="EN" echo %@move_right:x=7%║   !YELLOW!11!CYAN!  ^>  !WHITE!World map (Corona Virus)!CYAN!           ║   !YELLOW!23!CYAN!  ^>  !WHITE!Export/Import settings.!CYAN!                  ║
-if "!language!"=="FR" echo %@move_right:x=7%║   !YELLOW!11!CYAN!  ^>  !WHITE!Carte du monde (Corona Virus)!CYAN!      ║   !YELLOW!23!CYAN!  ^>  !WHITE!Exporter/Importer les paramètres.!CYAN!        ║
-if "!language!"=="EN" echo %@move_right:x=7%║   !YELLOW!12!CYAN!  ^>  !WHITE!World map (cool)!CYAN!                   ║   !YELLOW!24!CYAN!  ^>  !WHITE!Extract IS source code.!CYAN!                  ║
-if "!language!"=="FR" echo %@move_right:x=7%║   !YELLOW!12!CYAN!  ^>  !WHITE!Carte du monde (cool)!CYAN!              ║   !YELLOW!24!CYAN!  ^>  !WHITE!Extraire le code source d'IS.!CYAN!            ║
-echo %@move_right:x=7%║                                             ║                                                   ║
-echo %@move_right:x=7%╚═════════════════════════════════════════════╩═══════════════════════════════════════════════════╝
+echo %@move_right:?=7%╔═════════════════════════════════════════════╦═══════════════════════════════════════════════════╗
+if "!language!"=="EN" echo %@move_right:?=7%╠═════════════■█!BGYELLOW!!RED!█ WALLPAPERS █!BGBLACK!!CYAN!█■══════════════╬═════════════════■█!BGYELLOW!!RED!█ SETTINGS █!BGBLACK!!CYAN!█■══════════════════╣
+if "!language!"=="FR" echo %@move_right:?=7%╠════════════■█!BGYELLOW!!RED!█ FOND D'ECRANS █!BGBLACK!!CYAN!█■════════════╬════════════════■█!BGYELLOW!!RED!█ PARAMETRES █!BGBLACK!!CYAN!█■═════════════════╣
+echo %@move_right:?=7%║                                             ║                                                   ║
+echo %@move_right:?=7%║    !YELLOW!1!CYAN!  ^>  !WHITE!Kirito 1 (IS v1.4 icon)!CYAN!            ║   !YELLOW!13!CYAN!  ^>  !WHITE!!BackgroundTransparencyInfo!
+echo %@move_right:?=7%║    !YELLOW!2!CYAN!  ^>  !WHITE!Kirito 2!CYAN!                           ║   !YELLOW!14!CYAN!  ^>  !WHITE!!BackgroundBorderTransparencyInfo!
+echo %@move_right:?=7%║    !YELLOW!3!CYAN!  ^>  !WHITE!Kirito 3!CYAN!                           ║   !YELLOW!15!CYAN!  ^>  !WHITE!!BackgroundDisabledInfo!
+echo %@move_right:?=7%║    !YELLOW!4!CYAN!  ^>  !WHITE!Kirito 4!CYAN!                           ║   !YELLOW!16!CYAN!  ^>  !WHITE!!UntrustedWebsitesWarningInfo!
+echo %@move_right:?=7%║    !YELLOW!5!CYAN!  ^>  !WHITE!49206C6F766520796F75204C697361!CYAN!     ║   !YELLOW!17!CYAN!  ^>  !WHITE!!VoiceAssistantInfo!
+echo %@move_right:?=7%║    !YELLOW!6!CYAN!  ^>  !WHITE!Even Roses are colorless !CYAN!          ║   !YELLOW!18!CYAN!  ^>  !WHITE!!DeveloperModeInfo!
+if "!language!"=="EN" echo %@move_right:?=7%║    !YELLOW!7!CYAN!  ^>  !WHITE!Tree!CYAN!                               ║   !YELLOW!19!CYAN!  ^>  !WHITE!Scan down or changed domain websites.!CYAN!    ║
+if "!language!"=="FR" echo %@move_right:?=7%║    !YELLOW!7!CYAN!  ^>  !WHITE!Arbre!CYAN!                              ║   !YELLOW!19!CYAN!  ^>  !WHITE!Scan les sites internet indexés.!CYAN!         ║
+if "!language!"=="EN" echo %@move_right:?=7%║    !YELLOW!8!CYAN!  ^>  !WHITE!Dark Guy!CYAN!                           ║   !YELLOW!20!CYAN!  ^>  !WHITE!Check for updates.!CYAN!                       ║
+if "!language!"=="FR" echo %@move_right:?=7%║    !YELLOW!8!CYAN!  ^>  !WHITE!Homme sombre!CYAN!                       ║   !YELLOW!20!CYAN!  ^>  !WHITE!Vérifiez les mises à jour.!CYAN!               ║
+if "!language!"=="EN" echo %@move_right:?=7%║    !YELLOW!9!CYAN!  ^>  !WHITE!Girl eyes!CYAN!                          ║   !YELLOW!21!CYAN!  ^>  !WHITE!Change username.!CYAN!                         ║
+if "!language!"=="FR" echo %@move_right:?=7%║    !YELLOW!9!CYAN!  ^>  !WHITE!Yeux fille!CYAN!                         ║   !YELLOW!21!CYAN!  ^>  !WHITE!Changer le nom d'utilisateur.!CYAN!            ║
+if "!language!"=="EN" echo %@move_right:?=7%║   !YELLOW!10!CYAN!  ^>  !WHITE!World map (bytes)!CYAN!                  ║   !YELLOW!22!CYAN!  ^>  !WHITE!Change language to French.!CYAN!               ║
+if "!language!"=="FR" echo %@move_right:?=7%║   !YELLOW!10!CYAN!  ^>  !WHITE!Carte du monde (bytes)!CYAN!             ║   !YELLOW!22!CYAN!  ^>  !WHITE!Changer la langue en Anglais.!CYAN!            ║
+if "!language!"=="EN" echo %@move_right:?=7%║   !YELLOW!11!CYAN!  ^>  !WHITE!World map (Corona Virus)!CYAN!           ║   !YELLOW!23!CYAN!  ^>  !WHITE!Export/Import settings.!CYAN!                  ║
+if "!language!"=="FR" echo %@move_right:?=7%║   !YELLOW!11!CYAN!  ^>  !WHITE!Carte du monde (Corona Virus)!CYAN!      ║   !YELLOW!23!CYAN!  ^>  !WHITE!Exporter/Importer les paramètres.!CYAN!        ║
+if "!language!"=="EN" echo %@move_right:?=7%║   !YELLOW!12!CYAN!  ^>  !WHITE!World map (cool)!CYAN!                   ║   !YELLOW!24!CYAN!  ^>  !WHITE!Extract IS source code.!CYAN!                  ║
+if "!language!"=="FR" echo %@move_right:?=7%║   !YELLOW!12!CYAN!  ^>  !WHITE!Carte du monde (cool)!CYAN!              ║   !YELLOW!24!CYAN!  ^>  !WHITE!Extraire le code source d'IS.!CYAN!            ║
+echo %@move_right:?=7%║                                             ║                                                   ║
+echo %@move_right:?=7%╚═════════════════════════════════════════════╩═══════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -781,8 +786,8 @@ goto :CLEARSETTINGS
 )
 echo !BRIGHTRED!
 echo =================================================================================================================
-if "!language!"=="EN" echo %@move_right:x=15%^^!^^! You need to be part of the Illegal Services developers to enable that option ^^!^^!
-if "!language!"=="FR" echo %@move_right:x=11%^^!^^! Vous devez faire partie des développeurs d'Illegal Services pour activer cette option ^^!^^!
+if "!language!"=="EN" echo %@move_right:?=15%^^!^^! You need to be part of the Illegal Services developers to enable that option ^^!^^!
+if "!language!"=="FR" echo %@move_right:?=11%^^!^^! Vous devez faire partie des développeurs d'Illegal Services pour activer cette option ^^!^^!
 echo =================================================================================================================
 echo !CYAN!
 if "!language!"=="EN" set t=Enter your developer license key
@@ -899,7 +904,7 @@ set _el=
 for /f "delims=" %%A in ('!OpenFileBox.exe! "!t1! (*.reg)|*.reg" "!IS_OUTPUT_DIRECTORY!" "!t2!"') do set "_el=%%~A"
 if not defined _el goto :CONTINUESETTINGS
 for %%A in ("!_el!") do if /i "%%~xA"==".reg" >nul 2>&1 find /i "[HKEY_CURRENT_USER\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services]" "!_el!" && >nul 2>&1 reg import "!_el!" && (
-for %%B in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS DEVELOPERMODE) do call :CHECK_%%B
+for %%B in (LANGUAGE USERNAME YOUTUBEDLPRIORITY PORTPRIORITY FIRSTLAUNCH VOICEASSISTANT VOICEASSISTANTCHOICE YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS HWIDOUTPUTDIRECTORY DEVELOPERMODE) do call :CHECK_%%B
 call :APPLY_BACKGROUND_SETTINGS
 if "!language!"=="EN" set t="Settings imported successfully from:!\N!!\N!'!_el!'"
 if "!language!"=="FR" set t="Paramètres importés avec succès à partir de:!\N!!\N!'!_el!'"
@@ -1037,42 +1042,42 @@ set "YouTubeDLPInfo=YouTube DLP !CYAN!(!GREEN!ON!!CYAN!)                        
 :CONTINUEYOUTUBEDL
 call :SCALE !scale[youtubedl]!
 echo !CYAN!
-echo %@move_right:x=39%══════════════════════════
-echo %@move_right:x=38%// !RED!█!BGYELLOW!!BLACK! YOUTUBE DOWNLOADER !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=8%╔══════════════════════════════════════════════════════════════════════════════════════╗
+echo %@move_right:?=39%══════════════════════════
+echo %@move_right:?=38%// !RED!█!BGYELLOW!!BLACK! YOUTUBE DOWNLOADER !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=8%╔══════════════════════════════════════════════════════════════════════════════════════╗
 if "!language!"=="EN" (set t1=Video Formats) & set t2=Audio Formats
 if "!language!"=="FR" (set t1=Formats vidéo) & set t2=Formats Audio
-echo %@move_right:x=8%╠═══════════■█!BGYELLOW!!RED!█ !t1! █!BGBLACK!!CYAN!█■═══════════╦══════════■█!BGYELLOW!!RED!█ !t2! █!BGBLACK!!CYAN!█■═══════════╣
-echo %@move_right:x=8%║                                           ║                                          ║
-echo %@move_right:x=8%║    !YELLOW!1!CYAN!  ^> !WHITE! BEST!CYAN!                             ║     !YELLOW!7!CYAN!  ^> !WHITE! BEST!CYAN!                           ║
-echo %@move_right:x=8%║    !YELLOW!2!CYAN!  ^> !WHITE! .mp4!CYAN!                             ║     !YELLOW!8!CYAN!  ^> !WHITE! .mp3!CYAN!                           ║
-echo %@move_right:x=8%║    !YELLOW!3!CYAN!  ^> !WHITE! .webm!CYAN!                            ║     !YELLOW!9!CYAN!  ^> !WHITE! .m4a!CYAN!                           ║
-echo %@move_right:x=8%║    !YELLOW!4!CYAN!  ^> !WHITE! .flv!CYAN!                             ║    !YELLOW!10!CYAN!  ^> !WHITE! .flac!CYAN!                          ║
-echo %@move_right:x=8%║    !YELLOW!5!CYAN!  ^> !WHITE! .mkv!CYAN!                             ║    !YELLOW!11!CYAN!  ^> !WHITE! .aac!CYAN!                           ║
-echo %@move_right:x=8%║    !YELLOW!6!CYAN!  ^> !WHITE! .avi!CYAN!                             ║    !YELLOW!12!CYAN!  ^> !WHITE! .opus!CYAN!                          ║
-echo %@move_right:x=8%║                                           ║    !YELLOW!13!CYAN!  ^> !WHITE! .ogg!CYAN!                           ║
-echo %@move_right:x=8%║                                           ║    !YELLOW!14!CYAN!  ^> !WHITE! .wav!CYAN!                           ║
-echo %@move_right:x=8%╠═══════════════════════════════════════════╩══════════════════════════════════════════╣
-if "!language!"=="EN" echo %@move_right:x=8%╠═══════════════════════════════════■█!BGYELLOW!!RED!█ Settings █!BGBLACK!!CYAN!█■═══════════════════════════════════╣
-if "!language!"=="FR" echo %@move_right:x=8%╠══════════════════════════════════■█!BGYELLOW!!RED!█ Paramètres █!BGBLACK!!CYAN!█■══════════════════════════════════╣
-echo %@move_right:x=8%║                                                                                      ║
-echo %@move_right:x=8%║                    !YELLOW!15!CYAN!  ^> !WHITE! !YouTubeDLPInfo!
-echo %@move_right:x=8%║                    !YELLOW!16!CYAN!  ^> !WHITE! !YouTubeDLDirectoryInfo!
-echo %@move_right:x=8%║                    !YELLOW!17!CYAN!  ^> !WHITE! !YouTubeDLGeoBypassInfo!
-echo %@move_right:x=8%╠══════════════════════════════════════════════════════════════════════════════════════╣
+echo %@move_right:?=8%╠═══════════■█!BGYELLOW!!RED!█ !t1! █!BGBLACK!!CYAN!█■═══════════╦══════════■█!BGYELLOW!!RED!█ !t2! █!BGBLACK!!CYAN!█■═══════════╣
+echo %@move_right:?=8%║                                           ║                                          ║
+echo %@move_right:?=8%║    !YELLOW!1!CYAN!  ^> !WHITE! BEST!CYAN!                             ║     !YELLOW!7!CYAN!  ^> !WHITE! BEST!CYAN!                           ║
+echo %@move_right:?=8%║    !YELLOW!2!CYAN!  ^> !WHITE! .mp4!CYAN!                             ║     !YELLOW!8!CYAN!  ^> !WHITE! .mp3!CYAN!                           ║
+echo %@move_right:?=8%║    !YELLOW!3!CYAN!  ^> !WHITE! .webm!CYAN!                            ║     !YELLOW!9!CYAN!  ^> !WHITE! .m4a!CYAN!                           ║
+echo %@move_right:?=8%║    !YELLOW!4!CYAN!  ^> !WHITE! .flv!CYAN!                             ║    !YELLOW!10!CYAN!  ^> !WHITE! .flac!CYAN!                          ║
+echo %@move_right:?=8%║    !YELLOW!5!CYAN!  ^> !WHITE! .mkv!CYAN!                             ║    !YELLOW!11!CYAN!  ^> !WHITE! .aac!CYAN!                           ║
+echo %@move_right:?=8%║    !YELLOW!6!CYAN!  ^> !WHITE! .avi!CYAN!                             ║    !YELLOW!12!CYAN!  ^> !WHITE! .opus!CYAN!                          ║
+echo %@move_right:?=8%║                                           ║    !YELLOW!13!CYAN!  ^> !WHITE! .ogg!CYAN!                           ║
+echo %@move_right:?=8%║                                           ║    !YELLOW!14!CYAN!  ^> !WHITE! .wav!CYAN!                           ║
+echo %@move_right:?=8%╠═══════════════════════════════════════════╩══════════════════════════════════════════╣
+if "!language!"=="EN" echo %@move_right:?=8%╠═══════════════════════════════════■█!BGYELLOW!!RED!█ Settings █!BGBLACK!!CYAN!█■═══════════════════════════════════╣
+if "!language!"=="FR" echo %@move_right:?=8%╠══════════════════════════════════■█!BGYELLOW!!RED!█ Paramètres █!BGBLACK!!CYAN!█■══════════════════════════════════╣
+echo %@move_right:?=8%║                                                                                      ║
+echo %@move_right:?=8%║                    !YELLOW!15!CYAN!  ^> !WHITE! !YouTubeDLPInfo!
+echo %@move_right:?=8%║                    !YELLOW!16!CYAN!  ^> !WHITE! !YouTubeDLDirectoryInfo!
+echo %@move_right:?=8%║                    !YELLOW!17!CYAN!  ^> !WHITE! !YouTubeDLGeoBypassInfo!
+echo %@move_right:?=8%╠══════════════════════════════════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-echo %@move_right:x=8%║    !BRIGHTMAGENTA!YouTube DL automatically download the best quality as available at the source.!CYAN!    ║
-echo %@move_right:x=8%║         !BRIGHTMAGENTA!We do not convert to 320 Kbps just for saying it's the best quality.!CYAN!         ║
+echo %@move_right:?=8%║    !BRIGHTMAGENTA!YouTube DL automatically download the best quality as available at the source.!CYAN!    ║
+echo %@move_right:?=8%║         !BRIGHTMAGENTA!We do not convert to 320 Kbps just for saying it's the best quality.!CYAN!         ║
 )
 if "!language!"=="FR" (
-echo %@move_right:x=8%║ !BRIGHTMAGENTA!YouTube DL télécharge la meilleure qualité telle qu'elle est disponible à la source.!CYAN! ║
-echo %@move_right:x=8%║ !BRIGHTMAGENTA!Nous ne convertissons pas à 320 Kbps juste pour dire que c'est la meilleure qualité.!CYAN! ║
+echo %@move_right:?=8%║ !BRIGHTMAGENTA!YouTube DL télécharge la meilleure qualité telle qu'elle est disponible à la source.!CYAN! ║
+echo %@move_right:?=8%║ !BRIGHTMAGENTA!Nous ne convertissons pas à 320 Kbps juste pour dire que c'est la meilleure qualité.!CYAN! ║
 )
-echo %@move_right:x=8%╠══════════════════════════════════════════════════════════════════════════════════════╣
+echo %@move_right:?=8%╠══════════════════════════════════════════════════════════════════════════════════════╣
 if "!language!"=="EN" set t=Download location:
 if "!language!"=="FR" set t=Emplacement de téléchargement:
-echo           !BRIGHTMAGENTA!!t!!WHITE! !YouTubeDLOutputDirectory!!CYAN!
-echo %@move_right:x=8%╚══════════════════════════════════════════════════════════════════════════════════════╝
+echo %@move_right:?=10%!BRIGHTMAGENTA!!t!!WHITE! !YouTubeDLOutputDirectory!!CYAN!
+echo %@move_right:?=8%╚══════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -1273,33 +1278,33 @@ call :CLEAR 1
 :CONTINUEDDOS
 call :SCALE !scale[ddos]!
 echo !CYAN!
-echo %@move_right:x=18%══════════════════════════════════════
-echo %@move_right:x=17%// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=8%╔════════════════════════════════════════════════════════╗
-echo %@move_right:x=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 4 █!BGBLACK!!CYAN!█■═════════════════════╣
-echo %@move_right:x=8%║                                                        ║
-echo %@move_right:x=8%║    !1!quez.in!CYAN!               │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║    !2!freestresser.to!CYAN!       │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║    !3!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║    !4!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║    !5!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo %@move_right:x=8%║    !6!redstresser.cc!CYAN!        │            [120/s]    ║
-echo %@move_right:x=8%║    !7!stresser.ai!CYAN!           │            [120/s]    ║
-echo %@move_right:x=8%║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
-echo %@move_right:x=8%║    !9!stresser.zone!CYAN!         │            [120/s]    ║
-echo %@move_right:x=8%║   !10!deltastress.com!CYAN!       │            [ 60/s]    ║
-echo %@move_right:x=8%║   !11!stresser.gg!CYAN!           │            [ 60/s]    ║
-echo %@move_right:x=8%║                                                        ║
-echo %@move_right:x=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
-echo %@move_right:x=8%║                                                        ║
-echo %@move_right:x=8%║   !12!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║   !13!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║   !14!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║   !15!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:x=8%║   !16!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo %@move_right:x=8%║   !17!redstresser.cc!CYAN!        │            [120/s]    ║
-echo %@move_right:x=8%║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
-echo %@move_right:x=8%╠════════════════════════════════════════════════════════╣
+echo %@move_right:?=18%══════════════════════════════════════
+echo %@move_right:?=17%// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=8%╔════════════════════════════════════════════════════════╗
+echo %@move_right:?=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 4 █!BGBLACK!!CYAN!█■═════════════════════╣
+echo %@move_right:?=8%║                                                        ║
+echo %@move_right:?=8%║    !1!quez.in!CYAN!               │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║    !2!freestresser.to!CYAN!       │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║    !3!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║    !4!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║    !5!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo %@move_right:?=8%║    !6!redstresser.cc!CYAN!        │            [120/s]    ║
+echo %@move_right:?=8%║    !7!stresser.ai!CYAN!           │            [120/s]    ║
+echo %@move_right:?=8%║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
+echo %@move_right:?=8%║    !9!stresser.zone!CYAN!         │            [120/s]    ║
+echo %@move_right:?=8%║   !10!deltastress.com!CYAN!       │            [ 60/s]    ║
+echo %@move_right:?=8%║   !11!stresser.gg!CYAN!           │            [ 60/s]    ║
+echo %@move_right:?=8%║                                                        ║
+echo %@move_right:?=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
+echo %@move_right:?=8%║                                                        ║
+echo %@move_right:?=8%║   !12!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !13!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !14!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !15!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !16!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo %@move_right:?=8%║   !17!redstresser.cc!CYAN!        │            [120/s]    ║
+echo %@move_right:?=8%║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
+echo %@move_right:?=8%╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
 call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!12/07/2022"
 call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !19!ddosforhire.net"
@@ -1308,7 +1313,7 @@ if "!language!"=="FR" (
 call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!12/07/2022"
 call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !19!ddosforhire.net"
 )
-echo %@move_right:x=8%!CYAN!╚════════════════════════════════════════════════════════╝
+echo %@move_right:?=8%!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -1338,31 +1343,31 @@ if exist "!TMPF!\IS_Log.txt" del /f /q "!TMPF!\IS_Log.txt"
 call :SCALE !scale[iplookup]!
 title !#TITLE:`=IP Address Lookup!
 echo !CYAN!
-echo %@move_right:x=24%═════════════════════════
-echo %@move_right:x=23%// !RED!█!BGYELLOW!!BLACK! IP ADDRESS LOOKUP !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=17%╔═════════════════════════════════════╗
-echo %@move_right:x=17%╠═■█!BGYELLOW!!RED!█  Illegal Services IP Lookup █!BGBLACK!!CYAN!█■═╣
-echo %@move_right:x=17%║                                     ║
-if "!language!"=="EN" echo %@move_right:x=17%║    !YELLOW!1!CYAN!  ^> !WHITE! View your IP!CYAN!               ║
-if "!language!"=="FR" echo %@move_right:x=17%║    !YELLOW!1!CYAN!  ^> !WHITE! Regarder mon IP!CYAN!            ║
-if "!language!"=="EN" echo %@move_right:x=17%║    !YELLOW!2!CYAN!  ^> !WHITE! Lookup an other IP!CYAN!         ║
-if "!language!"=="FR" echo %@move_right:x=17%║    !YELLOW!2!CYAN!  ^> !WHITE! Regarder une autre IP!CYAN!      ║
-if "!language!"=="EN" echo %@move_right:x=17%║    !YELLOW!3!CYAN!  ^> !WHITE! Lookup an other URL!CYAN!        ║
-if "!language!"=="FR" echo %@move_right:x=17%║    !YELLOW!3!CYAN!  ^> !WHITE! Regarder une autre URL!CYAN!     ║
-echo %@move_right:x=17%║                                     ║
-if "!language!"=="EN" echo %@move_right:x=17%╠═════■█!BGYELLOW!!RED!█  IP Lookup websites █!BGBLACK!!CYAN!█■═════╣
-if "!language!"=="FR" echo %@move_right:x=17%╠═■█!BGYELLOW!!RED!█  Sites Internet d'IP Lookup █!BGBLACK!!CYAN!█■═╣
-echo %@move_right:x=17%║                                     ║
-echo %@move_right:x=17%║    !4!check-host.net!CYAN!             ║
-echo %@move_right:x=17%║    !5!dnschecker.org!CYAN!             ║
-echo %@move_right:x=17%║    !6!www.iplocation.net!CYAN!         ║
-echo %@move_right:x=17%║    !7!www.ip-tracker.org!CYAN!         ║
-echo %@move_right:x=17%║                                     ║
-if "!language!"=="EN" echo %@move_right:x=17%╠═══■█!BGYELLOW!!RED!█  IP Dynamic or Static ? █!BGBLACK!!CYAN!█■═══╣
-if "!language!"=="FR" echo %@move_right:x=17%╠═■█!BGYELLOW!!RED!█  IP Dynamique ou Satique ? █!BGBLACK!!CYAN!█■══╣
-echo %@move_right:x=17%║                                     ║
-echo %@move_right:x=17%║    !8!whatismyipaddress.com!CYAN!      ║
-echo %@move_right:x=17%╚═════════════════════════════════════╝
+echo %@move_right:?=24%═════════════════════════
+echo %@move_right:?=23%// !RED!█!BGYELLOW!!BLACK! IP ADDRESS LOOKUP !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=17%╔═════════════════════════════════════╗
+echo %@move_right:?=17%╠═■█!BGYELLOW!!RED!█  Illegal Services IP Lookup █!BGBLACK!!CYAN!█■═╣
+echo %@move_right:?=17%║                                     ║
+if "!language!"=="EN" echo %@move_right:?=17%║    !YELLOW!1!CYAN!  ^> !WHITE! View your IP!CYAN!               ║
+if "!language!"=="FR" echo %@move_right:?=17%║    !YELLOW!1!CYAN!  ^> !WHITE! Regarder mon IP!CYAN!            ║
+if "!language!"=="EN" echo %@move_right:?=17%║    !YELLOW!2!CYAN!  ^> !WHITE! Lookup an other IP!CYAN!         ║
+if "!language!"=="FR" echo %@move_right:?=17%║    !YELLOW!2!CYAN!  ^> !WHITE! Regarder une autre IP!CYAN!      ║
+if "!language!"=="EN" echo %@move_right:?=17%║    !YELLOW!3!CYAN!  ^> !WHITE! Lookup an other URL!CYAN!        ║
+if "!language!"=="FR" echo %@move_right:?=17%║    !YELLOW!3!CYAN!  ^> !WHITE! Regarder une autre URL!CYAN!     ║
+echo %@move_right:?=17%║                                     ║
+if "!language!"=="EN" echo %@move_right:?=17%╠═════■█!BGYELLOW!!RED!█  IP Lookup websites █!BGBLACK!!CYAN!█■═════╣
+if "!language!"=="FR" echo %@move_right:?=17%╠═■█!BGYELLOW!!RED!█  Sites Internet d'IP Lookup █!BGBLACK!!CYAN!█■═╣
+echo %@move_right:?=17%║                                     ║
+echo %@move_right:?=17%║    !4!check-host.net!CYAN!             ║
+echo %@move_right:?=17%║    !5!dnschecker.org!CYAN!             ║
+echo %@move_right:?=17%║    !6!www.iplocation.net!CYAN!         ║
+echo %@move_right:?=17%║    !7!www.ip-tracker.org!CYAN!         ║
+echo %@move_right:?=17%║                                     ║
+if "!language!"=="EN" echo %@move_right:?=17%╠═══■█!BGYELLOW!!RED!█  IP Dynamic or Static ? █!BGBLACK!!CYAN!█■═══╣
+if "!language!"=="FR" echo %@move_right:?=17%╠═■█!BGYELLOW!!RED!█  IP Dynamique ou Satique ? █!BGBLACK!!CYAN!█■══╣
+echo %@move_right:?=17%║                                     ║
+echo %@move_right:?=17%║    !8!whatismyipaddress.com!CYAN!      ║
+echo %@move_right:?=17%╚═════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -1601,44 +1606,44 @@ call :CLEAR 8
 :CONTINUEPORT
 call :SCALE !scale[port]!
 echo !CYAN!
-echo %@move_right:x=37%════════════════════════════
-echo %@move_right:x=36%// !RED!█!BGYELLOW!!BLACK! IP TCP PORT SCANNING !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=8%╔═══════════════════════════════════════════════════════════════════════════════════╗
-if "!language!"=="EN" echo %@move_right:x=8%╠══════════════════════════════■█!BGYELLOW!!RED!█ Scan all Ports █!BGBLACK!!CYAN!█■═══════════════════════════════╣
-if "!language!"=="FR" echo %@move_right:x=8%╠════════════════════════════■█!BGYELLOW!!RED!█ Scan tous les ports █!BGBLACK!!CYAN!█■════════════════════════════╣
-echo %@move_right:x=8%║                                                                                   ║
-if "!language!"=="EN" echo %@move_right:x=8%║                       !YELLOW!1!CYAN!  ^> !WHITE! Python: Scan all 65535 ports.!CYAN!                         ║
-if "!language!"=="FR" echo %@move_right:x=8%║                     !YELLOW!1!CYAN!  ^> !WHITE! Python: Scan tous les 65535 ports.!CYAN!                      ║
-if "!language!"=="EN" echo %@move_right:x=8%║                       !YELLOW!2!CYAN!  ^> !WHITE! NMAP  : Scan all 65535 ports.!CYAN!                         ║
-if "!language!"=="FR" echo %@move_right:x=8%║                     !YELLOW!2!CYAN!  ^> !WHITE! NMAP  : Scan tous les 65535 ports.!CYAN!                      ║
-echo %@move_right:x=8%╠═══════════════════════════════════════════════════════════════════════════════════╣
-if "!language!"=="EN" echo %@move_right:x=8%╠═══════════════════════════■█!BGYELLOW!!RED!█ Scan Most Used Ports █!BGBLACK!!CYAN!█■════════════════════════════╣
-if "!language!"=="FR" echo %@move_right:x=8%╠═════════════════════■█!BGYELLOW!!RED!█ Scan les ports les plus utilisés █!BGBLACK!!CYAN!█■══════════════════════╣
-echo %@move_right:x=8%║                                                                                   ║
-if "!language!"=="EN" echo %@move_right:x=8%║    !YELLOW!3!CYAN!  ^> !WHITE! NMAP: Scan only ports listeds in the file nmap-services.!CYAN!                 ║
-if "!language!"=="FR" echo %@move_right:x=8%║    !YELLOW!3!CYAN!  ^> !WHITE! NMAP: Scan uniquement les ports listés dans le fichier nmap-services.!CYAN!    ║
-if "!language!"=="EN" echo %@move_right:x=8%║    !YELLOW!4!CYAN!  ^> !WHITE! NMAP: Scan + than 1660 ports.!CYAN!                                            ║
-if "!language!"=="FR" echo %@move_right:x=8%║    !YELLOW!4!CYAN!  ^> !WHITE! NMAP: Scan + de 1660 ports.!CYAN!                                              ║
-if "!language!"=="EN" echo %@move_right:x=8%║    !YELLOW!5!CYAN!  ^> !WHITE! NMAP: Scan top most useds ports.!CYAN!                                         ║
-if "!language!"=="FR" echo %@move_right:x=8%║    !YELLOW!5!CYAN!  ^> !WHITE! NMAP: Scan les principaux ports les plus utilisés.!CYAN!                       ║
-if "!language!"=="EN" echo %@move_right:x=8%║    !YELLOW!6!CYAN!  ^> !WHITE! NMAP: Scan with version detection.!CYAN!                                       ║
-if "!language!"=="FR" echo %@move_right:x=8%║    !YELLOW!6!CYAN!  ^> !WHITE! NMAP: Scan avec la détection de version.!CYAN!                                 ║
-echo %@move_right:x=8%╠═══════════════════════════════════════════════════════════════════════════════════╣
-if "!language!"=="EN" echo %@move_right:x=8%╠══════════════════════════■█!BGYELLOW!!RED!█ Custom Port Range Scan █!BGBLACK!!CYAN!█■═══════════════════════════╣
-if "!language!"=="FR" echo %@move_right:x=8%╠═════════════════■█!BGYELLOW!!RED!█ Scan personnalisé de la plage des ports █!BGBLACK!!CYAN!█■═══════════════════╣
-echo %@move_right:x=8%║                                                                                   ║
-if "!language!"=="EN" echo %@move_right:x=8%║                   !YELLOW!7!CYAN!  ^> !WHITE! NMAP: Scan your range of custom ports!CYAN!                     ║
-if "!language!"=="FR" echo %@move_right:x=8%║               !YELLOW!7!CYAN!  ^> !WHITE! NMAP: Scan votre plage personnalisé de ports.!CYAN!                 ║
-echo %@move_right:x=8%╠═══════════════════════════════════════════════════════════════════════════════════╣
+echo %@move_right:?=37%════════════════════════════
+echo %@move_right:?=36%// !RED!█!BGYELLOW!!BLACK! IP TCP PORT SCANNING !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=8%╔═══════════════════════════════════════════════════════════════════════════════════╗
+if "!language!"=="EN" echo %@move_right:?=8%╠══════════════════════════════■█!BGYELLOW!!RED!█ Scan all Ports █!BGBLACK!!CYAN!█■═══════════════════════════════╣
+if "!language!"=="FR" echo %@move_right:?=8%╠════════════════════════════■█!BGYELLOW!!RED!█ Scan tous les ports █!BGBLACK!!CYAN!█■════════════════════════════╣
+echo %@move_right:?=8%║                                                                                   ║
+if "!language!"=="EN" echo %@move_right:?=8%║                       !YELLOW!1!CYAN!  ^> !WHITE! Python: Scan all 65535 ports.!CYAN!                         ║
+if "!language!"=="FR" echo %@move_right:?=8%║                     !YELLOW!1!CYAN!  ^> !WHITE! Python: Scan tous les 65535 ports.!CYAN!                      ║
+if "!language!"=="EN" echo %@move_right:?=8%║                       !YELLOW!2!CYAN!  ^> !WHITE! NMAP  : Scan all 65535 ports.!CYAN!                         ║
+if "!language!"=="FR" echo %@move_right:?=8%║                     !YELLOW!2!CYAN!  ^> !WHITE! NMAP  : Scan tous les 65535 ports.!CYAN!                      ║
+echo %@move_right:?=8%╠═══════════════════════════════════════════════════════════════════════════════════╣
+if "!language!"=="EN" echo %@move_right:?=8%╠═══════════════════════════■█!BGYELLOW!!RED!█ Scan Most Used Ports █!BGBLACK!!CYAN!█■════════════════════════════╣
+if "!language!"=="FR" echo %@move_right:?=8%╠═════════════════════■█!BGYELLOW!!RED!█ Scan les ports les plus utilisés █!BGBLACK!!CYAN!█■══════════════════════╣
+echo %@move_right:?=8%║                                                                                   ║
+if "!language!"=="EN" echo %@move_right:?=8%║    !YELLOW!3!CYAN!  ^> !WHITE! NMAP: Scan only ports listeds in the file nmap-services.!CYAN!                 ║
+if "!language!"=="FR" echo %@move_right:?=8%║    !YELLOW!3!CYAN!  ^> !WHITE! NMAP: Scan uniquement les ports listés dans le fichier nmap-services.!CYAN!    ║
+if "!language!"=="EN" echo %@move_right:?=8%║    !YELLOW!4!CYAN!  ^> !WHITE! NMAP: Scan + than 1660 ports.!CYAN!                                            ║
+if "!language!"=="FR" echo %@move_right:?=8%║    !YELLOW!4!CYAN!  ^> !WHITE! NMAP: Scan + de 1660 ports.!CYAN!                                              ║
+if "!language!"=="EN" echo %@move_right:?=8%║    !YELLOW!5!CYAN!  ^> !WHITE! NMAP: Scan top most useds ports.!CYAN!                                         ║
+if "!language!"=="FR" echo %@move_right:?=8%║    !YELLOW!5!CYAN!  ^> !WHITE! NMAP: Scan les principaux ports les plus utilisés.!CYAN!                       ║
+if "!language!"=="EN" echo %@move_right:?=8%║    !YELLOW!6!CYAN!  ^> !WHITE! NMAP: Scan with version detection.!CYAN!                                       ║
+if "!language!"=="FR" echo %@move_right:?=8%║    !YELLOW!6!CYAN!  ^> !WHITE! NMAP: Scan avec la détection de version.!CYAN!                                 ║
+echo %@move_right:?=8%╠═══════════════════════════════════════════════════════════════════════════════════╣
+if "!language!"=="EN" echo %@move_right:?=8%╠══════════════════════════■█!BGYELLOW!!RED!█ Custom Port Range Scan █!BGBLACK!!CYAN!█■═══════════════════════════╣
+if "!language!"=="FR" echo %@move_right:?=8%╠═════════════════■█!BGYELLOW!!RED!█ Scan personnalisé de la plage des ports █!BGBLACK!!CYAN!█■═══════════════════╣
+echo %@move_right:?=8%║                                                                                   ║
+if "!language!"=="EN" echo %@move_right:?=8%║                   !YELLOW!7!CYAN!  ^> !WHITE! NMAP: Scan your range of custom ports!CYAN!                     ║
+if "!language!"=="FR" echo %@move_right:?=8%║               !YELLOW!7!CYAN!  ^> !WHITE! NMAP: Scan votre plage personnalisé de ports.!CYAN!                 ║
+echo %@move_right:?=8%╠═══════════════════════════════════════════════════════════════════════════════════╣
 if "!language!"=="EN" set t=Description
 if "!language!"=="FR" set t=Déscription
-echo %@move_right:x=8%╠═══════════════════════════■█!BGYELLOW!!RED!█ Portlist !t! █!BGBLACK!!CYAN!█■════════════════════════════╣
-echo %@move_right:x=8%║                                                                                   ║
-echo %@move_right:x=8%║                             !8!www.adminsub.net!CYAN!                                ║
-echo %@move_right:x=8%║                             !9!www.speedguide.net!CYAN!                              ║
-echo %@move_right:x=8%║                            !10!www.iana.org!CYAN!                                    ║
-echo %@move_right:x=8%║                            !11!portforward.com!CYAN!                                 ║
-echo %@move_right:x=8%╚═══════════════════════════════════════════════════════════════════════════════════╝
+echo %@move_right:?=8%╠═══════════════════════════■█!BGYELLOW!!RED!█ Portlist !t! █!BGBLACK!!CYAN!█■════════════════════════════╣
+echo %@move_right:?=8%║                                                                                   ║
+echo %@move_right:?=8%║                             !8!www.adminsub.net!CYAN!                                ║
+echo %@move_right:?=8%║                             !9!www.speedguide.net!CYAN!                              ║
+echo %@move_right:?=8%║                            !10!www.iana.org!CYAN!                                    ║
+echo %@move_right:?=8%║                            !11!portforward.com!CYAN!                                 ║
+echo %@move_right:?=8%╚═══════════════════════════════════════════════════════════════════════════════════╝
 echo:
 >nul 2>&1 sc query npcap || (
 if "!language!"=="EN" call :DRAW_CENTER newline "!RED!ERROR: !BRIGHTBLACK!To use NMAP, you must first choose: "!YELLOW!INSTALL!BRIGHTBLACK!""
@@ -1782,7 +1787,7 @@ goto :MAINMENU
 
 :MOREFEATURES
 if not defined scale[morefeatures] (
-    set scale[morefeatures]=62 23
+    set scale[morefeatures]=62 24
 )
 call :SCALE !scale[morefeatures]!
 title !#TITLE:`=More Features!
@@ -1791,22 +1796,23 @@ call :ROSE "More Features"
 :CONTINUEMOREFEATURES
 call :SCALE !scale[morefeatures]!
 echo !CYAN!
-echo %@move_right:x=20%═════════════════════
-echo %@move_right:x=19%// !RED!█!BGYELLOW!!BLACK! MORE FEATURES !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=11%╔═════════════════════════════════════╗
-echo %@move_right:x=11%║                                     ║
-echo %@move_right:x=11%║    !YELLOW!1 !WHITE!Warez Content Creator!CYAN!          ║
-echo %@move_right:x=11%║    !YELLOW!2 !WHITE!Warez Wikis!CYAN!                    ║
-echo %@move_right:x=11%║    !YELLOW!3 !WHITE!Release Logs!CYAN!                   ║
-echo %@move_right:x=11%║    !YELLOW!4 !WHITE!Ebooks!CYAN!                         ║
-echo %@move_right:x=11%║    !YELLOW!5 !WHITE!Musics!CYAN!                         ║
-echo %@move_right:x=11%║    !YELLOW!6 !WHITE!Forum Websites!CYAN!                 ║
-echo %@move_right:x=11%║    !YELLOW!7 !WHITE!Spoofing!CYAN!                       ║
-echo %@move_right:x=11%║    !YELLOW!8 !WHITE!Windows Repair!CYAN!                 ║
-echo %@move_right:x=11%║    !YELLOW!9 !WHITE!Windows Tweaks!CYAN!                 ║
-echo %@move_right:x=11%║   !YELLOW!10 !WHITE!Windows Game Booster!CYAN!           ║
-echo %@move_right:x=11%║                                     ║
-echo %@move_right:x=11%╚═════════════════════════════════════╝
+echo %@move_right:?=20%═════════════════════
+echo %@move_right:?=19%// !RED!█!BGYELLOW!!BLACK! MORE FEATURES !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=11%╔═════════════════════════════════════╗
+echo %@move_right:?=11%║                                     ║
+echo %@move_right:?=11%║    !YELLOW!1 !WHITE!Warez Content Creator!CYAN!          ║
+echo %@move_right:?=11%║    !YELLOW!2 !WHITE!Warez Wikis!CYAN!                    ║
+echo %@move_right:?=11%║    !YELLOW!3 !WHITE!Release Logs!CYAN!                   ║
+echo %@move_right:?=11%║    !YELLOW!4 !WHITE!Ebooks!CYAN!                         ║
+echo %@move_right:?=11%║    !YELLOW!5 !WHITE!Musics!CYAN!                         ║
+echo %@move_right:?=11%║    !YELLOW!6 !WHITE!Forum Websites!CYAN!                 ║
+echo %@move_right:?=11%║    !YELLOW!7 !WHITE!Windows Repair!CYAN!                 ║
+echo %@move_right:?=11%║    !YELLOW!8 !WHITE!Windows Tweaks!CYAN!                 ║
+echo %@move_right:?=11%║    !YELLOW!9 !WHITE!Windows Game Booster!CYAN!           ║
+echo %@move_right:?=11%║   !YELLOW!10 !WHITE!View Hardware Identification!CYAN!   ║
+echo %@move_right:?=11%║   !YELLOW!11 !WHITE!Spoofing!CYAN!                       ║
+echo %@move_right:?=11%║                                     ║
+echo %@move_right:?=11%╚═════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -1820,7 +1826,7 @@ for %%A in (
     "4`Ebooks"
     "5`Musics"
     "6`Forum Websites"
-    "7`Spoofing"
+    "11`Spoofing"
 ) do (
     for /f "tokens=1,2delims=`" %%B in ("%%~A") do (
         if "!x!"=="%%B" (
@@ -1830,12 +1836,14 @@ for %%A in (
         )
     )
 )
-if "!x!"=="8" (
+if "!x!"=="7" (
     goto :WINDOWSREPAIRS
-) else if "!x!"=="9" (
+) else if "!x!"=="8" (
     goto :WINDOWSTWEAKS
-) else if "!x!"=="10" (
+) else if "!x!"=="9" (
     goto :WINDOWSGAMEBOOSTER
+) else if "!x!"=="10" (
+    goto :HWID
 )
 call :CHOOSE BACK && goto :MAINMENU
 call :ERRORMESSAGE
@@ -1853,25 +1861,25 @@ call :ROSE "Windows Repairs"
 call :SCALE !scale[windowsrepairs]!
 title !#TITLE:`=Windows Repairs!
 echo !CYAN!
-echo %@move_right:x=26%══════════════════════
-echo %@move_right:x=25%// !RED!█!BGYELLOW!!BLACK! WINDOWS REPAIRS !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=16%╔═══════════════════════════════════════╗
-echo %@move_right:x=16%╠════════■█!BGYELLOW!!RED!█ General Repairs █!BGBLACK!!CYAN!█■════════╣
-echo %@move_right:x=16%║                                       ║
-echo %@move_right:x=16%║      !YELLOW!1!WHITE! System File Checker Utility!CYAN!    ║
-echo %@move_right:x=16%║      !YELLOW!2!WHITE! Repair Windows System Image!CYAN!    ║
-echo %@move_right:x=16%║      !YELLOW!3!WHITE! Check Disk!CYAN!                     ║
-echo %@move_right:x=16%║      !YELLOW!4!WHITE! Re-Register Store Apps!CYAN!         ║
-echo %@move_right:x=16%║                                       ║
-echo %@move_right:x=16%╠═══════■█!BGYELLOW!!RED!█ Specified Repairs █!BGBLACK!!CYAN!█■═══════╣
-echo %@move_right:x=16%║                                       ║
-echo %@move_right:x=16%║      !YELLOW!5!WHITE! Windows Store!CYAN!                  ║
-echo %@move_right:x=16%║      !YELLOW!6!WHITE! Xbox Game!CYAN!                      ║
-echo %@move_right:x=16%║      !YELLOW!7!WHITE! Push Notifications!CYAN!             ║
-echo %@move_right:x=16%║      !YELLOW!8!WHITE! Wifi Hotspot!CYAN!                   ║
-echo %@move_right:x=16%║      !YELLOW!9!WHITE! Clipboard History!CYAN!              ║
-echo %@move_right:x=16%║     !YELLOW!10!WHITE! Background Apps!CYAN!                ║
-echo %@move_right:x=16%╚═══════════════════════════════════════╝
+echo %@move_right:?=26%══════════════════════
+echo %@move_right:?=25%// !RED!█!BGYELLOW!!BLACK! WINDOWS REPAIRS !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=16%╔═══════════════════════════════════════╗
+echo %@move_right:?=16%╠════════■█!BGYELLOW!!RED!█ General Repairs █!BGBLACK!!CYAN!█■════════╣
+echo %@move_right:?=16%║                                       ║
+echo %@move_right:?=16%║      !YELLOW!1!WHITE! System File Checker Utility!CYAN!    ║
+echo %@move_right:?=16%║      !YELLOW!2!WHITE! Repair Windows System Image!CYAN!    ║
+echo %@move_right:?=16%║      !YELLOW!3!WHITE! Check Disk!CYAN!                     ║
+echo %@move_right:?=16%║      !YELLOW!4!WHITE! Re-Register Store Apps!CYAN!         ║
+echo %@move_right:?=16%║                                       ║
+echo %@move_right:?=16%╠═══════■█!BGYELLOW!!RED!█ Specified Repairs █!BGBLACK!!CYAN!█■═══════╣
+echo %@move_right:?=16%║                                       ║
+echo %@move_right:?=16%║      !YELLOW!5!WHITE! Windows Store!CYAN!                  ║
+echo %@move_right:?=16%║      !YELLOW!6!WHITE! Xbox Game!CYAN!                      ║
+echo %@move_right:?=16%║      !YELLOW!7!WHITE! Push Notifications!CYAN!             ║
+echo %@move_right:?=16%║      !YELLOW!8!WHITE! Wifi Hotspot!CYAN!                   ║
+echo %@move_right:?=16%║      !YELLOW!9!WHITE! Clipboard History!CYAN!              ║
+echo %@move_right:?=16%║     !YELLOW!10!WHITE! Background Apps!CYAN!                ║
+echo %@move_right:?=16%╚═══════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -1909,9 +1917,9 @@ goto :CONTINUEWINDOWSREPAIRS
 call :SCALE 81 20
 title !#TITLE:`=Repair Windows Store!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#            . . . I'm repairing Windows Store . . .            #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#            . . . I'm repairing Windows Store . . .            #
+echo %@move_right:?=7%#################################################################
 echo:
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "RemoveWindowsStore" /f && echo reg value "RemoveWindowsStore" successfully removed. || echo reg value "RemoveWindowsStore" already removed.
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\WindowsStore" /v "DisableStoreApps" /f && echo reg value "DisableStoreApps" successfully removed. || echo reg value "DisableStoreApps" already removed.
@@ -1939,9 +1947,9 @@ goto :WINDOWSREPAIRS
 call :SCALE 81 20
 title !#TITLE:`=Repair Xbox Game!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#              . . . I'm repairing Xbox Game . . .              #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#              . . . I'm repairing Xbox Game . . .              #
+echo %@move_right:?=7%#################################################################
 echo:
 if defined powershell (
     for %%A in (XboxApp Microsoft.XboxGamingOverlay XboxOneSmartGlass) do (
@@ -1966,9 +1974,9 @@ goto :WINDOWSREPAIRS
 call :SCALE 81 20
 title !#TITLE:`=Repair Push Notifications!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#         . . . I'm repairing Push Notifications . . .          #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#         . . . I'm repairing Push Notifications . . .          #
+echo %@move_right:?=7%#################################################################
 echo:
 >nul 2>&1 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications" /v "ToastEnabled" /f && echo reg value "ToastEnabled" successfully removed. || echo reg value "ToastEnabled" already removed.
 >nul 2>&1 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\PushNotifications" /v "LockScreenToastEnabled" /f && echo reg value "LockScreenToastEnabled" successfully removed. || echo reg value "LockScreenToastEnabled" already removed.
@@ -1987,9 +1995,9 @@ goto :WINDOWSREPAIRS
 call :SCALE 81 20
 title !#TITLE:`=Repair WiFi Hotspot!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#            . . . I'm repairing WiFi Hotspot . . .             #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#            . . . I'm repairing WiFi Hotspot . . .             #
+echo %@move_right:?=7%#################################################################
 echo:
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\Network Connections" /v "NC_ShowSharedAccessUI" /f && echo reg value "NC_ShowSharedAccessUI" successfully removed. || echo reg value "NC_ShowSharedAccessUI" already removed.
 for %%A in (CDPSvc CDPUserSvc icssvc) do >nul 2>&1 net stop "%%A"
@@ -2003,9 +2011,9 @@ goto :WINDOWSREPAIRS
 call :SCALE 81 20
 title !#TITLE:`=Repair Clipboard History!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#          . . . I'm repairing Clipboard History . . .          #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#          . . . I'm repairing Clipboard History . . .          #
+echo %@move_right:?=7%#################################################################
 echo:
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "AllowCrossDeviceClipboard" /f && echo reg value "AllowCrossDeviceClipboard" successfully removed. || echo reg value "AllowCrossDeviceClipboard" already removed.
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\System" /v "AllowClipboardHistory" /f && echo reg value "AllowClipboardHistory" successfully removed. || echo reg value "AllowClipboardHistory" already removed.
@@ -2020,9 +2028,9 @@ goto :WINDOWSREPAIRS
 call :SCALE 81 20
 title !#TITLE:`=Repair Backgrounds Apps!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#          . . . I'm repairing Backgrounds Apps . . .           #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#          . . . I'm repairing Backgrounds Apps . . .           #
+echo %@move_right:?=7%#################################################################
 echo:
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground" /f && echo reg value "LetAppsRunInBackground" successfully removed. || echo reg value "LetAppsRunInBackground" already removed.
 >nul 2>&1 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy" /v "LetAppsRunInBackground_UserInControlOfTheseApps" /f && echo reg value "LetAppsRunInBackground_UserInControlOfTheseApps" successfully removed. || echo reg value "LetAppsRunInBackground_UserInControlOfTheseApps" already removed.
@@ -2051,9 +2059,9 @@ goto :MOREFEATURES
 call :SCALE 80 29
 title !#TITLE:`=%1 Game Boost!
 echo !CYAN!
-echo %@move_right:x=7%#################################################################
-echo %@move_right:x=7%#              . . . I'm %1 Game Boost . . .             #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+echo %@move_right:?=7%#              . . . I'm %1 Game Boost . . .             #
+echo %@move_right:?=7%#################################################################
 echo:
 >nul 2>&1 netsh interface tcp set global autotuninglevel=%2 && echo netsh interface "tcp global autotuninglevel" successfully set to %3. || echo netsh interface "tcp global autotuninglevel" does not exist or an error happend.
 >nul 2>&1 netsh interface tcp set heuristics %3 && echo netsh interface "tcp heuristics" successfully set to %3. || echo netsh interface "tcp heuristics" does not exist or an error happend.
@@ -2063,7 +2071,7 @@ for %%A in (PeerDistSvc MSiSCSI SNMPTRAP napagent CertPropSvc AxInstSV AppMgmt R
 >nul 2>&1 sc config "%%A" start=%3 && echo service "%%A" successfully set to %3. || echo service "%%A" does not exist or an error happend.
 )
 echo:
-echo %@move_right:x=7%Done, now GameBoost is %4. :')
+echo %@move_right:?=7%Done, now GameBoost is %4. :')
 <nul set /p=!YELLOW!
 timeout /t 5
 exit /b
@@ -2080,22 +2088,22 @@ call :ROSE "Windows Tweaks"
 call :SCALE !scale[windowstweaks]!
 title !#TITLE:`=Windows Tweaks!
 echo !CYAN!
-echo %@move_right:x=26%══════════════════════
-echo %@move_right:x=25%// !RED!█!BGYELLOW!!BLACK! WINDOWS TWEAKS !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=6%╔════════════════════════════════════════════════════════════╗
-echo %@move_right:x=6%║                                                            ║
-echo %@move_right:x=6%║    !YELLOW!1!WHITE! Disable desktop F1 keyboard "Help" shortcut.!CYAN!          ║
-echo %@move_right:x=6%║    !YELLOW!2!WHITE! Disable context menu "Share with" and "Share".!CYAN!        ║
-echo %@move_right:x=6%║    !YELLOW!3!WHITE! Disable context menu "Troubleshoot compatibility".!CYAN!    ║
-echo %@move_right:x=6%║    !YELLOW!4!WHITE! Disable context menu "Include in library".!CYAN!            ║
-echo %@move_right:x=6%║    !YELLOW!5!WHITE! Disable context menu "Send to".!CYAN!                       ║
-echo %@move_right:x=6%║    !YELLOW!6!WHITE! Disable context menu "Restore previous versions".!CYAN!     ║
-echo %@move_right:x=6%║    !YELLOW!7!WHITE! Disable Properties Tab "Previous Versions".!CYAN!           ║
-echo %@move_right:x=6%║    !YELLOW!8!WHITE! Enable "Ultimate Performance" power scheme.!CYAN!           ║
-echo %@move_right:x=6%║    !YELLOW!9!WHITE! Disk Cleanup.!CYAN!                                         ║
-echo %@move_right:x=6%║   !YELLOW!10!CYAN!  ^>  !WHITE!More Windows Tweaks !GREEN!(Portable Apps)!CYAN!               ║
-echo %@move_right:x=6%║                                                            ║
-echo %@move_right:x=6%╚════════════════════════════════════════════════════════════╝
+echo %@move_right:?=26%══════════════════════
+echo %@move_right:?=25%// !RED!█!BGYELLOW!!BLACK! WINDOWS TWEAKS !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=6%╔════════════════════════════════════════════════════════════╗
+echo %@move_right:?=6%║                                                            ║
+echo %@move_right:?=6%║    !YELLOW!1!WHITE! Disable desktop F1 keyboard "Help" shortcut.!CYAN!          ║
+echo %@move_right:?=6%║    !YELLOW!2!WHITE! Disable context menu "Share with" and "Share".!CYAN!        ║
+echo %@move_right:?=6%║    !YELLOW!3!WHITE! Disable context menu "Troubleshoot compatibility".!CYAN!    ║
+echo %@move_right:?=6%║    !YELLOW!4!WHITE! Disable context menu "Include in library".!CYAN!            ║
+echo %@move_right:?=6%║    !YELLOW!5!WHITE! Disable context menu "Send to".!CYAN!                       ║
+echo %@move_right:?=6%║    !YELLOW!6!WHITE! Disable context menu "Restore previous versions".!CYAN!     ║
+echo %@move_right:?=6%║    !YELLOW!7!WHITE! Disable Properties Tab "Previous Versions".!CYAN!           ║
+echo %@move_right:?=6%║    !YELLOW!8!WHITE! Enable "Ultimate Performance" power scheme.!CYAN!           ║
+echo %@move_right:?=6%║    !YELLOW!9!WHITE! Disk Cleanup.!CYAN!                                         ║
+echo %@move_right:?=6%║   !YELLOW!10!CYAN!  ^>  !WHITE!More Windows Tweaks !GREEN!(Portable Apps)!CYAN!               ║
+echo %@move_right:?=6%║                                                            ║
+echo %@move_right:?=6%╚════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -2229,6 +2237,314 @@ call :CHOOSE BACK && goto :MOREFEATURES
 call :ERRORMESSAGE
 goto :CONTINUEWINDOWSTWEAKS
 
+:HWID
+if not defined scale[HWID] (
+    set scale[hwid]=90 25
+)
+call :SCALE !scale[HWID]!
+title !#TITLE:`=Hardware Identification!
+call :ROSE "Hardware Identification"
+
+:CLEARHWID
+call :CHECK_HWIDOUTPUTDIRECTORY
+
+:CONTINUEHWID
+call :SCALE !scale[HWID]!
+title !#TITLE:`=Hardware Identification!
+echo !CYAN!
+echo:
+echo %@move_right:?=30%═══════════════════════════════
+echo %@move_right:?=29%// !RED!█!BGYELLOW!!BLACK! Hardware Identification !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=14%╔════════════════════════════════════════════════════════════╗
+echo %@move_right:?=14%║                                                            ║
+if "!language!"=="EN" (
+echo %@move_right:?=14%║                     !YELLOW!1!WHITE! Summary analysis!CYAN!                     ║
+) else if "!language!"=="FR" (
+echo %@move_right:?=14%║                     !YELLOW!1!WHITE! Analyse sommaire!CYAN!                     ║
+)
+if "!language!"=="EN" (
+echo %@move_right:?=14%║                     !YELLOW!2!WHITE! Deep analysis!CYAN!                        ║
+) else if "!language!"=="FR" (
+echo %@move_right:?=14%║                     !YELLOW!2!WHITE! Analyse approfondi!CYAN!                   ║
+)
+if "!language!"=="EN" (
+echo %@move_right:?=14%║                     !YELLOW!3!WHITE! Extreme analysis ^(coming soon^)!CYAN!       ║
+) else if "!language!"=="FR" (
+echo %@move_right:?=14%║                     !YELLOW!3!WHITE! Analyse extrême ^(prochainement^)!CYAN!      ║
+)
+echo %@move_right:?=14%║                                                            ║
+echo %@move_right:?=14%╠════════════════════════════════════════════════════════════╣
+if "!language!"=="EN" (
+echo %@move_right:?=14%║    !BRIGHTMAGENTA!These scripts won't display "plug and play" devices.!CYAN!    ║
+) else if "!language!"=="FR" (
+echo %@move_right:?=14%║!BRIGHTMAGENTA!Ce script n'affichera pas les périphériques "plug and play".!CYAN!║
+)
+echo %@move_right:?=14%╚════════════════════════════════════════════════════════════╝
+if "!language!"=="EN" set t=Download location:
+if "!language!"=="FR" set t=Emplacement de téléchargement:
+echo %@move_right:?=11%!BRIGHTMAGENTA!!t!!WHITE! !HWIDOutputDirectory!!CYAN!
+echo %@move_right:?=11%════════════════════════════════════════════════════════════════════════
+echo !BRIGHTBLACK!
+if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
+if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
+call :DRAW_CENTER newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" / "!YELLOW!OPEN!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
+echo:
+call :PROMPT
+for /l %%A in (1,1,2) do if "!x!"=="%%A" (
+    if not exist "!IS_OUTPUT_DIRECTORY_HWID!\" (
+        md "!IS_OUTPUT_DIRECTORY_HWID!"
+    )
+    set hwid_wmic_parser[failed][#]=0
+    call :GET_DATE_TIME
+)
+if "!x!"=="1" goto :HWID_SUMMARY
+if "!x!"=="2" goto :HWID_DEEP
+call :CHOOSE BACK && goto :MOREFEATURES
+call :CHOOSE OPEN && (call :OPEN_FOLDER "!HWIDOutputDirectory!" HWID & goto :CONTINUEHWID)
+call :ERRORMESSAGE
+goto :CONTINUEHWID
+
+:HWID_SUMMARY
+if not defined scale[HWID_summary] (
+    set scale[HWID_summary]=100 9001
+)
+call :SCALE !scale[HWID_summary]!
+echo !CYAN!
+::#####################
+::?TODO|WHAT THEY ARE?
+::#####################
+::CDROM
+::COMPUTERSYSTEM
+::DISKQUOTA
+::DMACHANNEL
+::JOB
+::NETUSE
+::NTDOMAIN
+::NTEVENT
+::ONBOARDDEVICE
+::PAGEFILESET
+::PRINTER
+::PRINTERCONFIG
+::PRINTJOB
+::PRODUCT
+::RDACCOUNT
+::RDNIC
+::RDPERMISSIONS
+::RDTOGGLE
+::SOFTWAREFEATURE
+::SYSTEMENCLOSURE
+::UPS
+::VOLUMEUSERQUOTA
+::ALIAS
+::BOOTCONFIG
+::DATAFILE
+::SOFTWAREELEMENT
+::#####################
+:: powershell GWMI Win32_PNPEntity
+:: add TIMEZONE
+:: call :HWID_WMIC_PARSER "OS (Windows)" OS "FreePhysicalMemory"
+call :HWID_WMIC_PARSER "OS (Windows)" OS "Caption,Version,OSArchitecture,InstallDate,RegisteredUser,SystemDrive"
+:: call :HWID_WMIC_PARSER "CSProduct" CSPRODUCT "Name,Vendor"
+call :HWID_WMIC_PARSER "Motherboard" BASEBOARD "Manufacturer,Product"
+call :HWID_WMIC_PARSER "BIOS" BIOS "BIOSVersion,BuildNumber,Manufacturer,SMBIOSBIOSVersion,Version"
+call :HWID_WMIC_PARSER "CPU (Central processing unit)" CPU "Name, AddressWidth, DataWidth"
+call :HWID_WMIC_PARSER "RAM (Random-access memory)" MEMORYCHIP "Manufacturer,PartNumber,FormFactor,Speed,Capacity"
+:: call :HWID_WMIC_PARSER "Disk storage" VOLUME "Caption,Label"
+:: add Gb after the disk
+:: add SSD/USB/HDD before the disk
+:: add the drive letter and NTFS {DISKDRIVE|LOGICALDISK|PARTITION|VOLUME|VOLUMEQUOTASETTING} I talk about this in server.Bat check it
+:: connection types (ex bluthooth, usb 3.0, cd/dvd etc... {NIC|NICCONFIG|SOUNDDEV} disable or enable)
+call :HWID_WMIC_PARSER "Disk storage" DISKDRIVE "Model,Index"
+call :HWID_WMIC_PARSER "Chipset" IDECONTROLLER "Name"
+:: powershell Get-WmiObject win32_VideoController | Format-List Name
+:: wmic path CIM_PCVideoController get name /format:list
+:: call :HWID_WMIC_PARSER "Monitor display resolution" DESKTOPMONITOR "ScreenWidth,ScreenHeight"
+call :HWID_WMIC_PARSER "Graphic Card" "path win32_videocontroller" "Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate"
+:: I assume "Graphic Card" can be empty, otherwise it means there is an ":ERROR_FATAL" needed.
+if !hwid_wmic_parser[failed][#]! gtr 1 (
+    call :ERROR_FATAL HWID
+)
+if "!language!"=="EN" set "t=!CYAN!Press !YELLOW!{ANY KEY}!CYAN! to exit ..."
+if "!language!"=="FR" set "t=!CYAN!Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter ..."
+call :DRAW_CENTER no_newline t
+%@SHOWCURSOR%
+call :HWID[OPEN_FOLDER] summary
+>nul pause
+set hwid_wmic_parser[failed][#]=
+goto :CLEARHWID
+
+:HWID_DEEP
+:: add graphic card info here
+echo !CYAN!
+set #hwid_deep[alias]=ALIAS,BASEBOARD,BIOS,BOOTCONFIG,CDROM,COMPUTERSYSTEM,CPU,CSPRODUCT,%=DATAFILE=%,DCOMAPP,DESKTOP,DESKTOPMONITOR,DEVICEMEMORYADDRESS,DISKDRIVE,DISKQUOTA,DMACHANNEL,ENVIRONMENT,%=FSDIR=%,GROUP,IDECONTROLLER,IRQ,JOB,LOADORDER,LOGICALDISK,LOGON,MEMCACHE,MEMORYCHIP,MEMPHYSICAL,NETCLIENT,NETLOGIN,NETPROTOCOL,NETUSE,NIC,NICCONFIG,%=NTDOMAIN=%,%=NTEVENT=%,NTEVENTLOG,ONBOARDDEVICE,OS,PAGEFILE,PAGEFILESET,PARTITION,PORT,PORTCONNECTOR,PRINTER,PRINTERCONFIG,PRINTJOB,PROCESS,%=PRODUCT=%,QFE,QUOTASETTING,RDACCOUNT,RDNIC,RDPERMISSIONS,RDTOGGLE,RECOVEROS,REGISTRY,SCSICONTROLLER,SERVER,SERVICE,SHADOWCOPY,SHADOWSTORAGE,SHARE,%=SOFTWAREELEMENT=%,SOFTWAREFEATURE,SOUNDDEV,STARTUP,SYSACCOUNT,SYSDRIVER,SYSTEMENCLOSURE,SYSTEMSLOT,TAPEDRIVE,TEMPERATURE,TIMEZONE,UPS,USERACCOUNT,VOLTAGE,VOLUME,VOLUMEQUOTASETTING,VOLUMEUSERQUOTA,WMISET
+for %%A in (
+    !#hwid_deep[alias]!
+) do (
+    set /a index+=1
+)
+for %%A in (
+    !#hwid_deep[alias]!
+) do (
+    set /a counter+=1, percentage=counter*100/index
+    <nul set /p="Now processing (!percentage!/100%%): [!MAGENTA!%%A!CYAN!] ...                   !\R!"
+    >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-deep_[!date_time!].log" (
+        2>nul WMIC %%A get /all /format:LIST || (
+            set /a hwid_wmic_parser[failed][#]+=1
+        )
+    )
+)
+echo                        Finished processing all ALIAS (100/100%%)
+:: Assume there need an ":ERROR_FATAL" only if all "#hwid_deep[alias]" failed.
+if !hwid_wmic_parser[failed][#]!==74 (
+    call :ERROR_FATAL HWID
+)
+call :HWID[OPEN_FOLDER] deep
+set #hwid_deep[alias]=
+set hwid_wmic_parser[failed][#]=
+goto :CLEARHWID
+
+:HWID[OPEN_FOLDER]
+if exist "!IS_OUTPUT_DIRECTORY_HWID!\HWID-%1_[!date_time!].log" (
+    >nul timeout /t 2 /nobreak
+    call :OPEN_FOLDER "!HWIDOutputDirectory!" HWID && (
+        >nul timeout /t 1 /nobreak
+    )
+    if "!language!"=="EN" set t="Hardware Identification successfully saved at:!\N!!\N!'!IS_OUTPUT_DIRECTORY_HWID!\HWID-%1_[!date_time!].log'!\N!!\N!Do you want to open it now ?"
+    if "!language!"=="FR" set t="Hardware Identification enregistrés avec succès à:!\N!!\N!'!IS_OUTPUT_DIRECTORY_HWID!\HWID-%1_[!date_time!].log'!\N!!\N!Voulez-vous l'ouvrir maintenant ?"
+    call :MSGBOX_LEVEL 69668 "Illegal Services"
+    if "!el!"=="6" (
+        start /max "" "!IS_OUTPUT_DIRECTORY_HWID!\HWID-%1_[!date_time!].log"
+        >nul timeout /t 2 /nobreak
+    )
+)
+exit /b 0
+
+:HWID_WMIC_PARSER
+call :WMIC_PARSER %2 %3
+if !wmic_parser_round[#]!==0 (
+    set /a hwid_wmic_parser[failed][#]+=1
+    exit /b 1
+)
+set "hwid_wmic_parser[string]=%~1:"
+echo !MAGENTA!!hwid_wmic_parser[string]!!GREEN!
+>>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-Summary_[!date_time!].log" (
+    echo !hwid_wmic_parser[string]!
+)
+for /l %%A in (1,1,!wmic_parser_round[#]!) do (
+    for %%B in (%~3) do (
+        for /l %%C in (1,1,!wmic_parser_output[%%A][#]!) do (
+            for /f "tokens=1*delims==" %%D in ("!wmic_parser_output[%%A][%%C]!") do (
+                if /i "%%B"=="%%D" (
+                    if "%%E"=="" (
+                        if "%~2"=="VOLUME" (
+                            set "hwid_wmic_parser[string]=%%D=%%E"
+                            echo !hwid_wmic_parser[string]!
+                            >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-Summary_[!date_time!].log" (
+                                echo !hwid_wmic_parser[string]!
+                            )
+                        )
+                    ) else (
+                        set "wmic_parser[data]=%%E"
+                        set "wmic_parser[data]=!wmic_parser[data]:"=!"
+                        if not "!wmic_parser[data]!"=="To Be Filled By O.E.M." (
+                            if not "!wmic_parser[data]!"=="{To Be Filled By O.E.M.}"  (
+                                set "hwid_wmic_parser[string]=%%D=%%E"
+                                echo !hwid_wmic_parser[string]!
+                                >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-Summary_[!date_time!].log" (
+                                    echo !hwid_wmic_parser[string]!
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    )
+)
+for /f "delims==" %%A in ('2^>nul set wmic_parser') do (
+    set %%A=
+)
+if defined hwid_wmic_parser[string] (
+    set hwid_wmic_parser[string]=
+)
+echo:
+>>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-Summary_[!date_time!].log" (
+    echo:
+)
+exit /b 0
+
+:: :FORMAT_WMIC_PARSER[OS]
+:: if defined @wmic_parser[post_processing_writting] (
+::     set @wmic_parser[post_processing_writting]=
+:: )
+:: for /l %%A in (1,1,!wmic_parser_round[#]!) do (
+::     for /l %%B in (1,1,!wmic_parser_output[%%A][#]!) do (
+::         for /f "tokens=1*delims==" %%C in ("!wmic_parser_output[%%A][%%B]!") do (
+::             if /i "Caption"=="%%C" (
+::                 set "@wmic_parser[post_processing_writting]=%%D"
+::             ) else if /i "Version"=="%%C" (
+::                 set "@wmic_parser[post_processing_writting]=!@wmic_parser[post_processing_writting]! (%%D)"
+::             ) else (
+::                 set "@wmic_parser[post_processing_writting]=!@wmic_parser[post_processing_writting]! (%%D)"
+::             )
+::         )
+::     )
+:: )
+:: if defined @wmic_parser[post_processing_writting] (
+::     echo !"!!@wmic_parser[post_processing_writting]!!"!
+::     pause
+::     set @wmic_parser[post_processing_writting]=
+:: )
+:: exit /b 0
+
+:WMIC_PARSER <ALIAS> <property(s)>
+for /f "delims==" %%A in ('2^>nul set wmic_parser') do (
+    set %%A=
+)
+set wmic_parser_round[#]=0
+for /f "tokens=1*delims==" %%A in ('"2>nul WMIC %~1 get %~2 /format:LIST"') do (
+    if not "%%B"=="" (
+        set "wmic_parser[property]=%%A"
+        if defined wmic_parser[property] (
+            set "wmic_parser[data]=%%B"
+            if defined wmic_parser[data] (
+                set "wmic_parser[data]=!wmic_parser[data]:~0,-1!"
+                for %%C in (%~2) do (
+                    if /i "!wmic_parser[property]!"=="%%C" (
+                        if !wmic_parser_round[#]!==0 (
+                            set wmic_parser_round[#]=1
+                        )
+                        if defined wmic_parser[property][!wmic_parser[property]!] (
+                            set /a wmic_parser_round[#]+=1
+                            set wmic_parser_output[!wmic_parser_round[#]!][#]=0
+                            for /f "delims==" %%D in ('2^>nul set wmic_parser[property][') do (
+                                set %%D=
+                            )
+                        )
+                        set /a wmic_parser_output[!wmic_parser_round[#]!][#]+=1
+                        for %%D in (!wmic_parser_round[#]!) do (
+                            set "wmic_parser_output[!wmic_parser_round[#]!][!wmic_parser_output[%%D][#]!]=!wmic_parser[property]!=!wmic_parser[data]!"
+                        )
+                        set "wmic_parser[property][!wmic_parser[property]!]=1"
+                    )
+                )
+            )
+        )
+    )
+)
+for /f "delims==" %%D in ('2^>nul set wmic_parser[property][') do (
+    set %%D=
+)
+for %%A in (
+    wmic_parser[property]
+    wmic_parser[data]
+) do (
+    if defined %%A (
+        set %%A=
+    )
+)
+exit /b 0
+
 :CHECKER_SETUP_FOUND
 if "!language!"=="EN" set t="New version found. Do you want to update ?!\N!!\N!Current version: !VERSION!!\N!Latest version   : !lastversion!"
 if "!language!"=="FR" set t="Nouvelle version trouvée. Voulez-vous mettre à jour ?!\N!!\N!Version actuelle  : !VERSION!!\N!Dernière version : !lastversion!"
@@ -2270,117 +2586,117 @@ call :DRAW_CENTER newline "■█!BGYELLOW!!RED!█ !BLACK!!t!!RED! █!BGBLACK!
 echo:
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Is Illegal Services open source? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Yes, under the General Public License v3.0 ^(GNU GPLv3^).
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Is Illegal Services open source? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Yes, under the General Public License v3.0 ^(GNU GPLv3^).
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Est-ce qu'Illegal Services est Open Source ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Oui, sous la General Public License v3.0 ^(GNU GPLv3^).
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Est-ce qu'Illegal Services est Open Source ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Oui, sous la General Public License v3.0 ^(GNU GPLv3^).
 )
-echo %@move_right:x=6%!GREEN!!UNDERLINE!!git_source:[404 Git proxy not found]=[404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source!!UNDERLINEOFF!
+echo %@move_right:?=6%!GREEN!!UNDERLINE!!git_source:[404 Git proxy not found]=[404 Git proxy not found]. Maybe: https://github.com/Illegal-Services/Illegal_Services/tree/source!!UNDERLINEOFF!
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Is Illegal Services illegal? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Illegal Services is legal, but services provided inside are mostly illegal.
-echo %@move_right:x=6%!GREEN!Illegal Services does not store any copyrighted files locally or on its server.
-echo %@move_right:x=6%!GREEN!All content are provided by non-affiliated third parties.
-echo %@move_right:x=6%!GREEN!You are solely responsible for their use at your own risk.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Is Illegal Services illegal? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Illegal Services is legal, but services provided inside are mostly illegal.
+echo %@move_right:?=6%!GREEN!Illegal Services does not store any copyrighted files locally or on its server.
+echo %@move_right:?=6%!GREEN!All content are provided by non-affiliated third parties.
+echo %@move_right:?=6%!GREEN!You are solely responsible for their use at your own risk.
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Illegal Services est-il illégal ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Illegal Services est légal, mais les services fournis à l'intérieur sont principalement illégaux.
-echo %@move_right:x=6%!GREEN!Illegal Services ne stocke aucun fichier sous copyright localement ou sur son serveur.
-echo %@move_right:x=6%!GREEN!Tous les contenus sont fournis par des tiers non affiliés.
-echo %@move_right:x=6%!GREEN!Vous êtes tenu comme seul responsable de leur utilisation à vos propres risques.
-)
-echo !CYAN!
-if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services is detected by many antiviruses? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!The source code is converted from batch to executable using !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
-echo %@move_right:x=6%!GREEN!This conversion process leads to believe that it is a virus.
-)
-if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services est detecté par beaucoup d'antivirus ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Le code source est convertie de batch en executable en utilisant !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
-echo %@move_right:x=6%!GREEN!Ce processus de conversion fait laisser croire qu'il en est un virus.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Illegal Services est-il illégal ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Illegal Services est légal, mais les services fournis à l'intérieur sont principalement illégaux.
+echo %@move_right:?=6%!GREEN!Illegal Services ne stocke aucun fichier sous copyright localement ou sur son serveur.
+echo %@move_right:?=6%!GREEN!Tous les contenus sont fournis par des tiers non affiliés.
+echo %@move_right:?=6%!GREEN!Vous êtes tenu comme seul responsable de leur utilisation à vos propres risques.
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Why does Illegal Services keep telling me that a file is missing? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!It must be your antivirus that quarantined the file^(s^).
-echo %@move_right:x=6%!GREEN!You must add this file^(s^) or Illegal Services PATH to its whitelist or deactivate it.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services is detected by many antiviruses? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!The source code is converted from batch to executable using !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
+echo %@move_right:?=6%!GREEN!This conversion process leads to believe that it is a virus.
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services continue-il de me dire qu'un fichier est manquant ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Ce doit être votre antivirus qui met en quarantaine le/les fichier^(s^).
-echo %@move_right:x=6%!GREEN!Vous devez ajouter ce/ces fichier^(s^) ou le chemin d'Illegal Services à sa liste blanche ou désactivez-le.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services est detecté par beaucoup d'antivirus ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Le code source est convertie de batch en executable en utilisant !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
+echo %@move_right:?=6%!GREEN!Ce processus de conversion fait laisser croire qu'il en est un virus.
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Why does Illegal Services ask for administrator privileges? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!The administrator privileges are required for:
-echo %@move_right:x=6%!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks and Windows Game Booster.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why does Illegal Services keep telling me that a file is missing? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!It must be your antivirus that quarantined the file^(s^).
+echo %@move_right:?=6%!GREEN!You must add this file^(s^) or Illegal Services PATH to its whitelist or deactivate it.
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services demandent-ils des privilèges d'administrateur ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Les privilèges administrateurs sont requis pour:
-echo %@move_right:x=6%!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks et Windows Game Booster.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services continue-il de me dire qu'un fichier est manquant ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Ce doit être votre antivirus qui met en quarantaine le/les fichier^(s^).
+echo %@move_right:?=6%!GREEN!Vous devez ajouter ce/ces fichier^(s^) ou le chemin d'Illegal Services à sa liste blanche ou désactivez-le.
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services x IS.bookmarks.html soooooo slow to start? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!This is known to be Windows Defender or an other antivirus doing he's
-echo %@move_right:x=6%!GREEN!security scans on 'bookmarks_parser.exe' before to run it...
-echo %@move_right:x=6%!GREEN!We recommend whitelisting the Illegal Services folder in your antivirus software^(s^)
-echo %@move_right:x=6%!GREEN!to fix this issue and prevent a similar issue in the future.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why does Illegal Services ask for administrator privileges? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!The administrator privileges are required for:
+echo %@move_right:?=6%!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks and Windows Game Booster.
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services x IS.bookmarks.html est-il siiiiii lent à démarrer ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Ceci est connu pour être Windows Defender ou un autre antivirus faisant ces
-echo %@move_right:x=6%!GREEN!scans de sécurité sur 'bookmarks_parser.exe' avant de l'exécuter...
-echo %@move_right:x=6%!GREEN!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos logiciels antivirus
-echo %@move_right:x=6%!GREEN!pour résoudre ce problème et éviter un problème similaire à l'avenir.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services demandent-ils des privilèges d'administrateur ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Les privilèges administrateurs sont requis pour:
+echo %@move_right:?=6%!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks et Windows Game Booster.
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ What is the difference between build and release updates? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Build updates are updates that do not require you to update the installer.
-echo %@move_right:x=6%!GREEN!They are mostly used to update "Illegal_Services.exe".
-echo %@move_right:x=6%!GREEN!These are the last 2 digits of the version number ^(vx.x.[x.x]^).
-echo %@move_right:x=6%!GREEN!Release updates are updates that requires updating the installer.
-echo %@move_right:x=6%!GREEN!They are only used to update Illegal Services dependencies.
-echo %@move_right:x=6%!GREEN!These are the first 2 digits of the version number ^(v[x.x].x.x^).
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services x IS.bookmarks.html soooooo slow to start? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!This is known to be Windows Defender or an other antivirus doing he's
+echo %@move_right:?=6%!GREEN!security scans on 'bookmarks_parser.exe' before to run it...
+echo %@move_right:?=6%!GREEN!We recommend whitelisting the Illegal Services folder in your antivirus software^(s^)
+echo %@move_right:?=6%!GREEN!to fix this issue and prevent a similar issue in the future.
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Quelle est la différence entre les mises à jour de build et de release ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Les mises à jour de build sont des mises à jour qui ne vous obligent pas à mettre à jour l'installateur.
-echo %@move_right:x=6%!GREEN!Elles sont principalement utilisés pour mettre à jour "illegal_services.exe".
-echo %@move_right:x=6%!GREEN!Ce sont les 2 derniers chiffres du  la version ^(vx.x.[x.x]^).
-echo %@move_right:x=6%!GREEN!Les mises à jour de release sont des mises à jour nécessitant une mise à jour de l'installateur.
-echo %@move_right:x=6%!GREEN!Ils ne sont utilisés que pour mettre à jour les dépendances d'Illegal Services.
-echo %@move_right:x=6%!GREEN!Ce sont les 2 premiers chiffres de la version ^(v [x.x].x.x^).
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services x IS.bookmarks.html est-il siiiiii lent à démarrer ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Ceci est connu pour être Windows Defender ou un autre antivirus faisant ces
+echo %@move_right:?=6%!GREEN!scans de sécurité sur 'bookmarks_parser.exe' avant de l'exécuter...
+echo %@move_right:?=6%!GREEN!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos logiciels antivirus
+echo %@move_right:?=6%!GREEN!pour résoudre ce problème et éviter un problème similaire à l'avenir.
 )
-echo !CYAN!
-if "!language!"=="EN" echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ With which operating systems is Illegal Services compatible? █!BGBLACK!!CYAN!█■
-if "!language!"=="FR" echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Avec qu'elle système d'exploitation Illegal Services est-t'il compatible ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Windows 10 and 11 (x86/x64).
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Can you make Illegal Services compatible with more operating system? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!No, but IS.bookmarks.html and IS Bookmarks web extension are.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ What is the difference between build and release updates? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Build updates are updates that do not require you to update the installer.
+echo %@move_right:?=6%!GREEN!They are mostly used to update "Illegal_Services.exe".
+echo %@move_right:?=6%!GREEN!These are the last 2 digits of the version number ^(vx.x.[x.x]^).
+echo %@move_right:?=6%!GREEN!Release updates are updates that requires updating the installer.
+echo %@move_right:?=6%!GREEN!They are only used to update Illegal Services dependencies.
+echo %@move_right:?=6%!GREEN!These are the first 2 digits of the version number ^(v[x.x].x.x^).
 )
 if "!language!"=="FR" (
-echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Pouvez-vous rendre Illegal Services compatible pour d'autre système d'exploitation ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!Non. Mais IS.bookmarks.html et l'extension pour navigateur IS Bookmarks le sont.
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Quelle est la différence entre les mises à jour de build et de release ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Les mises à jour de build sont des mises à jour qui ne vous obligent pas à mettre à jour l'installateur.
+echo %@move_right:?=6%!GREEN!Elles sont principalement utilisés pour mettre à jour "illegal_services.exe".
+echo %@move_right:?=6%!GREEN!Ce sont les 2 derniers chiffres du  la version ^(vx.x.[x.x]^).
+echo %@move_right:?=6%!GREEN!Les mises à jour de release sont des mises à jour nécessitant une mise à jour de l'installateur.
+echo %@move_right:?=6%!GREEN!Ils ne sont utilisés que pour mettre à jour les dépendances d'Illegal Services.
+echo %@move_right:?=6%!GREEN!Ce sont les 2 premiers chiffres de la version ^(v [x.x].x.x^).
 )
 echo !CYAN!
-if "!language!"=="EN" echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ In which languages is Illegal Services developed? █!BGBLACK!!CYAN!█■
-if "!language!"=="FR" echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ En quels langages est développé Illegal Services ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!98%% Batch, 1%% PowerShell, 1%% VBScript.
+if "!language!"=="EN" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ With which operating systems is Illegal Services compatible? █!BGBLACK!!CYAN!█■
+if "!language!"=="FR" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Avec qu'elle système d'exploitation Illegal Services est-t'il compatible ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Windows 10 and 11 (x86/x64).
 echo !CYAN!
-if "!language!"=="EN" echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ When did you start Illegal Services project? █!BGBLACK!!CYAN!█■
-if "!language!"=="FR" echo %@move_right:x=3%■█!BGWHITE!!RED!█ ♦ Quand est-ce que le projet d'Illegal Services à commencé ? █!BGBLACK!!CYAN!█■
-echo %@move_right:x=6%!GREEN!v1.0.0.0 - 22/05/2020
+if "!language!"=="EN" (
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Can you make Illegal Services compatible with more operating system? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!No, but IS.bookmarks.html and IS Bookmarks web extension are.
+)
+if "!language!"=="FR" (
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pouvez-vous rendre Illegal Services compatible pour d'autre système d'exploitation ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!Non. Mais IS.bookmarks.html et l'extension pour navigateur IS Bookmarks le sont.
+)
+echo !CYAN!
+if "!language!"=="EN" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ In which languages is Illegal Services developed? █!BGBLACK!!CYAN!█■
+if "!language!"=="FR" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ En quels langages est développé Illegal Services ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!98%% Batch, 1%% PowerShell, 1%% VBScript.
+echo !CYAN!
+if "!language!"=="EN" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ When did you start Illegal Services project? █!BGBLACK!!CYAN!█■
+if "!language!"=="FR" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Quand est-ce que le projet d'Illegal Services à commencé ? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=6%!GREEN!v1.0.0.0 - 22/05/2020
 echo:
 echo !CYAN!
 if "!language!"=="EN" set "t=Press !YELLOW!{ANY KEY}!CYAN! to exit ..."
@@ -2753,10 +3069,10 @@ exit /b 0
 call :CHECK_YOUTUBEDLPRIORITY
 <nul set /p="!\E!]0;!DEBUG!YouTube Downloader    |!youtube_dl_executable! !a!|    |!o1!|    |Priority: !YouTubeDLPriority:~1!| - Illegal Services!\E!\"
 echo !BRIGHTBLACK!
-echo %@move_right:x=7%##############################################
-if "!language!"=="EN" echo %@move_right:x=7%#   !BRIGHTRED!♥   !CYAN!Welcome in YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!    #
-if "!language!"=="FR" echo %@move_right:x=7%#  !BRIGHTRED!♥   !CYAN!Bievenue dans YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!  #
-echo %@move_right:x=7%##############################################
+echo %@move_right:?=7%##############################################
+if "!language!"=="EN" echo %@move_right:?=7%#   !BRIGHTRED!♥   !CYAN!Welcome in YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!    #
+if "!language!"=="FR" echo %@move_right:?=7%#  !BRIGHTRED!♥   !CYAN!Bievenue dans YouTube Downloader   !BRIGHTRED!♥!BRIGHTBLACK!  #
+echo %@move_right:?=7%##############################################
 echo:
 if "!language!"=="EN" (
 set t1=Choice
@@ -2766,8 +3082,8 @@ if "!language!"=="FR" (
 set t1=Choix
 set t2=Veuillez patienter pendant le téléchargement de
 )
-echo %@move_right:x=7%♦ !CYAN!!t1!: !YELLOW!!o1!!BRIGHTBLACK!
-echo %@move_right:x=7%♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
+echo %@move_right:?=7%♦ !CYAN!!t1!: !YELLOW!!o1!!BRIGHTBLACK!
+echo %@move_right:?=7%♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
@@ -2777,18 +3093,18 @@ echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !CYAN!
 if "!language!"=="EN" if "!el!"=="0" (
-echo %@move_right:x=7%♦ Download finished.
-<nul set /p=%@move_right:x=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to open download location and exit...
+echo %@move_right:?=7%♦ Download finished.
+<nul set /p=%@move_right:?=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to open download location and exit...
 ) else (
-echo %@move_right:x=7%♦ Something went wrong and couldn't download the file.
-<nul set /p=%@move_right:x=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to exit...
+echo %@move_right:?=7%♦ Something went wrong and couldn't download the file.
+<nul set /p=%@move_right:?=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to exit...
 )
 if "!language!"=="FR" if "!el!"=="0" (
-echo %@move_right:x=7%♦ Téchargement terminer.
-<nul set /p=%@move_right:x=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour ouvrir l'emplacement de téchargement et quitter...
+echo %@move_right:?=7%♦ Téchargement terminer.
+<nul set /p=%@move_right:?=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour ouvrir l'emplacement de téchargement et quitter...
 ) else (
-echo %@move_right:x=7%♦ Une erreur s'est produite et n'a pas pu técharger le fichier.
-<nul set /p=%@move_right:x=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter...
+echo %@move_right:?=7%♦ Une erreur s'est produite et n'a pas pu técharger le fichier.
+<nul set /p=%@move_right:?=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter...
 )
 %@SHOWCURSOR%
 >nul pause
@@ -2801,10 +3117,10 @@ call :CHECK_PORTPRIORITY
 >nul 2>&1 net start npcap
 for %%A in (MaxUserPort`64534 TcpTimedWaitDelay`30 StrictTimeWaitSeqCheck`1) do for /f "tokens=1,2delims=`" %%B in ("%%~A") do >nul reg add "HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters" /v "%%B" /t REG_DWORD /d %%C /f
 echo !BRIGHTBLACK!
-echo %@move_right:x=7%#################################################################
-if "!language!"=="EN" echo %@move_right:x=7%#       !BRIGHTRED!♥   !CYAN!Welcome in the best Port Scanner by NMAP   !BRIGHTRED!♥!BRIGHTBLACK!        #
-if "!language!"=="FR" echo %@move_right:x=7%#    !BRIGHTRED!♥   !CYAN!Bienvenue dans le meilleur Port Scanner par NMAP   !BRIGHTRED!♥!BRIGHTBLACK!   #
-echo %@move_right:x=7%#################################################################
+echo %@move_right:?=7%#################################################################
+if "!language!"=="EN" echo %@move_right:?=7%#       !BRIGHTRED!♥   !CYAN!Welcome in the best Port Scanner by NMAP   !BRIGHTRED!♥!BRIGHTBLACK!        #
+if "!language!"=="FR" echo %@move_right:?=7%#    !BRIGHTRED!♥   !CYAN!Bienvenue dans le meilleur Port Scanner par NMAP   !BRIGHTRED!♥!BRIGHTBLACK!   #
+echo %@move_right:?=7%#################################################################
 echo:
 if "!language!"=="EN" (
 set t1=Time
@@ -2814,9 +3130,9 @@ if "!language!"=="FR" (
 set t1=Temps
 set t2=Veuillez patienter pendant le scan de
 )
-echo %@move_right:x=7%♦ !CYAN!Scan: !YELLOW!!o1!!BRIGHTBLACK!
-echo %@move_right:x=7%♦ !CYAN!!t1!: !YELLOW!!o2!!BRIGHTBLACK!
-echo %@move_right:x=7%♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
+echo %@move_right:?=7%♦ !CYAN!Scan: !YELLOW!!o1!!BRIGHTBLACK!
+echo %@move_right:?=7%♦ !CYAN!!t1!: !YELLOW!!o2!!BRIGHTBLACK!
+echo %@move_right:?=7%♦ !CYAN!!t2!: !YELLOW!!url!!CYAN! . . .
 echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !RED!
@@ -2828,18 +3144,18 @@ echo !BRIGHTBLACK!
 echo =========================================================================================================
 echo !CYAN!
 if "!language!"=="EN" if "!el!"=="0" (
-echo %@move_right:x=7%♦ Scan finished.
-<nul set /p=%@move_right:x=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to exit...
+echo %@move_right:?=7%♦ Scan finished.
+<nul set /p=%@move_right:?=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to exit...
 ) else (
-echo %@move_right:x=7%♦ Something went wrong and couldn't scan.
-<nul set /p=%@move_right:x=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to exit...
+echo %@move_right:?=7%♦ Something went wrong and couldn't scan.
+<nul set /p=%@move_right:?=7%♦ Press !YELLOW!{ANY KEY}!CYAN! to exit...
 )
 if "!language!"=="FR" if "!el!"=="0" (
-echo %@move_right:x=7%♦ Scan terminer.
-<nul set /p=%@move_right:x=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter...
+echo %@move_right:?=7%♦ Scan terminer.
+<nul set /p=%@move_right:?=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter...
 ) else (
-echo %@move_right:x=7%♦ Une erreur s'est produite et n'a pas pu scanner.
-<nul set /p=%@move_right:x=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter...
+echo %@move_right:?=7%♦ Une erreur s'est produite et n'a pas pu scanner.
+<nul set /p=%@move_right:?=7%♦ Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter...
 )
 %@SHOWCURSOR%
 >nul pause
@@ -3361,6 +3677,7 @@ call :ERROR_FATAL IS_OUTPUT_DIRECTORY
 set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
 set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
 set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
+set "IS_OUTPUT_DIRECTORY_HWID=!IS_OUTPUT_DIRECTORY!\Hardware Identification"
 >nul chcp 437
 >nul 2>&1 powershell /?
 if !errorlevel!==0 (
@@ -3374,7 +3691,7 @@ if !errorlevel!==0 (
 exit /b
 
 :CHECK_SETTINGS
-for %%A in (LANGUAGE USERNAME BACKGROUNDBORDERTRANSPARENCY BACKGROUNDDISABLED BACKGROUNDTRANSPARENCY BACKGROUNDWALLPAPER VOICEASSISTANT VOICEASSISTANTCHOICE FIRSTLAUNCH DBLASTDOWNLOAD UNTRUSTEDWEBSITESWARNING YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS PORTPRIORITY YOUTUBEDLPRIORITY DEVELOPERMODE) do call :CHECK_%%A
+for %%A in (LANGUAGE USERNAME BACKGROUNDBORDERTRANSPARENCY BACKGROUNDDISABLED BACKGROUNDTRANSPARENCY BACKGROUNDWALLPAPER VOICEASSISTANT VOICEASSISTANTCHOICE FIRSTLAUNCH DBLASTDOWNLOAD UNTRUSTEDWEBSITESWARNING YOUTUBEDLP YOUTUBEDLOUTPUTDIRECTORY YOUTUBEDLGEOBYPASS PORTPRIORITY YOUTUBEDLPRIORITY HWIDOUTPUTDIRECTORY DEVELOPERMODE) do call :CHECK_%%A
 exit /b
 
 :APPLY_BACKGROUND_SETTINGS
@@ -3643,6 +3960,14 @@ goto :CHECK_PORTPRIORITY
 set PortPriority=/!PortPriority!
 exit /b
 
+:CHECK_HWIDOUTPUTDIRECTORY
+set YouTubeDLOutputDirectory=
+for /f "tokens=2*" %%A in ('2^>nul reg query "!IS_REG!" /v "HWIDOutputDirectory"') do set "HWIDOutputDirectory=%%~fB"
+if defined HWIDOutputDirectory exit /b
+call :ERROR_REGEDIT HWIDOutputDirectory HWIDOutputDirectory
+>nul reg add "!IS_REG!" /v "HWIDOutputDirectory" /t REG_SZ /d "!IS_OUTPUT_DIRECTORY_HWID!" /f
+goto :CHECK_HWIDOUTPUTDIRECTORY
+
 :CHECK_DEVELOPERMODE
 set DeveloperKey=
 set el=
@@ -3704,7 +4029,7 @@ exit /b
 set /a "_sp=width/2"
 set x=
 %@SHOWCURSOR%
-set /p "x=!YELLOW!%@move_right:x=!_sp!%"
+set /p "x=!YELLOW!%@move_right:?=!_sp!%"
 %@HIDECURSOR%
 exit /b
 
@@ -3951,11 +4276,6 @@ exit /b
 :GET_VERSION
 call :CURL_RAW lastversion var_clear "`git_raw_version`/version.txt https://pastebin.com/raw/JB0xvJRG https://rentry.co/dmomr/raw https://rentry.org/dmomr/raw"
 if defined lastversion (
-    call :CHECK_VERSION_NUMBER lastversion || (
-        set lastversion=
-    )
-)
-if defined lastversion (
 if "!VERSION:~1,7!" geq "!lastversion:~1,7!" exit /b 0
 if "!VERSION:~1,3!" lss "!lastversion:~1,3!" exit /b 1
 if "!VERSION:~1,7!" lss "!lastversion:~1,7!" exit /b 2
@@ -4042,9 +4362,9 @@ if "%~3"=="" (
     set /a "_sp=(%3-len)/2"
 )
 if %1==newline (
-    echo %@move_right:x=!_sp!%!memory_[el]!
+    echo %@move_right:?=!_sp!%!memory_[el]!
 ) else (
-    <nul set /p="%@move_right:x=!_sp!%!memory_[el]!"
+    <nul set /p="%@move_right:?=!_sp!%!memory_[el]!"
 )
 exit /b
 
@@ -4218,7 +4538,14 @@ for %%A in (%~3) do (
     )
     set "curl_url=%%A"
     call :_CURL_RAW %1 && (
-        exit /b 0
+        if %1==lastversion (
+            call :CHECK_VERSION_NUMBER lastversion && (
+                exit /b 0
+            )
+            set lastversion=
+        ) else (
+            exit /b 0
+        )
     )
 )
 exit /b 1
@@ -4262,23 +4589,31 @@ exit /b
 
 :OPEN_FOLDER
 if exist "%~1" (
-    start "" "%~1"
+    start /max "" "%~1" && (
+        exit /b 0
+    )
 ) else (
-    if "!language!"=="EN" set "t=Folder '%~1' not found.!\N!!\N!"
-    if "!language!"=="FR" set "t=Dossier '%~1' non trouvée.!\N!!\N!"
+    if "!language!"=="EN" (
+        set "t=Folder '%~1' not found.!\N!!\N!"
+    ) else if "!language!"=="FR" (
+        set "t=Dossier '%~1' non trouvée.!\N!!\N!"
+    )
     if "%2"=="SETTINGS" (
         if "!language!"=="EN" set t="!t!You must first 'Extract IS source code.' or 'Export settings' to be able to open it."
         if "!language!"=="FR" set t="!t!Vous devez d'abord 'Extraire le code source d'IS' ou 'Exporter les paramètres' pour pouvoir ouvrir le dossier."
     ) else if "%2"=="YOUTUBEDL" (
         if "!language!"=="EN" set t="!t!You must first download an item to be able to open it."
         if "!language!"=="FR" set t="!t!Vous devez d'abord télécharger un élément pour pouvoir ouvrir le dossier."
+    ) else if "%2"=="HWID" (
+        if "!language!"=="EN" set t="!t!You must first 'Summary analysis' or 'Deep analysis' to be able to open it."
+        if "!language!"=="FR" set t="!t!Vous devez d'abord 'Analyse sommaire' ou 'Analyse approfondi' pour pouvoir ouvrir le dossier."
     ) else if "%2"=="IS_BOOKMARKS" (
         if "!language!"=="EN" set t="!t!You must first download an item to be able to open it."
         if "!language!"=="FR" set t="!t!Vous devez d'abord télécharger un élément pour pouvoir ouvrir le dossier."
     )
     call :MSGBOX 69680 "Illegal Services"
 )
-exit /b
+exit /b 1
 
 :START_DOWNLOADED_FILE
 pushd "!TMPF!"
@@ -4375,6 +4710,10 @@ if "%1"=="IS_PATH_BAT_USED" (
 ) else if "%1"=="HASH" (
     if "!language!"=="EN" set t="Illegal Services could not determine the HASH of the file '%~2'.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
     if "!language!"=="FR" set t="Illegal Services n'a pas pu déterminer le HASH du fichier '%~2'.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
+) else if "%1"=="HWID" (
+    if "!language!"=="EN" set t="Illegal Services could not parse the 'WMIC.EXE' output from the subroutine ':WMIC_PARSER'.!\N!!\N!Please report this bug: '!hwid_wmic_parser[failed][#]!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services n'a pas pu parser la sortie de 'WMIC.EXE' de la subroutine ':WMIC_PARSER'.!\N!!\N!Veuillez signaler ce bug: '!hwid_wmic_parser[failed][#]!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="ERRORLEVEL" (
     if !#el_fatal!==5 (
@@ -4620,55 +4959,55 @@ call :ROSE "Internet Protocol Television Tutorial"
 :CONTINUE_IS_BOOKMARKS_IPTV_TUTORIAL
 cls
 echo !CYAN!
-echo %@move_right:x=24%═════════════════════
+echo %@move_right:?=24%═════════════════════
 if "!language!"=="EN" set t=TUTORIAL
 if "!language!"=="FR" set t=TUTORIEL
-echo %@move_right:x=23%// !RED!█!BGYELLOW!!BLACK! IPTV !t! !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=4%╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-echo %@move_right:x=4%║                                                                                                                                             ║
-if "!language!"=="EN" echo %@move_right:x=4%║        ■█!BGYELLOW!!RED!█ ♦ What's IPTV (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                                                  ║
-if "!language!"=="FR" echo %@move_right:x=4%║        ■█!BGYELLOW!!RED!█ ♦ Qu'est-ce que l'IPTV (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                                         ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-if "!language!"=="EN" echo %@move_right:x=4%║    Internet Protocol television (IPTV) is the delivery of television content over Internet Protocol (IP) networks.                          ║
-if "!language!"=="FR" echo %@move_right:x=4%║    La télévision sur protocole Internet (IPTV) est la diffusion de contenu télévisuel sur des réseaux IP (Internet Protocol).               ║
-if "!language!"=="EN" echo %@move_right:x=4%║    This is in contrast to delivery through traditional terrestrial, satellite, and cable television formats.                                ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Cela contraste avec la diffusion via les formats traditionnels de télévision terrestre, par satellite et par câble.                      ║
-if "!language!"=="EN" echo %@move_right:x=4%║    Unlike downloaded media, IPTV offers the ability to stream the source media continuously.                                                ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Contrairement aux médias téléchargés, IPTV offre la possibilité de diffuser en continu le média source.                                  ║
-if "!language!"=="EN" echo %@move_right:x=4%║    As a result, a client media player can begin playing the content (such as a TV channel) almost immediately.                              ║
-if "!language!"=="FR" echo %@move_right:x=4%║    En conséquence, un lecteur multimédia client peut commencer à lire le contenu (comme une chaîne de télévision) presque immédiatement.    ║
-if "!language!"=="EN" echo %@move_right:x=4%║    This is known as streaming media.                                                                                                        ║
-if "!language!"=="FR" echo %@move_right:x=4%║    C'est ce qu'on appelle le streaming multimédia.                                                                                          ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-if "!language!"=="EN" echo %@move_right:x=4%║    VLC is an open-source media player to stream and play any kind of media on all the available devices.                                    ║
-if "!language!"=="FR" echo %@move_right:x=4%║    VLC est un lecteur multimédia open source pour diffuser et lire tout type de média sur tous les appareils disponibles.                   ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-if "!language!"=="EN" echo %@move_right:x=4%║    To access IPTV on VLC, make sure to have the following things listed below:                                                              ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Pour accéder à l'IPTV sur VLC, assurez-vous que les éléments suivants sont répertoriés ci-dessous:                                       ║
-if "!language!"=="EN" echo %@move_right:x=4%║    - Internet connection                                                                                                                    ║
-if "!language!"=="FR" echo %@move_right:x=4%║    - Connexion Internet                                                                                                                     ║
-echo %@move_right:x=4%║    - VLC Media Player                                                                                                                       ║
-if "!language!"=="EN" echo %@move_right:x=4%║    - M3U or M3U8 URL (That you have downloaded in one of the previous Illegal Services IPTV links.)                                         ║
-if "!language!"=="FR" echo %@move_right:x=4%║    - URL M3U ou M3U8 (que vous avez téléchargée dans l'un des liens IPTV de services illégaux précédents.)                                  ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-if "!language!"=="FR" echo %@move_right:x=4%║        ■█!BGYELLOW!!RED!█ ♦ Comment utiliser l'IPTV sur PC en utilisant VLC ? █!BGBLACK!!CYAN!█■                                                                          ║
-if "!language!"=="EN" echo %@move_right:x=4%║        ■█!BGYELLOW!!RED!█ ♦ How to watch IPTV on PC using VLC ? █!BGBLACK!!CYAN!█■                                                                                        ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-if "!language!"=="EN" echo %@move_right:x=4%║    [!YELLOW!1!CYAN!]  ^> !WHITE! Download and install VLC Media Player.!CYAN!                                                                                           ║
-if "!language!"=="FR" echo %@move_right:x=4%║    [!YELLOW!1!CYAN!]  ^> !WHITE! Téléchargez et installer VLC Media Player.!CYAN!                                                                                       ║
-if "!language!"=="EN" echo %@move_right:x=4%║    Launch VLC Media Player and choose "Media" from the menu bar.                                                                            ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Lancez VLC Media Player et choisissez "Media" dans la barre de menu.                                                                     ║
-if "!language!"=="EN" echo %@move_right:x=4%║    Select "Open Network Stream" or press "Ctrl + N" on the keyboard to open directly.                                                       ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Sélectionnez "Open Network Stream" ou appuyez sur "Ctrl + N" sur le clavier pour ouvrir directement.                                     ║
-if "!language!"=="EN" echo %@move_right:x=4%║    Under the "Network tab", enter the M3U or M3U8 URL.                                                                                      ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Sous l'onglet "Réseau", entrez l'URL M3U ou M3U8.                                                                                        ║
-if "!language!"=="EN" echo %@move_right:x=4%║    Click on "Play" to start to stream all the available content.                                                                            ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Cliquez sur "Play" pour commencer à diffuser tout le contenu disponible.                                                                 ║
-if "!language!"=="EN" echo %@move_right:x=4%║    To navigate among channels, press "Ctrl + L" to view all the available content.                                                          ║
-if "!language!"=="FR" echo %@move_right:x=4%║    Pour naviguer parmi les chaînes, appuyez sur "Ctrl + L" pour afficher tout le contenu disponible.                                        ║
-echo %@move_right:x=4%║                                                                                                                                             ║
-echo %@move_right:x=4%╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+echo %@move_right:?=23%// !RED!█!BGYELLOW!!BLACK! IPTV !t! !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=4%╔═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+echo %@move_right:?=4%║                                                                                                                                             ║
+if "!language!"=="EN" echo %@move_right:?=4%║        ■█!BGYELLOW!!RED!█ ♦ What's IPTV (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                                                  ║
+if "!language!"=="FR" echo %@move_right:?=4%║        ■█!BGYELLOW!!RED!█ ♦ Qu'est-ce que l'IPTV (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                                         ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+if "!language!"=="EN" echo %@move_right:?=4%║    Internet Protocol television (IPTV) is the delivery of television content over Internet Protocol (IP) networks.                          ║
+if "!language!"=="FR" echo %@move_right:?=4%║    La télévision sur protocole Internet (IPTV) est la diffusion de contenu télévisuel sur des réseaux IP (Internet Protocol).               ║
+if "!language!"=="EN" echo %@move_right:?=4%║    This is in contrast to delivery through traditional terrestrial, satellite, and cable television formats.                                ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Cela contraste avec la diffusion via les formats traditionnels de télévision terrestre, par satellite et par câble.                      ║
+if "!language!"=="EN" echo %@move_right:?=4%║    Unlike downloaded media, IPTV offers the ability to stream the source media continuously.                                                ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Contrairement aux médias téléchargés, IPTV offre la possibilité de diffuser en continu le média source.                                  ║
+if "!language!"=="EN" echo %@move_right:?=4%║    As a result, a client media player can begin playing the content (such as a TV channel) almost immediately.                              ║
+if "!language!"=="FR" echo %@move_right:?=4%║    En conséquence, un lecteur multimédia client peut commencer à lire le contenu (comme une chaîne de télévision) presque immédiatement.    ║
+if "!language!"=="EN" echo %@move_right:?=4%║    This is known as streaming media.                                                                                                        ║
+if "!language!"=="FR" echo %@move_right:?=4%║    C'est ce qu'on appelle le streaming multimédia.                                                                                          ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+if "!language!"=="EN" echo %@move_right:?=4%║    VLC is an open-source media player to stream and play any kind of media on all the available devices.                                    ║
+if "!language!"=="FR" echo %@move_right:?=4%║    VLC est un lecteur multimédia open source pour diffuser et lire tout type de média sur tous les appareils disponibles.                   ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+if "!language!"=="EN" echo %@move_right:?=4%║    To access IPTV on VLC, make sure to have the following things listed below:                                                              ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Pour accéder à l'IPTV sur VLC, assurez-vous que les éléments suivants sont répertoriés ci-dessous:                                       ║
+if "!language!"=="EN" echo %@move_right:?=4%║    - Internet connection                                                                                                                    ║
+if "!language!"=="FR" echo %@move_right:?=4%║    - Connexion Internet                                                                                                                     ║
+echo %@move_right:?=4%║    - VLC Media Player                                                                                                                       ║
+if "!language!"=="EN" echo %@move_right:?=4%║    - M3U or M3U8 URL (That you have downloaded in one of the previous Illegal Services IPTV links.)                                         ║
+if "!language!"=="FR" echo %@move_right:?=4%║    - URL M3U ou M3U8 (que vous avez téléchargée dans l'un des liens IPTV de services illégaux précédents.)                                  ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+if "!language!"=="FR" echo %@move_right:?=4%║        ■█!BGYELLOW!!RED!█ ♦ Comment utiliser l'IPTV sur PC en utilisant VLC ? █!BGBLACK!!CYAN!█■                                                                          ║
+if "!language!"=="EN" echo %@move_right:?=4%║        ■█!BGYELLOW!!RED!█ ♦ How to watch IPTV on PC using VLC ? █!BGBLACK!!CYAN!█■                                                                                        ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+if "!language!"=="EN" echo %@move_right:?=4%║    [!YELLOW!1!CYAN!]  ^> !WHITE! Download and install VLC Media Player.!CYAN!                                                                                           ║
+if "!language!"=="FR" echo %@move_right:?=4%║    [!YELLOW!1!CYAN!]  ^> !WHITE! Téléchargez et installer VLC Media Player.!CYAN!                                                                                       ║
+if "!language!"=="EN" echo %@move_right:?=4%║    Launch VLC Media Player and choose "Media" from the menu bar.                                                                            ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Lancez VLC Media Player et choisissez "Media" dans la barre de menu.                                                                     ║
+if "!language!"=="EN" echo %@move_right:?=4%║    Select "Open Network Stream" or press "Ctrl + N" on the keyboard to open directly.                                                       ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Sélectionnez "Open Network Stream" ou appuyez sur "Ctrl + N" sur le clavier pour ouvrir directement.                                     ║
+if "!language!"=="EN" echo %@move_right:?=4%║    Under the "Network tab", enter the M3U or M3U8 URL.                                                                                      ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Sous l'onglet "Réseau", entrez l'URL M3U ou M3U8.                                                                                        ║
+if "!language!"=="EN" echo %@move_right:?=4%║    Click on "Play" to start to stream all the available content.                                                                            ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Cliquez sur "Play" pour commencer à diffuser tout le contenu disponible.                                                                 ║
+if "!language!"=="EN" echo %@move_right:?=4%║    To navigate among channels, press "Ctrl + L" to view all the available content.                                                          ║
+if "!language!"=="FR" echo %@move_right:?=4%║    Pour naviguer parmi les chaînes, appuyez sur "Ctrl + L" pour afficher tout le contenu disponible.                                        ║
+echo %@move_right:?=4%║                                                                                                                                             ║
+echo %@move_right:?=4%╚═════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
@@ -4702,31 +5041,31 @@ call :ROSE "Torrent Tutorial"
 cls
 title !#TITLE:`=Torrent Tutorial!
 echo !CYAN!
-echo %@move_right:x=42%════════════════════════
+echo %@move_right:?=42%════════════════════════
 if "!language!"=="EN" set t=TUTORIAL
 if "!language!"=="FR" set t=TUTORIEL
-echo %@move_right:x=41%// !RED!█!BGYELLOW!!BLACK! TORRENT !t! !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:x=4%╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-echo %@move_right:x=4%║                                                                                                                                           ║
-if "!language!"=="EN" echo %@move_right:x=4%║                          ■█!BGYELLOW!!RED!█ ♦ What's a torrent (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                         ║
-if "!language!"=="FR" echo %@move_right:x=4%║                          ■█!BGYELLOW!!RED!█ ♦ Qu'est-ce qu'un torrent (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                  ║
-echo %@move_right:x=4%║                                                                                                                                           ║
-if "!language!"=="EN" echo %@move_right:x=4%║  Torrents are a method of distributing files over the internet.                                                                           ║
-if "!language!"=="FR" echo %@move_right:x=4%║  Le Torrent est une méthode de distribution de fichiers sur Internet.                                                                     ║
-if "!language!"=="EN" echo %@move_right:x=4%║  It operate over the BitTorrent protocol to facilitate what's called peer-to-peer (P2P) file sharing.                                     ║
-if "!language!"=="FR" echo %@move_right:x=4%║  Il fonctionne sur le protocole Bittorrent pour faciliter ce que l'on appelle le partage de fichiers peer-to-peer (P2P).                  ║
-if "!language!"=="EN" echo %@move_right:x=4%║  The most common way to use torrents is through a special file that uses the .torrent file extension.                                     ║
-if "!language!"=="FR" echo %@move_right:x=4%║  La façont la plus courante d'utiliser des torrents consiste à utiliser un fichier spécial qui utilise l'extension de fichier .torrent    ║
-echo %@move_right:x=4%║                                                                                                                                           ║
-if "!language!"=="EN" echo %@move_right:x=4%║                           ■█!BGYELLOW!!RED!█ ♦ How to open .torrent files ? █!BGBLACK!!CYAN!█■                                                                          ║
-if "!language!"=="FR" echo %@move_right:x=4%║                          ■█!BGYELLOW!!RED!█ ♦ Comment ouvrir des fichiers .torrent ? █!BGBLACK!!CYAN!█■                                                                 ║
-echo %@move_right:x=4%║                                                                                                                                           ║
-if "!language!"=="EN" echo %@move_right:x=4%║  !YELLOW!1!CYAN!  ^> !WHITE! Download and install qBittorrent.!CYAN!                                                                                                  ║
-if "!language!"=="FR" echo %@move_right:x=4%║  !YELLOW!1!CYAN!  ^> !WHITE! Téléchargez et installer qBittorrent.!CYAN!                                                                                              ║
-if "!language!"=="EN" echo %@move_right:x=4%║  Then you can run the .torrent that you have downloaded in one of the previous Illegal Services Torrenting links.                         ║
-if "!language!"=="FR" echo %@move_right:x=4%║  Ensuite, vous pouvez exécuter le .torrent que vous avez téléchargé dans l'un des liens de Torrenting depuis Illegal Services.            ║
-echo %@move_right:x=4%║                                                                                                                                           ║
-echo %@move_right:x=4%╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+echo %@move_right:?=41%// !RED!█!BGYELLOW!!BLACK! TORRENT !t! !RED!█!BGBLACK!!CYAN! \\
+echo %@move_right:?=4%╔═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+echo %@move_right:?=4%║                                                                                                                                           ║
+if "!language!"=="EN" echo %@move_right:?=4%║                          ■█!BGYELLOW!!RED!█ ♦ What's a torrent (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                         ║
+if "!language!"=="FR" echo %@move_right:?=4%║                          ■█!BGYELLOW!!RED!█ ♦ Qu'est-ce qu'un torrent (Wikipedia) ? █!BGBLACK!!CYAN!█■                                                                  ║
+echo %@move_right:?=4%║                                                                                                                                           ║
+if "!language!"=="EN" echo %@move_right:?=4%║  Torrents are a method of distributing files over the internet.                                                                           ║
+if "!language!"=="FR" echo %@move_right:?=4%║  Le Torrent est une méthode de distribution de fichiers sur Internet.                                                                     ║
+if "!language!"=="EN" echo %@move_right:?=4%║  It operate over the BitTorrent protocol to facilitate what's called peer-to-peer (P2P) file sharing.                                     ║
+if "!language!"=="FR" echo %@move_right:?=4%║  Il fonctionne sur le protocole Bittorrent pour faciliter ce que l'on appelle le partage de fichiers peer-to-peer (P2P).                  ║
+if "!language!"=="EN" echo %@move_right:?=4%║  The most common way to use torrents is through a special file that uses the .torrent file extension.                                     ║
+if "!language!"=="FR" echo %@move_right:?=4%║  La façont la plus courante d'utiliser des torrents consiste à utiliser un fichier spécial qui utilise l'extension de fichier .torrent    ║
+echo %@move_right:?=4%║                                                                                                                                           ║
+if "!language!"=="EN" echo %@move_right:?=4%║                           ■█!BGYELLOW!!RED!█ ♦ How to open .torrent files ? █!BGBLACK!!CYAN!█■                                                                          ║
+if "!language!"=="FR" echo %@move_right:?=4%║                          ■█!BGYELLOW!!RED!█ ♦ Comment ouvrir des fichiers .torrent ? █!BGBLACK!!CYAN!█■                                                                 ║
+echo %@move_right:?=4%║                                                                                                                                           ║
+if "!language!"=="EN" echo %@move_right:?=4%║  !YELLOW!1!CYAN!  ^> !WHITE! Download and install qBittorrent.!CYAN!                                                                                                  ║
+if "!language!"=="FR" echo %@move_right:?=4%║  !YELLOW!1!CYAN!  ^> !WHITE! Téléchargez et installer qBittorrent.!CYAN!                                                                                              ║
+if "!language!"=="EN" echo %@move_right:?=4%║  Then you can run the .torrent that you have downloaded in one of the previous Illegal Services Torrenting links.                         ║
+if "!language!"=="FR" echo %@move_right:?=4%║  Ensuite, vous pouvez exécuter le .torrent que vous avez téléchargé dans l'un des liens de Torrenting depuis Illegal Services.            ║
+echo %@move_right:?=4%║                                                                                                                                           ║
+echo %@move_right:?=4%╚═══════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
 if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
 if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
