@@ -6,18 +6,19 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
-v6.1.7.9 - 19/10/2022
+v6.1.8.0 - 21/10/2022
 * FIXED IS Setup : Support for Windows 11.
 * FIXED IS Launcher : Searching a proxy.
 * FIXED IS Source : Minor bugs.
 * IMPROVED IS Source : Support for Windows 11.
-+ IMPROVED IS Source : Moved "Portable_Apps", "YouTube DL" and "IS.bookmarks.html" folders and files to the "Illegal Services" user documents folder.
-+ IMPROVED IS Source : Moved both "Portable_Apps" and "YouTube DL" folders to "Illegal Services" user documents.
+* IMPROVED IS Source : Moved "Portable_Apps", "YouTube DL" and "IS.bookmarks.html" folders and files to the "Illegal Services" user documents folder.
+* IMPROVED IS Source : Moved both "Portable_Apps" and "YouTube DL" folders to "Illegal Services" user documents.
 * IMPROVED IS Source : Error Messages.
 + ADDED Settings : Scan down or changed domain websites whitelist.
 + ADDED IS Source : more error messages.
 + ADDED IS Source : Now logs are created in the "Illegal Services" user documents under the "logs" folder.
 + ADDED IS Source : Now before downloading IS.bookmarks.html, it checks that the online hash is different from the local one.
++ ADDED More Features : View Hardware Identification.
 + ADDED Settings : Extract IS source code (publicly)
 + UPDATED IS lib : EULA.rtf
 
