@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 0
-REM  Fileversion:  6. 1. 8. 0
+REM  Productversion:  6. 1. 8. 1
+REM  Fileversion:  6. 1. 8. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -55,6 +55,12 @@ if not exist "%IS_PATH_BAT_USED%" (
     >nul pause
     exit /b 0
 )
+if defined CP (
+    set CP=
+)
+for /f "tokens=2delims=:." %%A in ('chcp') do (
+    set /a "CP=%%A"
+)
 >nul chcp 65001
 pushd "%~dp0"
 for /f %%A in ('copy /z "%~nx0" nul') do (
@@ -63,10 +69,20 @@ for /f %%A in ('copy /z "%~nx0" nul') do (
 for /f %%A in ('forfiles /m "%~nx0" /c "cmd /c echo 0x1B"') do (
     set "\E=%%A"
 )
+set @STRIP_WHITE_SPACES=^
+(for %%a in (4096 2048 1024 512 256 128 64 32 16 8 4 2 1) do (^
+    (set "strip_white_spaces[string]=!?:~0,%%a!"^&^
+    if "!strip_white_spaces[string]: =!"==""^
+        set^^ ?=!?:~%%a!)^&^
+    (set "strip_white_spaces[string]=!?:~-%%a!"^&^
+    if "!strip_white_spaces[string]: =!"==""^
+        set^^ ?=!?:~0,-%%a!)^
+))^&^
+set strip_white_spaces[string]=
 set "x1=%~nx0"
 setlocal EnableDelayedExpansion
 set "x2=%~nx0"
-for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="\R" if not "%%A"=="\E" (
+for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="\R" if not "%%A"=="\E" if not "%%A"=="@STRIP_WHITE_SPACES" (
     set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`%%A"
 )
 if defined LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES (
@@ -202,7 +218,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.0 - 21/10/2022
+set VERSION=v6.1.8.1 - 24/10/2022
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -312,27 +328,28 @@ if "!language!"=="FR" echo  !GREEN![PASSER] . . .
 if "!language!"=="EN" <nul set /p="!sp!Checking Windows version > "
 if "!language!"=="FR" <nul set /p="!sp!Vérification de votre version de Windows > "
 <nul set /p="!GREEN![!WINDOWS_VERSION!], [x!ARCH!], "
-if defined CP (
-    set CP=
-)
 >nul 2>&1 where chcp.com || (
     call :ERROR_FATAL PATH_NOT_FOUND chcp.com
 )
+if defined current_cp (
+    set current_cp=
+)
 for /f "tokens=2delims=:." %%A in ('chcp') do (
-    set /a "CP=%%A"
+    set /a "current_cp=%%A"
 )
-if not defined CP (
-    set CP=?
+if not defined current_cp (
+    set current_cp=?
 )
-if "!CP!"=="65001" (
-    <nul set /p="!GREEN![CHCP:!CP!] . . ."
+if "!current_cp!"=="65001" (
+    <nul set /p="!GREEN![CHCP:!current_cp!] . . ."
 ) else (
-    <nul set /p="!RED![CHCP:!CP!] . . ."
+    <nul set /p="!RED![CHCP:!current_cp!] . . ."
 )
 echo:
-if not "!CP!"=="65001" (
+if not "!current_cp!"=="65001" (
     call :ERROR_FATAL CHCP
 )
+set current_cp=
 
 :LAUNCHER_APPLY_SETTINGS
 if "!language!"=="EN" <nul set /p="!sp!Applying your settings > "
@@ -2313,7 +2330,6 @@ echo !CYAN!
 ::#####################
 ::?TODO|WHAT THEY ARE?
 ::#####################
-::CDROM
 ::COMPUTERSYSTEM
 ::DISKQUOTA
 ::DMACHANNEL
@@ -2343,11 +2359,14 @@ echo !CYAN!
 :: powershell GWMI Win32_PNPEntity
 :: add TIMEZONE
 :: call :HWID_WMIC_PARSER "OS (Windows)" OS "FreePhysicalMemory"
-call :HWID_WMIC_PARSER "OS (Windows)" OS "Caption,Version,OSArchitecture,InstallDate,RegisteredUser,SystemDrive"
+call :HWID_WMIC_PARSER "OS (Windows)" OS "Caption,Version,Manufacturer,OSArchitecture,InstallDate,RegisteredUser,SystemDrive"
 :: call :HWID_WMIC_PARSER "CSProduct" CSPRODUCT "Name,Vendor"
 call :HWID_WMIC_PARSER "Motherboard" BASEBOARD "Manufacturer,Product"
 call :HWID_WMIC_PARSER "BIOS" BIOS "BIOSVersion,BuildNumber,Manufacturer,SMBIOSBIOSVersion,Version"
-call :HWID_WMIC_PARSER "CPU (Central processing unit)" CPU "Name, AddressWidth, DataWidth"
+:: need a x64 bits CPU on a x32 bits Windows to test those:
+:: call :HWID_WMIC_PARSER "AddressWidth,DataWidth"
+call :HWID_WMIC_PARSER "CPU (Central processing unit)" CPU "Name,Manufacturer"
+call :HWID_WMIC_PARSER "Chipset" IDECONTROLLER "Name,Manufacturer"
 call :HWID_WMIC_PARSER "RAM (Random-access memory)" MEMORYCHIP "Manufacturer,PartNumber,FormFactor,Speed,Capacity"
 :: call :HWID_WMIC_PARSER "Disk storage" VOLUME "Caption,Label"
 :: add Gb after the disk
@@ -2355,12 +2374,13 @@ call :HWID_WMIC_PARSER "RAM (Random-access memory)" MEMORYCHIP "Manufacturer,Par
 :: add the drive letter and NTFS {DISKDRIVE|LOGICALDISK|PARTITION|VOLUME|VOLUMEQUOTASETTING} I talk about this in server.Bat check it
 :: connection types (ex bluthooth, usb 3.0, cd/dvd etc... {NIC|NICCONFIG|SOUNDDEV} disable or enable)
 call :HWID_WMIC_PARSER "Disk storage" DISKDRIVE "Model,Index"
-call :HWID_WMIC_PARSER "Chipset" IDECONTROLLER "Name"
 :: powershell Get-WmiObject win32_VideoController | Format-List Name
 :: wmic path CIM_PCVideoController get name /format:list
 :: call :HWID_WMIC_PARSER "Monitor display resolution" DESKTOPMONITOR "ScreenWidth,ScreenHeight"
+:: I assume "Graphic Card" and "CD-ROM" can be empty, otherwise it means there is an ":ERROR_FATAL" needed.
 call :HWID_WMIC_PARSER "Graphic Card" "path win32_videocontroller" "Name,CurrentHorizontalResolution,CurrentVerticalResolution,CurrentRefreshRate"
-:: I assume "Graphic Card" can be empty, otherwise it means there is an ":ERROR_FATAL" needed.
+::what to choose: "Caption or Name" and "Drive or Id" ?
+call :HWID_WMIC_PARSER "CD-ROM" CDROM "Caption,Name,Drive,Id"
 if !hwid_wmic_parser[failed][#]! gtr 1 (
     call :ERROR_FATAL HWID
 )
@@ -2376,7 +2396,7 @@ goto :CLEARHWID
 :HWID_DEEP
 :: add graphic card info here
 echo !CYAN!
-set #hwid_deep[alias]=ALIAS,BASEBOARD,BIOS,BOOTCONFIG,CDROM,COMPUTERSYSTEM,CPU,CSPRODUCT,%=DATAFILE=%,DCOMAPP,DESKTOP,DESKTOPMONITOR,DEVICEMEMORYADDRESS,DISKDRIVE,DISKQUOTA,DMACHANNEL,ENVIRONMENT,%=FSDIR=%,GROUP,IDECONTROLLER,IRQ,JOB,LOADORDER,LOGICALDISK,LOGON,MEMCACHE,MEMORYCHIP,MEMPHYSICAL,NETCLIENT,NETLOGIN,NETPROTOCOL,NETUSE,NIC,NICCONFIG,%=NTDOMAIN=%,%=NTEVENT=%,NTEVENTLOG,ONBOARDDEVICE,OS,PAGEFILE,PAGEFILESET,PARTITION,PORT,PORTCONNECTOR,PRINTER,PRINTERCONFIG,PRINTJOB,PROCESS,%=PRODUCT=%,QFE,QUOTASETTING,RDACCOUNT,RDNIC,RDPERMISSIONS,RDTOGGLE,RECOVEROS,REGISTRY,SCSICONTROLLER,SERVER,SERVICE,SHADOWCOPY,SHADOWSTORAGE,SHARE,%=SOFTWAREELEMENT=%,SOFTWAREFEATURE,SOUNDDEV,STARTUP,SYSACCOUNT,SYSDRIVER,SYSTEMENCLOSURE,SYSTEMSLOT,TAPEDRIVE,TEMPERATURE,TIMEZONE,UPS,USERACCOUNT,VOLTAGE,VOLUME,VOLUMEQUOTASETTING,VOLUMEUSERQUOTA,WMISET
+set #hwid_deep[alias]=%=ALIAS=%,BASEBOARD,BIOS,BOOTCONFIG,CDROM,COMPUTERSYSTEM,CPU,CSPRODUCT,%=DATAFILE=%,DCOMAPP,DESKTOP,DESKTOPMONITOR,DEVICEMEMORYADDRESS,DISKDRIVE,DISKQUOTA,DMACHANNEL,ENVIRONMENT,%=FSDIR=%,GROUP,IDECONTROLLER,IRQ,JOB,LOADORDER,LOGICALDISK,LOGON,MEMCACHE,MEMORYCHIP,MEMPHYSICAL,NETCLIENT,NETLOGIN,NETPROTOCOL,NETUSE,NIC,NICCONFIG,%=NTDOMAIN=%,%=NTEVENT=%,NTEVENTLOG,ONBOARDDEVICE,OS,PAGEFILE,PAGEFILESET,PARTITION,PORT,PORTCONNECTOR,PRINTER,PRINTERCONFIG,PRINTJOB,PROCESS,%=PRODUCT=%,QFE,QUOTASETTING,RDACCOUNT,RDNIC,RDPERMISSIONS,RDTOGGLE,RECOVEROS,REGISTRY,SCSICONTROLLER,SERVER,SERVICE,SHADOWCOPY,SHADOWSTORAGE,SHARE,%=SOFTWAREELEMENT=%,SOFTWAREFEATURE,SOUNDDEV,STARTUP,SYSACCOUNT,SYSDRIVER,SYSTEMENCLOSURE,SYSTEMSLOT,TAPEDRIVE,TEMPERATURE,TIMEZONE,UPS,USERACCOUNT,VOLTAGE,VOLUME,VOLUMEQUOTASETTING,VOLUMEUSERQUOTA,WMISET
 for %%A in (
     !#hwid_deep[alias]!
 ) do (
@@ -2386,16 +2406,29 @@ for %%A in (
     !#hwid_deep[alias]!
 ) do (
     set /a counter+=1, percentage=counter*100/index
-    <nul set /p="Now processing (!percentage!/100%%): [!MAGENTA!%%A!CYAN!] ...                   !\R!"
-    >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-deep_[!date_time!].log" (
-        2>nul WMIC %%A get /all /format:LIST || (
-            set /a hwid_wmic_parser[failed][#]+=1
+    <nul set /p="Now processing (!percentage!%%): [!MAGENTA!%%A!CYAN!] ...                   !\R!"
+    call :WMIC_PARSER %%A /all
+    if !wmic_parser[round][#]! gtr 0 (
+        >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-deep_[!date_time!].log" (
+            echo %%A:
         )
+        for /l %%A in (1,1,!wmic_parser[round][#]!) do (
+            for /l %%B in (1,1,!wmic_parser[output][%%A][#]!) do (
+                >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-deep_[!date_time!].log" (
+                    echo !wmic_parser[output][%%A][%%B]!
+                )
+            )
+        )
+        >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-deep_[!date_time!].log" (
+            echo:
+        )
+    ) else (
+        set /a hwid_wmic_parser[failed][#]+=1
     )
 )
-echo                        Finished processing all ALIAS (100/100%%)
+echo                        Finished processing all ALIAS (100%%)
 :: Assume there need an ":ERROR_FATAL" only if all "#hwid_deep[alias]" failed.
-if !hwid_wmic_parser[failed][#]!==74 (
+if !hwid_wmic_parser[failed][#]!==73 (
     call :ERROR_FATAL HWID
 )
 call :HWID[OPEN_FOLDER] deep
@@ -2421,7 +2454,7 @@ exit /b 0
 
 :HWID_WMIC_PARSER
 call :WMIC_PARSER %2 %3
-if !wmic_parser_round[#]!==0 (
+if !wmic_parser[round][#]!==0 (
     set /a hwid_wmic_parser[failed][#]+=1
     exit /b 1
 )
@@ -2430,10 +2463,10 @@ echo !MAGENTA!!hwid_wmic_parser[string]!!GREEN!
 >>"!IS_OUTPUT_DIRECTORY_HWID!\HWID-Summary_[!date_time!].log" (
     echo !hwid_wmic_parser[string]!
 )
-for /l %%A in (1,1,!wmic_parser_round[#]!) do (
+for /l %%A in (1,1,!wmic_parser[round][#]!) do (
     for %%B in (%~3) do (
-        for /l %%C in (1,1,!wmic_parser_output[%%A][#]!) do (
-            for /f "tokens=1*delims==" %%D in ("!wmic_parser_output[%%A][%%C]!") do (
+        for /l %%C in (1,1,!wmic_parser[output][%%A][#]!) do (
+            for /f "tokens=1*delims==" %%D in ("!wmic_parser[output][%%A][%%C]!") do (
                 if /i "%%B"=="%%D" (
                     if "%%E"=="" (
                         if "%~2"=="VOLUME" (
@@ -2477,9 +2510,9 @@ exit /b 0
 :: if defined @wmic_parser[post_processing_writting] (
 ::     set @wmic_parser[post_processing_writting]=
 :: )
-:: for /l %%A in (1,1,!wmic_parser_round[#]!) do (
-::     for /l %%B in (1,1,!wmic_parser_output[%%A][#]!) do (
-::         for /f "tokens=1*delims==" %%C in ("!wmic_parser_output[%%A][%%B]!") do (
+:: for /l %%A in (1,1,!wmic_parser[round][#]!) do (
+::     for /l %%B in (1,1,!wmic_parser[output][%%A][#]!) do (
+::         for /f "tokens=1*delims==" %%C in ("!wmic_parser[output][%%A][%%B]!") do (
 ::             if /i "Caption"=="%%C" (
 ::                 set "@wmic_parser[post_processing_writting]=%%D"
 ::             ) else if /i "Version"=="%%C" (
@@ -2498,10 +2531,11 @@ exit /b 0
 :: exit /b 0
 
 :WMIC_PARSER <ALIAS> <property(s)>
-for /f "delims==" %%A in ('2^>nul set wmic_parser') do (
+for /f "delims==" %%A in ('2^>nul set wmic_parser[') do (
     set %%A=
 )
-set wmic_parser_round[#]=0
+set wmic_parser[round][#]=0
+>nul chcp !CP!
 for /f "tokens=1*delims==" %%A in ('"2>nul WMIC %~1 get %~2 /format:LIST"') do (
     if not "%%B"=="" (
         set "wmic_parser[property]=%%A"
@@ -2509,31 +2543,43 @@ for /f "tokens=1*delims==" %%A in ('"2>nul WMIC %~1 get %~2 /format:LIST"') do (
             set "wmic_parser[data]=%%B"
             if defined wmic_parser[data] (
                 set "wmic_parser[data]=!wmic_parser[data]:~0,-1!"
-                for %%C in (%~2) do (
-                    if /i "!wmic_parser[property]!"=="%%C" (
-                        if !wmic_parser_round[#]!==0 (
-                            set wmic_parser_round[#]=1
+                if defined wmic_parser[data] (
+                    %@STRIP_WHITE_SPACES:?=wmic_parser[data]%
+                )
+                if "%~2"=="/all" (
+                    set wmic_parser[should_run]=1
+                ) else (
+                    for %%C in (%~2) do (
+                        if /i "!wmic_parser[property]!"=="%%C" (
+                            set wmic_parser[should_run]=1
                         )
-                        if defined wmic_parser[property][!wmic_parser[property]!] (
-                            set /a wmic_parser_round[#]+=1
-                            set wmic_parser_output[!wmic_parser_round[#]!][#]=0
-                            for /f "delims==" %%D in ('2^>nul set wmic_parser[property][') do (
-                                set %%D=
-                            )
-                        )
-                        set /a wmic_parser_output[!wmic_parser_round[#]!][#]+=1
-                        for %%D in (!wmic_parser_round[#]!) do (
-                            set "wmic_parser_output[!wmic_parser_round[#]!][!wmic_parser_output[%%D][#]!]=!wmic_parser[property]!=!wmic_parser[data]!"
-                        )
-                        set "wmic_parser[property][!wmic_parser[property]!]=1"
                     )
+                )
+                if defined wmic_parser[should_run] (
+                    if !wmic_parser[round][#]!==0 (
+                        set wmic_parser[round][#]=1
+                    )
+                    if defined wmic_parser[property][!wmic_parser[property]!] (
+                        set /a wmic_parser[round][#]+=1
+                        set wmic_parser[output][!wmic_parser[round][#]!][#]=0
+                        for /f "delims==" %%C in ('2^>nul set wmic_parser[property][') do (
+                            set %%C=
+                        )
+                    )
+                    set /a wmic_parser[output][!wmic_parser[round][#]!][#]+=1
+                    for %%C in (!wmic_parser[round][#]!) do (
+                        set "wmic_parser[output][!wmic_parser[round][#]!][!wmic_parser[output][%%C][#]!]=!wmic_parser[property]!=!wmic_parser[data]!"
+                    )
+                    set "wmic_parser[property][!wmic_parser[property]!]=1"
+                    set wmic_parser[should_run]=
                 )
             )
         )
     )
 )
-for /f "delims==" %%D in ('2^>nul set wmic_parser[property][') do (
-    set %%D=
+>nul chcp 65001
+for /f "delims==" %%A in ('2^>nul set wmic_parser[property][') do (
+    set %%A=
 )
 for %%A in (
     wmic_parser[property]
@@ -2760,7 +2806,7 @@ if defined DEBUG (
 )
 for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
-    title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0/100%%]  ^|  [...] - Illegal Services
+    title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0%%]  ^|  [...] - Illegal Services
 )
 echo !CYAN!
 if "!language!"=="EN" echo Scan of the !index! indexed websites has started. You will be notified if any of them are down or have changed address.
@@ -2783,7 +2829,7 @@ for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style 
     )
     set "url_src=%%A"
     for /f "tokens=1*delims=/" %%B in ("!url_src:*://=!") do (
-        <nul set /p="!\E!]0;!DEBUG![!results! result!s! found from !counter!/!index! websites indexed]  |  [!percentage!/100%%]  |  [!url_src!] - Illegal Services!\E!\"
+        <nul set /p="!\E!]0;!DEBUG![!results! result!s! found from !counter!/!index! websites indexed]  |  [!percentage!%%]  |  [!url_src!] - Illegal Services!\E!\"
         if defined skip_dup (
             set skip_dup=
         )
@@ -4696,8 +4742,8 @@ if "%1"=="IS_PATH_BAT_USED" (
     )
     set /a x1=1, x2=1
 ) else if "%1"=="CHCP" (
-    if "!language!"=="EN" set t="Illegal Services cannot start because it could not set your code page number to 65001.!\N!!\N!Please report this bug: '!CP!' on our Telegram forum in order to correct this bug in a future release."
-    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu définir votre numéro de page de code sur 65001.!\N!!\N!Veuillez signaler ce bug: '!CP!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not set your code page number to 65001.!\N!!\N!Please report this bug: '!current_cp!' on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu définir votre numéro de page de code sur 65001.!\N!!\N!Veuillez signaler ce bug: '!current_cp!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
     set x2=1
 ) else if "%1"=="IS_OUTPUT_DIRECTORY" (
     if "!language!"=="EN" set t="Illegal Services cannot start because it could not determine its output directory.!\N!!\N!Please report this bug: '!IS_OUTPUT_DIRECTORY!' on our Telegram forum in order to correct this bug in a future release."
