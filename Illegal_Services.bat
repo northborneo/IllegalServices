@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 1
-REM  Fileversion:  6. 1. 8. 1
+REM  Productversion:  6. 1. 8. 2
+REM  Fileversion:  6. 1. 8. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -61,6 +61,9 @@ if defined CP (
 for /f "tokens=2delims=:." %%A in ('chcp') do (
     set /a "CP=%%A"
 )
+if not defined CP (
+    call :ERROR_FATAL CP
+)
 >nul chcp 65001
 pushd "%~dp0"
 for /f %%A in ('copy /z "%~nx0" nul') do (
@@ -82,7 +85,7 @@ set strip_white_spaces[string]=
 set "x1=%~nx0"
 setlocal EnableDelayedExpansion
 set "x2=%~nx0"
-for /f "delims==" %%A in ('set') do if not "%%A"=="x1" if not "%%A"=="x2" if not "%%A"=="\R" if not "%%A"=="\E" if not "%%A"=="@STRIP_WHITE_SPACES" (
+for /f "delims==" %%A in ('set') do if not "%%A"=="x2" if not "%%A"=="x1" if not "%%A"=="@STRIP_WHITE_SPACES" if not "%%A"=="\E" if not "%%A"=="\R" if not "%%A"=="CP" (
     set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`%%A"
 )
 if defined LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES (
@@ -218,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.1 - 24/10/2022
+set VERSION=v6.1.8.2 - 24/10/2022
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -4714,6 +4717,10 @@ for %%A in (x1 x2) do (
 if "%1"=="IS_PATH_BAT_USED" (
     if "!language!"=="EN" set t="Illegal Services cannot start because it could not found it's batch script PATH.!\N!!\N!This error is known to be special characters not yet interpreted as code page number 65001.!\N!!\N!Please report this bug: '!IS_PATH_BAT_USED!' on our Telegram forum in order to correct this bug in a future release."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas trouvé la PATH du script batch.!\N!!\N!Cette erreur est connue pour être des caractères spéciaux qui ne sont pas encore interprétés comme le numéro de page de code 65001.!\N!!\N!Veuillez signaler ce bug: '!IS_PATH_BAT_USED!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+) else if "%1"=="CP" (
+    if "!language!"=="EN" set t="Illegal Services cannot start because it could not retrieve your current code page number.!\N!!\N!Please report this bug on our Telegram forum in order to correct this bug in a future release."
+    if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car il n'a pas pu définir votre numéro de page de code.!\N!!\N!Veuillez signaler ce bug sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
+    set x2=1
 ) else if "%1"=="WINDOWS_VERSION" (
     if "!language!"=="EN" set t="Illegal Services cannot start because your Windows version is not compatible with Illegal Services.!\N!!\N!You need Windows 10 or 11 (x86/x64)."
     if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car votre version de Windows n'est pas compatible avec Illegal Services.!\N!!\N!Vous avez besoin de Windows 10 ou 11 (x86/x64)."
