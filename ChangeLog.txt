@@ -6,7 +6,7 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
-v6.1.8.2 - 24/10/2022
+v6.1.8.3 - 31/10/2022
 * FIXED IS Setup : Support for Windows 11.
 * FIXED IS Launcher : Searching a proxy.
 * FIXED IS Source : Minor bugs.
