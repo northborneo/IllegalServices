@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 2
-REM  Fileversion:  6. 1. 8. 2
+REM  Productversion:  6. 1. 8. 3
+REM  Fileversion:  6. 1. 8. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.2 - 24/10/2022
+set VERSION=v6.1.8.3 - 31/10/2022
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -1756,8 +1756,8 @@ goto :CLEARPORT
 :NMAPINSTALL
 call :CURL "!TMPF!\vcredist_x86.exe" "https://download.microsoft.com/download/2/E/6/2E61CFA4-993B-4DD4-91DA-3737CD5CD6E3/vcredist_x86.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
 call :START_DOWNLOADED_FILE vcredist_x86.exe
-call :CURL "!TMPF!\npcap-1.70.exe" "https://npcap.com/dist/npcap-1.70.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
-call :START_DOWNLOADED_FILE npcap-1.70.exe
+call :CURL "!TMPF!\npcap-1.71.exe" "https://npcap.com/dist/npcap-1.71.exe" || (call :ERROR_INTERNET & goto :CONTINUEPORT)
+call :START_DOWNLOADED_FILE npcap-1.71.exe
 goto :CONTINUEPORT
 
 :PORT_PRIORITY
@@ -2624,8 +2624,8 @@ call :MSGBOX 69680 "Illegal Services"
 goto :CHECKER_BUILD_FOUND
 
 :PROCESS_FAQ
-if "!language!"=="EN" call :SCALE 105 55
-if "!language!"=="FR" call :SCALE 124 55
+if "!language!"=="EN" call :SCALE 105 58
+if "!language!"=="FR" call :SCALE 124 58
 title !#TITLE:`=Frequently Asked Questions!
 call :ROSE FAQ
 echo !CYAN!
@@ -2660,14 +2660,16 @@ echo %@move_right:?=6%!GREEN!Vous êtes tenu comme seul responsable de leur util
 )
 echo !CYAN!
 if "!language!"=="EN" (
-echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services is detected by many antiviruses? █!BGBLACK!!CYAN!█■
+echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services detected by many antiviruses? █!BGBLACK!!CYAN!█■
 echo %@move_right:?=6%!GREEN!The source code is converted from batch to executable using !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
 echo %@move_right:?=6%!GREEN!This conversion process leads to believe that it is a virus.
+echo %@move_right:?=6%!GREEN!It is therefore a false positive result.
 )
 if "!language!"=="FR" (
 echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services est detecté par beaucoup d'antivirus ? █!BGBLACK!!CYAN!█■
 echo %@move_right:?=6%!GREEN!Le code source est convertie de batch en executable en utilisant !UNDERLINE!https://www.abyssmedia.com/quickbfc/!UNDERLINEOFF!
 echo %@move_right:?=6%!GREEN!Ce processus de conversion fait laisser croire qu'il en est un virus.
+echo %@move_right:?=6%!GREEN!Il s'agit donc d'un faux résultat positif.
 )
 echo !CYAN!
 if "!language!"=="EN" (
@@ -2694,7 +2696,7 @@ echo %@move_right:?=6%!GREEN!IP Port Scanning, Windows Repair, Windows Tweaks et
 echo !CYAN!
 if "!language!"=="EN" (
 echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Why is Illegal Services x IS.bookmarks.html soooooo slow to start? █!BGBLACK!!CYAN!█■
-echo %@move_right:?=6%!GREEN!This is known to be Windows Defender or an other antivirus doing he's
+echo %@move_right:?=6%!GREEN!This is known to be Windows Defender or an other antivirus doing it's
 echo %@move_right:?=6%!GREEN!security scans on 'bookmarks_parser.exe' before to run it...
 echo %@move_right:?=6%!GREEN!We recommend whitelisting the Illegal Services folder in your antivirus software^(s^)
 echo %@move_right:?=6%!GREEN!to fix this issue and prevent a similar issue in the future.
@@ -2703,8 +2705,8 @@ if "!language!"=="FR" (
 echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pourquoi Illegal Services x IS.bookmarks.html est-il siiiiii lent à démarrer ? █!BGBLACK!!CYAN!█■
 echo %@move_right:?=6%!GREEN!Ceci est connu pour être Windows Defender ou un autre antivirus faisant ces
 echo %@move_right:?=6%!GREEN!scans de sécurité sur 'bookmarks_parser.exe' avant de l'exécuter...
-echo %@move_right:?=6%!GREEN!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos logiciels antivirus
-echo %@move_right:?=6%!GREEN!pour résoudre ce problème et éviter un problème similaire à l'avenir.
+echo %@move_right:?=6%!GREEN!Nous vous recommandons de mettre en liste blanche le dossier d'Illegal Services dans votre ou vos
+echo %@move_right:?=6%!GREEN!logiciels antivirus pour résoudre ce problème et éviter un problème similaire à l'avenir.
 )
 echo !CYAN!
 if "!language!"=="EN" (
@@ -2719,7 +2721,7 @@ echo %@move_right:?=6%!GREEN!These are the first 2 digits of the version number 
 if "!language!"=="FR" (
 echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Quelle est la différence entre les mises à jour de build et de release ? █!BGBLACK!!CYAN!█■
 echo %@move_right:?=6%!GREEN!Les mises à jour de build sont des mises à jour qui ne vous obligent pas à mettre à jour l'installateur.
-echo %@move_right:?=6%!GREEN!Elles sont principalement utilisés pour mettre à jour "illegal_services.exe".
+echo %@move_right:?=6%!GREEN!Elles sont principalement utilisés pour mettre à jour "Illegal_Services.exe".
 echo %@move_right:?=6%!GREEN!Ce sont les 2 derniers chiffres du  la version ^(vx.x.[x.x]^).
 echo %@move_right:?=6%!GREEN!Les mises à jour de release sont des mises à jour nécessitant une mise à jour de l'installateur.
 echo %@move_right:?=6%!GREEN!Ils ne sont utilisés que pour mettre à jour les dépendances d'Illegal Services.
@@ -2732,11 +2734,17 @@ echo %@move_right:?=6%!GREEN!Windows 10 and 11 (x86/x64).
 echo !CYAN!
 if "!language!"=="EN" (
 echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Can you make Illegal Services compatible with more operating system? █!BGBLACK!!CYAN!█■
-echo %@move_right:?=6%!GREEN!No, but IS.bookmarks.html and IS Bookmarks web extension are.
+echo %@move_right:?=6%!GREEN!No, because the source code of Illegal Services is made in Batch,
+echo %@move_right:?=6%!GREEN!and this can only be run on a Windows machine.
+echo %@move_right:?=6%!GREEN!That said, IS Bookmarks and IS Bookmarks web extension ^(discontinued^)
+echo %@move_right:?=6%!GREEN!can be accessed through any web browser.
 )
 if "!language!"=="FR" (
 echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Pouvez-vous rendre Illegal Services compatible pour d'autre système d'exploitation ? █!BGBLACK!!CYAN!█■
-echo %@move_right:?=6%!GREEN!Non. Mais IS.bookmarks.html et l'extension pour navigateur IS Bookmarks le sont.
+echo %@move_right:?=6%!GREEN!Non, car le code source d'Illegal Services est fait en Batch,
+echo %@move_right:?=6%!GREEN!et cela ne peut être exécuté que sur une machine Windows.
+echo %@move_right:?=6%!GREEN!Cela dit, IS Bookmarks et l'extension Web IS Bookmarks ^(abandonnée^)
+echo %@move_right:?=6%!GREEN!est accessible via n'importe quel navigateur Web.
 )
 echo !CYAN!
 if "!language!"=="EN" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ In which languages is Illegal Services developed? █!BGBLACK!!CYAN!█■
@@ -2746,7 +2754,6 @@ echo !CYAN!
 if "!language!"=="EN" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ When did you start Illegal Services project? █!BGBLACK!!CYAN!█■
 if "!language!"=="FR" echo %@move_right:?=3%■█!BGWHITE!!RED!█ ♦ Quand est-ce que le projet d'Illegal Services à commencé ? █!BGBLACK!!CYAN!█■
 echo %@move_right:?=6%!GREEN!v1.0.0.0 - 22/05/2020
-echo:
 echo !CYAN!
 if "!language!"=="EN" set "t=Press !YELLOW!{ANY KEY}!CYAN! to exit ..."
 if "!language!"=="FR" set "t=Appuyez sur !YELLOW!{UNE TOUCHE}!CYAN! pour quitter ..."
@@ -4941,6 +4948,14 @@ for /f "tokens=1,3,5,7,9,11delims='" %%A in ('!bookmarks_parser.exe! -i -e --fol
                     set "untrusted_website_[!untrusted_website_[#]!]=!c2!`!name:~0,-14!"
                 )
                 set "name=!RED!!name!!WHITE!"
+            ) else if "!name:~-1!"==")" (
+                call :PARSE_UNTRUSTED_WEBSITES name && (
+                    if defined first_scan (
+                        set /a untrusted_website_[#]+=1
+                        set "untrusted_website_[!untrusted_website_[#]!]=!c2!`!parse_untrusted_websites[output]!"
+                    )
+                    set "name=!RED!!name!!WHITE!"
+                )
             )
         )
         if !c2! lss 10 (
@@ -4971,6 +4986,9 @@ for /f "tokens=1,3,5,7,9,11delims='" %%A in ('!bookmarks_parser.exe! -i -e --fol
         echo       !@sp!--------------------
         set @sp=
     )
+)
+if defined parse_untrusted_websites[output] (
+    set parse_untrusted_websites[output]=
 )
 if defined first_scan (
     set first_scan=
@@ -5170,6 +5188,54 @@ echo Voulez-vous installer qBittorrent pour le faire fonctionner ? [!YELLOW!OUI!
 )
 if !errorlevel!==1 call :INSTALL_FILE qBittorent
 goto :CONTINUE_IS_BOOKMARKS_PARSER
+
+:PARSE_UNTRUSTED_WEBSITES
+set "parse_untrusted_websites[_tmp]=!%1!"
+set parse_untrusted_websites[len]=0
+for %%A in (4096,2048,1024,512,256,128,64,32,16,8,4,2,1) do (
+    if "!parse_untrusted_websites[_tmp]:~%%A,1!" neq "" (
+        set /a "parse_untrusted_websites[len]+=%%A"
+        set "parse_untrusted_websites[_tmp]=!parse_untrusted_websites[_tmp]:~%%A!"
+    )
+)
+set parse_untrusted_websites[_tmp]=
+set parse_untrusted_websites[@clear_vars]=for %%a in (start_parsing offset_start) do if defined parse_untrusted_websites[%%a] set parse_untrusted_websites[%%a]=
+%parse_untrusted_websites[@clear_vars]%
+for /l %%A in (0,1,!parse_untrusted_websites[len]!) do (
+    set "parse_untrusted_websites[char]=!%1:~%%A,1!"
+    if defined parse_untrusted_websites[start_parsing] (
+        if "!parse_untrusted_websites[char]!"=="|" (
+            %parse_untrusted_websites[@clear_vars]%
+            set /a parse_untrusted_websites[offset_start]=%%A-1
+        )
+    ) else (
+        if "!parse_untrusted_websites[char]!"==" " (
+            if not defined parse_untrusted_websites[start_parsing] (
+                set parse_untrusted_websites[start_parsing]=1
+            )
+        )
+    )
+)
+if "!parse_untrusted_websites[char]!"==")" (
+    if defined parse_untrusted_websites[offset_start] (
+        set /a "parse_untrusted_websites[offset_end]=(parse_untrusted_websites[len]+1)-parse_untrusted_websites[offset_start]"
+    )
+)
+set "str_untrusted=!%1:~%parse_untrusted_websites[offset_start]%,%parse_untrusted_websites[offset_end]%!"
+if "!str_untrusted:~0,14!"==" | (untrusted)" (
+    goto :PARSE_UNTRUSTED_WEBSITES[2]
+) else if "!str_untrusted:~0,15!"==" | (untrusted: " (
+    goto :PARSE_UNTRUSTED_WEBSITES[2]
+)
+exit /b 1
+:PARSE_UNTRUSTED_WEBSITES[2]
+set "parse_untrusted_websites[output]=!%1:~0,%parse_untrusted_websites[offset_start]%!"
+for /f "delims==" %%A in ('2^>nul set parse_untrusted_websites[') do (
+    if not "%%A"=="parse_untrusted_websites[output]" (
+        set %%A=
+    )
+)
+exit /b 0
 
 :IS_BOOKMARKS_CHOICES_OTHER
 if "!category_folder!"=="Illegal Services" (
