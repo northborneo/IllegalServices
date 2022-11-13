@@ -1,0 +1,302 @@
+body, html {
+    background-color: #1C1C1C;
+    font-family: Arial, Helvetica, sans-serif;
+    word-wrap: break-word;
+    width: auto;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: underline solid 1px;
+    color: #7200FF;
+}
+
+footer {
+    text-align: center;
+    border-top: thin solid grey;
+    font-size: 16px;
+    color: grey;
+    padding: 15px;
+    padding-bottom: 10px;
+}
+
+footer img {
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    margin: -8px auto 4px;
+    padding: 12px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #61B2FF;
+}
+
+a:visited  {
+    color: #AE73E5;
+}
+
+a:hover {
+    color: #7200FF;
+}
+
+.navbar {
+    text-align: center;
+    width: auto;
+    padding: 10px;
+    border: 1px solid #7200FF;
+    background-color: #555;
+}
+
+.navbar a {
+    padding: 10px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+}
+
+.navbar a:hover {
+    background-color: #0C0C0C;
+    border: 1px solid #7200FF;
+}
+
+.navbar-text-padding {
+    padding-left: 5px;
+}
+
+.navbar-active {
+    background-color: #13A10E;
+}
+
+.scaled {
+    max-width: 100%;
+    width: 1000px;
+}
+
+.text {
+    text-align: center;
+    font-size: 20px;
+    color: white;
+}
+
+.credits-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+    width: 80%;
+}
+
+.credits-container h2 {
+    padding-top: 1px;
+    border: 3px solid red;
+}
+
+.credits-container h3 {
+    margin-top: 0.1px;
+}
+
+.credits-child {
+    background-color: black;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+.credits-text {
+    text-align: left;
+}
+
+/*
+@media screen and (max-width: 1000px) {
+    .credits-dependencies-and-developers-container {
+        display: block;
+        font-size: 5px;
+    }
+}
+*/
+
+/*
+.dropbtn {
+    position: relative;
+    background-color: #13A10E;
+    color: white;
+    line-height: 0;
+    padding: 10px;
+    font-size: 20px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+*/
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    padding: 12px 30px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.btn:link, .btn:visited {
+    color: white;
+}
+
+.btn:hover {
+    background-color: #7200FF;
+    border: 2px solid black;
+}
+
+
+.search-or-request_parent, .search-or-request_container {
+    padding: 10px;
+}
+
+.search-or-request_container {
+    text-align: center;
+}
+
+.search-or-request_child1, .search-or-request_child2 {
+    color: white;
+    text-shadow: 1px 1px 2px #7200FF, 0 0 1em #7200FF, 0 0 0.2em #7200FF;
+    text-align: center;
+    display: inline-block;
+    border: 1px solid #7200FF;
+    background-color: #003300;
+    padding: 0px 10px 3px 10px;
+    height: 100px;
+    width: 330px;
+    margin: 1px;
+}
+
+.pathbar {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    text-align: center;
+    font-size: 20px;
+    max-width: 80%;
+    min-width: 300px;
+    padding: 6px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border: 4px solid #7200FF;
+    color: white;
+}
+
+.pathbar a:visited  {
+    color: #61B2FF;
+}
+
+.pathbar a:hover {
+    color: #7200FF;
+}
+
+.vertical-menu {
+    margin-left: auto;
+    margin-right: auto;
+    width: 294px;
+    background-color: #35393B;
+    text-align: left;
+}
+
+.vertical-menu a {
+    display: block;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+}
+
+.vertical-menu a:hover {
+    background-color: #535757;
+}
+
+.vertical-menu a img, i {
+    width: 16px;
+    margin-bottom: -2.2px;
+    padding-right: 8px;
+}
+
+hr {
+    padding: 0px;
+    margin: 0px;
+	border: 0;
+	border-top: 1px solid #494C4E;
+}
+
+.counter {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background: #FFC0CB;
+    color: black;
+}
+
+.javascript-disabled {
+    text-align: center;
+    width: 400px;
+    margin: 10px auto 10px auto;
+    padding: 15px;
+    color: black;
+    border: 1px solid #ccc;
+    background: #eee;
+    font-style: italic;
+}
+
+.javascript-disabled img {
+    float: left;
+    width: 55px;
+    height: 50px;
+    margin: -5px;
+    margin-left: 15px;
+}
+
+@media screen and (max-width: 1000px) {
+    footer {
+        font-size: 15px;
+    }
+    .navbar a {
+        display: inline-block;
+    }
+    .pathbar {
+        font-size: 15px;
+    }
+}
