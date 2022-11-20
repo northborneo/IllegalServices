@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 3
-REM  Fileversion:  6. 1. 8. 3
+REM  Productversion:  6. 1. 8. 4
+REM  Fileversion:  6. 1. 8. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.3 - 31/10/2022
+set VERSION=v6.1.8.4 - 20/11/2022
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -556,7 +556,7 @@ echo %@move_right:?=9%║      !YELLOW!6!CYAN!  ^>  !WHITE!binread : 'Read files
 echo %@move_right:?=9%║      !YELLOW!7!CYAN!  ^>  !WHITE!7za     : 'Decompressing tool'!CYAN!                                ║
 echo %@move_right:?=9%║      !YELLOW!8!CYAN!  ^>  !WHITE!curl    : 'Web requests'!CYAN!                                      ║
 echo %@move_right:?=9%║      !YELLOW!9!CYAN!  ^>  !WHITE!CmdBkg  : 'Background image'!CYAN!                                  ║
-echo %@move_right:?=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, Hide cursor, ...'!CYAN!         ║
+echo %@move_right:?=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, ...'!CYAN!         ║
 echo %@move_right:?=9%║                                                                          ║
 echo %@move_right:?=9%╠══════════════════════■█!BGYELLOW!!RED!█ DEVELOPERS and HELPERS █!BGBLACK!!CYAN!█■══════════════════════╣
 echo %@move_right:?=9%║                                                                          ║
@@ -1282,7 +1282,7 @@ goto :CONTINUEYOUTUBEDL
 
 :DDOS
 if not defined scale[ddos] (
-    set scale[ddos]=74 37
+    set scale[ddos]=74 46
 )
 call :SCALE !scale[ddos]!
 title !#TITLE:`=Denial Of Services (DDoS)!
@@ -1292,7 +1292,7 @@ if defined DDOS (
 )
 
 :CLEARDDOS
-set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ redstresser.cc/welcome/index stresser.ai/ stresslab.sx/ stresser.zone/ deltastress.com/ stresser.gg/ instant-stresser.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ ipstress.in/ redstresser.cc/welcome/index stresslab.sx/ ddosforhire.net/
+set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ redstresser.cc/welcome/index stresser.ai/ stresslab.sx/ stresser.zone/ freestresser.net/ stresser.so/ blackstresser.net/ stresser.gg/ ipstress.org/ ipstresser.us/ mcstorm.io/ hkstresser.net/ instant-stresser.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ redstresser.cc/welcome/index stresslab.sx/ blackstresser.net/ stresshit.club/ hkstresser.net/ ddosforhire.net/
 call :CLEAR 1
 
 :CONTINUEDDOS
@@ -1312,26 +1312,35 @@ echo %@move_right:?=8%║    !6!redstresser.cc!CYAN!        │            [120/
 echo %@move_right:?=8%║    !7!stresser.ai!CYAN!           │            [120/s]    ║
 echo %@move_right:?=8%║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
 echo %@move_right:?=8%║    !9!stresser.zone!CYAN!         │            [120/s]    ║
-echo %@move_right:?=8%║   !10!deltastress.com!CYAN!       │            [ 60/s]    ║
-echo %@move_right:?=8%║   !11!stresser.gg!CYAN!           │            [ 60/s]    ║
+echo %@move_right:?=8%║   !10!freestresser.net!CYAN!      │            [120/s]    ║
+echo %@move_right:?=8%║   !11!stresser.so!CYAN!           │            [120/s]    ║
+echo %@move_right:?=8%║   !12!blackstresser.net!CYAN!     │            [ 60/s]    ║
+echo %@move_right:?=8%║   !13!stresser.gg!CYAN!           │            [ 60/s]    ║
+echo %@move_right:?=8%║   !14!ipstress.org!CYAN!          │            [ 60/s]    ║
+echo %@move_right:?=8%║   !15!ipstresser.us!CYAN!         │            [ 60/s]    ║
+echo %@move_right:?=8%║   !16!mcstorm.io!CYAN!            │            [ 60/s]    ║
+echo %@move_right:?=8%║   !17!hkstresser.net!CYAN!        │            [ 30/s]    ║
 echo %@move_right:?=8%║                                                        ║
 echo %@move_right:?=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
 echo %@move_right:?=8%║                                                        ║
-echo %@move_right:?=8%║   !12!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !13!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !14!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !15!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !16!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo %@move_right:?=8%║   !17!redstresser.cc!CYAN!        │            [120/s]    ║
-echo %@move_right:?=8%║   !18!stresslab.sx!CYAN!          │            [120/s]    ║
+echo %@move_right:?=8%║   !18!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !19!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !20!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !21!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
+echo %@move_right:?=8%║   !22!www.ipstresser.com!CYAN!    │            [300/s]    ║
+echo %@move_right:?=8%║   !23!redstresser.cc!CYAN!        │            [120/s]    ║
+echo %@move_right:?=8%║   !24!stresslab.sx!CYAN!          │            [120/s]    ║
+echo %@move_right:?=8%║   !25!blackstresser.net!CYAN!     │            [ 60/s]    ║
+echo %@move_right:?=8%║   !26!stresshit.club!CYAN!        │            [ 30/s]    ║
+echo %@move_right:?=8%║   !27!hkstresser.net!CYAN!        │            [ 30/s]    ║
 echo %@move_right:?=8%╠════════════════════════════════════════════════════════╣
 if "!language!"=="EN" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!12/07/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !19!ddosforhire.net"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!18/11/2022"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !28!ddosforhire.net"
 )
 if "!language!"=="FR" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!12/07/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !19!ddosforhire.net"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!18/11/2022"
+call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !28!ddosforhire.net"
 )
 echo %@move_right:?=8%!CYAN!╚════════════════════════════════════════════════════════╝
 echo !BRIGHTBLACK!
