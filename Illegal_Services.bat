@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 4
-REM  Fileversion:  6. 1. 8. 4
+REM  Productversion:  6. 1. 8. 5
+REM  Fileversion:  6. 1. 8. 5
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.4 - 20/11/2022
+set VERSION=v6.1.8.5 - 23/11/2022
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -5775,7 +5775,7 @@ exit /b 0
 call :GET_FILE_HASH_SHA1 "!bookmarks_parser.exe!" || (
     call :ERROR_FATAL HASH "!bookmarks_parser.exe!"
 )
-set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`587d3f95c9939235745f2f9c865f2635bc887883`"
+set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`587d3f95c9939235745f2f9c865f2635bc887883`ababd344cb65804ac025e2b9332118aa81639795`"
 if not "!lookup_patch_filehashes:`%file_hash%`=!"=="!lookup_patch_filehashes!" (
     call :CURL "!bookmarks_parser.exe!" "`git_raw_main`/!bookmarks_parser.exe:\=/!" || (
         call :ERROR_FATAL !bookmarks_parser.exe!
