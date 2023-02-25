@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 5
-REM  Fileversion:  6. 1. 8. 5
+REM  Productversion:  6. 1. 8. 6
+REM  Fileversion:  6. 1. 8. 6
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.5 - 23/11/2022
+set VERSION=v6.1.8.6 - 25/02/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -241,18 +241,16 @@ set "IS_DIR=%~dp0"
 if not "!PATH:~-13!"==";lib\curl\x!ARCH!" set "PATH=!PATH!;lib\curl\x!ARCH!"
 :: set "git_raw_github=https://github.com/Illegal-Services/Illegal_Services/raw/!git_item_branch!/!git_item_path!"
 :: set "git_raw_bitbucket=https://bitbucket.org/IllegalServices/illegal_services/raw/!git_item_branch!/!git_item_path!"
-:: set "git_raw_teknik=https://git.teknik.io/Illegal-Services/Illegal_Services/raw/branch/!git_item_branch!/!git_item_path!"
 :: set "git_raw_devops=https://dev.azure.com/Illegal-Services/ffc14ecb-bedd-4220-bb60-091d2b356bd0/_apis/git/repositories/492fa534-7ba9-4019-bee0-0203fcf0158c/items?path=/!git_item_path!&versionDescriptor%%5BversionOptions%%5D=0&versionDescriptor%%5BversionType%%5D=0&versionDescriptor%%5Bversion%%5D=!git_item_branch!&resolveLfs=true&%%24format=octetStream&api-version=5.0&download=true"
 :: set "git_raw_gitee=https://gitee.com/Illegal-Services/illegal_services/raw/!git_item_branch!/!git_item_path!"
 :: set "git_raw_notabug=https://notabug.org/Illegal-Services/Illegal_Services/raw/!git_item_branch!/!git_item_path!"
 :: set "git_source_github=https://github.com/Illegal-Services/Illegal_Services/tree/source"
 :: set "git_source_bitbucket=https://bitbucket.org/IllegalServices/illegal_services/src/source/"
-:: set "git_source_teknik=https://git.teknik.io/Illegal-Services/Illegal_Services/src/branch/source"
 :: set "git_source_devops=https://dev.azure.com/Illegal-Services/_git/Illegal_Services?path=%%2F&version=GBsource&_a=contents"
 :: set "git_source_gitee=https://gitee.com/Illegal-Services/illegal_services/tree/source/"
 :: set "git_source_notabug=https://notabug.org/Illegal-Services/Illegal_Services/src/source"
 :: set "GIT_LIST=github bitbucket teknik devops gitee notabug"
-set "GIT_LIST=github.com/Illegal-Services/Illegal_Services`raw`tree/source bitbucket.org/IllegalServices/illegal_services`raw`src/source/ git.teknik.io/Illegal-Services/Illegal_Services`raw/branch`src/branch/source gitee.com/Illegal-Services/illegal_services`raw`tree/source/ notabug.org/Illegal-Services/Illegal_Services`raw`src/source"
+set "GIT_LIST=github.com/Illegal-Services/Illegal_Services`raw`tree/source bitbucket.org/IllegalServices/illegal_services`raw`src/source/ gitee.com/Illegal-Services/illegal_services`raw`tree/source/ notabug.org/Illegal-Services/Illegal_Services`raw`src/source"
 >nul 2>&1 where curl.exe || (
     call :DOWNLOAD_CURL || (
         call :ERROR_FATAL lib\curl\x!ARCH!\curl.exe CURL
@@ -461,6 +459,7 @@ for %%A in (
     "6`Cracked Windows apps/games"
     "7`Modded Android apps/games"
     "9`Useful Websites"
+    "10`IP Denial of Services (DDoS)"
     "15`IP Loggers"
     "16`Doxing"
     "17`Portable Apps"
@@ -474,7 +473,6 @@ for %%A in (
     )
 )
 if "!x!"=="8" goto :YOUTUBEDL
-if "!x!"=="10" goto :DDOS
 if "!x!"=="11" goto :IPLOOKUP
 if "!x!"=="12" goto :PORT
 if "!x!"=="13" goto :PINGERPORT
@@ -556,7 +554,7 @@ echo %@move_right:?=9%║      !YELLOW!6!CYAN!  ^>  !WHITE!binread : 'Read files
 echo %@move_right:?=9%║      !YELLOW!7!CYAN!  ^>  !WHITE!7za     : 'Decompressing tool'!CYAN!                                ║
 echo %@move_right:?=9%║      !YELLOW!8!CYAN!  ^>  !WHITE!curl    : 'Web requests'!CYAN!                                      ║
 echo %@move_right:?=9%║      !YELLOW!9!CYAN!  ^>  !WHITE!CmdBkg  : 'Background image'!CYAN!                                  ║
-echo %@move_right:?=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, ...'!CYAN!         ║
+echo %@move_right:?=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, ...'!CYAN!                      ║
 echo %@move_right:?=9%║                                                                          ║
 echo %@move_right:?=9%╠══════════════════════■█!BGYELLOW!!RED!█ DEVELOPERS and HELPERS █!BGBLACK!!CYAN!█■══════════════════════╣
 echo %@move_right:?=9%║                                                                          ║
@@ -1279,81 +1277,6 @@ call :MSGBOX 69696 "Illegal Services"
 )
 call :CHECK_YOUTUBEDLPRIORITY
 goto :CONTINUEYOUTUBEDL
-
-:DDOS
-if not defined scale[ddos] (
-    set scale[ddos]=74 46
-)
-call :SCALE !scale[ddos]!
-title !#TITLE:`=Denial Of Services (DDoS)!
-call :ROSE "IP Denial of Services"
-if defined DDOS (
-    set DDOS=
-)
-
-:CLEARDDOS
-set db=quez.in/ freestresser.to/ instant-stresser.com/ anonboot.com/ www.ipstresser.com/ redstresser.cc/welcome/index stresser.ai/ stresslab.sx/ stresser.zone/ freestresser.net/ stresser.so/ blackstresser.net/ stresser.gg/ ipstress.org/ ipstresser.us/ mcstorm.io/ hkstresser.net/ instant-stresser.com/ anonboot.com/ cryptostresser.com/ stresser.app/ www.ipstresser.com/ redstresser.cc/welcome/index stresslab.sx/ blackstresser.net/ stresshit.club/ hkstresser.net/ ddosforhire.net/
-call :CLEAR 1
-
-:CONTINUEDDOS
-call :SCALE !scale[ddos]!
-echo !CYAN!
-echo %@move_right:?=18%══════════════════════════════════════
-echo %@move_right:?=17%// !RED!█!BGYELLOW!!BLACK! DENIAL OF SERVICES (100%% Free) !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:?=8%╔════════════════════════════════════════════════════════╗
-echo %@move_right:?=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 4 █!BGBLACK!!CYAN!█■═════════════════════╣
-echo %@move_right:?=8%║                                                        ║
-echo %@move_right:?=8%║    !1!quez.in!CYAN!               │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║    !2!freestresser.to!CYAN!       │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║    !3!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║    !4!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║    !5!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo %@move_right:?=8%║    !6!redstresser.cc!CYAN!        │            [120/s]    ║
-echo %@move_right:?=8%║    !7!stresser.ai!CYAN!           │            [120/s]    ║
-echo %@move_right:?=8%║    !8!stresslab.sx!CYAN!          │            [120/s]    ║
-echo %@move_right:?=8%║    !9!stresser.zone!CYAN!         │            [120/s]    ║
-echo %@move_right:?=8%║   !10!freestresser.net!CYAN!      │            [120/s]    ║
-echo %@move_right:?=8%║   !11!stresser.so!CYAN!           │            [120/s]    ║
-echo %@move_right:?=8%║   !12!blackstresser.net!CYAN!     │            [ 60/s]    ║
-echo %@move_right:?=8%║   !13!stresser.gg!CYAN!           │            [ 60/s]    ║
-echo %@move_right:?=8%║   !14!ipstress.org!CYAN!          │            [ 60/s]    ║
-echo %@move_right:?=8%║   !15!ipstresser.us!CYAN!         │            [ 60/s]    ║
-echo %@move_right:?=8%║   !16!mcstorm.io!CYAN!            │            [ 60/s]    ║
-echo %@move_right:?=8%║   !17!hkstresser.net!CYAN!        │            [ 30/s]    ║
-echo %@move_right:?=8%║                                                        ║
-echo %@move_right:?=8%╠════════════════════■█!BGYELLOW!!RED!█ LAYER 7 █!BGBLACK!!CYAN!█■═════════════════════╣
-echo %@move_right:?=8%║                                                        ║
-echo %@move_right:?=8%║   !18!instant-stresser.com!CYAN!  │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !19!anonboot.com!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !20!cryptostresser.com!CYAN!    │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !21!stresser.app!CYAN!          │  [BEST]    [300/s]    ║
-echo %@move_right:?=8%║   !22!www.ipstresser.com!CYAN!    │            [300/s]    ║
-echo %@move_right:?=8%║   !23!redstresser.cc!CYAN!        │            [120/s]    ║
-echo %@move_right:?=8%║   !24!stresslab.sx!CYAN!          │            [120/s]    ║
-echo %@move_right:?=8%║   !25!blackstresser.net!CYAN!     │            [ 60/s]    ║
-echo %@move_right:?=8%║   !26!stresshit.club!CYAN!        │            [ 30/s]    ║
-echo %@move_right:?=8%║   !27!hkstresser.net!CYAN!        │            [ 30/s]    ║
-echo %@move_right:?=8%╠════════════════════════════════════════════════════════╣
-if "!language!"=="EN" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Last Updated: !WHITE!18/11/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternatively you can visit: !28!ddosforhire.net"
-)
-if "!language!"=="FR" (
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Mise à jour le: !WHITE!18/11/2022"
-call :DRAW_CENTER newline "!BRIGHTMAGENTA!Alternativement vous pouvez visiter: !28!ddosforhire.net"
-)
-echo %@move_right:?=8%!CYAN!╚════════════════════════════════════════════════════════╝
-echo !BRIGHTBLACK!
-if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
-if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
-echo:
-call :PROMPT
-call :WEBSITECHECK && goto :CONTINUEDDOS
-call :CHOOSE BACK && goto :MAINMENU
-call :WEBSITESTART && goto :CLEARDDOS
-call :ERRORMESSAGE
-goto :CONTINUEDDOS
 
 :IPLOOKUP
 if not defined scale[iplookup] (
