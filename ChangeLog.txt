@@ -6,6 +6,9 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
+v6.1.8.7 - 25/02/2023
+* HOTFIX for Quick Batch File Compiler not registered.
+
 v6.1.8.6 - 25/02/2023
 - REMOVED IS Proxy : https://git.teknik.io/Illegal-Services/Illegal_Services (down)
 * UPDATED IP Denial of Services (DDoS)
