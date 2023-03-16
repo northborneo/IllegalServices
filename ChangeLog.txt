@@ -6,6 +6,10 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
+v6.1.8.8 - 16/03/2023
+* FIXED IS Main Menu, Illegal Services x IS.bookmarks.html "IP Denial of Services (DDoS)" displaying "Bookmarks Toolbar/Illegal Services/More Features/Warez Wikis/IP DENIAL OF SERVICES (DDOS)" instead of "Bookmarks Toolbar/Illegal Services/IP Denial of Services (DDoS)".
+* FIXED Illegal Services x IS.bookmarks.html case sensivity searches.
+
 v6.1.8.7 - 25/02/2023
 * HOTFIX for Quick Batch File Compiler not registered.
 
