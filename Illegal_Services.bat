@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 7
-REM  Fileversion:  6. 1. 8. 7
+REM  Productversion:  6. 1. 8. 8
+REM  Fileversion:  6. 1. 8. 8
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.7 - 25/02/2023
+set VERSION=v6.1.8.8 - 16/03/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -467,6 +467,7 @@ for %%A in (
     for /f "tokens=1,2delims=`" %%B in ("%%~A") do (
         if "!x!"=="%%B" (
             set "category_folder=%%C"
+            set category_folder[case_sensivity]=sensitive
             start "" "%~nx0" IS_BOOKMARKS_PARSER
             goto :MAINMENU
         )
@@ -1783,6 +1784,7 @@ for %%A in (
     for /f "tokens=1,2delims=`" %%B in ("%%~A") do (
         if "!x!"=="%%B" (
             set "category_folder=%%C"
+            set category_folder[case_sensivity]=sensitive
             start "" "%~nx0" IS_BOOKMARKS_PARSER
             goto :CONTINUEMOREFEATURES
         )
@@ -4800,17 +4802,21 @@ if not defined category_folder (
 if not defined LOOKUP_folders (
     goto :SKIP_FIND_IS_BOOKMARKS_PARSER
 )
-set "LOOKUP_folders=!LOOKUP_folders:"=""!"
-if not "!LOOKUP_folders:`%category_folder:"=""%`=!"=="!LOOKUP_folders!" (
-    for /f "tokens=1*delims==" %%A in ('2^>nul set memory_folder_[') do (
-        if /i "%%B"=="!category_folder!" (
-            if not "%%B"=="!category_folder!" (
-                set "category_folder=%%B"
+:: If user input a category folder that is not matching the case sensivity, then still find it's first match from the memory.
+:: TODO: Add a case insensitivity argument in 'bookmarks_parser.exe'.
+if !category_folder[case_sensivity]!==insensitive (
+    set "LOOKUP_folders=!LOOKUP_folders:"=""!"
+    if not "!LOOKUP_folders:`%category_folder:"=""%`=!"=="!LOOKUP_folders!" (
+        for /f "tokens=1*delims==" %%A in ('2^>nul set memory_folder_[') do (
+            if /i "%%B"=="!category_folder!" (
+                if not "%%B"=="!category_folder!" (
+                    set "category_folder=%%B"
+                )
             )
         )
     )
+    set "LOOKUP_folders=!LOOKUP_folders:""="!"
 )
-set "LOOKUP_folders=!LOOKUP_folders:""="!"
 :SKIP_FIND_IS_BOOKMARKS_PARSER
 for %%A in (root_path_[ untrusted_website_[ url_[) do (
     for /f "delims==" %%B in ('2^>nul set %%A') do (
@@ -5240,6 +5246,7 @@ if not "!category_folder!"=="Illegal Services" (
     call :CHOOSE BACK && (
         call :IS_BOOKMARKS_SET_BACK_FOLDER || (
             set "category_folder=Illegal Services"
+            set category_folder[case_sensivity]=sensitive
         )
         set char=
         set common_folder=
@@ -5256,6 +5263,7 @@ if not defined LOOKUP_folders (
 set "LOOKUP_folders=!LOOKUP_folders:"=""!"
 if not "!LOOKUP_folders:`%x:"=""%`=!"=="!LOOKUP_folders!" (
     set "category_folder=!x!"
+    set category_folder[case_sensivity]=insensitive
     set "LOOKUP_folders=!LOOKUP_folders:""="!"
     exit /b 0
 )
@@ -5331,6 +5339,7 @@ if defined category_folder (
     set "category_folder=!category_folder:\/=/!"
     set "category_folder=!category_folder:\\=\!"
     set "category_folder=!category_folder:&#39;='!"
+    set category_folder[case_sensivity]=sensitive
 )
 exit /b 0
 
