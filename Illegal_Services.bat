@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 8
-REM  Fileversion:  6. 1. 8. 8
+REM  Productversion:  6. 1. 8. 9
+REM  Fileversion:  6. 1. 8. 9
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.8 - 16/03/2023
+set VERSION=v6.1.8.9 - 18/03/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -2748,7 +2748,7 @@ call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 if defined DEBUG (
     start python "D:\Bureau\Illegal Services\Ressources\scan_down_or_changed_domain_websites.py"
 )
-for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! --list-links --extended-parsing --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
     title !DEBUG![0 result found from 0/!index! websites indexed]  ^|  [0%%]  ^|  [...] - Illegal Services
 )
@@ -2766,7 +2766,7 @@ for /f "delims==" %%B in ('2^>nul set website_[') do (
     if "!language!"=="EN" echo Scan for ".onion" websites disabled for this session because "https://onion.moe/" !o3!.
     if "!language!"=="FR" echo Scan des sites en ".onion" désactiver pour cette session car "https://onion.moe/" !o3!.
 )
-for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! -l -e --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! --list-links --extended-parsing --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a counter+=1, percentage=counter*100/index
     if !results! gtr 1 (
         set s=s
@@ -4783,7 +4783,7 @@ for %%A in (x warning_streaming warning_ip_loggers) do (
 set LOOKUP_folders=`
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
-for /f "tokens=5,7,8,9delims='" %%A in ('!bookmarks_parser.exe! -f -i -e --folders-path --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=5,7,8,9delims='" %%A in ('!bookmarks_parser.exe! --list-folders --list-index --extended-parsing --folders-path --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     if "%%A"=="1" (
         set "LOOKUP_folders=!LOOKUP_folders!%%C`"
         set "memory_folder_[%%A]=%%C"
@@ -4803,7 +4803,6 @@ if not defined LOOKUP_folders (
     goto :SKIP_FIND_IS_BOOKMARKS_PARSER
 )
 :: If user input a category folder that is not matching the case sensivity, then still find it's first match from the memory.
-:: TODO: Add a case insensitivity argument in 'bookmarks_parser.exe'.
 if !category_folder[case_sensivity]!==insensitive (
     set "LOOKUP_folders=!LOOKUP_folders:"=""!"
     if not "!LOOKUP_folders:`%category_folder:"=""%`=!"=="!LOOKUP_folders!" (
@@ -4838,6 +4837,11 @@ set /a first_scan=1, root_path_[#]=0, untrusted_website_[#]=0
 :CONTINUE_IS_BOOKMARKS_PARSER
 title !#TITLE:`=%category_folder%!
 cls
+if !category_folder[case_sensivity]!==insensitive (
+    set bookmarks_parser[command]=!bookmarks_parser.exe! --list-index --extended-parsing --folders-path --quoting-style "'" --folders-all-case_insensitive "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"
+) else if !category_folder[case_sensivity]!==sensitive (
+    set bookmarks_parser[command]=!bookmarks_parser.exe! --list-index --extended-parsing --folders-path --quoting-style "'" --folders-all-case_sensitive "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"
+)
 call :CHECK_FILE_SIGNATURE_IS_BOOKMARKS_DB || (
     call :DOWNLOAD_IS_BOOKMARKS_DB IS_BOOKMARKS_PARSER || (
         exit 0
@@ -4856,7 +4860,7 @@ for %%A in (previous_action previous_depth current_depth) do (
     )
 )
 set /a c1=1, c2=0
-for /f "tokens=1,3,5,7,9,11delims='" %%A in ('!bookmarks_parser.exe! -i -e --folders-path --quoting-style "'" --folders-all "!category_folder!" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
+for /f "tokens=1,3,5,7,9,11delims='" %%A in ('!bookmarks_parser[command]!') do (
     if "%%A"=="PATH" (
         set previous_action=PATH
         if "!memory_folder_[%%C]!"=="!category_folder!" (
@@ -5707,7 +5711,7 @@ exit /b 0
 call :GET_FILE_HASH_SHA1 "!bookmarks_parser.exe!" || (
     call :ERROR_FATAL HASH "!bookmarks_parser.exe!"
 )
-set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`587d3f95c9939235745f2f9c865f2635bc887883`ababd344cb65804ac025e2b9332118aa81639795`"
+set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`587d3f95c9939235745f2f9c865f2635bc887883`ababd344cb65804ac025e2b9332118aa81639795`8f77ad3bc7e973c624744d8a3d220ba6bdd5ad2d`"
 if not "!lookup_patch_filehashes:`%file_hash%`=!"=="!lookup_patch_filehashes!" (
     call :CURL "!bookmarks_parser.exe!" "`git_raw_main`/!bookmarks_parser.exe:\=/!" || (
         call :ERROR_FATAL !bookmarks_parser.exe!
