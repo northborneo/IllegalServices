@@ -15,7 +15,7 @@ for %%A in ("Bookmarks Toolbar" js) do (
         rd /s /q "%%~A"
     )
 )
-for /f "tokens=1,3,5,7,9delims='" %%A in ('python "D:\Téléchargements\Python Stuff\IS stuff\IS.bookmarks\bookmarks_parser.py" -e --folders-path --quoting-style "'" "D:\Git\Illegal_Services\IS.bookmarks.html"') do (
+for /f "tokens=1,3,5,7,9delims='" %%A in ('python "D:\Downloads\Python Stuff\IS stuff\IS.bookmarks\bookmarks_parser.py" --extended-parsing --folders-path --quoting-style "'" "D:\Git\Illegal_Services\IS.bookmarks.html"') do (
     if not "%%B"=="" (
         if "%%A_%%B"=="PATH_0" (
             set "href_path=Bookmarks Toolbar"
