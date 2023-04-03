@@ -198,26 +198,26 @@ if defined @display_path (
     echo     ^<div class="search-or-request_parent"^>
     echo         ^<div class="search-or-request_container"^>
     echo             ^<div class="search-or-request_child1"^>
-    echo                 ^<h4^>
-    echo                     ^<form action="https://eoj9zpyth8aidjx.m.pipedream.net/" method="post" target="_blank"^>
+    echo                 ^<form action="https://eoj9zpyth8aidjx.m.pipedream.net/" method="post" target="_blank"^>
+    echo                     ^<h4^>
     echo                         ^<label for="text"^>Search a link or folder in IS database:^</label^>
     echo                         ^<br^>
     echo                         ^<br^>
     echo                         ^<input type="text" name="link" placeholder="https://example.com/" target="_blank"^>
     echo                         ^<input type="submit" value="Search" target="_blank"^>
-    echo                     ^</form^>
-    echo                 ^</h4^>
+    echo                     ^</h4^>
+    echo                 ^</form^>
     echo             ^</div^>
     echo             ^<div class="search-or-request_child2"^>
-    echo                 ^<h4^>
-    echo                     ^<form action="https://eolu77sciiyyni6.m.pipedream.net/" method="post" target="_blank"^>
+    echo                 ^<form action="https://eolu77sciiyyni6.m.pipedream.net/" method="post" target="_blank"^>
+    echo                     ^<h4^>
     echo                         ^<label for="text"^>Request a link to be added in IS database:^</label^>
     echo                         ^<br^>
     echo                         ^<br^>
     echo                         ^<input type="text" name="link" placeholder="https://example.com/" target="_blank"^>
     echo                         ^<input type="submit" value="Request" target="_blank"^>
-    echo                     ^</form^>
-    echo                 ^</h4^>
+    echo                     ^</h4^>
+    echo                 ^</form^>
     echo             ^</div^>
     echo         ^</div^>
     echo     ^</div^>
@@ -254,7 +254,7 @@ exit /b
     echo         ^<a href="https://github.com/Illegal-Services/Illegal_Services" target="_blank"^>^<img src="/Illegal_Services/svgs/github.svg" alt="GitHub" title="https://github.com/Illegal-Services/Illegal_Services"^>^</a^>
     echo         ^<a href="https://t.me/illegal_services_forum" target="_blank"^>^<img src="/Illegal_Services/svgs/telegram.svg" alt="Telegram forum" title="https://t.me/illegal_services_forum"^>^</a^>
     echo         ^<a href="https://t.me/illegal_services" target="_blank"^>^<img src="/Illegal_Services/svgs/telegram.svg" alt="Telegram channel" title="https://t.me/illegal_services"^>^</a^>
-    echo         ^</br^>
+    echo         ^<br^>
     echo         © 2020-2022 IB_U_Z_Z_A_R_Dl. All rights reserved.
     echo     ^</footer^>
     echo:
