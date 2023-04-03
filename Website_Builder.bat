@@ -48,6 +48,7 @@ for /f "tokens=1,3,5,7,9delims='" %%A in ('python "D:\Downloads\Python Stuff\IS 
                 set "href_name=!href_name:?=U+003F!"
                 set "href_name=!href_name:/=U+002F!"
                 set "href_name=!href_name:\=U+005C!"
+                set "href_name=!href_name: =%%20!"
                 set "name=!name:&#39;='!"
                 >>"!href_path!/index.html" (
                     echo         ^<a href="!href_name!/index.html"^>^<i class="fa fa-folder-o"^>^</i^>!name!^</a^>
@@ -157,6 +158,7 @@ for %%A in (!tmp_path_href_path!) do (
     ) else (
         set "path_href_path=%%~A"
     )
+    set "path_href_path=!path_href_path: =%%20!"
     set "data=%%~A"
     set "data=!data:U+003F=?!"
     set "data=!data:U+002F=/!"
@@ -200,22 +202,22 @@ if defined @display_path (
     echo             ^<div class="search-or-request_child1"^>
     echo                 ^<form action="https://eoj9zpyth8aidjx.m.pipedream.net/" method="post" target="_blank"^>
     echo                     ^<h4^>
-    echo                         ^<label for="text"^>Search a link or folder in IS database:^</label^>
+    echo                         ^<label for="search_link"^>Search a link or folder in IS database:^</label^>
     echo                         ^<br^>
     echo                         ^<br^>
-    echo                         ^<input type="text" name="link" placeholder="https://example.com/" target="_blank"^>
-    echo                         ^<input type="submit" value="Search" target="_blank"^>
+    echo                         ^<input type="text" id="search_link" placeholder="https://example.com/"^>
+    echo                         ^<input type="submit" value="Search"^>
     echo                     ^</h4^>
     echo                 ^</form^>
     echo             ^</div^>
     echo             ^<div class="search-or-request_child2"^>
     echo                 ^<form action="https://eolu77sciiyyni6.m.pipedream.net/" method="post" target="_blank"^>
     echo                     ^<h4^>
-    echo                         ^<label for="text"^>Request a link to be added in IS database:^</label^>
+    echo                         ^<label for="request_link"^>Request a link to be added in IS database:^</label^>
     echo                         ^<br^>
     echo                         ^<br^>
-    echo                         ^<input type="text" name="link" placeholder="https://example.com/" target="_blank"^>
-    echo                         ^<input type="submit" value="Request" target="_blank"^>
+    echo                         ^<input type="text" id="request_link" placeholder="https://example.com/"^>
+    echo                         ^<input type="submit" value="Request"^>
     echo                     ^</h4^>
     echo                 ^</form^>
     echo             ^</div^>
