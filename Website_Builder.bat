@@ -5,9 +5,12 @@ setlocal DisableDelayedExpansion
 pushd "%~dp0"
 setlocal EnabledelayedExpansion
 
-if defined href_path (
-    set href_path=
+for %%A in (encode_windows_href_path decode_windows_href_path) do (
+    for /f "delims==" %%B in ('2^>nul set %%A[') do (
+        set %%B=
+    )
 )
+
 set "sp= "
 set /a counter_links=0
 for %%A in ("Bookmarks Toolbar" js) do (
@@ -18,92 +21,90 @@ for %%A in ("Bookmarks Toolbar" js) do (
 for /f "tokens=1,3,5,7,9delims='" %%A in ('python "D:\Downloads\Python Stuff\IS stuff\IS.bookmarks\bookmarks_parser.py" --extended-parsing --folders-path --quoting-style "'" "D:\Git\Illegal_Services\IS.bookmarks.html"') do (
     if not "%%B"=="" (
         if "%%A_%%B"=="PATH_0" (
-            set "href_path=Bookmarks Toolbar"
-            if not exist "!href_path!\" (
-                md "!href_path!" && (
-                    call :WRITE_HEADER %%B
+            set "windows_href_path=Bookmarks Toolbar"
+            if not exist "!windows_href_path!\" (
+                md "!windows_href_path!" && (
+                    call :WRITE_HEADER
                 ) || (
-                    echo ERROR ^(WRITE_FOLDER_PATH^): "!href_path!\"
+                    echo ERROR ^(WRITE_FOLDER_PATH 1^): "!windows_href_path!\"
                     pause
                     exit /b 1
                 )
             )
         ) else (
-            set "href_path=%%C"
-            set "href_path=!href_path:?=U+003F!"
-            set "href_path=!href_path:\/=U+002F!"
-            set "href_path=!href_path:\\=U+005C!"
-            if not exist "!href_path!\" (
-                md "!href_path!" && (
-                    call :WRITE_HEADER %%B
+            set "windows_href_path=%%C"
+            call :ENCODE_WINDOWS_HREF path windows_href_path
+            if not exist "!windows_href_path!\" (
+                md "!windows_href_path!" && (
+                    call :WRITE_HEADER
                 ) || (
-                    echo ERROR ^(WRITE_FOLDER_PATH^): "!href_path!\"
+                    echo ERROR ^(WRITE_FOLDER_PATH 2^): "!windows_href_path!\"
                     pause
                     exit /b 1
                 )
             )
             if "%%A"=="PATH" (
-                set "href_name=%%D"
-                set "name=%%D"
-                set "href_name=!href_name:?=U+003F!"
-                set "href_name=!href_name:/=U+002F!"
-                set "href_name=!href_name:\=U+005C!"
-                set "href_name=!href_name: =%%20!"
-                set "name=!name:&#39;='!"
-                >>"!href_path!/index.html" (
-                    echo         ^<a href="!href_name!/index.html"^>^<i class="fa fa-folder-o"^>^</i^>!name!^</a^>
+                set "html_href_path=%%D"
+                call :ENCODE_WINDOWS_HREF folder html_href_path
+                set "html_href_path=!html_href_path: =%%20!"
+                set "html_href_path=!html_href_path:[=%%5B!"
+                set "html_href_path=!html_href_path:]=%%5D!"
+                set "html_text=%%D"
+                set "html_text=!html_text:&#39;='!"
+                >>"!windows_href_path!/index.html" (
+                    echo         ^<a href="!html_href_path!/index.html"^>^<i class="fa fa-folder-o"^>^</i^>!html_text!^</a^>
                 ) || (
-                    echo ERROR ^(WRITE_HREF_FOLDER^): "!href_path!/index.html" "!name!"
+                    echo ERROR ^(WRITE_HREF_FOLDER^): "!windows_href_path!/index.html" "!html_text!"
                     pause
                     exit /b 1
                 )
-                rem echo "[%%A] [%%B] [!href_path!] [!name!]"
+                rem echo "[%%A] [%%B] [!windows_href_path!] [!html_text!]"
             ) else if "%%A"=="LINK" (
                 set /a counter_links+=1
-                set "href_link=%%D"
-                for /f "delims=/" %%F in ("!href_link:*://=!") do (
+                set "html_href_link=%%D"
+                for /f "delims=/" %%F in ("!html_href_link:*://=!") do (
                     set "href_domain=%%F"
                 )
-                set "name=%%E"
-                if defined name (
-                    set "name=!name:&#39;='!"
-                    if "!name:~-14!"==" | (untrusted)" (
-                        set "name=!name:~0,-14!<font color="red">!name:~-14!</font>"
-                    ) else if "!name:~-1!"==")" (
-                        call :PARSE_UNTRUSTED_WEBSITES name && (
-                            set "name=!parse_untrusted_websites[output]!"
+                set "html_text=%%E"
+                if defined html_text (
+                    set "html_text=!html_text:&#39;='!"
+                    if "!html_text:~-14!"==" | (untrusted)" (
+                        set "html_text=!html_text:~0,-14!<font color="red">!html_text:~-14!</font>"
+                    ) else if "!html_text:~-1!"==")" (
+                        call :PARSE_UNTRUSTED_WEBSITES html_text && (
+                            set "html_text=!parse_untrusted_websites[output]!"
                         )
                     )
                 )
-                >>"!href_path!/index.html" (
+                >>"!windows_href_path!/index.html" (
                     rem https://s2.googleusercontent.com/s2/favicons?domain=!href_domain!&sz=32
                     rem https://www.google.com/s2/favicons?sz=32&domain_url=!href_domain!
                     rem https://www.google.com/s2/favicons?domain=!href_domain!&sz=32
                     rem https://icons.duckduckgo.com/ip3/!href_domain!.ico
                     rem https://external-content.duckduckgo.com/ip3/!href_domain!.ico
                     rem https://unavatar.now.sh/!href_domain!
-                    echo         ^<a href="!href_link!" target="_blank"^>^<img src="https://external-content.duckduckgo.com/ip3/!href_domain!.ico"/^>!name!^</a^>
+                    echo         ^<a href="!html_href_link!" target="_blank"^>^<img src="https://external-content.duckduckgo.com/ip3/!href_domain!.ico"^>!html_text!^</a^>
                 ) || (
-                    echo ERROR ^(WRITE_HREF_LINK^): "!href_path!/index.html" "!name!"
+                    echo ERROR ^(WRITE_HTML_HREF_LINK^): "!windows_href_path!/index.html" "!html_text!"
                     pause
                     exit /b 1
                 )
-                rem echo "[%%A] [%%B] [!href_path!] [!name!] [!href_link!]"
+                rem echo "[%%A] [%%B] [!windows_href_path!] [!html_text!] [!html_href_link!]"
             ) else if "%%A"=="HR" (
-                >>"!href_path!/index.html" (
+                >>"!windows_href_path!/index.html" (
                     echo         ^<HR^>
                 ) || (
-                    echo ERROR ^(WRITE_HREF_HR^): "!href_path!/index.html"
+                    echo ERROR ^(WRITE_HREF_HR^): "!windows_href_path!/index.html"
                     pause
                     exit /b 1
                 )
-                rem echo "[%%A] [%%B] [!href_path!]"
+                rem echo "[%%A] [%%B] [!windows_href_path!]"
             )
         )
     )
 )
-if defined parse_untrusted_websites[output] (
-    set parse_untrusted_websites[output]=
+for %%A in (parse_untrusted_websites[output] _html_text) do (
+    set %%A=
 )
 call :GET_CURRENT_DATE || (
     echo ERROR ^(GET_DATE_TIME^)
@@ -111,10 +112,10 @@ call :GET_CURRENT_DATE || (
     exit /b 1
 )
 for /f "delims=" %%A in ('2^>nul dir "Bookmarks Toolbar\*index.html" /b /a:-d /s') do (
-    set "href_path=%%~dpA"
-    if defined href_path (
-        set "href_path=!href_path:~0,-1!"
-        if defined href_path (
+    set "windows_href_path=%%~dpA"
+    if defined windows_href_path (
+        set "windows_href_path=!windows_href_path:~0,-1!"
+        if defined windows_href_path (
             call :WRITE_FOOTER
         )
     )
@@ -144,31 +145,31 @@ endlocal
 exit /b 0
 
 :WRITE_HEADER
-if defined @display_path (
-    set @display_path=
+if defined @display_pathbar (
+    set @display_pathbar=
 )
-set tmp_path_href_path="!href_path!"
+set tmp_path_href_path="!windows_href_path!"
 set "tmp_path_href_path=!tmp_path_href_path:/=" "!"
-if defined path_href_path (
-    set path_href_path=
+if defined _html_href_path (
+    set _html_href_path=
 )
 for %%A in (!tmp_path_href_path!) do (
-    if defined path_href_path (
-        set "path_href_path=!path_href_path!/%%~A"
+    if defined _html_href_path (
+        set "_html_href_path=!_html_href_path!/%%~A"
     ) else (
-        set "path_href_path=%%~A"
+        set "_html_href_path=%%~A"
     )
-    set "path_href_path=!path_href_path: =%%20!"
-    set "data=%%~A"
-    set "data=!data:U+003F=?!"
-    set "data=!data:U+002F=/!"
-    set "data=!data:U+005C=\!"
-    set @display_path=!@display_path!^<a href^="/Illegal_Services/!path_href_path!/index.html"^>!data!^</a^> ^>!sp!
+    set "_html_href_path=!_html_href_path: =%%20!"
+    set "_html_href_path=!_html_href_path:[=%%5B!"
+    set "_html_href_path=!_html_href_path:]=%%5D!"
+    set "_html_text=%%~A"
+    call :DECODE_WINDOWS_HREF folder _html_text
+    set @display_pathbar=!@display_pathbar!^<a href^="/Illegal_Services/!_html_href_path!/index.html"^>!_html_text!^</a^> ^>!sp!
 )
-if defined @display_path (
-    set "@display_path=!@display_path!index.html"
+if defined @display_pathbar (
+    set "@display_pathbar=!@display_pathbar!index.html"
 )
->>"!href_path!\index.html" (
+>>"!windows_href_path!\index.html" (
     echo ^<^^!DOCTYPE html^>
     echo ^<html lang="en-US"^>
     echo:
@@ -225,20 +226,20 @@ if defined @display_path (
     echo     ^</div^>
     echo:
     echo     ^<div class="pathbar"^>
-    echo         !@display_path!
+    echo         !@display_pathbar!
     echo     ^</div^>
     echo     ^<br^>
     echo:
     echo     ^<div class="vertical-menu"^>
 ) || (
-    echo ERROR ^(WRITE_HEADER^): "!href_path!/index.html"
+    echo ERROR ^(WRITE_HEADER^): "!windows_href_path!/index.html"
     pause
     exit /b 1
 )
 exit /b
 
 :WRITE_FOOTER
->>"!href_path!\index.html" (
+>>"!windows_href_path!\index.html" (
     echo     ^</div^>
     echo     ^<br^>
     echo:
@@ -264,7 +265,7 @@ exit /b
     echo:
     echo ^</html^>
 ) || (
-    echo ERROR ^(WRITE_FOOTER^): "!href_path!/index.html"
+    echo ERROR ^(WRITE_FOOTER^): "!windows_href_path!/index.html"
     pause
     exit /b 1
 )
@@ -315,6 +316,71 @@ for /f "delims==" %%A in ('2^>nul set parse_untrusted_websites[') do (
     if not "%%A"=="parse_untrusted_websites[output]" (
         set %%A=
     )
+)
+exit /b 0
+
+:ENCODE_WINDOWS_HREF
+if not defined %2 (
+    exit /b 1
+)
+set "encode_windows_href[_tmp]=!%2!"
+set encode_windows_href[len]=0
+for %%A in (4096,2048,1024,512,256,128,64,32,16,8,4,2,1) do (
+    if "!encode_windows_href[_tmp]:~%%A,1!" neq "" (
+        set /a "encode_windows_href[len]+=%%A"
+        set "encode_windows_href[_tmp]=!encode_windows_href[_tmp]:~%%A!"
+    )
+)
+set encode_windows_href[_tmp]=
+for /l %%A in (0,1,!encode_windows_href[len]!) do (
+    set "encode_windows_href[char]=!%2:~%%A,1!"
+    if "!encode_windows_href[char]!"=="*" (
+        set "encode_windows_href[path]=!encode_windows_href[path]!U+002A"
+    ) else (
+        set "encode_windows_href[path]=!encode_windows_href[path]!!encode_windows_href[char]!"
+    )
+)
+if %1==path (
+    set "encode_windows_href[path]=!encode_windows_href[path]:\\=U+005C!"
+    set "encode_windows_href[path]=!encode_windows_href[path]:\/=U+002F!"
+) else if %1==folder (
+    set "encode_windows_href[path]=!encode_windows_href[path]:\=U+005C!"
+    set "encode_windows_href[path]=!encode_windows_href[path]:/=U+002F!"
+)
+set "encode_windows_href[path]=!encode_windows_href[path]::=U+003A!"
+set "encode_windows_href[path]=!encode_windows_href[path]:?=U+003F!"
+set "encode_windows_href[path]=!encode_windows_href[path]:"=U+0022!"
+set "encode_windows_href[path]=!encode_windows_href[path]:<=U+003C!"
+set "encode_windows_href[path]=!encode_windows_href[path]:>=U+003E!"
+set "encode_windows_href[path]=!encode_windows_href[path]:|=U+007C!"
+set "%2=!encode_windows_href[path]!"
+for /f "delims==" %%A in ('2^>nul set encode_windows_href[') do (
+    set %%A=
+)
+exit /b 0
+
+:DECODE_WINDOWS_HREF
+if not defined %2 (
+    exit /b 1
+)
+set "decode_windows_href[path]=!%2!"
+if %1==path (
+    set "decode_windows_href[path]=!decode_windows_href[path]:U+005C=\\!"
+    set "decode_windows_href[path]=!decode_windows_href[path]:U+002F=\/!"
+) else if %1==folder (
+    set "decode_windows_href[path]=!decode_windows_href[path]:U+005C=\!"
+    set "decode_windows_href[path]=!decode_windows_href[path]:U+002F=/!"
+)
+set "decode_windows_href[path]=!decode_windows_href[path]:U+003A=:!"
+set "decode_windows_href[path]=!decode_windows_href[path]:U+002A=*!"
+set "decode_windows_href[path]=!decode_windows_href[path]:U+003F=?!"
+set "decode_windows_href[path]=!decode_windows_href[path]:U+0022="!"
+set "decode_windows_href[path]=!decode_windows_href[path]:U+003C=<!"
+set "decode_windows_href[path]=!decode_windows_href[path]:U+003E=>!"
+set "decode_windows_href[path]=!decode_windows_href[path]:U+007C=|!"
+set "%2=!decode_windows_href[path]!"
+for /f "delims==" %%A in ('2^>nul set decode_windows_href[') do (
+    set %%A=
 )
 exit /b 0
 
