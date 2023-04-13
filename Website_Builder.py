@@ -242,7 +242,6 @@ def create_folder_or_path(folder_or_path: Path):
     return folder_or_path
 
 
-
 links_counter = 0
 
 for file_or_folder in [Path(R"Bookmarks Toolbar"), Path(R"js")]:
