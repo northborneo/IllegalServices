@@ -263,7 +263,6 @@ bookmarks_db = subprocess.check_output([
     R"D:\Git\Illegal_Services\IS.bookmarks.html"
 ]).decode().splitlines(keepends=False)
 
-
 is_first_folder__flag = False
 for bookmark in bookmarks_db:
     parts = re.findall(r"'(.*?)'", bookmark)
