@@ -274,7 +274,7 @@ for bookmark in bookmarks_db:
     bookmark_path = str(parts[2])
 
     #print(bookmark)
-    print(parts)
+    #print(parts)
 
     if (
         bookmark_type == "PATH"
