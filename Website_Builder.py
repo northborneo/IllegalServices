@@ -62,6 +62,7 @@ def encode_html_entity_encoding(string: str):
         '\'': '&#39;',
         '<': '&lt;',
         '>': '&gt;',
+        ' ': '&nbsp;',
     }
     for chars, replacement in replacements.items():
         string = string.replace(chars, replacement)
