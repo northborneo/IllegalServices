@@ -207,7 +207,7 @@ def write_footer() -> None:
                 <script src="/Illegal_Services/js/counter.js"></script>
                 <noscript>
                     <div class="javascript-disabled">
-                        <img src="/Illegal_Services/icons/no_js.png">
+                        <img src="/Illegal_Services/icons/no_js.png" alt="no_js.png">
                         JavaScript disabled in your browser;<br>
                         can't display the counter informations.
                     </div>
@@ -304,12 +304,12 @@ for bookmark in bookmarks_db:
 
         match = re.search(r"^(.*)( \| \(untrusted(?:\: .*))$", bookmark_link_title)
         if match:
-            bookmark_link_title__html_text = f'{match.group(1)}<font color="red">{match.group(2)}</font>'
+            bookmark_link_title__html_text = f'{match.group(1)}<span style="color: red">{match.group(2)}</span>'
         else:
             bookmark_link_title__html_text = bookmark_link_title__text
 
         with open(bookmark_path__windows_index_path__str, "a+", encoding="utf-8", newline="\r\n") as file:
-            file.write(f'        <a href="{bookmark_link}" target="_blank"><img src="https://external-content.duckduckgo.com/ip3/{bookmark_link_hostname}.ico">{bookmark_link_title__html_text}</a>\n')
+            file.write(f'        <a href="{bookmark_link}" target="_blank" title="{bookmark_link}"><img src="https://external-content.duckduckgo.com/ip3/{bookmark_link_hostname}.ico" alt="favicon">{bookmark_link_title__html_text}</a>\n')
             file.close()
         if not (bookmark_path__windows_index_path__path.exists() and bookmark_path__windows_index_path__path.is_file()):
             print(f'ERROR (WRITE_LINK_INDEX): "{bookmark_link}" "{bookmark_folder__text}" "{bookmark_link_title__text}"')
