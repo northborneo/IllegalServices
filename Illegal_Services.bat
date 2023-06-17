@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 8. 9
-REM  Fileversion:  6. 1. 8. 9
+REM  Productversion:  6. 1. 9. 0
+REM  Fileversion:  6. 1. 9. 0
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.8.9 - 18/03/2023
+set VERSION=v6.1.9.0 - 17/06/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -434,11 +434,11 @@ call :CHECK_FIRSTLAUNCH
 if "!FirstLaunch!"=="1" (
     if "!VERSION:~5,3!"=="0.0" (
         if "!language!"=="EN" (
-            set t="News in !VERSION:~0,8!, in this update:!\N!!\N!I updated:!\N!- IP Address Lookup!\N!!\N!I added:!\N!- IS bookmarks parser. (Illegal Services x IS.bookmarks.html)!\N!- Support for Windows 11. (but unfortunately had to drop support for Windows 7, 8 and 8.1)!\N!- Multiple checkbox choices.!\N!!\N!Updated many categories, fixed various bugs and improved the source code.!\N!!\N!For a full version of the ChangeLog:!\N!%~dp0ChangeLog.txt"
+            set t="News in !VERSION:~0,8!, in this update:!\N!!\N!I updated:!\N!- IP Address Lookup!\N!!\N!I added:!\N!- IS bookmarks parser. (Illegal Services x IS.bookmarks.html)!\N!- Support for Windows 11. (but unfortunately had to drop support for Windows 7, 8 and 8.1)!\N!- Multiple checkbox choices.!\N!!\N!Updated many categories, fixed various bugs and improved the source code.!\N!!\N!For a full version of the ChangeLog:!\N!!IS_DIR!ChangeLog.txt"
             call :MSGBOX 69696 "News - Illegal Services"
         )
         if "!language!"=="FR" (
-            set t="Nouveautés dans la !VERSION:~0,8!, dans cette mise à jour:!\N!!\N!J'ai mis à jour:!\N!- IP Address Lookup!\N!!\N!J'ai ajouté:!\N!- IS bookmarks parseur. (Illegal Services x IS.bookmarks.html)!\N!- Support pour Windows 11. (mais a malheureusement dû abandonner le support de Windows 7, 8 et 8.1)!\N!- Plusieurs choix de cases à cocher.!\N!!\N!Mise à jour de nombreuses catégories, corrigé divers bugs et améliorer le code source.!\N!!\N!Pour une version complète du ChangeLog:!\N!%~dp0ChangeLog.txt"
+            set t="Nouveautés dans la !VERSION:~0,8!, dans cette mise à jour:!\N!!\N!J'ai mis à jour:!\N!- IP Address Lookup!\N!!\N!J'ai ajouté:!\N!- IS bookmarks parseur. (Illegal Services x IS.bookmarks.html)!\N!- Support pour Windows 11. (mais a malheureusement dû abandonner le support de Windows 7, 8 et 8.1)!\N!- Plusieurs choix de cases à cocher.!\N!!\N!Mise à jour de nombreuses catégories, corrigé divers bugs et améliorer le code source.!\N!!\N!Pour une version complète du ChangeLog:!\N!!IS_DIR!ChangeLog.txt"
             call :MSGBOX 69696 "Nouveautés - Illegal Services"
         )
         >nul reg add "!IS_REG!" /v "FirstLaunch" /t REG_DWORD /d 0 /f
@@ -2552,8 +2552,8 @@ if exist "Illegal Services.exe" (
         exit 0
     )
 )
-if "!language!"=="EN" set t="Illegal Services cannot continue running 'Illegal Services.exe' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
-if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter 'Illegal Services.exe' car son accès semble être refusé.!\N!Cette erreur: '!errorlevel!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (%~dp0) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
+if "!language!"=="EN" set t="Illegal Services cannot continue running 'Illegal Services.exe' because it's access appears to be denied.!\N!This error: '!errorlevel!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (!IS_DIR!) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
+if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter 'Illegal Services.exe' car son accès semble être refusé.!\N!Cette erreur: '!errorlevel!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (!IS_DIR!) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
 call :MSGBOX 69680 "Illegal Services"
 goto :CHECKER_BUILD_FOUND
 
@@ -2746,7 +2746,7 @@ if "!language!"=="FR" (
 call :CHECK_PATCH_BOOKMARKS_PARSER
 call :CHECK_FILE_ACCESS_IS_BOOKMARKS_PARSER
 if defined DEBUG (
-    start python "D:\Bureau\Illegal Services\Ressources\scan_down_or_changed_domain_websites.py"
+    start python "D:\Desktop\Illegal Services\Ressources\scan_down_or_changed_domain_websites.py"
 )
 for /f "tokens=5delims='" %%A in ('!bookmarks_parser.exe! --list-links --extended-parsing --quoting-style "'" "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html"') do (
     set /a index+=1
@@ -3419,7 +3419,7 @@ for %%A in (!GIT_LIST!) do (
             call :_DOWNLOAD_CURL && (
                 exit /b 0
             )
-            bitsadmin /transfer someDownload /download /priority high "%%~E" "%~dp0curl.exe"
+            bitsadmin /transfer someDownload /download /priority high "%%~E" "!IS_DIR!curl.exe"
             call :_DOWNLOAD_CURL && (
                 exit /b 0
             )
@@ -3639,14 +3639,7 @@ exit /b 0
 )
 set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
-if defined IS_OUTPUT_DIRECTORY (
-    set IS_OUTPUT_DIRECTORY=
-)
-for /f "tokens=2*" %%A in ('2^>nul reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
-    if not "%%B"=="" (
-        set "IS_OUTPUT_DIRECTORY=%%B\Illegal Services"
-    )
-)
+set "IS_OUTPUT_DIRECTORY=!IS_DIR!user_data"
 call :CHECK_PATH IS_OUTPUT_DIRECTORY && (
     if exist "!IS_OUTPUT_DIRECTORY!\" (
         goto :SET_IS_OUTPUT_DIRECTORYS_SETUP_LAUNCHER
@@ -3664,6 +3657,20 @@ call :CHECK_PATH IS_OUTPUT_DIRECTORY && (
 )
 call :ERROR_FATAL IS_OUTPUT_DIRECTORY
 :SET_IS_OUTPUT_DIRECTORYS_SETUP_LAUNCHER
+if defined OLD_IS_OUTPUT_DIRECTORY (
+    set OLD_IS_OUTPUT_DIRECTORY=
+)
+for /f "tokens=2*" %%A in ('2^>nul reg query "HKCU\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders" /v "Personal"') do (
+    if not "%%B"=="" (
+        set "OLD_IS_OUTPUT_DIRECTORY=%%B\Illegal Services"
+    )
+)
+call :CHECK_PATH OLD_IS_OUTPUT_DIRECTORY && (
+    if exist "!OLD_IS_OUTPUT_DIRECTORY!\" (
+        >nul xcopy "!OLD_IS_OUTPUT_DIRECTORY!\*" "!IS_OUTPUT_DIRECTORY!\" /e /i /y
+        rd /s /q "!OLD_IS_OUTPUT_DIRECTORY!\"
+    )
+)
 set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
 set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
 set "IS_OUTPUT_DIRECTORY_PORTABLE_APPS=!IS_OUTPUT_DIRECTORY!\Portable Apps"
@@ -4711,8 +4718,8 @@ if "%1"=="IS_PATH_BAT_USED" (
     set x2=1
 ) else if "%1"=="ERRORLEVEL" (
     if !#el_fatal!==5 (
-        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!#el_fatal!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (%~dp0) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
-        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur: '!#el_fatal!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (%~dp0) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
+        if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be denied.!\N!This error: '!#el_fatal!' is known to be Windows Defender blocking access to the file because the file is detected to contain a virus or unwanted software.!\N!!\N!We recommend whitelisting the Illegal Services PATH (!IS_DIR!) in your antivirus software(s) to fix this issue and prevent a similar issue in the future."
+        if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être refusé.!\N!Cette erreur: '!#el_fatal!' est connue pour être Windows Defender bloquant l'accès au fichier car il est détecté que le fichier contient un virus ou un logiciel indésirable.!\N!!\N!Nous vous recommandons de mettre en liste blanche le chemin d'accès d'Illegal Services (!IS_DIR!) dans votre ou vos logiciels antivirus pour réparer ce problème et éviter un problème similaire à l'avenir."
     ) else (
         if "!language!"=="EN" set t="Illegal Services cannot continue running '%~2' because it's access appears to be impossible.!\N!!\N!Please report this bug: '!#el_fatal!' on our Telegram forum in order to correct this bug in a future release."
         if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!#el_fatal!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
