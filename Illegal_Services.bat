@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 9. 0
-REM  Fileversion:  6. 1. 9. 0
+REM  Productversion:  6. 1. 9. 1
+REM  Fileversion:  6. 1. 9. 1
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.9.0 - 17/06/2023
+set VERSION=v6.1.9.1 - 17/06/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -3670,6 +3670,9 @@ call :CHECK_PATH OLD_IS_OUTPUT_DIRECTORY && (
         >nul xcopy "!OLD_IS_OUTPUT_DIRECTORY!\*" "!IS_OUTPUT_DIRECTORY!\" /e /i /y
         rd /s /q "!OLD_IS_OUTPUT_DIRECTORY!\"
     )
+)
+if defined OLD_IS_OUTPUT_DIRECTORY (
+    set OLD_IS_OUTPUT_DIRECTORY=
 )
 set "IS_OUTPUT_DIRECTORY_LOGS=!IS_OUTPUT_DIRECTORY!\logs"
 set "IS_OUTPUT_DIRECTORY_YOUTUBE_DL=!IS_OUTPUT_DIRECTORY!\YouTube Downloader"
