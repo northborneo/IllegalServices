@@ -6,6 +6,9 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
+v6.1.9.1 - 17/06/2023
+* IMPROVED IS Source : Code.
+
 v6.1.9.0 - 17/06/2023
 * FIXED a bug blocking people to use IS because it could not work with the "my documents" user's folder. (probably due to OneDrive or others cloud file saving plateforms.)
 The fameous: "Illegal Services cannot start because it could not determine its output directory." that a lot of people have reported to me.
