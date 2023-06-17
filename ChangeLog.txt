@@ -6,6 +6,12 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
+v6.1.9.0 - 17/06/2023
+* FIXED a bug blocking people to use IS because it could not work with the "my documents" user's folder. (probably due to OneDrive or others cloud file saving plateforms.)
+The fameous: "Illegal Services cannot start because it could not determine its output directory." that a lot of people have reported to me.
+Now the "C:\Users\username\Documents\llegal Services" folder changed location and should have automatically moved all files to "C:\Users\username\AppData\Roaming\Illegal Services\user_data\".
+* FIXED a potential bug due to a compiler's bug, that was setting the wrong paths at some places in IS.
+
 v6.1.8.9 - 18/03/2023
 + UPDATED IS lib : bookmarks_parser.exe
 
