@@ -6,6 +6,13 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
+v6.1.9.2 - 09/07/2023
+* FIXED a bug when "OPEN" choice in Illegal Services x IS.bookmarks.html where showing up while this option is now depracted as of patch v6.1.9.0 - 17/06/2023
+* FIXED a bug when "UPDATE" choice in Illegal Services x IS.bookmarks.html where not showing an internet error message in case you didn't connected to internet.
+* IMPROVED IS Source : Code.
+* IMPROVED IS Source : More precise error messages at some places.
+- REMOVED Main Menu Credits. Instead it will now start IS website credits page, that way it is easy for me to maintain it up-to-date on both IS Windows application and IS website.
+
 v6.1.9.1 - 17/06/2023
 * IMPROVED IS Source : Code.
 
