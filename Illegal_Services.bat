@@ -4,12 +4,12 @@ REM  HasVersionInfo: Yes
 REM  Companyname: IB_U_Z_Z_A_R_Dl
 REM  Productname: Illegal Services
 REM  Filedescription: Illegal Services
-REM  Copyrights: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
-REM  Trademarks: Copyright (C) 2022 IB_U_Z_Z_A_R_Dl
+REM  Copyrights: Copyright (C) 2023 IB_U_Z_Z_A_R_Dl
+REM  Trademarks: Copyright (C) 2023 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 9. 1
-REM  Fileversion:  6. 1. 9. 1
+REM  Productversion:  6. 1. 9. 2
+REM  Fileversion:  6. 1. 9. 2
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -221,7 +221,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.9.1 - 17/06/2023
+set VERSION=v6.1.9.2 - 09/07/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -237,7 +237,6 @@ for %%A in (README.md "Illegal Services.exe" "!TMPF!\msgbox.vbs" "!TMPF!\IS.Setu
 for %%A in ("!CD:~0,2!\AI_RecycleBin" "!SystemDrive!\AI_RecycleBin" "!TMPF!\IB_U_Z_Z_A_R_Dl") do if exist "%%~A" 2>nul rd /s /q "%%~A"
 set "sp=%@move_right:?=28%!YELLOW!{$} !BRIGHTBLACK!"
 echo !BRIGHTBLACK!
-set "IS_DIR=%~dp0"
 if not "!PATH:~-13!"==";lib\curl\x!ARCH!" set "PATH=!PATH!;lib\curl\x!ARCH!"
 :: set "git_raw_github=https://github.com/Illegal-Services/Illegal_Services/raw/!git_item_branch!/!git_item_path!"
 :: set "git_raw_bitbucket=https://bitbucket.org/IllegalServices/illegal_services/raw/!git_item_branch!/!git_item_path!"
@@ -253,7 +252,7 @@ if not "!PATH:~-13!"==";lib\curl\x!ARCH!" set "PATH=!PATH!;lib\curl\x!ARCH!"
 set "GIT_LIST=github.com/Illegal-Services/Illegal_Services`raw`tree/source bitbucket.org/IllegalServices/illegal_services`raw`src/source/ gitee.com/Illegal-Services/illegal_services`raw`tree/source/ notabug.org/Illegal-Services/Illegal_Services`raw`src/source"
 >nul 2>&1 where curl.exe || (
     call :DOWNLOAD_CURL || (
-        call :ERROR_FATAL lib\curl\x!ARCH!\curl.exe CURL
+        call :ERROR_FATAL DEPENDENCY lib\curl\x!ARCH!\curl.exe CURL
     )
 )
 
@@ -316,7 +315,7 @@ for %%A in (lib\binread\x!ARCH!\binread.exe ChangeLog.txt COPYING EULA.rtf Illeg
         call :MISSING_FILE %%A
         set "x2=%%A"
         call :CURL "%%A" "`git_raw_main`/!x2:\=/!" || (
-            call :ERROR_FATAL %%A
+            call :ERROR_FATAL DEPENDENCY %%A
         )
     )
 )
@@ -480,7 +479,12 @@ if "!x!"=="13" goto :PINGERPORT
 if "!x!"=="14" goto :IPPINGER
 if "!x!"=="17" goto :PORTABLEAPPS
 if "!x!"=="18" goto :MOREFEATURES
-call :CHOOSE Crédits && goto :CREDITS
+if "!language!"=="EN" set t=Credits
+if "!language!"=="FR" set t=Crédits
+call :CHOOSE !t! && (
+    start "" "https://illegal-services.github.io/Illegal_Services/credits.html"
+    goto :MAINMENU
+)
 if "!language!"=="EN" set t=Networks
 if "!language!"=="FR" set t=Réseaux
 call :CHOOSE !t! && (
@@ -488,8 +492,8 @@ call :CHOOSE !t! && (
     start "" "https://github.com/Illegal-Services/Illegal_Services" && !cmdwiz.exe! delay 1500
     start "" "https://t.me/illegal_services_forum" && !cmdwiz.exe! delay 1500
     start "" "https://t.me/illegal_services" && !cmdwiz.exe! delay 1500
-    start "" "https://discord.gg/rU2w2E83KF" && !cmdwiz.exe! delay 1500
-    start "" "https://chrome.google.com/webstore/detail/illegal-services-bookmark/dkddkjnnbeohinbbcfdklcehcmgpdofi"
+    start "" "https://discordapp.com/users/953063421828542484"
+    REM start "" "https://chrome.google.com/webstore/detail/illegal-services-bookmark/dkddkjnnbeohinbbcfdklcehcmgpdofi"
     REM start "" "https://addons.mozilla.org/addon/illegal-services"
     goto :MAINMENU
 )
@@ -529,116 +533,6 @@ if /i "!x!"=="--dump" (
 )
 call :ERRORMESSAGE
 goto :MAINMENU
-
-:CREDITS
-if not defined scale[credits] (
-    set scale[credits]=94 35
-)
-call :SCALE !scale[credits]!
-title !#TITLE:`=Credits!
-call :ROSE Credits
-
-:CONTINUECREDITS
-call :SCALE !scale[credits]!
-echo !CYAN!
-echo %@move_right:?=39%═══════════════
-echo %@move_right:?=38%// !RED!█!BGYELLOW!!BLACK! CREDITS !RED!█!BGBLACK!!CYAN! \\
-echo %@move_right:?=9%╔══════════════════════════════════════════════════════════════════════════╗
-echo %@move_right:?=9%╠═══════════════════════════■█!BGYELLOW!!RED!█ DEPENDENCIES █!BGBLACK!!CYAN!█■═══════════════════════════╣
-echo %@move_right:?=9%║                                                                          ║
-echo %@move_right:?=9%║      !YELLOW!1!CYAN!  ^>  !WHITE!Advanced Installer   : 'Setup installer'!CYAN!                      ║
-echo %@move_right:?=9%║      !YELLOW!2!CYAN!  ^>  !WHITE!Speak by soyalk 2019 : 'Rose voice assistant'!CYAN!                 ║
-echo %@move_right:?=9%║      !YELLOW!3!CYAN!  ^>  !WHITE!Speak by Fatih Kodak : 'Rose voice assistant'!CYAN!                 ║
-echo %@move_right:?=9%║      !YELLOW!4!CYAN!  ^>  !WHITE!Open/SaveFileBox     : 'Open/Save file box dialog'!CYAN!            ║
-echo %@move_right:?=9%║      !YELLOW!5!CYAN!  ^>  !WHITE!Bookmarks Parser     : 'Parse IS bookmarks HTML file.'!CYAN!        ║
-echo %@move_right:?=9%║      !YELLOW!6!CYAN!  ^>  !WHITE!binread : 'Read files in hexadecimal format'!CYAN!                  ║
-echo %@move_right:?=9%║      !YELLOW!7!CYAN!  ^>  !WHITE!7za     : 'Decompressing tool'!CYAN!                                ║
-echo %@move_right:?=9%║      !YELLOW!8!CYAN!  ^>  !WHITE!curl    : 'Web requests'!CYAN!                                      ║
-echo %@move_right:?=9%║      !YELLOW!9!CYAN!  ^>  !WHITE!CmdBkg  : 'Background image'!CYAN!                                  ║
-echo %@move_right:?=9%║     !YELLOW!10!CYAN!  ^>  !WHITE!CmdWiz  : 'Background transparency, ...'!CYAN!                      ║
-echo %@move_right:?=9%║                                                                          ║
-echo %@move_right:?=9%╠══════════════════════■█!BGYELLOW!!RED!█ DEVELOPERS and HELPERS █!BGBLACK!!CYAN!█■══════════════════════╣
-echo %@move_right:?=9%║                                                                          ║
-echo %@move_right:?=9%║                   !YELLOW!11!CYAN!  ^>  !WHITE!Program Dream Discord Server!CYAN!                    ║
-echo %@move_right:?=9%║                   !YELLOW!12!CYAN!  ^>  !WHITE!server.bat Discord Server!CYAN!                       ║
-echo %@move_right:?=9%║                   !YELLOW!13!CYAN!  ^>  !WHITE!@anic17!CYAN!                                         ║
-echo %@move_right:?=9%║                   !YELLOW!14!CYAN!  ^>  !WHITE!@^<Tim^>!CYAN!                                          ║
-echo %@move_right:?=9%║                   !YELLOW!15!CYAN!  ^>  !WHITE!@sintrode!CYAN!                                       ║
-echo %@move_right:?=9%║                   !YELLOW!16!CYAN!  ^>  !WHITE!@Grub4K!CYAN!                                         ║
-echo %@move_right:?=9%║                   !YELLOW!17!CYAN!  ^>  !WHITE!@Rosalyn!CYAN!                                        ║
-echo %@move_right:?=9%║                   !YELLOW!18!CYAN!  ^>  !WHITE!@Ms.CatFire!CYAN!                                     ║
-echo %@move_right:?=9%║                   !YELLOW!19!CYAN!  ^>  !WHITE!All other contributors!CYAN!                          ║
-echo %@move_right:?=9%╚══════════════════════════════════════════════════════════════════════════╝
-echo !BRIGHTBLACK!
-if "!language!"=="EN" (set t1=Write a number OR) & (set t2=AND press) & set t3=ENTER
-if "!language!"=="FR" (set t1=Ecrivez un numéro OU) & (set t2=et appuyé sur) & set t3=ENTRER
-call :DRAW_CENTER newline "!t1! "!YELLOW!BACK!BRIGHTBLACK!" !t2! !YELLOW!{!t3!}!BRIGHTBLACK!."
-echo:
-call :PROMPT
-if "!x!"=="1" start "" "https://www.advancedinstaller.com/"
-if "!x!"=="2" start "" "https://github.com/soyalk/speak-text-windows"
-if "!x!"=="3" start "" "https://f2ko.de/programme/cmd-tools/"
-if "!x!"=="4" start "" "https://www.robvanderwoude.com/dialogboxes.php"
-if "!x!"=="5" start "" "https://pastebin.com/gUVdJGdP"
-if "!x!"=="6" start "" "https://pastebin.com/gpiFrv1A"
-if "!x!"=="7" start "" "https://www.7-zip.org/"
-if "!x!"=="8" start "" "https://curl.se/"
-if "!x!"=="9" start "" "https://www.dostips.com/forum/viewtopic.php?t=7407"
-if "!x!"=="10" start "" "https://www.dostips.com/forum/viewtopic.php?t=7402"
-if "!x!"=="11" start "" "https://discord.com/invite/eCMBHUB"
-if "!x!"=="12" start "" "https://discord.com/invite/eXjp7PQ"
-if "!x!"=="13" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped fixing a bug that where creating temporary files without deleting them.!\N!!\N!Helped improving IP Address Lookup API's.!\N!!\N!Helped adding launcher updater.!\N!!\N!Helping to find existing bugs and vulnerabilities.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped to find algorithm to download new database of 'IS.bookmarks.html' every day.!\N!!\N!Creator of 'binread.exe' source executable."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à la correction d'un bug qui entraînait la création de fichiers temporaires sans les supprimer.!\N!!\N!A aidé à améliorer l'API de l'IP Address Lookup.!\N!!\N!A aidé à l'ajout des mises à jour du launcher.A aidé à trouver les bugs et vulnérabilitées existantes.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à trouver l'algorithme permettant de télécharger la nouvelle database de 'IS.bookmarks.html' tous les jours.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html!\N!!\N!Créateur de l'exécutable 'binread.exe' dans la source."
-call :MSGBOX 69696 "anic17 'Task failed successfully'"
-start "" "https://github.com/anic17"
-)
-if "!x!"=="14" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped adding launcher updater.!\N!!\N!Helped creating windows repair.!\N!!\N!Helped adding Rose voice assistant."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'ajout des mises à jour du launcher.!\N!!\N!A aidé à la création de windows repair.!\N!!\N!A aidé à l'ajout de l'assistante vocal Rose."
-call :MSGBOX 69696 "<Tim>"
-start "" "https://tim-greller.de/home/"
-)
-if "!x!"=="15" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Helped using curl for IS source.!\N!!\N!Helped adding Rose voice assistant.!\N!!\N!Helped adding choice verification.!\N!!\N!Helped adding Automatic proxy switcher.!\N!!\N!Helped to fix bugs related to user input in Regedit.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser.!\N!!\N!Helped me fixing a bug in my code that check if one day passed since the last time we have downloaded 'IS.bookmarks.html'"
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!A aidé à l'utilisation de curl pour la source d'IS.!\N!!\N!A aidé à l'ajout de l'assistante vocale Rose.!\N!!\N!A aidé à l'ajout de la vérification des choix.!\N!!\N!A aidé à ajouter le proxy switcher automatique.!\N!!\N!A aidé à la correction de bugs liés à la saisie de l'utilisateur dans le Regedit.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!M'a aidé à corriger un bug dans mon code qui vérifie si un jour s'est écoulé depuis la dernière fois que nous avons téléchargé 'IS.bookmarks.html'"
-call :MSGBOX 69696 "sintrode"
-start "" "https://github.com/sintrode"
-)
-if "!x!"=="16" (
-if "!language!"=="EN" set t="Helped improving and reducing code.!\N!!\N!Algorithm for checking a file signature.!\N!!\N!Created IS Bookmarks web extension.!\N!!\N!Created the timer in seconds to scan indexed websites.!\N!!\N!Fixed a bug with the stack memory overflow causing IS to crash.!\N!!\N!Created the code to center the text on the UI.!\N!!\N!Helped reducing curl PATH algorithm.!\N!!\N!Helped converting Illegal Services VBScript messages to UTF-8 encoding.!\N!!\N!Helped fixing a bug when user edits 'IP Lookup Saved.txt' but forgets the ending newline.!\N!!\N!Helped implementing the Windows 11 support.!\N!!\N!Helped implementing the IS.bookmarks.html parser.!\N!!\N!Helped me implementing the CRLF line ending automatisation."
-if "!language!"=="FR" set t="A aidé à améliorer et à réduire le code.!\N!!\N!Algorithme de vérification de la signature d''un fichier.!\N!!\N!Création de l'extension web IS Bookmarks.!\N!!\N!Création de la minuterie en secondes du scan des sites internet indexés.!\N!!\N!Correction d'un bug avec le débordement de la mémoire de la pile provoquant le plantage d'IS.!\N!!\N!A créé le code pour centrer le texte sur l'UI.!\N!!\N!A aidé à convertir les messages VBScript d'Illegal Services en encodage UTF-8.!\N!!\N!A aidé à corriger un bug lorsque l'utilisateur modifie 'IP Lookup Saved.txt' mais oublie la nouvelle ligne de fin.!\N!!\N!A aidé à implémenter le support de Windows 11.!\N!!\N!A aidé à implémenter le parseur d'IS.bookmarks.html!\N!!\N!M'a aidé à implémenter l'automatisation de fin de ligne CRLF."
-call :MSGBOX 69696 "Grub4K"
-start "" "https://github.com/Grub4K"
-)
-if "!x!"=="17" (
-if "!language!"=="EN" set t="Helping testing alpha versions.!\N!!\N!Helping to find existing bugs.!\N!!\N!Advised me in updating the CLI.!\N!!\N!Gave me a lot of motivation and encouragement.!\N!!\N!                                            *Notice you the shine ?"
-if "!language!"=="FR" set t="A aidé à tester les versions alpha.!\N!!\N!A aidé à trouver les bugs existants.!\N!!\N!M'a conseillé dans la mise à jour de la CLI.!\N!!\N!M'a donné beaucoup de motivation et d'encouragement.!\N!!\N!                                                           *Notice you the shine ?"
-call :MSGBOX 69696 "Rosalyn 'Shine brightest'"
-)
-if "!x!"=="18" (
-if "!language!"=="EN" set t="Logo designer for v4.0"
-if "!language!"=="FR" set t="Conceptrice du logo de la v4.0"
-call :MSGBOX 69696 "Ms.CatFire"
-)
-if "!x!"=="19" (
-if "!language!"=="EN" (
-set t="@Agam - Added ON/OFF switches.!\N!@Vincent - Helped finding a bug with wrong choices.!\N!@cocorisss - Updated Python Port Scanner.!\N!@Chonkus - Added Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - Helped finding existing bugs.!\N!@Simi - Helped with some English translation.!\N!@Saltyy - Helped improving UI choices.!\N!@AMIT - Fixed 'ControlSet001' to 'CurrentControlSet'.!\N!@0x00 - Updated Glary Utilities crack.!\N!@0x00 - Helped finding a bug with Windows Update MiniTool.!\N!@0x00 - Added More Features Spoofing.!\N!@Yeshi - Helped improving and reducing code."
-call :MSGBOX 69696 "All other contributors:"
-set t="@blacktario - Added 51 websites.!\N!@0x00 - Added 11 websites.!\N!@LeSaintFisti - Added 6 websites.!\N!@craciu25_YT - Added 4 website.!\N!@Grub4K - Added 3 websites.!\N!@Trident Security - Added 2 websites.!\N!@Lubomira - Added 2 website.!\N!@Bastien - Added 1 website.!\N!@RaaFii1 - Added 1 website.!\N!@snipercat - Added 1 website.!\N!@PistachePoilue - Added 1 website.!\N!@FZ_PARRAIN_ZF - Added 1 website.!\N!@Eiralys - Added 1 website.!\N!@ayo - Added 1 website.!\N!@Zyker - Added 1 website.!\N!@Bлaд A4 - Added 1 website.!\N!@sakuranatsumigg - Added 1 website.!\N!@lostinabyss - Added 1 website."
-call :MSGBOX 69696 "All other contributors:"
-)
-if "!language!"=="FR" (
-set t="@Agam - A ajouté les interrupteurs ON/OFF.!\N!@Vincent - A aidé à trouver un bug avec les mauvais choix.!\N!@cocorisss - Mise à jour du Port Scanner Python.!\N!@Chonkus - A ajouté Internet Protocol TV (IPTV).!\N!@KiritoLeFakePK - A aidé à trouver les bugs existants.!\N!@Simi - A aidé pour certaines traductions Anglaise.!\N!@Saltyy - A aidé à améliorer les choix d'interface utilisateur.!\N!@AMIT - A corrigé 'ControlSet001' vers 'CurrentControlSet'.!\N!@0x00 - Mise à jour du crack de Glary Utilities.!\N!@0x00 - A aidé à trouver un bug avec Windows Update MiniTool.!\N!@0x00 - A ajouté More Features Spoofing.!\N!@Yeshi - A aidé à améliorer et à réduire le code."
-call :MSGBOX 69696 "Tous les autres contributeurs:"
-set t="@blacktario - A ajouté 51 sites internet.!\N!@0x00 - A ajouté 11 sites internet.!\N!@LeSaintFisti - A ajouté 6 sites internet.!\N!@craciu25_YT - A ajouté 4 site internet.!\N!@Grub4K - A ajouté 3 sites internet.!\N!@Trident Security - A ajouté 2 sites internet.!\N!@Lubomira - A ajouté 2 site internet.!\N!@Bastien - A ajouté 1 site internet.!\N!@RaaFii1 - A ajouté 1 site internet.!\N!@snipercat - A ajouté 1 site internet.!\N!@PistachePoilue - A ajouté 1 site internet.!\N!@FZ_PARRAIN_ZF - A ajouté 1 site internet.!\N!@Eiralys - A ajouté 1 site internet.!\N!@ayo - A ajouté 1 site internet.!\N!@Zyker - A ajouté 1 site internet.!\N!@Bлaд A4 - A ajouté 1 site internet.!\N!@sakuranatsumigg - A ajouté 1 site internet.!\N!@lostinabyss - A ajouté 1 site internet."
-call :MSGBOX 69696 "Tous les autres contributeurs:"
-)
-)
-for /l %%A in (1,1,19) do if "!x!"=="%%A" goto :CONTINUECREDITS
-call :CHOOSE BACK && goto :MAINMENU
-call :ERRORMESSAGE
-goto :CONTINUECREDITS
 
 :SETTINGS
 if not defined scale[settings] (
@@ -3639,6 +3533,7 @@ exit /b 0
 )
 set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
+set "IS_DIR=%~dp0"
 set "IS_OUTPUT_DIRECTORY=!IS_DIR!user_data"
 call :CHECK_PATH IS_OUTPUT_DIRECTORY && (
     if exist "!IS_OUTPUT_DIRECTORY!\" (
@@ -4387,8 +4282,8 @@ exit /b
 
 :READ_IPLOOKUP
 if exist "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt" (start "" "!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt") else (
-if "!language!"=="EN" set t="IP Lookup list not found.!\N!!\N!You must first save a Lookup to be able to read it."
-if "!language!"=="FR" set t="Liste d'IP Lookup non trouvée.!\N!!\N!Vous devez d'abord enregistrer une Lookup pour pouvoir la lire."
+if "!language!"=="EN" set t="IP Lookup list: '!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt' not found.!\N!!\N!You must first save a Lookup to be able to read it."
+if "!language!"=="FR" set t="Liste d'IP Lookup: '!IS_OUTPUT_DIRECTORY!\IP Lookup Saved.txt' non trouvée.!\N!!\N!Vous devez d'abord enregistrer une Lookup pour pouvoir la lire."
 call :MSGBOX 69680 "Illegal Services"
 )
 exit /b
@@ -4594,9 +4489,9 @@ if exist "%~1" (
     )
 ) else (
     if "!language!"=="EN" (
-        set "t=Folder '%~1' not found.!\N!!\N!"
+        set "t=Folder: '%~1' not found.!\N!!\N!"
     ) else if "!language!"=="FR" (
-        set "t=Dossier '%~1' non trouvée.!\N!!\N!"
+        set "t=Dossier: '%~1' non trouvée.!\N!!\N!"
     )
     if "%2"=="SETTINGS" (
         if "!language!"=="EN" set t="!t!You must first 'Extract IS source code.' or 'Export settings' to be able to open it."
@@ -4728,10 +4623,10 @@ if "%1"=="IS_PATH_BAT_USED" (
         if "!language!"=="FR" set t="Illegal Services ne peut pas continuer à exécuter '%~2' car son accès semble être impossible.!\N!!\N!Veuillez signaler ce bug: '!#el_fatal!' sur le forum Telegram d'Illegal Services afin de corriger ce bug dans une future version."
         set x2=1
     )
-) else (
-    if "!language!"=="EN" set "t=Illegal Services cannot start because '!IS_DIR!%1' is missing."
-    if "!language!"=="FR" set "t=Illegal Services ne peut pas démarrer car '!IS_DIR!%1' est manquant."
-    if "%2"=="CURL" (
+) else if "%1"=="DEPENDENCY" (
+    if "!language!"=="EN" set "t=Illegal Services cannot start because '!IS_DIR!%~2' is missing."
+    if "!language!"=="FR" set "t=Illegal Services ne peut pas démarrer car '!IS_DIR!%~2' est manquant."
+    if "%3"=="CURL" (
         if "!language!"=="EN" set "t=!t!!\N!!\N!Please reinstall Illegal Services and try again."
         if "!language!"=="FR" set "t=!t!!\N!!\N!Veuillez réinstaller Illegal Services et réessayer."
         set x2=2
@@ -4944,13 +4839,15 @@ if defined parse_untrusted_websites[output] (
 )
 if defined first_scan (
     set first_scan=
-    for /l %%A in (1,1,!root_path_[#]!) do (
-        if "!root_path_[%%A]!/!category_folder!"=="Bookmarks Toolbar/Illegal Services/Doxing" (
-            set open_folder_status=1
-            goto :SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
-        ) else if "!root_path_[%%A]!/!category_folder!"=="Bookmarks Toolbar/Illegal Services/Portable Apps" (
-            set open_folder_status=1
-            goto :SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
+    if exist "!IS_OUTPUT_DIRECTORY_PORTABLE_APPS!\" (
+        for /l %%A in (1,1,!root_path_[#]!) do (
+            if "!root_path_[%%A]!/!category_folder!"=="Bookmarks Toolbar/Illegal Services/Doxing" (
+                set open_folder_status=1
+                goto :SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
+            ) else if "!root_path_[%%A]!/!category_folder!"=="Bookmarks Toolbar/Illegal Services/Portable Apps" (
+                set open_folder_status=1
+                goto :SKIP_OPEN_FOLDER_STATUS_CONTINUE_IS_BOOKMARKS_PARSER
+            )
         )
     )
 )
@@ -5528,7 +5425,7 @@ if "%2"=="SCANWEBSITES" (
     title !DEBUG!!t!: '!git_raw_downloads!/IS.bookmarks.html'. - Illegal Services
 )
 call :CURL "!IS_OUTPUT_DIRECTORY!\IS.bookmarks.html" "`git_raw_downloads`/IS.bookmarks.html" || (
-    if "%1"=="UPDATE" (
+    if "%2"=="UPDATE" (
         call :ERROR_INTERNET
         exit /b 1
     )
@@ -5724,7 +5621,7 @@ call :GET_FILE_HASH_SHA1 "!bookmarks_parser.exe!" || (
 set "lookup_patch_filehashes=`34f46ee72d1f948e3208a2d22440fa512fb3fed7`9fb3994687a0117c1c0290a2b9b038abe250d7af`587d3f95c9939235745f2f9c865f2635bc887883`ababd344cb65804ac025e2b9332118aa81639795`8f77ad3bc7e973c624744d8a3d220ba6bdd5ad2d`"
 if not "!lookup_patch_filehashes:`%file_hash%`=!"=="!lookup_patch_filehashes!" (
     call :CURL "!bookmarks_parser.exe!" "`git_raw_main`/!bookmarks_parser.exe:\=/!" || (
-        call :ERROR_FATAL !bookmarks_parser.exe!
+        call :ERROR_FATAL DEPENDENCY !bookmarks_parser.exe!
     )
 )
 set lookup_patch_filehashes=
