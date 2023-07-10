@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2023 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2023 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 9. 2
-REM  Fileversion:  6. 1. 9. 2
+REM  Productversion:  6. 1. 9. 3
+REM  Fileversion:  6. 1. 9. 3
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -18,6 +18,7 @@ REM  QBFC Project Options End
 @echo off
 cls
 setlocal DisableDelayedExpansion
+set "IS_DIR=%~dp0"
 set "IS_PATH_PROCESS_USED=%~f0"
 call :GET_IS_BAT_USED
 if not exist "%IS_PATH_BAT_USED%" (
@@ -65,7 +66,7 @@ if not defined CP (
     call :ERROR_FATAL CP
 )
 >nul chcp 65001
-pushd "%~dp0"
+pushd "%IS_DIR%"
 for /f %%A in ('copy /z "%~nx0" nul') do (
     set "\R=%%A"
 )
@@ -85,7 +86,7 @@ set strip_white_spaces[string]=
 set "x1=%~nx0"
 setlocal EnableDelayedExpansion
 set "x2=%~nx0"
-for /f "delims==" %%A in ('set') do if not "%%A"=="x2" if not "%%A"=="x1" if not "%%A"=="@STRIP_WHITE_SPACES" if not "%%A"=="\E" if not "%%A"=="\R" if not "%%A"=="CP" (
+for /f "delims==" %%A in ('set') do if not "%%A"=="IS_DIR" if not "%%A"=="x2" if not "%%A"=="x1" if not "%%A"=="@STRIP_WHITE_SPACES" if not "%%A"=="\E" if not "%%A"=="\R" if not "%%A"=="CP" (
     set "LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES=!LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES!`%%A"
 )
 if defined LOOKUP_DUMP_IS_EXCLUDED_NOT_IS_VARIABLES (
@@ -183,7 +184,7 @@ if "!language!"=="EN" (
     title !#TITLE:`=Lanceur!
 )
 if defined TEMP (set "TMPF=!TMP!") else if defined TMP (set "TMPF=!TEMP!") else call :ERROR_FATAL TMP
-if not exist "lib" <nul set /p="%~dp0" | >nul findstr /c:"!TMP!" /c:"!TEMP!" && (
+if not exist "lib" <nul set /p="!IS_DIR!" | >nul findstr /c:"!TMP!" /c:"!TEMP!" && (
 if "!language!"=="EN" set t="Illegal Services cannot start because you are running it from an archive. Reopen it once the archive is extracted."
 if "!language!"=="FR" set t="Illegal Services ne peut pas démarrer car vous l'exécutez à partir d'une archive. Rouvrez-le une fois l'archive extraite."
 call :MSGBOX 69680 "Illegal Services"
@@ -221,7 +222,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.9.2 - 09/07/2023
+set VERSION=v6.1.9.3 - 10/07/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -3533,7 +3534,6 @@ exit /b 0
 )
 set IS_REG=HKCU\SOFTWARE\IB_U_Z_Z_A_R_Dl\Illegal Services
 call :CHECK_LANGUAGE
-set "IS_DIR=%~dp0"
 set "IS_OUTPUT_DIRECTORY=!IS_DIR!user_data"
 call :CHECK_PATH IS_OUTPUT_DIRECTORY && (
     if exist "!IS_OUTPUT_DIRECTORY!\" (
