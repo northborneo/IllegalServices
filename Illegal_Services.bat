@@ -8,8 +8,8 @@ REM  Copyrights: Copyright (C) 2023 IB_U_Z_Z_A_R_Dl
 REM  Trademarks: Copyright (C) 2023 IB_U_Z_Z_A_R_Dl
 REM  Originalname: Illegal_Services.exe
 REM  Comments: Illegal Services
-REM  Productversion:  6. 1. 9. 3
-REM  Fileversion:  6. 1. 9. 3
+REM  Productversion:  6. 1. 9. 4
+REM  Fileversion:  6. 1. 9. 4
 REM  Internalname: Illegal_Services.exe
 REM  Appicon: Ressources\Icons\icon.ico
 REM  AdministratorManifest: Yes
@@ -222,7 +222,7 @@ for /f %%A in ('2^>nul dir "!TMPF!\????????.bat" /a:-d /o:-d /b ^| findstr /rxc:
 :LAUNCHER
 if defined VERSION set OLD_VERSION=!VERSION!
 if defined lastversion set OLD_LASTVERSION=!lastversion!
-set VERSION=v6.1.9.3 - 10/07/2023
+set VERSION=v6.1.9.4 - 25/08/2023
 set "@move_right=!\E![?C"
 set "el=UNDERLINE=!\E![04m,UNDERLINEOFF=!\E![24m,BLACK=!\E![30m,RED=!\E![31m,GREEN=!\E![32m,YELLOW=!\E![33m,BLUE=!\E![34m,MAGENTA=!\E![35m,CYAN=!\E![36m,WHITE=!\E![37m,BGBLACK=!\E![40m,BGYELLOW=!\E![43m,BGWHITE=!\E![47m,BGBRIGHTBLACK=!\E![100m,BRIGHTBLACK=!\E![90m,BRIGHTRED=!\E![91m,BRIGHTBLUE=!\E![94m,BRIGHTMAGENTA=!\E![95m"
 set "%el:,=" && set "%"
@@ -3384,7 +3384,8 @@ if "!language!"=="EN" set t=Downloading
 if "!language!"=="FR" set t=Téléchargement
 <nul set /p="!CYAN!!t!: !YELLOW!!curl_url!!CYAN!"
 echo:
->nul curl.exe --create-dirs -f#kLo "%~1" "!curl_url!" || (
+md "%~dp1"
+>nul curl.exe -f#kLo "%~1" "!curl_url!" || (
     if not defined LOOKUP_curl_proxy_url_tries (
         call :ERROR_CURL "%~f1"
         exit /b 2
@@ -3430,7 +3431,8 @@ for /f "tokens=1*delims=/" %%A in ("%~2") do (
                             if "!language!"=="FR" set "t=Téléchargement: "
                             <nul set /p="!CYAN!!t!!YELLOW!%%~G!CYAN!"
                             echo:
-                            >nul curl.exe --create-dirs -f#kLo "%~1" "%%~G" && (
+                            md "%~dp1"
+                            >nul curl.exe -f#kLo "%~1" "%%~G" && (
                                 call :CHECK_FILE_SIGNATURE "%~f1" 8 && (
                                     goto :CURL_CONTINUE
                                 )
