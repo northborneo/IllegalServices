@@ -6,6 +6,9 @@ https://t.me/illegal_services_forum
 https://t.me/illegal_services
 https://github.com/Illegal-Services/Illegal_Services
 
+v6.1.9.4 - 25/08/2023
+* FIXED a bug from "curl.exe"'s "--create-dirs" option not working on cyrillic computers. (thanks @LegalDudee (https://t.me/LegalDudee) for reporting the bug, and testings)
+
 v6.1.9.3 - 10/07/2023
 * FIXED a bug introduced in patch v6.1.9.2 - 09/07/2023
 
